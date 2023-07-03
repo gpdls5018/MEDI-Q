@@ -161,8 +161,8 @@ public class JWTokensService {
 	public void removeToken(HttpServletRequest request, HttpServletResponse response, String tokenName) {
 		//로그아웃 처리- 세션영역에 저장된 속성 삭제
 		Cookie cookie = new Cookie(tokenName,"");
-		cookie.setPath(request.getContextPath());
-		cookie.setMaxAge(0);
+		cookie.setPath("/");
+		cookie.setMaxAge(-1);
 		response.addCookie(cookie);
 	}
 
