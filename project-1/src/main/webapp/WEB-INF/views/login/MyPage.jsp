@@ -29,7 +29,7 @@
 					<img class="rounded-circle" alt="사용자 이미지" src="<c:url value="/${uploadFolder }/${profImg.pName }.${profImg.pExtension }" />" style="width: 80px; height: 80px">
 				</c:if>
 				<c:if test="${not isProfImg }">
-					<img class="rounded-circle" alt="기본 프로필" src="<c:url value="/images/friend.png" />" style="width: 80px; height: 80px">
+					<img class="rounded-circle" alt="기본 프로필" src="<c:url value="/resources/images/friend.png" />" style="width: 80px; height: 80px">
 				</c:if>
 				<span class="align-self-center mr-auto ml-2" style="font-weight: bold">
 					${info.id }
@@ -50,7 +50,7 @@
 		</div>
 		<div class="row">
 			<c:if test="${empty bRecent or empty bmRecent }" var="isEmpty">
-				<img src="images/empty.jpg" alt="Image" class="img-fluid mt-n1 mx-auto" style="max-height: 400px"/>
+				<img src="<c:url value="/resources/images/empty.jpg"/>" alt="Image" class="img-fluid mt-n1 mx-auto" style="max-height: 400px"/>
 			</c:if>
 			<c:if test="${not isEmpty }">
 				<!-- 게시글 작성 활동 폼 -->
