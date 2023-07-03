@@ -90,7 +90,7 @@ public class LoginController {
 
 			// 쿠키에 굽자
 			Cookie cookie = new Cookie(tokenName, token);
-			cookie.setPath(req.getContextPath());
+			cookie.setPath("/");
 			resp.addCookie(cookie);
 
 			// 아이디 저장 체크 여부 판단
