@@ -1,6 +1,7 @@
 package com.kosmo.springapp.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,10 @@ public class MainPageServiceImpl implements MainPageService{
 	public List<FunctionalFoodListDTO> selectFoodList() {
 		// TODO Auto-generated method stub
 		return mapper.selectFoodList();
+	}
+
+	public FunctionalFoodListDTO selectFoodOneByNo(Map map) {
+		return mapper.selectFoodOneByNo(map);
 	}
 
 }
