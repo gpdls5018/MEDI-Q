@@ -16,6 +16,7 @@
 
 <div class="container mt-5">
     <div class="ml-5 mt-2 ">
+    	<p>이곳이 나의 공간ㅎㅇ</p>
         <i class="bi bi-camera"><a href="/modelOCR.do"> 사진으로 검색할래요 !!!</a></i>
     </div>
     <div class="ml-5">
