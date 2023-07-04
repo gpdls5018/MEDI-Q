@@ -37,7 +37,8 @@
     <!-- Template Stylesheet -->
     <link href="/resources/tsfolder/css/style.css" rel="stylesheet">
 	
-     
+     <!-- Template Javascript -->
+     <script src="/resources/tsfolder/js/main.js"></script>
      
     <title>TemplateApplyingModule.jsp</title>
     <style>
@@ -90,7 +91,7 @@
         <nav class="navbar navbar-expand-lg navbar-white mb-3 px-2 px-lg-5 py-lg-3 py-lg-0" style="position: fixed; background-color: white; box-shadow: 0px 0px 5px #000; width: 100%;">
             <div id="mySidenav" class="sidenav">
                 <div class="sidebar-header d-flex justify-content-between">
-                    <h3 style="color: white;">메디큐</h3>
+                    <h3 style="color: white;">Medi-Q</h3>
                     <a class="sidenava1" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>                    
                 </div>
                 <div class="container">
@@ -121,10 +122,10 @@
               </div>
               
               <!-- 요소를 사용하여 navbar 열기-->
-              <span onclick="openNav()"><i class="fas fa-solid fa-bars fa-2x mx-4" style="color: #161616;"></i></span>
+              <span onclick="openNav()"><i class="fas fa-solid fa-bars fa-2x mx-2" style="color: #161616;"></i></span>
 
             <a href="<c:url value="/" />" class="navbar-brand p-0">
-                <h3 class="text-primary mt-2"><i class="fa fa-map-marker-alt me-3"></i>메디</h3>
+                <h3 class="text-primary mt-2 mx-4"><i class="fa fa-map-marker-alt me-3"></i>Medi-Q</h3>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
