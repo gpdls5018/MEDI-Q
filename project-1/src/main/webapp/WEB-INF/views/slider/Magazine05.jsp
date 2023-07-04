@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +31,40 @@
     border:0;
     height: 3px;
     background-color: #ccc;
+  }
+  .wrap-vertical{
+
+    padding: 20px;
+    overflow: scroll;
+    color: #112031;
+    background: white;
+    /* 가로 스크롤 */
+    white-space: nowrap;
+    height: 300px;
+  }
+  .card {
+    display: inline-flex;
+    margin : 10px;
+    border: none;
+  }
+  .card-footer {
+    border: none;
+    background-color: white;
+    padding: 5px 0 3px 3px;
+    height: 100px;
+    text-overflow: ellipsis;
+  }
+  .card-title {
+    font-size: 12px;
+    color:#a7a4a4;
+  }
+  .card-content {
+
+    width: 100px;
+  }
+  .product-img {
+    border-radius: 20%;
+    border: #ccc solid 1px;
   }
 </style>
 <div class="container mt-5 custom-text">
@@ -147,4 +182,31 @@
   </div>
   <hr class="mt-5">
 </div>
+<div class="container">
+  <span class="custom-text">&#x1F601; 관련 영양제 인기 TOP 10 <i class="bi bi-chat-quote"></i></span>
+  <div class="wrap-vertical">
+    <c:if test="${empty listData}" var="listIsEmpty">
+      등록된 제품이 없습니다
+    </c:if>
+    <c:if test="${not listIsEmpty}">
+      <c:forEach var="record" begin="0" end="10" items="${listData}" >
+        <div class="card" style="width:150px;height:400px;">
+          <c:if test="${not empty record.imgURL}">
+            <a href='/detail.do?no=${record.no}'><img src="${record.imgURL}" style="width:150px;height:150px;" class="img-fluid product-img"></a>
+          </c:if>
+          <c:if test="${empty record.imgURL}">
+            <a href='/detail.do?no=${record.no}'><img src="resources/images/thumbnail_img/No_IMG.jpeg" style="object-fit:fill" class="img-fluid product-img"></a>
+          </c:if>
+          <div class="card-footer" style="white-space:normal">
+            <span class="card-title">${record.company}</span><br>
+            <span class="card-content">
+                ${record.productName}
+            </span>
+          </div>
+        </div>
+      </c:forEach>
+    </c:if>
+  </div>
+</div>
+
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>

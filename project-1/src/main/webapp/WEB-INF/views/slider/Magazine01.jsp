@@ -150,16 +150,16 @@
     <c:if test="${not listIsEmpty}">
       <c:forEach var="record" begin="0" end="10" items="${listData}" >
         <div class="card" style="width:150px;height:400px;">
-          <c:if test="${not empty record.imgURL}">
-            <a href='/detail.do?no=${record.no}'><img src="${record.imgURL}" style="width:150px;height:150px;" class="img-fluid product-img"></a>
-          </c:if>
-          <c:if test="${empty record.imgURL}">
+          <c:if test="${record.imgURL eq '/assets/image_search_sample.svg'}" var="notImage">
             <a href='/detail.do?no=${record.no}'><img src="resources/images/thumbnail_img/No_IMG.jpeg" style="object-fit:fill" class="img-fluid product-img"></a>
+          </c:if>
+          <c:if test="${not notImage}">
+            <a href='/detail.do?no=${record.no}'><img src="${record.imgURL}" style="width:150px;height:150px;" class="img-fluid product-img"></a>
           </c:if>
           <div class="card-footer" style="white-space:normal">
             <span class="card-title">${record.company}</span><br>
             <span class="card-content">
-                ${record.name}
+                ${record.productName}
             </span>
           </div>
         </div>
