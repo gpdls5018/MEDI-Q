@@ -90,7 +90,7 @@ public class LoginController {
 
 			// 쿠키에 굽자
 			Cookie cookie = new Cookie(tokenName, token);
-			cookie.setPath(req.getContextPath());
+			cookie.setPath("/");
 			resp.addCookie(cookie);
 
 			// 아이디 저장 체크 여부 판단
@@ -121,7 +121,7 @@ public class LoginController {
 		jwTokensService.removeToken(req, resp, tokenName);
 		
 		// 로그아웃 처리 후 로그인 페이지로 이동;
-		return "index";
+		return "redirect:/";
 	}
 
 	// 회원가입 클릭 시
