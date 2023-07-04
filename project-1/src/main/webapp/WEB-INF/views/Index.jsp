@@ -44,6 +44,7 @@
         </div>
     </div>
 </div>
+
 <style>
     .tagify {
         width: 80%;
