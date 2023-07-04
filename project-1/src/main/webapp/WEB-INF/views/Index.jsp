@@ -81,5 +81,6 @@ $(document).ready(function(){
 });
 
 </script>
+<jsp:include page="/WEB-INF/views/ListTable.jsp"/>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
     
