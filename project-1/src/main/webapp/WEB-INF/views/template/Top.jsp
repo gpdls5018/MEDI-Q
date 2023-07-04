@@ -20,11 +20,7 @@
 
     <!-- fontaswem-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>    
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
-
+  	
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -34,33 +30,19 @@
     <link href="/resources/tsfolder/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="/resources/tsfolder/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <!-- Customized Bootstrap Stylesheet -->
+    <!-- Customized Bootstrap Stylesheet  누나꺼랑 겹침
     <link href="/resources/tsfolder/css/bootstrap.min.css" rel="stylesheet">
+     -->
 
     <!-- Template Stylesheet -->
     <link href="/resources/tsfolder/css/style.css" rel="stylesheet">
-
-     <!-- Template Javascript -->
-     <script src="/resources/tsfolder/js/main.js"></script>
+	
+     
      
     <title>TemplateApplyingModule.jsp</title>
     <style>
-        /*점보트론 세로폭 및 마진바툼 줄이기*/
-        .jumbotron{
-            padding-top:1rem;
-            padding-bottom:1rem;            
-            margin-bottom: .5rem;
-            
-            border-top-left-radius:0;
-            border-top-right-radius:0;
-        }
-        .nav-link:hover{
-          color: rgba(174, 174, 174, 0.971) !important;/*navbar-dark 때문에 안먹음*/
-        }
-        button > span:hover{
-          border:  rgba(174, 174, 174, 0.971) 2px solid ;
-          border-radius: 10%;
-        }
+
+      
     </style>
 </head>
 <script>
@@ -105,7 +87,7 @@
 </script>
 <body>
 <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-white mb-3 px-2 px-lg-5 py-3 py-lg-0" style="position: fixed; background-color: white; box-shadow: 0px 0px 5px #000; width: 100%;">
+        <nav class="navbar navbar-expand-lg navbar-white mb-3 px-2 px-lg-5 py-lg-3 py-lg-0" style="position: fixed; background-color: white; box-shadow: 0px 0px 5px #000; width: 100%;">
             <div id="mySidenav" class="sidenav">
                 <div class="sidebar-header d-flex justify-content-between">
                     <h3 style="color: white;">메디큐</h3>
@@ -141,19 +123,18 @@
               <!-- 요소를 사용하여 navbar 열기-->
               <span onclick="openNav()"><i class="fas fa-solid fa-bars fa-2x mx-4" style="color: #161616;"></i></span>
 
-            <a href="" class="navbar-brand p-0">
+            <a href="<c:url value="/" />" class="navbar-brand p-0">
                 <h3 class="text-primary mt-2"><i class="fa fa-map-marker-alt me-3"></i>메디</h3>
-                <!-- <img src="img/logo.png" alt="Logo"> -->
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
 
            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+           		<div class="mypage">
+           			<a class="nav-link text-dark" href="<c:url value="/project/MyPage.do" />">마이페이지 <i class="fa-solid fa-paper-plane"></i></a><!-- 마이페이지 -->
+           		</div>
 	            <ul class="navbar-nav">
-		            <li class="nav-item mypage">
-		              	<a class="nav-link text-white" href="<c:url value="/project/MyPage.do" />">마이페이지 <i class="fa-solid fa-paper-plane"></i></a><!-- 마이페이지 -->
-	      			</li>
 	                <li class="nav-item logout">
 				        <a href="<c:url value="/project/Logout.do" />" class="btn btn-primary rounded-pill py-2 px-4 active">로그아웃 <i class="fa-regular fa-face-smile"></i></a><!-- 로그아웃(토큰) -->
 				    </li>
