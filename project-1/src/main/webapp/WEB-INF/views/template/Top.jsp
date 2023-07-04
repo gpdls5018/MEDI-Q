@@ -96,25 +96,25 @@
                 <div class="container">
                     <ul class="list-unstyled components">
                         <li><a href="#" class="sidenava2" >
-                            <img src="img/free-icon-home-3771140.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="resources/images/tsimages/free-icon-home-3771140.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             홈페이지</a></li>
                         <li><a class="sidenava4" href="#">
-                            <img src="img/free-icon-whats-new-5511348.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="resources/images/tsimages/free-icon-whats-new-5511348.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             Magazine(뉴스)</a></li>
                         <li><a class="sidenava3" href="#">
-                            <img src="img/free-icon-data-analysis-3449317.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="resources/images/tsimages/free-icon-data-analysis-3449317.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             분석 및 결과</a></li>
                         <li><a class="sidenava5" href="#">
-                            <img src="img/free-icon-checkmark-9887473.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="resources/images/tsimages/free-icon-checkmark-9887473.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             섭취/체크</a></li>
                         <li><a class="sidenava6" href="#">
-                            <img src="img/free-icon-chat-724715.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="resources/images/tsimages/free-icon-chat-724715.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             커뮤니티</a></li>
                         <li><a class="sidenava7" href="#">
-                            <img src="img/free-icon-lifestyle-4807765.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="resources/images/tsimages/free-icon-lifestyle-4807765.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             건강예측</a></li>
                         <li><a class="sidenava8" href="#">
-                            <img src="img/free-icon-pharmacy-1404402.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="resources/images/tsimages/free-icon-pharmacy-1404402.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             인근 의료기관</a></li>
                     </ul>
                 </div>
