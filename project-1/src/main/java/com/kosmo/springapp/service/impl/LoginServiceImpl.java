@@ -59,8 +59,8 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 
 	@Override
 	public int update(MemberDTO info) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return mapper.update(info);
 	}
 
 	@Override
@@ -124,5 +124,11 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 		String token = jwTokensService.createToken(email, secretKey, payloads, expirationTime);
 		
 		return token;
+	}
+
+	//로그인한 회원의 비밀번호와 일치하는지 확인용 메소드
+	public boolean isCorrectPassword(Map map) {
+		
+		return mapper.checkByPassword(map);
 	}
 }

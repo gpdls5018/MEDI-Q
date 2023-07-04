@@ -21,4 +21,8 @@ public interface LoginMapper {
 
 	int checkBySocial(Map userInfo);//카카오, 네이버 로그인 정보 확인
 
+	boolean checkByPassword(Map map); //로그인한 회원이 입력한 비밀번호가 일치하는지 확인
+
+	int update(MemberDTO info); //회원정보 수정
+
 }

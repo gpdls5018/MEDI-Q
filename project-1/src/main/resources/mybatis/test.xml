@@ -38,5 +38,11 @@
 		SELECT COUNT(*) FROM SOCIAL WHERE EMAIL=#{email}
 	</select>
 	
+	<select id="checkByPassword" parameterType="Map" resultType="boolean">
+		SELECT COUNT(*) FROM MEMBER WHERE ID=#{id} AND PASSWORD=#{password}
+	</select>
 	
+	<update id="update" parameterType="Map">
+		UPDATE MEMBER SET NAME=#{name},PASSWORD=#{password},BIRTH=#{birth},GENDER=#{gender},EMAIL=#{email} WHERE ID=#{id}
+	</update>
 </mapper>
