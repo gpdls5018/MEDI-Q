@@ -14,24 +14,35 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>    
     <script src="https://kit.fontawesome.com/dedb6fdace.js" crossorigin="anonymous"></script>
     <script src="/resources/dist/jquery.bs.calendar.js"></script>
+    
+     <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- fontaswem-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>    
+  	
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/resources/tsfolder/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/resources/tsfolder/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/resources/tsfolder/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet  누나꺼랑 겹침
+    <link href="/resources/tsfolder/css/bootstrap.min.css" rel="stylesheet">
+     -->
+
+    <!-- Template Stylesheet -->
+    <link href="/resources/tsfolder/css/style.css" rel="stylesheet">
+	
+     
+     
     <title>TemplateApplyingModule.jsp</title>
     <style>
-        /*점보트론 세로폭 및 마진바툼 줄이기*/
-        .jumbotron{
-            padding-top:1rem;
-            padding-bottom:1rem;            
-            margin-bottom: .5rem;
-            
-            border-top-left-radius:0;
-            border-top-right-radius:0;
-        }
-        .nav-link:hover{
-          color: rgba(174, 174, 174, 0.971) !important;/*navbar-dark 때문에 안먹음*/
-        }
-        button > span:hover{
-          border:  rgba(174, 174, 174, 0.971) 2px solid ;
-          border-radius: 10%;
-        }
+
+      
     </style>
 </head>
 <script>
@@ -58,11 +69,13 @@
 		  	if(token) {
 		    	// 토큰이 존재하면 로그인 상태로 간주
 		    	// 로그아웃 버튼 보이기
+		    	document.querySelector(".mypage").style.display = "";
 		    	document.querySelector(".logout").style.display = "";
 		    	document.querySelector(".login").style.display = "none";
 		  	} else {
 		    	// 토큰이 존재하지 않으면 로그아웃 상태로 간주
 		    	// 로그아웃 버튼 숨기기
+		    	document.querySelector(".mypage").style.display = "none";
 		    	document.querySelector(".logout").style.display = "none";
 		    	document.querySelector(".login").style.display = "";
 		  	}
@@ -73,25 +86,65 @@
 	});
 </script>
 <body>
-	<nav class="navbar navbar-expand-md bg-info text-nowrap py-1 fixed-top">
-      	<a class="navbar-brand" href="/"><i class="fa-brands fa-font-awesome text-white" style="font-size: 28px;"></i></a>
-      	<span class="navbar-text mr-2 text-white">
-        	Welcome To My Site!!!
-      	</span>
-      	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        	<i class="fa-solid fa-circle-dot text-white"></i>
-      	</button>
-      	<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-      		<ul class="navbar-nav">
-	            <li class="nav-item">
-	              	<a class="nav-link text-white" href="<c:url value="/project/MyPage.do" />">마이페이지 <i class="fa-solid fa-paper-plane"></i></a><!-- 마이페이지 -->
-      			</li>
-      			<li class="nav-item logout">
-			        <a class="nav-link text-white active" href="<c:url value="/project/Logout.do" />">로그아웃 <i class="fa-regular fa-face-smile"></i></a><!-- 로그아웃(토큰) -->
-			    </li>
-			  	<li class="nav-item login">
-			        <a class="nav-link text-white active" href="<c:url value="/project/Login.do" />">로그인 <i class="fa-regular fa-face-meh"></i></a><!-- 로그인(토큰) -->
-			    </li>
-          	</ul>
-        </div>
-    </nav>
+<div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-white mb-3 px-2 px-lg-5 py-lg-3 py-lg-0" style="position: fixed; background-color: white; box-shadow: 0px 0px 5px #000; width: 100%;">
+            <div id="mySidenav" class="sidenav">
+                <div class="sidebar-header d-flex justify-content-between">
+                    <h3 style="color: white;">메디큐</h3>
+                    <a class="sidenava1" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>                    
+                </div>
+                <div class="container">
+                    <ul class="list-unstyled components">
+                        <li><a href="#" class="sidenava2" >
+                            <img src="resources/images/tsimages/free-icon-home-3771140.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            홈페이지</a></li>
+                        <li><a class="sidenava4" href="#">
+                            <img src="resources/images/tsimages/free-icon-whats-new-5511348.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            Magazine(뉴스)</a></li>
+                        <li><a class="sidenava3" href="#">
+                            <img src="resources/images/tsimages/free-icon-data-analysis-3449317.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            분석 및 결과</a></li>
+                        <li><a class="sidenava5" href="#">
+                            <img src="resources/images/tsimages/free-icon-checkmark-9887473.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            섭취/체크</a></li>
+                        <li><a class="sidenava6" href="#">
+                            <img src="resources/images/tsimages/free-icon-chat-724715.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            커뮤니티</a></li>
+                        <li><a class="sidenava7" href="#">
+                            <img src="resources/images/tsimages/free-icon-lifestyle-4807765.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            건강예측</a></li>
+                        <li><a class="sidenava8" href="#">
+                            <img src="resources/images/tsimages/free-icon-pharmacy-1404402.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            인근 의료기관</a></li>
+                    </ul>
+                </div>
+              </div>
+              
+              <!-- 요소를 사용하여 navbar 열기-->
+              <span onclick="openNav()"><i class="fas fa-solid fa-bars fa-2x mx-4" style="color: #161616;"></i></span>
+
+            <a href="<c:url value="/" />" class="navbar-brand p-0">
+                <h3 class="text-primary mt-2"><i class="fa fa-map-marker-alt me-3"></i>메디</h3>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+
+           <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+           		<div class="mypage">
+           			<a class="nav-link text-dark" href="<c:url value="/project/MyPage.do" />">마이페이지 <i class="fa-solid fa-paper-plane"></i></a><!-- 마이페이지 -->
+           		</div>
+	            <ul class="navbar-nav">
+	                <li class="nav-item logout">
+				        <a href="<c:url value="/project/Logout.do" />" class="btn btn-primary rounded-pill py-2 px-4 active">로그아웃 <i class="fa-regular fa-face-smile"></i></a><!-- 로그아웃(토큰) -->
+				    </li>
+	                <li class="nav-item login">
+	                	<a href="<c:url value="/project/Login.do"/>" class="btn btn-primary rounded-pill py-2 px-4 active">로그인 <i class="fa-regular fa-face-meh"></i></a><!-- 로그인(토큰) -->
+	                </li>
+	          	</ul>
+            </div>
+        </nav>
+    </div>
+
+ <div id="main">
+ 
