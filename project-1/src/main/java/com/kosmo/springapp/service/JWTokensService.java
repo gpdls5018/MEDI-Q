@@ -162,7 +162,7 @@ public class JWTokensService {
 		//로그아웃 처리- 세션영역에 저장된 속성 삭제
 		Cookie cookie = new Cookie(tokenName,"");
 		cookie.setPath("/");
-		cookie.setMaxAge(-1);
+		cookie.setMaxAge(0);
 		response.addCookie(cookie);
 	}
 
