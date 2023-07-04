@@ -83,7 +83,7 @@
       	</button>
       	<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
       		<ul class="navbar-nav">
-	            <li class="nav-item">
+	            <li class="nav-item logout">
 	              	<a class="nav-link text-white" href="<c:url value="/project/MyPage.do" />">마이페이지 <i class="fa-solid fa-paper-plane"></i></a><!-- 마이페이지 -->
       			</li>
       			<li class="nav-item logout">
