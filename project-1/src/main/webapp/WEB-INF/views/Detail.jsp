@@ -36,7 +36,6 @@
     <div class="row no-gutters">
         <h1 class="display-4 mt-5" style="background-color: lightsteelblue;width:100%">${listOne.productName}</h1>
         <div class="col-8">
-
             <table class="type09 mt-3">
                 <thead>
                 <tr>
