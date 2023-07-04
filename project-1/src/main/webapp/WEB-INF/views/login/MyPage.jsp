@@ -34,6 +34,15 @@
 				<span class="align-self-center mr-auto ml-2" style="font-weight: bold">
 					${info.id }
 				</span>
+				<button class="btn btn-outline-info align-self-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+	                캘린더
+	            </button>
+	            <div class="dropdown-center">
+	                <div class="dropdown-menu p-0">
+	                    <div data-bs-toggle="calendar" id="calendar_dropdown"></div>
+	                </div>
+	            </div>
+	            <div data-bs-toggle="calendar" id="calendar_inline" class="col shadow rounded" style="display: none;"></div>
 				<input type="button" id="imgEdit" value="이미지 수정" class="btn btn-outline-info align-self-center mx-2" data-target="#modalView" data-backdrop="static"/>
 				<a type="button" href="" class="btn btn-outline-info align-self-center" data-target="#modalView" data-backdrop="static">회원정보 수정</a>
 			</div>
@@ -47,6 +56,10 @@
 					최근 활동한 내역이 없어요...
 				</c:if>
 			</div>
+		</div>
+		 
+		<div data-bs-toggle="calendar" id="example" data-bs-target="events.json">
+		  
 		</div>
 		<div class="row">
 			<c:if test="${empty bRecent or empty bmRecent }" var="isEmpty">
@@ -99,6 +112,7 @@
 				</div>
 			</c:if>
 		</div>
+		
 		<!-- 북마크 취소 작성 활동 폼 -->
 		<!-- 
 		<div class="rounded-lg borderline p-3 mt-2 shadow">
@@ -120,6 +134,18 @@
 		</div>
 		 -->
 	</div>
+	<!-- 캘린더 -->
+	<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+	    <div class="offcanvas-header">
+	        <h5 class="offcanvas-title" id="offcanvasExampleLabel">일정확인</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	    </div>
+	    <div class="offcanvas-body d-flex justify-content-center p-0">
+	        <div data-bs-toggle="calendar" id="calendar_offcanvas" class="rounded w-75"></div>
+	        
+	    </div>
+	</div>
+
 	<!-- 수정/삭제시 사용할 모달 시작 -->
 	<div class="modal fade" id="modalView">	
 		<div class="modal-dialog modal-dialog-centered">
@@ -150,6 +176,44 @@
 </body>
 </html>
 <script>
+    (function ($) {
+        $.bsCalendar.setDefault('width', 5000);
+        $('#calendar_dropdown').bsCalendar({width: 300});
+        $('#calendar_inline').bsCalendar({width: '300px'});
+        $('#calendar_inline').bsCalendar('setDate', '2023-12-24');
+        $('#calendar_offcanvas').bsCalendar({width: '80%'});
+        $('#calendar_navbar').bsCalendar({width: 300});
+    }(jQuery));
+</script>
+<script>
+/*
+	$('#example').bsCalendar({
+		locale: 'en',
+		url: null, // save as data-bs-target
+		width: '300px',
+		icons: {
+		    prev: 'fa-solid fa-arrow-left fa-fw',
+		    next: 'fa-solid fa-arrow-right fa-fw',
+		    eventEdit: 'fa-solid fa-edit fa-fw',
+		    eventRemove: 'fa-solid fa-trash fa-fw'
+	  	},
+	  	showEventEditButton: false,
+	  	showEventRemoveButton: false,
+	  	formatEvent: function (event) {
+	    	return drawEvent(event);
+	  	},
+	  	formatNoEvent: function (date) {
+	    	return drawNoEvent(date);
+	  	},
+	  	queryParams: function (params) {
+	    	return params;
+	 	},
+	  	onClickEditEvent: function (e, event) {
+	  	},
+	  	onClickDeleteEvent: function (e, event) {
+	  	},
+	});
+*/
 	//게시물,북마크,최근활동 클릭 시 이벤트 처리
 	var btnType = document.querySelectorAll('#btnType a[type=button]');
 	btnType.forEach(function(target){

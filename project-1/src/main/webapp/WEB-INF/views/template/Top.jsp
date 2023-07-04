@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>    
     <script src="https://kit.fontawesome.com/dedb6fdace.js" crossorigin="anonymous"></script>
+    <script src="/resources/dist/jquery.bs.calendar.js"></script>
     <title>TemplateApplyingModule.jsp</title>
     <style>
         /*점보트론 세로폭 및 마진바툼 줄이기*/
