@@ -13,6 +13,6 @@ public class HelloSpringController {
 	@GetMapping("/") 
 	public String index(Model model) {
 		
-		return "index";
+		return "Index";
 	}
 }
