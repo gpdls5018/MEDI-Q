@@ -593,7 +593,7 @@
 					let highlight = !isToday ? '' : ' js-today ';
 					let col = $('<div>', {
 						'data-date': day.formatDate(false),
-						class: 'position-relative d-flex border border-white rounded-circle justify-content-center align-items-center' + highlight + cellBackground,
+						class: 'data-date position-relative d-flex border border-white rounded-circle justify-content-center align-items-center' + highlight + cellBackground,
 						css: {
 							color: cellTextColor,
 							cursor: 'pointer',

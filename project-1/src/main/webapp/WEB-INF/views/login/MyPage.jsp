@@ -19,11 +19,68 @@
 	.custom-file-input:lang(en)~.custom-file-label::after {
         content: "파일찾기";
     }
+	body{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    
+    .left-side-bar {
+    	background-color: white;
+        height: 100%;
+        width: 500px;
+        position: fixed;
+        left: -460px;
+        transition: left .3s;
+    }
+    .left-side-bar > .status-ico {
+        text-align: right;
+        padding: 10px;
+    }
+    .left-side-bar:hover {
+        left: 0;
+        overflow-y: scroll;
+    }
+    .left-side-bar > .status-ico > span:last-child {
+        display: none;
+    }
+
+    .left-side-bar:hover > .status-ico > span:last-child {
+        display: block;
+    }
+
+    .left-side-bar:hover > .status-ico > span:first-child {
+        display: none;
+    }
 </style>
 <body>
-	<div class="container" style="margin-top: 100px">
+	<div class="container" style="margin-top: 50px">
+		<!-- 캘린더 -->
+		<div class="left-side-bar">
+	        <div class="status-ico">
+	            <span><i class="fa-regular fa-calendar-plus text-primary" style="font-size: 1.5rem"></i></span>
+	            <span><i class="fa-regular fa-calendar-check text-primary" style="font-size: 1.5rem"></i></span>
+	        </div>
+	
+	        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+	            <h5 class="text-center text-secondary" id="offcanvasExampleLabel">일정확인</h5>
+	            <div class="offcanvas-body d-flex justify-content-center p-0">
+	                <div data-bs-toggle="calendar" id="calendar_offcanvas" class="rounded w-75"></div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="dropdown-center">
+	        <div class="dropdown-menu p-0">
+	            <div data-bs-toggle="calendar" id="calendar_dropdown"></div>
+	        </div>
+	    </div>
+	
+	    <div data-bs-toggle="calendar" id="calendar_inline" class="col shadow rounded" style="display: none;"></div>
+	    <!-- 달력 끝 -->
+	    
+	    <div style="height: 50px"></div>
 		<div class="rounded-lg borderline p-3 mb-3 shadow">
-			<div class="row d-flex px-3 py-3">
+			<div class="row d-flex px-3 py-3" >
 				<c:if test="${info.profImgFl eq 'Y' }" var="isProfImg">
 					<c:set var="uploadFolder" value="${fn:split(profImg.pLocation,'\\\\')[fn:length(fn:split(profImg.pLocation, '\\\\'))-1] }"/>
 					<img class="rounded-circle" alt="사용자 이미지" src="<c:url value="/${uploadFolder }/${profImg.pName }.${profImg.pExtension }" />" style="width: 80px; height: 80px">
@@ -37,12 +94,6 @@
 				<button class="btn btn-outline-info align-self-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
 	                캘린더
 	            </button>
-	            <div class="dropdown-center">
-	                <div class="dropdown-menu p-0">
-	                    <div data-bs-toggle="calendar" id="calendar_dropdown"></div>
-	                </div>
-	            </div>
-	            <div data-bs-toggle="calendar" id="calendar_inline" class="col shadow rounded" style="display: none;"></div>
 				<input type="button" id="imgEdit" value="이미지 수정" class="btn btn-outline-info align-self-center mx-2" data-target="#modalView" data-backdrop="static"/>
 				<a type="button" href="" class="btn btn-outline-info align-self-center" data-target="#modalView" data-backdrop="static">회원정보 수정</a>
 			</div>
@@ -56,10 +107,7 @@
 					최근 활동한 내역이 없어요...
 				</c:if>
 			</div>
-		</div>
-		 
-		<div data-bs-toggle="calendar" id="example" data-bs-target="events.json">
-		  
+		</div>		  
 		</div>
 		<div class="row">
 			<c:if test="${empty bRecent or empty bmRecent }" var="isEmpty">
@@ -134,18 +182,7 @@
 		</div>
 		 -->
 	</div>
-	<!-- 캘린더 -->
-	<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-	    <div class="offcanvas-header">
-	        <h5 class="offcanvas-title" id="offcanvasExampleLabel">일정확인</h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-	    </div>
-	    <div class="offcanvas-body d-flex justify-content-center p-0">
-	        <div data-bs-toggle="calendar" id="calendar_offcanvas" class="rounded w-75"></div>
-	        
-	    </div>
-	</div>
-
+	
 	<!-- 수정/삭제시 사용할 모달 시작 -->
 	<div class="modal fade" id="modalView">	
 		<div class="modal-dialog modal-dialog-centered">
