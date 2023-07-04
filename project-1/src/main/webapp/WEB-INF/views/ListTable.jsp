@@ -18,10 +18,9 @@
         <div class="row">
         </c:if>
             <div class="card mt-5 ml-5" style="width: 18rem">
-                <img src="test.jpg" alt="" class="card-img-top pt-3">
+                <img src="<c:url value="/resources/images/thumbnail_img/NO_IMG.jpeg"/>" alt="" class="card-img-top pt-3">
                 <div class="card-body">
-                    <h1 class="card-title">${record.productName}</h1>
-                    <p class="card-text">상품 요약</p>
+                    <p class="card-title">${record.productName}</p>
                 </div>
                 <div class="card-footer">
                     <a href='/detail.do?no=${record.no}' class="btn link-detail btn-outline-info">상품 보러 가기!</a>
