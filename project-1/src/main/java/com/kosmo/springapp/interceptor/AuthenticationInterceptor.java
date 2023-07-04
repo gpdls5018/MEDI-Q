@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 public class AuthenticationInterceptor implements HandlerInterceptor{
-
+/*
 	@Value("${token-name}")
 	private String tokenName;
-	/*
+	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
@@ -22,13 +22,11 @@ public class AuthenticationInterceptor implements HandlerInterceptor{
 		if(cookies != null){
 			for(Cookie cookie : cookies){
 				if(!tokenName.equals(cookie.getName())){//로그인 안된 경우
-					
 					return false;
 				}
 			}
 		}
 		return true;
-	
 	}
 	*/
 }

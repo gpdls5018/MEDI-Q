@@ -18,13 +18,13 @@
 				회원정보 수정 양식을 입력해주세요
 				</p>
 				<p>
-					<img src="../images/joinEdit.jpg" alt="Image" class="img-fluid"/>
+					<img src="<c:url value="/resources/images/joinEdit.jpg"/>" alt="Image" class="img-fluid"/>
 				</p>
 			</div>
 			<div class="col-md-6 d-flex align-items-center mt-3">
 				<form class="mb-5 needs-validation" action="<c:url value="/JoHyeIn/JoinEdit.do" />" method="post" id="contactForm" novalidate>
 					<input type="hidden" name="mode" value="edit"/>
-					<div class="row">
+					<div class="row"><!-- 소셜 멤버일 경우 아이디랑 이메일 막아야함!!!!!! -->
 						<div class="col-md-12 form-group">
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 							<div class="d-flex">
@@ -39,8 +39,6 @@
 							<div id="passwordOK" style="display:none">비밀번호 8~16자의 영문(대/소문자),숫자,특수문자를 입력하세요</div>
 							<div id="pwdOK" style="display:none">동일한 비밀번호가 아닙니다</div>
 							<div id="emailOK" style="display:none">잘못된 이메일 형식입니다</div>
-							<div id="idCheckOK" style="display:none">사용 가능한 아이디입니다</div>
-							<div id="idCheckFail" style="display:none">중복된 아이디입니다</div>
 						</div>
 					</div>
 					<div class="row">
@@ -64,95 +62,8 @@
 							<div id="genderOK" style="display:none">성별을 선택해주세요</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-md-12 form-group mb-1">
-							<div class="d-flex">
-								<input style="max-width: 300px;" type="text" id="sample4_postcode" class="form-control" placeholder="우편번호" name="postalCode" value="${member.postalCode }" readonly required/> 
-								<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-outline-info ml-2"/>
-							</div>
-						</div>
-						<div class="col-md-12 form-group mb-2">
-							<input style="max-width: 300px;" type="text" id="sample4_roadAddress" class="form-control" placeholder="도로명주소" name="addrRoad" value="${member.addrRoad }" readonly required/> 
-							<span id="guide" style="color: #999; display: none"></span> 
-							<input style="max-width: 300px;" type="text" id="sample4_detailAddress" class="form-control mt-1" placeholder="상세주소" name="addrDetail" value="${member.addrDetail }" required/> 
-							<input style="max-width: 300px;" type="text" id="sample4_extraAddress" class="form-control" placeholder="참고항목" hidden/>
-							<div id="postalCodeOK" style="display:none">우편번호를 선택하세요</div>
-							<div id="addrDetail" style="display:none">상세주소를 5자 이상 입력하세요</div>
-						</div>
-						
-					</div>
 					<button type="submit" class="btn btn-outline-primary">확인</button>
 				</form>
-				<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-				<script>
-					function sample4_execDaumPostcode() {
-						var themeObj = {
-							searchBgColor : "#0B65C8", //검색창 배경색
-							queryTextColor : "#FFFFFF" //검색창 글자색
-						};
-						new daum.Postcode({
-							theme : themeObj,
-							oncomplete : function(data) {
-								// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-								var roadAddr = data.roadAddress; // 도로명 주소 변수
-								var extraRoadAddr = ''; // 참고 항목 변수
-
-								// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-								if (data.bname !== ''
-										&& /[동|로|가]$/g.test(data.bname)) {
-									extraRoadAddr += data.bname;
-										}
-								// 건물명이 있고, 공동주택일 경우 추가한다.
-								if (data.buildingName !== ''
-										&& data.apartment === 'Y') {
-									extraRoadAddr += (extraRoadAddr !== '' ? ', '
-											+ data.buildingName
-											: data.buildingName);
-								}
-								// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-								if (extraRoadAddr !== '') {
-									extraRoadAddr = ' ('
-											+ extraRoadAddr + ')';
-								}
-
-								// 우편번호와 주소 정보를 해당 필드에 넣는다.
-								document
-										.getElementById('sample4_postcode').value = data.zonecode;
-								document
-										.getElementById("sample4_roadAddress").value = roadAddr;
-
-								// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-								if (roadAddr !== '') {
-									document
-											.getElementById("sample4_extraAddress").value = extraRoadAddr;
-								} else {
-									document
-											.getElementById("sample4_extraAddress").value = '';
-								}
-
-								var guideTextBox = document
-										.getElementById("guide");
-								// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-								if (data.autoRoadAddress) {
-									var expRoadAddr = data.autoRoadAddress
-											+ extraRoadAddr;
-									guideTextBox.innerHTML = '(예상 도로명 주소 : '
-											+ expRoadAddr + ')';
-									guideTextBox.style.display = 'block';
-
-								} else if (data.autoJibunAddress) {
-									var expJibunAddr = data.autoJibunAddress;
-									guideTextBox.innerHTML = '(예상 지번 주소 : '
-											+ expJibunAddr + ')';
-									guideTextBox.style.display = 'block';
-								} else {
-									guideTextBox.innerHTML = '';
-									guideTextBox.style.display = 'none';
-								}
-							}
-						}).open();
-					}
-				</script>
 			</div>
 		</div>
 	</div>
@@ -288,23 +199,7 @@
             	$('#genderOK').css('display','none');
             	isValidate = true;
             }
-            
-            if(!$('#sample4_postcode').val()){
-            	$('#postalCodeOK').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
-            	isValidate = false;
-            }
-            else{
-            	$('#postalCodeOK').css('display','none');
-            	isValidate = true;
-            }
-            if(!$('#sample4_detailAddress').val()){
-            	$('#addrDetail').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
-            	isValidate = false;
-            }
-            else{
-            	$('#addrDetail').css('display','none');
-            	isValidate = true;
-            }
+        	
             
             if(!isValidate){
             	return false; //submit 이벤트 취소

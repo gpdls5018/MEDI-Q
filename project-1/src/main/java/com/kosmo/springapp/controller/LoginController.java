@@ -84,7 +84,7 @@ public class LoginController {
 			Map<String, Object> payloads = new HashMap<>();// 사용자 임의 데이타
 			payloads.put("id", id);
 
-			long expirationTime = 1000 * 60 * 60; // 토큰의 만료시간 설정
+			long expirationTime = 1000 * 60 * 60 *24; // 토큰의 만료시간 설정
 
 			String token = jwTokensService.createToken(id, secretKey, payloads, expirationTime);
 

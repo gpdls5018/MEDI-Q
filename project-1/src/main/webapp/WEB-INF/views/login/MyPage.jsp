@@ -91,9 +91,6 @@
 				<span class="align-self-center mr-auto ml-2" style="font-weight: bold">
 					${info.id }
 				</span>
-				<button class="btn btn-outline-info align-self-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-	                캘린더
-	            </button>
 				<input type="button" id="imgEdit" value="이미지 수정" class="btn btn-outline-info align-self-center mx-2" data-target="#modalView" data-backdrop="static"/>
 				<a type="button" href="" class="btn btn-outline-info align-self-center" data-target="#modalView" data-backdrop="static">회원정보 수정</a>
 			</div>
