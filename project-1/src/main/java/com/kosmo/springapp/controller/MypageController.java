@@ -1,5 +1,6 @@
 package com.kosmo.springapp.controller;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.springapp.model.MemberDTO;
+import com.kosmo.springapp.model.ProfileImageDTO;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
 
@@ -58,7 +61,7 @@ public class MypageController {
 	}
 	
 	//회원수정 클릭 후 비밀번호 일치 시
-	@GetMapping("JoinEdit.do")
+	@GetMapping("/JoinEdit.do")
 	public String joinEdit(@RequestParam String id, Map map) {
 		map.put("id", id);
 		map.put("member",loginService.selectOne(map));
@@ -66,7 +69,7 @@ public class MypageController {
 		return "login/JoinEdit";
 	}
 	
-	@PostMapping("JoinEditOk.do")
+	@PostMapping("/JoinEditOk.do")
 	@ResponseBody
 	public String joinEditOk(@Valid MemberDTO member, Errors errors) {
 		if (errors.hasErrors()) {
@@ -78,5 +81,16 @@ public class MypageController {
 		} else {
 			return "<script>alert('회원정보 수정에 실패하였습니다');history.back()</script>";
 		}
+	}
+	
+	//이미지 수정 클릭 시
+	@PostMapping(value = "/ProfImgEdit.do",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public String profImgEdit(ProfileImageDTO dto, HttpServletRequest req, Model model) throws IllegalStateException, IOException {
+		ProfileImageDTO info = loginService.editProfImg(dto,req);
+		int insertFlag = loginService.insertProfImg(info);
+		
+		model.addAttribute("SUCCFAIL", insertFlag);
+		model.addAttribute("WHERE", "PROF");
+		return "Message";
 	}
 }

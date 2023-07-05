@@ -241,7 +241,7 @@
 	//이미지 수정하기
 	$('#imgEdit').click(function(){
 		$(this).attr('data-toggle','modal');
-		$('form').attr('action','<c:url value="/JoHyeIn/ProfImgEdit.do"/>');
+		$('form').attr('action','<c:url value="/project/ProfImgEdit.do"/>');
 		$('form').attr('enctype','multipart/form-data');
 		$('.modal-title').html('수정할 프로필 이미지를 선택해주세요');
 		$('input[type=password]').css('display','none');

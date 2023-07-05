@@ -31,7 +31,7 @@
 	
 	<insert id="saveSocial" parameterType="Map">
 		<if test="site eq 'kakao'">
-			INSERT INTO SOCIAL VALUES(#{email},#{gender},#{site},SYSDATE,'N')
+			INSERT INTO SOCIAL VALUES(#{email},#{gender},#{site},SYSDATE,'N',DEFAULT,DEFAULT)
 		</if>
 		<if test="site eq 'naver'">
 			INSERT INTO SOCIAL VALUES(#{email},#{gender},#{site},SYSDATE,'N',#{name},#{birth})
@@ -49,4 +49,9 @@
 	<update id="update" parameterType="Map">
 		UPDATE MEMBER SET NAME=#{name},PASSWORD=#{password},BIRTH=#{birth},GENDER=#{gender},EMAIL=#{email} WHERE ID=#{id}
 	</update>
+	
+	<!-- member / social if문 구분해야함 -->
+	<insert id="saveProfImg" parameterType="profImgDto">
+		INSERT INTO PROFILE_IMAGE VALUES(NO=SEQ_PROFILE_IMAGE.NEXTVAL,ID={id},PI_PATH={piPath},PI_FILENAME={piFilename},PI_EXT={piExt})
+	</insert>
 </mapper>
