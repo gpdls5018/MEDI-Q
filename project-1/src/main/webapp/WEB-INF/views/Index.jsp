@@ -183,7 +183,7 @@
 		<aside class="tsidebar fixedsticky">
 			<div class="login-section justify-content-center">
 		        <p>Madi-Q를 더 안전하고 편리하게 이용하세요</p>
-		        <button class="btn btn-outline-danger" type="button" style="width:100%;">로그인</button>
+		        <button class="btn btn-warning" type="button" style="width:90%; height:50px font-weight:800; color:#EF605D;">Madi-Q<br/> 로그인</button>
 		        
 		    </div>
 			<p style="margin-bottom:40px; font-size:24px; font-weight:bold;">Q-Ranking</p>
