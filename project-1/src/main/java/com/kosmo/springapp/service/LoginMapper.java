@@ -5,6 +5,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.kosmo.springapp.model.MemberDTO;
+import com.kosmo.springapp.model.ProfileImageDTO;
 
 @Mapper
 public interface LoginMapper {
@@ -32,5 +33,11 @@ public interface LoginMapper {
 	int saveSocial(Map userInfo);//카카오,네이버 로그인 시 회원정보 저장
 
 	int checkBySocial(Map userInfo);//카카오, 네이버 로그인 정보 확인
+	
+	
+	
+	///////////////////PROFILE_IMAGE 테이블
+
+	int saveProfImg(ProfileImageDTO info); //프로필 이미지 선택 시(기본 이미지 X)
 
 }

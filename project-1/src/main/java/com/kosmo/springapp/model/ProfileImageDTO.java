@@ -1,9 +1,12 @@
 package com.kosmo.springapp.model;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 import org.apache.ibatis.type.Alias;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,4 +38,6 @@ public class ProfileImageDTO {
 	
 	@NotNull
 	private String piExt; //프로필이미지 파일 확장자
+	
+	private List<MultipartFile> files;
 }

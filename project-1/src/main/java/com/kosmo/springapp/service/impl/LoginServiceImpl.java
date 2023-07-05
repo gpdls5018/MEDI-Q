@@ -1,10 +1,13 @@
 package com.kosmo.springapp.service.impl;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -16,8 +19,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kosmo.springapp.model.MemberDTO;
+import com.kosmo.springapp.model.ProfileImageDTO;
+import com.kosmo.springapp.service.FileUtils;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.LoginMapper;
 import com.kosmo.springapp.service.LoginService;
@@ -142,5 +148,43 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 	public boolean isCorrectPassword(Map map) {
 		
 		return mapper.checkByPassword(map);
+	}
+
+	@Value("${file.upload}")
+	private String SaveDirectory;	
+	
+	//프로필 이미지 수정(기본 이미지 X)
+	public ProfileImageDTO editProfImg(ProfileImageDTO dto, HttpServletRequest req) throws IllegalStateException, IOException {
+		
+		String id = dto.getId();
+		System.out.println("id: "+id);
+		List<File> uploadFiles = new Vector<>();
+		String phisicalPath = req.getServletContext().getRealPath(SaveDirectory);
+		System.out.println("dto.getFiles(): "+dto.getFiles());
+		List<MultipartFile> fileNames = dto.getFiles();
+		if(fileNames != null) {//변경 이미지 선택
+		
+			String newFilename="";
+			for(MultipartFile fileFullName:fileNames) {
+				newFilename = FileUtils.getNewFileName(phisicalPath, fileFullName.getOriginalFilename());
+				File file = new File(phisicalPath+File.separator+newFilename);
+				uploadFiles.add(file);
+				fileFullName.transferTo(file);
+			}
+			
+			String filename = newFilename.substring(0, newFilename.lastIndexOf("."));
+			String ext = newFilename.substring(newFilename.lastIndexOf(".") + 1);
+			dto.setPiPath(phisicalPath);
+			dto.setPiFilename(filename);
+			dto.setPiExt(ext);
+					
+			return dto;
+		}
+		return null;
+	}
+
+	public int insertProfImg(ProfileImageDTO info) {
+		
+		return mapper.saveProfImg(info);
 	}
 }
