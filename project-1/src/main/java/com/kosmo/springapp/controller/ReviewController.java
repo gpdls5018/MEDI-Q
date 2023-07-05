@@ -14,22 +14,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kosmo.springapp.model.FunctionalFoodListDTO;
 import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.service.JWTokensService;
+import com.kosmo.springapp.service.ReviewService;
+import com.kosmo.springapp.service.impl.ReviewServiceImpl;
 
 @Controller
 public class ReviewController {
 	
-
+	@Autowired
+	ReviewServiceImpl reviewServiceImpl;
 	
 	
 	@RequestMapping(value = "/WriteReview.do", method = RequestMethod.POST)
 	public String mypage(@RequestBody Map map) {
-		System.out.println("map : "+map.get("takeTime"));
-		System.out.println("map : "+map.get("starScore"));
-		System.out.println("map : "+map.get("effect"));
-		System.out.println("map : "+map.get("noEffect"));
-		System.out.println("map : "+map.get("content"));
-		return null;
+		//System.out.println("map : "+map.get("takeTime"));
+		//System.out.println("map : "+map.get("starScore"));
+		//System.out.println("map : "+map.get("effect").toString());	
+		//System.out.println("map : "+map.get("noEffect").toString());
+		//System.out.println("map : "+map.get("content"));
+		//System.out.println("map : "+map.get("no"));
+		System.out.println("map.get(id).toString():"+map.get("id").toString());
+		int result = reviewServiceImpl.registerReview(map);
+		return "Detail";
 	}
 }
