@@ -76,20 +76,20 @@
 	        </div>
 	        <div id="hashtaglink" class="ml-5 py-3 row">
 	        	<button  href="#" class="btn btn-6 btn-6c">
-                    <img src="resources/images/tsimages/free-icon-immunity-5106341.png" loading="lazy" width="25" height="25" style="font-weight: bold; color: palevioletred;">
-                <lable>#면역력 증진</lable></button>&nbsp;
+                    <img src="resources/images/tsimages/free-icon-immunity-5106341.png" loading="lazy" width="25" height="25">
+                <lable style="font-weight: bold; color: palevioletred;">#면역력 증진</lable></button>&nbsp;
                 <button  href="#" class="btn btn-6 btn-6c">
-                    <img src="resources/images/tsimages/free-icon-male-gender-2404544.png" loading="lazy" width="25" height="25" style="font-weight: bold; color: mediumpurple;">
-                <lable>#전립선 건강</lable></button>&nbsp;
+                    <img src="resources/images/tsimages/free-icon-male-gender-2404544.png" loading="lazy" width="25" height="25">
+                <lable style="font-weight: bold; color: mediumpurple;">#전립선 건강</lable></button>&nbsp;
                 <button  href="#" class="btn btn-6 btn-6c">
-                    <img src="resources/images/tsimages/free-icon-weight-scale-7984802.png" loading="lazy" width="25" height="25" style="font-weight: bold; color: sandybrown;">
-                <lable>#체지방 감소</lable></button>&nbsp;
+                    <img src="resources/images/tsimages/free-icon-weight-scale-7984802.png" loading="lazy" width="25" height="25">
+                <lable style="font-weight: bold; color: sandybrown;">#체지방 감소</lable></button>&nbsp;
                 <button  href="#" class="btn btn-6 btn-6c">
-                    <img src="resources/images/tsimages/free-icon-vitamins-525955.png" loading="lazy" width="25" height="25" style="font-weight: bold; color: salmon;">
-                <lable>#비타민</lable></button>&nbsp;
+                    <img src="resources/images/tsimages/free-icon-vitamins-525955.png" loading="lazy" width="25" height="25">
+                <lable style="font-weight: bold; color: salmon;">#비타민</lable></button>&nbsp;
                 <button  href="#" class="btn btn-6 btn-6c">
-                    <img src="resources/images/tsimages/free-icon-glucose-meter-4228683.png" loading="lazy" width="25" height="25" style="font-weight: bold; color: lightskyblue;">
-                <lable>#혈당</lable></button>&nbsp;
+                    <img src="resources/images/tsimages/free-icon-glucose-meter-4228683.png" loading="lazy" width="25" height="25">
+                <lable style="font-weight: bold; color: lightskyblue;">#혈당</lable></button>&nbsp;
 		    </div >
 	    </div>
 	    
