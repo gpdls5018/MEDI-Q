@@ -11,4 +11,10 @@ public class NutrientController {
 		
 		return "nutrient/NutrientSelect";
 	}
+	
+	@GetMapping("/NutrientDetail.do")
+	public String nutrientdetail() {
+		
+		return "nutrient/NutrientDetail";
+	}
 }
