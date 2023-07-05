@@ -48,25 +48,26 @@ public class MypageController {
 	@ResponseBody
 	public String password(@RequestParam Map map) {
 		boolean flag = loginService.isCorrectPassword(map);
-		System.out.println("id: "+map.get("id"));
-		System.out.println("password: "+map.get("password"));
 		// 비밀번호가 틀린 경우는 이전 페이지로
 		if (!flag) {
 			return "<script>alert('비밀번호가 일치하지 않아요');history.back();</script>";
 		}
+		String queryString = "/project/JoinEdit.do?id="+map.get("id");
 		// 비밀번호가 일치하는 경우
-		return "<script>location.href=\'/project/JoinEdit.do\'</script>";
+		return "<script>location.href='"+queryString+"'</script>";
 	}
 	
 	//회원수정 클릭 후 비밀번호 일치 시
-	@PostMapping("JoinEdit.do")
-	public String joinEdit(@RequestParam Map map) {
+	@GetMapping("JoinEdit.do")
+	public String joinEdit(@RequestParam String id, Map map) {
+		map.put("id", id);
 		map.put("member",loginService.selectOne(map));
 		
 		return "login/JoinEdit";
 	}
 	
 	@PostMapping("JoinEditOk.do")
+	@ResponseBody
 	public String joinEditOk(@Valid MemberDTO member, Errors errors) {
 		if (errors.hasErrors()) {
 			return "<script>history.back();</script>";

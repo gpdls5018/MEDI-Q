@@ -51,7 +51,6 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 
 	@Override
 	public MemberDTO selectOne(Map map) {
-		
 		return mapper.findMember(map);
 	}
 	

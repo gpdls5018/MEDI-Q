@@ -17,7 +17,7 @@
 	</select>
 	
 	<insert id="save" parameterType="memberDto">
-		INSERT INTO MEMBER VALUES(#{id},#{name},#{password},#{birth},#{gender},#{email},SYSDATE,'Y','N',DEFAULT)
+		INSERT INTO MEMBER VALUES(#{id},#{name},#{password},#{birth},#{gender},#{email},SYSDATE,'Y','N',DEFAULT,'N')
 	</insert>
 	
 	<select id="searchIdNPwd" parameterType="Map" resultType="memberDto">

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp" />
 <style>
 	input[type='date']::before {
@@ -22,13 +23,13 @@
 				</p>
 			</div>
 			<div class="col-md-6 d-flex align-items-center mt-3">
-				<form class="mb-5 needs-validation" action="<c:url value="/JoHyeIn/JoinEdit.do" />" method="post" id="contactForm" novalidate>
+				<form class="mb-5 needs-validation" action="<c:url value="/project/JoinEditOk.do" />" method="post" id="contactForm" novalidate>
 					<input type="hidden" name="mode" value="edit"/>
 					<div class="row"><!-- 소셜 멤버일 경우 아이디랑 이메일 막아야함!!!!!! -->
 						<div class="col-md-12 form-group">
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 							<div class="d-flex">
-								<input style="max-width: 300px;" type="text" class="form-control" placeholder="아이디" id="id" name="id" value="${member.id }" disabled/> 
+								<input style="max-width: 300px;" type="text" class="form-control" placeholder="아이디" id="id" name="id" value="${member.id }" readonly/> 
 							</div>
 							<input style="max-width: 300px;" type="password" class="form-control my-1" id="password" placeholder="비밀번호" name="password" required/>
 							<input style="max-width: 300px;" type="password" class="form-control" id="pwd" placeholder="확인용 비밀번호" name="pwd" required/>							
@@ -45,7 +46,8 @@
 						<div class="col-md-12 form-group"> 
 							<input style="max-width: 300px;" type="text" class="form-control" id="name" placeholder="이름" name="name" value="${member.name }" required/>
 							<!-- 정규표현식에 맞게 문구변경 -->
-							<input style="max-width: 300px;" type="date" class="form-control my-1" id="birth" name="birth" value="${member.birth }" data-placeholder="${member.birth }" required aria-required="true"/>
+							<c:set var="userBirth" value="${fn:split(member.birth,' ')[0] }"/>
+							<input style="max-width: 300px;" type="date" class="form-control my-1" id="birth" name="birth" value="${userBirth }" data-placeholder="${userBirth }" required aria-required="true"/>
 							<div class="d-flex align-items-center">
 								<div class="custom-control custom-radio"><!-- radio box도 무조건 required??? -->
 									<input type="radio" class="custom-control-input" name="gender" id="male" value="M" ${member.gender eq "M" ? "checked" :"" } required/>
@@ -82,7 +84,7 @@
 	//change로 유효성 확인하기
 	var reg_pwd = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[~!@#\$%\^&\*\(\)\+\|\=\-])[A-Za-z\d~!@#\$%\^&\*\(\)\+\|\=\-]{8,16}$/;
 	var reg_email = /^(?=.*[A-Za-z])(?=.*\d)[a-z][a-z0-9]{5,11}@[a-z]{3,8}\.(com|net|co\.kr)$/;
-	var reg_name = /[가-힣]{2,}/;
+	var reg_name = /^(?=.*[가-힣])[가-힣]{2,}/;
 	
 	var passwordFlag = false;
 	$('#password').on('input',function(){
