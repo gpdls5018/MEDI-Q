@@ -181,6 +181,11 @@
     <jsp:include page="/WEB-INF/views/ListTable.jsp"/>
 	</article>
 		<aside class="tsidebar fixedsticky">
+			<div class="login-section justify-content-center">
+		        <p>Madi-Q를 더 안전하고 편리하게 이용하세요</p>
+		        <button class="btn btn-outline-danger" type="button" style="width:100%;">로그인</button>
+		        
+		    </div>
 			<p style="margin-bottom:40px; font-size:24px; font-weight:bold;">Q-Ranking</p>
                          <div class="sidebar-item">
                              <ul class="list">
@@ -242,10 +247,10 @@ tagify.on('remove', e=> {
 
 $(document).ready(function(){
     $('.slider1').bxSlider({
-        slideWidth: 300,
+        slideWidth: 900,
         minSlides: 1,
-        maxSlides: 2,
-        slideMargin: 2,
+        maxSlides: 1,
+        slideMargin: 1,
         auto : true,
         stopAutoOnClick : true,
         pager : true,
