@@ -40,11 +40,18 @@
      <!-- Template Javascript -->
      <script src="/resources/tsfolder/js/main.js"></script>
      
+     <!-- googlefont -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Hahmlet&family=Nanum+Myeongjo&family=Stylish&display=swap" rel="stylesheet">
+<style>
+	body {
+	    font-family: 'Nanum Myeongjo', serif;
+	}
+</style>
+     
     <title>TemplateApplyingModule.jsp</title>
-    <style>
 
-      
-    </style>
 </head>
 <script>
 	//쿠키값 가져오는 함수
@@ -88,7 +95,7 @@
 </script>
 <body>
 <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-white mb-3 px-2 px-lg-5 py-lg-3 py-lg-0" style="position: fixed; background-color: white; box-shadow: 0px 0px 5px #000; width: 100%;">
+        <nav class="navbar navbar-expand-lg navbar-white mb-2 px-2 px-lg-5 py-lg-2 py-lg-0" style="position: fixed; background-color: white; box-shadow: 0px 0px 5px #000; width: 100%;">
             <div id="mySidenav" class="sidenav">
                 <div class="sidebar-header d-flex justify-content-between">
                     <h3 style="color: white;">Medi-Q</h3>
@@ -97,8 +104,8 @@
                 <div class="container">
                     <ul class="list-unstyled components">
                         <li><a href="#" class="sidenava2" >
-                            <img src="resources/images/tsimages/free-icon-home-3771140.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
-                            홈페이지</a></li>
+                            <img src="resources/images/tsimages/free-icon-vitamins-525955.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            영양소</a></li>
                         <li><a class="sidenava4" href="#">
                             <img src="resources/images/tsimages/free-icon-whats-new-5511348.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             Magazine(뉴스)</a></li>
