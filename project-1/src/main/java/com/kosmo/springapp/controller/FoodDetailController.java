@@ -26,4 +26,8 @@ public class FoodDetailController {
 		   model.addAttribute("listOne",listOne);
 		   return "Detail";
 	 }
+	 @GetMapping("/writeReview.do")
+	 public String reviewPage() {
+		 return "Review";
+	 }
 }

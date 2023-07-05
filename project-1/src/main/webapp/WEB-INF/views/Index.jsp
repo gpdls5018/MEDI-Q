@@ -13,6 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+<script src="resources/tsfolder/js/jquery.sticky-kit.min.js"></script>
 <style>
  .btn-6c img {
         margin-bottom: 10px;
@@ -55,8 +56,65 @@
         position: relative;
         text-align: center;
         color: black;
-
     }
+    .tagify {
+   		width: 80%;
+    }
+    /*사이드 랭킹바 만든 css*/
+    .tsbutton {
+		display: block;
+		border-radius: 4px;
+		text-decoration: none;
+		text-align: center;
+		color: #fff;
+		background-color: #0071fc;
+		padding: .5em
+	}
+	.maints {
+		padding: 1em 1.5em 1em 1em;
+	}
+	.tsidebar {
+		padding: 2em 1.5em;
+		background-color: white;
+		margin-bottom:40px;
+	}
+	.tsidebar .list li {
+	    position: relative;
+	    display: flex;
+	    width: 100%;
+	    height: 80px;
+	    margin: 0 0 20px 0;
+	    background-color: #ffffff;
+	    box-shadow: 2px 2px 4px #ccc;
+	    align-items: center;
+	}
+	.tsidebar .list li img{
+	    width: 50px;
+	    height: 60px;
+	    text-align: center;
+	}
+	
+	@media (min-width:43.75em) {
+		.tscontainer {
+			max-width: 100%;
+			margin: 0 auto;
+			position: relative;
+		}
+		.maints {
+			display: inline-block;
+			width: 70%;
+			vertical-align: top;
+		}
+		.tsidebar {
+			display: inline-block;
+			width: 20%;
+			vertical-align: top;
+		}
+		.fixedsticky {
+			top: 0;
+		}
+	}
+
 </style>
 		<div class="ml-5 mt-2 ">
 	        <i class="bi bi-camera"><a href="/modelOCR.do"> 사진으로 검색할래요 !!!</a></i>
@@ -94,28 +152,62 @@
 	    </div>
 	    
 		<div class="container-fluid  mb-1 hero-header">
-            <video autoplay loop muted class="video-background" style="height: 200px; width: 1000px; ">
+            <video autoplay loop muted class="video-background" style="height: 200px; width: 900px; ">
                 <source src="resources/video/intro1_.mp4" type="video/mp4">
             </video>
         </div>
-<div class="container mt-5">
-    
-    <div class="m-5">
-        <div class="slider1">
-            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="resources/images/thumbnail_img/RedM_Arg.jpg"></a></div>
-            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="resources/images/thumbnail_img/RedM_Col.jpg"></a></div>
-            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="resources/images/thumbnail_img/RedM_Hia.jpg"></a></div>
-            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="resources/images/thumbnail_img/RedM_Pro.jpg"></a></div>
-            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="resources/images/thumbnail_img/YellowM_Mus.jpg"></a></div>
-        </div>
-    </div>
-</div>
+<section class="tscontainer mt-5">
+     <article class="maints">
+	    <div class="m-5">
+	        <div class="slider1">
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="resources/images/thumbnail_img/RedM_Arg.jpg"></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="resources/images/thumbnail_img/RedM_Col.jpg"></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="resources/images/thumbnail_img/RedM_Hia.jpg"></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="resources/images/thumbnail_img/RedM_Pro.jpg"></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="resources/images/thumbnail_img/YellowM_Mus.jpg"></a></div>
+	        </div>
+	    </div>
+    <jsp:include page="/WEB-INF/views/ListTable.jsp"/>
+	</article>
+		<aside class="tsidebar fixedsticky" style="margin-top:100px">
+			<p style="margin-bottom:40px; font-size:24px; font-weight:bold;">Q-Ranking</p>
+                         <div class="sidebar-item">
+                             <ul class="list">
+                                 <li>
+                                     <div class="image mx-2">
+                                         <img src="resources/images/tsimages/destination-1.jpg" alt="*">
+                                     </div>
+                                     <p class="text mx-2">약 이름1</p>
+                                 </li>
+                                 <li>
+                                     <div class="image mx-2">
+                                         <img src="resources/images/tsimages/destination-2.jpg" alt="*">
+                                     </div>
+                                     <p class="text mx-2">약 이름2</p>
+                                 </li>
+                                 <li>
+                                     <div class="image mx-2">
+                                         <img src="resources/images/tsimages/destination-3.jpg" alt="*">
+                                     </div>
+                                     <p class="text mx-2">약 이름3</p>
+                                 </li>
+                                 <li>
+                                     <div class="image mx-2">
+                                         <img src="resources/images/tsimages/destination-4.jpg" alt="*">
+                                     </div>
+                                     <p class="text mx-2">약 이름4</p>
+                                 </li>
+                                 <li>
+                                     <div class="image mx-2">
+                                         <img src="resources/images/tsimages/package-1.jpg" alt="*">
+                                     </div>
+                                     <p class="text mx-2">약 이름5</p>
+                                 </li>
+                             </ul>
+                         </div>
+		</aside>
+</section>
 
-<style>
-    .tagify {
-        width: 80%;
-    }
-</style>
 <script>
 // The DOM element you wish to replace with Tagify
 var input = document.querySelector('input[name=postTag]');
@@ -149,7 +241,10 @@ $(document).ready(function(){
     });
 });
 
+//사이드바 함수 적용
+$(document).ready(function() {
+  $('.tsidebar').stick_in_parent();
+});
 </script>
-<jsp:include page="/WEB-INF/views/ListTable.jsp"/>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
     
