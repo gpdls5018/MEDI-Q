@@ -15,12 +15,9 @@
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 
 		<div class="container-fluid  mb-1 hero-header">
-            <video autoplay loop muted class="video-background" style="height: 500px; ">
+            <video autoplay loop muted class="video-background" style="height: 200px; width: 1000px; ">
                 <source src="resources/video/intro1_.mp4" type="video/mp4">
             </video>
-            <div class="jd-text">
-                <p>의료가 필요한 모든 순간 <br/>우리와 함께해요 </p>
-            </div>
         </div>
 <div class="container mt-5">
     <div class="ml-5 mt-2 ">

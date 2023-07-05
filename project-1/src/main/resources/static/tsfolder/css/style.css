@@ -311,6 +311,7 @@
 
 /*** Hero Header ***/
 .hero-header {
+	display: flex;
     justify-content: center; 
     align-items: center;
 }
@@ -324,22 +325,6 @@
 }
 
 
-.jd-text {
-    position: absolute; 
-    top: 30%; 
-    width: 100%; 
-}
-
-.jd-text p { 
-    margin-top: -24px; 
-    text-align: center; 
-    font-size: 48px; 
-    color: #ffffff; 
-    z-index: 50;
-    font-weight: 900;  
-    position: relative;
-    text-align: center; 
-}
 
 .breadcrumb-item + .breadcrumb-item::before {
     color: rgba(255, 255, 255, .5);
