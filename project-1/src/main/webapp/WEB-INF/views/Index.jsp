@@ -81,17 +81,19 @@
 		background-color: white;
 		margin-bottom:10px;
 	}
-	.tsidebar .list li {
+	.tsidebar .unlist li {
 	    position: relative;
 	    display: flex;
 	    width: 100%;
 	    height: 80px;
 	    margin: 0 0 20px 0;
+	    padding: 
 	    background-color: #ffffff;
 	    box-shadow: 2px 2px 4px #ccc;
 	    align-items: center;
 	}
-	.tsidebar .list li img{
+
+	.tsidebar .unlist li img{
 	    width: 50px;
 	    height: 60px;
 	    text-align: center;
@@ -105,12 +107,12 @@
 		}
 		.maints {
 			display: inline-block;
-			width: 70%;
+			width: 68%;
 			vertical-align: top;
 		}
 		.tsidebar {
 			display: inline-block;
-			width: 20%;
+			width: 29%;
 			vertical-align: top;
 		}
 		.fixedsticky {
@@ -118,6 +120,14 @@
 			top: 0px;
 		}
 	}
+	aside > div {
+	  border: 2px solid #ccc;
+	  border-radius: 10px;
+	  padding: 20px;
+	  background-color: white;
+	  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	  margin-bottom: 20px;
+    }
 
 </style>
 
@@ -182,45 +192,44 @@
 	</article>
 		<aside class="tsidebar fixedsticky">
 			<div class="login-section justify-content-center">
-		        <p>Madi-Q를 더 안전하고 편리하게 이용하세요</p>
-		        <button class="btn btn-warning" type="button" style="width:90%; height:50px font-weight:800; color:#EF605D;">Madi-Q<br/> 로그인</button>
-		        
+		        <p style="text-align: center; font-weight:bold;">Madi-Q를 더 안전하고<br/> 편리하게 이용하세요</p>
+		        <a href="<c:url value="/project/Login.do"/>"><button class="btn btn-warning py-3" type="button" style="width:90%; height:50px font-weight:700; color:#EF605D;">Madi-Q<br/> 로그인</button></a>	    
 		    </div>
-			<p style="margin-bottom:40px; font-size:24px; font-weight:bold;">Q-Ranking</p>
-                         <div class="sidebar-item">
-                             <ul class="list">
-                                 <li>
-                                     <div class="image mx-2">
-                                         <img src="resources/images/tsimages/destination-1.jpg" alt="*">
-                                     </div>
-                                     <p class="text mx-2">약 이름1</p>
-                                 </li>
-                                 <li>
-                                     <div class="image mx-2">
-                                         <img src="resources/images/tsimages/destination-2.jpg" alt="*">
-                                     </div>
-                                     <p class="text mx-2">약 이름2</p>
-                                 </li>
-                                 <li>
-                                     <div class="image mx-2">
-                                         <img src="resources/images/tsimages/destination-3.jpg" alt="*">
-                                     </div>
-                                     <p class="text mx-2">약 이름3</p>
-                                 </li>
-                                 <li>
-                                     <div class="image mx-2">
-                                         <img src="resources/images/tsimages/destination-4.jpg" alt="*">
-                                     </div>
-                                     <p class="text mx-2">약 이름4</p>
-                                 </li>
-                                 <li>
-                                     <div class="image mx-2">
-                                         <img src="resources/images/tsimages/package-1.jpg" alt="*">
-                                     </div>
-                                     <p class="text mx-2">약 이름5</p>
-                                 </li>
-                             </ul>
-                         </div>
+            <div class="sidebar-item">
+            	<p style="margin-bottom:20px; font-size:24px; font-weight:bold;">Q-Ranking</p>
+                <ul class="unlist" style="padding-inline-start: 0px;">
+                    <li>
+                        <div class="image">
+                            <img src="resources/images/tsimages/destination-1.jpg" alt="*">
+                        </div>
+                        <p class="text mx-2">약 이름1</p>
+                    </li>
+                    <li>
+                        <div class="image mx-2">
+                            <img src="resources/images/tsimages/destination-2.jpg" alt="*">
+                        </div>
+                        <p class="text mx-2">약 이름2</p>
+                    </li>
+                    <li>
+                        <div class="image mx-2">
+                            <img src="resources/images/tsimages/destination-3.jpg" alt="*">
+                        </div>
+                        <p class="text mx-2">약 이름3</p>
+                    </li>
+                    <li>
+                        <div class="image mx-2">
+                            <img src="resources/images/tsimages/destination-4.jpg" alt="*">
+                        </div>
+                        <p class="text mx-2">약 이름4</p>
+                    </li>
+                    <li>
+                        <div class="image mx-2">
+                            <img src="resources/images/tsimages/package-1.jpg" alt="*">
+                        </div>
+                        <p class="text mx-2">약 이름5</p>
+                    </li>
+                </ul>
+            </div>
 		</aside>
 </section>
 
