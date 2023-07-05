@@ -38,6 +38,6 @@ public interface LoginMapper {
 	
 	///////////////////PROFILE_IMAGE 테이블
 
-	int saveProfImg(ProfileImageDTO info); //프로필 이미지 선택 시(기본 이미지 X)dd
+	int saveProfImg(ProfileImageDTO info); //프로필 이미지 선택 시(기본 이미지 X)
 
 }
