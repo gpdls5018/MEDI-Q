@@ -10,7 +10,7 @@
 		text-decoration: none;
 		color: rgb(13, 184, 193);
 	}
-	a{
+	a{p
 		color: black;
 	}
 	.borderline{
@@ -91,9 +91,6 @@
 				<span class="align-self-center mr-auto ml-2" style="font-weight: bold">
 					${info.id }
 				</span>
-				<button class="btn btn-outline-info align-self-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-	                캘린더
-	            </button>
 				<input type="button" id="imgEdit" value="이미지 수정" class="btn btn-outline-info align-self-center mx-2" data-target="#modalView" data-backdrop="static"/>
 				<a type="button" href="" class="btn btn-outline-info align-self-center" data-target="#modalView" data-backdrop="static">회원정보 수정</a>
 			</div>
@@ -223,34 +220,6 @@
     }(jQuery));
 </script>
 <script>
-/*
-	$('#example').bsCalendar({
-		locale: 'en',
-		url: null, // save as data-bs-target
-		width: '300px',
-		icons: {
-		    prev: 'fa-solid fa-arrow-left fa-fw',
-		    next: 'fa-solid fa-arrow-right fa-fw',
-		    eventEdit: 'fa-solid fa-edit fa-fw',
-		    eventRemove: 'fa-solid fa-trash fa-fw'
-	  	},
-	  	showEventEditButton: false,
-	  	showEventRemoveButton: false,
-	  	formatEvent: function (event) {
-	    	return drawEvent(event);
-	  	},
-	  	formatNoEvent: function (date) {
-	    	return drawNoEvent(date);
-	  	},
-	  	queryParams: function (params) {
-	    	return params;
-	 	},
-	  	onClickEditEvent: function (e, event) {
-	  	},
-	  	onClickDeleteEvent: function (e, event) {
-	  	},
-	});
-*/
 	//게시물,북마크,최근활동 클릭 시 이벤트 처리
 	var btnType = document.querySelectorAll('#btnType a[type=button]');
 	btnType.forEach(function(target){

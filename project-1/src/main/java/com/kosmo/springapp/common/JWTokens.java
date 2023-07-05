@@ -1,4 +1,4 @@
-package com.kosmo.springapp.service;
+package com.kosmo.springapp.common;
 
 import java.sql.Date;
 import java.util.HashMap;
@@ -9,32 +9,27 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-@Component
-public class JWTokensService {
+public class JWTokens {
 	
 	/**
 	 	비밀키를 .properties파일에서 읽어와서 반환하는 메소드
 	 	@param keyPath 비밀키가 기록된 .properties파일의 경로(단, 확장자 생략)
-	 	@param key     비밀키 설정시 주어진 키값. 예: 키 = 비밀키 일 때의 key값v
+	 	@param key     비밀키 설정시 주어진 키값. 예: 키 = 비밀키 일 때의 key값
 	 	@return		   비밀키 반환
 	*/
-	/*
+	
 	private static String getSecretKey(String keyPath, String key){
 		ResourceBundle resource = ResourceBundle.getBundle(keyPath);//확장자를 뺀 이름
 		String secretKey = resource.getString(key);
 
 		return secretKey;
 	}//////////getSecretKey
-	*/
 	
 	/**
 	 * JWT토큰을 생성해서 반환하는 메소드
@@ -45,9 +40,17 @@ public class JWTokensService {
 	 * @expirationTime 토큰 만료 시간(15분에서 몇 시간이 적당).단위는 천분의 1초
 	 * @return
 	 */
-	public String createToken(String username, String secretKey , Map<String, Object> payloads, long expirationTime) {
+	
+	//JWT토큰 생성용 메소드
+	/*
+	 Payload 부분에는 토큰에 담을 정보가 들어있다.
+	 여기에 담는 정보의 한 ‘조각’ 을 클레임(claim) 이라고 부르고,
+	 이는 name / value 의 한 쌍으로 이뤄져있다.
+	 토큰에는 여러개의 클레임 들을 넣을 수 있다.
+	*/
+	public static String createToken(String username, String keyPath, String key , Map<String, Object> payloads, long expirationTime) {
 		
-		//String secretKey = getSecretKey(keyPath, key);//비밀키 가져오기
+		String secretKey = getSecretKey(keyPath, key);//비밀키 가져오기
 		
 		//JWT 토큰의 만료 시간 설정
 		long currentTimeMillis = System.currentTimeMillis();//토큰의 생성시간
@@ -62,7 +65,7 @@ public class JWTokensService {
 		JwtBuilder builder = Jwts.builder()
 				.setHeader(headers)// Headers 설정
 				.setClaims(payloads)// Claims 설정
-				.setSubject(username)//사용자 ID(email-소셜로그인) 설정 - JSON으로 변환될 때 sub 키로 변환(앞 3글자)
+				.setSubject(username)//사용자 ID 설정 - JSON으로 변환될 때 sub 키로 변환(앞 3글자)
 				.setIssuedAt(new Date(currentTimeMillis))//생성 시간을 설정
 				.setExpiration(new Date(expirationTime))//만료 시간 설정(필수로 설정하자.왜냐하면 토큰(문자열이라)은 세션처럼 제어가 안된다)
 				.signWith(SignatureAlgorithm.HS256,secretKey.getBytes());//비밀 키로 JWT를 서명
@@ -81,8 +84,8 @@ public class JWTokensService {
 	 * @return 토큰의 payloads부분을 반환
 	 */
 	//JWT토큰 검증용 메소드
-	public Map<String, Object> getTokenPayloads(String token, String secretKey) {
-		//String secretKey = getSecretKey(keyPath, key);//비밀키 가져오기
+	public static Map<String, Object> getTokenPayloads(String token, String keyPath, String key) {
+		String secretKey = getSecretKey(keyPath, key);//비밀키 가져오기
 			
 		Map<String, Object> claims = new HashMap<>();
 		try {
@@ -112,8 +115,8 @@ public class JWTokensService {
 	*/
 
 	//JWT토큰 검증용 메소드
-	public boolean verifyToken(String token, String tokenName, String secretKey, HttpServletRequest req, HttpServletResponse resp) {
-		//String secretKey = getSecretKey(keyPath, key);//비밀키 가져오기
+	public static boolean verifyToken(String token, String keyPath, String key, HttpServletRequest req, HttpServletResponse resp) {
+		String secretKey = getSecretKey(keyPath, key);//비밀키 가져오기
 		Map<String, Object> claims = new HashMap<>();
 		try {
 			//JWT토큰 파싱 및 검증
@@ -126,7 +129,7 @@ public class JWTokensService {
 			//e.printStackTrace();
 			
 			//로그아웃 처리- 세션영역에 저장된 속성 삭제
-			removeToken(req, resp, tokenName);
+			JWTokens.removeToken(req, resp);
 			
 			return false;
 		}
@@ -139,7 +142,8 @@ public class JWTokensService {
 	 * @param cookieName 토큰 발급시 설정한 쿠키명
 	 * @return 발급된 토큰
 	 */
-	public String getToken(HttpServletRequest request, String cookieName) {
+	
+	public static String getToken(HttpServletRequest request, String cookieName) {
 	//발급한 토큰 가져오기
 		Cookie[] cookies = request.getCookies();
 		String token = "";
@@ -158,20 +162,20 @@ public class JWTokensService {
 	 * @param request HttpServletRequest 객체
 	 * @param response HttpServletResponse 객체
 	 */
-	public void removeToken(HttpServletRequest request, HttpServletResponse response, String tokenName) {
+	public static void removeToken(HttpServletRequest request, HttpServletResponse response) {
 		//로그아웃 처리- 세션영역에 저장된 속성 삭제
-		Cookie cookie = new Cookie(tokenName,"");
-		cookie.setPath("/");
+		Cookie cookie = new Cookie(request.getServletContext().getInitParameter("COOKIE-NAME"),"");
+		cookie.setPath(request.getContextPath());
 		cookie.setMaxAge(0);
 		response.addCookie(cookie);
 	}
 
 	//토큰 만료시간 연장메소드
 	//expiration:현재시간+연장시간
-	public String setTokenExpiration(String jwt,String secretKey, Date expiration) {
+	public static String setTokenExpiration(String jwt,String keyPath,String key, Date expiration) {
 			
 		//비밀키 가져오기
-		//String secretKey = getSecretKey(keyPath, key);
+		String secretKey = getSecretKey(keyPath, key);
 			
 		String newToken=null;
 		try{

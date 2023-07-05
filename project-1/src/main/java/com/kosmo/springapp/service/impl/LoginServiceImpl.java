@@ -1,5 +1,6 @@
 package com.kosmo.springapp.service.impl;
 
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
@@ -7,11 +8,14 @@ import java.util.Map;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.service.JWTokensService;
@@ -47,8 +51,16 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 
 	@Override
 	public MemberDTO selectOne(Map map) {
-
-		return null;
+		return mapper.findMember(map);
+	}
+	
+	public MemberDTO selectOne(HttpServletRequest req, HttpServletResponse resp) {
+		String token = jwTokensService.getToken(req, tokenName);
+		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
+		String id = payloads.get("sub").toString();
+		payloads.put("id", id);
+		
+		return mapper.findMember(payloads);
 	}
 
 	@Override
@@ -119,7 +131,7 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 		Map<String, Object> payloads = new HashMap<>();// 사용자 임의 데이타
 		payloads.put("socialInfo", accessToken);
 
-		long expirationTime = 1000 * 60 * 60; // 토큰의 만료시간 설정
+		long expirationTime = 1000 * 60 * 60 * 24; // 토큰의 만료시간 설정
 
 		String token = jwTokensService.createToken(email, secretKey, payloads, expirationTime);
 		

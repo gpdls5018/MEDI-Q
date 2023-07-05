@@ -17,7 +17,7 @@ public class WebMvcConfig implements WebMvcConfigurer{
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		
-		registry.addInterceptor(new AuthenticationInterceptor()).addPathPatterns("/project/**");
+		//registry.addInterceptor(new AuthenticationInterceptor()).addPathPatterns("/**");
 		//.excludePathPatterns("/onememo/auth/**"); //인터셉터 빼고 싶은 부분 추가하기
 	}
 	

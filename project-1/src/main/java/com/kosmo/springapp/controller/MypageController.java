@@ -3,10 +3,13 @@ package com.kosmo.springapp.controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.springapp.model.MemberDTO;
+import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
 
 @RequestMapping("/project")
@@ -23,10 +27,20 @@ public class MypageController {
 
 	@Autowired
 	private LoginServiceImpl loginService;
+	@Autowired
+	private JWTokensService jwTokensService;
 
+	@Value("${secret-key}")
+	private String secretKey;
+	@Value("${token-name}")
+	private String tokenName;
+
+	//마이페이지 클릭 시
 	@GetMapping("/MyPage.do")
-	public String mypage() {
-		// 정보 꾸려야함
+	public String mypage(HttpServletRequest req, HttpServletResponse resp, Model model) {
+		
+		MemberDTO dto = loginService.selectOne(req,resp);
+		model.addAttribute("info", dto);/////추후 더 추가해야함
 		return "login/MyPage";
 	}
 
@@ -38,19 +52,22 @@ public class MypageController {
 		if (!flag) {
 			return "<script>alert('비밀번호가 일치하지 않아요');history.back();</script>";
 		}
+		String queryString = "/project/JoinEdit.do?id="+map.get("id");
 		// 비밀번호가 일치하는 경우
-		return "<script>location.href=\'/project/JoinEdit.do\'</script>";
+		return "<script>location.href='"+queryString+"'</script>";
 	}
 	
-	//회원가입 클릭 후 비밀번호 입력 시
-	@PostMapping("JoinEdit.do")
-	public String joinEdit(@RequestParam Map map) {
-		loginService.selectOne(map);
+	//회원수정 클릭 후 비밀번호 일치 시
+	@GetMapping("JoinEdit.do")
+	public String joinEdit(@RequestParam String id, Map map) {
+		map.put("id", id);
+		map.put("member",loginService.selectOne(map));
 		
 		return "login/JoinEdit";
 	}
 	
 	@PostMapping("JoinEditOk.do")
+	@ResponseBody
 	public String joinEditOk(@Valid MemberDTO member, Errors errors) {
 		if (errors.hasErrors()) {
 			return "<script>history.back();</script>";
