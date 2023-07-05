@@ -14,15 +14,37 @@
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 
+		<div class="ml-5 mt-2 ">
+	        <i class="bi bi-camera"><a href="/modelOCR.do"> 사진으로 검색할래요 !!!</a></i>
+	    </div>
+
+		<div class="row justify-content-center py-5">
+	        <div class="col-lg-10 pt-lg-3 mt-lg-5 text-center">
+	            <h1 class="mb-5">제품명,영양성분을 검색해보세요.</h1>
+	            <form class="position-relative w-75 mx-auto animated slideInDown d-flex input-wrapper" action="/hashtag.do" method="post" style="box-shadow: 0px 0px 5px gray; border-radius: 25px;">
+	                <input class="border-0 rounded-pill w-100 px-5 py-3 ps-4 pe-5 flex-grow-1" type="text" name="postTag" 
+	                placeholder="제품명 및 영양성분을 입력하세요" value="${not empty searchTags ? fn:replace(searchTags,'#',',#') : ''}">
+	                <input name="searchTags" type="hidden" id="hiddenInput" value="">
+	                <button type="submit" class="btn rounded-pill py-2 px-4 top-0 end-0 me-2" >
+						<img src="resources/images/tsimages/free-icon-magnifying-glass-4475396.png" style="width:30px; height:30px">
+					</button>
+	            </form>
+	        </div>
+	        <div id="hashtaglink" class="ml-5">
+		        <a href="#" style="font-style:italic;font-weight: bold;color:palevioletred">#면역력 증진</a>&nbsp;
+		        <a href="#" style="font-style:italic;font-weight: bold;color:mediumpurple ">#전립선 건강</a>&nbsp;
+		        <a href="#" style="font-style:italic;font-weight: bold;color:sandybrown">#체지방 감소</a>&nbsp;
+		        <a href="#" style="font-style:italic;font-weight: bold;color:salmon ">#비타민</a>&nbsp;
+		        <a href="#" style="font-style:italic;font-weight: bold;color:lightskyblue ">#혈당</a>&nbsp;
+		    </div >
+	    </div>
+	    
 		<div class="container-fluid  mb-1 hero-header">
             <video autoplay loop muted class="video-background" style="height: 200px; width: 1000px; ">
                 <source src="resources/video/intro1_.mp4" type="video/mp4">
             </video>
         </div>
 <div class="container mt-5">
-    <div class="ml-5 mt-2 ">
-        <i class="bi bi-camera"><a href="/modelOCR.do"> 사진으로 검색할래요 !!!</a></i>
-    </div>
     <div class="ml-5">
         <form action="/hashtag.do" method="post">
             <input name='postTag' placeholder="#해시태그" value="${not empty searchTags ? fn:replace(searchTags,'#',',#') : ''}">
@@ -30,13 +52,7 @@
             <button type="submit" class="btn btn-primary ml-3">검색</button>
         </form>
     </div>
-    <div id="hashtaglink" class="ml-5">
-        <a href="#" style="font-style:italic;font-weight: bold;color:palevioletred">#면역력 증진</a>&nbsp;
-        <a href="#" style="font-style:italic;font-weight: bold;color:mediumpurple ">#전립선 건강</a>&nbsp;
-        <a href="#" style="font-style:italic;font-weight: bold;color:sandybrown">#체지방 감소</a>&nbsp;
-        <a href="#" style="font-style:italic;font-weight: bold;color:salmon ">#비타민</a>&nbsp;
-        <a href="#" style="font-style:italic;font-weight: bold;color:lightskyblue ">#혈당</a>&nbsp;
-    </div >
+    
     <div class="m-5">
         <div class="slider1">
             <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="resources/images/thumbnail_img/RedM_Arg.jpg"></a></div>
