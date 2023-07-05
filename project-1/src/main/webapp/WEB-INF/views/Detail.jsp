@@ -2,6 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
 <style>
     table.type09 {
         border-collapse: collapse;
@@ -30,9 +34,7 @@
         vertical-align: top;
         border-bottom: 1px solid #ccc;
     }
-    .tab-content {
-    	height : 800px;
-    }
+
     .content-link {
     	width: 40%;
     	background-color : #9fcaff;
@@ -45,16 +47,14 @@
     .bi-star-fill{
         font-size: 30px;
         line-height: 30px;
-        color: #fff236;;
+        color: #fff236;
         
     }
     .bi-star {
       font-size: 30px;
       line-height: 30px;
     }
-    .bi-star,.bi-star-fill:hover {
-      font-size: 35px;      
-    }
+
     .progress {
       width: 15px;
       height: 150px;
@@ -65,6 +65,23 @@
       height: 20%;
       background-color: #e9ecef;
     }
+    
+    
+    
+    .effect-custom-font {
+     font-family : Noto Sans KR, sans-serif;
+    }
+    
+    .review-panel {
+      width:100%;
+      
+      border-bottom: 3px solid #ccc;
+      border-top: 3px solid #ccc;
+    }
+    .v-line {
+      border-right : 2px solid #cfcfcf;
+    }
+
 
 </style>
 
@@ -76,127 +93,314 @@
     		<a class="nav-link active " data-toggle="tab" href="#detailTable">상세 정보</a>
   		</li>
   		<li class="nav-item content-link">
-    		<a class="nav-link " data-toggle="tab" href="#asd">리뷰 정보</a>
+    		<a class="nav-link " data-toggle="tab" href="#review">리뷰 정보</a>
   		</li>
 	</ul>
-	<div class="row no-gutters">
-		<div class="tab-content">
-		  <div class="tab-pane fade show active" id="detailTable">
-		    <div>
-	            <table class="type09 mt-3">
-	                <thead>
-		                <tr>
-		                    <th scope="cols">타이틀</th>
-		                    <th scope="cols">내용</th>
-		                </tr>
-		                </thead>
-		                <tbody>
-		                <tr>
-		                    <th scope="row">등록번호</th>
-		                    <td>${listOne.postNo}</td>
-		                </tr>
-		                <tr>
-		                    <th scope="row">회사명</th>
-		                    <td>${listOne.company}</td>
-		                </tr>
-		                <tr>
-		                    <th scope="row">유통기한</th>
-		                    <td>${listOne.expiration}</td>
-		                </tr>
-		                <tr>
-		                    <th scope="row">형태</th>
-		                    <td>
-		                        <c:choose>
-		                            <c:when test="${listOne.shape eq '정제'}">
-		                                <img src="<c:url value="resources/images/shape/정제.png"/>" style="width:100px;height:100px;"/><br>
-		                                정제
-		                            </c:when>
-		                            <c:when test="${listOne.shape eq '과립'}">
-		                                <img src="<c:url value="resources/images/shape/과립.png"/>" style="width:100px;height:100px;"/><br>
-		                                과립
-		                            </c:when>
-		                            <c:when test="${listOne.shape eq '바'}">
-		                                <img src="<c:url value="resources/images/shape/바.png"/>" style="width:100px;height:100px;"/><br>
-		                                바
-		                            </c:when>
-		                            <c:when test="${listOne.shape eq '분말'}">
-		                                <img src="<c:url value="resources/images/shape/분말.png"/>" style="width:100px;height:100px;"/><br>
-		                                분말
-		                            </c:when>
-		                            <c:when test="${listOne.shape eq '시럽'}">
-		                                <img src="<c:url value="resources/images/shape/시럽.png"/>" style="width:100px;height:100px;"/><br>
-		                                시럽
-		                            </c:when>
-		                            <c:when test="${listOne.shape eq '캡슐'}">
-		                                <img src="<c:url value="resources/images/shape/캡슐.png"/>" style="width:100px;height:100px;"/><br>
-		                                캡슐
-		                            </c:when>
-		                            <c:when test="${listOne.shape eq '환'}">
-		                                <img src="<c:url value="resources/images/shape/환.png"/>" style="width:100px;height:100px;"/><br>
-		                                환
-		                            </c:when>
-		                            <c:when test="${listOne.shape eq '젤리'}">
-		                                <img src="<c:url value="resources/images/shape/젤리.png"/>" style="width:100px;height:100px;"/><br>
-		                                <span style="font-weight: bold;">젤리</span>
-		                            </c:when>
-		                            <c:when test="${listOne.shape eq '액상'}">
-		                                <img src="<c:url value="resources/images/shape/액상.png"/>" style="width:100px;height:100px;"/><br>
-		                                액상
-		                            </c:when>
-		                        </c:choose>
-		                    </td>
-		                </tr>
-		                <tr>
-		                    <th scope="row">복용방법</th>
-		                    <td>${fn:replace(listOne.intake,'$',',')}</td>
-		                </tr>
-		                <tr>
-		                    <th scope="row">규격</th>
-		                    <td>${fn:replace(listOne.standard,'$',',')}</td>
-		                </tr>
-		                <tr>
-		                    <th scope="row">주의사항</th>
-		                    <td>${listOne.caution}</td>
-		                </tr>
-		                <tr>
-		                    <th scope="row">성분</th>
-		                    <c:set var="nutrientList" value="${fn:split(listOne.nutrient, '$')}" />
-		                    <td>
-		                        <c:forEach items="${nutrientList}" var="item">
-		                            <span class="badge badge-warning">${item}</span>
-		                        </c:forEach>
-		                    </td>
-		                </tr>
-		                <tr>
-		                    <th scope="row">기능성 정보</th>
-		                    <c:set var="materialList" value="${fn:split(listOne.material, '$')}" />
-		                    <td>
-		                        <c:forEach items="${materialList}" var="item">
-		                            <span class="badge badge-danger">${item}</span>
-		                        </c:forEach>
-		                    </td>
-		                </tr>
-	                </tbody>
-	            </table>
-        	</div>
-		  </div>
-		  <div class="tab-pane fade" id="asd">
-		    <p>Nunc vitae turpis id nibh sodales commodo et non augue. Proin fringilla ex nunc. Integer tincidunt risus ut facilisis tristique.</p>
-		  </div>
-		</div>
-       </div>
-       <div class="col-2">
-           <div class="container-fluid m-5">
-               <div style="width:400px;height:400px;">
-                   <canvas id="line-chart" width="200" height="250"></canvas>
-               </div>
-           </div>
-       </div>
+	
+	<!-- 탭 -->
+	<div class="tab-content">
+	  	<div class="tab-pane fade show active" id="detailTable"><!-- 탭 1 시작 -->
+           	<table class="type09 mt-3">
+                <thead>
+	                <tr>
+	                    <th scope="cols">타이틀</th>
+	                    <th scope="cols">내용</th>
+	                </tr>
+                </thead>
+                <tbody>
+	                <tr>
+	                    <th scope="row">등록번호</th>
+	                    <td>${listOne.postNo}</td>
+	                </tr>
+	                <tr>
+	                    <th scope="row">회사명</th>
+	                    <td>${listOne.company}</td>
+	                </tr>
+	                <tr>
+	                    <th scope="row">유통기한</th>
+	                    <td>${listOne.expiration}</td>
+	                </tr>
+	                <tr>
+	                    <th scope="row">형태</th>
+	                    <td>
+	                        <c:choose>
+	                            <c:when test="${listOne.shape eq '정제'}">
+	                                <img src="<c:url value="resources/images/shape/정제.png"/>" style="width:100px;height:100px;"/><br>
+	                                정제
+	                            </c:when>
+	                            <c:when test="${listOne.shape eq '과립'}">
+	                                <img src="<c:url value="resources/images/shape/과립.png"/>" style="width:100px;height:100px;"/><br>
+	                                과립
+	                            </c:when>
+	                            <c:when test="${listOne.shape eq '바'}">
+	                                <img src="<c:url value="resources/images/shape/바.png"/>" style="width:100px;height:100px;"/><br>
+	                                바
+	                            </c:when>
+	                            <c:when test="${listOne.shape eq '분말'}">
+	                                <img src="<c:url value="resources/images/shape/분말.png"/>" style="width:100px;height:100px;"/><br>
+	                                분말
+	                            </c:when>
+	                            <c:when test="${listOne.shape eq '시럽'}">
+	                                <img src="<c:url value="resources/images/shape/시럽.png"/>" style="width:100px;height:100px;"/><br>
+	                                시럽
+	                            </c:when>
+	                            <c:when test="${listOne.shape eq '캡슐'}">
+	                                <img src="<c:url value="resources/images/shape/캡슐.png"/>" style="width:100px;height:100px;"/><br>
+	                                캡슐
+	                            </c:when>
+	                            <c:when test="${listOne.shape eq '환'}">
+	                                <img src="<c:url value="resources/images/shape/환.png"/>" style="width:100px;height:100px;"/><br>
+	                                환
+	                            </c:when>
+	                            <c:when test="${listOne.shape eq '젤리'}">
+	                                <img src="<c:url value="resources/images/shape/젤리.png"/>" style="width:100px;height:100px;"/><br>
+	                                <span style="font-weight: bold;">젤리</span>
+	                            </c:when>
+	                            <c:when test="${listOne.shape eq '액상'}">
+	                                <img src="<c:url value="resources/images/shape/액상.png"/>" style="width:100px;height:100px;"/><br>
+	                                액상
+	                            </c:when>
+	                        </c:choose>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <th scope="row">복용방법</th>
+	                    <td>${fn:replace(listOne.intake,'$',',')}</td>
+	                </tr>
+	                <tr>
+	                    <th scope="row">규격</th>
+	                    <td>${fn:replace(listOne.standard,'$',',')}</td>
+	                </tr>
+	                <tr>
+	                    <th scope="row">주의사항</th>
+	                    <td>${listOne.caution}</td>
+	                </tr>
+	                <tr>
+	                    <th scope="row">성분</th>
+	                    <c:set var="nutrientList" value="${fn:split(listOne.nutrient, '$')}" />
+	                    <td>
+	                        <c:forEach items="${nutrientList}" var="item">
+	                            <span class="badge badge-warning">${item}</span>
+	                        </c:forEach>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <th scope="row">기능성 정보</th>
+	                    <c:set var="materialList" value="${fn:split(listOne.material, '$')}" />
+	                    <td>
+	                        <c:forEach items="${materialList}" var="item">
+	                            <span class="badge badge-danger">${item}</span>
+	                        </c:forEach>
+	                    </td>
+	                </tr>
+                </tbody>
+            </table>
+       	</div><!-- 탭 1 끝 -->
+	 
+	  
+	    <div class="tab-pane fade" id="review"><!-- 탭 2 시작 -->
+   			<div class="row mb-3">
+	      		<div class="star-board col-6">
+	        		<div class="star-rating mt-5" style="text-align:center;">
+	          			<i class="bi bi-star rating"></i>
+	          			<i class="bi bi-star rating"></i>
+	          			<i class="bi bi-star rating"></i>
+	          			<i class="bi bi-star rating"></i>
+	          			<i class="bi bi-star rating"></i>
+	        		</div>
+	        		<div class="print-score mt-3" style="text-align:center;">
+	          			<span style="font-family: 'Noto Sans KR', sans-serif;font-size:40px;">4.6점</span>
+	        		</div>
+	      		</div>
+	      		<div class="progress-board m-auto col-6">
+	        		<div class="bar-rating mt-5 d-flex">
+            			<div class="mr-4">
+              				<div class="progress rounded-pill">
+                				<div class="progress-bar" style="height: 20%;"></div>
+              				</div>
+              				<span style="font-family: 'Noto Sans KR', sans-serif;">5점</span>
+            			</div>
+            			<div class="mr-4">
+              				<div class="progress rounded-pill">
+                				<div class="progress-bar" style="height: 30%;"></div>
+              				</div>
+              				<span style="font-family: 'Noto Sans KR', sans-serif;">4점</span>
+            			</div>
+            			<div class="mr-4">
+              				<div class="progress rounded-pill">
+                				<div class="progress-bar" style="height: 80%;"></div>
+             					</div>
+              				<span style="font-family: 'Noto Sans KR', sans-serif;">3점</span>
+            			</div>
+            			<div class="mr-4">
+              				<div class="progress rounded-pill">
+                				<div class="progress-bar" style="height: 40%;"></div>
+              				</div>
+              				<span style="font-family: 'Noto Sans KR', sans-serif;">2점</span>
+            			</div>
+            			<div class="mr-4">
+              				<div class="progress rounded-pill">
+                				<div class="progress-bar" style="height: 23%;"></div>
+              				</div>
+              				<span class="effect-custom-font">1점</span>
+            			</div>
+	          			
+	        		</div><!-- <div class="bar-rating mt-5"> -->
+      			</div><!-- <div class="progress-board"> -->
+   			</div><!-- <div class="row"> -->
+   			<div class="effect-board effect-custom-font mt-3 row ">
+   				<div class="col-6">
+		   			<div class="effect-board-title">
+		   				<span style="font-size:30px;">&#x1F601;효과</span>
+		   			</div>
+		   			<br>
+		   			<ul class="list-unstyled p-2">
+	   					<li class="m-2" style="line-height: 25px;">
+	   						<div class="d-flex">
+		   						<div class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:15px;">효과 1</div>
+		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
+		   						<div class="p-1" style="color:#25a6fe;border-radius: 15px;font-size=25px;">36%</div>
+	   						</div>
+	 					</li>
+	   					<li class="m-2" style="line-height: 25px;">
+	   						<div class="d-flex">
+		   						<div class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:15px;">효과 2</div>
+		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
+		   						<div class="p-1" style="color:#25a6fe;border-radius: 15px;font-size=25px;">20%</div>
+	   						</div>
+	   					</li>
+	   					<li class="m-2" style="line-height: 25px;">
+	   						<div class="d-flex">
+		   						<div class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:15px;">효과 3</div>
+		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
+		   						<div class="p-1" style="color:#25a6fe;border-radius: 15px;font-size=25px;">17%</div>
+	   						</div>
+	   					</li>
+	   					<li class="m-2" style="line-height: 25px;">
+	   						<div class="d-flex">
+		   						<div class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:15px;">효과 4</div>
+		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
+		   						<div class="p-1" style="color:#25a6fe;border-radius: 15px;font-size=25px;">6%</div>
+	   						</div>
+	   					</li>
+	   				</ul>
+				</div><!-- 효과 부분 끝-->
+				<div class="col-6"><!-- 부작용 부분 시작 -->
+		   			<div class="noeffect-board-title">
+		   				<span style="font-size:30px;">&#128552;부작용</span>
+		   			</div>
+		   			<br>
+		   			<ul class="list-unstyled p-2">
+	   					<li class="m-2" style="line-height: 25px;">
+	   						<div class="d-flex">
+		   						<div class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:15px;">부작용 1</div>
+		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
+		   						<div class="p-1" style="color:#ff4b4b;border-radius: 15px;font-size=25px;">36%</div>
+	   						</div>
+	 					</li>
+	   					<li class="m-2" style="line-height: 25px;">
+	   						<div class="d-flex">
+		   						<div class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:15px;">부작용 2</div>
+		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
+		   						<div class="p-1" style="color:#ff4b4b;border-radius: 15px;font-size=25px;">20%</div>
+	   						</div>
+	   					</li>
+	   					<li class="m-2" style="line-height: 25px;">
+	   						<div class="d-flex">
+		   						<div class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:15px;">부작용 3</div>
+		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
+		   						<div class="p-1" style="color:#ff4b4b;border-radius: 15px;font-size=25px;">17%</div>
+	   						</div>
+	   					</li>
+	   					<li class="m-2" style="line-height: 25px;">
+	   						<div class="d-flex">
+		   						<div class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:15px;">부작용 4</div>
+		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
+		   						<div class="p-1" style="color:#ff4b4b;border-radius: 15px;font-size=25px;">6%</div>
+	   						</div>
+	   					</li>
+	   				</ul>
+				</div><!-- 부작용 부분 끝-->
+   			</div><!-- effected Board 끝 -->
+   			<!-- 리뷰 페이지 삽입 위치 -->
+   			<div class="container effect-custom-font">
+				<ul class="list-unstyled mt-5">
+			        <li class="review-li">
+				        <div class="review-panel p-3">
+					        <div class="review-title d-flex">
+					            <div class="review-name">김**</div>
+					            <div class="review-title-sub d-flex ml-2" style="font-size: 12px;color: #7c7b7b;">
+						            <div class="review-ages p-1">30대</div><span class="v-line"></span>
+						            <div class="review-gender p-1">여성</div><span class="v-line"></span>
+						            <div class="review-period p-1">3개월 ~ 6개월 섭취</div>
+						        </div>
+					            <div class="post-date ml-auto" style="font-size: 15px;color: #a0a0a0;">2023-03-02</div>
+			          		</div>
+				            <div class="star-count d-flex m-2">
+					            <i class="bi bi-star-fill rating" style="font-size:20px;"></i>
+					            <i class="bi bi-star-fill rating" style="font-size:20px;"></i>
+					            <i class="bi bi-star-fill rating" style="font-size:20px;"></i>
+					            <i class="bi bi-star rating" style="font-size:20px;"></i>
+					            <i class="bi bi-star rating" style="font-size:20px;"></i>
+				            </div>
+				            <div class="review-effect mt-4">
+					            <div class="review-content-effect m-2" ><h6>효과</h6>
+					              	<span class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:10px;">변비 개선</span>
+					              	<span class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:10px;">방귀냄새 감소</span>
+					            </div>
+					            <div class="review-content-effect m-2"><h6>부작용</h6>
+					              	<span class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:10px;">속쓰림</span>
+					              	<span class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:10px;">복통</span>
+					              	<span class="p-1" style="color:#9e9e9e;background-color:#dbdbdb;border-radius: 15px;font-size:10px;">효과가 없었어요</span>
+					            </div>
+				            </div>
+				            <div class="review-content m-2 row">
+					            <p class="mt-3" style="font-size:15px;">
+					              다양하게 먹어봤지만 락토핏 골드가 저에게 딱 맞는 유산균이었어요 변비도 많이 없어지고, 나름 쾌변합니다ㅎ
+					            </p>
+				        	</div>
+				        </div>
+			    	</li>
+			    	<li class="review-li">
+				        <div class="review-panel p-3">
+					        <div class="review-title d-flex">
+					            <div class="review-name">홍**</div>
+					            <div class="review-title-sub d-flex ml-2" style="font-size: 12px;color: #7c7b7b;">
+						            <div class="review-ages p-1">20대</div><span class="v-line"></span>
+						            <div class="review-gender p-1">남성</div><span class="v-line"></span>
+						            <div class="review-period p-1">1개월 ~ 2개월 섭취</div>
+						        </div>
+					            <div class="post-date ml-auto" style="font-size: 15px;color: #a0a0a0;">2023-02-14</div>
+			          		</div>
+				            <div class="star-count d-flex m-2">
+					            <i class="bi bi-star-fill rating" style="font-size:20px;"></i>
+					            <i class="bi bi-star-fill rating" style="font-size:20px;"></i>
+					            <i class="bi bi-star rating" style="font-size:20px;"></i>
+					            <i class="bi bi-star rating" style="font-size:20px;"></i>
+					            <i class="bi bi-star rating" style="font-size:20px;"></i>
+				            </div>
+				            <div class="review-effect mt-4">
+					            <div class="review-content-effect m-2" ><h6>효과</h6>
+					              	<span class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:10px;">변비 개선</span>
+					              	<span class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:10px;">방귀냄새 감소</span>
+					            </div>
+					            <div class="review-content-effect m-2"><h6>부작용</h6>
+					              	<span class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:10px;">속쓰림</span>
+					              	<span class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:10px;">복통</span>
+					              	<span class="p-1" style="color:#9e9e9e;background-color:#dbdbdb;border-radius: 15px;font-size:10px;">효과가 없었어요</span>
+					            </div>
+				            </div>
+				            <div class="review-content m-2 row">
+					            <p class="mt-3" style="font-size:15px;">
+					              다양하게 먹어봤지만 락토핏 골드가 저에게 딱 맞는 유산균이었어요 변비도 많이 없어지고, 나름 쾌변합니다ㅎ
+					            </p>
+				        	</div>
+				        </div>
+			    	</li>
+			    </ul>
+			</div><!-- 리뷰 끝 -->
+  		</div><!-- 탭 2 끝 -->
+   	</div><!-- 탭 끝 -->
 </div>
-<script>
-   
-
-</script>
-
 
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
