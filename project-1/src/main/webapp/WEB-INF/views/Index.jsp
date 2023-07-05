@@ -13,7 +13,51 @@
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+<style>
+ .btn-6c img {
+        margin-bottom: 10px;
+    }
 
+    .btn-6c lable {
+        display: block;
+        white-space: nowrap;
+        font-size: 12px;
+    }
+
+    .btn-6c {
+        display: flex;
+        color: #ffffff;
+        background: #ffffff;
+        position: relative;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        border: 1px solid var(--color-bs-gray-300);
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+        border-radius: 12px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        line-height: 24px;
+    }
+    
+    .btn {
+        
+        font-size: 16px;
+        cursor: pointer;
+        padding: 40px 40px;
+        margin: 10px 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        position: relative;
+        text-align: center;
+        color: black;
+
+    }
+</style>
 		<div class="ml-5 mt-2 ">
 	        <i class="bi bi-camera"><a href="/modelOCR.do"> 사진으로 검색할래요 !!!</a></i>
 	    </div>
@@ -31,11 +75,21 @@
 	            </form>
 	        </div>
 	        <div id="hashtaglink" class="ml-5 py-3">
-		        <a href="#" style="font-style:italic;font-weight: bold;color:palevioletred">#면역력 증진</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:mediumpurple ">#전립선 건강</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:sandybrown">#체지방 감소</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:salmon ">#비타민</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:lightskyblue ">#혈당</a>&nbsp;
+	        	<button  href="#" class="btn btn-6 btn-6c">
+                    <img src="resources/images/tsimages/free-icon-immunity-5106341.png" loading="lazy" width="25" height="25" style="font-weight: bold; color: palevioletred;">
+                <lable>#면역력 증진</lable></button>&nbsp;
+                <button  href="#" class="btn btn-6 btn-6c">
+                    <img src="resources/images/tsimages/free-icon-male-gender-2404544.png" loading="lazy" width="25" height="25" style="font-weight: bold; color: mediumpurple;">
+                <lable>#전립선 건강</lable></button>&nbsp;
+                <button  href="#" class="btn btn-6 btn-6c">
+                    <img src="resources/images/tsimages/free-icon-weight-scale-7984802.png" loading="lazy" width="25" height="25" style="font-weight: bold; color: sandybrown;">
+                <lable>#체지방 감소</lable></button>&nbsp;
+                <button  href="#" class="btn btn-6 btn-6c">
+                    <img src="resources/images/tsimages/free-icon-vitamins-525955.png" loading="lazy" width="25" height="25" style="font-weight: bold; color: salmon;">
+                <lable>#비타민</lable></button>&nbsp;
+                <button  href="#" class="btn btn-6 btn-6c">
+                    <img src="resources/images/tsimages/free-icon-glucose-meter-4228683.png" loading="lazy" width="25" height="25" style="font-weight: bold; color: lightskyblue;">
+                <lable>#혈당</lable></button>&nbsp;
 		    </div >
 	    </div>
 	    
@@ -73,7 +127,7 @@ var tagify = new Tagify(input,{
 })
 $('#hiddenInput').attr('value',tagify.value.map(function(e){return e.value}));
 tagify.on('input', e => console.log(e.detail));
-$('#hashtaglink a').click(function() {
+$('#hashtaglink button lable').click(function() {
     tagify.addTags([{value:$(this).html(), style:"--tag-bg:"+$(this).css('color')}]);
 });
 tagify.on('add', e=> {
