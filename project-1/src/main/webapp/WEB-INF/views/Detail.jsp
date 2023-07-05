@@ -405,16 +405,5 @@
    	</div><!-- 탭 끝 -->
 </div>
 <script>
-	infiniteScroll({
-	    container: "#review-ul",
-	    item: ".review-li",
-	    next: ".next",
-	    prev: ".prev",
-	    nextButton: ".nextBtn",
-	    prevButton: ".prevBtn",
-	    nextLoader: ".nextLoader",
-	    prevLoader: ".prevLoader",
-	    pushHistory: true
-	})
 </script>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
