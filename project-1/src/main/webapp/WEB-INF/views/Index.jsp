@@ -74,7 +74,7 @@
 					</button>
 	            </form>
 	        </div>
-	        <div id="hashtaglink" class="ml-5 py-3">
+	        <div id="hashtaglink" class="ml-5 py-3 row">
 	        	<button  href="#" class="btn btn-6 btn-6c">
                     <img src="resources/images/tsimages/free-icon-immunity-5106341.png" loading="lazy" width="25" height="25" style="font-weight: bold; color: palevioletred;">
                 <lable>#면역력 증진</lable></button>&nbsp;
