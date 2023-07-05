@@ -83,8 +83,8 @@
     <div class="food jumbotron d-flex" style="border-radius: 20px;height:300px;">
       <img src="<c:url value="/resources/images/thumbnail_img/NO_IMG.jpeg"/>" style="border-radius: 20px;width:200px;"/>
       <div class="food-text m-auto effect-custom-font" style="font-size: 25px;">
-        <div class="food-company">회사명</div>
-        <div class="food-title">고려은단 비타민 1000C</div>
+        <div class="food-company">${listOne.company}</div>
+        <div class="food-title">${listOne.productName}</div>
       </div>
     </div>
     <div class="check-take-time effect-custom-font ">
@@ -136,6 +136,7 @@
       <textarea class="mt-3 jumbotron" style="width: 100%;border:solid 3px #dbdbdb;border-radius: 20px;" placeholder="영양제에 대한 솔직한 리뷰를 남겨주세요."></textarea>
     </div>
     <input type="hidden" value="${id}" id="userId">
+    <input type="hidden" value="${listOne.no}" id="productNo">
     <button class="btn btn-warning effect-custom-font mb-5" id="sendDataButton" style="width:100%;height:50px;"><i class="bi bi-clipboard-check p-1" style="font-size:25px;"></i>작성 완료!</button>
   </div>
 
@@ -201,6 +202,7 @@
         contentType: "application/json; charset=utf-8;",
         method : 'post',
         data : JSON.stringify({
+          "no" : $('#productNo').val(),
           "id" : $('#userId').val(),       
           "takeTime" : takeTime,
           "starScore" : starScore,
@@ -217,13 +219,18 @@
           showConfirmButton: false,
           timer: 1500
         })
+        setTimeout(function() {
+        	location.href = "/detail.do?no="+$('#productNo').val();
+        }, 1500);
+        
       })
       .fail(
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: 'Something went wrong!',
-          footer: '<a href="">Why do I have this issue?</a>'
+          footer: '<a href="">Why do I have this issue?</a>',
+          timer: 3000
         })
       );
     });
