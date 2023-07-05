@@ -13,8 +13,11 @@
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+<!-- 슬라이드 반응형 jqery -->
 <script src="resources/tsfolder/js/jquery.sticky-kit.min.js"></script>
+
 <style>
+
  .btn-6c img {
         margin-bottom: 10px;
     }
@@ -71,12 +74,12 @@
 		padding: .5em
 	}
 	.maints {
-		padding: 1em 1.5em 1em 1em;
+		padding: 0em 0em 1em 1em;
 	}
 	.tsidebar {
 		padding: 2em 1.5em;
 		background-color: white;
-		margin-bottom:40px;
+		margin-bottom:10px;
 	}
 	.tsidebar .list li {
 	    position: relative;
@@ -111,19 +114,28 @@
 			vertical-align: top;
 		}
 		.fixedsticky {
-			top: 0;
+			margin-top: 100px;
+			top: 0px;
 		}
 	}
 
 </style>
+
+		<div class="container-fluid  mb-1 hero-header" style="margin-top:100px;">
+	        <div class="ba1">
+	            <div class="slided"><img src="resources/images/tsimages/ba1.jpg" width="800" height="340" ></div>
+	            <div class="slided"><img src="resources/images/tsimages/ba2.jpg" width="800" height="340" ></div>
+	        </div>
+		</div>
+        
 		<div class="ml-5 mt-2 ">
-	        <i class="bi bi-camera"><a href="/modelOCR.do"> 사진으로 검색할래요 !!!</a></i>
+	        <i class="bi bi-camera" hidden><a href="/modelOCR.do"> 사진으로 검색할래요 !!!</a></i>
 	    </div>
 
-		<div class="row justify-content-center py-5">
-	        <div class="col-lg-10 pt-lg-3 mt-lg-5 text-center">
-	            <h1 class="mb-5">제품명,영양성분을 검색해보세요.</h1>
-	            <form class="position-relative w-75 mx-auto animated slideInDown d-flex input-wrapper" action="/hashtag.do" method="post" style="box-shadow: 0px 0px 5px gray; border-radius: 25px;">
+		<div class="row justify-content-center">
+	        <div class="col-lg-10 text-center">
+	            <h1 class="mb-5" style="font-weight:bold;"><span style="color: #EF605D;">제품명,영양성분</span>을 검색해보세요.</h1>
+	            <form class="position-relative w-75 mx-auto animated slideInDown d-flex input-wrapper" action="/hashtag.do" method="post" style="box-shadow: 0px 0px 5px gray; border-radius: 20px;">
 	                <input class="border-0 rounded-pill w-100 px-5 py-3 ps-4 pe-5 flex-grow-1" type="text" name="postTag" 
 	                placeholder="제품명 및 영양성분을 입력하세요" value="${not empty searchTags ? fn:replace(searchTags,'#',',#') : ''}">
 	                <input name="searchTags" type="hidden" id="hiddenInput" value="">
@@ -132,7 +144,10 @@
 					</button>
 	            </form>
 	        </div>
-	        <div id="hashtaglink" class="ml-5 py-3 row">
+	        <div id="hashtaglink" class="ml-1 py-3 row" >
+	       	 	<button  href="#" class="btn btn-6 btn-6c">
+                    <img src="resources/images/tsimages/free-icon-skin-protection-5228128.png" loading="lazy" width="25" height="25">
+                <lable style="font-weight: bold; color: green;">#피부건강</lable></button>&nbsp;
 	        	<button  href="#" class="btn btn-6 btn-6c">
                     <img src="resources/images/tsimages/free-icon-immunity-5106341.png" loading="lazy" width="25" height="25">
                 <lable style="font-weight: bold; color: palevioletred;">#면역력 증진</lable></button>&nbsp;
@@ -151,11 +166,7 @@
 		    </div >
 	    </div>
 	    
-		<div class="container-fluid  mb-1 hero-header">
-            <video autoplay loop muted class="video-background" style="height: 200px; width: 900px; ">
-                <source src="resources/video/intro1_.mp4" type="video/mp4">
-            </video>
-        </div>
+		
 <section class="tscontainer mt-5">
      <article class="maints">
 	    <div class="m-5">
@@ -169,7 +180,7 @@
 	    </div>
     <jsp:include page="/WEB-INF/views/ListTable.jsp"/>
 	</article>
-		<aside class="tsidebar fixedsticky" style="margin-top:100px">
+		<aside class="tsidebar fixedsticky">
 			<p style="margin-bottom:40px; font-size:24px; font-weight:bold;">Q-Ranking</p>
                          <div class="sidebar-item">
                              <ul class="list">
@@ -232,14 +243,25 @@ tagify.on('remove', e=> {
 $(document).ready(function(){
     $('.slider1').bxSlider({
         slideWidth: 300,
-        minSlides: 2,
-        maxSlides: 3,
-        slideMargin: 5,
+        minSlides: 1,
+        maxSlides: 2,
+        slideMargin: 2,
         auto : true,
         stopAutoOnClick : true,
         pager : true,
     });
 });
+
+$(document).ready(function(){
+    $('.ba1').bxSlider({
+        slideWidth: 800,
+        minSlides: 1,
+        maxSlides: 1,
+        slideMargin: 1,
+        auto : true,
+    });
+});
+
 
 //사이드바 함수 적용
 $(document).ready(function() {
