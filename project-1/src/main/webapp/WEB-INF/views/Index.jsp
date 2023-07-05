@@ -55,8 +55,47 @@
         position: relative;
         text-align: center;
         color: black;
-
     }
+    .tagify {
+   		width: 80%;
+    }
+    /*사이드 랭킹바 만든 css*/
+    .tsbutton {
+		display: block;
+		border-radius: 4px;
+		text-decoration: none;
+		text-align: center;
+		color: #fff;
+		background-color: #0071fc;
+		padding: .5em
+	}
+	.maints {
+		padding: 1em 1.5em 1em 1em;
+	}
+	.tsidebar {
+		padding: 2em 1.5em;
+		background-color: #333;
+	}
+	
+	@media (min-width:43.75em) {
+		.tscontainer {
+			max-width: 100%;
+			margin: 0 auto;
+			position: relative;
+		}
+		.maints {
+			display: inline-block;
+			width: 70%;
+			vertical-align: top;
+		}
+		.tsidebar {
+			display: inline-block;
+			width: 20%;
+			vertical-align: top;
+		}
+
+	}
+
 </style>
 		<div class="ml-5 mt-2 ">
 	        <i class="bi bi-camera"><a href="/modelOCR.do"> 사진으로 검색할래요 !!!</a></i>
@@ -94,28 +133,30 @@
 	    </div>
 	    
 		<div class="container-fluid  mb-1 hero-header">
-            <video autoplay loop muted class="video-background" style="height: 200px; width: 1000px; ">
+            <video autoplay loop muted class="video-background" style="height: 200px; width: 900px; ">
                 <source src="resources/video/intro1_.mp4" type="video/mp4">
             </video>
         </div>
-<div class="container mt-5">
-    
-    <div class="m-5">
-        <div class="slider1">
-            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="resources/images/thumbnail_img/RedM_Arg.jpg"></a></div>
-            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="resources/images/thumbnail_img/RedM_Col.jpg"></a></div>
-            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="resources/images/thumbnail_img/RedM_Hia.jpg"></a></div>
-            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="resources/images/thumbnail_img/RedM_Pro.jpg"></a></div>
-            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="resources/images/thumbnail_img/YellowM_Mus.jpg"></a></div>
-        </div>
-    </div>
-</div>
+<section class="tscontainer mt-5">
+     <article class="maints">
+	    <div class="m-5">
+	        <div class="slider1">
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="resources/images/thumbnail_img/RedM_Arg.jpg"></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="resources/images/thumbnail_img/RedM_Col.jpg"></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="resources/images/thumbnail_img/RedM_Hia.jpg"></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="resources/images/thumbnail_img/RedM_Pro.jpg"></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="resources/images/thumbnail_img/YellowM_Mus.jpg"></a></div>
+	        </div>
+	    </div>
+    <jsp:include page="/WEB-INF/views/ListTable.jsp"/>
+	</article>
+		<aside class="tsidebar fixedsticky">
+			<h2>Sticky!</h2>
+			<p>약랭킹 내용</p>
+			<a href="#" class="tsbutton">Do Something!</a>
+		</aside>
+</section>
 
-<style>
-    .tagify {
-        width: 80%;
-    }
-</style>
 <script>
 // The DOM element you wish to replace with Tagify
 var input = document.querySelector('input[name=postTag]');
@@ -149,7 +190,28 @@ $(document).ready(function(){
     });
 });
 
+//사이드바 함수 적용
+window.addEventListener('load', function() {
+  var sidebar = document.querySelector('.tsidebar');
+  var container = document.querySelector('.tscontainer');
+  var isFixed = false;
+
+  function checkSidebarPosition() {
+    var containerRect = container.getBoundingClientRect();
+    var sidebarRect = sidebar.getBoundingClientRect();
+
+    if (!isFixed && sidebarRect.top <= containerRect.top) {
+      sidebar.classList.add('fixedsticky');
+      isFixed = true;
+    } else if (isFixed && sidebarRect.top > containerRect.top) {
+      sidebar.classList.remove('fixedsticky');
+      isFixed = false;
+    }
+  }
+
+  window.addEventListener('scroll', checkSidebarPosition);
+  window.addEventListener('resize', checkSidebarPosition);
+});
 </script>
-<jsp:include page="/WEB-INF/views/ListTable.jsp"/>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
     
