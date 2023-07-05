@@ -1,3 +1,14 @@
+/* input hover 표시*/
+.input-wrapper:focus {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  border-radius: 0px 10px 10px;
+}
+.input-wrapper input:focus {
+  outline: none;
+}
+
+
+
 /* The side navigation menu */
 .sidenav {
     height: 100%; /* 100% Full-height */
@@ -311,6 +322,7 @@
 
 /*** Hero Header ***/
 .hero-header {
+	display: flex;
     justify-content: center; 
     align-items: center;
 }
@@ -324,22 +336,6 @@
 }
 
 
-.jd-text {
-    position: absolute; 
-    top: 30%; 
-    width: 100%; 
-}
-
-.jd-text p { 
-    margin-top: -24px; 
-    text-align: center; 
-    font-size: 48px; 
-    color: #ffffff; 
-    z-index: 50;
-    font-weight: 900;  
-    position: relative;
-    text-align: center; 
-}
 
 .breadcrumb-item + .breadcrumb-item::before {
     color: rgba(255, 255, 255, .5);
