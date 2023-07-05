@@ -13,6 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+<script src="resources/tsfolder/js/jquery.sticky-kit.min.js"></script>
 <style>
  .btn-6c img {
         margin-bottom: 10px;
@@ -74,7 +75,23 @@
 	}
 	.tsidebar {
 		padding: 2em 1.5em;
-		background-color: #333;
+		background-color: white;
+		margin-bottom:40px;
+	}
+	.tsidebar .list li {
+	    position: relative;
+	    display: flex;
+	    width: 100%;
+	    height: 80px;
+	    margin: 0 0 20px 0;
+	    background-color: #ffffff;
+	    box-shadow: 2px 2px 4px #ccc;
+	    align-items: center;
+	}
+	.tsidebar .list li img{
+	    width: 50px;
+	    height: 60px;
+	    text-align: center;
 	}
 	
 	@media (min-width:43.75em) {
@@ -93,7 +110,9 @@
 			width: 20%;
 			vertical-align: top;
 		}
-
+		.fixedsticky {
+			top: 0;
+		}
 	}
 
 </style>
@@ -150,10 +169,42 @@
 	    </div>
     <jsp:include page="/WEB-INF/views/ListTable.jsp"/>
 	</article>
-		<aside class="tsidebar fixedsticky">
-			<h2>Sticky!</h2>
-			<p>약랭킹 내용</p>
-			<a href="#" class="tsbutton">Do Something!</a>
+		<aside class="tsidebar fixedsticky" style="margin-top:100px">
+			<p style="margin-bottom:40px; font-size:24px; font-weight:bold;">Q-Ranking</p>
+                         <div class="sidebar-item">
+                             <ul class="list">
+                                 <li>
+                                     <div class="image mx-2">
+                                         <img src="resources/images/tsimages/destination-1.jpg" alt="*">
+                                     </div>
+                                     <p class="text mx-2">약 이름1</p>
+                                 </li>
+                                 <li>
+                                     <div class="image mx-2">
+                                         <img src="resources/images/tsimages/destination-2.jpg" alt="*">
+                                     </div>
+                                     <p class="text mx-2">약 이름2</p>
+                                 </li>
+                                 <li>
+                                     <div class="image mx-2">
+                                         <img src="resources/images/tsimages/destination-3.jpg" alt="*">
+                                     </div>
+                                     <p class="text mx-2">약 이름3</p>
+                                 </li>
+                                 <li>
+                                     <div class="image mx-2">
+                                         <img src="resources/images/tsimages/destination-4.jpg" alt="*">
+                                     </div>
+                                     <p class="text mx-2">약 이름4</p>
+                                 </li>
+                                 <li>
+                                     <div class="image mx-2">
+                                         <img src="resources/images/tsimages/package-1.jpg" alt="*">
+                                     </div>
+                                     <p class="text mx-2">약 이름5</p>
+                                 </li>
+                             </ul>
+                         </div>
 		</aside>
 </section>
 
@@ -191,26 +242,8 @@ $(document).ready(function(){
 });
 
 //사이드바 함수 적용
-window.addEventListener('load', function() {
-  var sidebar = document.querySelector('.tsidebar');
-  var container = document.querySelector('.tscontainer');
-  var isFixed = false;
-
-  function checkSidebarPosition() {
-    var containerRect = container.getBoundingClientRect();
-    var sidebarRect = sidebar.getBoundingClientRect();
-
-    if (!isFixed && sidebarRect.top <= containerRect.top) {
-      sidebar.classList.add('fixedsticky');
-      isFixed = true;
-    } else if (isFixed && sidebarRect.top > containerRect.top) {
-      sidebar.classList.remove('fixedsticky');
-      isFixed = false;
-    }
-  }
-
-  window.addEventListener('scroll', checkSidebarPosition);
-  window.addEventListener('resize', checkSidebarPosition);
+$(document).ready(function() {
+  $('.tsidebar').stick_in_parent();
 });
 </script>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
