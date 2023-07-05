@@ -39,5 +39,5 @@ public class ProfileImageDTO {
 	@NotNull
 	private String piExt; //프로필이미지 파일 확장자
 	
-	private List<MultipartFile> files;
+	private MultipartFile file;
 }

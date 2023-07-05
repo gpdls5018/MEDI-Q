@@ -51,4 +51,18 @@ public class FileUtils {
 			return newFileName;
 		}
 	}/////////////////////
+	
+	/**
+	 * 파일 삭제용 메소드
+	 * @param fileNames 업로드한 모든 파일명이 저장된 StringBuffer
+	 * @param saveDirectory 파일이 저장된 서버의 물리적 경로
+	 */
+	//삭제 로직
+	public static void deletes(StringBuffer fileNames,String saveDirectory, String delim) {
+		String[] files = fileNames.toString().split(delim);
+		for(String filename:files) {
+			File f = new File(saveDirectory+File.separator+filename);
+			if(f.exists()) f.delete();
+		}
+	}////////////////////////////////////////
 }

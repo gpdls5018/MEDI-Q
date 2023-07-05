@@ -42,8 +42,16 @@ public class MypageController {
 	@GetMapping("/MyPage.do")
 	public String mypage(HttpServletRequest req, HttpServletResponse resp, Model model) {
 		
-		MemberDTO dto = loginService.selectOne(req,resp);
-		model.addAttribute("info", dto);/////추후 더 추가해야함
+		MemberDTO member = loginService.selectOne(req,resp);
+		System.out.println("member.getId()"+member.getId());
+		ProfileImageDTO profImg = loginService.selectProfImg(member.getId());
+		System.out.println("member.getProfImgFl(): "+member.getProfImgFl());
+		System.out.println("member.getEmail(): "+member.getEmail());
+		System.out.println("member.getPassword(): "+member.getPassword());
+		System.out.println("member.getRegDate(): "+member.getRegDate());
+		System.out.println("profImg.getPiFilename(): "+profImg.getPiFilename());
+		model.addAttribute("info", member);//추후 더 추가해야함
+		model.addAttribute("profImg", profImg);
 		return "login/MyPage";
 	}
 
@@ -84,13 +92,19 @@ public class MypageController {
 	}
 	
 	//이미지 수정 클릭 시
-	@PostMapping(value = "/ProfImgEdit.do",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public String profImgEdit(ProfileImageDTO dto, HttpServletRequest req, Model model) throws IllegalStateException, IOException {
+	@PostMapping(value = "/ProfImgEdit.do", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public String profImgEdit(ProfileImageDTO dto, MemberDTO member, HttpServletRequest req, Model model) throws IllegalStateException, IOException {
+		
 		ProfileImageDTO info = loginService.editProfImg(dto,req);
 		int insertFlag = loginService.insertProfImg(info);
 		
+		if(insertFlag==1) {
+			member.setProfImgFl("Y");
+			loginService.updateProfImg(member);
+		}
+		
 		model.addAttribute("SUCCFAIL", insertFlag);
 		model.addAttribute("WHERE", "PROF");
-		return "Message";
+		return "login/Message";
 	}
 }

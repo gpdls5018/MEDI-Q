@@ -52,6 +52,14 @@
 	
 	<!-- member / social if문 구분해야함 -->
 	<insert id="saveProfImg" parameterType="profImgDto">
-		INSERT INTO PROFILE_IMAGE VALUES(NO=SEQ_PROFILE_IMAGE.NEXTVAL,ID={id},PI_PATH={piPath},PI_FILENAME={piFilename},PI_EXT={piExt})
+		INSERT INTO PROFILE_IMAGE VALUES(SEQ_PROFILE_IMAGE.NEXTVAL,#{id},DEFAULT,#{piPath},#{piFilename},#{piExt})
 	</insert>
+	
+	<update id="updateProfImg" parameterType="memberDto">
+		UPDATE MEMBER SET PROF_IMG_FL=#{profImgFl}
+	</update>
+	
+	<select id="findProfImg" parameterType="String" resultType="profImgDto">
+		SELECT * FROM PROFILE_IMAGE WHERE ID=#{id}
+	</select>
 </mapper>

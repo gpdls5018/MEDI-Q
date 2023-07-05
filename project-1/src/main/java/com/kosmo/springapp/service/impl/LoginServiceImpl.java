@@ -65,7 +65,7 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
 		String id = payloads.get("sub").toString();
 		payloads.put("id", id);
-		
+
 		return mapper.findMember(payloads);
 	}
 
@@ -155,30 +155,34 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 	
 	//프로필 이미지 수정(기본 이미지 X)
 	public ProfileImageDTO editProfImg(ProfileImageDTO dto, HttpServletRequest req) throws IllegalStateException, IOException {
-		
-		String id = dto.getId();
-		System.out.println("id: "+id);
-		List<File> uploadFiles = new Vector<>();
+		String newFilename="";
 		String phisicalPath = req.getServletContext().getRealPath(SaveDirectory);
-		System.out.println("dto.getFiles(): "+dto.getFiles());
-		List<MultipartFile> fileNames = dto.getFiles();
-		if(fileNames != null) {//변경 이미지 선택
 		
-			String newFilename="";
-			for(MultipartFile fileFullName:fileNames) {
-				newFilename = FileUtils.getNewFileName(phisicalPath, fileFullName.getOriginalFilename());
-				File file = new File(phisicalPath+File.separator+newFilename);
-				uploadFiles.add(file);
-				fileFullName.transferTo(file);
+		try {
+			File uploadFiles = new File(phisicalPath);
+	
+			if(!uploadFiles.exists()) {//업로드 폴더가 없을 경우
+				uploadFiles.mkdirs();
 			}
 			
-			String filename = newFilename.substring(0, newFilename.lastIndexOf("."));
-			String ext = newFilename.substring(newFilename.lastIndexOf(".") + 1);
-			dto.setPiPath(phisicalPath);
-			dto.setPiFilename(filename);
-			dto.setPiExt(ext);
-					
-			return dto;
+			MultipartFile imgFile = dto.getFile();
+			
+			if(imgFile != null) {//변경 이미지 선택 시
+				newFilename = FileUtils.getNewFileName(phisicalPath, imgFile.getOriginalFilename());
+				File file = new File(phisicalPath+File.separator+newFilename);
+				imgFile.transferTo(file);//업로드 폴더에 이미지 업로드
+				
+				String filename = newFilename.substring(0, newFilename.lastIndexOf("."));
+				String ext = newFilename.substring(newFilename.lastIndexOf(".") + 1);
+				
+				dto.setPiPath(phisicalPath);
+				dto.setPiFilename(filename);
+				dto.setPiExt(ext);
+						
+				return dto;
+			}
+		}catch (Exception e) {// 문제 시 업로드된 파일 삭제
+			FileUtils.deletes(new StringBuffer(newFilename), phisicalPath, ",");
 		}
 		return null;
 	}
@@ -187,4 +191,15 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 		
 		return mapper.saveProfImg(info);
 	}
+
+	public int updateProfImg(MemberDTO dto) {
+		return mapper.updateProfImg(dto);
+	}
+
+	public ProfileImageDTO selectProfImg(String id) {
+		
+		return mapper.findProfImg(id);
+	}
+
+	
 }

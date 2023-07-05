@@ -9,7 +9,7 @@
 		<c:set var="failureMessage" value="입력 실패 했어요"/>
 		<c:set var="successUrl" value="/JoHyeIn/Board.do"/>
 	</c:when>
-	<c:otherwise test="${WHERE == 'PROF' }">
+	<c:otherwise><%-- ${WHERE == 'PROF' } --%>
 		<c:set var="successMessage" value="프로필 수정 성공 했어요"/>
 		<c:set var="failureMessage" value="프로필 수정 실패 했어요"/>
 		<c:set var="successUrl" value="/project/MyPage.do"/>

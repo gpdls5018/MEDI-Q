@@ -26,6 +26,8 @@ public interface LoginMapper {
 
 	int update(MemberDTO info); //회원정보 수정
 	
+	int updateProfImg(MemberDTO dto); //프로필 이미지 유무 업데이트
+	
 	
 	
 	///////////////////SOCIAL 테이블
@@ -39,5 +41,9 @@ public interface LoginMapper {
 	///////////////////PROFILE_IMAGE 테이블
 
 	int saveProfImg(ProfileImageDTO info); //프로필 이미지 선택 시(기본 이미지 X)
+
+	ProfileImageDTO findProfImg(String id); //회원의 프로필 이미지 정보 가져오기
+
+	
 
 }
