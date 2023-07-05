@@ -6,6 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/marshallku/infinite-scroll/dist/infiniteScroll.min.js"></script>
 <style>
     table.type09 {
         border-collapse: collapse;
@@ -322,10 +323,10 @@
 	   				</ul>
 				</div><!-- 부작용 부분 끝-->
    			</div><!-- effected Board 끝 -->
-   			<div class="write-review"><a class="link" href="<c:url value="/writeReview.do"/>">리뷰 글쓰기</a></div>
+   			<div class="write-review"><a class="link" href="<c:url value="/Review.do?no=${listOne.no}"/>">리뷰 글쓰기</a></div>
    			<!-- 리뷰 페이지 삽입 위치 -->
    			<div class="container effect-custom-font">
-				<ul class="list-unstyled mt-5">
+				<ul class="list-unstyled mt-5" id="review-ul">
 			        <li class="review-li">
 				        <div class="review-panel p-3">
 					        <div class="review-title d-flex">
@@ -403,5 +404,6 @@
   		</div><!-- 탭 2 끝 -->
    	</div><!-- 탭 끝 -->
 </div>
-
+<script>
+</script>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
