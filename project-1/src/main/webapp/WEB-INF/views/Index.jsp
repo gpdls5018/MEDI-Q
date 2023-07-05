@@ -30,7 +30,7 @@
 					</button>
 	            </form>
 	        </div>
-	        <div id="hashtaglink" class="ml-5">
+	        <div id="hashtaglink" class="ml-5 py-3">
 		        <a href="#" style="font-style:italic;font-weight: bold;color:palevioletred">#면역력 증진</a>&nbsp;
 		        <a href="#" style="font-style:italic;font-weight: bold;color:mediumpurple ">#전립선 건강</a>&nbsp;
 		        <a href="#" style="font-style:italic;font-weight: bold;color:sandybrown">#체지방 감소</a>&nbsp;
@@ -45,13 +45,6 @@
             </video>
         </div>
 <div class="container mt-5">
-    <div class="ml-5">
-        <form action="/hashtag.do" method="post">
-            <input name='postTag' placeholder="#해시태그" value="${not empty searchTags ? fn:replace(searchTags,'#',',#') : ''}">
-            <input name="searchTags" type="hidden" id="hiddenInput" value="">
-            <button type="submit" class="btn btn-primary ml-3">검색</button>
-        </form>
-    </div>
     
     <div class="m-5">
         <div class="slider1">
