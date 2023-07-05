@@ -322,6 +322,7 @@
 	   				</ul>
 				</div><!-- 부작용 부분 끝-->
    			</div><!-- effected Board 끝 -->
+   			<div class="write-review"><a class="link" href="<c:url value="/writeReview.do"/>">리뷰 글쓰기</a></div>
    			<!-- 리뷰 페이지 삽입 위치 -->
    			<div class="container effect-custom-font">
 				<ul class="list-unstyled mt-5">
