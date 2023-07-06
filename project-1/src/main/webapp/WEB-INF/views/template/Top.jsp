@@ -95,7 +95,7 @@
         <nav class="navbar navbar-expand-lg navbar-white mb-2 px-2 px-lg-5 py-lg-2 py-lg-0 justify-content-between" style="position: fixed; background-color: white; box-shadow: 0px 0px 5px #000; width: 100%;">
             <div id="mySidenav" class="sidenav">
                 <div class="sidebar-header d-flex justify-content-between">
-                    <img class="px-2"src="<c:url value="resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+                    <img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
 		            <img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
                     <a class="sidenava1" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>                    
                 </div>
@@ -133,8 +133,8 @@
 	      
            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
 	       		<a href="<c:url value="/" />" class="navbar-brand p-0" style=" margin-left: auto; margin-right: auto;">
-	                <img class="px-2"src="<c:url value="resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
-	           		<img src="<c:url value="resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+	                <img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
 	           	</a>
            		<div class="mypage">
            			<a class="nav-link text-dark" href="<c:url value="/project/MyPage.do" />">마이페이지 <i class="fa-solid fa-paper-plane"></i></a><!-- 마이페이지 -->
