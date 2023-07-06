@@ -133,7 +133,7 @@
 	      
            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
 	       		<a href="<c:url value="/" />" class="navbar-brand p-0" style=" margin-left: auto; margin-right: auto;">
-	                <img class="px-2"src=""<c:url value=resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+	                <img class="px-2"src="<c:url value="resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
 	           		<img src="<c:url value="resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
 	           	</a>
            		<div class="mypage">
