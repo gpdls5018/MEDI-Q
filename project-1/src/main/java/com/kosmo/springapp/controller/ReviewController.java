@@ -49,8 +49,6 @@ public class ReviewController {
 	@ResponseBody
 	@RequestMapping(value = "/SelectReview.do", method = RequestMethod.GET)
 	public List<ReviewDTO> selectReview(@RequestParam Map map) {
-		System.out.println(map.get("no"));
-		System.out.println(map.get("current"));
 		List<ReviewDTO> listDto = reviewServiceImpl.selectReviewByFoodNo(map);
 		return listDto;
 	}
