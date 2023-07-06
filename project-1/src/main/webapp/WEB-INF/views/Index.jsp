@@ -89,13 +89,14 @@
 	    margin: 0 0 20px 0;
 	    padding: 
 	    background-color: #ffffff;
-	    box-shadow: 2px 2px 4px #ccc;
+	    border-radius: 8px;
+	    box-shadow: 0px 0px 2px #444;
 	    align-items: center;
 	}
 
 	.tsidebar .unlist li img{
-	    width: 50px;
-	    height: 60px;
+	    width: 70px;
+	    height: 50px;
 	    text-align: center;
 	}
 	
@@ -195,40 +196,103 @@
 		<aside class="tsidebar fixedsticky">
 			<div class="login-section justify-content-center">
 		        <p style="text-align: center; font-weight:bold;">Madi-Q를 더 안전하고<br/> 편리하게 이용하세요</p>
-		        <a href="<c:url value="/project/Login.do"/>"><button class="btn btn-warning py-3" type="button" style="width:90%; height:50px font-weight:700; color:#EF605D;">Madi-Q<br/> 로그인</button></a>	    
+		        <a href="<c:url value="/project/Login.do"/>">
+		        	<button class="btn btn-outline-success py-3" type="button" style="border-radius: 12px; width:90%; height:50px font-weight:bold; color:#EF605D;">
+		        		<img src="resources/images/maintitle.png" loading="lazy" width="100" height="25"> 로그인
+		        	</button>
+		        </a>	    
+		        <div class="social d-flex justify-content-center">
+		        	<a href="<c:url value="/project/Join.do" />" class="px-2 py-2 mr-md-1 text-dark"><strong style="color:#606060; font-weight:bold; text-decoration: underline;">회원가입</strong></a>
+		        </div>
 		    </div>
             <div class="sidebar-item">
-            	<p style="margin-bottom:20px; font-size:24px; font-weight:bold;">Q-Ranking</p>
+            	<img src="resources/images/mainicon.png" loading="lazy" width="50" height="25">
+            	<img src="resources/images/maintitle.png" loading="lazy" width="100" height="25">
+            	<br/>
+            	<p class="my-3" style="margin-bottom:20px; color:gray; font-size:15px; font-weight:800;">
+            		<span class="py-3">
+            		40만 건의 분석 결과를 토대로 선정된<br/>
+					믿을 수 있는 진짜 랭킹을 확인해 보세요.</span></p>
                 <ul class="unlist" style="padding-inline-start: 0px;">
                     <li>
                         <div class="image">
+                        	<img src="resources/images/tsimages/ranking1.webp" style=" position: relative; vertical-align:top; left:5px; width:30px; height:30px;" alt="*">
                             <img src="resources/images/tsimages/destination-1.jpg" alt="*">
                         </div>
-                        <p class="text mx-2">약 이름1</p>
+                        <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">종근당 건강</p>
+                        	<br/>
+                        	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">락토핏 생유산균 골드</p>
+                        	<br/>
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">
+                        	<img src="resources/images/tsimages/star_yellow_16.svg" style="width:13px; height:13px;" alt="*">
+                        	4.64(814)
+                        	</p>
+                        </div>
                     </li>
                     <li>
-                        <div class="image mx-2">
+                        <div class="image">
+                            <img src="resources/images/tsimages/ranking2.webp" style=" position: relative; vertical-align:top; left:5px; width:30px; height:30px;" alt="*">
                             <img src="resources/images/tsimages/destination-2.jpg" alt="*">
                         </div>
-                        <p class="text mx-2">약 이름2</p>
+                         <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">고려은단</p>
+                        	<br/>
+                        	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">비타민C 1000 이지</p>
+                        	<br/>
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">
+                        	<img src="resources/images/tsimages/star_yellow_16.svg" style="width:13px; height:13px;" alt="*">
+                        	4.66(178)
+                        	</p>
+                        </div>
                     </li>
                     <li>
-                        <div class="image mx-2">
+                        <div class="image">
+                            <img src="resources/images/tsimages/ranking3.webp" style=" position: relative; vertical-align:top; left:5px; width:30px; height:30px;" alt="*">
                             <img src="resources/images/tsimages/destination-3.jpg" alt="*">
                         </div>
-                        <p class="text mx-2">약 이름3</p>
+                         <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">종근당</p>
+                        	<br/>
+                        	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">칼슘앤마그네슘비타민D아연</p>
+                        	<br/>
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">
+                        	<img src="resources/images/tsimages/star_yellow_16.svg" style="width:13px; height:13px;" alt="*">
+                        	4.67(115)
+                        	</p>
+                        </div>
                     </li>
                     <li>
-                        <div class="image mx-2">
+                        <div class="image d-flex">
+                            <p style="position: relative; text-align:top; left:5px; width:30px; height:30px; color:gray; font-weight:bold;">4위</p>
                             <img src="resources/images/tsimages/destination-4.jpg" alt="*">
                         </div>
-                        <p class="text mx-2">약 이름4</p>
+                         <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">얼라이브</p>
+                        	<br/>
+                        	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">원스데일리 포 맨</p>
+                        	<br/>
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">
+                        	<img src="resources/images/tsimages/star_yellow_16.svg" style="width:13px; height:13px;" alt="*">
+                        	4.41(37)
+                        	</p>
+                        </div>
                     </li>
                     <li>
-                        <div class="image mx-2">
+                        <div class="image d-flex">
+                            <p style="position: relative; text-align:top; left:5px; width:30px; height:30px; color:gray; font-weight:bold;">5위</p>
                             <img src="resources/images/tsimages/package-1.jpg" alt="*">
                         </div>
-                        <p class="text mx-2">약 이름5</p>
+                         <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">쏜 리서치</p>
+                        	<br/>
+                        	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">Basic B Complex </p>
+                        	<br/>
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">
+                        	<img src="resources/images/tsimages/star_yellow_16.svg" style="width:13px; height:13px;" alt="*">
+                        	4.63(19)
+                        	</p>
+                        </div>
                     </li>
                 </ul>
             </div>
