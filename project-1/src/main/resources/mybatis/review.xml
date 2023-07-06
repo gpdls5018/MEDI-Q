@@ -10,4 +10,15 @@
 	<select id="selectFoodOneByNo" parameterType="Map" resultType="functionalFoodListDto">
  		SELECT * FROM foodtable WHERE no=#{no}
 	</select>
+	<select id="selectReviewByFoodNo" parameterType="Map" resultType="reviewDto">
+		SELECT * 
+		FROM (
+		   SELECT t.*, ROWNUM AS row_NUM
+		   FROM (
+		       SELECT * FROM REVIEWTABLE
+		       WHERE R_PRODUCTNO = #{no}
+		   ) t
+		)
+		WHERE row_num &gt;= #{current} AND row_num &lt; #{current} + 1
+	</select>
 </mapper>

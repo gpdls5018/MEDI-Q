@@ -13,10 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>    
     <script src="https://kit.fontawesome.com/dedb6fdace.js" crossorigin="anonymous"></script>
-    <script src="/resources/dist/jquery.bs.calendar.js"></script>
-    
-     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <script src="<c:url value="/resources/dist/jquery.bs.calendar.js"/>" ></script>
 
     <!-- fontaswem-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>    
@@ -26,27 +23,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="/resources/tsfolder/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="/resources/tsfolder/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="/resources/tsfolder/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="<c:url value="/resources/tsfolder/lib/animate/animate.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/tsfolder/lib/owlcarousel/assets/owl.carousel.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/tsfolder/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"/>" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet  누나꺼랑 겹침
     <link href="/resources/tsfolder/css/bootstrap.min.css" rel="stylesheet">
      -->
 
     <!-- Template Stylesheet -->
-    <link href="/resources/tsfolder/css/style.css" rel="stylesheet">
+    <link href="<c:url value="/resources/tsfolder/css/style.css"/>" rel="stylesheet">
 	
      <!-- Template Javascript -->
-     <script src="/resources/tsfolder/js/main.js"></script>
+     <script src="<c:url value="/resources/tsfolder/js/main.js"/>" ></script>
      
      <!-- googlefont -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.googleapis.com"> 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Hahmlet&family=Nanum+Myeongjo&family=Stylish&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2? family=Hahmlet&family=Nanum+Myeongjo&family=Stylish&display=swap" rel="stylesheet">
 <style>
 	body {
-	    font-family: 'Nanum Myeongjo', serif;
+	    font-family:'동글', 산세리프;
 	}
 </style>
      
@@ -95,34 +92,35 @@
 </script>
 <body>
 <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-white mb-2 px-2 px-lg-5 py-lg-2 py-lg-0" style="position: fixed; background-color: white; box-shadow: 0px 0px 5px #000; width: 100%;">
+        <nav class="navbar navbar-expand-lg navbar-white mb-2 px-2 px-lg-5 py-lg-2 py-lg-0 justify-content-between" style="position: fixed; background-color: white; box-shadow: 0px 0px 5px #000; width: 100%;">
             <div id="mySidenav" class="sidenav">
-                <div class="sidebar-header d-flex justify-content-between">
-                    <h3 style="color: white;">Medi-Q</h3>
-                    <a class="sidenava1" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>                    
+                <div class="sidebar-header d-flex justify-content-start">
+                    <img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+		            <img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+                    <a class="sidenava1 ml-5 " href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="color:black;"><i class="fa-sharp fa-solid fa-circle-xmark fa-xl" style="color: #a3aec2;"></i></a>                    
                 </div>
                 <div class="container">
                     <ul class="list-unstyled components">
                         <li><a href="<c:url value="/NutrientSelect.do"/>" class="sidenava2" >
-                            <img src="resources/images/tsimages/free-icon-vitamins-525955.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="<c:url value="/resources/images/tsimages/free-icon-vitamins-525955.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             영양소</a></li>
                         <li><a class="sidenava4" href="#">
-                            <img src="resources/images/tsimages/free-icon-whats-new-5511348.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="<c:url value="/resources/images/tsimages/free-icon-whats-new-5511348.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             Magazine(뉴스)</a></li>
                         <li><a class="sidenava3" href="#">
-                            <img src="resources/images/tsimages/free-icon-data-analysis-3449317.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="<c:url value="/resources/images/tsimages/free-icon-data-analysis-3449317.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             분석 및 결과</a></li>
                         <li><a class="sidenava5" href="#">
-                            <img src="resources/images/tsimages/free-icon-checkmark-9887473.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="<c:url value="/resources/images/tsimages/free-icon-checkmark-9887473.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             섭취/체크</a></li>
                         <li><a class="sidenava6" href="#">
-                            <img src="resources/images/tsimages/free-icon-chat-724715.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="<c:url value="/resources/images/tsimages/free-icon-chat-724715.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             커뮤니티</a></li>
                         <li><a class="sidenava7" href="#">
-                            <img src="resources/images/tsimages/free-icon-lifestyle-4807765.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="<c:url value="/resources/images/tsimages/free-icon-lifestyle-4807765.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             건강예측</a></li>
                         <li><a class="sidenava8" href="#">
-                            <img src="resources/images/tsimages/free-icon-pharmacy-1404402.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="<c:url value="/resources/images/tsimages/free-icon-pharmacy-1404402.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             인근 의료기관</a></li>
                     </ul>
                 </div>
@@ -130,15 +128,14 @@
               
               <!-- 요소를 사용하여 navbar 열기-->
               <span onclick="openNav()"><i class="fas fa-solid fa-bars fa-2x mx-2" style="color: #161616;"></i></span>
-
-            <a href="<c:url value="/" />" class="navbar-brand p-0">
-                <h3 class="text-primary mt-2 mx-4"><i class="fa fa-map-marker-alt me-3"></i>Medi-Q</h3>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="fa fa-bars"></span>
-            </button>
-
+				
+		    
+	      
            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+	       		<a href="<c:url value="/" />" class="navbar-brand p-0" style=" margin-left: auto; margin-right: auto;">
+	                <img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+	           	</a>
            		<div class="mypage">
            			<a class="nav-link text-dark" href="<c:url value="/project/MyPage.do" />">마이페이지 <i class="fa-solid fa-paper-plane"></i></a><!-- 마이페이지 -->
            		</div>

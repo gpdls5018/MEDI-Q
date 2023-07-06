@@ -1,5 +1,6 @@
 package com.kosmo.springapp.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,11 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public FunctionalFoodListDTO selectFoodOneByNo(int no) {
 		return reviewMapper.selectFoodOneByNo(no);
+	}
+
+	@Override
+	public List<ReviewDTO> selectReviewByFoodNo(Map map) {
+		return reviewMapper.selectReviewByFoodNo(map);
 	}
 
 }

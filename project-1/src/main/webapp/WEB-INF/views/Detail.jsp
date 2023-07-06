@@ -83,6 +83,15 @@
       border-right : 2px solid #cfcfcf;
     }
 
+    .skeleton-card {
+      height: 200px;
+      width: 100%;
+      margin: 8px;
+      border-radius: 3px;
+      transition: all 200ms ease-in-out;
+      position: relative;
+      background-color: #eaeaea;
+    }
 
 </style>
 
@@ -325,85 +334,167 @@
    			</div><!-- effected Board 끝 -->
    			<div class="write-review"><a class="link" href="<c:url value="/Review.do?no=${listOne.no}"/>">리뷰 글쓰기</a></div>
    			<!-- 리뷰 페이지 삽입 위치 -->
-   			<div class="container effect-custom-font">
-				<ul class="list-unstyled mt-5" id="review-ul">
-			        <li class="review-li">
-				        <div class="review-panel p-3">
-					        <div class="review-title d-flex">
-					            <div class="review-name">김**</div>
-					            <div class="review-title-sub d-flex ml-2" style="font-size: 12px;color: #7c7b7b;">
-						            <div class="review-ages p-1">30대</div><span class="v-line"></span>
-						            <div class="review-gender p-1">여성</div><span class="v-line"></span>
-						            <div class="review-period p-1">3개월 ~ 6개월 섭취</div>
-						        </div>
-					            <div class="post-date ml-auto" style="font-size: 15px;color: #a0a0a0;">2023-03-02</div>
+   			<div class="container effect-custom-font" >
+			    <ul class="list-unstyled mt-5" id="review-ul">
+			      	<li class="review-li" style="display: none;">
+			        	<div class="review-panel p-3">
+			          		<div class="review-title d-flex">
+			              		<div class="review-name">김**</div>
+					              	<div class="review-title-sub d-flex ml-2" style="font-size: 12px;color: #7c7b7b;">
+					                	<div class="review-ages p-1">30대</div><span class="v-line"></span>
+					                	<div class="review-gender p-1">여성</div><span class="v-line"></span>
+					                	<div class="review-period p-1"></div>
+				            		</div>
+			              		<div class="post-date ml-auto" style="font-size: 15px;color: #a0a0a0;">2023-03-02</div>
+			            	</div>
+			            	<div class="star-count d-flex m-2">
+			              		<i class="bi bi-star rating" style="font-size:20px;"></i>
+			              		<i class="bi bi-star rating" style="font-size:20px;"></i>
+			              		<i class="bi bi-star rating" style="font-size:20px;"></i>
+			              		<i class="bi bi-star rating" style="font-size:20px;"></i>
+			              		<i class="bi bi-star rating" style="font-size:20px;"></i>
+			            	</div>
+			            	<div class="review-effect mt-4">
+			              		<h6>효과</h6>
+			              		<div class="review-content-effect m-2" >
+			              		</div>
+			              		<h6>부작용</h6>
+			              		<div class="review-content-noEffect m-2">
+			              		</div>
+			            	</div>
+			            	<div class="review-content m-2 row">
+				              	<p class="mt-3" style="font-size:15px;">
+				              	</p>
 			          		</div>
-				            <div class="star-count d-flex m-2">
-					            <i class="bi bi-star-fill rating" style="font-size:20px;"></i>
-					            <i class="bi bi-star-fill rating" style="font-size:20px;"></i>
-					            <i class="bi bi-star-fill rating" style="font-size:20px;"></i>
-					            <i class="bi bi-star rating" style="font-size:20px;"></i>
-					            <i class="bi bi-star rating" style="font-size:20px;"></i>
-				            </div>
-				            <div class="review-effect mt-4">
-					            <div class="review-content-effect m-2" ><h6>효과</h6>
-					              	<span class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:10px;">변비 개선</span>
-					              	<span class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:10px;">방귀냄새 감소</span>
-					            </div>
-					            <div class="review-content-effect m-2"><h6>부작용</h6>
-					              	<span class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:10px;">속쓰림</span>
-					              	<span class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:10px;">복통</span>
-					              	<span class="p-1" style="color:#9e9e9e;background-color:#dbdbdb;border-radius: 15px;font-size:10px;">효과가 없었어요</span>
-					            </div>
-				            </div>
-				            <div class="review-content m-2 row">
-					            <p class="mt-3" style="font-size:15px;">
-					              다양하게 먹어봤지만 락토핏 골드가 저에게 딱 맞는 유산균이었어요 변비도 많이 없어지고, 나름 쾌변합니다ㅎ
-					            </p>
-				        	</div>
-				        </div>
-			    	</li>
-			    	<li class="review-li">
-				        <div class="review-panel p-3">
-					        <div class="review-title d-flex">
-					            <div class="review-name">홍**</div>
-					            <div class="review-title-sub d-flex ml-2" style="font-size: 12px;color: #7c7b7b;">
-						            <div class="review-ages p-1">20대</div><span class="v-line"></span>
-						            <div class="review-gender p-1">남성</div><span class="v-line"></span>
-						            <div class="review-period p-1">1개월 ~ 2개월 섭취</div>
-						        </div>
-					            <div class="post-date ml-auto" style="font-size: 15px;color: #a0a0a0;">2023-02-14</div>
-			          		</div>
-				            <div class="star-count d-flex m-2">
-					            <i class="bi bi-star-fill rating" style="font-size:20px;"></i>
-					            <i class="bi bi-star-fill rating" style="font-size:20px;"></i>
-					            <i class="bi bi-star rating" style="font-size:20px;"></i>
-					            <i class="bi bi-star rating" style="font-size:20px;"></i>
-					            <i class="bi bi-star rating" style="font-size:20px;"></i>
-				            </div>
-				            <div class="review-effect mt-4">
-					            <div class="review-content-effect m-2" ><h6>효과</h6>
-					              	<span class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:10px;">변비 개선</span>
-					              	<span class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:10px;">방귀냄새 감소</span>
-					            </div>
-					            <div class="review-content-effect m-2"><h6>부작용</h6>
-					              	<span class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:10px;">속쓰림</span>
-					              	<span class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:10px;">복통</span>
-					              	<span class="p-1" style="color:#9e9e9e;background-color:#dbdbdb;border-radius: 15px;font-size:10px;">효과가 없었어요</span>
-					            </div>
-				            </div>
-				            <div class="review-content m-2 row">
-					            <p class="mt-3" style="font-size:15px;">
-					              다양하게 먹어봤지만 락토핏 골드가 저에게 딱 맞는 유산균이었어요 변비도 많이 없어지고, 나름 쾌변합니다ㅎ
-					            </p>
-				        	</div>
-				        </div>
-			    	</li>
+			        	</div>
+			      	</li>
 			    </ul>
-			</div><!-- 리뷰 끝 -->
+			    <div id="loader">
+			      	<div class="skeleton-card p-3"></div>
+			    </div>
+		    	<div class="card-actions">
+			      	<span>Showing 
+			        	<span id="card-count"></span> of 
+			        	<span id="card-total"></span> cards      
+			      	</span>
+			    </div>
+	  		</div><!-- 리뷰 페이지 끝 -->
   		</div><!-- 탭 2 끝 -->
    	</div><!-- 탭 끝 -->
 </div>
+<input type="hidden" value="${listOne.no}" id="productNo">
 <script>
+  const cardContainer = document.getElementById("review-ul");
+  const cardCountElem = document.getElementById("card-count");
+  const cardTotalElem = document.getElementById("card-total");
+  const loader = document.getElementById("loader");
+
+  const cardLimit = 99;
+  const cardIncrease = 3;
+  const pageCount = Math.ceil(cardLimit / cardIncrease);
+  let currentPage = 1;
+
+  cardTotalElem.innerHTML = cardLimit;
+
+  var throttleTimer;
+  const throttle = (callback, time) => {
+    if (throttleTimer) return;
+
+    throttleTimer = true;
+
+    setTimeout(() => {
+      callback();
+      throttleTimer = false;
+    }, time);
+  };
+
+
+
+  const createCard = (index) => {
+    
+    $.ajax({
+      url : "<c:url value='/SelectReview.do'/>?no="+$('#productNo').val()+"&current="+index,
+      dataType : "json",
+    })
+    .done(function(reviewData) {
+      var card = document.querySelector(".review-li").cloneNode(true);
+      if(reviewData.length == 0) {
+        removeInfiniteScroll();
+        return;
+      }
+      console.log(reviewData);
+      card.querySelector(".review-name").innerHTML = reviewData[0]['r_id'] === null ? 'Unknown' : reviewData[0]['r_id'];
+      card.querySelector(".review-period").innerHTML = reviewData[0]['takeTime'];
+      var starScore = parseInt(reviewData[0]['starScore']);
+
+      for(var i=0;i<starScore;i++) {
+        card.querySelectorAll(".star-count > i")[i].className = card.querySelectorAll(".star-count > i")[i].className.replace("bi-star","bi-star-fill");
+      }
+
+      var effect = reviewData[0]['effect'];
+      var effectValues = effect.match(/\[(.*?)\]/)[1];
+      var effectValues = effectValues.split(", ");
+      for(var effectValue of effectValues) {
+        card.querySelector(".review-content-effect").innerHTML += '<span class="p-1 mr-2" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:10px;">'+effectValue+'</span>';
+      }
+
+      var noEffect = reviewData[0]['noEffect'];
+      var noEffectValues = noEffect.match(/\[(.*?)\]/)[1];
+      var noEffectValues = noEffectValues.split(", ");
+      for(var noEffectValue of noEffectValues) {
+        card.querySelector(".review-content-noEffect").innerHTML += '<span class="p-1 mr-2" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:10px;">'+noEffectValue+'</span>';
+      }
+      
+      reviewData[0]['noEffect'];
+      card.querySelector(".review-content p").innerHTML = reviewData[0]['content'];
+      //값 세팅
+
+      card.style.display = '';
+      cardContainer.appendChild(card);
+    })
+    .fail(function() {
+      console.log('로드 실패');
+    });
+    
+  };
+
+  const addCards = (pageIndex) => {
+    currentPage = pageIndex;
+
+    const startRange = (pageIndex - 1) * cardIncrease;
+    const endRange = currentPage == pageCount ? cardLimit : pageIndex * cardIncrease;
+
+    cardCountElem.innerHTML = endRange;
+
+    for (let i = startRange + 1; i <= endRange; i++) {
+      createCard(i);
+    }
+  };
+
+  const handleInfiniteScroll = () => {
+    throttle(() => {
+      const endOfPage =
+        window.innerHeight + window.pageYOffset >= document.body.offsetHeight;
+
+      if (endOfPage) {
+        addCards(currentPage + 1);
+      }
+
+      if (currentPage === pageCount) {
+        removeInfiniteScroll();
+      }
+    }, 2000);
+  };
+
+  const removeInfiniteScroll = () => {
+    loader.remove();
+    window.removeEventListener("scroll", handleInfiniteScroll);
+  };
+
+  window.onload = function () {
+    addCards(currentPage);
+  };
+
+  window.addEventListener("scroll", handleInfiniteScroll);
 </script>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
