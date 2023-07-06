@@ -74,7 +74,7 @@
 		padding: .5em
 	}
 	.maints {
-		padding: 0em 0em 1em 1em;
+		margin: 1em 0em 1em 1em;
 	}
 	.tsidebar {
 		padding: 2em 1.5em;
@@ -118,7 +118,6 @@
 		}
 		.fixedsticky {
 			margin-top: 100px;
-			top: 0px;
 		}
 	}
 	aside > div {
@@ -129,7 +128,82 @@
 	  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	  margin-bottom: 20px;
     }
-
+	.gCSEJp {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding: 40px 20px;
+    }
+    .gCSEJp > h1 {
+        color: gray;
+        font-weight: 900;
+        margin-bottom: 24px;
+    }
+    .ktaGqG {
+        display: inline-block;
+        width: calc(100% - 10px);
+        transform: translateX(10px);
+        height: 139px;
+        background-color: gray;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        list-style-type: none;
+        position: relative;
+    }
+    .jZuajW {
+        position: absolute;
+        left: -10px;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 110px;
+        width: 25px;
+        -webkit-box-align: center;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .hBxOSS {
+        cursor: pointer;
+        border-radius: 20px;
+        height: 139px;
+        box-shadow: rgba(101, 101, 101, 0.3) 0px 0px 5px;
+    }
+    .iJGurJ {
+        position: relative;
+        height: 100%;
+        border-bottom: none;
+        background-color: white;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        width: 92%;
+        padding: 22px 0px 22px 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .enbDhJ {
+        font-weight: bold;
+        height: 22px;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: start;
+        justify-content: flex-start;
+        border-radius: 10px;
+        color: gray;
+    }
+    .ZyIFk {
+        display: flex;
+        gap: 8px;
+    }
+    article > div{
+       content: "";
+	  background-color: white;
+	  margin-right: 10px;
+	  border-radius: 5px;
+    }
 
 </style>
 
@@ -180,8 +254,34 @@
 	    </div>
 	    
 		
-<section class="tscontainer mt-5">
-     <article class="maints">
+<section class="tscontainer mt-5" style="background-color:#F5F5F5;">
+     <article class="maints justify-content-center">
+     	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
+	        <h1>$이태성$님의 최근 분석 리포트</h1>
+	        <div class="DefaultReportItem__ReportBook-sc-rysw89-0 ibNwmg">
+	            <a data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="/analysis/purpose">
+	                <div class="DefaultReportItem__Springs-sc-rysw89-8 jZuajW">
+	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
+	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
+	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
+	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
+	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
+	                </div>
+	                <article class="DefaultReportItem__InnerContents-sc-rysw89-2 hBxOSS" style="display: block;">
+	                    <div class="DefaultReportItem__BackgroundWrapper-sc-rysw89-3 iJGurJ">
+	                        <div>
+	                            <div class="DefaultReportItem__ScoreDate-sc-rysw89-5 enbDhJ">분석한 기록이 없습니다.</div>
+	                            <p class="DefaultReportItem__Score-sc-rysw89-6 jeiOCr">??<span>점</span></p>
+	                        </div>
+	                        <div class="DefaultReportItem__Purpose-sc-rysw89-7 ZyIFk">
+	                            <p>먹고 있는 영양제를 분석해 보세요!</p>
+	                        </div>
+	                    </div>
+	                </article>
+	            </a>
+	        </div>
+	    </div>
+    
 	    <div class="m-5">
 	        <div class="slider1">
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="resources/images/thumbnail_img/RedM_Arg.jpg"></a></div>
@@ -322,7 +422,7 @@ tagify.on('remove', e=> {
 
 $(document).ready(function(){
     $('.slider1').bxSlider({
-        slideWidth: 900,
+        slideWidth: 1100,
         minSlides: 1,
         maxSlides: 1,
         slideMargin: 1,
