@@ -38,12 +38,12 @@
      <script src="<c:url value="/resources/tsfolder/js/main.js"/>" ></script>
      
      <!-- googlefont -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.googleapis.com"> 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Hahmlet&family=Nanum+Myeongjo&family=Stylish&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2? family=Hahmlet&family=Nanum+Myeongjo&family=Stylish&display=swap" rel="stylesheet">
 <style>
 	body {
-	    font-family: 'Nanum Myeongjo', serif;
+	    font-family:'동글', 산세리프;
 	}
 </style>
      
