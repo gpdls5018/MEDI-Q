@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan(value = {"com.kosmo.springapp.service"}, sqlSessionFactoryRef = "sqlSessionFactory")
+@MapperScan(value = {"com.kosmo.springapp.service", "com.kosmo.springapp.nutrient.service"}, sqlSessionFactoryRef = "sqlSessionFactory")
 public class MyBatisConfig {
 
 	private final ApplicationContext applicationContext; //생성자 생성하므로 초기화 x
