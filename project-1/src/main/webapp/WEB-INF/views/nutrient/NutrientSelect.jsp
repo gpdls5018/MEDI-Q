@@ -176,12 +176,12 @@
                 <!-- 비타민에 해당하는 상자 내용 -->
                 <h2>인기 영양소 선택</h2>
                 <p>현재 인기 영양소를 선택할 수 있는 상자입니다.</p>
-                <div class="box-container justify-content-sm-between">
+                <div class="box-container justify-content-sm-center">
                     <div class="box col-sm-2"><a href="<c:url value="/NutrientDetail.do"/>">비타민 A</a></div>
-                    <div class="box col-sm-2">비타민 B</div>
-                    <div class="box col-sm-2">비타민 C</div>
-                    <div class="box col-sm-2">비타민 D</div>
-                    <div class="box col-sm-2">비타민 E</div>
+	                <c:forEach var="name" items="${nutrientNames}">
+					    <div class="box col-sm-2" style="white-space: nowrap;"><b>${name}</b></div>
+					</c:forEach>
+				
                 </div>
             </div>
                 
