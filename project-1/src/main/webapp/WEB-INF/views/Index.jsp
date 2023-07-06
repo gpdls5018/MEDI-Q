@@ -129,14 +129,16 @@
 	  margin-bottom: 20px;
     }
 
+
 </style>
 
 		<div class="container-fluid  mb-1 hero-header" style="margin-top:100px;">
 	        <div class="ba1">
-	            <div class="slided"><img src="resources/images/tsimages/ba1.jpg" width="800" height="340" ></div>
-	            <div class="slided"><img src="resources/images/tsimages/ba2.jpg" width="800" height="340" ></div>
-	        </div>
+	            <div class="slided"><img src="resources/images/tsimages/ba1.jpg" width="100%" height="350" ></div>
+				<div class="slided"><img src="resources/images/tsimages/ba2.jpg" width="100%" height="350" ></div>
+			</div>
 		</div>
+
         
 		<div class="ml-5 mt-2 ">
 	        <i class="bi bi-camera" hidden><a href="/modelOCR.do"> 사진으로 검색할래요 !!!</a></i>
@@ -264,17 +266,17 @@ $(document).ready(function(){
         stopAutoOnClick : true,
         pager : true,
     });
-});
-
-$(document).ready(function(){
+    
     $('.ba1').bxSlider({
-        slideWidth: 800,
-        minSlides: 1,
-        maxSlides: 1,
-        slideMargin: 1,
-        auto : true,
+        nextSelector: '#slider-next',
+   	    prevSelector: '#slider-prev',
+
     });
 });
+
+
+    
+
 
 
 //사이드바 함수 적용
