@@ -265,7 +265,7 @@
      	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
 	        <h1>$이태성$님의 최근 분석 리포트</h1>
 	        <div class="DefaultReportItem__ReportBook-sc-rysw89-0 ibNwmg">
-	            <a data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="#">
+	            <a style="text-decoration:none;" data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="#">
 	                <div class="DefaultReportItem__Springs-sc-rysw89-8 jZuajW">
 	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
 	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
@@ -284,9 +284,9 @@
 	                        </div>
 	                    </div>
 	                </article>
-	            </a>
-	        </div>
-	    </div>
+	             </a>
+	          </div>
+	     </div>
     
 	    <div class="m-5">
 	        <div class="slider1">
@@ -297,14 +297,13 @@
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>"></a></div>
 	        </div>
 	    </div>
-    <jsp:include page="/WEB-INF/views/ListTable.jsp"/>
 	</article>
 		<!-- 오른쪽 슬라이드 -->
 		<aside class="tsidebar fixedsticky">
 			<div class="login-section justify-content-center">
 		        <p style="text-align: center; font-weight:bold;">Madi-Q를 더 안전하고<br/> 편리하게 이용하세요</p>
-		        <a href="<c:url value="/project/Login.do"/>">
-		        	<button class="btn btn-outline-success py-3" type="button" style="border-radius: 12px; width:90%; height:50px font-weight:bold; color:#EF605D;">
+		        <a href="<c:url value="/project/Login.do"/>" style="text-decoration:none;">
+		        	<button class="btn btn-outline-success" type="button" style=" display: flex; align-items: center; justify-content: center; font-size:30px; border-radius: 12px; width:90%; height:50px; font-weight:bold; color:#EF605D;">
 		        		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25"> 로그인
 		        	</button>
 		        </a>	    
@@ -441,7 +440,8 @@ $(document).ready(function(){
     $('.ba1').bxSlider({
         nextSelector: '#slider-next',
    	    prevSelector: '#slider-prev',
-
+   	    nextText: 'Onward →',
+        prevText: '← Go back'
     });
 });
 
