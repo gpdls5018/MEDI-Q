@@ -30,6 +30,19 @@
             color: inherit;
             background-color: inherit;
         }
+        
+        .nav-link:hover::before {
+            color: inherit;
+            background-color: inherit;
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #f04d24;
+            
+        }
        
         .nav-link.active::before {
             content: "";

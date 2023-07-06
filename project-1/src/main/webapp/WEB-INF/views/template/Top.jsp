@@ -103,7 +103,7 @@
                 </div>
                 <div class="container">
                     <ul class="list-unstyled components">
-                        <li><a href="#" class="sidenava2" >
+                        <li><a href="<c:url value="/NutrientSelect.do"/>" class="sidenava2" >
                             <img src="resources/images/tsimages/free-icon-vitamins-525955.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             영양소</a></li>
                         <li><a class="sidenava4" href="#">
@@ -155,4 +155,3 @@
     </div>
 
  <div id="main" style="margin-top: 10px;">
- 
