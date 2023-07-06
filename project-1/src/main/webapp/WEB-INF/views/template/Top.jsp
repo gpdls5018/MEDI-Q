@@ -98,32 +98,32 @@
         <nav class="navbar navbar-expand-lg navbar-white mb-2 px-2 px-lg-5 py-lg-2 py-lg-0 justify-content-between" style="position: fixed; background-color: white; box-shadow: 0px 0px 5px #000; width: 100%;">
             <div id="mySidenav" class="sidenav">
                 <div class="sidebar-header d-flex justify-content-between">
-                    <img class="px-2"src="resources/images/mainicon.png" loading="lazy" width="50" height="25">
+                    <img class="px-2"src="<c:url value="resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
 		            <img src="resources/images/maintitle.png" loading="lazy" width="100" height="25">
                     <a class="sidenava1" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>                    
                 </div>
                 <div class="container">
                     <ul class="list-unstyled components">
                         <li><a href="<c:url value="/NutrientSelect.do"/>" class="sidenava2" >
-                            <img src="resources/images/tsimages/free-icon-vitamins-525955.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="<c:url value="/resources/images/tsimages/free-icon-vitamins-525955.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             영양소</a></li>
                         <li><a class="sidenava4" href="#">
-                            <img src="resources/images/tsimages/free-icon-whats-new-5511348.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="<c:url value="/resources/images/tsimages/free-icon-whats-new-5511348.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             Magazine(뉴스)</a></li>
                         <li><a class="sidenava3" href="#">
-                            <img src="resources/images/tsimages/free-icon-data-analysis-3449317.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="<c:url value="/resources/images/tsimages/free-icon-data-analysis-3449317.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             분석 및 결과</a></li>
                         <li><a class="sidenava5" href="#">
-                            <img src="resources/images/tsimages/free-icon-checkmark-9887473.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="<c:url value="/resources/images/tsimages/free-icon-checkmark-9887473.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             섭취/체크</a></li>
                         <li><a class="sidenava6" href="#">
-                            <img src="resources/images/tsimages/free-icon-chat-724715.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="<c:url value="/resources/images/tsimages/free-icon-chat-724715.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             커뮤니티</a></li>
                         <li><a class="sidenava7" href="#">
-                            <img src="resources/images/tsimages/free-icon-lifestyle-4807765.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="<c:url value="/resources/images/tsimages/free-icon-lifestyle-4807765.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             건강예측</a></li>
                         <li><a class="sidenava8" href="#">
-                            <img src="resources/images/tsimages/free-icon-pharmacy-1404402.png" loading="lazy" width="25" height="25" style="color: transparent;"/>
+                            <img src="<c:url value="/resources/images/tsimages/free-icon-pharmacy-1404402.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             인근 의료기관</a></li>
                     </ul>
                 </div>
@@ -136,8 +136,8 @@
 	      
            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
 	       		<a href="<c:url value="/" />" class="navbar-brand p-0" style=" margin-left: auto; margin-right: auto;">
-	                <img class="px-2"src="resources/images/mainicon.png" loading="lazy" width="50" height="25">
-	           		<img src="resources/images/maintitle.png" loading="lazy" width="100" height="25">
+	                <img class="px-2"src=""<c:url value=resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+	           		<img src="<c:url value="resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
 	           	</a>
            		<div class="mypage">
            			<a class="nav-link text-dark" href="<c:url value="/project/MyPage.do" />">마이페이지 <i class="fa-solid fa-paper-plane"></i></a><!-- 마이페이지 -->
