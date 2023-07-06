@@ -26,4 +26,5 @@ public class NutrientDTO {
 	private String N_CAUTION;
 	private String N_LACK;
 	private String N_FOOD;
+	private String N_SUBNAME;
 }
