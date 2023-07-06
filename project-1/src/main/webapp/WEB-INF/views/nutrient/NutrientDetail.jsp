@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <style>
         .container {
@@ -205,7 +206,7 @@
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
-                    <a class="nav-link active" href="Nutrient.html" onclick="openTab(event, 'popular')">인기 영양소</a>
+                    <a class="nav-link active" href="<c:url value="/NutrientSelect.do"/>" onclick="openTab(event, 'popular')">인기 영양소</a>
                 </li>
                 <li class="nav-item col-3">
                     <a class="nav-link" href="#" onclick="openTab(event, 'vitamin')">비타민</a>
@@ -236,7 +237,7 @@
                                     <tbody>
                                         <tr>
                                             <th scope="row" style="vertical-align: middle;">관련 건강고민</th>
-                                            <td>노화 & 항산화, 눈 건강, 간 건강, 장 건강, 탈모 & 손톱 건강, 피부 건강</td>
+                                            <td><kbd>노화 & 항산화</kbd>, <kbd>눈 건강</kbd>, <kbd>간 건강</kbd>, <kbd>장 건강</kbd>, <kbd>탈모 & 손톱 건강</kbd>, <kbd>피부 건강</kbd></td>
                                         </tr>
                                     
                                         <tr>
@@ -292,71 +293,73 @@
     <script>
 
         function fade(element) {
-        var op = 0;  // 초기 투명도
-        var timer = setInterval(function () {
-            if (op >= 1) {
-            clearInterval(timer);  // 애니메이션 종료
-            }
-            element.style.opacity = op;  // 투명도 설정
-            element.style.filter = 'alpha(opacity=' + op * 100 + ')';  // IE8 이하 대응
-            op += 0.1;  // 투명도 증가량
-        }, 50);  // 간격(ms)
+        	var op = 0;  // 초기 투명도
+        	var timer = setInterval(function () {
+	            if (op >= 1) {
+	            clearInterval(timer);  // 애니메이션 종료
+	            }
+	            element.style.opacity = op;  // 투명도 설정
+	            element.style.filter = 'alpha(opacity=' + op * 100 + ')';  // IE8 이하 대응
+	            op += 0.1;  // 투명도 증가량
+	        }, 50);  // 간격(ms)
         }
 
         function fadeInTab(tabElement) {
-        tabElement.style.display = "block";  // 탭 컨텐츠 보이기
-        fade(tabElement);  // 페이드인 효과 적용
+	        tabElement.style.display = "block";  // 탭 컨텐츠 보이기
+	        fade(tabElement);  // 페이드인 효과 적용
         }
 
         function openTab(evt, tabName) {
-        var i, tabContent, tabLinks;
+        	var i, tabContent, tabLinks;
 
-        tabContent = document.getElementsByClassName("tab");
-        for (i = 0; i < tabContent.length; i++) {
-            tabContent[i].style.display = "none";  // 모든 탭 컨텐츠 숨기기
-        }
+	        tabContent = document.getElementsByClassName("tab");
+	        for (i = 0; i < tabContent.length; i++) {
+	            tabContent[i].style.display = "none";  // 모든 탭 컨텐츠 숨기기
+	        }
 
-        tabLinks = document.getElementsByClassName("nav-link");
-        for (i = 0; i < tabLinks.length; i++) {
-            tabLinks[i].classList.remove("active");  // 모든 탭 링크에서 'active' 클래스 제거
-        }
+	        tabLinks = document.getElementsByClassName("nav-link");
+	        for (i = 0; i < tabLinks.length; i++) {
+	            tabLinks[i].classList.remove("active");  // 모든 탭 링크에서 'active' 클래스 제거
+	        }
 
-        var currentTab = document.getElementById(tabName);
-        // Remove immediate display and directly apply fade-in effect
-        currentTab.style.opacity = 0;
-        currentTab.style.filter = 'alpha(opacity=0)';
-        currentTab.style.border = 0;
-        fadeInTab(currentTab);  // 선택한 탭 컨텐츠를 페이드인으로 보이게 함
+	        var currentTab = document.getElementById(tabName);
+	        // Remove immediate display and directly apply fade-in effect
+	        currentTab.style.opacity = 0;
+	        currentTab.style.filter = 'alpha(opacity=0)';
+	        currentTab.style.border = 0;
+	        fadeInTab(currentTab);  // 선택한 탭 컨텐츠를 페이드인으로 보이게 함
 
-        evt.currentTarget.classList.add("active");  // 선택한 탭 링크에 'active' 클래스 추가
+        	evt.currentTarget.classList.add("active");  // 선택한 탭 링크에 'active' 클래스 추가
         }
         
-        // 진행바
         
-        const progressElement = document.querySelector('.progress-bar-inner');
-        const textElement = document.querySelector('.progress-text');
+     	// 진행 바 업데이트를 위한 변수 및 값 설정
+        var progressElement = document.querySelector('.progress-bar-inner'); // 진행 바 요소 선택
+        var textElement = document.querySelector('.progress-text'); // 텍스트 요소 선택
 
-        const animationDuration = 1500; // 애니메이션 지속 시간 (밀리초)
-        const targetValue = 50; // 목표 값 (%)
-        const updateInterval = 20; // 업데이트 간격 (밀리초)
+        var animationDuration = 1500; // 애니메이션 지속 시간 (밀리초)
+        var targetValue = 50; // 목표 값 (%)
+        var updateInterval = 20; // 업데이트 간격 (밀리초)
 
-        let progressValue = 0;
-        let currentValue = 0;
+        var progressValue = 0; // 현재 진행 값
+        var currentValue = 0; // 현재 표시 값
 
-        const increment = targetValue / (animationDuration / updateInterval);
+        var increment = targetValue / (animationDuration / updateInterval); // 증가량 계산
 
+        // 진행 바 업데이트 함수
         function updateProgress() {
-            progressValue += increment;
-            currentValue = Math.min(Math.round(progressValue), targetValue);
+            progressValue += increment; // 진행 값 증가
+            currentValue = Math.min(Math.round(progressValue), targetValue); // 현재 표시 값 계산
             
-            progressElement.style.width = `${currentValue}%`;
-            textElement.textContent = `${currentValue}%`;
+            progressElement.style.width = currentValue + '%'; // 진행 바 너비 설정
+            textElement.textContent = currentValue + '%'; // 텍스트 내용 설정
 
             if (currentValue >= targetValue) {
-                clearInterval(progressInterval);
+                clearInterval(progressInterval); // 목표 값에 도달하면 업데이트 간격을 멈춤
             }
         }
 
+        // 주기적으로 진행 바 업데이트 실행
         const progressInterval = setInterval(updateProgress, updateInterval);
 
     </script>

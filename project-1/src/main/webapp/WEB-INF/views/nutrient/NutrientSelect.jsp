@@ -89,6 +89,7 @@
             margin-bottom: 10px;
             cursor: pointer;
             position: relative;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
         }
 
         .box a {
@@ -114,10 +115,46 @@
             border-bottom: 3px solid rgb(253, 186, 41);
         }
 
+		/* 이미지 추가 */
+		.image {
+			position: relative;
+			top: 66.594px; 
+			display: flex;
+	        justify-content: center;
+	        align-items: center;
+			
+		}
+		
+		.bj-img {
+			border-radius: 10px 10px 10px 10px;
+		}
+		
+		
+		.image .text {
+			position: absolute;
+			top: 40px;
+		 	font-weight: bold;
+			color: black;
+			
+		}
+		
+
     </style>
 </head>
 <body>
+<!-- 이미지 -->
+    	<div class="image">
+                <img class="bg-img w-75" style="height:150px" src="<c:url value="/resources/images/nutrient_img/nutrient_bg.png"/>"/>
+                <div class="text text-color:black">
+             		<b>인기 성분 Top 100</b><br/>
+             		<small>800개 영양성분 중 가장 인기있는<br/>
+             		100개 성분의 Best 제품을 만나보세요</small>
+                </div>
+        </div>
     <div class="container" style="margin-top: 80px;">
+    	
+    
+    
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
