@@ -81,15 +81,15 @@
 	    <div style="height: 50px"></div>
 		<div class="rounded-lg borderline p-3 mb-3 shadow">
 			<div class="row d-flex px-3 py-3" >
-				<c:if test="${info.profImgFl eq 'Y' }" var="isProfImg">
-					<c:set var="uploadFolder" value="${fn:split(profImg.piPath,'\\\\')[fn:length(fn:split(profImg.pLocation, '\\\\'))-1] }"/>
-					<img class="rounded-circle" alt="사용자 이미지" src="<c:url value="/${uploadFolder }/${profImg.piFilename }.${profImg.piExt }" />" style="width: 80px; height: 80px">
+				<c:if test="${info.prof_Img_Fl eq 'Y' }" var="isProfImg">
+					<c:set var="uploadFolder" value="${fn:split(profImg.pi_Path,'\\\\')[fn:length(fn:split(profImg.pi_Path, '\\\\'))-1] }"/>
+					<img class="rounded-circle" alt="사용자 이미지" src="<c:url value="/resources/images/${uploadFolder }/${profImg.pi_Filename }.${profImg.pi_Ext }" />" style="width: 80px; height: 80px">
 				</c:if>
 				<c:if test="${not isProfImg }">
 					<img class="rounded-circle" alt="기본 프로필" src="<c:url value="/resources/images/friend.png" />" style="width: 80px; height: 80px">
 				</c:if>
 				<span class="align-self-center mr-auto ml-2" style="font-weight: bold">
-					${info.id }${empty info.profImgFl }/${profImg.piFilename }
+					${info.id }
 				</span>
 				<input type="button" id="imgEdit" value="이미지 수정" class="btn btn-outline-info align-self-center mx-2" data-target="#modalView" data-backdrop="static"/>
 				<a type="button" href="" class="btn btn-outline-info align-self-center" data-target="#modalView" data-backdrop="static">회원정보 수정</a>
@@ -197,7 +197,7 @@
 						<input type="password" name="password" class="form-control mx-2" placeholder="비밀번호를 입력하세요"/>
 						<div class="custom-file" style="width: 300px; display: none">
 				            <input type="file" class="custom-file-input" name="file" id="customFile" accept=".jpg,.img,.png,.bmp,.gif">
-				            <label class="custom-file-label justify-content-start" for="customFile">${empty profImg ? "파일 선택" : profImg.piFilename+='.'+=profImg.piExt }</label>
+				            <label class="custom-file-label justify-content-start" for="customFile">${empty profImg ? "파일 선택" : profImg.pi_Filename+='.'+=profImg.pi_Ext }</label>
 				        </div>
 				        <a type="button" name="defaultImg" href="<c:url value="/project/ProfImgEdit.do"/>" class="btn btn-outline-info mx-2" style="display: none">기본이미지로 변경</a>
 						<input type="submit" class="btn btn-info mx-2" value="확인" />

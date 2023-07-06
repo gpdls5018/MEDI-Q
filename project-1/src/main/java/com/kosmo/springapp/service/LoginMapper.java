@@ -44,6 +44,8 @@ public interface LoginMapper {
 
 	ProfileImageDTO findProfImg(String id); //회원의 프로필 이미지 정보 가져오기
 
+	int deleteProfImg(String id); //기본이미지 선택 시 회원의 프로필 이미지 삭제
+
 	
 
 }

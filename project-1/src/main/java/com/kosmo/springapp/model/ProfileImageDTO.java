@@ -24,20 +24,20 @@ import lombok.Setter;
 public class ProfileImageDTO {
 
 	@NotNull
-	private String piNo; //프로필이미지 일련번호
+	private String pi_No; //프로필이미지 일련번호
 	
 	private String id; //프로필이미지 등록 아이디
 	
-	private String smEail; //프로필이미지 등록 이메일(소셜로그인)
+	private String sm_Eail; //프로필이미지 등록 이메일(소셜로그인)
 	
 	@NotNull
-	private String piPath; //프로필이미지 저장경로
+	private String pi_Path; //프로필이미지 저장경로
 	
 	@NotNull
-	private String piFilename; //프로필이미지 파일명
+	private String pi_Filename; //프로필이미지 파일명
 	
 	@NotNull
-	private String piExt; //프로필이미지 파일 확장자
+	private String pi_Ext; //프로필이미지 파일 확장자
 	
 	private MultipartFile file;
 }

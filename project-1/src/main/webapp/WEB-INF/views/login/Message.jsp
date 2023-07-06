@@ -10,8 +10,9 @@
 		<c:set var="successUrl" value="/JoHyeIn/Board.do"/>
 	</c:when>
 	<c:otherwise><%-- ${WHERE == 'PROF' } --%>
-		<c:set var="successMessage" value="프로필 수정 성공 했어요"/>
-		<c:set var="failureMessage" value="프로필 수정 실패 했어요"/>
+		<c:set var="successMessage" value="프로필 수정을 성공했습니다"/>
+		<c:set var="failureMessage" value="프로필 수정을 실패했습니다"/>
+		<c:set var="defaultMessage" value="기본이미지를 선택했습니다\r\n마이페이지로 이동합니다"/>
 		<c:set var="successUrl" value="/project/MyPage.do"/>
 	</c:otherwise>
 </c:choose>
@@ -27,7 +28,7 @@
 			location.replace("<c:url value="${successUrl }"/>");
 		</c:when>
 		<c:otherwise>
-			alert("파일을 선택해 주세요");
+			alert("${defaultMessage }");
 			history.back();
 		</c:otherwise>
 	</c:choose>

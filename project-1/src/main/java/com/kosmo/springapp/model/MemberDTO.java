@@ -50,8 +50,8 @@ public class MemberDTO {
 	@Pattern(regexp = REGEX_EMAIL,message = "잘못된 이메일 형식입니다")
 	private String email;
 	
-	private Date regDate;
+	private Date reg_Date;
 	
-	private String profImgFl;
+	private String prof_Img_Fl;
 	
 }

@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -156,11 +158,13 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 	//프로필 이미지 수정(기본 이미지 X)
 	public ProfileImageDTO editProfImg(ProfileImageDTO dto, HttpServletRequest req) throws IllegalStateException, IOException {
 		String newFilename="";
-		String phisicalPath = req.getServletContext().getRealPath(SaveDirectory);
+		
+		Resource resource = new ClassPathResource(SaveDirectory);
+		String phisicalPath = resource.getFile().getAbsolutePath();
 		
 		try {
 			File uploadFiles = new File(phisicalPath);
-	
+			
 			if(!uploadFiles.exists()) {//업로드 폴더가 없을 경우
 				uploadFiles.mkdirs();
 			}
@@ -175,9 +179,9 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 				String filename = newFilename.substring(0, newFilename.lastIndexOf("."));
 				String ext = newFilename.substring(newFilename.lastIndexOf(".") + 1);
 				
-				dto.setPiPath(phisicalPath);
-				dto.setPiFilename(filename);
-				dto.setPiExt(ext);
+				dto.setPi_Path(phisicalPath);
+				dto.setPi_Filename(filename);
+				dto.setPi_Ext(ext);
 						
 				return dto;
 			}
@@ -185,6 +189,28 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 			FileUtils.deletes(new StringBuffer(newFilename), phisicalPath, ",");
 		}
 		return null;
+	}
+	
+
+	public int editProfImgDefault(ProfileImageDTO dto, HttpServletRequest req) throws IOException {
+		int deleteFlag = 0;
+		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
+		Map map = new HashMap<>();
+		map.put("id",id);
+
+		ProfileImageDTO info = mapper.findProfImg(id);
+
+		if("Y".equals(mapper.findMember(map).getProf_Img_Fl())) {
+			//기존에 파일이 있는 경우
+			Resource resource = new ClassPathResource(SaveDirectory);
+			String phisicalPath = resource.getFile().getAbsolutePath();
+			
+			FileUtils.deletes(new StringBuffer(info.getPi_Filename()+"."+info.getPi_Ext()), phisicalPath, ",");
+			deleteFlag = mapper.deleteProfImg(id);
+		}
+		else deleteFlag = -1;
+		
+		return deleteFlag;
 	}
 
 	public int insertProfImg(ProfileImageDTO info) {
@@ -200,6 +226,5 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 		
 		return mapper.findProfImg(id);
 	}
-
 	
 }
