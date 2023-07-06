@@ -95,10 +95,11 @@
 </script>
 <body>
 <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-white mb-2 px-2 px-lg-5 py-lg-2 py-lg-0" style="position: fixed; background-color: white; box-shadow: 0px 0px 5px #000; width: 100%;">
+        <nav class="navbar navbar-expand-lg navbar-white mb-2 px-2 px-lg-5 py-lg-2 py-lg-0 justify-content-between" style="position: fixed; background-color: white; box-shadow: 0px 0px 5px #000; width: 100%;">
             <div id="mySidenav" class="sidenav">
                 <div class="sidebar-header d-flex justify-content-between">
-                    <h3 style="color: white;">Medi-Q</h3>
+                    <img class="px-2"src="resources/images/mainicon.png" loading="lazy" width="50" height="25">
+		            <img src="resources/images/maintitle.png" loading="lazy" width="100" height="25">
                     <a class="sidenava1" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>                    
                 </div>
                 <div class="container">
@@ -130,15 +131,14 @@
               
               <!-- 요소를 사용하여 navbar 열기-->
               <span onclick="openNav()"><i class="fas fa-solid fa-bars fa-2x mx-2" style="color: #161616;"></i></span>
-
-            <a href="<c:url value="/" />" class="navbar-brand p-0">
-                <h3 class="text-primary mt-2 mx-4"><i class="fa fa-map-marker-alt me-3"></i>Medi-Q</h3>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="fa fa-bars"></span>
-            </button>
-
+				
+		    
+	      
            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+	       		<a href="<c:url value="/" />" class="navbar-brand p-0" style=" margin-left: auto; margin-right: auto;">
+	                <img class="px-2"src="resources/images/mainicon.png" loading="lazy" width="50" height="25">
+	           		<img src="resources/images/maintitle.png" loading="lazy" width="100" height="25">
+	           	</a>
            		<div class="mypage">
            			<a class="nav-link text-dark" href="<c:url value="/project/MyPage.do" />">마이페이지 <i class="fa-solid fa-paper-plane"></i></a><!-- 마이페이지 -->
            		</div>
