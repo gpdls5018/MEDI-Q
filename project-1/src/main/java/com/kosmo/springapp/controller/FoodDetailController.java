@@ -23,7 +23,7 @@ import com.kosmo.springapp.service.impl.ReviewServiceImpl;
 public class FoodDetailController {
 	
 	 @Autowired
-	 MainPageServiceImpl mainPageService;
+	 MainPageServiceImpl mainPageServiceImpl;
 	 
 	 @Autowired
 	 ReviewServiceImpl reviewServiceImpl;
@@ -38,7 +38,7 @@ public class FoodDetailController {
 	 @GetMapping("/detail.do")
 	 public String detailPage(Model model, Map map, @RequestParam String no) {
 		   map.put("no",Integer.parseInt(no));
-		   FunctionalFoodListDTO listOne = mainPageService.selectFoodOneByNo(map);
+		   FunctionalFoodListDTO listOne = mainPageServiceImpl.selectFoodOneByNo(map);
 		   model.addAttribute("listOne",listOne);
 		   return "Detail";
 	 }
