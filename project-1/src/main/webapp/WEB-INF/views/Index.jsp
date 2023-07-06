@@ -280,7 +280,7 @@
 	                            <p class="DefaultReportItem__Score-sc-rysw89-6 jeiOCr">??<span>점</span></p>
 	                        </div>
 	                        <div class="DefaultReportItem__Purpose-sc-rysw89-7 ZyIFk">
-	                            <p>먹고 있는 영양제를 분석해 보세요!</p>
+	                            <a href="/analyzeMyFood.do" class="link">먹고 있는 영양제를 분석해 보세요!</a>
 	                        </div>
 	                    </div>
 	                </article>
