@@ -94,10 +94,10 @@
 <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-white mb-2 px-2 px-lg-5 py-lg-2 py-lg-0 justify-content-between" style="position: fixed; background-color: white; box-shadow: 0px 0px 5px #000; width: 100%;">
             <div id="mySidenav" class="sidenav">
-                <div class="sidebar-header d-flex justify-content-between">
+                <div class="sidebar-header d-flex justify-content-start">
                     <img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
 		            <img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
-                    <a class="sidenava1" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>                    
+                    <a class="sidenava1 ml-5 " href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="color:black;"><i class="fa-sharp fa-solid fa-circle-xmark fa-xl" style="color: #a3aec2;"></i></a>                    
                 </div>
                 <div class="container">
                     <ul class="list-unstyled components">
