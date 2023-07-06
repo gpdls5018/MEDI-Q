@@ -118,4 +118,10 @@ public class MypageController {
 		
 		return "login/Message";
 	}
+	
+	@GetMapping("/Calendar.do")
+	public String calendar() {
+		
+		return "login/Calendar";
+	}
 }

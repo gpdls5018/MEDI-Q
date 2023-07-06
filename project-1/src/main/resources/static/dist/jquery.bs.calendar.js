@@ -430,7 +430,10 @@
             <div class="dates"></div>
             <div class="pt-2 js-collapse" style="display: none">
                 <div class="card mb-0">
-                    <div class="text-center fw-bold py-2 js-day-name card-header"></div>
+                	<div class="row">
+	                    <div class="col-10 text-center fw-bold py-2 js-day-name card-header"></div>
+	                    <a href="/project/Calendar.do"><i class="col-2 align-self-center fa-solid fa-plus"></i></a>
+                    </div>
                     <div class="js-events list-group list-group-flush"></div>
                 </div>
                 
