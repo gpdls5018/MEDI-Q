@@ -209,8 +209,8 @@
 
 		<div class="container-fluid  mb-1 hero-header" style="margin-top:100px;">
 	        <div class="ba1">
-	            <div class="slided"><img src="resources/images/tsimages/ba1.jpg" width="100%" height="350" ></div>
-				<div class="slided"><img src="resources/images/tsimages/ba2.jpg" width="100%" height="350" ></div>
+	            <div class="slided"><img src="<c:url value="/resources/images/tsimages/ba1.jpg"/>" width="100%" height="350" ></div>
+				<div class="slided"><img src="<c:url value="/resources/images/tsimages/ba2.jpg"/>" width="100%" height="350" ></div>
 			</div>
 		</div>
 
@@ -227,28 +227,28 @@
 	                placeholder="제품명 및 영양성분을 입력하세요" value="${not empty searchTags ? fn:replace(searchTags,'#',',#') : ''}">
 	                <input name="searchTags" type="hidden" id="hiddenInput" value="">
 	                <button type="submit" class="btn rounded-pill py-2 px-4 top-0 end-0 me-2" >
-						<img src="resources/images/tsimages/free-icon-magnifying-glass-4475396.png" style="width:30px; height:30px">
+						<img src="<c:url value="/resources/images/tsimages/free-icon-magnifying-glass-4475396.png"/>" style="width:30px; height:30px">
 					</button>
 	            </form>
 	        </div>
 	        <div id="hashtaglink" class="ml-1 py-3 row" >
 	       	 	<button  href="#" class="btn btn-6 btn-6c">
-                    <img src="resources/images/tsimages/free-icon-skin-protection-5228128.png" loading="lazy" width="25" height="25">
+                    <img src="<c:url value="/resources/images/tsimages/free-icon-skin-protection-5228128.png"/>" loading="lazy" width="25" height="25">
                 <lable style="font-weight: bold; color: green;">#피부건강</lable></button>&nbsp;
 	        	<button  href="#" class="btn btn-6 btn-6c">
-                    <img src="resources/images/tsimages/free-icon-immunity-5106341.png" loading="lazy" width="25" height="25">
+                    <img src="<c:url value="/resources/images/tsimages/free-icon-immunity-5106341.png"/>" loading="lazy" width="25" height="25">
                 <lable style="font-weight: bold; color: palevioletred;">#면역력 증진</lable></button>&nbsp;
                 <button  href="#" class="btn btn-6 btn-6c">
-                    <img src="resources/images/tsimages/free-icon-male-gender-2404544.png" loading="lazy" width="25" height="25">
+                    <img src="<c:url value="/resources/images/tsimages/free-icon-male-gender-2404544.png"/>" loading="lazy" width="25" height="25">
                 <lable style="font-weight: bold; color: mediumpurple;">#전립선 건강</lable></button>&nbsp;
                 <button  href="#" class="btn btn-6 btn-6c">
-                    <img src="resources/images/tsimages/free-icon-weight-scale-7984802.png" loading="lazy" width="25" height="25">
+                    <img src="<c:url value="/resources/images/tsimages/free-icon-weight-scale-7984802.png"/>" loading="lazy" width="25" height="25">
                 <lable style="font-weight: bold; color: sandybrown;">#체지방 감소</lable></button>&nbsp;
                 <button  href="#" class="btn btn-6 btn-6c">
-                    <img src="resources/images/tsimages/free-icon-vitamins-525955.png" loading="lazy" width="25" height="25">
+                    <img src="<c:url value="/resources/images/tsimages/free-icon-vitamins-525955.png"/>" loading="lazy" width="25" height="25">
                 <lable style="font-weight: bold; color: salmon;">#비타민</lable></button>&nbsp;
                 <button  href="#" class="btn btn-6 btn-6c">
-                    <img src="resources/images/tsimages/free-icon-glucose-meter-4228683.png" loading="lazy" width="25" height="25">
+                    <img src="<c:url value="/resources/images/tsimages/free-icon-glucose-meter-4228683.png"/>" loading="lazy" width="25" height="25">
                 <lable style="font-weight: bold; color: lightskyblue;">#혈당</lable></button>&nbsp;
 		    </div >
 	    </div>
@@ -284,11 +284,11 @@
     
 	    <div class="m-5">
 	        <div class="slider1">
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="resources/images/thumbnail_img/RedM_Arg.jpg"></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="resources/images/thumbnail_img/RedM_Col.jpg"></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="resources/images/thumbnail_img/RedM_Hia.jpg"></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="resources/images/thumbnail_img/RedM_Pro.jpg"></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="resources/images/thumbnail_img/YellowM_Mus.jpg"></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>"></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>"></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>"></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>"></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>"></a></div>
 	        </div>
 	    </div>
     <jsp:include page="/WEB-INF/views/ListTable.jsp"/>
@@ -298,7 +298,7 @@
 		        <p style="text-align: center; font-weight:bold;">Madi-Q를 더 안전하고<br/> 편리하게 이용하세요</p>
 		        <a href="<c:url value="/project/Login.do"/>">
 		        	<button class="btn btn-outline-success py-3" type="button" style="border-radius: 12px; width:90%; height:50px font-weight:bold; color:#EF605D;">
-		        		<img src="resources/images/maintitle.png" loading="lazy" width="100" height="25"> 로그인
+		        		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25"> 로그인
 		        	</button>
 		        </a>	    
 		        <div class="social d-flex justify-content-center">
@@ -306,8 +306,8 @@
 		        </div>
 		    </div>
             <div class="sidebar-item">
-            	<img src="resources/images/mainicon.png" loading="lazy" width="50" height="25">
-            	<img src="resources/images/maintitle.png" loading="lazy" width="100" height="25">
+            	<img src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+            	<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
             	<br/>
             	<p class="my-3" style="margin-bottom:20px; color:gray; font-size:15px; font-weight:800;">
             		<span class="py-3">
@@ -316,8 +316,8 @@
                 <ul class="unlist" style="padding-inline-start: 0px;">
                     <li>
                         <div class="image">
-                        	<img src="resources/images/tsimages/ranking1.webp" style=" position: relative; vertical-align:top; left:5px; width:30px; height:30px;" alt="*">
-                            <img src="resources/images/tsimages/destination-1.jpg" alt="*">
+                        	<img src="<c:url value="/resources/images/tsimages/ranking1.webp"/>" style=" position: relative; vertical-align:top; left:5px; width:30px; height:30px;" alt="*">
+                            <img src="<c:url value="/resources/images/tsimages/destination-1.jpg"/>" alt="*">
                         </div>
                         <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
                         	<p style="color:gray; font-size:10px; font-weight:bold;">종근당 건강</p>
@@ -325,15 +325,15 @@
                         	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">락토핏 생유산균 골드</p>
                         	<br/>
                         	<p style="color:gray; font-size:10px; font-weight:bold;">
-                        	<img src="resources/images/tsimages/star_yellow_16.svg" style="width:13px; height:13px;" alt="*">
+                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
                         	4.64(814)
                         	</p>
                         </div>
                     </li>
                     <li>
                         <div class="image">
-                            <img src="resources/images/tsimages/ranking2.webp" style=" position: relative; vertical-align:top; left:5px; width:30px; height:30px;" alt="*">
-                            <img src="resources/images/tsimages/destination-2.jpg" alt="*">
+                            <img src="<c:url value="/resources/images/tsimages/ranking2.webp"/>" style=" position: relative; vertical-align:top; left:5px; width:30px; height:30px;" alt="*">
+                            <img src="<c:url value="/resources/images/tsimages/destination-2.jpg"/>" alt="*">
                         </div>
                          <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
                         	<p style="color:gray; font-size:10px; font-weight:bold;">고려은단</p>
@@ -341,15 +341,15 @@
                         	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">비타민C 1000 이지</p>
                         	<br/>
                         	<p style="color:gray; font-size:10px; font-weight:bold;">
-                        	<img src="resources/images/tsimages/star_yellow_16.svg" style="width:13px; height:13px;" alt="*">
+                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
                         	4.66(178)
                         	</p>
                         </div>
                     </li>
                     <li>
                         <div class="image">
-                            <img src="resources/images/tsimages/ranking3.webp" style=" position: relative; vertical-align:top; left:5px; width:30px; height:30px;" alt="*">
-                            <img src="resources/images/tsimages/destination-3.jpg" alt="*">
+                            <img src="<c:url value="/resources/images/tsimages/ranking3.webp"/>" style=" position: relative; vertical-align:top; left:5px; width:30px; height:30px;" alt="*">
+                            <img src="<c:url value="/resources/images/tsimages/destination-3.jpg"/>" alt="*">
                         </div>
                          <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
                         	<p style="color:gray; font-size:10px; font-weight:bold;">종근당</p>
@@ -357,7 +357,7 @@
                         	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">칼슘앤마그네슘비타민D아연</p>
                         	<br/>
                         	<p style="color:gray; font-size:10px; font-weight:bold;">
-                        	<img src="resources/images/tsimages/star_yellow_16.svg" style="width:13px; height:13px;" alt="*">
+                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
                         	4.67(115)
                         	</p>
                         </div>
@@ -365,7 +365,7 @@
                     <li>
                         <div class="image d-flex">
                             <p style="position: relative; text-align:top; left:5px; width:30px; height:30px; color:gray; font-weight:bold;">4위</p>
-                            <img src="resources/images/tsimages/destination-4.jpg" alt="*">
+                            <img src="<c:url value="/resources/images/tsimages/destination-4.jpg"/>" alt="*">
                         </div>
                          <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
                         	<p style="color:gray; font-size:10px; font-weight:bold;">얼라이브</p>
@@ -373,7 +373,7 @@
                         	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">원스데일리 포 맨</p>
                         	<br/>
                         	<p style="color:gray; font-size:10px; font-weight:bold;">
-                        	<img src="resources/images/tsimages/star_yellow_16.svg" style="width:13px; height:13px;" alt="*">
+                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
                         	4.41(37)
                         	</p>
                         </div>
@@ -381,7 +381,7 @@
                     <li>
                         <div class="image d-flex">
                             <p style="position: relative; text-align:top; left:5px; width:30px; height:30px; color:gray; font-weight:bold;">5위</p>
-                            <img src="resources/images/tsimages/package-1.jpg" alt="*">
+                            <img src="<c:url value="/resources/images/tsimages/package-1.jpg"/>" alt="*">
                         </div>
                          <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
                         	<p style="color:gray; font-size:10px; font-weight:bold;">쏜 리서치</p>
@@ -389,7 +389,7 @@
                         	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">Basic B Complex </p>
                         	<br/>
                         	<p style="color:gray; font-size:10px; font-weight:bold;">
-                        	<img src="resources/images/tsimages/star_yellow_16.svg" style="width:13px; height:13px;" alt="*">
+                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
                         	4.63(19)
                         	</p>
                         </div>
