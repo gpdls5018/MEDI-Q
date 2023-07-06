@@ -17,7 +17,7 @@
         <c:if test="${loop.count % 3 == 1}">
         <div class="row">
         </c:if>
-            <div class="card mt-5 ml-5" style="width: 18rem">
+            <div class="card mx-2 my-2" style="width: 18rem">
                 <img src="<c:url value="/resources/images/thumbnail_img/NO_IMG.jpeg"/>" alt="" class="card-img-top pt-3">
                 <div class="card-body">
                     <p class="card-title">${record.productName}</p>
