@@ -13,10 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>    
     <script src="https://kit.fontawesome.com/dedb6fdace.js" crossorigin="anonymous"></script>
-    <script src="/resources/dist/jquery.bs.calendar.js"></script>
-    
-     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <script src="<c:url value="/resources/dist/jquery.bs.calendar.js"/>" ></script>
 
     <!-- fontaswem-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>    
@@ -26,19 +23,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="/resources/tsfolder/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="/resources/tsfolder/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="/resources/tsfolder/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="<c:url value="/resources/tsfolder/lib/animate/animate.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/tsfolder/lib/owlcarousel/assets/owl.carousel.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/tsfolder/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"/>" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet  누나꺼랑 겹침
     <link href="/resources/tsfolder/css/bootstrap.min.css" rel="stylesheet">
      -->
 
     <!-- Template Stylesheet -->
-    <link href="/resources/tsfolder/css/style.css" rel="stylesheet">
+    <link href="<c:url value="/resources/tsfolder/css/style.css"/>" rel="stylesheet">
 	
      <!-- Template Javascript -->
-     <script src="/resources/tsfolder/js/main.js"></script>
+     <script src="<c:url value="/resources/tsfolder/js/main.js"/>" ></script>
      
      <!-- googlefont -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -99,7 +96,7 @@
             <div id="mySidenav" class="sidenav">
                 <div class="sidebar-header d-flex justify-content-between">
                     <img class="px-2"src="<c:url value="resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
-		            <img src="resources/images/maintitle.png" loading="lazy" width="100" height="25">
+		            <img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
                     <a class="sidenava1" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>                    
                 </div>
                 <div class="container">
