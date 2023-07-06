@@ -328,7 +328,7 @@
      	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
 	        <h1>$이태성$님의 최근 분석 리포트</h1>
 	        <div class="DefaultReportItem__ReportBook-sc-rysw89-0 ibNwmg">
-	            <a style="text-decoration:none;" data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="#">
+	            <a style="text-decoration:none;" data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="/analyzeMyFood.do">
 	                <div class="DefaultReportItem__Springs-sc-rysw89-8 jZuajW">
 	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
 	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
@@ -343,7 +343,7 @@
 	                            <p class="DefaultReportItem__Score-sc-rysw89-6 jeiOCr">??<span>점</span></p>
 	                        </div>
 	                        <div class="DefaultReportItem__Purpose-sc-rysw89-7 ZyIFk">
-	                            <a href="/analyzeMyFood.do" class="link">먹고 있는 영양제를 분석해 보세요!</a>
+	                            <p>먹고 있는 영양제를 분석해 보세요!</p>
 	                        </div>
 	                    </div>
 	                </article>
