@@ -78,7 +78,6 @@
 	}
 	.tsidebar {
 		padding: 2em 1.5em;
-		background-color: white;
 		margin-bottom:10px;
 	}
 	.tsidebar .unlist li {
@@ -144,7 +143,7 @@
         width: calc(100% - 10px);
         transform: translateX(10px);
         height: 139px;
-        background-color: gray;
+        background-color: #FDCDBC;
         border-radius: 20px;
         margin-bottom: 20px;
         list-style-type: none;
@@ -168,7 +167,7 @@
         cursor: pointer;
         border-radius: 20px;
         height: 139px;
-        box-shadow: rgba(101, 101, 101, 0.3) 0px 0px 5px;
+        box-shadow: rgba(101, 101, 101, 0.3) 2px 2px 5px;
     }
     .iJGurJ {
         position: relative;
@@ -192,21 +191,25 @@
         -webkit-box-pack: start;
         justify-content: flex-start;
         border-radius: 10px;
-        color: gray;
+        color: black;
     }
     .ZyIFk {
         display: flex;
         gap: 8px;
     }
-    article > div{
-       content: "";
-	  background-color: white;
-	  margin-right: 10px;
-	  border-radius: 5px;
+    .maints > div{
+		background-color:white;
+ 		border: 2px solid #eaeaea;
+ 		border-radius:15px;
+
     }
+    section {
+	  background: linear-gradient(to bottom, #ffffff, #ffecec);
+	}
+	
 
 </style>
-
+		<!-- 상단 배너 출력 슬라이드 -->
 		<div class="container-fluid  mb-1 hero-header" style="margin-top:100px;">
 	        <div class="ba1">
 	            <div class="slided"><img src="<c:url value="/resources/images/tsimages/ba1.jpg"/>" width="100%" height="350" ></div>
@@ -214,11 +217,12 @@
 			</div>
 		</div>
 
-        
+        <!-- ocr 들어가면 사진 검색용 -->
 		<div class="ml-5 mt-2 ">
 	        <i class="bi bi-camera" hidden><a href="/modelOCR.do"> 사진으로 검색할래요 !!!</a></i>
 	    </div>
-
+	
+		<!-- 검색창 밑 검색버튼  -->
 		<div class="row justify-content-center">
 	        <div class="col-lg-10 text-center">
 	            <h1 class="mb-5" style="font-weight:bold;"><span style="color: #EF605D;">제품명,영양성분</span>을 검색해보세요.</h1>
@@ -253,13 +257,15 @@
 		    </div >
 	    </div>
 	    
-		
-<section class="tscontainer mt-5" style="background-color:#F5F5F5;">
+<!-- 검색창 밑부분! 사이드바와 몸통 부분 -->
+<section class="tscontainer mt-5" style="width:90%;  border-radius: 5px;">
+	<!-- 왼쪽 몸통부분 -->
      <article class="maints justify-content-center">
+     <!-- 1번째 다이브 목록 -->
      	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
 	        <h1>$이태성$님의 최근 분석 리포트</h1>
 	        <div class="DefaultReportItem__ReportBook-sc-rysw89-0 ibNwmg">
-	            <a data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="/analysis/purpose">
+	            <a data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="#">
 	                <div class="DefaultReportItem__Springs-sc-rysw89-8 jZuajW">
 	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
 	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
@@ -293,6 +299,7 @@
 	    </div>
     <jsp:include page="/WEB-INF/views/ListTable.jsp"/>
 	</article>
+		<!-- 오른쪽 슬라이드 -->
 		<aside class="tsidebar fixedsticky">
 			<div class="login-section justify-content-center">
 		        <p style="text-align: center; font-weight:bold;">Madi-Q를 더 안전하고<br/> 편리하게 이용하세요</p>
