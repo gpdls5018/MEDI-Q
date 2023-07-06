@@ -10,7 +10,7 @@
 		text-decoration: none;
 		color: rgb(13, 184, 193);
 	}
-	a{p
+	a{
 		color: black;
 	}
 	.borderline{
@@ -25,43 +25,20 @@
         list-style: none;
     }
     
-    .left-side-bar {
+    .calendar {
+    	display: none;
+    	left: 0;
     	background-color: white;
         height: 100%;
         width: 500px;
         position: fixed;
-        left: -460px;
         transition: left .3s;
-    }
-    .left-side-bar > .status-ico {
-        text-align: right;
-        padding: 10px;
-    }
-    .left-side-bar:hover {
-        left: 0;
-        overflow-y: scroll;
-    }
-    .left-side-bar > .status-ico > span:last-child {
-        display: none;
-    }
-
-    .left-side-bar:hover > .status-ico > span:last-child {
-        display: block;
-    }
-
-    .left-side-bar:hover > .status-ico > span:first-child {
-        display: none;
     }
 </style>
 <body>
 	<div class="container" style="margin-top: 50px">
 		<!-- 캘린더 -->
-		<div class="left-side-bar">
-	        <div class="status-ico">
-	            <span><i class="fa-regular fa-calendar-plus text-primary" style="font-size: 1.5rem"></i></span>
-	            <span><i class="fa-regular fa-calendar-check text-primary" style="font-size: 1.5rem"></i></span>
-	        </div>
-	
+		<div class="calendar">
 	        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
 	            <h5 class="text-center text-secondary" id="offcanvasExampleLabel">일정확인</h5>
 	            <div class="offcanvas-body d-flex justify-content-center p-0">
@@ -91,6 +68,7 @@
 				<span class="align-self-center mr-auto ml-2" style="font-weight: bold">
 					${info.id }
 				</span>
+				<a type="button" class="btn btn-outline-info align-self-center" href="javascript:viewCalendar()">캘린더</a>
 				<input type="button" id="imgEdit" value="이미지 수정" class="btn btn-outline-info align-self-center mx-2" data-target="#modalView" data-backdrop="static"/>
 				<a type="button" href="" class="btn btn-outline-info align-self-center" data-target="#modalView" data-backdrop="static">회원정보 수정</a>
 			</div>
@@ -210,14 +188,18 @@
 </body>
 </html>
 <script>
-    (function ($) {
-        $.bsCalendar.setDefault('width', 5000);
-        $('#calendar_dropdown').bsCalendar({width: 300});
-        $('#calendar_inline').bsCalendar({width: '300px'});
-        $('#calendar_inline').bsCalendar('setDate', '2023-12-24');
-        $('#calendar_offcanvas').bsCalendar({width: '80%'});
-        $('#calendar_navbar').bsCalendar({width: 300});
-    }(jQuery));
+	//캘린더
+	function viewCalendar(){
+		$('.calendar').toggle();
+		(function ($) {
+	        $.bsCalendar.setDefault('width', 500);
+	        $('#calendar_dropdown').bsCalendar({width: 300});
+	        $('#calendar_inline').bsCalendar({width: '300px'});
+	        $('#calendar_inline').bsCalendar('setDate', '2023-12-24');
+	        $('#calendar_offcanvas').bsCalendar({width: '80%'});
+	        $('#calendar_navbar').bsCalendar({width: 300});
+	    }(jQuery));
+	}
 </script>
 <script>
 	//게시물,북마크,최근활동 클릭 시 이벤트 처리
