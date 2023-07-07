@@ -270,16 +270,81 @@
     	text-align: center;
         text-decoration:none; 
     }
+    /*3번째 div 목록*/
+    .section1-2e {
+		margin: 30px;
+        width: 95%;
+    }
+    .section .content {
+        margin: 0px auto;
+        text-align: center;
+        position: relative;
+    }
+    .section1-2e .txt1 {
+        display: block;
+        color: #9BA1AA;
+        text-align: center;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 1;
+    }
+    .section1-2e .txt2 {
+        display: block;
+        font-weight: 700;
+        color: #101219;
+        font-size: 26px;
+        text-align: center;
+        line-height: 34px;
+        margin: 10px 0px 28px;
+    }
+    .section1-2e .txt2 span {
+        color: #EF605D;
+    }
+    .section1-2e .swiper-container2 {
+        overflow: hidden;
+        width: calc(100% + 20px);
+        padding: 0px 0px 80px;
+        transform: translateX(-10px);
+    }
+    .u510{
+        display: none;
+    }
+    .slideriview {
+    	border-radius: 20px;
+    	box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
+    }
 
 
 </style>
-		<!-- 상단 배너 출력 슬라이드 -->
+			<!-- 상단 배너 출력 슬라이드 -->
+			<div id="video-container">
+			    <video id="video" autoplay muted>
+	                <source src="<c:url value="resources/video/intro1_.mp4"/>" type="video/mp4">
+			    </video>
+			    <div class="videologo">
+			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+			    </div>
+			    <div id="video-controls">
+			      <button class="btn btn-warning" onclick="closeVideo()">Home<br/>가기</button>
+			    </div>
+			    <div id="video-label">
+		    	  <label for="stop-video-checkbox">
+			        동영상 오늘 하루 그만 보기
+			        <input type="checkbox" id="stop-video-checkbox">
+			      </label>
+			    </div>
+			</div>
+			  
+	 <div id="main" style="margin-top: 10px;">
+		  
+		<!-- 
 		<div class="container-fluid  mb-3 hero-header">
             <video autoplay loop muted class="video-background" style="height: 340px; width: 1200px; margin-top: 100px;">
                 <source src="<c:url value="resources/video/intro1_.mp4"/>" type="video/mp4">
             </video>
         </div>
-
+		 -->
         <!-- ocr 들어가면 사진 검색용 -->
 		<div class="ml-5 mt-2 ">
 	        <i class="bi bi-camera" hidden><a href="/modelOCR.do"> 사진으로 검색할래요 !!!</a></i>
@@ -351,7 +416,7 @@
 	          </div>
 	     </div>
 	     
-	  <!-- 2q번째 다이브 목록 -->
+	  <!-- 2번째 다이브 목록 -->
 	  <div class="section section1-2b py-4 my-2">
 	        <div class="content">
 	            <span class="txt1"><span>인기 성분</span>이에요</span>
@@ -373,10 +438,71 @@
 	        </div>
 	    </div>
 	    
-  	  <!--  3번째 다이브 목록 -->
+	  <!--  3번째 다이브 목록 -->
+	  <div class="section section1-2e best-review">
+            <div class="content">
+                <div class="txt1">2023년 7월 Best Review</div>
+                <div class="txt2"><span>직접 먹어본 분</span>들은<br class="u510"><span class="u510x">&nbsp;</span>이런 리뷰를 남겨주셨어요</div>
+                	<div class="ba1">
+	                	<div class="slideriview">
+							<a href="#">
+			                    <div class="review-info-row1e">
+			                        <div class="star-point-small-bg">
+			                            <div class="star-point-small" style="width:68px"></div>
+			                        </div>
+			                        <span class="date">$이름$ / $**대$ / $성별$ </span>
+			                    </div>
+			                    <div class="review-info-row2e">
+			                        <div class="img1wrap">
+			                            <img src="<c:url value="/resources/images/tsimages/destination-2.jpg"/>" style="display:none;" class="img1" alt="제품이미지">
+			                        </div>
+			                        <div class="right">
+			                            <div class="s-txt1">약 회사</div>
+			                            <div class="s-txt2">약 명</div>
+			                        </div>
+			                    </div>
+			
+			                    <div class="review-title1">효과 및 부작용</div>
+			                    <div class="review-content"> $버튼 클릭시 나오는 아이템 뿌리기$
+			                    <div class="review-title1 review-title2">영양제 후기</div>
+			                    <div class="review-content">$영양제 대한 후기 내용$</div>
+			                </a>
+			           </div>
+			          <!-- 
+			           <div class="slide">
+							<a href="#">
+			                    <div class="review-info-row1e">
+			                        <div class="star-point-small-bg">
+			                            <div class="star-point-small" style="width:68px"></div>
+			                        </div>
+			                        <span class="date">$이름$ / $**대$ / $성별$ </span>
+			                    </div>
+			                    <div class="review-info-row2e">
+			                        <div class="img1wrap">
+			                            <img src="<c:url value="/resources/images/tsimages/destination-1.jpg"/>" style="display:inline-block;" class="img1" alt="제품이미지">
+			                        </div>
+			                        <div class="right">
+			                            <div class="s-txt1">약 회사</div>
+			                            <div class="s-txt2">약 명</div>
+			                        </div>
+			                    </div>
+			
+			                    <div class="review-title1">효과 및 부작용</div>
+			                    <div class="review-content"> $버튼 클릭시 나오는 아이템 뿌리기$
+			                    <div class="review-title1 review-title2">영양제 후기</div>
+			                    <div class="review-content">$영양제 대한 후기 내용$</div>
+			                </a>
+			           </div>  -->
+			       </div>
+	            </div>
+	      </div> 
+           
+	    
+	    
+  	  <!--  *번째 다이브 목록 -->
 	  <jsp:include page="/WEB-INF/views/ListTable.jsp"/>
       
-      <!--  4번째 다이브 목록 -->
+      <!--  *번째 다이브 목록 -->
 	    <div class="m-5 " style="display:flex; justify-content: center;">
 	        <div class="slider1 ">
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>"></a></div>
@@ -490,7 +616,7 @@
             </div>
 		</aside>
 </section>
-
+</div><!-- id=main  -->
 <script>
 // The DOM element you wish to replace with Tagify
 var input = document.querySelector('input[name=postTag]');
@@ -523,20 +649,47 @@ $(document).ready(function(){
         pager : true,
     });
     
-    /* 처음 배너할 때 코드
+    /* 처음 배너할 때 코드 */
     $('.ba1').bxSlider({
-    	auto: true,
-        autoControls: true,
-        stopAutoOnClick: true,
-        pager: true,
-        nextSelector: '#slider-next',
-   	    prevSelector: '#slider-prev',
-   	    nextText: 'Onward →',
-        prevText: '← Go back'
-    });*/
+    	 slideWidth: 800,
+         minSlides: 2,
+         maxSlides: 2,
+         slideMargin: 1,
+         auto : true,
+         stopAutoOnClick : true,
+         pager : true,
+    });
 });
+// 비디오 전체화면
+function closeVideo() {
+	  document.getElementById("video-container").style.display = "none";
+	  document.getElementById("main").style.display = "block";
+	}
 
+	// Optional: 자동으로 메인 화면으로 전환하는 예시 시간으로 끄려면 이버튼 누르기
+	//setTimeout(closeVideo, 5000);
 
+//비디오 체크 해서 오늘 하루 그만 보기 버튼
+function handleCheckboxChange() {
+  var checkbox = document.getElementById("stop-video-checkbox");
+  if (checkbox.checked) {
+    closeVideo();
+    // 로컬 스토리지를 사용하여 설정을 저장합니다.
+    localStorage.setItem("stopVideoToday", "true");
+  }
+}
+
+document.getElementById("stop-video-checkbox").addEventListener("change", handleCheckboxChange);
+
+// 페이지 로드 시 체크 박스 상태를 확인하여 동영상을 보여줄지 결정합니다.
+document.addEventListener("DOMContentLoaded", function() {
+  var checkbox = document.getElementById("stop-video-checkbox");
+  var stopVideoToday = localStorage.getItem("stopVideoToday");
+  if (stopVideoToday === "true") {
+    checkbox.checked = true;
+    closeVideo();
+  }
+});
     
 
 

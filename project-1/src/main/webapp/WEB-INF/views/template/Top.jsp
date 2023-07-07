@@ -155,5 +155,3 @@
             </div>
         </nav>
     </div>
-
- <div id="main" style="margin-top: 10px;">
