@@ -6,6 +6,6 @@
 
 <mapper namespace="com.kosmo.springapp.nutrient.service.impl.NutrientSelectMapper">
 	<select id="selectName" resultType="String">
-		SELECT N_NAME FROM NUTRIENT
+		SELECT N_NAME FROM NUTRIENT WHERE N_NAME LIKE '%비타민%'
 	</select>
 </mapper>
