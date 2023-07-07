@@ -500,6 +500,11 @@ ul li input[type=checkbox]:checked ~ .acco {
     </div><!--container-->
 </body>
 </html>
+<!-- ajax로 클릭한 날짜 넘기기 -->
+<script>
+	console.log($('.js-day-name'))
+</script>
+
 <script>
 	//+아이콘에 속성 추가(모달,마진)
 	$('.fa-plus').each(function(){
@@ -574,6 +579,8 @@ ul li input[type=checkbox]:checked ~ .acco {
 	}
 	
 </script>
+
+
 <!-- bmi 계산 -->
  <script>
  	var bmi = document.querySelector('.c-bmi');

@@ -53,7 +53,7 @@
 		return months.map(date => formatter.format(date));
 	}
 	/**
-	 *
+	 * 클릭한 날짜 보여주는 메소드//////////////////////////////
 	 * @param {boolean} abbreviation
 	 * @returns {string}
 	 */
@@ -407,9 +407,10 @@
 	 * @param {object} container
 	 */
 	function drawTemplate(container) {
-		console.log(typeof container);
+		//console.log(typeof container);
 		let settings = container.data('settings');
 		let today = new Date();
+
 		container
 			.css({'width': '80%'})
 			.addClass('bg-white')
@@ -432,14 +433,14 @@
                 <div class="card mb-0">
                 	<div class="row">
 	                    <div class="col-10 text-center fw-bold py-2 js-day-name card-header"></div>
-	                    <a href="/project/Calendar.do"><i class="col-2 align-self-center fa-solid fa-plus"></i></a>
+	                    <a class="dateLink" href="/project/Calendar.do?date=clickDateView"><i class="col-2 align-self-center fa-solid fa-plus"></i></a>
                     </div>
                     <div class="js-events list-group list-group-flush"></div>
                 </div>
                 
             </div>
         `);
-
+		
 		let cellWidthHeight = container.width() / 8; // 7 days + calendar week
 		let fontSize = cellWidthHeight / 3;
 		let cellCss = {
@@ -667,6 +668,7 @@
 		/**
 		 * @return {void}
 		 */
+		var clickDateView;
 		function events() {
 			container
 				.on('click', '.js-event', function (e) {
@@ -714,6 +716,7 @@
 					drawEventList(container, events, date);
 					container.find('.js-collapse').show();
 					container.trigger('change-day', [date, events]);
+					clickDateView = container.find('.js-day-name').html(date.showDateFormatted()).html();
 				});
 		}
 
