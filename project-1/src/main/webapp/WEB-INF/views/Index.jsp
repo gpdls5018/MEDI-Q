@@ -16,6 +16,7 @@
 <!-- 슬라이드 반응형 jqery -->
 <script src="resources/tsfolder/js/jquery.sticky-kit.min.js"></script>
 
+
 <style>
 
  .btn-6c img {
@@ -316,35 +317,59 @@
 
 
 </style>
-			<!-- 상단 배너 출력 슬라이드 -->
-			<div id="video-container">
-			    <video id="video" autoplay muted>
-	                <source src="<c:url value="resources/video/intro1_.mp4"/>" type="video/mp4">
-			    </video>
-			    <div class="videologo">
-			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
-	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
-			    </div>
-			    <div id="video-controls">
-			      <button class="btn btn-warning" onclick="closeVideo()">Home<br/>가기</button>
-			    </div>
-			    <div id="video-label">
-		    	  <label for="stop-video-checkbox">
-			        동영상 오늘 하루 그만 보기
-			        <input type="checkbox" id="stop-video-checkbox">
-			      </label>
-			    </div>
-			</div>
-			  
-	 <div id="main" style="margin-top: 10px;">
-		  
-		<!-- 
-		<div class="container-fluid  mb-3 hero-header">
-            <video autoplay loop muted class="video-background" style="height: 340px; width: 1200px; margin-top: 100px;">
-                <source src="<c:url value="resources/video/intro1_.mp4"/>" type="video/mp4">
-            </video>
+  <section id="section-1">
+    <div class="content-slider">
+      <input type="radio" id="banner1" class="sec-1-input" name="banner" checked>
+      <input type="radio" id="banner2" class="sec-1-input" name="banner">
+      <input type="radio" id="banner3" class="sec-1-input" name="banner">
+      <input type="radio" id="banner4" class="sec-1-input" name="banner">
+      <div class="slider">
+        <div id="top-banner-1" class="banner">
+          <div class="banner-inner-wrapper">
+            <h2>Creative Template</h2>
+            <h1>Welcome<br>to MoGo</h1>
+            <div class="line"></div>
+            <div class="learn-more-button"><a href="#section-2">Learn More</a></div>
+          </div>
         </div>
-		 -->
+        <div id="top-banner-2" class="banner">
+          <div class="banner-inner-wrapper">
+            <h2>What We Do</h2>
+            <h1>Great<br>MoGo</h1>
+            <div class="line"></div>
+            <div class="learn-more-button"><a href="#section-4">Learn More</a></div>
+          </div>
+        </div>
+        <div id="top-banner-3" class="banner">
+          <div class="banner-inner-wrapper">
+            <h2>Here We Are</h2>
+            <h1>We Are<br>MoGo</h1>
+            <div class="line"></div>
+            <div class="learn-more-button"><a href="#section-6">Learn More</a></div>
+          </div>
+        </div>
+        <div id="top-banner-4" class="banner">
+          <div class="banner-inner-wrapper">
+            <h2>Our Contacts</h2>
+            <h1>Welcome<br>to MoGo</h1>
+            <div class="line"></div>
+            <div class="learn-more-button"><a href="#main-footer">Learn More</a></div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="controls">
+          <label for="banner1"><span class="progressbar"><span class="progressbar-fill"></span></span><span>01</span> Intro</label>
+          <label for="banner2"><span class="progressbar"><span class="progressbar-fill"></span></span><span>02</span> Work</label>
+          <label for="banner3"><span class="progressbar"><span class="progressbar-fill"></span></span><span>03</span> About</label>
+          <label for="banner4"><span class="progressbar"><span class="progressbar-fill"></span></span><span>04</span> Contacts</label>
+        </div>
+      </nav>
+    </div>
+  </section>
+		  
+
+              
         <!-- ocr 들어가면 사진 검색용 -->
 		<div class="ml-5 mt-2 ">
 	        <i class="bi bi-camera" hidden><a href="/modelOCR.do"> 사진으로 검색할래요 !!!</a></i>
@@ -353,7 +378,7 @@
 		<!-- 검색창 밑 검색버튼  -->
 		<div class="row justify-content-center">
 	        <div class="col-lg-10 text-center">
-	            <h1 class="mb-5" style="font-weight:bold;"><span style="color: #EF605D;">제품명,영양성분</span>을 검색해보세요.</h1>
+	            <h1 class="mb-5" style="font-weight:bold; color:black;"><span style="color: #EF605D;">제품명,영양성분</span>을 검색해보세요.</h1>
 	            <form class="position-relative w-75 mx-auto animated slideInDown d-flex input-wrapper" action="/hashtag.do" method="post" style="box-shadow: 0px 0px 5px gray; border-radius: 20px;">
 	                <input class="border-0 rounded-pill w-100 px-5 py-3 ps-4 pe-5 flex-grow-1" type="text" name="postTag" 
 	                placeholder="제품명 및 영양성분을 입력하세요" value="${not empty searchTags ? fn:replace(searchTags,'#',',#') : ''}">
@@ -439,68 +464,10 @@
 	    </div>
 	    
 	  <!--  3번째 다이브 목록 -->
-	  <div class="section section1-2e best-review">
-            <div class="content">
-                <div class="txt1">2023년 7월 Best Review</div>
-                <div class="txt2"><span>직접 먹어본 분</span>들은<br class="u510"><span class="u510x">&nbsp;</span>이런 리뷰를 남겨주셨어요</div>
-                	<div class="ba1">
-	                	<div class="slideriview">
-							<a href="#">
-			                    <div class="review-info-row1e">
-			                        <div class="star-point-small-bg">
-			                            <div class="star-point-small" style="width:68px"></div>
-			                        </div>
-			                        <span class="date">$이름$ / $**대$ / $성별$ </span>
-			                    </div>
-			                    <div class="review-info-row2e">
-			                        <div class="img1wrap">
-			                            <img src="<c:url value="/resources/images/tsimages/destination-2.jpg"/>" style="display:none;" class="img1" alt="제품이미지">
-			                        </div>
-			                        <div class="right">
-			                            <div class="s-txt1">약 회사</div>
-			                            <div class="s-txt2">약 명</div>
-			                        </div>
-			                    </div>
-			
-			                    <div class="review-title1">효과 및 부작용</div>
-			                    <div class="review-content"> $버튼 클릭시 나오는 아이템 뿌리기$
-			                    <div class="review-title1 review-title2">영양제 후기</div>
-			                    <div class="review-content">$영양제 대한 후기 내용$</div>
-			                </a>
-			           </div>
-			          <!-- 
-			           <div class="slide">
-							<a href="#">
-			                    <div class="review-info-row1e">
-			                        <div class="star-point-small-bg">
-			                            <div class="star-point-small" style="width:68px"></div>
-			                        </div>
-			                        <span class="date">$이름$ / $**대$ / $성별$ </span>
-			                    </div>
-			                    <div class="review-info-row2e">
-			                        <div class="img1wrap">
-			                            <img src="<c:url value="/resources/images/tsimages/destination-1.jpg"/>" style="display:inline-block;" class="img1" alt="제품이미지">
-			                        </div>
-			                        <div class="right">
-			                            <div class="s-txt1">약 회사</div>
-			                            <div class="s-txt2">약 명</div>
-			                        </div>
-			                    </div>
-			
-			                    <div class="review-title1">효과 및 부작용</div>
-			                    <div class="review-content"> $버튼 클릭시 나오는 아이템 뿌리기$
-			                    <div class="review-title1 review-title2">영양제 후기</div>
-			                    <div class="review-content">$영양제 대한 후기 내용$</div>
-			                </a>
-			           </div>  -->
-			       </div>
-	            </div>
-	      </div> 
-           
+	
 	    
 	    
   	  <!--  *번째 다이브 목록 -->
-	  <jsp:include page="/WEB-INF/views/ListTable.jsp"/>
       
       <!--  *번째 다이브 목록 -->
 	    <div class="m-5 " style="display:flex; justify-content: center;">
@@ -616,7 +583,10 @@
             </div>
 		</aside>
 </section>
-</div><!-- id=main  -->
+
+<!-- 매인 배너 슬라이드 -->
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/CSSRulePlugin3.min.js"></script>
 <script>
 // The DOM element you wish to replace with Tagify
 var input = document.querySelector('input[name=postTag]');
@@ -690,7 +660,164 @@ document.addEventListener("DOMContentLoaded", function() {
     closeVideo();
   }
 });
+
+//중앙 슬라이드 js
+// Slider(all Slides in a container)
+const slider = document.querySelector(".reviewslider")
+// All trails 
+const trail = document.querySelector(".reviewtrail").querySelectorAll("div")
+
+// Transform value
+let value = 0
+// trail index number
+let trailValue = 0
+// interval (Duration)
+let interval = 4000
+
+// Function to slide forward
+const slide = (condition) => {
+    // CLear interval
+    clearInterval(start)
+    // update value and trailValue
+    condition === "increase" ? initiateINC() : initiateDEC()
+    // move slide
+    move(value, trailValue)
+    // Restart Animation
+    animate()
+    // start interal for slides back 
+    start = setInterval(() => slide("increase"), interval);
+}
+
+// function for increase(forward, next) configuration
+const initiateINC = () => {
+    // Remove active from all trails
+    trail.forEach(cur => cur.classList.remove("active"))
+    // increase transform value
+    value === 80 ? value = 0 : value += 20
+    // update trailValue based on value
+    trailUpdate()
+}
+
+// function for decrease(backward, previous) configuration
+const initiateDEC = () => {
+     // Remove active from all trails
+    trail.forEach(cur => cur.classList.remove("active"))
+    // decrease transform value
+    value === 0 ? value = 80 : value -= 20
+     // update trailValue based on value
+    trailUpdate()
+}
+
+// function to transform slide 
+const move = (S, T) => {
+    // transform slider
+    slider.style.transform = `translateX(-${S}%)`
+    //add active class to the current trail
+    trail[T].classList.add("active")
+}
+
+const tl = gsap.timeline({defaults: {duration: 0.6, ease: "power2.inOut"}})
+tl.from(".bg", {x: "-100%", opacity: 0})
+  .from("p", {opacity: 0}, "-=0.3")
+  .from("h1", {opacity: 0, y: "30px"}, "-=0.3")
+  .from("button", {opacity: 0, y: "-40px"}, "-=0.8")
+
+// function to restart animation
+const animate = () => tl.restart()
+
+// function to update trailValue based on slide value
+const trailUpdate = () => {
+    if (value === 0) {
+        trailValue = 0
+    } else if (value === 20) {
+        trailValue = 1
+    } else if (value === 40) {
+        trailValue = 2
+    } else if (value === 60) {
+        trailValue = 3
+    } else {
+        trailValue = 4
+    }
+}   
+
+// Start interval for slides
+let start = setInterval(() => slide("increase"), interval)
+
+// Next  and  Previous button function (SVG icon with different classes)
+document.querySelectorAll("svg").forEach(cur => {
+    // Assign function based on the class Name("next" and "prev")
+    cur.addEventListener("click", () => cur.classList.contains("next") ? slide("increase") : slide("decrease"))
+})
+
+// function to slide when trail is clicked
+const clickCheck = (e) => {
+    // CLear interval
+    clearInterval(start)
+    // remove active class from all trails
+    trail.forEach(cur => cur.classList.remove("active"))
+    // Get selected trail
+    const check = e.target
+    // add active class
+    check.classList.add("active")
+
+    // Update slide value based on the selected trail
+    if(check.classList.contains("box1")) {
+        value = 0
+    } else if (check.classList.contains("box2")) {
+        value = 20
+    } else if (check.classList.contains("box3")) {
+        value = 40
+    } else if (check.classList.contains("box4")) {
+        value = 60
+    } else {
+        value = 80
+    }
+    // update trail based on value
+    trailUpdate()
+    // transfrom slide
+    move(value, trailValue)
+    // start animation
+    animate()
+    // start interval
+    start = setInterval(() => slide("increase"), interval)
+}
+
+// Add function to all trails
+trail.forEach(cur => cur.addEventListener("click", (ev) => clickCheck(ev)))
+
+// Mobile touch Slide Section
+const touchSlide = (() => {
+    let start, move, change, sliderWidth
+
+    // Do this on initial touch on screen
+    slider.addEventListener("touchstart", (e) => {
+        // get the touche position of X on the screen
+        start = e.touches[0].clientX
+        // (each slide with) the width of the slider container divided by the number of slides
+        sliderWidth = slider.clientWidth/trail.length
+    })
     
+    // Do this on touchDrag on screen
+    slider.addEventListener("touchmove", (e) => {
+        // prevent default function
+        e.preventDefault()
+        // get the touche position of X on the screen when dragging stops
+        move = e.touches[0].clientX
+        // Subtract initial position from end position and save to change variabla
+        change = start - move
+    })
+
+    const mobile = (e) => {
+        // if change is greater than a quarter of sliderWidth, next else Do NOTHING
+        change > (sliderWidth/4)  ? slide("increase") : null;
+        // if change * -1 is greater than a quarter of sliderWidth, prev else Do NOTHING
+        (change * -1) > (sliderWidth/4) ? slide("decrease") : null;
+        // reset all variable to 0
+        [start, move, change, sliderWidth] = [0,0,0,0]
+    }
+    // call mobile on touch end
+    slider.addEventListener("touchend", mobile)
+})()
 
 
 

@@ -155,3 +155,25 @@
             </div>
         </nav>
     </div>
+
+    <!-- 상단 배너 출력 슬라이드 -->
+			<div id="video-container">
+			    <video id="video" autoplay muted>
+	                <source src="<c:url value="resources/video/intro1_.mp4"/>" type="video/mp4">
+			    </video>
+			    <div class="videologo">
+			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+			    </div>
+			    <div id="video-controls">
+			      <button class="btn btn-warning" onclick="closeVideo()">Home<br/>가기</button>
+			    </div>
+			    <div id="video-label">
+		    	  <label for="stop-video-checkbox">
+			        동영상 오늘 하루 그만 보기
+			        <input type="checkbox" id="stop-video-checkbox">
+			      </label>
+			    </div>
+			</div>
+			  
+	 <div id="main" style="margin-top: 10px;">
