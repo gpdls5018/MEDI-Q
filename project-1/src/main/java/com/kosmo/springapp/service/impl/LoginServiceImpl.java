@@ -179,7 +179,6 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 				if("Y".equals(mapper.findMember(map).getProf_Img_Fl())) {
 					//기존 프로필이미지 있는경우(db 삭제 해야함, 업로드 폴더 이미지 삭제)
 					ProfileImageDTO info = mapper.findProfImg(id);
-					System.out.println("mapper.findProfImg(id)의 반환값 info: "+info);
 					FileUtils.deletes(new StringBuffer(info.getPi_Filename()+"."+info.getPi_Ext()), phisicalPath, ",");
 					mapper.deleteProfImg(id);
 				}

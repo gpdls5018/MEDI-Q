@@ -351,10 +351,151 @@ ul li input[type=checkbox]:checked ~ .acco {
 								<input class="bg-light form-control" style="height: 35px; width: 80px"> &nbsp;cm
 								<span class="ml-3">체중 </span>
 								<input class="bg-light form-control" style="height: 35px; width: 80px"> &nbsp;kg
-								<a class="btn btn-primary h-100 ml-3" href="javascript:bmi()">계산</a>
+								<a class="btn btn-primary h-100 ml-3" href="javascript:bmi()">BMI 계산</a>
+							</div>
+							<div>
+								<span>나의 체질량지수</span>
+								<span class="bg-danger">중등도비만</span>
 							</div>
 							<div id="result">
-								
+								<form class="c-bmi">
+            <div class="acco d-inline-flex align-items-center mb-5">
+                <span>키 </span>
+                <input class="bg-light form-control" name="h" style="height: 35px; width: 80px"> &nbsp;cm
+                <span class="ml-3">체중 </span>
+                <input class="bg-light form-control" name="w" style="height: 35px; width: 80px"> &nbsp;kg
+                <a class="btn btn-primary h-100 ml-3" href="javascript:result()">BMI 계산</a>
+            </div>
+
+            <div class="c-bmi__groups" readonly>
+              <input type="radio" id="bmi-g0" name="g" />
+              <label for="bmi-g0" name="l">저체중</label>
+              
+              <input type="radio" id="bmi-g1" name="g" checked />
+              <label for="bmi-g1" name="l">정상</label>
+              
+              <input type="radio" id="bmi-g2" name="g" />
+              <label for="bmi-g2" name="l">과체중</label>
+              
+              <input type="radio" id="bmi-g3" name="g" />
+              <label for="bmi-g3" name="l">경도비만</label>
+              
+              <input type="radio" id="bmi-g4" name="g" />
+              <label for="bmi-g4" name="l">중등도비만</label>
+            </div>
+            <div class="c-bmi__group-text font-weight-bold" name="text"></div>
+        </form>
+    </div><!--container-->
+    <style>
+        .c-bmi {
+  
+  border-radius: .25rem;
+  box-sizing: border-box;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  padding: 1rem;
+  max-width: 40rem;
+  width: 100%;
+}
+.c-bmi__groups {
+  border: 0;
+  flex-wrap: wrap;
+  font-size: x-small;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
+.c-bmi__groups label {
+  display: block;
+  padding: .5rem;
+  position: relative;
+}
+
+[for="bmi-g0"] { background-color: #4691e2; }
+[for="bmi-g1"] { background-color: #0cb764; }
+[for="bmi-g2"] { background-color: #febf18; }
+[for="bmi-g3"] { background-color: #fc8711; }
+[for="bmi-g4"] { background-color: #ff6455; }
+[for="bmi-g5"] { background-color: #cc1100; color: #fff; }
+
+.c-bmi__groups input:checked + label::before {
+  background-color: #fff;
+  clip-path: polygon(0% 0%,0% 100%,75.00% 50.00%);
+  content: '';
+  display: inline-block;
+  height: 1rem;
+  left: 0.5rem;
+  position: absolute;
+  top: 0.35rem;
+  width: 1rem;
+}
+.c-bmi__groups input:checked + label + div {
+  display: block;
+  flex: 0 0 100%;
+}
+.c-bmi__label {
+  display: block;
+  font-size: medium;
+  margin: 0 0 1rem 0;
+  position: relative;
+}
+.c-bmi__label output {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.c-bmi [type="radio"] { display: none; }
+
+/* RWD */
+@media (min-width: 600px) {
+  .c-bmi__groups { display: flex; }
+  .c-bmi__groups input:checked + label::before {
+    background-color: inherit;
+    clip-path: polygon(0% 0%,100% 0%,50% 100%);
+    left: 50%;
+    top: -1rem;
+    transform: translateX(-50%);
+    width: 1.5rem;
+  }
+  .c-bmi__groups label { flex: 1; }
+}
+    </style>
+    <script>
+        function result(){
+
+            const e=parseInt(bmi.h.value), //키 숫자타입으로 구하기
+                t=parseInt(bmi.w.value),//체중 숫자타입으로 구하기
+                i=parseFloat(t/(e/100)**2).toFixed(2),//bmi계산
+                h=[[0,18.49],[18.5,22.99],[23,24.99],[25,29.99],[30,100]]
+                    .findIndex(e=>
+                        e[0]<=i && i<e[1]
+                    );            
+            
+            bmi.g[h].checked=!0
+
+            /*
+            [표준체중 계산 방법]
+            - 남성: 키(m) × 키(m) × 22
+            - 여성: 키(m) × 키(m) × 21
+            */
+           m=((e/100)*(e/100)*22).toFixed(2) //남자 표준 체중
+           f=((e/100)*(e/100)*21).toFixed(2) //여자 표준 체중
+           console.log(m,f)
+           console.log('남자',((m-t)>=0?"+"+(m-t):(m-t))+'kg')
+           console.log('여자',f-t+'kg')
+           //성별 먼저 확인하기
+           if(h!=1){
+            console.log('당신의 적정 체중은'+(m-t)+'kg 입니다');
+            bmi.lastElementChild.innerHTML='당신의 BMI 지수는 <span class="text-info">'+i+'</span>이고<br/>적정 체중은 <span class="text-info">'+((m-t)>=0?"+"+(m-t).toFixed(2):(m-t).toFixed(2))+'kg</span> 입니다';
+           }
+           else{
+            bmi.lastElementChild.innerHTML='적정입니다'
+           }
+        }
+        const bmi = document.querySelector('.c-bmi')
+        bmi.addEventListener('submit', result);
+        bmi.dispatchEvent(new Event('input'));
+    </script>
 							</div>
 						</li>
 					</ul>
@@ -363,6 +504,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 			</div>
 	    </div>
 	    
+	    <!-- 약복용 모달 시작 -->
 	    <form action="#">
 		    <div class="modal fade" id="myModal">
 		    	<div class="modal-dialog modal-dialog-centered">

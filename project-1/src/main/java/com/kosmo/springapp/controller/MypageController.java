@@ -91,7 +91,6 @@ public class MypageController {
 	public String profImgEdit(ProfileImageDTO dto, MemberDTO member, Model model) throws IllegalStateException, IOException {
 		
 		ProfileImageDTO info = loginService.editProfImg(dto);
-		System.out.println("info: "+info);
 		int insertFlag = loginService.insertProfImg(info);
 		
 		if(insertFlag==1) {
