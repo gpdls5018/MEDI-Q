@@ -11,6 +11,9 @@ function closeNav() {
   document.getElementById("main").style.marginLeft = "0";
 }
 
+window.onload = function() {
+  closeNav();
+};
 
 
 
