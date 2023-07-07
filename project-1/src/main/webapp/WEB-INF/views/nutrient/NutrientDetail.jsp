@@ -104,63 +104,6 @@
             background-color: #bbb;
         }
 
-        h2, p {
-            text-align: center;
-        }
-        
-        /*성민이 테이블*/
-        table.type09 {
-            border-collapse: collapse;
-            text-align: left;
-            line-height: 1.5;
-
-        }
-        table.type09 thead th {
-            padding: 10px;
-            vertical-align: top;
-            border-bottom: 3px solid rgb(253, 186, 41);
-        }
-        table.type09 tbody th {
-            width: 150px;
-            padding: 10px;
-            font-weight: bold;
-            vertical-align: top;
-            border-bottom: 1px solid #ccc;
-            background: #f3f6f7;
-        }
-        table.type09 td {
-            width: 850px;
-            padding: 30px;
-            vertical-align: top;
-            border-bottom: 1px solid #ccc;
-        }
-        .tab-content {
-            height : 800px;
-        }
-        .content-link {
-            width: 40%;
-            background-color : #9fcaff;
-            border-radius : 5%;
-        }
-        
-        .bi-star-fill{
-            font-size: 30px;
-            line-height: 30px;
-            color: #fff236;;
-        }
-        .bi-star {
-            font-size: 30px;
-            line-height: 30px;
-        }
-        .bi-star,.bi-star-fill:hover {
-            font-size: 35px;      
-        }
-
-        th {
-            text-align: center;
-        }
-
-        
         /*프로그레스 바*/
         .progress {
             margin-top: 5px;
@@ -197,6 +140,28 @@
                 width: 50%; /* 성분에 따라 맞춰야함 */
             }
         }
+        
+        /* 이미지 추가 */
+		.image {
+			position: relative;
+			display: flex;
+	        justify-content: center;
+	        align-items: center;
+			
+		}
+		
+		.bj-img {
+			border-radius: 10px 10px 10px 10px;
+		}
+		
+		
+		.image .text {
+			position: absolute;
+			top: 40px;
+		 	font-weight: bold;
+			color: black;
+		}
+        
 
 
     </style>
@@ -220,75 +185,79 @@
             </ul>
         </div>
         <div class="pt-2">
-            <div id="popular" class="tab active border-0">
-                <!-- 비타민에 해당하는 상자 내용 -->
-                <h2>비타민 A</h2>
-                <div class="row no-gutters">
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="detailTable">
-                            <div>
-                                <table class="type09">
-                                    <thead>
-                                        <tr>
-                                            <th scope="cols"></th>
-                                            <th scope="cols"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row" style="vertical-align: middle;">관련 건강고민</th>
-                                            <td><kbd>노화 & 항산화</kbd>, <kbd>눈 건강</kbd>, <kbd>간 건강</kbd>, <kbd>장 건강</kbd>, <kbd>탈모 & 손톱 건강</kbd>, <kbd>피부 건강</kbd></td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <th scope="row" style="vertical-align: middle;">상세설명</th>
-                                            <td>· 세포의 성장과 재생에 꼭 필요한 영양소에요.<br/>
-                                                · 피부와 점막을 건강하게 유지하는데 중요해요.<br/>
-                                                · 눈에서 빛을 흡수하는 세포를 만드는데 필요해요.</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row" style="vertical-align: middle;">섭취량</th>
-                                            <td>
-                                                남성 권장/상한 섭취량<br/>
-                                                <div class="progress w-75 progress-bar text-danger mt-3" > 
-                                                    <div class="progress-bar-inner"></div>
-                                                    <div class="progress-text"></div>
-                                                </div>
-
-
-                                            </td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <th scope="row" style="vertical-align: middle;">결핍시 증상</th>
-                                            <td>야맹증, 성장장애, 피부건조증 등</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row" style="vertical-align: middle;">주의사항</th>
-                                            <td>· 장기간 고용량 복용시 흡연자 폐암 위험이 증가할 수 있음<br/>
-                                                · 임신 중 과다 복용시 기형 발생 위험 있음<br/>
-                                                · 고용량 섭취하면 간 기능에 영향을 줄 수 있으므로 전문가와 상담 필요</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row" style="vertical-align: middle;">섭취 음식</th>
-                                            <td>토마토, 당근, 호박 등에서 섭취할 수 있음</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row" style="vertical-align: middle;">추천 영양제</th>
-                                            <td>
-                                                <div>영양제1, 영양제2, 영양제3</div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+            <div id="popular" class="tab active border-0 text-center">
+                <!-- 이미지 -->
+                <div class="image mt-2">
+	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
+	                <div class="text" style="color: black; font-size: 40px;">
+		           		<b>비타민 A</b><br/>
+                	</div>
+    			</div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div id="outer" class="d-flex justify-content-center w-75 mt-3" style="border: #ddd solid; border-radius: 10px;">
+                    <div id="inner" class="w-75">
+                        <div class="mt-4">
+                            <h4>관련 건강고민</h4>
+                            <hr class="bg-warning">
+                            <p>
+                                <kbd>노화 & 항산화</kbd>, <kbd>눈 건강</kbd>, <kbd>간 건강</kbd>, <kbd>장 건강</kbd>, <kbd>탈모 & 손톱 건강</kbd>, <kbd>피부 건강</kbd>
+                            </p>
+                        </div>
+                        <div class="mt-5">
+                            <h4>상세설명</h4>
+                            <hr class="bg-warning">
+                            <p>
+                                · 세포의 성장과 재생에 꼭 필요한 영양소에요.<br/>
+                                · 피부와 점막을 건강하게 유지하는데 중요해요.<br/>
+                                · 눈에서 빛을 흡수하는 세포를 만드는데 필요해요.                        
+                            </p>
+                        </div>
+                        <div class="mt-5">
+                            <h4>섭취량</h4>
+                            <hr class="bg-warning">
+                            <p>
+                                남성 권장/상한 섭취량<br/>
+                                <div class="progress w-75 progress-bar text-danger mt-3" > 
+                                    <div class="progress-bar-inner"></div>
+                                    <div class="progress-text"></div>
+                                </div>                 
+                            </p>
+                        </div>
+                        <div class="mt-5">
+                            <h4>결핍시 증상</h4>
+                            <hr class="bg-warning">
+                            <p>
+                                야맹증, 성장장애, 피부건조증 등                      
+                            </p>
+                        </div>
+                        <div class="mt-5">
+                            <h4>주의사항</h4>
+                            <hr class="bg-warning">
+                            <p>
+                                · 장기간 고용량 복용시 흡연자 폐암 위험이 증가할 수 있음<br/>
+                                · 임신 중 과다 복용시 기형 발생 위험 있음<br/>
+                                · 고용량 섭취하면 간 기능에 영향을 줄 수 있으므로 전문가와 상담 필요                   
+                            </p>
+                        </div>
+                        <div class="mt-5">
+                            <h4>섭취 음식</h4>
+                            <hr class="bg-warning">
+                            <p>
+                                토마토, 당근, 호박 등에서 섭취할 수 있음             
+                            </p>
+                        </div>
+                        <div class="mt-5">
+                            <h4>추천 영양제</h4>
+                            <hr class="bg-warning">
+                            <p>
+                                <div>영양제1, 영양제2, 영양제3</div>                   
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
     <script>
 
