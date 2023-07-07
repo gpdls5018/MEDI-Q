@@ -158,7 +158,7 @@
     <!-- 상단 배너 출력 슬라이드 -->
 			<div id="video-container">
 			    <video id="video" autoplay muted>
-	                <source src="<c:url value="resources/video/intro1_.mp4"/>" type="video/mp4">
+	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
 			    <div class="videologo">
 			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
