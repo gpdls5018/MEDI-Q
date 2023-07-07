@@ -45,6 +45,11 @@
 	body {
 	    font-family:'동글', 산세리프;
 	}
+	span i:hover {
+	  cursor: pointer;
+	  border: 2px solid gray;
+	  border-radius: 5px;
+	}
 </style>
      
     <title>TemplateApplyingModule.jsp</title>
