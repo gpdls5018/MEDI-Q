@@ -91,7 +91,7 @@ public class MypageController {
 	public String profImgEdit(ProfileImageDTO dto, MemberDTO member, Model model) throws IllegalStateException, IOException {
 		
 		ProfileImageDTO info = loginService.editProfImg(dto);
-
+		System.out.println("info: "+info);
 		int insertFlag = loginService.insertProfImg(info);
 		
 		if(insertFlag==1) {
@@ -109,7 +109,7 @@ public class MypageController {
 	public String profImgEditDefault(ProfileImageDTO dto, MemberDTO member, HttpServletRequest req, Model model) throws IllegalStateException, IOException {
 		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
 		dto.setId(id);
-		int deleteFlag = loginService.editProfImgDefault(dto,req);
+		int deleteFlag = loginService.editProfImgDefault(dto);
 		
 		if(deleteFlag==1) {
 			member.setProf_Img_Fl("N");
