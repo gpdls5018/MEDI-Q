@@ -56,7 +56,7 @@
 	</insert>
 	
 	<update id="updateProfImg" parameterType="memberDto">
-		UPDATE MEMBER SET PROF_IMG_FL=#{prof_Img_Fl}
+		UPDATE MEMBER SET PROF_IMG_FL=#{prof_Img_Fl} WHERE ID=#{id}
 	</update>
 	
 	<select id="findProfImg" parameterType="String" resultType="profImgDto">
