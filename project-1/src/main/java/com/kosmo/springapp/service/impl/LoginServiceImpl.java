@@ -156,11 +156,11 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 	private String SaveDirectory;	
 	
 	//프로필 이미지 수정(기본 이미지 X)
-	public ProfileImageDTO editProfImg(ProfileImageDTO dto, HttpServletRequest req) throws IllegalStateException, IOException {
+	public ProfileImageDTO editProfImg(ProfileImageDTO dto) throws IllegalStateException, IOException {
 		String newFilename="";
 		
 		Resource resource = new ClassPathResource(SaveDirectory);
-		String phisicalPath = resource.getFile().getAbsolutePath();
+		String phisicalPath = resource.getFile().getAbsolutePath()+"\\profImg";
 		
 		try {
 			File uploadFiles = new File(phisicalPath);
@@ -172,6 +172,18 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 			MultipartFile imgFile = dto.getFile();
 			
 			if(imgFile != null) {//변경 이미지 선택 시
+				String id = dto.getId();
+				
+				Map map = new HashMap<>();
+				map.put("id", id);
+				if("Y".equals(mapper.findMember(map).getProf_Img_Fl())) {
+					//기존 프로필이미지 있는경우(db 삭제 해야함, 업로드 폴더 이미지 삭제)
+					ProfileImageDTO info = mapper.findProfImg(id);
+					System.out.println("mapper.findProfImg(id)의 반환값 info: "+info);
+					FileUtils.deletes(new StringBuffer(info.getPi_Filename()+"."+info.getPi_Ext()), phisicalPath, ",");
+					mapper.deleteProfImg(id);
+				}
+				
 				newFilename = FileUtils.getNewFileName(phisicalPath, imgFile.getOriginalFilename());
 				File file = new File(phisicalPath+File.separator+newFilename);
 				imgFile.transferTo(file);//업로드 폴더에 이미지 업로드
@@ -191,19 +203,18 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 		return null;
 	}
 	
-
-	public int editProfImgDefault(ProfileImageDTO dto, HttpServletRequest req) throws IOException {
+	//기본이미지로 수정 시
+	public int editProfImgDefault(ProfileImageDTO dto) throws IOException {
 		int deleteFlag = 0;
-		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
+		String id = dto.getId();
 		Map map = new HashMap<>();
 		map.put("id",id);
-
 		ProfileImageDTO info = mapper.findProfImg(id);
 
 		if("Y".equals(mapper.findMember(map).getProf_Img_Fl())) {
 			//기존에 파일이 있는 경우
 			Resource resource = new ClassPathResource(SaveDirectory);
-			String phisicalPath = resource.getFile().getAbsolutePath();
+			String phisicalPath = resource.getFile().getAbsolutePath()+"\\profImg";
 			
 			FileUtils.deletes(new StringBuffer(info.getPi_Filename()+"."+info.getPi_Ext()), phisicalPath, ",");
 			deleteFlag = mapper.deleteProfImg(id);

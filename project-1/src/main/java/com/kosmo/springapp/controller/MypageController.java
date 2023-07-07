@@ -88,10 +88,10 @@ public class MypageController {
 	
 	//이미지 수정 클릭 시(파일선택)
 	@PostMapping(value = "/ProfImgEdit.do", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public String profImgEdit(ProfileImageDTO dto, MemberDTO member, HttpServletRequest req, Model model) throws IllegalStateException, IOException {
+	public String profImgEdit(ProfileImageDTO dto, MemberDTO member, Model model) throws IllegalStateException, IOException {
 		
-		ProfileImageDTO info = loginService.editProfImg(dto,req);
-
+		ProfileImageDTO info = loginService.editProfImg(dto);
+		System.out.println("info: "+info);
 		int insertFlag = loginService.insertProfImg(info);
 		
 		if(insertFlag==1) {
@@ -107,9 +107,13 @@ public class MypageController {
 	//이미지 수정 클릭 시(기본이미지)
 	@GetMapping("/ProfImgEdit.do")
 	public String profImgEditDefault(ProfileImageDTO dto, MemberDTO member, HttpServletRequest req, Model model) throws IllegalStateException, IOException {
-		int deleteFlag = loginService.editProfImgDefault(dto,req);
+		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
+		dto.setId(id);
+		int deleteFlag = loginService.editProfImgDefault(dto);
+		
 		if(deleteFlag==1) {
 			member.setProf_Img_Fl("N");
+			member.setId(id);
 			loginService.updateProfImg(member);
 		}
 		
