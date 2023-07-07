@@ -11,5 +11,5 @@
     </ul>
     
 </footer>
-</div><!-- id=main  -->
+
 </html>
