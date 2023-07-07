@@ -523,6 +523,7 @@ $(document).ready(function(){
         pager : true,
     });
     
+    /* 처음 배너할 때 코드
     $('.ba1').bxSlider({
     	auto: true,
         autoControls: true,
@@ -532,7 +533,7 @@ $(document).ready(function(){
    	    prevSelector: '#slider-prev',
    	    nextText: 'Onward →',
         prevText: '← Go back'
-    });
+    });*/
 });
 
 
