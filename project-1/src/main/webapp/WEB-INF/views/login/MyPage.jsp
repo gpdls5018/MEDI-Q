@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- MyPage.jsp -->
 <jsp:include page="/WEB-INF/views/template/Top.jsp" />
+<script src="<c:url value="/resources/dist/jquery.bs.calendar.js"/>" ></script>
 <!-- 로그인 후에만 들어올 수 있도록 -->
 <style>
 	a:hover{
