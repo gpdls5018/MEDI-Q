@@ -317,6 +317,29 @@
 
 
 </style>
+
+ 	<!-- 상단 배너 출력 슬라이드 -->
+			<div id="video-container">
+			    <video id="video" autoplay muted>
+	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
+			    </video>
+			    <div class="videologo">
+			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+			    </div>
+			    <div id="video-controls">
+			      <button class="btn btn-warning" onclick="closeVideo()">Home<br/>가기</button>
+			    </div>
+			    <div id="video-label">
+		    	  <label for="stop-video-checkbox">
+			        동영상 오늘 하루 그만 보기
+			        <input type="checkbox" id="stop-video-checkbox">
+			      </label>
+			    </div>
+			</div>
+			  
+<div id="tsmain" style="margin-top: 10px;">
+	 
   <section id="section-119">
         <div class="content-slider">
           <input type="radio" id="banner1" class="sec-1-input" name="banner" checked>
@@ -619,7 +642,7 @@ $(document).ready(function(){
         pager : true,
     });
     
-    /* 처음 배너할 때 코드 */
+    /* 처음 배너할 때 코드
     $('.ba1').bxSlider({
     	 slideWidth: 800,
          minSlides: 2,
@@ -628,40 +651,84 @@ $(document).ready(function(){
          auto : true,
          stopAutoOnClick : true,
          pager : true,
-    });
+    }); */
 });
-// 비디오 전체화면
+/*
 function closeVideo() {
 	  document.getElementById("video-container").style.display = "none";
-	  document.getElementById("main").style.display = "block";
+	  document.getElementById("tsmain").style.display = "block";
 	}
 
 	// Optional: 자동으로 메인 화면으로 전환하는 예시 시간으로 끄려면 이버튼 누르기
 	//setTimeout(closeVideo, 5000);
 
-	/*
-//비디오 체크 해서 오늘 하루 그만 보기 버튼
-function handleCheckboxChange() {
-  var checkbox = document.getElementById("stop-video-checkbox");
-  if (checkbox.checked) {
-    closeVideo();
-    // 로컬 스토리지를 사용하여 설정을 저장합니다.
-    localStorage.setItem("stopVideoToday", "true");
-  }
-}
 
-document.getElementById("stop-video-checkbox").addEventListener("change", handleCheckboxChange);
+//비디오 체크 해서 그만 보기 버튼
+function closeVideo() {
+    var videoContainer = document.getElementById("video-container");
+    var stopVideoCheckbox = document.getElementById("stop-video-checkbox");
+  
+    if (stopVideoCheckbox.checked) {
+        videoContainer.style.display = "none";
+        localStorage.setItem("stopVideoToday", "true");
+    }
+}
 
 // 페이지 로드 시 체크 박스 상태를 확인하여 동영상을 보여줄지 결정합니다.
 document.addEventListener("DOMContentLoaded", function() {
-  var checkbox = document.getElementById("stop-video-checkbox");
-  var stopVideoToday = localStorage.getItem("stopVideoToday");
-  if (stopVideoToday === "true") {
-    checkbox.checked = true;
-    closeVideo();
-  }
+    var checkbox = document.getElementById("stop-video-checkbox");
+    var stopVideoToday = localStorage.getItem("stopVideoToday");
+    if (stopVideoToday === "true") {
+        checkbox.checked = true;
+        closeVideo();
+    }
 });*/
 
+
+//비디오 히든 로직
+document.addEventListener("DOMContentLoaded", function() {
+	  var checkbox = document.getElementById("stop-video-checkbox");
+	  var videoContainer = document.getElementById("video-container");
+
+	  // 저장된 값 가져오기
+	  var hideUntilDate = localStorage.getItem("hideUntilDate");
+
+	  // 저장된 값이 있고, 현재 날짜보다 크면 동영상 숨김
+	  if (hideUntilDate && hideUntilDate >= getCurrentDate()) {
+	    videoContainer.style.display = "none";
+	    checkbox.checked = true;
+	  }
+
+	  checkbox.addEventListener("change", function() {
+	    if (checkbox.checked) {
+	      // 하루 동안 동영상 숨기기
+	      var nextDay = new Date();
+	      nextDay.setDate(nextDay.getDate() + 1);
+	      var hideUntilDate = formatDate(nextDay);
+	      localStorage.setItem("hideUntilDate", hideUntilDate);
+	      videoContainer.style.display = "none";
+	    } else {
+	      // 체크 해제 시 동영상 표시
+	      localStorage.removeItem("hideUntilDate");
+	      videoContainer.style.display = "block";
+	    }
+	  });
+
+	  // 현재 날짜 반환하는 함수
+	  function getCurrentDate() {
+	    var now = new Date();
+	    return formatDate(now);
+	  }
+
+	  // 날짜를 "YYYY-MM-DD" 형식으로 변환하는 함수
+	  function formatDate(date) {
+	    var year = date.getFullYear();
+	    var month = ("0" + (date.getMonth() + 1)).slice(-2);
+	    var day = ("0" + date.getDate()).slice(-2);
+	    return year + "-" + month + "-" + day;
+	  }
+	});
+	
 /*배너 영상돌리기*/
 function bannerSwitcher() {
     next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
@@ -683,5 +750,6 @@ $(document).ready(function() {
   $('.tsidebar').stick_in_parent();
 });
 </script>
+</div><!-- id=main  -->
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
     

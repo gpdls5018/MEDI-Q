@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HealthIndexController {
 
 	@GetMapping("healthselect.do")
-	public String HealthIndex(Model model,Map map,@RequestParam String issue,@RequestParam String formalation) {
-		map.put("issue", issue);
+	public String HealthIndex(Model model,Map map,@RequestParam int hno,@RequestParam String formalation) {
+		map.put("hno", hno);
 		map.put("formalation", formalation);
 		model.addAttribute("info", map);
 		return "/analyze/drugsearch";
