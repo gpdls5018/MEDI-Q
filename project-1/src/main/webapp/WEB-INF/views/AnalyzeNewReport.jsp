@@ -221,19 +221,19 @@
         <div class="modal-body ">
           <ul class="list-unstyled d-flex justify-content-around">
             <li class="food-li" style="text-align: center;">
-              <img src="./images/No_IMG.jpeg" style="width:150px;height:150px;border-radius: 15px;">
+              <img src="<c:url value="resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
               <div style="font-size: 15px;color: #939393;width:150px;">루테인오메가플러스D&E</div>
             </li>
             <li class="food-li" style="text-align: center;">
-              <img src="./images/No_IMG.jpeg" style="width:150px;height:150px;border-radius: 15px;">
+              <img src="<c:url value="resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
               <div style="font-size: 15px;color: #939393;width:150px;">노바락토 알파 포스트바이오틱스</div>
             </li>
             <li class="food-li" style="text-align: center;">
-              <img src="./images/No_IMG.jpeg" style="width:150px;height:150px;border-radius: 15px;">
+              <img src="<c:url value="resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
               <div style="font-size: 15px;color: #939393;width:150px;">포텐티</div>
             </li>
             <li class="food-li" style="text-align: center;">
-              <img src="./images/No_IMG.jpeg" style="width:150px;height:150px;border-radius: 15px;">
+              <img src="<c:url value="resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
               <div style="font-size: 15px;color: #939393;width:150px;">이뮨젤리</div>
             </li>
           </ul>
