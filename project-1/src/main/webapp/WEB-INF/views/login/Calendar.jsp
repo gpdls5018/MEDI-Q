@@ -4,7 +4,7 @@
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <script src="<c:url value="/resources/dist/jquery.bs.calendar.js"/>" ></script>
 <style>
-	img{
+	.acco img{
 		width: 40px;
 		margin-left: 5px;
 		cursor: pointer;
