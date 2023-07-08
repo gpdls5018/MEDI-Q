@@ -7,4 +7,7 @@
  	<select id="findNutrientByName" parameterType="String" resultType="NutrientDTO" >
             SELECT * FROM nutrient WHERE N_SUBNAME = '${str}'
  	</select>
+ 	<select id="findHealthIssueByNo" parameterType="int" resultType="HealthIssueDTO">
+ 		SELECT * FROM HEALTHISSUE WHERE h_no=#{hno}
+	</select>
 </mapper>

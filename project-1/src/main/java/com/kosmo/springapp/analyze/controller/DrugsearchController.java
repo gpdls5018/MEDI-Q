@@ -18,7 +18,7 @@ public class DrugsearchController {
 	MainPageServiceImpl mainPageService;
 	
 	@GetMapping("drugsearch.do")
-	public String DrugSearch(Model model,Map map,@RequestParam String search,@RequestParam String issue,@RequestParam String formalation) {
+	public String DrugSearch(Model model,Map map,@RequestParam String search,@RequestParam int hno,@RequestParam String formalation) {
 		map.put("search",search);
 		FunctionalFoodListDTO listOne = mainPageService.selectFoodOneByNo(map);
 		model.addAttribute("listOne",listOne);

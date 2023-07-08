@@ -16,6 +16,7 @@ import lombok.Setter;
 @Alias("healthIssueDTO")
 public class HealthIssueDTO {
 
+	private String H_NO;
 	private String H_NAME;
 	private String H_NUTRIENT;
 	private String H_DESC;
