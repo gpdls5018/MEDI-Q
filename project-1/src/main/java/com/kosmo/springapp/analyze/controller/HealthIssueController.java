@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HealthIssueController {
 
 	@GetMapping("issue.do")
-	public String healthIssue(Model model,@RequestParam String issue) {
-		model.addAttribute("issue", issue);
+	public String healthIssue(Model model,@RequestParam int hno) {
+		model.addAttribute("hno", hno);
 		return "/analyze/healthindex";
 	}
 }
