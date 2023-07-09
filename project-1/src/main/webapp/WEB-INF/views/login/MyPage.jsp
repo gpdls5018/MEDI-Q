@@ -71,7 +71,7 @@
 					${info.id }
 				</span>
 				<a type="button" class="btn btn-outline-info align-self-center mx-2" href="javascript:viewCalendar()">건강기록</a>
-				<a type="button" class="btn btn-outline-info align-self-center" href="<c:url value="/loadHealthInfoByOCR.do"/>">건강검진정보 불러오기</a>
+				<a type="button" class="btn btn-outline-info align-self-center" href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>">건강검진정보 불러오기</a>
 				<input type="button" id="imgEdit" value="이미지 수정" class="btn btn-outline-info align-self-center mx-2" data-target="#modalView" data-backdrop="static"/>
 				<a type="button" href="" class="btn btn-outline-info align-self-center" data-target="#modalView" data-backdrop="static">회원정보 수정</a>
 			</div>
