@@ -108,12 +108,14 @@
 		}
 		.maints {
 			display: inline-block;
-			width: 82%;
+			width: 75%;
 			vertical-align: top;
+			margin-right: 20px;
 		}
 		.tsidebar {
 			display: inline-block;
-			width: 16%;
+			width: 20%;
+			margin-left: 20px;
 			vertical-align: top;
 		}
 		.fixedsticky {
@@ -318,7 +320,7 @@
 
 </style>
 
- 	<!-- 상단 배너 출력 슬라이드 -->
+ 	<!-- 처음 인덱스 킬때 전체화면 비디오 출력 -->
 			<div id="video-container">
 			    <video id="video" autoplay muted>
 	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
@@ -337,7 +339,8 @@
 			      </label>
 			    </div>
 			</div>
-			  
+
+<!-- 메인 바디 부분 -->
 <div id="tsmain" style="margin-top: 10px;">
 	 
   <section id="section-119">
@@ -348,44 +351,40 @@
           <input type="radio" id="banner4" class="sec-1-input" name="banner">
           <div class="slider">
             <div id="top-banner-1" class="banner">
-              <div class="banner-inner-wrapper">
-                <h2>Creative Template</h2>
-                <h1>Welcome<br>to MoGo</h1>
+              <div class="banner-inner-wrapper" >
+                <h1>글자입력</h1>
                 <div class="line"></div>
-                <div class="learn-more-button"><a href="#">까사미아</a></div>
+                <div class="learn-more-button"><a href="#">홈으로</a></div>
               </div>
             </div>
             <div id="top-banner-2" class="banner">
-              <div class="banner-inner-wrapper">
-                <h2>What We Do</h2>
-                <h1>Great<br>MoGo</h1>
+              <div class="banner-inner-wrapper" id="tsbaimg2">
+                 <h1>글자</h1>
                 <div class="line"></div>
-                <div class="learn-more-button"><a href="#">윤셰프</a></div>
+                <div class="learn-more-button"><a href="#">건강 및 분석하기</a></div>
               </div>
             </div>
-            <div id="top-banner-3" class="banner">
+            <div id="top-banner-3" class="banner" id="tsbaimg3">
               <div class="banner-inner-wrapper">
-                <h2>Here We Are</h2>
-                <h1>We Are<br>MoGo</h1>
+                 <h1>글자</h1>
                 <div class="line"></div>
-                <div class="learn-more-button"><a href="#">KFC</a></div>
+                <div class="learn-more-button"><a href="#">사진으로 약 검색하기</a></div>
               </div>
             </div>
-            <div id="top-banner-4" class="banner">
+            <div id="top-banner-4" class="banner" id="tsbaimg4">
               <div class="banner-inner-wrapper">
-                <h2>Our Contacts</h2>
-                <h1>Welcome<br>to MoGo</h1>
+                 <h1>졸리닭</h1>
                 <div class="line"></div>
-                <div class="learn-more-button"><a href="#">버거킹</a></div>
+                <div class="learn-more-button"><a href="#">건강검진</a></div>
               </div>
             </div>
           </div>
           <nav>
             <div class="controls">
-              <label for="banner1"><span class="progressbar"><span class="progressbar-fill"></span></span><span>01</span> Intro</label>
-              <label for="banner2"><span class="progressbar"><span class="progressbar-fill"></span></span><span>02</span> Work</label>
-              <label for="banner3"><span class="progressbar"><span class="progressbar-fill"></span></span><span>03</span> About</label>
-              <label for="banner4"><span class="progressbar"><span class="progressbar-fill"></span></span><span>04</span> Contacts</label>
+              <label for="banner1"><span class="progressbar"><span class="progressbar-fill"></span></span><p>홈페이지</p></label>
+              <label for="banner2"><span class="progressbar"><span class="progressbar-fill"></span></span><p>건강 및 분석</p></label>
+              <label for="banner3"><span class="progressbar"><span class="progressbar-fill"></span></span><p>사진으로 약 검색하기</p></label>
+              <label for="banner4"><span class="progressbar"><span class="progressbar-fill"></span></span><p>건강검진</p></label>
             </div>
           </nav>
         </div>
@@ -399,7 +398,7 @@
 	    </div>
 	
 		<!-- 검색창 밑 검색버튼  -->
-		<div class="row justify-content-center">
+		<div class="row justify-content-center mt-5 pt-5">
 	        <div class="col-lg-10 text-center">
 	            <h1 class="mb-5" style="font-weight:bold; color:black;"><span style="color: #EF605D;">제품명,영양성분</span>을 검색해보세요.</h1>
 	            <form class="position-relative w-75 mx-auto animated slideInDown d-flex input-wrapper" action="/hashtag.do" method="post" style="box-shadow: 0px 0px 5px gray; border-radius: 20px;">
@@ -505,6 +504,7 @@
 	</article>
 		<!-- 오른쪽 슬라이드 -->
 		<aside class="tsidebar fixedsticky">
+			<!--  로그인 목록 창
 			<div class="login-section justify-content-center">
 		        <p style="text-align: center; font-weight:bold; font-size:13px;"><span style="color:#EF605D">Madi-Q</span>를 더 안전하고<br/> 편리하게 이용하세요</p>
 		        <a href="<c:url value="/project/Login.do"/>" style="text-decoration:none;">
@@ -516,7 +516,8 @@
 		        	<a href="<c:url value="/project/Join.do" />" class="px-2 py-2 mr-md-1 text-dark"><strong style="color:#606060; font-weight:bold; text-decoration: underline;">회원가입</strong></a>
 		        </div>
 		    </div>
-            <div class="sidebar-item">
+		     -->
+            <div class="sidebar-item pt-5 mt-5">
             	<img src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
             	<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
             	<br/>
@@ -571,9 +572,10 @@
                         	</p>
                         </div>
                     </li>
+                    <!--  랭킹 3개만 출력하기 위해서 잠시 주석
                     <li>
                         <div class="image d-flex">
-                            <!-- <p style="position: relative; text-align:top; left:5px; width:30px; height:30px; color:gray; font-weight:bold;">4위</p>-->
+                             <p style="position: relative; text-align:top; left:5px; width:30px; height:30px; color:gray; font-weight:bold;">4위</p>
                             <img src="<c:url value="/resources/images/tsimages/destination-4.jpg"/>" alt="*">
                         </div>
                          <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
@@ -602,6 +604,7 @@
                         	</p>
                         </div>
                     </li>
+                     -->
                 </ul>
             </div>
 		</aside>
@@ -653,36 +656,6 @@ $(document).ready(function(){
          pager : true,
     }); */
 });
-/*
-function closeVideo() {
-	  document.getElementById("video-container").style.display = "none";
-	  document.getElementById("tsmain").style.display = "block";
-	}
-
-	// Optional: 자동으로 메인 화면으로 전환하는 예시 시간으로 끄려면 이버튼 누르기
-	//setTimeout(closeVideo, 5000);
-
-
-//비디오 체크 해서 그만 보기 버튼
-function closeVideo() {
-    var videoContainer = document.getElementById("video-container");
-    var stopVideoCheckbox = document.getElementById("stop-video-checkbox");
-  
-    if (stopVideoCheckbox.checked) {
-        videoContainer.style.display = "none";
-        localStorage.setItem("stopVideoToday", "true");
-    }
-}
-
-// 페이지 로드 시 체크 박스 상태를 확인하여 동영상을 보여줄지 결정합니다.
-document.addEventListener("DOMContentLoaded", function() {
-    var checkbox = document.getElementById("stop-video-checkbox");
-    var stopVideoToday = localStorage.getItem("stopVideoToday");
-    if (stopVideoToday === "true") {
-        checkbox.checked = true;
-        closeVideo();
-    }
-});*/
 
 
 //비디오 히든 로직
