@@ -59,6 +59,12 @@
 	  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	  margin-bottom: 20px;
     }
+    .magimg div a img{
+    	padding: 10px;
+    	width: 200px;
+    	height: 150px;
+    	
+    }
 	
 </style>
 <body>
@@ -76,24 +82,21 @@
     <section class="tscontainer mt-5" style="width:90%;  border-radius: 5px;">
 		<!-- 왼쪽 몸통부분 -->
 	     <article class="maints justify-content-center">
-	     	<div class="container mt-5 pt-5">
+	     	<div class="container my-5 pt-5">
 		        <h3 class="display-4 text-center"><strong style="color:#EF605D; font-weight:900;">건강정보</strong> 페이지</h3>
 		        <div class="row my-5" id="video-channel"></div>
 		        <br>
-		        <hr>
-		        <br>
-		        <h1 class="display-4 text-center">youtube video</h1>
+		        <h3 class=" text-center" style="font-weight:bold; ">현직 약사가 쉽게 알려주는 <strong style="color:#EF605D; font-weight:900;">건강정보</h3>
 		        <div class="row my-5" id="video-container"></div>
-		    </div>
-		    
-	        <div class="list">
-		        <div class="tsmg"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:50px;height:50px"></a></div>
-	            <div class="tsmg"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:50px;height:50px"></a></div>
-	            <div class="tsmg"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>"  style="width:50px;height:50px"></a></div>
-	            <div class="tsmg"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>"  style="width:50px;height:50px"></a></div>
-	            <div class="tsmg"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>"  style="width:50px;height:50px"></a></div>
-	        </div>
-		    
+		        
+		        <div class="magimg d-flex py-3 justify-content-center">
+			        <div class="tsmg"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>"></a></div>
+		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>"></a></div>
+		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>"></a></div>
+		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>"></a></div>
+		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>"></a></div>
+	        	</div>
+		    </div>    
 	     </article>
 	     
 	     <!-- 오른쪽 슬라이드 -->
