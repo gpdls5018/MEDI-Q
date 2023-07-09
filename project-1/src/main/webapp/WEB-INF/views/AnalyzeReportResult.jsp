@@ -25,11 +25,44 @@
 		</div>
 		<div class="m-5" style="height:3px;background-color:#ccc"></div>
 		<div class="m-5">
+			<c:forEach items="${resultListDto.listdto}" var="dto">
 			<div class="jumbotron" style="border-radius:15px;">
-				${resultMap}
+				<div class="effect-custom-font" style="font-size:30px;">${dto.takePurpose}</div>
+				<div class="effect-custom-font" style="font-size:20px;">${dto.takePurpose}  을(를) 위해 필요한 영양소들 입니다</div>
+				<ul class="list-unstyled">
+				<c:forEach items="${dto.foodList}" var="food">
+					<li class="effect-custom-font">${food}</li>
+				</c:forEach>
+				</ul>
+				<div class="effect-custom-font" style="font-size:20px;">${dto.takePurpose}  에 도움이 되는 건강기능 식품과 해당 성분입니다</div>
+				<ul class="list-unstyled">
+				<c:forEach items="${dto.foodForHelpPurpose}" var="helpfood">
+					<li class="effect-custom-font">${helpfood.key}</li>
+						<ul>
+						<c:forEach items="${helpfood.value}" var="nutrient">
+							<li>${nutrient}</li>
+						</c:forEach>
+						</ul>
+				</c:forEach>
+				</ul>
+				<div class="effect-custom-font" style="font-size:20px;">아직 섭취하지 않고 있는 영양소들</div>
+				<ul class="list-unstyled">
+					<c:forEach items="${dto.ingredient_list_no_report}" var="ingredient">
+						<li>${ingredient}</li>
+					</c:forEach>
+				</ul>
+			</div>
+			</c:forEach>
+			<div class="jumbotron" style="border-radius:15px;">
+				섭취하고 있는 필수 영양소들 입니다
+				<div>${resultListDto.nutrient_list_report}</div>
+			</div>
+			<div class="jumbotron" style="border-radius:15px;">
+				섭취하지 않고 있는 필수 영양소들 입니다
+				${resultListDto.nutrient_list_no_report}
 			</div>
 		</div>
-		
+		<div class="effect-custom-font" style="font-size:20px;">총 점수는 ${resultListDto.resultScore} 입니다.</div>
 	</div>
 </body>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
