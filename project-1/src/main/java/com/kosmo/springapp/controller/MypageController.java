@@ -1,6 +1,7 @@
 package com.kosmo.springapp.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,10 +42,12 @@ public class MypageController {
 	//마이페이지 클릭 시
 	@GetMapping("/MyPage.do")
 	public String mypage(HttpServletRequest req, HttpServletResponse resp, Model model) {
+		LocalDate current = LocalDate.now(); //현재날짜 구하기
 		
 		MemberDTO member = loginService.selectOne(req,resp);
 		ProfileImageDTO profImg = loginService.selectProfImg(member.getId());
 		
+		model.addAttribute("current", current);
 		model.addAttribute("info", member);//추후 더 추가해야함
 		model.addAttribute("profImg", profImg);
 		return "login/MyPage";
@@ -122,9 +125,16 @@ public class MypageController {
 		return "login/Message";
 	}
 	
+	//클릭한 날짜 ajax로 받기
+	@PostMapping("/Calendar.do")
+	public Map calendarPost(@RequestParam Map date) {
+		System.out.println("date: "+date);
+		return date;
+	}
+	
 	@GetMapping("/Calendar.do")
-	public String calendar() {
-		
-		return "login/Calendar";
+	public String calendar(@RequestParam String date) {
+		System.out.println("date: "+date);
+		return "login/MyPage";
 	}
 }

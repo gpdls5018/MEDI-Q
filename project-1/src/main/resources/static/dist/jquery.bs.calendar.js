@@ -407,7 +407,9 @@
 	 * @param {object} container
 	 */
 	function drawTemplate(container) {
-		//console.log(typeof container);
+		var dataDate = document.querySelectorAll('.data-date')
+		//console.log('dataDate:',dataDate)
+		//var clickdate = this.attributes[0];
 		let settings = container.data('settings');
 		let today = new Date();
 
@@ -433,7 +435,7 @@
                 <div class="card mb-0">
                 	<div class="row">
 	                    <div class="col-10 text-center fw-bold py-2 js-day-name card-header"></div>
-	                    <a class="dateLink" href="/project/Calendar.do?date=clickDateView"><i class="col-2 align-self-center fa-solid fa-plus"></i></a>
+	                    <i class="col-2 align-self-center fa-solid fa-plus"></i>
                     </div>
                     <div class="js-events list-group list-group-flush"></div>
                 </div>
@@ -535,14 +537,15 @@
 		 * @param {Date} selectedDate
 		 * @param {null|string} clickDate
 		 */
+		let activeDate;
 		function drawCalendar(selectedDate, clickDate = null) {
 
 			// if(clickDate !== null){
 			// 	selectedDate = new Date(clickDate);
 			// }
 
-			let activeDate = container.find('[data-date].active').length ? container.find('[data-date].active').data('date') : null;
-
+			activeDate = container.find('[data-date].active').length ? container.find('[data-date].active').data('date') : null;
+console.log('activeDate:',activeDate)
 			let wrap = container.find('.js-weeks').empty();
 			const startDay = selectedDate.clone().getFirstDayOfMonth().getMonday();
 			const endDay = selectedDate.clone().getLastDayOfMonth().getSunday();
@@ -616,6 +619,7 @@
 					col.data('events', []);
 
 				});
+				
 			});
 
 			getEvents(container, selectedDate, function (events) {
@@ -664,7 +668,7 @@
 				}
 			});
 		}
-
+//console.log('클릭:',activeDate)
 		/**
 		 * @return {void}
 		 */
@@ -716,7 +720,25 @@
 					drawEventList(container, events, date);
 					container.find('.js-collapse').show();
 					container.trigger('change-day', [date, events]);
-					clickDateView = container.find('.js-day-name').html(date.showDateFormatted()).html();
+					
+					clickDateView = date.showDateFormatted()////////////////////////////////////////////////////////////////////
+					
+					var dateAll = document.querySelectorAll('.data-date')
+					//console.log('this:',this)
+					//var clickdate = this.attributes[0];
+					console.log('clickdate:',$(this).prop('dataset').date)
+					
+					//클릭한 날짜 정보 넘기기
+					$.ajax({
+						data:{date:$(this).prop('dataset').date},
+						url:'/project/Calendar.do',
+						dataType:'json',
+						method:'post'
+					}).done(function(data){
+						console.log('success',data)
+					}).fail(function(){
+						console.log('fail')
+					});
 				});
 		}
 
@@ -817,4 +839,5 @@
 
 		return init();
 	};
+	
 }(jQuery));

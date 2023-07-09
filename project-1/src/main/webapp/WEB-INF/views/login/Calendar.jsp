@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
-<script src="<c:url value="/resources/dist/jquery.bs.calendar.js"/>" ></script>
 <style>
 	.acco img{
 		width: 40px;
@@ -204,27 +203,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 </head>
 <body>
     <div class="" style="margin-top: 80px">
-    	<div class="row">
-	        <div class="col-lg-3 p-0" >
-	        	<!-- 캘린더 -->
-				<div class="calendar" >
-			        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-			            <h5 class="text-center text-secondary" id="offcanvasExampleLabel">일정확인</h5>
-			            <div class="offcanvas-body d-flex justify-content-center p-0">
-			                <div data-bs-toggle="calendar" id="calendar_offcanvas" class="rounded w-75"></div>
-			            </div>
-			        </div>
-			    </div>
-			    <div class="dropdown-center">
-			        <div class="dropdown-menu p-0">
-			            <div data-bs-toggle="calendar" id="calendar_dropdown"></div>
-			        </div>
-			    </div>
-			
-			    <div data-bs-toggle="calendar" id="calendar_inline" class="col shadow rounded" style="display: none;"></div>
-			    <!-- 달력 끝 -->
-	        </div>
-	        
+    	<div class="row">	        
 	        <div class="col-lg-9 diary" style="max-width: 800px">
 	        	<form action="#" >
 	        		<input type="hidden" name="img" value=""/>
@@ -502,7 +481,10 @@ ul li input[type=checkbox]:checked ~ .acco {
 </html>
 <!-- ajax로 클릭한 날짜 넘기기 -->
 <script>
-	console.log($('.js-day-name'))
+	//var date = document.querySelectorAll('.data-date')[0].attributes[0];
+	//console.log('date:',date)
+	
+	//clickDateView = container.find('.js-day-name').html(date.showDateFormatted()).html();
 </script>
 
 <script>
@@ -560,16 +542,6 @@ ul li input[type=checkbox]:checked ~ .acco {
 		$('.acco:eq(0)').children().removeClass('circle');
 		$(this).toggleClass('circle');
 	});
-
-	//달력 불러오기
-	(function ($) {
-	    $.bsCalendar.setDefault('width', 500);
-	    $('#calendar_dropdown').bsCalendar({width: 300});
-	    $('#calendar_inline').bsCalendar({width: '300px'});
-	    $('#calendar_inline').bsCalendar('setDate', '2023-12-24');
-	    $('#calendar_offcanvas').bsCalendar({width: '80%'});
-	    $('#calendar_navbar').bsCalendar({width: 300});
-	}(jQuery));
 	
 	//복용 약 추가하기
 	function addList(){
