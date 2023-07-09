@@ -1,0 +1,328 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+
+<jsp:include page="/WEB-INF/views/template/Top.jsp"/>
+<style>
+    .effect-custom-font {
+      font-family : Noto Sans KR, sans-serif;
+    }
+    .change-style{
+      font-size:15px;
+      cursor:pointer;
+      border-radius: 15px;
+      color:#939393
+    }
+    .change-style:hover {
+      background-color:#ff4b4b;
+      color: white;
+    }
+    .card {
+      background-color: white;
+      color: black;
+      border-radius: 15px;
+    }
+    .card:hover {
+      background-color:#ff4b4b;
+      color: white;
+      border-radius: 15px;
+    }
+    .card-checked {
+      background-color:#FFDDD0;
+      border: 3px solid #ff4b4b;
+      color: #ff4b4b;
+      border-radius: 15px;
+    }
+    .food-li {
+      background-color: white;
+      color: black;
+      border-radius: 15px;
+    }
+    .food-li:hover {
+      border: #ff4b4b solid 2px;
+    }
+    .food-li-checked {
+      border: #ff4b4b solid 2px;
+    }
+</style>
+<body>
+	<div class="container mt-5 effect-custom-font">
+		<div class="my-title d-flex justify-content-between m-auto" style="width:80%;">
+			<div class="mt-5" style="font-size:40px;"><span style="background-color:#ffdcdc;">홍성민</span>님의 분석 리포트</div>
+		</div>
+		<div class="m-5" style="height:3px;background-color:#ccc"></div>
+    <!--Q1#-->
+    <form id="sendReportData" action="<c:url value="/analyzeMyReport.do"/>" method="post" onsubmit="preventSubmit(event)">
+    <div class="m-5" style="font-size:30px;"><span st>Q1#</span> 영양제 관련 취향을 선택해주세요.</div>
+		<div class="m-5 d-flex justify-content-around">
+			<div class="jumbotron" style="border-radius:15px;width:30%;height:200px;">
+				<div class="d-flex">
+					<div class="effect-custom-font" style="font-size:35px;">섭취 목적</div>
+					<div class="take-purpose-div p-2" style="font-size:25px;">
+            <span style="color:#ff4b4b;font-size:20px;" class="take-purpose-span"></span>
+          </div>
+				</div>
+        <div id="take-purpose" class="effect-custom-font p-2 change-style">변경하기</div>
+			</div>
+      <div class="jumbotron" style="border-radius:15px;width:30%;height:200px;">
+				<div class="d-flex">
+					<div class="effect-custom-font" style="font-size:35px;">선호 제형</div>
+					<div class="effect-custom-font p-2" style="font-size:15px;">
+            <span class="banner" style="color:#ff4b4b;">캡슐</span>
+          </div>
+				</div>
+        <div id="prefer-shape" class="effect-custom-font p-2 change-style">변경하기</div>
+			</div>
+      <div class="jumbotron" style="border-radius:15px;width:30%;height:200px;">
+				<div class="d-flex">
+					<div class="effect-custom-font" style="font-size:35px;">선호 유형</div>
+					<div class="effect-custom-font p-2" style="font-size:15px;">
+            <span class="banner" style="color:#ff4b4b;">가성비</span>
+          </div>
+				</div>
+        <div id="prefer-type" class="effect-custom-font p-2 change-style">변경하기</div>
+			</div>
+		</div>
+    <!--Q2#-->
+    <div class="question-2 m-5">
+      <div style="font-size:30px;"><span st>Q2#</span> 현재 먹고 있는 영양제를 등록해보세요!<button class="btn btn-warning m-5" style="border-radius:15px;" id="search-myFood">영양제 검색하러 가기-></button></div>
+      <div class="jumbotron food-selected-list" style="height:500px;">
+        <ul class="list-unstyled d-flex justify-content-around">
+
+        </ul>
+      </div>
+    </div>
+    <!-- 분석하기 -->
+    <div class="m-5">
+      <button class="btn btn-danger" style="border-radius:15px; width:100%" id="analyze-myFood">분석하기</button>
+    </div>
+    <input type="hidden" name="takePurpose" id="takePurPose" value=""/>
+    <input type="hidden" name="takeFood" id="takeFood" value=""/>
+    </form>
+	</div>
+
+  
+  
+  
+  <!-- modal 등록하기-->
+  <div class="modal fade" id="take-purpose-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl">
+      <div class="modal-content effect-custom-font">
+        <div class="modal-header">
+          <h5 class="modal-title">영양제를 먹는 이유가 무엇인가요?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body d-flex flex-wrap p-4 justify-content-around" style="height:200px;">
+          <div class="card" style="width: 8rem;height:10rem;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/1.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <div class="card-body m-auto">
+              <h5 class="card-title">간 건강</h5>
+            </div>
+          </div>
+          <div class="card" style="width: 8rem;height:10rem;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/2.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <div class="card-body m-auto">
+              <h5 class="card-title">구강 건강</h5>
+            </div>
+          </div>
+          <div class="card" style="width: 8rem;height:10rem;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/3.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <div class="card-body m-auto">
+              <h5 class="card-title">기억력 개선</h5>
+            </div>
+          </div>
+          <div class="card" style="width: 8rem;height:10rem;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/4.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <div class="card-body m-auto">
+              <h5 class="card-title">피부 건강</h5>
+            </div>
+          </div>
+          <div class="card" style="width: 8rem;height:10rem;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/5.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <div class="card-body m-auto">
+              <h5 class="card-title">혈압 조절</h5>
+            </div>
+          </div>
+          <div class="card" style="width: 8rem;height:10rem;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/6.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <div class="card-body m-auto">
+              <h5 class="card-title">장 건강</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body d-flex flex-wrap p-4 justify-content-around" style="height:200px;">
+          <div class="card" style="width: 8rem;height:10rem;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/7.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <div class="card-body m-auto">
+              <h5 class="card-title">눈 건강</h5>
+            </div>
+          </div>
+          <div class="card" style="width: 8rem;height:10rem;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/8.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <div class="card-body m-auto">
+              <h5 class="card-title">면역 기능</h5>
+            </div>
+          </div>
+          <div class="card" style="width: 8rem;height:10rem;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/9.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <div class="card-body m-auto">
+              <h5 class="card-title">피로개선</h5>
+            </div>
+          </div>
+          <div class="card" style="width: 8rem;height:10rem;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/10.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <div class="card-body m-auto">
+              <h5 class="card-title">혈액 순환</h5>
+            </div>
+          </div>
+          <div class="card" style="width: 8rem;height:10rem;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/11.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <div class="card-body m-auto">
+              <h5 class="card-title">운동수행 능력</h5>
+            </div>
+          </div>
+          <div class="card" style="width: 8rem;height:10rem;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/12.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <div class="card-body m-auto">
+              <h5 class="card-title">체지방 감소</h5>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+          <button type="button" class="btn btn-primary" id="save-take-purpose">저장하기</button>
+        </div>
+      </div>
+    </div>
+	</div>
+  <!-- 내가 먹고 있는 영양제 검색 -->
+  <div class="modal fade" id="take-foodList-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content effect-custom-font">
+        <div class="modal-header">
+          <h5 class="modal-title">섭취중인 영양제를 등록해주세요</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body ">
+          <ul class="list-unstyled d-flex justify-content-around">
+            <li class="food-li" style="text-align: center;">
+              <img src="<c:url value="resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
+              <div style="font-size: 15px;color: #939393;width:150px;">루테인오메가플러스D&E</div>
+            </li>
+            <li class="food-li" style="text-align: center;">
+              <img src="<c:url value="resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
+              <div style="font-size: 15px;color: #939393;width:150px;">노바락토 알파 포스트바이오틱스</div>
+            </li>
+            <li class="food-li" style="text-align: center;">
+              <img src="<c:url value="resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
+              <div style="font-size: 15px;color: #939393;width:150px;">포텐티</div>
+            </li>
+            <li class="food-li" style="text-align: center;">
+              <img src="<c:url value="resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
+              <div style="font-size: 15px;color: #939393;width:150px;">이뮨젤리</div>
+            </li>
+          </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" id="save-take-food">저장하기</button>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  $("#take-purpose").click(function(e){
+    e.preventDefault();
+    $('#take-purpose-modal').modal("show");
+  });
+  $('#search-myFood').click(function(e) {
+    e.preventDefault();
+    $('#take-foodList-modal').modal("show");
+  })
+
+  $(".food-li").click(function(){
+    if($(this).hasClass("food-li")) {
+      $(this).toggleClass("food-li-checked");
+    }
+  });
+
+  $(".card").click(function(){
+    if($(this).hasClass("card")) {
+      $(this).toggleClass("card-checked");
+    }
+  });
+  let takePurPoses= Array();
+  $('#save-take-purpose').click(function() {
+    var takePurPose = document.querySelectorAll('.card-checked');
+    takePurPoses = [];
+    for(var i=0; i<takePurPose.length;i++) {
+      console.log(takePurPose[i].querySelector(".card-title").innerHTML);
+      takePurPoses.push(takePurPose[i].querySelector(".card-title").innerHTML);
+    }
+    document.querySelector(".take-purpose-span").innerHTML = takePurPoses.length;
+    $('#take-purpose-modal').modal('hide');
+  });
+
+  const takeFoods = Array();
+  $('#save-take-food').click(function() {
+    var takeFood = document.querySelectorAll('#take-foodList-modal .food-li-checked');
+    var foodContainer = $('.food-selected-list ul');
+    $('.food-selected-list ul li').remove('li');
+    $('#take-foodList-modal .food-li-checked').clone(true).appendTo(foodContainer);
+    for(var i=0; i<takeFood.length;i++) {
+      console.log(takeFood[i].querySelector("div").innerHTML);
+      takeFoods.push(takeFood[i].querySelector("div").innerHTML);
+    }
+    $('#take-foodList-modal').modal('hide');
+  });
+
+  function preventSubmit(event) {
+    event.preventDefault(); // 전송을 막는 메소드
+  }
+  $('#analyze-myFood').click(function() {
+    document.querySelector("#takePurPose").value=takePurPoses;
+    document.querySelector("#takeFood").value=takeFoods;
+    let timerInterval
+    Swal.fire({
+      title: '분석중입니다!',
+      html: 'I will close in <b></b> milliseconds.',
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft()
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval);
+        console.log(document.querySelector("#takeFood").value);
+        console.log(document.querySelector("#takePurPose").value);
+        document.querySelector("#sendReportData").submit();
+      }
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer');
+      }
+    })
+  });
+  
+</script>
+<jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
