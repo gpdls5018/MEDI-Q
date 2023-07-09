@@ -4,7 +4,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- MyPage.jsp -->
 <jsp:include page="/WEB-INF/views/template/Top.jsp" />
+<!-- 
 <script src="<c:url value="/resources/dist/jquery.bs.calendar.js"/>" ></script>
+ -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <!-- 로그인 후에만 들어올 수 있도록 -->
 <style>
 	a:hover{
@@ -25,7 +30,7 @@
         margin: 0;
         list-style: none;
     }
-    
+    /*
     .calendar {
     	margin-top: 50px;
     	display: none;
@@ -35,11 +40,87 @@
         width: 500px;
         position: fixed;
         transition: left .3s;
-    }
+    }*/
+</style>
+
+<!-- datepicker css -->
+<style>
+        .ui-widget-header { border: 0px solid #dddddd; background: #fff; } 
+
+        .ui-datepicker-calendar>thead>tr>th { font-size: 14px !important; } 
+
+        .ui-datepicker .ui-datepicker-header { position: relative; padding: 10px 0; } 
+
+        .ui-state-default,
+        .ui-widget-content .ui-state-default,
+        .ui-widget-header .ui-state-default,
+        .ui-button,
+        html .ui-button.ui-state-disabled:hover,
+        html .ui-button.ui-state-disabled:active { border: 0px solid #c5c5c5; background-color: transparent; font-weight: normal; color: #454545; text-align: center; } 
+
+        .ui-datepicker .ui-datepicker-title { margin: 0 0em; line-height: 16px; text-align: center; font-size: 14px; padding: 0px; font-weight: bold; } 
+
+        .ui-datepicker { display: none; background-color: #fff; border-radius: 4px; margin-top: 10px; margin-left: 0px; margin-right: 0px; padding: 20px; padding-bottom: 10px; width: 300px; box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.1); } 
+
+        .ui-widget.ui-widget-content { border: 1px solid #eee; } 
+
+        #datepicker:focus>.ui-datepicker { display: block; } 
+
+        .ui-datepicker-prev,
+        .ui-datepicker-next { cursor: pointer; } 
+
+        .ui-datepicker-next { float: right; } 
+
+        .ui-state-disabled { cursor: auto; color: hsla(0, 0%, 80%, 1); } 
+
+        .ui-datepicker-title { text-align: center; padding: 10px; font-weight: 100; font-size: 20px; } 
+
+        .ui-datepicker-calendar { width: 100%; } 
+
+        .ui-datepicker-calendar>thead>tr>th { padding: 5px; font-size: 20px; font-weight: 400; } 
+
+        .ui-datepicker-calendar>tbody>tr>td>a { color: #000; font-size: 12px !important; font-weight: bold !important; text-decoration: none;}
+
+        .ui-datepicker-calendar>tbody>tr>.ui-state-disabled:hover { cursor: auto; background-color: #fff; } 
+
+        .ui-datepicker-calendar>tbody>tr>td { border-radius: 100%; width: 44px; height: 30px; cursor: pointer; padding: 5px; font-weight: 100; text-align: center; font-size: 12px; } 
+
+        .ui-datepicker-calendar>tbody>tr>td:hover { background-color: transparent; opacity: 0.6; } 
+
+        .ui-state-hover,
+        .ui-widget-content .ui-state-hover,
+        .ui-widget-header .ui-state-hover,
+        .ui-state-focus,
+        .ui-widget-content .ui-state-focus,
+        .ui-widget-header .ui-state-focus,
+        .ui-button:hover,
+        .ui-button:focus { border: 0px solid #cccccc; background-color: transparent; font-weight: normal; color: #2b2b2b; } 
+
+        .ui-widget-header .ui-icon { background-image: url('<c:url value="/resources/images/btns.png"/>'); } 
+
+        .ui-icon-circle-triangle-e { background-position: -20px 0px; background-size: 36px; } 
+
+        .ui-icon-circle-triangle-w { background-position: -0px -0px; background-size: 36px; } 
+
+        .ui-datepicker-calendar>tbody>tr>td:first-child a { color: red !important; } 
+
+        .ui-datepicker-calendar>tbody>tr>td:last-child a { color: #0099ff !important; } 
+
+        .ui-datepicker-calendar>thead>tr>th:first-child { color: red !important; } 
+
+        .ui-datepicker-calendar>thead>tr>th:last-child { color: #0099ff !important; } 
+
+        .ui-state-highlight,
+        .ui-widget-content .ui-state-highlight,
+        .ui-widget-header .ui-state-highlight { border: 0px; background: #f1f1f1; border-radius: 50%; padding-top: 10px; padding-bottom: 10px; } 
+
+        .inp { padding: 10px 10px; background-color: #f1f1f1; border-radius: 4px; border: 0px; } 
+
+        .inp:focus { outline: none; background-color: #eee; } 
 </style>
 <body>
 	<div class="container" style="margin-top: 50px">
-		<!-- 캘린더 -->
+		<!-- 캘린더 
 		<div class="calendar">
 	        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
 	            <h5 class="text-center text-secondary" id="offcanvasExampleLabel">일정확인</h5>
@@ -55,7 +136,7 @@
 	    </div>
 	
 	    <div data-bs-toggle="calendar" id="calendar_inline" class="col shadow rounded" data-bs-target="<c:url value="/resources/demo/events.json"/>" style="display: none;"></div>
-	    <!-- 달력 끝 -->
+	     달력 끝 -->
 	    
 	    <div style="height: 50px"></div>
 		<div class="rounded-lg borderline p-3 mb-3 shadow">
@@ -67,15 +148,15 @@
 				<c:if test="${not isProfImg }">
 					<img class="rounded-circle" alt="기본 프로필" src="<c:url value="/resources/images/friend.png" />" style="width: 80px; height: 80px">
 				</c:if>
-				<span class="align-self-center mr-auto ml-2" style="font-weight: bold">
-					${info.id }
-				</span>
+				<span class="align-self-center mr-auto ml-2" id="id" style="font-weight: bold">${info.id }</span>
 				<a type="button" class="btn btn-outline-info align-self-center mx-2" href="javascript:viewCalendar()">건강기록</a>
 				<a type="button" class="btn btn-outline-info align-self-center" href="<c:url value="/loadHealthInfoByOCR.do"/>">건강검진정보 불러오기</a>
 				<input type="button" id="imgEdit" value="이미지 수정" class="btn btn-outline-info align-self-center mx-2" data-target="#modalView" data-backdrop="static"/>
 				<a type="button" href="" class="btn btn-outline-info align-self-center" data-target="#modalView" data-backdrop="static">회원정보 수정</a>
 			</div>
 		</div>
+		
+		<input class="datepicker" style="display: none" placeholder="날짜를 선택해 주세요">
 		
 <!-- 건강기록 css -->
 <style>
@@ -283,10 +364,10 @@ ul li input[type=checkbox]:checked ~ .acco {
 
 		<div class="row diaryStart">	        
 	        <div class="col diary" style="max-width: 800px">
-	        	<form action="#" >
+	        	<form action="#">
 	        		<input type="hidden" name="img" value=""/>
 	        		<!-- 다른 날짜 클릭하면 클릭한 날짜가 보이도록 -->
-					<h1>${current }/${empty clickDate } 건강 기록</h1>
+					<h1><span class="clickDate">${current }</span> 건강 기록</h1>
 					
 					<ul>
 						<li>
@@ -385,16 +466,16 @@ ul li input[type=checkbox]:checked ~ .acco {
 							</div>
 							<div class="acco">
 								<div class="add">
-									<input class="bg-light form-control" value="비타민" style="height: 35px; width: 100px">
-									<i class="fa-solid fa-plus"></i>
+									<input class="form-control" value="비타민" style="height: 35px; width: 100px">
+									<input class="form-control mx-2" type="number" min="1" max="6" style="height: 35px; width: 50px"> 정
 								</div>
 								<div class="add">
-									<input class="bg-light form-control" value="철분제" style="height: 35px; width: 100px">
-									<i class="fa-solid fa-plus"></i>
+									<input class="form-control" value="철분제" style="height: 35px; width: 100px">
+									<input class="form-control mx-2" type="number" min="1" max="6" style="height: 35px; width: 50px"> 정
 								</div>
 								<div class="add">
-									<input class="bg-light form-control" value="엽산" style="height: 35px; width: 100px">
-									<i class="fa-solid fa-plus"></i>
+									<input class="form-control" value="엽산" style="height: 35px; width: 100px">
+									<input class="form-control mx-2" type="number" min="1" max="6" style="height: 35px; width: 50px"> 정
 								</div>
 								<a href="javascript:addList()" id="add">추가</a>	
 							</div>							
@@ -407,6 +488,26 @@ ul li input[type=checkbox]:checked ~ .acco {
 								<i class="fa-solid fa-angle-down"></i>
 							</div>
 							<div class="acco">
+								<div class="col">
+					    			<a href="#">
+						    			<div class="">
+							    			<img alt="알류" src='<c:url value="/resources/images/allergy/egg.png"/>'>
+							    		</div>
+							    		<div class="">
+							    			<small>알류</small>
+							    		</div>
+						    		</a>
+						    	</div>
+						    	<div class="col">
+						    		<a href="#">
+							    		<div class="">
+							    			<img alt="우유" src='<c:url value="/resources/images/allergy/milk.png"/>'>
+							    		</div>
+							    		<div class="">
+							    			<small>우유</small>
+							    		</div>
+						    		</a>
+						    	</div>
 								알류,우유,메밀,땅콩,대두,밀,고등어,게,새우,돼지고기,복숭아,토마토,호두,닭고기,쇠고기,오징어,조개류,잣
 								<a href="javascript:addList()" id="add">추가</a>	
 							</div>
@@ -540,7 +641,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 							</div>
 						</li>
 					</ul>
-					<button type="submit" class="btn btn-outline-primary mt-3">확인</button>
+					<button type="submit" id="memoSend" class="btn btn-outline-primary mt-3">확인</button>
 				</form>
 			</div>
 	    </div>
@@ -611,6 +712,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 </body>
 </html>
 <script>
+/*
 	//캘린더
 	function viewCalendar(){
 		$('.calendar').toggle();
@@ -623,53 +725,108 @@ ul li input[type=checkbox]:checked ~ .acco {
 	        $('#calendar_navbar').bsCalendar({width: 300})
 	    }(jQuery));
 	}
+*/	
+	$.datepicker.setDefaults({
+	    dateFormat: 'yy-mm-dd',
+	    prevText: '이전 달',
+	    nextText: '다음 달',
+	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+	    showMonthAfterYear: true,
+	    yearSuffix: '년'
+	});
+	function viewCalendar(){
+		$(function(){
+		  $('.datepicker').datepicker().toggle('.datepicker');
+		})
+	}
+	$('.datepicker').change(function(){
+		//console.log('datepicker:',$(this).val())	
+		$('.clickDate').html($(this).val())
+	});
 	
-	
-
-</script>
-<script>
-	//게시물,북마크,최근활동 클릭 시 이벤트 처리
-	var btnType = document.querySelectorAll('#btnType a[type=button]');
-	btnType.forEach(function(target){
-		target.onclick=function(){
-			document.querySelector('.bookmark').style.display='';
-			document.querySelector('.board').style.display='';
-			switch(this.textContent){
-				case "게시물":
-					document.querySelector('.bookmark').style.display='none';
-					break;
-				case "북마크":
-					document.querySelector('.board').style.display='none';
-					break;
-				default:
-			}
-		};
-	})
-	
-	//이미지 수정하기
-	$('#imgEdit').click(function(){
-		$(this).attr('data-toggle','modal');
-		$('form').attr('action','<c:url value="/project/ProfImgEdit.do"/>');
-		$('form').attr('enctype','multipart/form-data');
-		$('.modal-title').html('수정할 프로필 이미지를 선택해주세요');
-		$('input[type=password]').css('display','none');
-		$('.custom-file').css('display','');
-		$('a[name=defaultImg]').css('display','');
+	//건강기록 저장하기
+	var count=0;
+	$('#memoSend').click(function(){
 		
-		$(".custom-file-input").on("change", function() {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).siblings().html(fileName);
-        });
-	})
-
-	//회원 정보 수정하기
-	$('#imgEdit').next().click(function(){
-		$(this).attr('data-toggle','modal');
-		$('form').attr('action','<c:url value="/project/Password.do"/>');
-		$('.modal-title').html('회원정보 수정을 위해 비밀번호를 입력해주세요');
-		$('.custom-file').css('display','none');
-		$('a[name=defaultImg]').css('display','none');
-		$('input[type=password]').css('display','');
+		var head='',respiratory='',stomach='',mental='',chest='',body = '';
+		
+		count = 0;
+		$('.acco').find('.headSelcted').each(function(index){
+			head += count-1==index ? $(this).html() : $(this).html()+' ';
+		});
+		
+		count = 0;
+		$('.acco').find('.respSelcted').each(function(index){
+			respiratory += count-1==index ? $(this).html() : $(this).html()+' ';
+		});
+		
+		count = 0;
+		$('.acco').find('.stomachSelcted').each(function(index){
+			stomach += count-1==index ? $(this).html() : $(this).html()+' ';
+		});
+		
+		count = 0;
+		$('.acco').find('.mentalSelcted').each(function(index){
+			mental += count-1==index ? $(this).html() : $(this).html()+' ';
+		});
+		
+		count = 0;
+		$('.acco').find('.chestSelcted').each(function(index){
+			chest += count-1==index ? $(this).html() : $(this).html()+' ';
+		});
+		
+		count = 0;
+		$('.acco').find('.bodySelcted').each(function(index){
+			body += count-1==index ? $(this).html() : $(this).html()+' ';
+		});
+		
+		//복용 영양제+정 수
+		var nutrients = '';
+		count = 0;
+		$('.add').find('input').each(function(index){
+			count++;
+			//console.log('count:',count)
+			if(index%2==0){
+				nutrients += $(this).val();
+			}
+			else{
+				nutrients += count-1==index ? '/'+$(this).val() : '/'+$(this).val()+'$';
+			}			
+		});
+		
+		//알레르기
+		
+		
+		/*$.ajax({
+			data:{
+				date:$('.clickDate').html(),
+				id:$('#id').html(),
+				condition:$('.acco').find('.circle').prop('alt'),
+				head:head,
+				respiratory:respiratory,
+				stomach:stomach,
+				mental:mental,
+				chest:chest,
+				body:body,
+				nutrients:nutrients,
+				allergy:,
+				height:height.value,
+				weight:weight.value,
+				content:$('[name=content]').val()
+			},
+			url:'/project/Memo.do',
+			dataType:'json',
+			method:'post'
+		}).done(function(data){
+			console.log('success',data)
+		}).fail(function(){
+			console.log('fail')
+		});*/
+		return false;
 	});
 </script>
 	
@@ -775,4 +932,32 @@ ul li input[type=checkbox]:checked ~ .acco {
 	
 	bmi.addEventListener('submit', result);
 	bmi.dispatchEvent(new Event('input'));
+</script>
+
+<script>
+	//이미지 수정하기
+	$('#imgEdit').click(function(){
+		$(this).attr('data-toggle','modal');
+		$('form').attr('action','<c:url value="/project/ProfImgEdit.do"/>');
+		$('form').attr('enctype','multipart/form-data');
+		$('.modal-title').html('수정할 프로필 이미지를 선택해주세요');
+		$('input[type=password]').css('display','none');
+		$('.custom-file').css('display','');
+		$('a[name=defaultImg]').css('display','');
+		
+		$(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings().html(fileName);
+        });
+	})
+
+	//회원 정보 수정하기
+	$('#imgEdit').next().click(function(){
+		$(this).attr('data-toggle','modal');
+		$('form').attr('action','<c:url value="/project/Password.do"/>');
+		$('.modal-title').html('회원정보 수정을 위해 비밀번호를 입력해주세요');
+		$('.custom-file').css('display','none');
+		$('a[name=defaultImg]').css('display','none');
+		$('input[type=password]').css('display','');
+	});
 </script>
