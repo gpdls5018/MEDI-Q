@@ -397,7 +397,7 @@
 	        <i class="bi bi-camera" hidden><a href="/modelOCR.do"> 사진으로 검색할래요 !!!</a></i>
 	    </div>
 	
-		<!-- 검색창 밑 검색버튼  -->
+		<!-- 검색창 밑 검색 태그용 버튼  -->
 		<div class="row justify-content-center mt-5 pt-5">
 	        <div class="col-lg-10 text-center">
 	            <h1 class="mb-5" style="font-weight:bold; color:black;"><span style="color: #EF605D;">제품명,영양성분</span>을 검색해보세요.</h1>

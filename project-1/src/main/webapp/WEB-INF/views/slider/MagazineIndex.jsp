@@ -1,0 +1,154 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<jsp:include page="/WEB-INF/views/template/Top.jsp"/>
+
+<!--  유튜브 자스 -->
+<script src="/resources/tsfolder/js/TSmain.js"></script>
+<!-- 유튜브용 부트스트랩 자스 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+
+
+<style>
+	@media (min-width:43.75em) {
+		.tscontainer {
+			max-width: 100%;
+			margin: 0 auto;
+			position: relative;
+		}
+		.maints {
+			display: inline-block;
+			width: 75%;
+			vertical-align: top;
+			margin-right: 20px;
+		}
+		.tsidebar {
+			display: inline-block;
+			width: 20%;
+			margin-left: 20px;
+			vertical-align: top;
+		}
+		.fixedsticky {
+			margin-top: 00px;
+		}
+	}
+	.tsidebar {
+		padding: 16px 1.5em;
+		margin-bottom:10px;
+	}
+
+		.tscontainer {
+			max-width: 100%;
+			margin: 0 auto;
+			position: relative;
+		}
+	
+</style>
+<body>
+<div id="tsmain" style="margin-top: 10px;">
+	 
+  <section id="section-119">
+        <div class="content-slider">
+          <input type="radio" id="banner1" class="sec-1-input" name="banner" checked>
+          <div class="slider">
+            <div id="top-banner-1" class="banner">
+              <div class="banner-inner-wrapper" >
+                <h1 class="mt-5">Magazine</h1>
+                <div class="line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+    
+    <section class="tscontainer mt-5" style="width:90%;  border-radius: 5px;">
+		<!-- 왼쪽 몸통부분 -->
+	     <article class="maints justify-content-center">
+	     	<div class="container mt-5 pt-5">
+		        <h1 class="display-4 text-center">My youtube channel</h1>
+		        <div class="row my-5" id="video-channel"></div>
+		        <br>
+		        <hr>
+		        <br>
+		        <h1 class="display-4 text-center">youtube video</h1>
+		        <div class="row my-5" id="video-container"></div>
+		    </div>
+		        <div class="list">
+			        <div class="tsmg"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:50px;height:50px"></a></div>
+		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:50px;height:50px"></a></div>
+		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>"  style="width:50px;height:50px"></a></div>
+		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>"  style="width:50px;height:50px"></a></div>
+		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>"  style="width:50px;height:50px"></a></div>
+		        </div>
+		    
+	     </article>
+	     
+	     <!-- 오른쪽 슬라이드 -->
+		<aside class="tsidebar fixedsticky">
+			<!--  로그인 목록 창 -->
+			<div class="login-section justify-content-center">
+				<img src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+            	<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+            	<br/>
+            	<p class="my-3" style="margin-bottom:20px; color:gray; font-size:12px; font-weight:500;">
+            		<span class="py-3">
+            		40만 건의 분석 결과를 <br/>토대로 선정된
+					믿을 수<br/> 있는 진짜 랭킹을<br/>  확인해 보세요.</span></p>
+                <ul class="unlist" style="padding-inline-start: 0px;">
+                    <li>
+                        <div class="image">
+                        	<!--<img src="<c:url value="/resources/images/tsimages/ranking1.webp"/>" style=" position: relative; vertical-align:top; left:5px; width:30px; height:30px;" alt="*">-->
+                            <img src="<c:url value="/resources/images/tsimages/destination-1.jpg"/>" alt="*">
+                        </div>
+                        <div style="align-items: center; margin-top:20px; margin-left:10px; justify-content: center; text-align: start; line-height: 3px; font-weight:400;">
+                        	<p style="color:gray; font-size:8px; font-weight:bold;">종근당 건강</p>
+                        	<br/>
+                        	<p style="flex-wrap:wrap; color:black; font-size:10px; font-weight:bold;  text-align: center;">락토핏</p>
+                        	<br/>
+                        	<p style="color:gray; font-size:8px; font-weight:bold;">
+                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
+                        	4.64(814)
+                        	</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="image">
+                            <img src="<c:url value="/resources/images/tsimages/destination-2.jpg"/>" alt="*">
+                        </div>
+                         <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
+                        	<p style="color:gray; font-size:8px; font-weight:bold;">고려은단</p>
+                        	<br/>
+                        	<p style="color:black; font-size:10px; font-weight:bold; text-align: center;">비타민C 1000</p>
+                        	<br/>
+                        	<p style="color:gray; font-size:8px; font-weight:bold;">
+                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
+                        	4.66(178)
+                        	</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="image">
+                            <img src="<c:url value="/resources/images/tsimages/destination-3.jpg"/>" alt="*">
+                        </div>
+                         <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
+                        	<p style="color:gray; font-size:8px; font-weight:bold;">종근당</p>
+                        	<br/>
+                        	<p style="color:black; font-size:10px; font-weight:bold; text-align: center;">칼슘앤마그네슘</p>
+                        	<br/>
+                        	<p style="color:gray; font-size:8px; font-weight:bold;">
+                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
+                        	4.67(115)
+                        	</p>
+                        </div>
+                    </li>
+                 </ul>
+			</div>
+		</aside>
+	</section>
+
+</div>
+</body>
+</html>
+<jsp:include page="/WEB-INF/views/template/Footer.jsp"/>

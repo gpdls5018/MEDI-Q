@@ -5,7 +5,11 @@ const channellId = 'UCCGR6u27kI44_VWM1FJa7mw';
 
 const channelEndpoint = `https://www.googleapis.com/youtube/v3/channels?key=${apikey}&id=${channellId}&part=snippet,contentDetails,statistics`;
 //백틱으로 처리하며 가운데 '++'를 쓰는게 아닌 ${}를 쓴다
-
+ console.log(videoChannel)
+  console.log(videoContainer)
+   console.log(apikey)
+    console.log(channellId)
+     console.log(channelEndpoint)
 //언로드와 애러처리가능
 fetch(channelEndpoint)
 .then(res => res.json())
@@ -59,7 +63,7 @@ function numberWithCommas(x) {
 }
 
 function requestPlaylist(playlistId) {
-    const maxResults =12;
+    const maxResults =6;
     const playlistURL = `https://www.googleapis.com/youtube/v3/playlistItems?key=${apikey}&playlistId=${playlistId}&part=snippet&maxResults=${maxResults}`;
     
 
