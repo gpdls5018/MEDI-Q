@@ -5,12 +5,15 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kosmo.springapp.analyze.model.AnalyzeResultDTO;
+import com.kosmo.springapp.analyze.model.AnalyzeResultListDTO;
 import com.kosmo.springapp.service.AnalyzeMyReportMapper;
 
 @Service
@@ -19,68 +22,75 @@ public class AnalyzeMyReportServiceImpl {
 	@Autowired
 	AnalyzeMyReportMapper analyzeMyReportMapper;
 	
-	public Map<String, List<String>> analyzeMyReport(Map map) {
-		String takePurpose = ((List)map.get("takePurpose")).get(0).toString();
-		System.out.println("사용자의 복용 목적 : "+takePurpose);
-		System.out.println(takePurpose +"를 위해 필요한 영양소 SELECT =====================");
-		List<String> foodList = analyzeMyReportMapper.selectFoodListForMyTakePurpose(takePurpose);
-		for(String food : foodList) {
-			System.out.println(food);
-		}
-		System.out.println(takePurpose +"를 위해 필요한 영양소 ===================== END");
-		System.out.println("사용자가 현재 복용중인 건기식의 영양소 SELECT ==========================");
-		String takeFood = ((List)map.get("takeFood")).get(0).toString();
+	public AnalyzeResultListDTO analyzeMyReport(Map map) {
 		
-		List<String> myfoodList = analyzeMyReportMapper.selectMyFoodList(takeFood);
 		
-		List<String> ingredient_list = analyzeMyReportMapper.selectIngredient_list();
-		List<String> ingredient_list_report = new ArrayList<String>();
-		List<String> ingredient_list_no_report = new ArrayList<String>(ingredient_list);
+		// 필수 영양소(비타민 등)을 담기 위한 리스트(모든 필수 영양소, 현재 섭취중인 필수 영양소, 섭취가 필요한 필수 영양소)
 		List<String> nutrient_list = analyzeMyReportMapper.selectNutrient_list();
 		List<String> nutrient_list_report = new ArrayList<String>();
 		List<String> nutrient_list_no_report = new ArrayList<String>(nutrient_list);
-		
-		for(String foods : myfoodList) {
-			System.out.println(foods);
-			List<String> food = Arrays.asList(foods.split("\\$"))
-					.stream()
-					.map(item-> item.trim())
-					.toList();
-			System.out.println("사용자가 평소에 복용해야 하는 영양소(비타민 등)중 현재 섭취하고 있는 영양소 SELECT");
-			for(String item : food) {
-				item = item.replaceAll("\\s","");
-				for(String ingredient : ingredient_list) {
-					if(ingredient.contains(item)) {
-						ingredient_list_no_report.remove(ingredient);
-						ingredient_list_report.add(ingredient);
-						System.out.println("현재 기능성 영양소 :"+item+"를 섭취중");
-					}
+		AnalyzeResultListDTO analyzeResultListDTO = new AnalyzeResultListDTO();
+		List<AnalyzeResultDTO> analyzeResultDTOs = new ArrayList<AnalyzeResultDTO>();
+		List<String> takePurposes = ((List)map.get("takePurpose"));
+		int nutrient_score = 0;
+		int ingredient_score = 0;
+		for(String takePurpose : takePurposes) {//복용 목적을 하나씩 비교
+			AnalyzeResultDTO analyzeResultDTO = new AnalyzeResultDTO();
+			List<String> foodList = analyzeMyReportMapper.selectFoodListForMyTakePurpose(takePurpose);//사용자의 복용 목적을 위해 필요한 영양소
+			List<String> ingredient_list_no_report = new ArrayList<String>(foodList);
+			List<String> takeFoods = ((List)map.get("takeFood"));//사용자가 복용중인 건기식
+			Map<String,List> foodForHelpPurpose = new HashMap<>();
+			for(String takeFood : takeFoods) {//사용자가 복용중인 건기식들을 하나씩 비교
+				List<String> myfoodList = analyzeMyReportMapper.selectMyFoodList(takeFood);//사용자가 복용중인 건기식에 들어있는 것들
+				List<String> ingredient_list = new ArrayList<String>(foodList);//사용자가 복용중인 건기식의 기능성 영양소를 담을 리스트(복용 목적을 위해 필요한 모든 기능성 영양소, 사용자가 복용중인 건기식의 기능성 영양소, 사용자가 먹지 않고 있는 기능성 영양소)
+				List<String> ingredient_list_report = new ArrayList<String>();
+				
+				for(String foods : myfoodList) {
+					List<String> food = Arrays.asList(foods.split("\\$")).stream().map(item-> item.trim()).toList();//문자열을 구분 -> 리스트에 담음
+					for(String item : food) {//들어있는 성분 하나를 들고옴-> 공백 제거
+						item = item.replaceAll("\\s","");
+						for(String ingredient : ingredient_list) {//기능성 영양소에서 하나 가져옴
+							if(ingredient.contains(item)) {//복용목적을 위한 올바른 기능영 영양소라면
+								ingredient_list_no_report.remove(ingredient);
+								ingredient_list_report.add(ingredient);	
+							}
+						}
+						for(String nutrient : nutrient_list) {//필수 영양소에서 하나를 가져옴 -> 모든 건기식에 대해 수행해야 한다
+							
+							if(nutrient.contains(item)) {//필수 비타민을 섭취 중이라면
+								if(!nutrient_list_report.contains(nutrient)) { // 중복 제거
+									nutrient_list_no_report.remove(nutrient);
+									nutrient_list_report.add(nutrient);	
+								}
+							}
+						}
+					}			
 				}
-				for(String nutrient : nutrient_list) {
-					if(nutrient.contains(item)) {
-						nutrient_list_no_report.remove(nutrient);
-						nutrient_list_report.add(nutrient);
-						System.out.println("현재 비타민 :"+item+"를 섭취중");
-					}
+				
+				
+				
+				//건기식 for 중
+				// 이번 건기식에서 사용자의 복용 목적에 도움되는 기능성 영양소들 -> 있을 시에 추가 //1. 있을 시 -> 건기식 이름 저장 -> 없을 시 계속
+				if(ingredient_list_report.size() != 0) {
+					foodForHelpPurpose.put(takeFood, ingredient_list_report);
+					ingredient_score += ingredient_list_report.size();
 				}
 			}
-			
-			System.out.println("현재 섭취하지 않고 있는 비타민  :" + nutrient_list_no_report.toString());
-			System.out.println("현재 섭취하고 있는 비타민  :" + nutrient_list_report.toString());
-			System.out.println("현재 섭취하지 않고 있는 기능성 영양소  :" + ingredient_list_no_report.toString());
-			System.out.println("현재 섭취하고 있는 기능성 영양소  :" + ingredient_list_report.toString());
+			analyzeResultDTO.setTakePurpose(takePurpose);// 복용 목적
+			analyzeResultDTO.setFoodForHelpPurpose(foodForHelpPurpose);//(있을경우)건기식 이름,건기식에서 사용자의 복용 목적에 도움되는 기능성 영양소List
+			analyzeResultDTO.setIngredient_list_no_report(ingredient_list_no_report);//사용자가 먹는 건기식에서 나오지 않은 복용목적에 필요한 기능성 영양소 - 섭취가 필요한
+			analyzeResultDTO.setFoodList(foodList);//사용자가 복용 목적을 위해 필요한 영양소들
+			analyzeResultDTOs.add(analyzeResultDTO);
+			ingredient_score *=30;
 		}
 		
-		
-		System.out.println("사용자가 현재 복용중인 건기식의 영양소 ========================== END");
-		//System.out.println("사용자의 점수는 : "+ nutrient_list_report.size()*3+(ingredient_list_report.size()/foodList.size())*3+"점 입니다");
-		//최종 저장
-		//int score = nutrient_list_report.size()*3+(ingredient_list_report.size()/foodList.size())*3;
-		Map<String,List<String>> resultMap = new HashMap<String, List<String>>();
-		resultMap.put("ingredient_list_report",ingredient_list_report);
-		resultMap.put("nutrient_list_report", nutrient_list_report);
-		resultMap.put("nutrient_list_no_report", nutrient_list_no_report);
-		resultMap.put("foodList", foodList);
-		return resultMap;
+		analyzeResultListDTO.setListdto(analyzeResultDTOs);
+		analyzeResultListDTO.setNutrient_list_report(nutrient_list_report);
+		analyzeResultListDTO.setNutrient_list_no_report(nutrient_list_no_report);
+		//최종 점수 구하기
+		nutrient_score = nutrient_list_report.size() *3;
+		int resultScore = ingredient_score + nutrient_score;
+		analyzeResultListDTO.setResultScore(resultScore);
+		return analyzeResultListDTO;
 	}
 }

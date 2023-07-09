@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kosmo.springapp.analyze.model.AnalyzeResultListDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
 import com.kosmo.springapp.model.ReviewDTO;
 import com.kosmo.springapp.service.JWTokensService;
@@ -85,8 +86,8 @@ public class FoodDetailController {
 		 Map<String,List<String>> userMap = new HashMap<>();
 		 userMap.put("takePurpose", takeList);
 		 userMap.put("takeFood", foodList);
-		 Map<String,List<String>> resultMap = analyzeMyReportServiceImpl.analyzeMyReport(userMap);
-		 model.addAttribute("resultMap",resultMap);
+		 AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReport(userMap);
+		 model.addAttribute("resultListDto",resultListDto);
 		 return "AnalyzeReportResult";
 	 }
 	 
