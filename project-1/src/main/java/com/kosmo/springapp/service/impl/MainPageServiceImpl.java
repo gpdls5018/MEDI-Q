@@ -18,7 +18,6 @@ public class MainPageServiceImpl implements MainPageService{
 	
 	@Override
 	public List<FunctionalFoodListDTO> selectFoodList() {
-		// TODO Auto-generated method stub
 		return mapper.selectFoodList();
 	}
 
