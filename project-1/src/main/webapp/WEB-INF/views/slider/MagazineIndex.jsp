@@ -7,8 +7,10 @@
 <!--  유튜브 자스 -->
 <script src="/resources/tsfolder/js/TSmain.js"></script>
 <!-- 유튜브용 부트스트랩 자스 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<!-- 슬라이더를 위한 CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" rel="stylesheet" />
 
 
 <style>
@@ -39,35 +41,43 @@
 		margin-bottom:10px;
 	}
 
-		.tscontainer {
-			max-width: 100%;
-			margin: 0 auto;
-			position: relative;
-		}
+	.tscontainer {
+		max-width: 100%;
+		margin: 0 auto;
+		position: relative;
+	}
+	.maints > div{
+		background-color:white;
+		border: 2px solid #eaeaea;
+		border-radius:15px;
+    }
+    aside > div {
+	  border: 2px solid #ccc;
+	  border-radius: 10px;
+	  padding: 20px;
+	  background-color: white;
+	  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	  margin-bottom: 20px;
+    }
 	
 </style>
 <body>
 <div id="tsmain" style="margin-top: 10px;">
+
+		<div class="m-5 py-5" style="display:flex; justify-content: center;">
+	        <div class="slider1 ">
+	            <div class="slide"><a href="#"><img style="width:100%; height:450px" src="<c:url value="/resources/images/tsimages/ba1.jpg"/>"></a></div>
+	            <div class="slide"><a href="#"><img style="width:100%; height:450px" src="<c:url value="/resources/images/tsimages/magazine2.webp"/>"></a></div>
+	        </div>
+	    </div>
 	 
-  <section id="section-119">
-        <div class="content-slider">
-          <input type="radio" id="banner1" class="sec-1-input" name="banner" checked>
-          <div class="slider">
-            <div id="top-banner-1" class="banner">
-              <div class="banner-inner-wrapper" >
-                <h1 class="mt-5">Magazine</h1>
-                <div class="line"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-    </section>
+
     
     <section class="tscontainer mt-5" style="width:90%;  border-radius: 5px;">
 		<!-- 왼쪽 몸통부분 -->
 	     <article class="maints justify-content-center">
 	     	<div class="container mt-5 pt-5">
-		        <h1 class="display-4 text-center">My youtube channel</h1>
+		        <h3 class="display-4 text-center"><strong style="color:#EF605D; font-weight:900;">건강정보</strong> 페이지</h3>
 		        <div class="row my-5" id="video-channel"></div>
 		        <br>
 		        <hr>
@@ -75,13 +85,14 @@
 		        <h1 class="display-4 text-center">youtube video</h1>
 		        <div class="row my-5" id="video-container"></div>
 		    </div>
-		        <div class="list">
-			        <div class="tsmg"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:50px;height:50px"></a></div>
-		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:50px;height:50px"></a></div>
-		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>"  style="width:50px;height:50px"></a></div>
-		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>"  style="width:50px;height:50px"></a></div>
-		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>"  style="width:50px;height:50px"></a></div>
-		        </div>
+		    
+	        <div class="list">
+		        <div class="tsmg"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:50px;height:50px"></a></div>
+	            <div class="tsmg"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:50px;height:50px"></a></div>
+	            <div class="tsmg"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>"  style="width:50px;height:50px"></a></div>
+	            <div class="tsmg"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>"  style="width:50px;height:50px"></a></div>
+	            <div class="tsmg"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>"  style="width:50px;height:50px"></a></div>
+	        </div>
 		    
 	     </article>
 	     
@@ -100,7 +111,7 @@
                     <li>
                         <div class="image">
                         	<!--<img src="<c:url value="/resources/images/tsimages/ranking1.webp"/>" style=" position: relative; vertical-align:top; left:5px; width:30px; height:30px;" alt="*">-->
-                            <img src="<c:url value="/resources/images/tsimages/destination-1.jpg"/>" alt="*">
+                           <!-- <img src="<c:url value="/resources/images/tsimages/destination-1.jpg"/>" alt="*"> -->
                         </div>
                         <div style="align-items: center; margin-top:20px; margin-left:10px; justify-content: center; text-align: start; line-height: 3px; font-weight:400;">
                         	<p style="color:gray; font-size:8px; font-weight:bold;">종근당 건강</p>
@@ -115,7 +126,7 @@
                     </li>
                     <li>
                         <div class="image">
-                            <img src="<c:url value="/resources/images/tsimages/destination-2.jpg"/>" alt="*">
+                          <!--  <img src="<c:url value="/resources/images/tsimages/destination-2.jpg"/>" alt="*"> -->
                         </div>
                          <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
                         	<p style="color:gray; font-size:8px; font-weight:bold;">고려은단</p>
@@ -130,7 +141,7 @@
                     </li>
                     <li>
                         <div class="image">
-                            <img src="<c:url value="/resources/images/tsimages/destination-3.jpg"/>" alt="*">
+                            <!-- <img src="<c:url value="/resources/images/tsimages/destination-3.jpg"/>" alt="*"> -->
                         </div>
                          <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
                         	<p style="color:gray; font-size:8px; font-weight:bold;">종근당</p>
@@ -149,6 +160,21 @@
 	</section>
 
 </div>
+
+<script>
+$(document).ready(function(){
+    $('.slider1').bxSlider({
+        slideWidth: 1100,
+        minSlides: 1,
+        maxSlides: 1,
+        slideMargin: 1,
+        auto : true,
+        stopAutoOnClick : true,
+        pager : true,
+    });
+});
+
+</script>
 </body>
 </html>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
