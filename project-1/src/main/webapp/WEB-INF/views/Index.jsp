@@ -321,7 +321,7 @@
 </style>
 
  	<!-- 처음 인덱스 킬때 전체화면 비디오 출력 -->
-			<div id="video-container">
+			<div id="tsvideo-container">
 			    <video id="video" autoplay muted>
 	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
@@ -661,7 +661,7 @@ $(document).ready(function(){
 //비디오 히든 로직
 document.addEventListener("DOMContentLoaded", function() {
 	  var checkbox = document.getElementById("stop-video-checkbox");
-	  var videoContainer = document.getElementById("video-container");
+	  var videoContainer = document.getElementById("tsvideo-container");
 
 	  // 저장된 값 가져오기
 	  var hideUntilDate = localStorage.getItem("hideUntilDate");
