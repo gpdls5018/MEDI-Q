@@ -17,5 +17,8 @@ public class NutrientData {
 
 	// 영양소 이름 목록
 	private List<String> nutrientNames;
+	
+	
+	
 
 }

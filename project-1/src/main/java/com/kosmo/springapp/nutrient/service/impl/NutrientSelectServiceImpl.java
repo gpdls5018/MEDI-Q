@@ -16,16 +16,34 @@ public class NutrientSelectServiceImpl implements NutrientSelectService {
 	private NutrientSelectMapper mapper;
 	
 	@Override
-	public NutrientData showNutrientName() {
-		
-		List<String> nutrientNames = mapper.selectName();
-		
-		NutrientData nutrientData = NutrientData.builder()
-												.nutrientNames(nutrientNames)
-												.build();
-		
-		return nutrientData;
-		
-		
+	public String editN_DESCbyVitaminName(String name) {
+
+		String desc = mapper.getN_DESCbyVitaminName(name);
+		desc = desc.replace(".", ".<br/>");
+	    return desc;
 	}
+	
+	@Override
+	public String editN_CAUTIONbyVitaminName(String name) {
+
+		String caution = mapper.getN_CAUTIONbyVitaminName(name);
+	    
+	    if (caution != null) {
+	        caution = caution.replace("있음", "있어요.<br/>");
+	        caution = caution.replace("필요", "필요해요.<br/>");
+	    } 
+	    else {
+	        caution = "";
+	    }
+	    
+	    return caution;
+	}
+	
+	
+	
+	
+	
+	
+	
+
 }

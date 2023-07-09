@@ -69,7 +69,6 @@
 
         .box-container {
             display: flex;
-            justify-content: flex-start;
             align-items: center;
             flex-wrap: wrap;
             margin-top: 20px;
@@ -78,18 +77,16 @@
         .box {
             width: 110px;
             height: 110px;
-            background-color: #eee;
-            transition: background-color 0.3s;
+			box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.4);
+        	transition: box-shadow 0.3s ease;
             border: 1px solid #ddd;
             border-radius: 10px 10px 10px 10px;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-right: 10px;
-            margin-bottom: 10px;
             cursor: pointer;
             position: relative;
-            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            margin: 17.8px; /*배치되는 div 크기 맞추기*/
         }
 
         .box a {
@@ -98,15 +95,14 @@
         }
 
         .box:hover {
-            background-color: #ddd;
             font-weight: bold;
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
         }
 
         .box.active {
             background-color: #bbb;
         }
-
-       
+        
 		/* 이미지 추가 */
 		.image {
 			position: relative;
@@ -120,7 +116,6 @@
 			border-radius: 10px 10px 10px 10px;
 		}
 		
-		
 		.image .text {
 			position: absolute;
 			top: 40px;
@@ -133,7 +128,7 @@
     </style>
 </head>
 <body>
-    <div class="container" style="margin-top: 80px;">
+    <div class="container pb-5" style="margin-top: 80px;">
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
@@ -158,15 +153,14 @@
 	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
 	                <div class="text text-color:black">
 		           		<b>인기 성분 Top 100</b><br/>
-		           		<small>800개 영양성분 중 가장 인기있는<br/>
-		           		100개 성분의 Best 제품을 만나보세요</small>
+		           		<small>800개 영양성분 중 가장 인기있는 100개 성분의 Best 제품을 만나보세요</small>
                 	</div>
     			</div>
-                <div class="box-container justify-content-sm-between">
-	                <c:forEach var="name" items="${nutrientNames}">
+                <div class="box-container">
+	                <c:forEach var="name" items="${vitaminNames}">
 					    <div class="box col-sm-2" style="white-space: nowrap;">
-					    	<a href="<c:url value="/NutrientDetail.do"/>">
-					    		<b>${name}</b>
+					    	<a href="<c:url value="/NutrientDetail.do?name=${name}"/>"> 
+					    		<b style="font-size: 14px;">${name}</b>
 					    	</a>
 					    </div>
 					</c:forEach>
@@ -183,11 +177,11 @@
 		           		<small>비타민 A, 비타민 B 등을 선택할 수 있는 상자입니다.</small>
                 	</div>
     			</div>
-    			<div class="box-container justify-content-sm-between">
-	                <c:forEach var="name" items="${nutrientNames}">
+    			<div class="box-container">
+	                <c:forEach var="name" items="${vitaminNames}">
 					    <div class="box col-sm-2" style="white-space: nowrap;">
-					    	<a href="<c:url value="/NutrientDetail.do"/>">
-					    		<b>${name}</b>
+					    	<a href="<c:url value="/NutrientDetail.do?name=${name}"/>"> 
+					    		<b style="font-size: 14px;">${name}</b>
 					    	</a>
 					    </div>
 					</c:forEach>
@@ -203,6 +197,15 @@
 		           		<small>미네랄 선택을 위한 상자입니다.</small>
                 	</div>
     			</div>
+    			<div class="box-container">
+	                <c:forEach var="name" items="${etcNames}">
+					    <div class="box col-sm-2" style="white-space: nowrap;">
+					    	<a href="<c:url value="/NutrientDetail.do"/>">
+					    		<b style="font-size: 14px;">${name}</b>
+					    	</a>
+					    </div>
+					</c:forEach>
+                </div>
             </div>
                 
             <div id="functional" class="tab">
@@ -214,6 +217,15 @@
 		           		<small>기능성 원료 선택을 위한 상자입니다.</small>
                 	</div>
     			</div>
+    			<div class="box-container">
+	                <c:forEach var="name" items="${ingredientNames}">
+					    <div class="box col-sm-2" style="white-space: nowrap;">
+					    	<a href="<c:url value="/NutrientDetail.do"/>">
+					    		<b style="font-size: 14px;">${name}</b>
+					    	</a>
+					    </div>
+					</c:forEach>
+                </div>
             </div>
         </div>
 
@@ -222,43 +234,43 @@
     <script>
 
         function fade(element) {
-        var op = 0;  // 초기 투명도
-        var timer = setInterval(function () {
-            if (op >= 1) {
-            clearInterval(timer);  // 애니메이션 종료
-            }
-            element.style.opacity = op;  // 투명도 설정
-            element.style.filter = 'alpha(opacity=' + op * 100 + ')';  // IE8 이하 대응
-            op += 0.1;  // 투명도 증가량
-        }, 50);  // 간격(ms)
+	        var op = 0;  // 초기 투명도
+	        var timer = setInterval(function () {
+	            if (op >= 1) {
+	            clearInterval(timer);  // 애니메이션 종료
+	            }
+	            element.style.opacity = op;  // 투명도 설정
+	            element.style.filter = 'alpha(opacity=' + op * 100 + ')';  // IE8 이하 대응
+	            op += 0.1;  // 투명도 증가량
+	        }, 50);  // 간격(ms)
         }
 
         function fadeInTab(tabElement) {
-        tabElement.style.display = "block";  // 탭 컨텐츠 보이기
-        fade(tabElement);  // 페이드인 효과 적용
+	        tabElement.style.display = "block";  // 탭 컨텐츠 보이기
+	        fade(tabElement);  // 페이드인 효과 적용
         }
 
         function openTab(evt, tabName) {
-        var i, tabContent, tabLinks;
+      	    var i, tabContent, tabLinks;
 
-        tabContent = document.getElementsByClassName("tab");
-        for (i = 0; i < tabContent.length; i++) {
-            tabContent[i].style.display = "none";  // 모든 탭 컨텐츠 숨기기
-        }
+	        tabContent = document.getElementsByClassName("tab");
+	        for (i = 0; i < tabContent.length; i++) {
+	            tabContent[i].style.display = "none";  // 모든 탭 컨텐츠 숨기기
+	        }
 
-        tabLinks = document.getElementsByClassName("nav-link");
-        for (i = 0; i < tabLinks.length; i++) {
-            tabLinks[i].classList.remove("active");  // 모든 탭 링크에서 'active' 클래스 제거
-        }
+	        tabLinks = document.getElementsByClassName("nav-link");
+	        for (i = 0; i < tabLinks.length; i++) {
+	            tabLinks[i].classList.remove("active");  // 모든 탭 링크에서 'active' 클래스 제거
+	        }
 
-        var currentTab = document.getElementById(tabName);
-        // Remove immediate display and directly apply fade-in effect
-        currentTab.style.opacity = 0;
-        currentTab.style.filter = 'alpha(opacity=0)';
-        currentTab.style.border = 0;
-        fadeInTab(currentTab);  // 선택한 탭 컨텐츠를 페이드인으로 보이게 함
-
-        evt.currentTarget.classList.add("active");  // 선택한 탭 링크에 'active' 클래스 추가
+	        var currentTab = document.getElementById(tabName);
+	        // Remove immediate display and directly apply fade-in effect
+	        currentTab.style.opacity = 0;
+	        currentTab.style.filter = 'alpha(opacity=0)';
+	        currentTab.style.border = 0;
+	        fadeInTab(currentTab);  // 선택한 탭 컨텐츠를 페이드인으로 보이게 함
+	
+	        evt.currentTarget.classList.add("active");  // 선택한 탭 링크에 'active' 클래스 추가
         }
         
     </script>
