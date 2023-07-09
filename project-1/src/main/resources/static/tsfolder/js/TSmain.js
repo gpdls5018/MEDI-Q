@@ -28,7 +28,7 @@ function showChannel(data) {
 
   let output = `
     <div class="col-md-6 mb-4 text-center">
-        <img class="img-fluid" src='/resources/images/tsimages/ba2.jpg' style="height:300px;" >
+        <img class="img-fluid" src='/resources/images/tsimages/ba2.jpg' style="width:450px; height:300px;" >
         <img class="img-fluid" src="${imageLink}" hidden> 
         <br>
         <a class="btn btn-danger btn-sm" href="https://youtube.com/@Kalo_Lee/${channellId}"
@@ -84,7 +84,7 @@ function loadVideo(data) {
       output += `
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card card-body p-0" shadow embed-responsive embed-responsive-16by9">
-                <iframe  height="150px" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe  height="200px" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
       `;
