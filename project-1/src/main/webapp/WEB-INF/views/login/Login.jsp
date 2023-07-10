@@ -8,7 +8,7 @@
 		text-decoration:none;
 	}
 </style>
-<div class="img" style="background-image: url(<c:url value="/resources/images/bg.jpg" />); background-size: cover;">   
+<div class="img" style="background-image: url(<c:url value="/resources/images/basic/bg.jpg" />); background-size: cover;">   
 	<div class="container d-flex justify-content-center align-items-center vh-100">
 		<div class="row justify-content-center">
 			<div class="col">
@@ -47,10 +47,10 @@
 					</form>
 					<div class="social d-flex justify-content-between">
 						<a href="https://kauth.kakao.com/oauth/authorize?client_id=16c1121d0de60f9066904fb3ffc57c36&redirect_uri=http://localhost:9090/project/kakaoLogin.do&response_type=code">
-							<img src="<c:url value="/resources/images/kakao.png"/>" class="px-2 py-2 mr-md-1" />
+							<img src="<c:url value="/resources/images/basic/kakao.png"/>" class="px-2 py-2 mr-md-1" />
 						</a> <!-- 카카오로그인 -->
 						<a href="https://nid.naver.com/oauth2.0/authorize?client_id=m0_NavLMe3aWfFRsood6&response_type=code&redirect_uri=http://localhost:9090/project/naverLogin.do&state=">
-							<img src="<c:url value="/resources/images/naver.png"/>" class="px-2 py-2 mr-md-1" style="width: 100px"/>
+							<img src="<c:url value="/resources/images/basic/naver.png"/>" class="px-2 py-2 mr-md-1" style="width: 100px"/>
 						</a> <!-- 네이버로그인 -->
 						<a href="#" id="searchId" class="px-2 py-2 mr-md-1 text-dark search" data-toggle="modal" data-target="#modalSearchIdNPwd" data-backdrop="static">
 							<strong>아이디찾기</strong>

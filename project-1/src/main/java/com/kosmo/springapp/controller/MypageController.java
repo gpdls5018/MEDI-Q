@@ -132,4 +132,10 @@ public class MypageController {
 		System.out.println("정보: "+map);
 		return map;
 	}
+	
+	//정신건강테스트
+	@GetMapping("/MentalTest.do")
+	public String mentalTest() {
+		return "mentaltest/MentalTest";
+	}
 }

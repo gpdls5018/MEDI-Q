@@ -18,7 +18,7 @@
 				회원가입을 위한 양식을 입력해주세요
 				</p>
 				<p>
-					<img src="<c:url value="/resources/images/join.jpg"/>" alt="Image" class="img-fluid"/>
+					<img src="<c:url value="/resources/images/basic/join.jpg"/>" alt="Image" class="img-fluid"/>
 				</p>
 			</div>
 			<div class="col-md-6 d-flex align-items-center mt-3">
