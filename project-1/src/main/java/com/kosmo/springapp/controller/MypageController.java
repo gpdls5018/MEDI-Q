@@ -127,8 +127,9 @@ public class MypageController {
 	
 	//클릭한 날짜 ajax로 받기
 	@PostMapping("/Memo.do")
-	public Map calendarPost(@RequestParam Map date) {
-		System.out.println("date: "+date);
-		return date;
+	@ResponseBody
+	public Map calendarPost(@RequestParam Map map) {
+		System.out.println("정보: "+map);
+		return map;
 	}
 }
