@@ -2,14 +2,14 @@ package com.kosmo.springapp.nutrient.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.kosmo.springapp.nutrient.service.NutrientData;
-import com.kosmo.springapp.nutrient.service.NutrientSelectService;
 import com.kosmo.springapp.nutrient.service.impl.NutrientSelectMapper;
 import com.kosmo.springapp.nutrient.service.impl.NutrientSelectServiceImpl;
 
@@ -40,6 +40,17 @@ public class NutrientController {
 	@GetMapping("/NutrientDetail.do")
 	public String nutrientdetail(@RequestParam String name, Model model) {
 		
+		// 탭 이동시 뿌려주기
+		List<String> vitaminNames = nutrietnSelectMapper.getVitaminName();
+		model.addAttribute("vitaminNames",vitaminNames);
+		
+		List<String> etcNames = nutrietnSelectMapper.getETCName();
+		model.addAttribute("etcNames",etcNames);
+		
+		List<String> ingredientNames = nutrietnSelectMapper.getIngredientName();
+		model.addAttribute("ingredientNames",ingredientNames);
+		
+		// 5대 영양소 상세정보들
 		String n_FUNC = nutrietnSelectMapper.getN_FUNCbyVitaminName(name);
 		model.addAttribute("n_FUNC",n_FUNC);
 		
@@ -72,6 +83,31 @@ public class NutrientController {
 		
 		String n_FOOD = nutrietnSelectMapper.getN_FOODNbyVitaminName(name);
 		model.addAttribute("n_FOOD",n_FOOD);
+		
+		// 원료 상세정보들
+		
+		String i_FUNC = nutrietnSelectMapper.getI_FUNCbyIngredientName(name);
+		model.addAttribute("i_FUNC",i_FUNC);
+		
+//		String i_DESC = nutrietnSelectMapper.getI_DESCbyIngredientName(name);
+//		model.addAttribute("i_DESC",i_DESC);
+		
+		String i_desc = nutrientSelectServiceImpl.editI_DESCbyIngredientName(name);
+		model.addAttribute("i_desc",i_desc);
+		
+		String i_DRI = nutrietnSelectMapper.getI_DRIbyIngredientName(name);
+		model.addAttribute("i_DRI",i_DRI);
+		
+		String i_UL = nutrietnSelectMapper.getI_ULbyIngredientName(name);
+		model.addAttribute("i_UL",i_UL);
+		
+//		String i_CAUTION = nutrietnSelectMapper.getI_CAUTIONbyIngredientName(name);
+//		model.addAttribute("i_CAUTION",i_CAUTION);
+		
+		String i_caution = nutrientSelectServiceImpl.editI_CAUTIONbyIngredientName(name);
+		model.addAttribute("i_caution",i_caution);
+		
+		
 		
 		
 		
