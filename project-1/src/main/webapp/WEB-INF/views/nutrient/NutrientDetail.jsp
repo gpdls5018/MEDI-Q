@@ -167,7 +167,7 @@
     </style>
 </head>
 <body>
-    <div class="container" style="margin-top: 80px;">
+    <div class="container mb-5" style="margin-top: 80px;">
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
@@ -184,13 +184,14 @@
                 </li>
             </ul>
         </div>
-        <div class="pt-2">
+        <div class="pt-2 pb-5">
             <div id="popular" class="tab active border-0 text-center">
                 <!-- 이미지 -->
                 <div class="image mt-2">
 	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
-	                <div class="text" style="color: black; font-size: 40px;">
-		           		<b>비타민 A</b><br/>
+	                <div class="text" style="color: black;">
+		           		<b>${param.name }</b><br/>
+		           		<small>궁금했던 모든 것, 바로 확인해보세요!</small>
                 	</div>
     			</div>
             </div>
@@ -200,24 +201,25 @@
                         <div class="mt-4">
                             <h4>관련 건강고민</h4>
                             <hr class="bg-warning">
-                            <p>
-                                <kbd>노화 & 항산화</kbd>, <kbd>눈 건강</kbd>, <kbd>간 건강</kbd>, <kbd>장 건강</kbd>, <kbd>탈모 & 손톱 건강</kbd>, <kbd>피부 건강</kbd>
-                            </p>
+                            <p>${n_FUNC }</p>
                         </div>
                         <div class="mt-5">
                             <h4>상세설명</h4>
                             <hr class="bg-warning">
-                            <p>
-                                · 세포의 성장과 재생에 꼭 필요한 영양소에요.<br/>
-                                · 피부와 점막을 건강하게 유지하는데 중요해요.<br/>
-                                · 눈에서 빛을 흡수하는 세포를 만드는데 필요해요.                        
-                            </p>
+                            <p>${desc }</p>
                         </div>
                         <div class="mt-5">
                             <h4>섭취량</h4>
                             <hr class="bg-warning">
                             <p>
-                                남성 권장/상한 섭취량<br/>
+                                	남성 권장 섭취량: ${n_DRI_M }<br/>
+                                <c:if test="${not empty n_UL_M}">
+                                	남성 상한 섭취량: ${n_UL_M }<br/>
+                                </c:if>
+                                	여성 권장 섭취량: ${n_DRI_F }<br/>
+                                <c:if test="${not empty n_UL_F}">
+                                	여성 상한 섭취량: ${n_UL_F }
+                                </c:if>
                                 <div class="progress w-75 progress-bar text-danger mt-3" > 
                                     <div class="progress-bar-inner"></div>
                                     <div class="progress-text"></div>
@@ -227,25 +229,19 @@
                         <div class="mt-5">
                             <h4>결핍시 증상</h4>
                             <hr class="bg-warning">
-                            <p>
-                                야맹증, 성장장애, 피부건조증 등                      
-                            </p>
+                            <p>${n_LACK }이 있어요.</p>
                         </div>
+                        <c:if test="${not empty caution}">
                         <div class="mt-5">
                             <h4>주의사항</h4>
                             <hr class="bg-warning">
-                            <p>
-                                · 장기간 고용량 복용시 흡연자 폐암 위험이 증가할 수 있음<br/>
-                                · 임신 중 과다 복용시 기형 발생 위험 있음<br/>
-                                · 고용량 섭취하면 간 기능에 영향을 줄 수 있으므로 전문가와 상담 필요                   
-                            </p>
+                            <p>${caution }</p>
                         </div>
+                        </c:if>
                         <div class="mt-5">
                             <h4>섭취 음식</h4>
                             <hr class="bg-warning">
-                            <p>
-                                토마토, 당근, 호박 등에서 섭취할 수 있음             
-                            </p>
+                            <p>${n_FOOD }에서 섭취할 수 있어요.</p>
                         </div>
                         <div class="mt-5">
                             <h4>추천 영양제</h4>
@@ -258,6 +254,93 @@
                 </div>
             </div>
         </div>
+        
+        
+        <!-- 탭 이동처리 -->
+        <div style="display:none;">
+       		<div id="popular" class="tab active border-0">
+                <!-- 인기성분에 해당하는 상자 내용 -->
+                <!-- 이미지 -->
+   				<div class="image mt-2">
+	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
+	                <div class="text text-color:black">
+		           		<b>인기 성분 Top 100</b><br/>
+		           		<small>800개 영양성분 중 가장 인기있는 100개 성분의 Best 제품을 만나보세요</small>
+                	</div>
+    			</div>
+                <div class="box-container">
+	                <c:forEach var="name" items="${vitaminNames}">
+					    <div class="box col-sm-2" style="white-space: nowrap;">
+					    	<a href="<c:url value="/NutrientDetail.do?name=${name}"/>"> 
+					    		<b style="font-size: 14px;">${name}</b>
+					    	</a>
+					    </div>
+					</c:forEach>
+                </div>
+            </div>
+            
+	        <div id="vitamin" class="tab">
+               	<!-- 비타민에 해당하는 상자 내용 -->
+	                <!-- 이미지 -->
+	   				<div class="image mt-2">
+		                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
+		                <div class="text text-color:black">
+			           		<b>비타민 선택</b><br/>
+			           		<small>비타민 A, 비타민 B 등을 선택할 수 있는 상자입니다.</small>
+	                	</div>
+	    			</div>
+	    			<div class="box-container">
+		                <c:forEach var="name" items="${vitaminNames}">
+						    <div class="box col-sm-2" style="white-space: nowrap;">
+						    	<a href="<c:url value="/NutrientDetail.do?name=${name}"/>"> 
+						    		<b style="font-size: 14px;">${name}</b>
+						    	</a>
+						    </div>
+						</c:forEach>
+	                </div>
+	            </div>
+	
+	            <div id="mineral" class="tab">
+	                <!-- 미네랄에 해당하는 상자 내용 -->
+	                <div class="image mt-2">
+		                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
+		                <div class="text text-color:black">
+			           		<b>미네랄 선택</b><br/>
+			           		<small>미네랄 선택을 위한 상자입니다.</small>
+	                	</div>
+	    			</div>
+	    			<div class="box-container">
+		                <c:forEach var="name" items="${etcNames}">
+						    <div class="box col-sm-2" style="white-space: nowrap;">
+						    	<a href="<c:url value="/NutrientDetail.do"/>">
+						    		<b style="font-size: 14px;">${name}</b>
+						    	</a>
+						    </div>
+						</c:forEach>
+	                </div>
+	            </div>
+	                
+	            <div id="functional" class="tab">
+	                <!-- 기능성 원료에 해당하는 상자 내용 -->
+	                <div class="image mt-2">
+		                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
+		                <div class="text text-color:black">
+			           		<b>기능성 원료 선택</b><br/>
+			           		<small>기능성 원료 선택을 위한 상자입니다.</small>
+	                	</div>
+	    			</div>
+	    			<div class="box-container">
+		                <c:forEach var="name" items="${ingredientNames}">
+						    <div class="box col-sm-2" style="white-space: nowrap;">
+						    	<a href="<c:url value="/NutrientDetail.do"/>">
+						    		<b style="font-size: 14px;">${name}</b>
+						    	</a>
+						    </div>
+						</c:forEach>
+	                </div>
+	            </div>
+    		</div>
+    
     </div>
     <script>
 
@@ -332,8 +415,5 @@
         const progressInterval = setInterval(updateProgress, updateInterval);
 
     </script>
-</body>
-</html>
-
 </body>
 </html>

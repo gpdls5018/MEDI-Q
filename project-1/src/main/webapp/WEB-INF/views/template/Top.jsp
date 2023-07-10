@@ -112,7 +112,7 @@
                         <li><a href="<c:url value="/NutrientSelect.do"/>" class="sidenava2" >
                             <img src="<c:url value="/resources/images/tsimages/free-icon-vitamins-525955.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             영양소</a></li>
-                        <li><a class="sidenava4" href="#">
+                        <li><a class="sidenava4" href="<c:url value="/magazineindex.do"/>">
                             <img src="<c:url value="/resources/images/tsimages/free-icon-whats-new-5511348.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             Magazine(뉴스)</a></li>
                         <li><a class="sidenava3" href="#">
@@ -135,7 +135,7 @@
               </div>
               
               <!-- 요소를 사용하여 navbar 열기-->
-              <span onclick="openNav()"><i class="fas fa-solid fa-bars fa-2x mx-2" style="color: #161616;"></i></span>
+              <span onclick="openNav()"><i class="fas fa-solid fa-bars fa-2x mx-2" style="color: #EF605D;"></i></span>
 				
 		    
 	      

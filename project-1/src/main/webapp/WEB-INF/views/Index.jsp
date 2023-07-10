@@ -321,7 +321,7 @@
 </style>
 
  	<!-- 처음 인덱스 킬때 전체화면 비디오 출력 -->
-			<div id="video-container">
+			<div id="tsvideo-container">
 			    <video id="video" autoplay muted>
 	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
@@ -397,7 +397,7 @@
 	        <i class="bi bi-camera" hidden><a href="/modelOCR.do"> 사진으로 검색할래요 !!!</a></i>
 	    </div>
 	
-		<!-- 검색창 밑 검색버튼  -->
+		<!-- 검색창 밑 검색 태그용 버튼  -->
 		<div class="row justify-content-center mt-5 pt-5">
 	        <div class="col-lg-10 text-center">
 	            <h1 class="mb-5" style="font-weight:bold; color:black;"><span style="color: #EF605D;">제품명,영양성분</span>을 검색해보세요.</h1>
@@ -661,7 +661,7 @@ $(document).ready(function(){
 //비디오 히든 로직
 document.addEventListener("DOMContentLoaded", function() {
 	  var checkbox = document.getElementById("stop-video-checkbox");
-	  var videoContainer = document.getElementById("video-container");
+	  var videoContainer = document.getElementById("tsvideo-container");
 
 	  // 저장된 값 가져오기
 	  var hideUntilDate = localStorage.getItem("hideUntilDate");

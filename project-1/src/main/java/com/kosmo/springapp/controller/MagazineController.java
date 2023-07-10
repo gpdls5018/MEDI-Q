@@ -25,4 +25,9 @@ public class MagazineController {
 	    model.addAttribute("listData",listData);
 	    return "slider/Magazine"+no;
 	  }
+	
+	@GetMapping("/magazineindex.do")
+	  public String magazineinddex(Map map) {
+	    return "slider/MagazineIndex";
+	  }
 }
