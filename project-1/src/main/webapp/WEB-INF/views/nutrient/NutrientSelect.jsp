@@ -151,9 +151,9 @@
                 <!-- 이미지 -->
    				<div class="image mt-2">
 	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
-	                <div class="text text-color:black">
-		           		<b>인기 성분 Top 100</b><br/>
-		           		<small>800개 영양성분 중 가장 인기있는 100개 성분의 Best 제품을 만나보세요</small>
+	                <div class="text text-color:black text-center">
+		           		<b style="font-size: 30px;">👨‍⚕&nbsp;인기 성분 Top 10</b><br/>
+		           		<small>100개 영양성분 중 가장 인기있는 10개 성분의 Best 제품을 만나보세요</small>
                 	</div>
     			</div>
                 <div class="box-container">
@@ -172,9 +172,9 @@
                 <!-- 이미지 -->
    				<div class="image mt-2">
 	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
-	                <div class="text text-color:black">
-		           		<b>비타민 선택</b><br/>
-		           		<small>비타민 A, 비타민 B 등을 선택할 수 있는 상자입니다.</small>
+	                <div class="text text-color:black text-center">
+		           		<b style="font-size: 30px;">🍊&nbsp;비타민 찾아보기</b><br/>
+		           		<small>비타민의 중요성 및 효과를 자세히 알아보세요</small>
                 	</div>
     			</div>
     			<div class="box-container">
@@ -192,15 +192,15 @@
                 <!-- 미네랄에 해당하는 상자 내용 -->
                 <div class="image mt-2">
 	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
-	                <div class="text text-color:black">
-		           		<b>미네랄 선택</b><br/>
-		           		<small>미네랄 선택을 위한 상자입니다.</small>
+	                <div class="text text-color:black text-center">
+		           		<b style="font-size: 30px;">🥗&nbsp;미네랄 찾아보기</b><br/>		           		
+		           		<small>미네랄과 기타영양소의 중요성 및 효과를 자세히 알아보세요</small>
                 	</div>
     			</div>
     			<div class="box-container">
-	                <c:forEach var="name" items="${etcNames}">
+    			    <c:forEach var="name" items="${etcNames}">
 					    <div class="box col-sm-2" style="white-space: nowrap;">
-					    	<a href="<c:url value="/NutrientDetail.do"/>">
+					    	<a href="<c:url value="/NutrientDetail.do?name=${name}"/>">
 					    		<b style="font-size: 14px;">${name}</b>
 					    	</a>
 					    </div>
@@ -212,15 +212,15 @@
                 <!-- 기능성 원료에 해당하는 상자 내용 -->
                 <div class="image mt-2">
 	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
-	                <div class="text text-color:black">
-		           		<b>기능성 원료 선택</b><br/>
-		           		<small>기능성 원료 선택을 위한 상자입니다.</small>
+	                <div class="text text-color:black text-center">
+		           		<b style="font-size: 30px;">🌱&nbsp;기능성 원료 찾아보기</b><br/>
+		           		<small>기능성 원료의 중요성 및 효과를 자세히 알아보세요</small>
                 	</div>
     			</div>
     			<div class="box-container">
 	                <c:forEach var="name" items="${ingredientNames}">
 					    <div class="box col-sm-2" style="white-space: nowrap;">
-					    	<a href="<c:url value="/NutrientDetail.do"/>">
+					    	<a href="<c:url value="/NutrientDetail.do?name=${name}"/>">
 					    		<b style="font-size: 14px;">${name}</b>
 					    	</a>
 					    </div>
