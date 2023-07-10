@@ -138,7 +138,7 @@
                     <a class="nav-link" href="#" onclick="openTab(event, 'vitamin')">비타민</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a class="nav-link" href="#" onclick="openTab(event, 'mineral')">미네랄</a>
+                    <a class="nav-link" href="#" onclick="openTab(event, 'mineral')">미네랄 및 기타영양소</a>
                 </li>
                 <li class="nav-item col-3">
                     <a class="nav-link" href="#" onclick="openTab(event, 'functional')">기능성 원료</a>
@@ -153,7 +153,7 @@
 	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
 	                <div class="text text-color:black text-center">
 		           		<b style="font-size: 30px;">👨‍⚕&nbsp;인기 성분 Top 10</b><br/>
-		           		<small>100개 영양성분 중 가장 인기있는 10개 성분의 Best 제품을 만나보세요</small>
+		           		<small>100개 영양성분 중 가장 인기있는 10개 성분의 Best 제품을 만나보세요!</small>
                 	</div>
     			</div>
                 <div class="box-container">
@@ -174,13 +174,13 @@
 	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
 	                <div class="text text-color:black text-center">
 		           		<b style="font-size: 30px;">🍊&nbsp;비타민 찾아보기</b><br/>
-		           		<small>비타민의 중요성 및 효과를 자세히 알아보세요</small>
+		           		<small>비타민의 중요성과 효과를 자세히 알아보세요!</small>
                 	</div>
     			</div>
     			<div class="box-container">
 	                <c:forEach var="name" items="${vitaminNames}">
 					    <div class="box col-sm-2" style="white-space: nowrap;">
-					    	<a href="<c:url value="/NutrientDetail.do?name=${name}"/>"> 
+					    	<a href="<c:url value="/NutrientDetail.do?name=${name}"/>">  
 					    		<b style="font-size: 14px;">${name}</b>
 					    	</a>
 					    </div>
@@ -193,8 +193,8 @@
                 <div class="image mt-2">
 	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
 	                <div class="text text-color:black text-center">
-		           		<b style="font-size: 30px;">🥗&nbsp;미네랄 찾아보기</b><br/>		           		
-		           		<small>미네랄과 기타영양소의 중요성 및 효과를 자세히 알아보세요</small>
+		           		<b style="font-size: 30px;">🥗&nbsp;미네랄 및 기타영양소 찾아보기</b><br/>		           		
+		           		<small>미네랄 및 기타영양소의 중요성과 효과를 자세히 알아보세요!</small>
                 	</div>
     			</div>
     			<div class="box-container">
@@ -213,8 +213,8 @@
                 <div class="image mt-2">
 	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
 	                <div class="text text-color:black text-center">
-		           		<b style="font-size: 30px;">🌱&nbsp;기능성 원료 찾아보기</b><br/>
-		           		<small>기능성 원료의 중요성 및 효과를 자세히 알아보세요</small>
+		           		<b style="font-size: 30px;">🌿&nbsp;기능성 원료 찾아보기</b><br/>
+		           		<small>기능성 원료의 중요성과 효과를 자세히 알아보세요!</small>
                 	</div>
     			</div>
     			<div class="box-container">
