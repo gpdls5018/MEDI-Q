@@ -28,13 +28,13 @@ function showChannel(data) {
 
   let output = `
     <div class="col-md-6 mb-4 text-center">
-        <img class="img-fluid" src='/resources/images/tsimages/ba2.jpg' style="width:450px; height:300px;" >
+        <img class="img-fluid" src='/resources/images/tsimages/ba2.jpg' style="border-radius: 10px; width:450px; height:300px;" >
         <img class="img-fluid" src="${imageLink}" hidden> 
         <br>
         <a class="btn btn-danger btn-sm" href="https://youtube.com/@Kalo_Lee/${channellId}"
         target="_blank" hidden>약 정보 채널</a>
     </div>
-    <div class="col-md-6 mb-4" >
+    <div class="col-md-6 mb-4">
         <ul class="list-group shadow-lg" style="border-radius: 20px;">
             <li class="list-group-item bg-danger text-white" hidden><strong>이름: ${title}</li>
             <li class="list-group-item " hidden>소개:<br/><br/>${desc}<br/><br/><br/><br/></li>
@@ -82,9 +82,9 @@ function loadVideo(data) {
       const videoId = item.snippet.resourceId.videoId;
 
       output += `
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card card-body p-0" shadow embed-responsive embed-responsive-16by9">
-                <iframe  height="200px" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="col-lg-4 col-md-6 mb-2" >
+            <div class="p-1 m-2 shadow embed-responsive embed-responsive-16by9" style="border-radius: 20px">
+                <iframe style="justify-content: center; border-radius: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"  height="200px" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
       `;
