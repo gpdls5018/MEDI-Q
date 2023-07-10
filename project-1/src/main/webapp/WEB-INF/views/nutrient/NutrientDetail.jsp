@@ -95,8 +95,8 @@
         }
 
         .box:hover {
-            background-color: #ddd;
             font-weight: bold;
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
         }
 
         .box.active {
@@ -131,14 +131,7 @@
             font-weight: bold;
         }
 
-        @keyframes fillProgress {
-            0% {
-                width: 0%;
-            }
-            100% {
-                width: 50%; /* 성분에 따라 맞춰야함 */
-            }
-        }
+       
         
         /* 이미지 추가 */
 		.image {
@@ -176,14 +169,14 @@
                     <a class="nav-link" href="#" onclick="openTab(event, 'vitamin')">비타민</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a class="nav-link" href="#" onclick="openTab(event, 'mineral')">미네랄</a>
+                    <a class="nav-link" href="#" onclick="openTab(event, 'mineral')">미네랄 및 기타영양소</a>
                 </li>
                 <li class="nav-item col-3">
                     <a class="nav-link" href="#" onclick="openTab(event, 'functional')">기능성 원료</a>
                 </li>
             </ul>
         </div>
-        <div class="tab pt-3 pb-5" style="display:block; border:0px;">
+        <div class="tab pt-1 pb-5" style="display:block; border:0px;">
             <div class="active border-0 text-center" style="padding-top:20px">
                 <!-- 이미지 -->
                 <div class="image mt-2">
@@ -260,11 +253,13 @@
 		                    </c:if>
                         </c:if>
                         <c:if test="${not vit }">
-	                        <div class="mt-5">
-	                            <h4><b>4. 주의사항</b></h4>
-	                            <hr class="bg-warning">
-	                            <p style="font-size: 17px;">${i_caution }</p>
-	                        </div>
+                            <c:if test="${not empty i_caution }">
+		                        <div class="mt-5">
+		                            <h4><b>4. 주의사항</b></h4>
+		                            <hr class="bg-warning">
+		                            <p style="font-size: 17px;">${i_caution }</p>
+		                        </div>
+		                    </c:if>
                         </c:if>
                         <c:if test="${vit }">
 	                        <div class="mt-5">
@@ -299,14 +294,28 @@
 	                        </div>
 	                    </c:if>
 	                    <c:if test="${not vit }">
-		                    <div class="mt-5">
-		                    	<h4><b>5. 추천 영양제</b></h4>
-	                            <hr class="bg-warning">
-	                            <p style="font-size: 17px;">
-	                                영양제1, 영양제2, 영양제3                  
-	                            </p>
-	                        </div>    
+	                    	<c:if test="${not empty i_caution }">
+			                    <div class="mt-5">
+			                    	<h4><b>5. 추천 영양제</b></h4>
+		                            <hr class="bg-warning">
+		                            <p style="font-size: 17px;">
+		                                영양제1, 영양제2, 영양제3                  
+		                            </p>
+		                        </div>    
+		                    </c:if>
+		                    <c:if test="${empty i_caution }">
+		                    	<div class="mt-5">
+			                    	<h4><b>4. 추천 영양제</b></h4>
+		                            <hr class="bg-warning">
+		                            <p style="font-size: 17px;">
+		                                영양제1, 영양제2, 영양제3                  
+		                            </p>
+		                        </div> 
+		                    </c:if>
 	                    </c:if>
+	                    
+	                    
+	                    
 	                    
                     </div>
                 </div>
@@ -320,7 +329,7 @@
 	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
 	                <div class="text text-color:black text-center">
 		           		<b style="font-size: 30px;">👨‍⚕&nbsp;인기 성분 Top 10</b><br/>
-		           		<small>100개 영양성분 중 가장 인기있는 10개 성분의 Best 제품을 만나보세요</small>
+		           		<small>100개 영양성분 중 가장 인기있는 10개 성분의 Best 제품을 만나보세요!</small>
                 	</div>
     			</div>
                 <div class="box-container">
@@ -340,7 +349,7 @@
 	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
 	                <div class="text text-color:black text-center">
 		           		<b style="font-size: 30px;">🍊&nbsp;비타민 찾아보기</b><br/>
-		           		<small>비타민의 중요성 및 효과를 자세히 알아보세요</small>
+		           		<small>비타민의 중요성과 효과를 자세히 알아보세요!</small>
                 	</div>
     			</div>
     			<div class="box-container">
@@ -359,8 +368,8 @@
                 <div class="image mt-2">
 	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
 	                <div class="text text-color:black text-center">
-		           		<b style="font-size: 30px;">🥗&nbsp;미네랄 찾아보기</b><br/>
-		           		<small>미네랄과 기타영양소의 중요성 및 효과를 자세히 알아보세요</small>
+		           		<b style="font-size: 30px;">🥗&nbsp;미네랄 및 기타영양소 찾아보기</b><br/>
+		           		<small>미네랄 및 기타영양소의 중요성과 효과를 자세히 알아보세요!</small>
                 	</div>
     			</div>
     			<div class="box-container">
@@ -379,8 +388,8 @@
                 <div class="image mt-2">
 	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
 	                <div class="text text-color:black text-center">
-		           		<b style="font-size: 30px;">🌱&nbsp;기능성 원료 찾아보기</b><br/>
-		           		<small>기능성 원료의 중요성 및 효과를 자세히 알아보세요</small>
+		           		<b style="font-size: 30px;">🌿&nbsp;기능성 원료 찾아보기</b><br/>
+		           		<small>기능성 원료의 중요성과 효과를 자세히 알아보세요!</small>
                 	</div>
     			</div>
     			<div class="box-container">
@@ -468,6 +477,18 @@
         // 주기적으로 진행 바 업데이트 실행
         const progressInterval = setInterval(updateProgress, updateInterval);
 
+        // 상세페이지 넘어왔을 때 위쪽 탭 밑줄 없애는 코드
+        document.addEventListener('DOMContentLoaded', function() {
+  			var show = document.querySelector('body > div.container.mb-5 > div.tab.pt-1.pb-5');
+  			var removetarget = document.querySelector('body > div.container.mb-5 > div:nth-child(1) > ul > li:nth-child(1) > a');
+  			if (show.style.display === 'block') {
+    			removetarget.classList.remove("active");
+  			}
+		});
+        
+        
+        
+        
     </script>
 </body>
 </html>
