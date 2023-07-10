@@ -96,7 +96,7 @@
         .ui-button:hover,
         .ui-button:focus { border: 0px solid #cccccc; background-color: transparent; font-weight: normal; color: #2b2b2b; } 
 
-        .ui-widget-header .ui-icon { background-image: url('<c:url value="/resources/images/btns.png"/>'); } 
+        .ui-widget-header .ui-icon { background-image: url('<c:url value="/resources/images/basic/btns.png"/>'); } 
 
         .ui-icon-circle-triangle-e { background-position: -20px 0px; background-size: 36px; } 
 
@@ -146,10 +146,11 @@
 					<img class="rounded-circle" alt="사용자 이미지" src="<c:url value="/resources/images/${uploadFolder }/${profImg.pi_Filename }.${profImg.pi_Ext }" />" style="width: 80px; height: 80px">
 				</c:if>
 				<c:if test="${not isProfImg }">
-					<img class="rounded-circle" alt="기본 프로필" src="<c:url value="/resources/images/friend.png" />" style="width: 80px; height: 80px">
+					<img class="rounded-circle" alt="기본 프로필" src="<c:url value="/resources/images/basic/friend.png" />" style="width: 80px; height: 80px">
 				</c:if>
 				<span class="align-self-center mr-auto ml-2" id="id" style="font-weight: bold">${info.id }</span>
 				<a type="button" class="btn btn-outline-info align-self-center mx-2" href="javascript:viewCalendar()">건강기록</a>
+				<a type="button" class="btn btn-outline-info align-self-center mx-2" href='<c:url value="/project/MentalTest.do"/>'>정신건강 테스트</a>
 				<a type="button" class="btn btn-outline-info align-self-center" href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>">건강검진정보 불러오기</a>
 				<input type="button" id="imgEdit" value="이미지 수정" class="btn btn-outline-info align-self-center mx-2" data-target="#modalView" data-backdrop="static"/>
 				<a type="button" href="" class="btn btn-outline-info align-self-center" data-target="#modalView" data-backdrop="static">회원정보 수정</a>
