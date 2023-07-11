@@ -618,6 +618,178 @@
 }
 
 
+/*5번째 다이브 스타일*/
+.section20-2-home{
+	margin-top: 20px;
+}
+.section20-2-home .content {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 30px 0px 0px 30px;
+    padding: 0px 20px;
+    text-align: center;
+    position: relative;
+}
+.qna-mark-home {
+    display: block;
+    font-size: 0;
+    background: url(https://cdn.pillyze.io/web/img/qna-txt2.webp) left no-repeat;
+    width: 50px;
+    height: 20px;
+    background-size: 50px 20px;
+}
+.section20-2-home .get-20-2 {
+    text-align: left;
+    margin: 10px 0px 0px;
+    font-size: 26px;
+}
+.get-20-2 {
+    font-weight: 700;
+    color: rgba(39, 39, 39, 0.952);
+    line-height: 1;
+    font-size: 20px;
+    margin: 30px 0px 0px;
+    display: block;
+}
+.get-20-2-home-txt2 {
+    font-weight: 600;
+    text-align: left;
+    margin: 10px 0px 0px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #787E8B;
+}
+.qna-list-wrap {
+    width: 100%;
+    display: block;
+}
+.qna-card {
+    width: 90%;
+    height: 250px;
+    display: block;
+    padding: 25px 40px 20px;
+    background: #FFFFFF;
+    border: 1px solid #E6E9ED;
+    box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
+    border-radius: 20px;
+    margin: 20px 0px 0px;
+    text-align: left;
+}
+.qna-card .ingredient-tags {
+    display: block;
+    width: 100%;
+    margin: 0px 0px 10px;
+}
+.qna-card .ingredient-tags .ingredient-tag {
+    background: #FDCDBC;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    color: #EF605D;
+    font-weight: 500;
+    display: inline-block;
+    padding: 0px 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    float: left;
+    margin: 0px 10px 0px 0px;
+}
+.qna-main {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+}
+.qna-card .qna-main .txt1 {
+    font-weight: 700;
+    display: block;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: left;
+    color: #101219;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.qna-card .qna-main .txt1 .qmark {
+    color: #EF605D;
+}
+.qna-card .qna-main .txt2 {
+    font-weight: 600;
+    display: block;
+    text-align: left;
+    font-size: 16px;
+    line-height: 24px;
+    color: #787E8B;
+    margin: 8px 0px 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.qna-card .qna-user-wrap {
+    display: block;
+    width: 100%;
+    margin: 20px 0px 0px;
+}
+.qna-card .qna-user-wrap .qna-user-icon.qna-user-icon-1 {
+    border-radius: 50%;
+    background: url(https://cdn.pillyze.io/web/img/user-s-1.webp) center no-repeat;
+    background-size: contain !important;
+}
+.qna-card .qna-user-wrap .qna-user-icon {
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+.qna-card .qna-user-wrap .qna-user-txt {
+    float: right;
+    width: calc(100% - 40px);
+    font-weight: 600;
+    color: #282a35;
+    text-align: left;
+    line-height: 24px;
+    font-size: 16px;
+    overflow: hidden;
+    padding: 3px 0px 0px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.qna-card .qna-user-wrap .user-info-row {
+    display: block;
+    width: 100%;
+    margin: 20px 0px 0px;
+    float: left;
+}
+.qna-card .qna-user-wrap .user-info-row .user-name {
+    color: #787E8B;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+}
+.qna-card .qna-user-wrap .user-info-row .user-agesex {
+    color: #9BA1AA;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+}
+.clearfix {
+    display: block;
+}
+.more-qna {
+    float: right;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1;
+    text-align: right;
+    margin: 20px 0px 0px;
+    text-decoration: underline;
+    color: #9BA1AA;
+}
 </style>
 
  	<!-- 처음 인덱스 킬때 전체화면 비디오 출력 -->
@@ -860,8 +1032,103 @@
 			</div>
        
       
-      <!--  *번째 다이브 목록 -->
-	    <div class="m-5 " style="display:flex; justify-content: center;">
+      <!--  5번째 다이브 목록 -->
+      <div class="section section20-2 section20-2-home">
+	        <div class="content">
+	            <div class="qna-mark-home">Q&amp;A</div>
+	            <span class="ge-title get-20-2">지금 인기있는 질문</span>
+	            <div class="get-20-2-home-txt2">전문가가 직접 답해드려요!</div>
+	
+	            <div class="qna-list-wrap">
+	                    <div class="qna-card">
+	                        <div class="ingredient-tags">
+	                            <div class="ingredient-tag">
+	                                성분 정보
+	                            </div>
+	                        </div>
+	                        <br/>
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>epa높은 오메가3 구미나 츄어블 있을까요?</span>
+	                            <span class="txt2">알약을 아예 못먹어서 여태 키즈 제품을 먹었습니다. 중성지방 콜레스테롤때문에 epa가 높은 제품을 먹고싶은데..<br/> 추천해주시면 너무 감사해요ㅠㅠ</span>
+	                        </a>
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                                <div class="qna-user-icon qna-user-icon-1"></div>
+	                                <div class="qna-user-txt">액체형(리퀴드) 오메가3 제품을 선택하거나, 일반 캡슐 제품을 잘라서 내용물만 섭취하시는 것을 추천해요!</div>
+	                            <div class="user-info-row">
+	                                <span class="user-name">김**</span>
+	                                <span class="user-agesex">20대 / 여</span>
+	                            </div>
+	                        </a>
+	                    </div><!-- qna-card의 끝 -->
+	                    <div class="qna-card">
+	                        <div class="ingredient-tags">
+	                            <div class="ingredient-tag">
+	                                영양제 조합
+	                            </div>
+	                        </div>
+	                        <br/>
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>혈압약 처방 받았습니다.</span>
+	                            <span class="txt2">누보로젯 40/2.5/5/10 처방 받았습니다. 현재 영양제와의 점수가 안맞네요. 멀 빼야하고 대신해서 멀 넣어야하는지<br/> 알려주세요. 혈압약을 먹기 전에는 96점이였습니다.</span>
+	                        </a>
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                                <div class="qna-user-icon qna-user-icon-1"></div>
+	                                <div class="qna-user-txt">혈압약을 드시면서 피해야 하는 것과 계속 섭취해도 괜찮은 영양제를 알려드릴게요.</div>
+	                            <div class="user-info-row">
+	                                <span class="user-name">김**</span>
+	                                <span class="user-agesex">30대 / 남</span>
+	                            </div>
+	                        </a>
+	                    </div><!-- qna-card의 끝 -->
+	                    <div class="qna-card">
+	                        <div class="ingredient-tags">
+	                            <div class="ingredient-tag">
+	                                영양제 조합
+	                            </div>
+	                        </div>
+	                        <br/>
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>흡연자 영양제 정리 부탁드립니다</span>
+	                            <span class="txt2">흡연자여서 전에 Q&amp;A로 추천을 받은 영양제는 어려울거 같아서요 B6는 20 B12는 55까지 최대로 잡고 알려주시면<br/> 감사하겠습니다 마그네슘도 50정도가 부족해서 같이 부탁드릴게요</span>
+	                        </a>
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                                <div class="qna-user-icon qna-user-icon-1"></div>
+	                                <div class="qna-user-txt">영양제 선택은 건강에 대해 가장 중요하게 생각하는 가치에 따라 달라질 수 있어요.</div>
+	                            <div class="user-info-row">
+	                                <span class="user-name">루**</span>
+	                                <span class="user-agesex">20대 / 남</span>
+	                            </div>
+	                        </a>
+	                    </div><!-- qna-card의 끝 -->
+	                    <div class="qna-card">
+	                        <div class="ingredient-tags">
+	                            <div class="ingredient-tag">
+	                                기타
+	                            </div>
+	                        </div>
+	                        <br/>
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>코로나 걸렸을 때 영양제</span>
+	                            <span class="txt2">코로나 확진 4일차에요. 혹시 같이 먹으면 좋은 영양제 있을까요? 궁금합니다. </span>
+	                        </a>
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                                <div class="qna-user-icon qna-user-icon-1"></div>
+	                                <div class="qna-user-txt">코로나 감염을 예방하기 위해, 또는 코로나 후유증에서 빨리 벗어나기 위해서는 비타민 C, 비타민 D, 아연 등<br/> 면역에 관련된 영양제가 도움이 됩니다. </div>
+	                            <div class="user-info-row">
+	                                <span class="user-name">물**</span>
+	                                <span class="user-agesex">30대 / 여</span>
+	                            </div>
+	                        </a>
+	                    </div><!-- qna-card의 끝 -->
+	            </div>
+	            <div class="clearfix">
+	                <a tabindex="0" class="more-qna" href="#">Q&amp;A 더보기</a>
+	            </div>
+	        </div>
+	    </div>
+	    
+	   <!--  *번째 다이브 목록 -->
+		<div class="m-5 " style="display:flex; justify-content: center;">
 	        <div class="slider1 ">
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>"></a></div>
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>"></a></div>
@@ -870,9 +1137,6 @@
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>"></a></div>
 	        </div>
 	    </div>
-	    
-	   <!--  *번째 다이브 목록 -->
-
 	</article>
 		<!-- 오른쪽 슬라이드 -->
 		<aside class="tsidebar fixedsticky pr-3">
