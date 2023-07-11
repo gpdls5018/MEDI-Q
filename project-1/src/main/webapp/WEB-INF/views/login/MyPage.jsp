@@ -1149,43 +1149,6 @@ ul li input[type=checkbox]:checked ~ .acco {
 		$(this).parent().remove()
 	});
 	
-	//bmi 계산
- 	var bmi = document.querySelector('.c-bmi');
- 	var height = bmi.querySelector('input[name=h]');
- 	var weight = bmi.querySelector('input[name=w]');
- 	var gram = bmi.querySelectorAll('input[name=g]');
- 	function result(){
- 		bmi.querySelector('.c-bmi__groups').style.display='';
-		var e=parseInt(height.value), //키 숫자타입으로 구하기
-			t=parseInt(weight.value),//체중 숫자타입으로 구하기
-		    i=parseFloat(t/(e/100)**2).toFixed(2),//bmi계산
-		    h=[[0,18.49],[18.5,22.99],[23,24.99],[25,29.99],[30,100]]
-	    	.findIndex(e=>
-	        	e[0]<=i && i<e[1]
-	        );            
-	    gram[h].checked=!0
-	
-	    /*
-	    [표준체중 계산 방법]
-	    - 남성: 키(m) × 키(m) × 22
-	   - 여성: 키(m) × 키(m) × 21
-	    */
-	   m=((e/100)*(e/100)*22).toFixed(2) //남자 표준 체중
-	   f=((e/100)*(e/100)*21).toFixed(2) //여자 표준 체중
-
-	   //성별 먼저 확인하기**************************
-	   if(h!=1){
-	   		console.log('당신의 적정 체중은'+(m-t)+'kg 입니다');
-	        bmi.lastElementChild.innerHTML='당신의 BMI 지수는 <span class="text-info">'+i+'</span>이고<br/>적정 체중은 <span class="text-info">'+((m-t)>=0?"+"+(m-t).toFixed(2):(m-t).toFixed(2))+'kg</span> 입니다';
-	   }
-	   else{
-	   		bmi.lastElementChild.innerHTML='정상입니다'
-	   }
-	}
-	
-	bmi.addEventListener('submit', result);
-	bmi.dispatchEvent(new Event('input'));
-
 	//이미지 수정하기
 	$('#imgEdit').click(function(){
 		$(this).attr('data-toggle','modal');
@@ -1223,6 +1186,44 @@ ul li input[type=checkbox]:checked ~ .acco {
 			$(this).parent().remove()
 		});
 	}
+	
+	//bmi 계산
+ 	var bmi = document.querySelector('.c-bmi');
+ 	var height = bmi.querySelector('input[name=h]');
+ 	var weight = bmi.querySelector('input[name=w]');
+ 	var gram = bmi.querySelectorAll('input[name=g]');
+ 	function result(){
+ 		bmi.querySelector('.c-bmi__groups').style.display='';
+		var e=parseInt(height.value), //키 숫자타입으로 구하기
+			t=parseInt(weight.value),//체중 숫자타입으로 구하기
+		    i=parseFloat(t/(e/100)**2).toFixed(2),//bmi계산
+		    h=[[0,18.49],[18.5,22.99],[23,24.99],[25,29.99],[30,100]]
+	    	.findIndex(e=>
+	        	e[0]<=i && i<e[1]
+	        );            
+	    gram[h].checked=!0
+	
+	    /*
+	    [표준체중 계산 방법]
+	    - 남성: 키(m) × 키(m) × 22
+	   - 여성: 키(m) × 키(m) × 21
+	    */
+	   m=((e/100)*(e/100)*22).toFixed(2) //남자 표준 체중
+	   f=((e/100)*(e/100)*21).toFixed(2) //여자 표준 체중
+
+	   //성별 먼저 확인하기**************************
+	   if(h!=1){
+	   		//console.log('당신의 적정 체중은'+(m-t)+'kg 입니다');
+	        bmi.lastElementChild.innerHTML='당신의 BMI 지수는 <span class="text-info">'+i+'</span>이고<br/>적정 체중은 <span class="text-info">'+((m-t)>=0?"+"+(m-t).toFixed(2):(m-t).toFixed(2))+'kg</span> 입니다';
+	   }
+	   else{
+	   		bmi.lastElementChild.innerHTML='정상입니다'
+	   }
+	   	bmi.addEventListener('submit', result);
+		bmi.dispatchEvent(new Event('input'));   
+	}
+
+	
 	/*
 	//알레르기 추가하기
 	function addInput(name){
