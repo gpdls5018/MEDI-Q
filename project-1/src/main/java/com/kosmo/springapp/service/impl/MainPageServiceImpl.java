@@ -25,4 +25,9 @@ public class MainPageServiceImpl implements MainPageService{
 		return mapper.selectFoodOneByNo(map);
 	}
 
+	@Override
+	public List selectFoodNameList(String searchWord) {
+		return mapper.selectFoodNameList(searchWord);
+	}
+
 }

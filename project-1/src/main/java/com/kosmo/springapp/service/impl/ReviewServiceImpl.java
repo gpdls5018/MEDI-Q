@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
 import com.kosmo.springapp.model.ReviewDTO;
+import com.kosmo.springapp.model.TotalReviewDTO;
 import com.kosmo.springapp.service.ReviewMapper;
 import com.kosmo.springapp.service.ReviewService;
 
@@ -43,6 +44,23 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public List<ReviewDTO> selectReviewByFoodNo(Map map) {
 		return reviewMapper.selectReviewByFoodNo(map);
+	}
+
+	@Override
+	public TotalReviewDTO selectTotalReviewInfo(int no) {
+		TotalReviewDTO totalReviewDto = new TotalReviewDTO();
+		int starScoreAVG = reviewMapper.selectTotalReviewInfoStarScoreAverage(no);
+		totalReviewDto.setStarScoreTotal(starScoreAVG);
+		Map starScore = reviewMapper.selectTotalReviewInfoStarScore(no);
+		totalReviewDto.setStarScore(starScore);
+		
+		List<Map<String,Integer>> effectList = reviewMapper.selectTotalReviewInfoEffectList(no);
+		totalReviewDto.setEffectList(effectList);
+		
+		List<Map<String,Integer>> noEffectList = reviewMapper.selectTotalReviewInfoNoEffectList(no);
+		totalReviewDto.setNoEffectList(noEffectList);
+		
+		return totalReviewDto;
 	}
 
 }

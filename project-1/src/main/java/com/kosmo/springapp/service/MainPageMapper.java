@@ -13,5 +13,8 @@ public interface MainPageMapper {
 	List<FunctionalFoodListDTO> selectFoodList();
 
 	FunctionalFoodListDTO selectFoodOneByNo(Map map);
+
+	List selectFoodNameList(String searchWord);
+
 	
 }

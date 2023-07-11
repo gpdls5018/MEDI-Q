@@ -66,9 +66,7 @@ public class AnalyzeMyReportServiceImpl {
 						}
 					}			
 				}
-				
-				
-				
+
 				//건기식 for 중
 				// 이번 건기식에서 사용자의 복용 목적에 도움되는 기능성 영양소들 -> 있을 시에 추가 //1. 있을 시 -> 건기식 이름 저장 -> 없을 시 계속
 				if(ingredient_list_report.size() != 0) {
@@ -81,7 +79,8 @@ public class AnalyzeMyReportServiceImpl {
 			analyzeResultDTO.setIngredient_list_no_report(ingredient_list_no_report);//사용자가 먹는 건기식에서 나오지 않은 복용목적에 필요한 기능성 영양소 - 섭취가 필요한
 			analyzeResultDTO.setFoodList(foodList);//사용자가 복용 목적을 위해 필요한 영양소들
 			analyzeResultDTOs.add(analyzeResultDTO);
-			ingredient_score *=30;
+		
+			//1. 
 		}
 		
 		analyzeResultListDTO.setListdto(analyzeResultDTOs);
@@ -89,8 +88,9 @@ public class AnalyzeMyReportServiceImpl {
 		analyzeResultListDTO.setNutrient_list_no_report(nutrient_list_no_report);
 		//최종 점수 구하기
 		nutrient_score = nutrient_list_report.size() *3;
-		int resultScore = ingredient_score + nutrient_score;
+		int resultScore = ingredient_score*30 + nutrient_score;
 		analyzeResultListDTO.setResultScore(resultScore);
+		analyzeResultListDTO.setIngredientCount(ingredient_score);
 		return analyzeResultListDTO;
 	}
 }
