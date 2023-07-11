@@ -12,6 +12,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 <style>
+  .custom-top {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    margin-bottom: 80px;
+  }
+  .navbar-text{
+  	padding-left: 6px; 
+  }
+  
   .custom-text{
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 20px;
@@ -67,19 +76,25 @@
     border: #ccc solid 1px;
   }
 </style>
-<div class="container mt-5 custom-text">
-  <div class="jumbotron rounded-3" style="background-color: #ffb1b1;">
-    영양소 A to Z<br>
-    <h4><strong style="color:#ee4949">운동러들의 필수 보충제, 아르기닌의 부작용</strong></h4>
+<div class="container mt-5">
+  <div class="jumbotron rounded-3 custom-top" style="background-color: #ffb1b1;">
+    <i class='fas fa-thumbtack' style='font-size:24px'></i>
+    <span class="navbar-text">영양소 A to Z</span>
+    <p><strong style="color:#ee4949; font-size:xx-large;">운동러들의 필수 보충제, 아르기닌의 부작용</strong></p>
   </div>
 
-  <div>
-    아르기닌이 운동 능력 향상에 도움이 된다고 알려져 최근 운동을 하는 분들이 많이 찾고 있죠. 아르기닌은 운동과 관련된 역할 외에도 우리 몸에서 다양한 역할을 하는 아미노산이지만 어떤 영양제든 과다하게 섭취할 경우 부작용이 있을 수 있으니 부작용을 꼼꼼히 살펴보고 선택하도록 해주세요.
+  <div style="font-size:15px;">
+ 	<i class='fas fa-user-alt' style='font-size:36px'></i>
+    &nbsp;<strong style="background-color: #FFE5E5; font-size:20px;">아르기닌</strong>이 운동 능력 향상에 도움이 된다고 알려져 최근 운동을 하는 분들이 많이 찾고 있죠.<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아르기닌은 운동과 관련된 역할 외에도 우리 몸에서 다양한 역할을 하는 아미노산이지만 <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;어떤 영양제든 과다하게 섭취할 경우 부작용이 있을 수 있으니 부작용을 꼼꼼히 살펴보고 선택하도록 해주세요.
   </div>
   <div class="mt-5">
     <img src="resources/images/magazine_images/01/01_IMG.png" class="img-fluid">
   </div>
+  <!-- 
   <hr class="my-hr mt-5 mb-5">
+   -->
   <div class="paragraph">
     <div class="mt-5">
       <span class="title">아르기닌이 탈모를 유발한다?</span>
