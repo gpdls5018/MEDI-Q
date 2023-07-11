@@ -101,7 +101,7 @@
 	    text-align: center;
 	}
 	
-	@media (min-width:43.75em) {
+	@media (min-width:30em) {
 		.tscontainer {
 			max-width: 100%;
 			margin: 0 auto;
@@ -109,15 +109,15 @@
 		}
 		.maints {
 			display: inline-block;
-			width: 75%;
+			width: 70%;
 			vertical-align: top;
-			margin-right: 20px;
+			margin: 0px 20px 0px 20px;
 		}
 		.tsidebar {
 			display: inline-block;
-			width: 20%;
-			margin-left: 20px;
+			width: 16%;
 			vertical-align: top;
+			margin: 0px 20px 0px 20px;
 		}
 		.fixedsticky {
 			margin-top: 00px;
@@ -324,28 +324,82 @@
          height: 340px;
          border: 1px solid #ccc;
      }
-     #tsBtn {
-           display: block;
+      .mainMap button{
+       	   display: block;
            z-index: 99;
            background-color: white;
            width: 180px;
-       	   height: 80px;
+       	   height: 60px;
            position: absolute;
-           top: 20px;
-           right: 20px;
            cursor: pointer;
+           border: 1px solid #ccc;
            border-radius: 20px; 
            text-align: center;
+           top: 20px;
+           right: 10px;
        }
-      #tsBtn span {
+      .mainMap button:hover {
+      		background-color: #FDCDBC;
+          	color: black;
+          	font-weight: bold;
+      }
+      
+      .mainMap button span {
       	 vertical-align:middle;
       	 color: #EF605D;
       	 font-weight: bold;
       	 text-align: center;
+      	  font-size: 14px;
       }
+      /* 맵에 레이어 부분 css*/
+      .mainMap .mapLayer {
+      		display: block;
+            margin-inline-start: 20px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+        .mapLayer h2 {
+            color: #EF605D;
+            overflow: hidden;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .mainMap a {
+            display: block;
+            width: 300px;
+            height: 48px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            font-size: 18px;
+            text-align: center;
+            line-height: 48px;
+            border-radius:15px;
+            vertical-align: middle;
+            text-decoration: none;
+            font-weight:bold;
+            color:#EF605D;
+        }
+          .mainMap a:hover {
+          	background-color: #FDCDBC;
+          	color: black;
+          	font-weight: bold;
+          }
+
+        .closeLayerButton {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+
+            border-radius: 30px; 
+        }
      
    /*지도 모달 css */
-
    .modal-content {
    	align-content: center;
    	vertical-align: middle;
@@ -354,7 +408,7 @@
 .map_wrap, .menu_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:100%;height:600px;}
-#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:40%;margin:10px 0 10px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:30%;margin:10px 0 10px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
 .bg_white {background:#fff;}
 #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
 #menu_wrap .option{text-align: center;}
@@ -387,7 +441,181 @@
 #pagination {margin:10px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
-   
+
+/*여기는 하단 부분 css 적용 부분 */
+.section1-2c {
+	margin: 20px 0px 20px;
+}
+.section1-2c .content {
+    padding: 0px 0px 80px;
+    width: 938px;
+    margin: 0px auto;
+    text-align: center;
+    position: relative;
+    display: block;
+}
+.section1-2c .txt1 {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}
+.section1-2c .txt1 .lottie1 {
+    width: 36px;
+    height: 36px;
+    float: left;
+    display: block;
+    overflow: hidden;
+    transform: translate3d(0,0,0);
+    text-align: center;
+    opacity: 1;
+}
+.section1-2c .txt1 span {
+    display: block;
+    color: #000;
+    text-align: left;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1;
+    float: left;
+    padding: 7px 0px 0px 5px;
+}
+.section1-2c .txt2 {
+    display: block;
+    color: #9BA1AA;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1;
+    margin-top: 10px;
+    text-align: left;
+}
+.section1-2c .banner-wrap {
+    background: #FDCDBC;
+    border-radius: 20px;
+    height: 180px;
+    display: block;
+    margin: 20px 0px 0px;
+    position: relative;
+}
+.section1-2c .banner-wrap .banner-txt1 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+    color: #535968;
+    padding: 20px 0px 0px;
+}
+.section1-2c .banner-wrap .banner-txt2 {
+    font-weight: 800;
+    text-align: center;
+    font-size: 34px;
+    color: #535968;
+    padding: 0px 0px 0px;
+    line-height: 42px;
+}
+.section1-2c .banner-wrap .banner-txt2 span {
+    background: linear-gradient(60deg, #EF605D 0%, #f38056  85.29%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.section1-2c .banner-wrap .banner-bg {
+    position: absolute;
+    width: 397px;
+    height: 204px;
+    left: calc(50% - 198px);
+    z-index: 40;
+    top: 9px;
+}
+.section1-3 {
+    background: #F8F8FA;
+}
+.section1-3 .content {
+    padding: 80px 0px;
+}
+.section1-3 .txt1 {
+    display: block;
+    color: #9BA1AA;
+    font-weight: 700;
+    font-size: 26px;
+    line-height:1;
+}
+.section1-3 .txt2 {
+    display: block;
+    color: #535968;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1;
+    margin-top: 20px;
+}
+.section1-3 .txt3 {
+    display: block;
+    color: #101219;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1;
+    margin-top: 20px;
+}
+.section1-3 .txt3 span {
+    color: #EF605D;
+}
+.section1-5 {
+    background: #F8F8FA;
+}
+.section1-5 .content {
+    padding: 50px 0px 60px;
+}
+.section1-5 .txt1 {
+    display: block;
+    color: #101219;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1;
+}
+.section1-5 .txt2 {
+    display: block;
+    color: #101219;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 40px;
+    position: relative;
+}
+.section1-5 .rl-companies {
+    margin: 30px auto 0px;
+    display: inline-block;
+}
+.section1-5 .rl-companies .rl-company {
+    float: left;
+    width: 186px;
+    margin: 0px 0px 40px 40px;
+    height: 186px;
+    box-shadow: 2px 2px 8px rgba(70, 56, 147, 0.1);
+    border-radius: 93px;
+    font-size: 0;
+}
+.section1-5 .rl-company.rl-company1 {
+    background: #fff url(https://cdn.pillyze.io/web/img/c-logo1.webp) center no-repeat;
+    background-size: 155px 88px;
+}
+.section1-5 .rl-company.rl-company2 {
+    background: #fff url(https://cdn.pillyze.io/web/img/c-logo2.webp) center no-repeat;
+    background-size: 158px 89px;
+}
+.section1-5 .rl-company.rl-company3 {
+    background: #fff url(https://cdn.pillyze.io/web/img/c-logo3.webp) center no-repeat;
+    background-size: 161px 91px;
+}
+.section1-5 .rl-company.rl-company4 {
+    background: #fff url(https://cdn.pillyze.io/web/img/c-logo4.webp) center no-repeat;
+    background-size: 155px 100px;
+}
+.section1-5 .rl-company.rl-company5 {
+    background: #fff url(https://cdn.pillyze.io/web/img/c-logo5.webp) center no-repeat;
+    background-size: 143px 106px;
+}
+.section1-5 .rl-company.rl-company6 {
+    background: #fff url(https://cdn.pillyze.io/web/img/c-logo6.webp) center no-repeat;
+    background-size: 141px 104px;
+}
 
 
 </style>
@@ -507,7 +735,7 @@
 <!-- 검색창 밑부분! 사이드바와 몸통 부분 -->
 <section class="tscontainer mt-5" style="width:90%;  border-radius: 5px;">
 	<!-- 왼쪽 몸통부분 -->
-     <article class="maints justify-content-center">
+     <article class="maints justify-content-center px-3">
      <!-- 1번째 다이브 목록 -->
      	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
 	        <h1>$이태성$님의 최근 분석 리포트</h1>
@@ -558,35 +786,56 @@
 	    </div>
 	    
 	  <!--  3번째 다이브 목록 -->
-	
+		<div class="section section1-2c">
+	       <a href="#" style="text-decoration: none;">
+	           <div class="content">
+	               <span class="txt1"><div id="lottie" class="lottie1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);"><defs><clipPath id="__lottie_element_2"><rect width="512" height="512" x="0" y="0"></rect></clipPath><linearGradient id="__lottie_element_6" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="-90.30999755859375" y1="-143.55599975585938" x2="83.70600128173828" y2="98.05699920654297"><stop offset="0%" stop-color="rgb(255,224,3)"></stop><stop offset="42%" stop-color="rgb(255,194,20)"></stop><stop offset="100%" stop-color="rgb(255,165,37)"></stop></linearGradient><linearGradient id="__lottie_element_10" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="-74.84400177001953" y1="83.3030014038086" x2="0.8429999947547913" y2="13.440999984741211"><stop offset="0%" stop-color="rgb(255,224,3)"></stop><stop offset="42%" stop-color="rgb(255,197,27)"></stop><stop offset="100%" stop-color="rgb(255,170,50)"></stop></linearGradient><mask id="__lottie_element_11" mask-type="alpha"><g transform="matrix(1,0,0,1,0,0)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,256.04998779296875,256)"><path fill="url(#__lottie_element_14)" fill-opacity="1" d=" M-155.59231567382812,-250.01922607421875 C-171.59231567382812,-250.01922607421875 -183.59231567382812,-236.01922607421875 -183.59231567382812,-220.01922607421875 C-183.59231567382812,-220.01922607421875 -184.0931396484375,-4.029144287109375 -184.0931396484375,-4.029144287109375 C-184.0931396484375,-4.029144287109375 -184.61026000976562,218.775634765625 -184.61026000976562,218.775634765625 C-184.61026000976562,234.775634765625 -175.61026000976562,246.275634765625 -159.61026000976562,246.275634765625 C-159.61026000976562,246.275634765625 -112.62041473388672,240.7335205078125 -45.100677490234375,245.04156494140625 C94.62254333496094,253.97262573242188 153.75,254 153.75,254 C169.85000610351562,254 184.85000610351562,236.5 184.85000610351562,220.5 C184.85000610351562,220.5 186.26100158691406,32.999000549316406 186.26100158691406,32.999000549316406 C186.26100158691406,32.999000549316406 187.35000610351562,-111.5999984741211 187.35000610351562,-111.5999984741211 C187.35000610351562,-111.5999984741211 49.5,-245.75 49.5,-245.75 C49.5,-245.75 -7.127154350280762,-239.82662963867188 -53.55015563964844,-242.65863037109375 C-100.54615783691406,-245.525634765625 -155.59231567382812,-250.01922607421875 -155.59231567382812,-250.01922607421875z"></path></g></g></mask><linearGradient id="__lottie_element_14" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="-45.07500076293945" y1="-55.81100082397461" x2="167.75799560546875" y2="245.73699951171875"><stop offset="0%" stop-color="rgb(255,224,3)"></stop><stop offset="42%" stop-color="rgb(255,197,27)"></stop><stop offset="100%" stop-color="rgb(255,170,50)"></stop></linearGradient><filter id="__lottie_element_17" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="36 36" edgeMode="wrap"></feGaussianBlur></filter><linearGradient id="__lottie_element_24" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="-45.07500076293945" y1="-55.81100082397461" x2="167.75799560546875" y2="245.73699951171875"><stop offset="0%" stop-color="rgb(255,224,3)"></stop><stop offset="42%" stop-color="rgb(255,197,27)"></stop><stop offset="100%" stop-color="rgb(255,170,50)"></stop></linearGradient></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(1,0,0,1,0,0)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,256.04998779296875,256)"><path fill="url(#__lottie_element_24)" fill-opacity="1" d=" M-155.59231567382812,-250.01922607421875 C-171.59231567382812,-250.01922607421875 -183.59231567382812,-236.01922607421875 -183.59231567382812,-220.01922607421875 C-183.59231567382812,-220.01922607421875 -184.0931396484375,-4.029144287109375 -184.0931396484375,-4.029144287109375 C-184.0931396484375,-4.029144287109375 -184.61026000976562,218.775634765625 -184.61026000976562,218.775634765625 C-184.61026000976562,234.775634765625 -175.61026000976562,246.275634765625 -159.61026000976562,246.275634765625 C-159.61026000976562,246.275634765625 -112.62041473388672,240.7335205078125 -45.100677490234375,245.04156494140625 C94.62254333496094,253.97262573242188 153.75,254 153.75,254 C169.85000610351562,254 184.85000610351562,236.5 184.85000610351562,220.5 C184.85000610351562,220.5 186.26100158691406,32.999000549316406 186.26100158691406,32.999000549316406 C186.26100158691406,32.999000549316406 187.35000610351562,-111.5999984741211 187.35000610351562,-111.5999984741211 C187.35000610351562,-111.5999984741211 49.5,-245.75 49.5,-245.75 C49.5,-245.75 -7.127154350280762,-239.82662963867188 -53.55015563964844,-242.65863037109375 C-100.54615783691406,-245.525634765625 -155.59231567382812,-250.01922607421875 -155.59231567382812,-250.01922607421875z"></path></g></g><g transform="matrix(1,0,0,1,256,256)" opacity="1" style="display: block;"></g><g mask="url(#__lottie_element_11)" style="display: block;"><g filter="url(#__lottie_element_17)" transform="matrix(1.0543633699417114,-0.7382732033729553,0.7370228171348572,1.0525776147842407,262.1727294921875,285.4595642089844)" opacity="1"><g opacity="1" transform="matrix(1,0,0,1,-2.2880001068115234,-117.94599914550781)"><path fill="rgb(255,245,136)" fill-opacity="1" d=" M259.4909973144531,-54.839500427246094 C259.4909973144531,-54.839500427246094 259.4909973144531,54.839500427246094 259.4909973144531,54.839500427246094 C259.4909973144531,54.839500427246094 -259.4909973144531,54.839500427246094 -259.4909973144531,54.839500427246094 C-259.4909973144531,54.839500427246094 -259.4909973144531,-54.839500427246094 -259.4909973144531,-54.839500427246094 C-259.4909973144531,-54.839500427246094 259.4909973144531,-54.839500427246094 259.4909973144531,-54.839500427246094z"></path></g></g></g><g transform="matrix(1,0,0,1,0,0)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,373.79998779296875,77.8499984741211)"><path fill="url(#__lottie_element_10)" fill-opacity="1" d=" M-67.67926788330078,37.35064697265625 C-67.67926788330078,53.25064468383789 -55.06709671020508,66.61580657958984 -39.16709518432617,66.61580657958984 C-39.16709518432617,66.61580657958984 69.76773834228516,67.79359436035156 69.76773834228516,67.79359436035156 C69.76773834228516,67.79359436035156 31.86774253845215,26.28290367126465 10.608914375305176,4.395442485809326 C-4.720612525939941,-11.299712181091309 -67.26302337646484,-67.34209442138672 -67.26302337646484,-67.34209442138672 C-67.26302337646484,-67.34209442138672 -67.67926788330078,37.35064697265625 -67.67926788330078,37.35064697265625z"></path></g></g><g transform="matrix(1,0,0,1,0,0)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,256,280.79998779296875)"><path fill="url(#__lottie_element_6)" fill-opacity="1" d=" M98.00357055664062,-34.64583969116211 C98.00357055664062,-34.64583969116211 31.892309188842773,-33.636539459228516 31.892309188842773,-33.636539459228516 C31.892309188842773,-33.636539459228516 30.036678314208984,-95.96062469482422 30.036678314208984,-95.96062469482422 C30.036678314208984,-95.96062469482422 -31.763320922851562,-95.96062469482422 -31.763320922851562,-95.96062469482422 C-31.763320922851562,-95.96062469482422 -30.413145065307617,-30.774173736572266 -30.413145065307617,-30.774173736572266 C-30.413145065307617,-30.774173736572266 -98.3067398071289,-27.283145904541016 -98.3067398071289,-27.283145904541016 C-98.3067398071289,-27.283145904541016 -95.81314849853516,31.02582550048828 -95.81314849853516,31.02582550048828 C-95.81314849853516,31.02582550048828 -29.914426803588867,28.03351593017578 -29.914426803588867,28.03351593017578 C-29.914426803588867,28.03351593017578 -28.058795928955078,92.11274719238281 -28.058795928955078,92.11274719238281 C-28.058795928955078,92.11274719238281 33.55043411254883,89.0580062866211 33.55043411254883,89.0580062866211 C33.55043411254883,89.0580062866211 33.393592834472656,24.915382385253906 33.393592834472656,24.915382385253906 C33.393592834472656,24.915382385253906 99.25421142578125,27.143905639648438 99.25421142578125,27.143905639648438 C99.25421142578125,27.143905639648438 98.00357055664062,-34.64583969116211 98.00357055664062,-34.64583969116211z"></path></g></g></g></svg></div><span>건강검진으로 영양제 &amp; 식단 추천받기</span></span>
+	               <br/>
+	               <span class="txt2">10년치 국가 건강검진 데이터를 바탕으로 영양제를 추천해드려요!</span>
+	               <div class="banner-wrap">
+	                   <div class="banner-txt1">내 건강검진 불러오고</div>
+	                   <div class="banner-txt2"><span>영양제 &amp; 식단 추천</span> 받으세요</div>
+	                   <img src="https://cdn.pillyze.io/web/img/s12c-bg.webp" class="banner-bg" alt="두 손으로 알약을 떠 받드는 그림">
+	               </div>
+	           </div>
+	       </a>
+	   </div>
 	    
 	    
-  	  <!--  *번째 다이브 목록 -->
+  	  <!--  4번째 다이브 목록 -->
       <div class="mainInner">
-            <h3 style="text-align: center;">우리 동네 약국</h3>
-            <p style="text-align: center;">약국에 대한 위치를 찾아보아요</p>
-            <div class="container-xxl py-5">
+            <h3 style="text-align: center; margin-top: 20px; font-weight: bold;">우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
+            <div class="container-xxl py-4">
                 <div class="container">
                     <div class="mainMap" id="map" >
-                        <button type="button" class="btn btn-primary" id="tsBtn">
-                        	<span>병원 또는 약국<br/> 찾아보기</span>
-                        </button>         
+                        <button type="button" class="btn" id="tsBtn">
+                        	<span>🩺병원 & 💊약국찾기</span>
+                        </button>
+                        <div class="mapLayer">
+                            <div class="closeLayerButton" onclick="closeMapLayer()">&times;</div>
+                            	<h2>주소</h2>
+      	                     	<p style="font-size:15px; color:gray;">가산디지털단지역<br/>(서울특별시 금천구 벚꽃로 309)</p>
+                           		<a href="https://naver.me/GEAidP59" target="_blank">
+                           		<img src="<c:url value="/resources/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
+                           		<a href="https://map.kakao.com/?urlX=473869&urlY=1105992&urlLevel=3&itemId=18761502&q=%EB%B2%84%EA%B1%B0%ED%82%B9%20%EA%B0%80%EC%82%B0%EB%94%94%EC%A7%80%ED%84%B8%EC%A0%90&srcid=18761502&map_type=TYPE_MAP#none" target="_blank"> 
+                           		<img src="<c:url value="/resources/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
+                        </div>          
                     </div>
                 </div>
             </div>
         </div>
-        <!--  지도 모달 누르면 나오는 부분 -->
+        <!--  병원찾기 지도 모달 누르면 나오는 부분 -->
 	       <div class="modal fade align-items-center" id="tsModal" role="dialog" style="background-color: rgba(0, 0, 0, 0.5);">
-			 <div class="modal-dialog modal-dialog-centered" style="align-content :center; width: 80%; height: 60%;">
+			 <div class="modal-dialog modal-dialog-centered" style="align-content :center; width: 100%; height: 60%; max-width: 1400px;">
 			   <!-- Modal content-->
-			   <div class="modal-content" style="width: 1200px; height: 100%;">
-			     <div class="modal-header" style="width: 1200px;">
-			       <h4 class="modal-title">우리동네 병원 및 약국찾기</h4>
+			   <div class="modal-content" style="width: 100%; height: 100%;">
+			     <div class="modal-header" >
+			       <h4 class="modal-title">우리동네 병원&약국 찾기</h4>
 			       <button type="button" class="close" data-dismiss="modal">&times;</button>
 			     </div>
 			     <div class="modal-body">
-			       <h3 style="text-align: center;">병원 및 약국정보</h3>
-			       <p style="text-align: center;">병원·약국찾기에 대한 위치 찾기</p>
+			       <h3 style="text-align: center;">병원 & 약국정보</h3>
+			       <p style="text-align: center;">병원&약국에 대한 위치 찾기</p>
 			       <div class="container-xxl py-5">
 			         <div class="map_wrap">
 			           <div id="modalmap" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -594,7 +843,7 @@
 			             <div class="option">
 			               <div>
 			                 <form onsubmit="searchPlaces(); return false;">
-			                    키워드 : <input type="text" value="가산디지털단지역" placeholder="ㅇㅇ동 약국을 입력" id="keyword" size="15">
+			                    키워드 : <input type="text" value="가산동 병원" placeholder="ㅇㅇ동 병원을 입력" id="keyword" size="15">
 			                    <button type="submit">검색하기</button>
 			                  </form>
 			                </div>
@@ -605,9 +854,6 @@
 			            </div>
 			          </div>
 			        </div>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 			      </div>
 			    </div>
 			  </div>
@@ -629,7 +875,7 @@
 
 	</article>
 		<!-- 오른쪽 슬라이드 -->
-		<aside class="tsidebar fixedsticky">
+		<aside class="tsidebar fixedsticky pr-3">
 			<!--  로그인 목록 창
 			<div class="login-section justify-content-center">
 		        <p style="text-align: center; font-weight:bold; font-size:13px;"><span style="color:#EF605D">Madi-Q</span>를 더 안전하고<br/> 편리하게 이용하세요</p>
@@ -735,6 +981,30 @@
             </div>
 		</aside>
 </section>
+	<div class="section section1-3">
+       <div class="content">
+           <span class="txt1">건강한 영양제 &amp; 식단 관리를 위한 모든 것</span>
+           <span class="txt2">걱정 없이, 쉽고 간편하게</span>
+           <span class="txt3"><span>Medi-Q</span>로 시작하세요.</span>
+       </div>
+   </div>
+    
+	<div class="section section1-5">
+        <div class="content">
+
+            <span class="txt1"><span style="color: #EF605D"> Medi-Q</span>는 신뢰가 가득하여 믿을 수 있어요.</span>
+            <span class="txt2"><span style="color: #EF605D"> Medi-Q</span>는 국내외 검증된 기관과<br>신뢰도 높은 연구 결과를 바탕으로 개인 맞춤형 분석 결과를 제공합니다.</span>
+
+            <div class="rl-companies">
+                <div class="rl-company rl-company1">식품의약품안전처</div>
+                <div class="rl-company rl-company2">식품안전정보원</div>
+                <div class="rl-company rl-company3">한국영양학회</div>
+                <div class="rl-company rl-company4">EFSA</div>
+                <div class="rl-company rl-company5">(사)대한약학회</div>
+                <div class="rl-company rl-company6">NIH</div>
+            </div>
+        </div>
+    </div>
 
 <!-- 매인 배너 슬라이드 -->
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
@@ -762,7 +1032,7 @@ tagify.on('add', e=> {
 tagify.on('remove', e=> {
     $('#hiddenInput').attr('value',tagify.value.map(function(e){return e.value}));
 });
-
+////////////////////슬라이드 로직///////////////////////////////////
 $(document).ready(function(){
     $('.slider1').bxSlider({
         slideWidth: 800,
@@ -787,7 +1057,7 @@ $(document).ready(function(){
 });
 
 
-//비디오 히든 로직
+//////////////////////비디오 히든 로직////////////////////////////
 document.addEventListener("DOMContentLoaded", function() {
 	  var checkbox = document.getElementById("stop-video-checkbox");
 	  var videoContainer = document.getElementById("tsvideo-container");
@@ -831,10 +1101,14 @@ document.addEventListener("DOMContentLoaded", function() {
 	  }
 	});
 	
-
+/////////////////////////////////지도 함수//////////////////////////////////////////////////////
+// 닫기 버튼 클릭 시 mapLayer 숨김
+    var mapLayer = document.querySelector('.mapLayer');
+        function closeMapLayer() {
+            mapLayer.style.display = 'none';
+        }
+        
 // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-    var infowindow = new kakao.maps.InfoWindow({zIndex:1});
-
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
         mapOption = {
             center: new kakao.maps.LatLng(37.481242, 126.883970), // 지도의 중심좌표
@@ -842,24 +1116,238 @@ document.addEventListener("DOMContentLoaded", function() {
         };  
   //지도를 생성합니다    
     var map = new kakao.maps.Map(mapContainer, mapOption); 
+  
+/////////////////////////지도 모달 버튼 함수////////////////////////////////
+    $(document).ready(function() {
+      $("#tsBtn").click(function() {
+        $("#tsModal").modal({ backdrop: false});
+        setTimeout(function(){ map.relayout(); }, 0);
+        initMap(); // 모달 열릴 때 지도 초기화 호출
+      });
+    });
 
 //지도 모달로 띄우기 
     function initMap() {
-    var mapContainer = document.getElementById('modalmap');
-    var mapOption = {
-      center: new kakao.maps.LatLng(37.481242, 126.883970),
-      level: 3
-    };
-    var map = new kakao.maps.Map(mapContainer, mapOption);
+    	var markers = [];
+    	
+    	var mapContainer2 = document.getElementById('modalmap'), // 지도를 표시할 div 
+    	mapOption2 = {
+		   	center: new kakao.maps.LatLng(37.481387, 126.882676), // 지도의 중심좌표
+		   	level: 3 // 지도의 확대 레벨
+    	};  
+
+    	// 지도를 생성합니다    
+    	var map2 = new kakao.maps.Map(mapContainer2, mapOption2); 
+    	
+        setTimeout(function(){ map2.relayout(); }, 0);
+
+    	//장소 검색 객체를 생성합니다
+    	var ps = new kakao.maps.services.Places();  
+
+    	//검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+    	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+
+    	//키워드로 장소를 검색합니다
+    	searchPlaces();
+
+    	//키워드 검색을 요청하는 함수입니다
+    	function searchPlaces() {
+    	var keyword = document.getElementById('keyword').value;
+
+    	if (!keyword.replace(/^\s+|\s+$/g, '')) {
+    	alert('키워드를 입력해주세요!');
+    	return false;
+    	}
+
+    	// 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+    	ps.keywordSearch( keyword, placesSearchCB); 
+    	}
+
+    	//장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+    	function placesSearchCB(data, status, pagination) {
+    	if (status === kakao.maps.services.Status.OK) {
+
+    	// 정상적으로 검색이 완료됐으면
+    	// 검색 목록과 마커를 표출합니다
+    	displayPlaces(data);
+
+    	// 페이지 번호를 표출합니다
+    	displayPagination(pagination);
+
+    	} else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+
+    	alert('검색 결과가 존재하지 않습니다.');
+    	return;
+
+    	} else if (status === kakao.maps.services.Status.ERROR) {
+
+    	alert('검색 결과 중 오류가 발생했습니다.');
+    	return;
+
+    	}
+    	}
+
+    	//검색 결과 목록과 마커를 표출하는 함수입니다
+    	function displayPlaces(places) {
+
+    	var listEl = document.getElementById('placesList'), 
+    	menuEl = document.getElementById('menu_wrap'),
+    	fragment = document.createDocumentFragment(), 
+    	bounds = new kakao.maps.LatLngBounds(), 
+    	listStr = '';
+
+    	// 검색 결과 목록에 추가된 항목들을 제거합니다
+    	removeAllChildNods(listEl);
+
+    	// 지도에 표시되고 있는 마커를 제거합니다
+    	removeMarker();
+
+    	for ( var i=0; i<places.length; i++ ) {
+
+    	// 마커를 생성하고 지도에 표시합니다
+    	var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
+    	    marker = addMarker(placePosition, i), 
+    	    itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+
+    	// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+    	// LatLngBounds 객체에 좌표를 추가합니다
+    	bounds.extend(placePosition);
+
+    	// 마커와 검색결과 항목에 mouseover 했을때
+    	// 해당 장소에 인포윈도우에 장소명을 표시합니다
+    	// mouseout 했을 때는 인포윈도우를 닫습니다
+    	(function(marker, title) {
+    	    kakao.maps.event.addListener(marker, 'mouseover', function() {
+    	        displayInfowindow(marker, title);
+    	    });
+
+    	    kakao.maps.event.addListener(marker, 'mouseout', function() {
+    	        infowindow.close();
+    	    });
+
+    	    itemEl.onmouseover =  function () {
+    	        displayInfowindow(marker, title);
+    	    };
+
+    	    itemEl.onmouseout =  function () {
+    	        infowindow.close();
+    	    };
+    	})(marker, places[i].place_name);
+
+    	fragment.appendChild(itemEl);
+    	}
+
+    	// 검색결과 항목들을 검색결과 목록 Element에 추가합니다
+    	listEl.appendChild(fragment);
+    	menuEl.scrollTop = 0;
+
+    	// 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+    	map2.setBounds(bounds);
+    	}
+
+    	//검색결과 항목을 Element로 반환하는 함수입니다
+    	function getListItem(index, places) {
+
+    	var el = document.createElement('li'),
+    	itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
+    	        '<div class="info">' +
+    	        '   <h5>' + places.place_name + '</h5>';
+
+    	if (places.road_address_name) {
+    	itemStr += '    <span>' + places.road_address_name + '</span>' +
+    	            '   <span class="jibun gray">' +  places.address_name  + '</span>';
+    	} else {
+    	itemStr += '    <span>' +  places.address_name  + '</span>'; 
+    	}
+    	         
+    	itemStr += '  <span class="tel">' + places.phone  + '</span>' +
+    	        '</div>';           
+
+    	el.innerHTML = itemStr;
+    	el.className = 'item';
+
+    	return el;
+    	}
+
+    	//마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+    	function addMarker(position, idx, title) {
+    	var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+    	imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
+    	imgOptions =  {
+    	    spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+    	    spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+    	    offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+    	},
+    	markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+    	    marker = new kakao.maps.Marker({
+    	    position: position, // 마커의 위치
+    	    image: markerImage 
+    	});
+
+    	marker.setMap(map2); // 지도 위에 마커를 표출합니다
+    	markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+
+    	return marker;
+    	}
+
+    	//지도 위에 표시되고 있는 마커를 모두 제거합니다
+    	function removeMarker() {
+    	for ( var i = 0; i < markers.length; i++ ) {
+    	markers[i].setMap(null);
+    	}   
+    	markers = [];
+    	}
+
+    	//검색결과 목록 하단에 페이지번호를 표시는 함수입니다
+    	function displayPagination(pagination) {
+    	var paginationEl = document.getElementById('pagination'),
+    	fragment = document.createDocumentFragment(),
+    	i; 
+
+    	// 기존에 추가된 페이지번호를 삭제합니다
+    	while (paginationEl.hasChildNodes()) {
+    	paginationEl.removeChild (paginationEl.lastChild);
+    	}
+
+    	for (i=1; i<=pagination.last; i++) {
+    	var el = document.createElement('a');
+    	el.href = "#";
+    	el.innerHTML = i;
+
+    	if (i===pagination.current) {
+    	    el.className = 'on';
+    	} else {
+    	    el.onclick = (function(i) {
+    	        return function() {
+    	            pagination.gotoPage(i);
+    	        }
+    	    })(i);
+    	}
+
+    	fragment.appendChild(el);
+    	}
+    	paginationEl.appendChild(fragment);
+    	}
+    	//검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
+    	//인포윈도우에 장소명을 표시합니다
+    	function displayInfowindow(marker, title) {
+    	var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+
+    	infowindow.setContent(content);
+    	infowindow.open(map2, marker);
+    	}
+
+    	// 검색결과 목록의 자식 Element를 제거하는 함수입니다
+    	function removeAllChildNods(el) {   
+	    	while (el.hasChildNodes()) {
+	    	 el.removeChild (el.lastChild);
+	    	}
+    	}
+    	
   }
 
-  $(document).ready(function() {
-    $("#tsBtn").click(function() {
-      $("#tsModal").modal({ backdrop: true });
-      initMap(); // 모달 열릴 때 지도 초기화 호출
-    });
-  });
-	 
+
+/////////////////////////상단 메인 배너///////////////////////////////////////////////
 /*배너 영상돌리기*/
 function bannerSwitcher() {
     next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
@@ -876,7 +1364,7 @@ function bannerSwitcher() {
 
 
 
-//사이드바 함수 적용
+/////////////////////////////////사이드바 함수 적용 라이브러리 적용///////////////////////
 $(document).ready(function() {
   $('.tsidebar').stick_in_parent();
 });
