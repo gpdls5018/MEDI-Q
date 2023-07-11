@@ -441,7 +441,181 @@
 #pagination {margin:10px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
-   
+
+/*여기는 하단 부분 css 적용 부분 */
+.section1-2c {
+	margin: 20px 0px 20px;
+}
+.section1-2c .content {
+    padding: 0px 0px 80px;
+    width: 938px;
+    margin: 0px auto;
+    text-align: center;
+    position: relative;
+    display: block;
+}
+.section1-2c .txt1 {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}
+.section1-2c .txt1 .lottie1 {
+    width: 36px;
+    height: 36px;
+    float: left;
+    display: block;
+    overflow: hidden;
+    transform: translate3d(0,0,0);
+    text-align: center;
+    opacity: 1;
+}
+.section1-2c .txt1 span {
+    display: block;
+    color: #000;
+    text-align: left;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1;
+    float: left;
+    padding: 7px 0px 0px 5px;
+}
+.section1-2c .txt2 {
+    display: block;
+    color: #9BA1AA;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1;
+    margin-top: 10px;
+    text-align: left;
+}
+.section1-2c .banner-wrap {
+    background: #FDCDBC;
+    border-radius: 20px;
+    height: 180px;
+    display: block;
+    margin: 20px 0px 0px;
+    position: relative;
+}
+.section1-2c .banner-wrap .banner-txt1 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+    color: #535968;
+    padding: 20px 0px 0px;
+}
+.section1-2c .banner-wrap .banner-txt2 {
+    font-weight: 800;
+    text-align: center;
+    font-size: 34px;
+    color: #535968;
+    padding: 0px 0px 0px;
+    line-height: 42px;
+}
+.section1-2c .banner-wrap .banner-txt2 span {
+    background: linear-gradient(60deg, #EF605D 0%, #f38056  85.29%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.section1-2c .banner-wrap .banner-bg {
+    position: absolute;
+    width: 397px;
+    height: 204px;
+    left: calc(50% - 198px);
+    z-index: 40;
+    top: 9px;
+}
+.section1-3 {
+    background: #F8F8FA;
+}
+.section1-3 .content {
+    padding: 80px 0px;
+}
+.section1-3 .txt1 {
+    display: block;
+    color: #9BA1AA;
+    font-weight: 700;
+    font-size: 26px;
+    line-height:1;
+}
+.section1-3 .txt2 {
+    display: block;
+    color: #535968;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1;
+    margin-top: 20px;
+}
+.section1-3 .txt3 {
+    display: block;
+    color: #101219;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1;
+    margin-top: 20px;
+}
+.section1-3 .txt3 span {
+    color: #EF605D;
+}
+.section1-5 {
+    background: #F8F8FA;
+}
+.section1-5 .content {
+    padding: 50px 0px 60px;
+}
+.section1-5 .txt1 {
+    display: block;
+    color: #101219;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1;
+}
+.section1-5 .txt2 {
+    display: block;
+    color: #101219;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 40px;
+    position: relative;
+}
+.section1-5 .rl-companies {
+    margin: 30px auto 0px;
+    display: inline-block;
+}
+.section1-5 .rl-companies .rl-company {
+    float: left;
+    width: 186px;
+    margin: 0px 0px 40px 40px;
+    height: 186px;
+    box-shadow: 2px 2px 8px rgba(70, 56, 147, 0.1);
+    border-radius: 93px;
+    font-size: 0;
+}
+.section1-5 .rl-company.rl-company1 {
+    background: #fff url(https://cdn.pillyze.io/web/img/c-logo1.webp) center no-repeat;
+    background-size: 155px 88px;
+}
+.section1-5 .rl-company.rl-company2 {
+    background: #fff url(https://cdn.pillyze.io/web/img/c-logo2.webp) center no-repeat;
+    background-size: 158px 89px;
+}
+.section1-5 .rl-company.rl-company3 {
+    background: #fff url(https://cdn.pillyze.io/web/img/c-logo3.webp) center no-repeat;
+    background-size: 161px 91px;
+}
+.section1-5 .rl-company.rl-company4 {
+    background: #fff url(https://cdn.pillyze.io/web/img/c-logo4.webp) center no-repeat;
+    background-size: 155px 100px;
+}
+.section1-5 .rl-company.rl-company5 {
+    background: #fff url(https://cdn.pillyze.io/web/img/c-logo5.webp) center no-repeat;
+    background-size: 143px 106px;
+}
+.section1-5 .rl-company.rl-company6 {
+    background: #fff url(https://cdn.pillyze.io/web/img/c-logo6.webp) center no-repeat;
+    background-size: 141px 104px;
+}
 
 
 </style>
@@ -612,10 +786,23 @@
 	    </div>
 	    
 	  <!--  3번째 다이브 목록 -->
-	
+		<div class="section section1-2c">
+	       <a href="#" style="text-decoration: none;">
+	           <div class="content">
+	               <span class="txt1"><div id="lottie" class="lottie1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);"><defs><clipPath id="__lottie_element_2"><rect width="512" height="512" x="0" y="0"></rect></clipPath><linearGradient id="__lottie_element_6" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="-90.30999755859375" y1="-143.55599975585938" x2="83.70600128173828" y2="98.05699920654297"><stop offset="0%" stop-color="rgb(255,224,3)"></stop><stop offset="42%" stop-color="rgb(255,194,20)"></stop><stop offset="100%" stop-color="rgb(255,165,37)"></stop></linearGradient><linearGradient id="__lottie_element_10" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="-74.84400177001953" y1="83.3030014038086" x2="0.8429999947547913" y2="13.440999984741211"><stop offset="0%" stop-color="rgb(255,224,3)"></stop><stop offset="42%" stop-color="rgb(255,197,27)"></stop><stop offset="100%" stop-color="rgb(255,170,50)"></stop></linearGradient><mask id="__lottie_element_11" mask-type="alpha"><g transform="matrix(1,0,0,1,0,0)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,256.04998779296875,256)"><path fill="url(#__lottie_element_14)" fill-opacity="1" d=" M-155.59231567382812,-250.01922607421875 C-171.59231567382812,-250.01922607421875 -183.59231567382812,-236.01922607421875 -183.59231567382812,-220.01922607421875 C-183.59231567382812,-220.01922607421875 -184.0931396484375,-4.029144287109375 -184.0931396484375,-4.029144287109375 C-184.0931396484375,-4.029144287109375 -184.61026000976562,218.775634765625 -184.61026000976562,218.775634765625 C-184.61026000976562,234.775634765625 -175.61026000976562,246.275634765625 -159.61026000976562,246.275634765625 C-159.61026000976562,246.275634765625 -112.62041473388672,240.7335205078125 -45.100677490234375,245.04156494140625 C94.62254333496094,253.97262573242188 153.75,254 153.75,254 C169.85000610351562,254 184.85000610351562,236.5 184.85000610351562,220.5 C184.85000610351562,220.5 186.26100158691406,32.999000549316406 186.26100158691406,32.999000549316406 C186.26100158691406,32.999000549316406 187.35000610351562,-111.5999984741211 187.35000610351562,-111.5999984741211 C187.35000610351562,-111.5999984741211 49.5,-245.75 49.5,-245.75 C49.5,-245.75 -7.127154350280762,-239.82662963867188 -53.55015563964844,-242.65863037109375 C-100.54615783691406,-245.525634765625 -155.59231567382812,-250.01922607421875 -155.59231567382812,-250.01922607421875z"></path></g></g></mask><linearGradient id="__lottie_element_14" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="-45.07500076293945" y1="-55.81100082397461" x2="167.75799560546875" y2="245.73699951171875"><stop offset="0%" stop-color="rgb(255,224,3)"></stop><stop offset="42%" stop-color="rgb(255,197,27)"></stop><stop offset="100%" stop-color="rgb(255,170,50)"></stop></linearGradient><filter id="__lottie_element_17" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="36 36" edgeMode="wrap"></feGaussianBlur></filter><linearGradient id="__lottie_element_24" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="-45.07500076293945" y1="-55.81100082397461" x2="167.75799560546875" y2="245.73699951171875"><stop offset="0%" stop-color="rgb(255,224,3)"></stop><stop offset="42%" stop-color="rgb(255,197,27)"></stop><stop offset="100%" stop-color="rgb(255,170,50)"></stop></linearGradient></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(1,0,0,1,0,0)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,256.04998779296875,256)"><path fill="url(#__lottie_element_24)" fill-opacity="1" d=" M-155.59231567382812,-250.01922607421875 C-171.59231567382812,-250.01922607421875 -183.59231567382812,-236.01922607421875 -183.59231567382812,-220.01922607421875 C-183.59231567382812,-220.01922607421875 -184.0931396484375,-4.029144287109375 -184.0931396484375,-4.029144287109375 C-184.0931396484375,-4.029144287109375 -184.61026000976562,218.775634765625 -184.61026000976562,218.775634765625 C-184.61026000976562,234.775634765625 -175.61026000976562,246.275634765625 -159.61026000976562,246.275634765625 C-159.61026000976562,246.275634765625 -112.62041473388672,240.7335205078125 -45.100677490234375,245.04156494140625 C94.62254333496094,253.97262573242188 153.75,254 153.75,254 C169.85000610351562,254 184.85000610351562,236.5 184.85000610351562,220.5 C184.85000610351562,220.5 186.26100158691406,32.999000549316406 186.26100158691406,32.999000549316406 C186.26100158691406,32.999000549316406 187.35000610351562,-111.5999984741211 187.35000610351562,-111.5999984741211 C187.35000610351562,-111.5999984741211 49.5,-245.75 49.5,-245.75 C49.5,-245.75 -7.127154350280762,-239.82662963867188 -53.55015563964844,-242.65863037109375 C-100.54615783691406,-245.525634765625 -155.59231567382812,-250.01922607421875 -155.59231567382812,-250.01922607421875z"></path></g></g><g transform="matrix(1,0,0,1,256,256)" opacity="1" style="display: block;"></g><g mask="url(#__lottie_element_11)" style="display: block;"><g filter="url(#__lottie_element_17)" transform="matrix(1.0543633699417114,-0.7382732033729553,0.7370228171348572,1.0525776147842407,262.1727294921875,285.4595642089844)" opacity="1"><g opacity="1" transform="matrix(1,0,0,1,-2.2880001068115234,-117.94599914550781)"><path fill="rgb(255,245,136)" fill-opacity="1" d=" M259.4909973144531,-54.839500427246094 C259.4909973144531,-54.839500427246094 259.4909973144531,54.839500427246094 259.4909973144531,54.839500427246094 C259.4909973144531,54.839500427246094 -259.4909973144531,54.839500427246094 -259.4909973144531,54.839500427246094 C-259.4909973144531,54.839500427246094 -259.4909973144531,-54.839500427246094 -259.4909973144531,-54.839500427246094 C-259.4909973144531,-54.839500427246094 259.4909973144531,-54.839500427246094 259.4909973144531,-54.839500427246094z"></path></g></g></g><g transform="matrix(1,0,0,1,0,0)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,373.79998779296875,77.8499984741211)"><path fill="url(#__lottie_element_10)" fill-opacity="1" d=" M-67.67926788330078,37.35064697265625 C-67.67926788330078,53.25064468383789 -55.06709671020508,66.61580657958984 -39.16709518432617,66.61580657958984 C-39.16709518432617,66.61580657958984 69.76773834228516,67.79359436035156 69.76773834228516,67.79359436035156 C69.76773834228516,67.79359436035156 31.86774253845215,26.28290367126465 10.608914375305176,4.395442485809326 C-4.720612525939941,-11.299712181091309 -67.26302337646484,-67.34209442138672 -67.26302337646484,-67.34209442138672 C-67.26302337646484,-67.34209442138672 -67.67926788330078,37.35064697265625 -67.67926788330078,37.35064697265625z"></path></g></g><g transform="matrix(1,0,0,1,0,0)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,256,280.79998779296875)"><path fill="url(#__lottie_element_6)" fill-opacity="1" d=" M98.00357055664062,-34.64583969116211 C98.00357055664062,-34.64583969116211 31.892309188842773,-33.636539459228516 31.892309188842773,-33.636539459228516 C31.892309188842773,-33.636539459228516 30.036678314208984,-95.96062469482422 30.036678314208984,-95.96062469482422 C30.036678314208984,-95.96062469482422 -31.763320922851562,-95.96062469482422 -31.763320922851562,-95.96062469482422 C-31.763320922851562,-95.96062469482422 -30.413145065307617,-30.774173736572266 -30.413145065307617,-30.774173736572266 C-30.413145065307617,-30.774173736572266 -98.3067398071289,-27.283145904541016 -98.3067398071289,-27.283145904541016 C-98.3067398071289,-27.283145904541016 -95.81314849853516,31.02582550048828 -95.81314849853516,31.02582550048828 C-95.81314849853516,31.02582550048828 -29.914426803588867,28.03351593017578 -29.914426803588867,28.03351593017578 C-29.914426803588867,28.03351593017578 -28.058795928955078,92.11274719238281 -28.058795928955078,92.11274719238281 C-28.058795928955078,92.11274719238281 33.55043411254883,89.0580062866211 33.55043411254883,89.0580062866211 C33.55043411254883,89.0580062866211 33.393592834472656,24.915382385253906 33.393592834472656,24.915382385253906 C33.393592834472656,24.915382385253906 99.25421142578125,27.143905639648438 99.25421142578125,27.143905639648438 C99.25421142578125,27.143905639648438 98.00357055664062,-34.64583969116211 98.00357055664062,-34.64583969116211z"></path></g></g></g></svg></div><span>건강검진으로 영양제 &amp; 식단 추천받기</span></span>
+	               <br/>
+	               <span class="txt2">10년치 국가 건강검진 데이터를 바탕으로 영양제를 추천해드려요!</span>
+	               <div class="banner-wrap">
+	                   <div class="banner-txt1">내 건강검진 불러오고</div>
+	                   <div class="banner-txt2"><span>영양제 &amp; 식단 추천</span> 받으세요</div>
+	                   <img src="https://cdn.pillyze.io/web/img/s12c-bg.webp" class="banner-bg" alt="두 손으로 알약을 떠 받드는 그림">
+	               </div>
+	           </div>
+	       </a>
+	   </div>
 	    
 	    
-  	  <!--  *번째 다이브 목록 -->
+  	  <!--  4번째 다이브 목록 -->
       <div class="mainInner">
             <h3 style="text-align: center; margin-top: 20px; font-weight: bold;">우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
             <div class="container-xxl py-4">
@@ -647,8 +834,8 @@
 			       <button type="button" class="close" data-dismiss="modal">&times;</button>
 			     </div>
 			     <div class="modal-body">
-			       <h3 style="text-align: center;">병원정보</h3>
-			       <p style="text-align: center;">병원에 대한 위치 찾기</p>
+			       <h3 style="text-align: center;">병원 & 약국정보</h3>
+			       <p style="text-align: center;">병원&약국에 대한 위치 찾기</p>
 			       <div class="container-xxl py-5">
 			         <div class="map_wrap">
 			           <div id="modalmap" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -794,6 +981,30 @@
             </div>
 		</aside>
 </section>
+	<div class="section section1-3">
+       <div class="content">
+           <span class="txt1">건강한 영양제 &amp; 식단 관리를 위한 모든 것</span>
+           <span class="txt2">걱정 없이, 쉽고 간편하게</span>
+           <span class="txt3"><span>Medi-Q</span>로 시작하세요.</span>
+       </div>
+   </div>
+    
+	<div class="section section1-5">
+        <div class="content">
+
+            <span class="txt1"><span style="color: #EF605D"> Medi-Q</span>는 신뢰가 가득하여 믿을 수 있어요.</span>
+            <span class="txt2"><span style="color: #EF605D"> Medi-Q</span>는 국내외 검증된 기관과<br>신뢰도 높은 연구 결과를 바탕으로 개인 맞춤형 분석 결과를 제공합니다.</span>
+
+            <div class="rl-companies">
+                <div class="rl-company rl-company1">식품의약품안전처</div>
+                <div class="rl-company rl-company2">식품안전정보원</div>
+                <div class="rl-company rl-company3">한국영양학회</div>
+                <div class="rl-company rl-company4">EFSA</div>
+                <div class="rl-company rl-company5">(사)대한약학회</div>
+                <div class="rl-company rl-company6">NIH</div>
+            </div>
+        </div>
+    </div>
 
 <!-- 매인 배너 슬라이드 -->
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
