@@ -2,6 +2,8 @@ package com.kosmo.springapp.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,9 +22,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kosmo.springapp.model.HealthMemoDTO;
 import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.model.ProfileImageDTO;
 import com.kosmo.springapp.service.JWTokensService;
+import com.kosmo.springapp.service.impl.HealthMemoIServicempl;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
 
 @RequestMapping("/project")
@@ -31,6 +35,8 @@ public class MypageController {
 
 	@Autowired
 	private LoginServiceImpl loginService;
+	@Autowired
+	private HealthMemoIServicempl healthMemoIServicempl;
 	@Autowired
 	private JWTokensService jwTokensService;
 
@@ -43,13 +49,22 @@ public class MypageController {
 	@GetMapping("/MyPage.do")
 	public String mypage(HttpServletRequest req, HttpServletResponse resp, Model model) {
 		LocalDate current = LocalDate.now(); //현재날짜 구하기
+		Map map = new HashMap<>();
 		
 		MemberDTO member = loginService.selectOne(req,resp);
 		ProfileImageDTO profImg = loginService.selectProfImg(member.getId());
+		List<HealthMemoDTO> memos = healthMemoIServicempl.selectAll(req,current);
+		
+		map.put("mm_Id", member.getId());
+		map.put("mm_Date", current);
+		HealthMemoDTO memo = healthMemoIServicempl.selectOne(map);
 		
 		model.addAttribute("current", current);
 		model.addAttribute("info", member);//추후 더 추가해야함
 		model.addAttribute("profImg", profImg);
+		model.addAttribute("memos", memos);
+		model.addAttribute("memo", memo);
+		
 		return "login/MyPage";
 	}
 
@@ -123,14 +138,6 @@ public class MypageController {
 		model.addAttribute("WHERE", "PROF");
 		
 		return "login/Message";
-	}
-	
-	//클릭한 날짜 ajax로 받기
-	@PostMapping("/Memo.do")
-	@ResponseBody
-	public Map calendarPost(@RequestParam Map map) {
-		System.out.println("정보: "+map);
-		return map;
 	}
 	
 	//정신건강테스트

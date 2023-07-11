@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 <style>
         .line{
             border: rgb(241, 79, 106) 1px solid;
@@ -325,7 +327,7 @@
 	        </table>
 	
 	        <div class="d-inline-flex">
-	            <button id="resultM" class="btn btn-lg btn-primary my-4" data-toggle="modal" data-backdrop="static" >심리적 스트레스 검사결과 보기</button>
+	            <button id="resultM" class="btn btn-lg btn-primary my-4" data-toggle="modal" data-target="#result" data-backdrop="static" >심리적 스트레스 검사결과 보기</button>
 	            <!--
 	            <img class="topBtn" src="./img/top-btn.png" alt="top-button"/>
 	            -->
@@ -334,7 +336,7 @@
         </form>
     </div><!--container-->
     <!-- The Modal -->
-    <div class="modal fade" id="result">
+    <div class="modal fade" id="result" style="display: none">
         <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header justify-content-between">
@@ -373,7 +375,31 @@
 		else{
 			var sum=0;
 			$(':radio:checked').each(function(){
-				$('#resultM').attr('data-target','#result');
+				
+				//swal 시작
+				var timerInterval
+				Swal.fire({
+				  title: 'Auto close alert!',
+				  html: 'I will close in <b></b> milliseconds.',
+				  timer: 2000,
+				  timerProgressBar: true,
+				  didOpen: () => {
+				    Swal.showLoading()
+				    var b = Swal.getHtmlContainer().querySelector('b')
+				    timerInterval = setInterval(() => {
+				      b.textContent = Swal.getTimerLeft()
+				    }, 100)
+				  },
+				  willClose: () => {
+				    clearInterval(timerInterval)
+				  }
+				}).then((result) => {
+				  if (result.dismiss === Swal.DismissReason.timer) {					  
+					  $('#result').css('display','block');
+				  }
+				});
+				//swal 끝
+
 				sum += parseInt($(this).val());
 				//console.log('sum:',sum,$(this).val())
 				if(sum >= 27){//고위험군
@@ -399,5 +425,6 @@
 			return false;
 		}
 	};
+
 </script>
 </html>
