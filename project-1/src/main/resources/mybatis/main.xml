@@ -10,4 +10,7 @@
   	<select id="selectFoodOneByNo" parameterType="Map" resultType="functionalFoodListDto">
  		SELECT * FROM foodtable WHERE no=#{no}
 	</select>
+	<select id="selectFoodNameList" resultType="Map" parameterType="String">
+	SELECT * FROM (SELECT PRODUCTNAME,IMGURL FROM foodtable WHERE PRODUCTNAME LIKE '%' || #{searchWord} || '%') WHERE ROWNUM &lt;= 8
+	</select>
 </mapper>
