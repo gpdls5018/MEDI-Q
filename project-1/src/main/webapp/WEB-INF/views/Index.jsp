@@ -4,8 +4,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 
-<!-- jQuery를 위한 CDN -->
+<!-- jQuery를 위한 CDN
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+ -->
 <!-- 슬라이더를 위한 CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" rel="stylesheet" />
@@ -48,7 +49,7 @@
         line-height: 24px;
     }
     
-    .btn {
+    #hashtaglink .btn {
         
         font-size: 16px;
         cursor: pointer;
@@ -317,6 +318,77 @@
     	box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
     }
 
+     .mainMap {
+         position: relative;
+         z-index: 10;
+         height: 340px;
+         border: 1px solid #ccc;
+     }
+     #tsBtn {
+           display: block;
+           z-index: 99;
+           background-color: white;
+           width: 180px;
+       	   height: 80px;
+           position: absolute;
+           top: 20px;
+           right: 20px;
+           cursor: pointer;
+           border-radius: 20px; 
+           text-align: center;
+       }
+      #tsBtn span {
+      	 vertical-align:middle;
+      	 color: #EF605D;
+      	 font-weight: bold;
+      	 text-align: center;
+      }
+     
+   /*지도 모달 css */
+
+   .modal-content {
+   	align-content: center;
+   	vertical-align: middle;
+   }
+
+.map_wrap, .menu_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
+.map_wrap {position:relative;width:100%;height:600px;}
+#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:40%;margin:10px 0 10px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+.bg_white {background:#fff;}
+#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+#menu_wrap .option{text-align: center;}
+#menu_wrap .option p {margin:10px 0;}  
+#menu_wrap .option button {margin-left:5px;}
+#placesList li {list-style: none;}
+#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+#placesList .item span {display: block;margin-top:4px;}
+#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+#placesList .item .info{padding:10px 0 10px 55px;}
+#placesList .info .gray {color:#8a8a8a;}
+#placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+#placesList .info .tel {color:#009900;}
+#placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+#placesList .item .marker_1 {background-position: 0 -10px;}
+#placesList .item .marker_2 {background-position: 0 -56px;}
+#placesList .item .marker_3 {background-position: 0 -102px}
+#placesList .item .marker_4 {background-position: 0 -148px;}
+#placesList .item .marker_5 {background-position: 0 -194px;}
+#placesList .item .marker_6 {background-position: 0 -240px;}
+#placesList .item .marker_7 {background-position: 0 -286px;}
+#placesList .item .marker_8 {background-position: 0 -332px;}
+#placesList .item .marker_9 {background-position: 0 -378px;}
+#placesList .item .marker_10 {background-position: 0 -423px;}
+#placesList .item .marker_11 {background-position: 0 -470px;}
+#placesList .item .marker_12 {background-position: 0 -516px;}
+#placesList .item .marker_13 {background-position: 0 -562px;}
+#placesList .item .marker_14 {background-position: 0 -608px;}
+#placesList .item .marker_15 {background-position: 0 -654px;}
+#pagination {margin:10px auto;text-align: center;}
+#pagination a {display:inline-block;margin-right:10px;}
+#pagination .on {font-weight: bold; cursor: default;color:#777;}
+   
+
 
 </style>
 
@@ -490,6 +562,57 @@
 	    
 	    
   	  <!--  *번째 다이브 목록 -->
+      <div class="mainInner">
+            <h3 style="text-align: center;">우리 동네 약국</h3>
+            <p style="text-align: center;">약국에 대한 위치를 찾아보아요</p>
+            <div class="container-xxl py-5">
+                <div class="container">
+                    <div class="mainMap" id="map" >
+                        <button type="button" class="btn btn-primary" id="tsBtn">
+                        	<span>병원 또는 약국<br/> 찾아보기</span>
+                        </button>         
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  지도 모달 누르면 나오는 부분 -->
+	       <div class="modal fade align-items-center" id="tsModal" role="dialog" style="background-color: rgba(0, 0, 0, 0.5);">
+			 <div class="modal-dialog modal-dialog-centered" style="align-content :center; width: 80%; height: 60%;">
+			   <!-- Modal content-->
+			   <div class="modal-content" style="width: 1200px; height: 100%;">
+			     <div class="modal-header" style="width: 1200px;">
+			       <h4 class="modal-title">우리동네 병원 및 약국찾기</h4>
+			       <button type="button" class="close" data-dismiss="modal">&times;</button>
+			     </div>
+			     <div class="modal-body">
+			       <h3 style="text-align: center;">병원 및 약국정보</h3>
+			       <p style="text-align: center;">병원·약국찾기에 대한 위치 찾기</p>
+			       <div class="container-xxl py-5">
+			         <div class="map_wrap">
+			           <div id="modalmap" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+			           <div id="menu_wrap" class="bg_white">
+			             <div class="option">
+			               <div>
+			                 <form onsubmit="searchPlaces(); return false;">
+			                    키워드 : <input type="text" value="가산디지털단지역" placeholder="ㅇㅇ동 약국을 입력" id="keyword" size="15">
+			                    <button type="submit">검색하기</button>
+			                  </form>
+			                </div>
+			              </div>
+			              <hr>
+			              <ul id="placesList"></ul>
+			              <div id="pagination"></div>
+			            </div>
+			          </div>
+			        </div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+       
       
       <!--  *번째 다이브 목록 -->
 	    <div class="m-5 " style="display:flex; justify-content: center;">
@@ -501,6 +624,9 @@
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>"></a></div>
 	        </div>
 	    </div>
+	    
+	   <!--  *번째 다이브 목록 -->
+
 	</article>
 		<!-- 오른쪽 슬라이드 -->
 		<aside class="tsidebar fixedsticky">
@@ -613,6 +739,9 @@
 <!-- 매인 배너 슬라이드 -->
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/CSSRulePlugin3.min.js"></script>
+<!-- 지도 스크립트 키 -->
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=536a268ae501933d1ccf30618f1b4258&libraries=services"></script> 
+
 <script>
 // The DOM element you wish to replace with Tagify
 var input = document.querySelector('input[name=postTag]');
@@ -702,6 +831,35 @@ document.addEventListener("DOMContentLoaded", function() {
 	  }
 	});
 	
+
+// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+    var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        mapOption = {
+            center: new kakao.maps.LatLng(37.481242, 126.883970), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };  
+  //지도를 생성합니다    
+    var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+//지도 모달로 띄우기 
+    function initMap() {
+    var mapContainer = document.getElementById('modalmap');
+    var mapOption = {
+      center: new kakao.maps.LatLng(37.481242, 126.883970),
+      level: 3
+    };
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+  }
+
+  $(document).ready(function() {
+    $("#tsBtn").click(function() {
+      $("#tsModal").modal({ backdrop: true });
+      initMap(); // 모달 열릴 때 지도 초기화 호출
+    });
+  });
+	 
 /*배너 영상돌리기*/
 function bannerSwitcher() {
     next = $('.sec-1-input').filter(':checked').next('.sec-1-input');

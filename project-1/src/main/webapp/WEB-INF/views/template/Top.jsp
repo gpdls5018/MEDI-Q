@@ -37,7 +37,7 @@
      <script src="<c:url value="/resources/tsfolder/js/main.js"/>" ></script>
      
      <!-- googlefont -->
-	<link rel="preconnect" href="https://fonts.googleapis.com"> 
+	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin> 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2? family=Hahmlet&family=Nanum+Myeongjo&family=Stylish&display=swap" rel="stylesheet">
 <style>
@@ -138,12 +138,11 @@
               <span onclick="openNav()"><i class="fas fa-solid fa-bars fa-2x mx-2" style="color: #EF605D;"></i></span>
 				
 		    
-	      
+	        <a href="<c:url value="/" />" class="d-flex navbar-brand p-0 justify-content-end" style="width:55%;">
+                <img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+           	</a>
            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-	       		<a href="<c:url value="/" />" class="navbar-brand p-0" style=" margin-left: auto; margin-right: auto;">
-	                <img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
-	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
-	           	</a>
            		<div class="mypage">
            			<a class="nav-link text-dark" href="<c:url value="/project/MyPage.do" />">마이페이지 <i class="fa-solid fa-paper-plane"></i></a><!-- 마이페이지 -->
            		</div>

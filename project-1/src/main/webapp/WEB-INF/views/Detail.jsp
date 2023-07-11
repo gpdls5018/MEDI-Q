@@ -84,7 +84,7 @@
     }
 
     .skeleton-card {
-      height: 200px;
+      height: 100px;
       width: 100%;
       margin: 8px;
       border-radius: 3px;
@@ -109,7 +109,7 @@
 	
 	<!-- 탭 -->
 	<div class="tab-content">
-	  	<div class="tab-pane fade show active" id="detailTable"><!-- 탭 1 시작 -->
+	  	<div class="tab-pane fade show active mb-5" id="detailTable"><!-- 탭 1 시작 -->
            	<table class="type09 mt-3">
                 <thead>
 	                <tr>
@@ -370,7 +370,11 @@
 			      	</li>
 			    </ul>
 			    <div id="loader">
-			      	<div class="skeleton-card p-3"></div>
+			      	<div class="skeleton-card p-3" style="text-align:center">
+				      	<div class="spinner-border text-secondary" role="status">
+						</div>
+						<span class="visually-hidden">Loading...</span>
+			      	</div>
 			    </div>
 		    	<div class="card-actions">
 			      	<span>Showing 

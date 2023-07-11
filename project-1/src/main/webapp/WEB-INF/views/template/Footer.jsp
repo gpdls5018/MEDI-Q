@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-</div><!-- id=main  -->
+
 </body>
 
 <footer class="d-flex flex-wrap justify-content-around align-items-center py-2" style="background-color: #FDCDBC; width: 100%;">

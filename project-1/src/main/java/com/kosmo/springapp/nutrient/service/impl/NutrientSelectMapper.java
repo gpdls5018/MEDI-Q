@@ -37,8 +37,18 @@ public interface NutrientSelectMapper {
 	// 선택한 비타민의 섭취 음식 가져오는 쿼리
 	String getN_FOODNbyVitaminName(String name);
 	
+	// 선택한 원료의 건강고민 가져오는 쿼리
+	String getI_FUNCbyIngredientName(String name);
+
+	// 선택한 원료의 섭취량 가져오는 쿼리
+	String getI_DRIbyIngredientName(String name);
+	String getI_ULbyIngredientName(String name);
 	
+	// 선택한 원료의 상세정보 가져오는 쿼리
+	String getI_DESCbyIngredientName(String name);
 	
+	// 선택한 원료의 주의사항 가져오는 쿼리
+	String getI_CAUTIONbyIngredientName(String name);
 	
 	
 	
