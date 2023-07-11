@@ -78,7 +78,7 @@
 		//쿠키값 가져와서 로그인 상태 확인 함수
 		function checkLoginStatus() {
 		var token = getCookieValue("User-Token");
-		console.log("token",token);
+		//console.log("token",token);
 		  	if(token) {
 		    	// 토큰이 존재하면 로그인 상태로 간주
 		    	// 로그아웃 버튼 보이기
