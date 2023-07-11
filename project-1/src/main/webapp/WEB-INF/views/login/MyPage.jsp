@@ -4,9 +4,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- MyPage.jsp -->
 <jsp:include page="/WEB-INF/views/template/Top.jsp" />
-<!-- 
-<script src="<c:url value="/resources/dist/jquery.bs.calendar.js"/>" ></script>
- -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -35,7 +32,7 @@
 <!-- datepicker css -->
 <style>
 		.ui-datepicker-trigger { width: 100px; cursor: pointer; }
-		#ui-datepicker-div { left: 280px !important; top: 370px !important; }
+		#ui-datepicker-div { left: 200px !important; top: 370px !important; }
         .ui-widget-header { border: 0px solid #dddddd; background: #fff; } 
 
         .ui-datepicker-calendar>thead>tr>th { font-size: 14px !important; } 
@@ -51,7 +48,7 @@
 
         .ui-datepicker .ui-datepicker-title { margin: 0 0em; line-height: 16px; text-align: center; font-size: 14px; padding: 0px; font-weight: bold; } 
 
-        .ui-datepicker { display: none; background-color: #fff; border-radius: 4px; margin-top: 10px; margin-left: 0px; margin-right: 0px; padding: 20px; padding-bottom: 10px; width: 300px; box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.1); } 
+        .ui-datepicker { display: none; background-color: #fff; border-radius: 4px; margin-top: 10px; margin-left: 0px; margin-right: 0px; padding: 20px; padding-bottom: 10px; width: 370px; box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.1); } 
 
         .ui-widget.ui-widget-content { border: 1px solid #eee; } 
 
@@ -761,7 +758,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 		</div>
 		<!-- 수정/삭제시 사용할 모달 끝 -->
 	</div><!-- 컨테이너 -->
-	<c:set var="date" value="${fn:split(memo.mm_Date,' ')[0]}"/>
+	<c:set var="date" value="${memo.mm_Date}"/>
 	<c:set var="condition" value="${memo.mm_Condition}"/>
 	<c:set var="head" value="${memo.mm_Head}"/>
 	<c:set var="resp" value="${memo.mm_Resp}"/>
@@ -774,9 +771,16 @@ ul li input[type=checkbox]:checked ~ .acco {
 	<c:set var="height" value="${memo.mm_Height}"/>
 	<c:set var="weight" value="${memo.mm_Weight}"/>
 	<c:set var="content" value="${memo.mm_Content}"/>
+	
+	<c:set var="date" value=""/>
+	<c:forEach var="diary" items="${memos }">
+		<c:set var="date" value="${date } ${diary.mm_Date }"/>
+	</c:forEach>
 </body>
 </html>
 <script>
+var dates = '<c:out value="${date}"/>'
+console.log('dates:',dates.split(" "))
 	$.datepicker.setDefaults({
 	    dateFormat: 'yy-mm-dd',
 	    prevText: '이전 달',
@@ -787,7 +791,23 @@ ul li input[type=checkbox]:checked ~ .acco {
 	    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
 	    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
 	    showMonthAfterYear: true,
+	    beforeShowDay:function(date){
+	    	var month = date.getMonth().toString().length==1?'0'+(date.getMonth()+1).toString():(date.getMonth()+1).toString()
+	    	var day = date.getDate().toString().length==1?'0'+date.getDate().toString():date.getDate().toString()
+	    	var fulldate = date.getFullYear()+'-'+month+'-'+day;
+	    	var isFull = "";
+	    	dates.split(" ").forEach(function(d){
+	    		//console.log('d:',d)
+	    		//console.log('f:',fulldate)
+	    		if(d==fulldate){
+	    			isFull =  true;
+	    			//return [true, isFull ? "full" : ""];
+	    		}
+	    	})
+	    	return [true, isFull ? "full" : ""]; // 다른 날짜는 기본값 반환
+	    },//날짜 선택 전 이벤트 주기
 	    yearSuffix: '년',
+	    maxDate: new Date(), //오늘 날짜 이 후만 선택가능
 	    showOn : 'button',
         buttonImageOnly: true,
         buttonImage: '/resources/images/basic/calendar.png',
@@ -804,9 +824,9 @@ ul li input[type=checkbox]:checked ~ .acco {
 	
 	//컨드롤러에서 가져온 정보 꾸리기(기본값=오늘날짜)
 	var info_date = '<c:out value="${date}"/>';
-	console.log('date:',info_date)
-	console.log('click:',$('.clickDate').html())
-	if($('.clickDate').html()==info_date){
+	//console.log('date:',info_date)
+	//console.log('click:',$('.clickDate').html())
+	if($('.clickDate').html()==info_date){//기본값=오늘날짜
 		var info_con = '<c:out value="${condition}"/>';
 		if($('.acco').find('[alt='+info_con+']')){
 			$('.acco').find('[alt='+info_con+']').addClass('circle');
@@ -878,6 +898,9 @@ ul li input[type=checkbox]:checked ~ .acco {
 		$('[name=w]').val(info_w);
 		var info_content = '<c:out value="${content}"/>';
 		$('#content').val(info_content);
+	}
+	else{//클릭한 날짜가 오늘 날짜가 아닐 때
+		console.log('diff:',$('.clickDate').html())
 	}
 </script>
 <script>	

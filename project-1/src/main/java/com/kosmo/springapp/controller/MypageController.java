@@ -54,11 +54,15 @@ public class MypageController {
 		MemberDTO member = loginService.selectOne(req,resp);
 		ProfileImageDTO profImg = loginService.selectProfImg(member.getId());
 		List<HealthMemoDTO> memos = healthMemoIServicempl.selectAll(req,current);
+		for(HealthMemoDTO m : memos) {
+			m.setMm_Date(m.getMm_Date().split(" ")[0]);
+		}
 		
 		map.put("mm_Id", member.getId());
 		map.put("mm_Date", current);
 		HealthMemoDTO memo = healthMemoIServicempl.selectOne(map);
-		
+		memo.setMm_Date(memo.getMm_Date().split(" ")[0]);
+		System.out.println("date: "+memo.getMm_Date());
 		model.addAttribute("current", current);
 		model.addAttribute("info", member);//추후 더 추가해야함
 		model.addAttribute("profImg", profImg);
