@@ -121,7 +121,7 @@
                         <li><a class="sidenava5" href="#">
                             <img src="<c:url value="/resources/images/tsimages/free-icon-checkmark-9887473.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             섭취/체크</a></li>
-                        <li><a class="sidenava6" href="#">
+                        <li><a class="sidenava6" href="<c:url value='/board/List.do' />">
                             <img src="<c:url value="/resources/images/tsimages/free-icon-chat-724715.png"/>" loading="lazy" width="25" height="25" style="color: transparent;"/>
                             커뮤니티</a></li>
                         <li><a class="sidenava7" href="#">
