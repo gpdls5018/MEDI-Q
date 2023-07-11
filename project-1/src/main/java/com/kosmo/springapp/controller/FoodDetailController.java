@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kosmo.springapp.analyze.model.AnalyzeResultListDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
 import com.kosmo.springapp.model.ReviewDTO;
+import com.kosmo.springapp.model.TotalReviewDTO;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.AnalyzeMyReportServiceImpl;
 import com.kosmo.springapp.service.impl.MainPageServiceImpl;
@@ -38,6 +39,7 @@ public class FoodDetailController {
 	 @Autowired
 	 ReviewServiceImpl reviewServiceImpl;
 	 
+	 
 	 @Autowired
 	 private JWTokensService jwTokensService;
 	 @Value("${token-name}")
@@ -49,6 +51,7 @@ public class FoodDetailController {
 	 public String detailPage(Model model, Map map, @RequestParam String no) {
 		   map.put("no",Integer.parseInt(no));
 		   FunctionalFoodListDTO listOne = mainPageServiceImpl.selectFoodOneByNo(map);
+		   TotalReviewDTO totalReviewDto = reviewServiceImpl.selectTotalReviewInfo(Integer.parseInt(no));
 		   model.addAttribute("listOne",listOne);
 		   return "Detail";
 	 }
@@ -89,6 +92,13 @@ public class FoodDetailController {
 		 AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReport(userMap);
 		 model.addAttribute("resultListDto",resultListDto);
 		 return "AnalyzeReportResult";
+	 }
+	 
+	 @GetMapping("/searchMyFood.do")
+	 @ResponseBody
+	 public List searchMyFood(@RequestParam String searchWord) {
+		 List<Map> nameList = mainPageServiceImpl.selectFoodNameList(searchWord);
+		 return nameList;
 	 }
 	 
 }
