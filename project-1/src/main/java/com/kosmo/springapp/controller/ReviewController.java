@@ -34,13 +34,6 @@ public class ReviewController {
 	
 	@RequestMapping(value = "/WriteReview.do", method = RequestMethod.POST)
 	public String writeReview(@RequestBody Map map) {
-		//System.out.println("map : "+map.get("takeTime"));
-		//System.out.println("map : "+map.get("starScore"));
-		//System.out.println("map : "+map.get("effect").toString());	
-		//System.out.println("map : "+map.get("noEffect").toString());
-		//System.out.println("map : "+map.get("content"));
-		//System.out.println("map : "+map.get("no"));
-		System.out.println("map.get(id).toString():"+map.get("id").toString());
 		int result = reviewServiceImpl.registerReview(map);
 		return "Detail";
 	}

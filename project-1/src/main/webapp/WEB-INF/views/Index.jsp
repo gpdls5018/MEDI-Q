@@ -15,782 +15,10 @@
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 <!-- 슬라이드 반응형 jqery -->
-<script src="resources/tsfolder/js/jquery.sticky-kit.min.js"></script>
+<script src="<c:url value="/resources/tsfolder/js/jquery.sticky-kit.min.js"/>" ></script>
 
 
-<style>
 
- .btn-6c img {
-        margin-bottom: 10px;
-    }
-
-    .btn-6c lable {
-        display: block;
-        white-space: nowrap;
-        font-size: 12px;
-    }
-
-    .btn-6c {
-        display: flex;
-        color: #ffffff;
-        background: #ffffff;
-        position: relative;
-        flex-direction: column;
-        -webkit-box-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        justify-content: center;
-        border: 1px solid var(--color-bs-gray-300);
-        width: 100px;
-        height: 100px;
-        padding: 10px;
-        border-radius: 12px;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        line-height: 24px;
-    }
-    
-    #hashtaglink .btn {
-        
-        font-size: 16px;
-        cursor: pointer;
-        padding: 40px 40px;
-        margin: 10px 10px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 700;
-        position: relative;
-        text-align: center;
-        color: black;
-    }
-    .tagify {
-   		width: 80%;
-    }
-    /*사이드 랭킹바 만든 css*/
-    .tsbutton {
-		display: block;
-		border-radius: 4px;
-		text-decoration: none;
-		text-align: center;
-		color: #fff;
-		background-color: #0071fc;
-		padding: .5em
-	}
-	.maints {
-		margin: 1em 0em 1em 1em;
-	}
-	.tsidebar {
-		padding: 16px 1.5em;
-		margin-bottom:10px;
-	}
-	.tsidebar .unlist li {
-	    position: relative;
-	    display: flex;
-	    width: 100%;
-	    height: 80px;
-	    margin: 0 0 20px 0;
-	    padding: 
-	    background-color: #ffffff;
-	    border-radius: 8px;
-	    box-shadow: 0px 0px 2px #444;
-	    align-items: center;
-	}
-
-	.tsidebar .unlist li img{
-	    width: 50px;
-	    height: 35px;
-	    text-align: center;
-	}
-	
-	@media (min-width:30em) {
-		.tscontainer {
-			max-width: 100%;
-			margin: 0 auto;
-			position: relative;
-		}
-		.maints {
-			display: inline-block;
-			width: 70%;
-			vertical-align: top;
-			margin: 0px 20px 0px 20px;
-		}
-		.tsidebar {
-			display: inline-block;
-			width: 16%;
-			vertical-align: top;
-			margin: 0px 20px 0px 20px;
-		}
-		.fixedsticky {
-			margin-top: 00px;
-		}
-	}
-	aside > div {
-	  border: 2px solid #ccc;
-	  border-radius: 10px;
-	  padding: 20px;
-	  background-color: white;
-	  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	  margin-bottom: 20px;
-    }
-	.gCSEJp {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        padding: 40px 20px;
-    }
-    .gCSEJp > h1 {
-        color: gray;
-        font-weight: 900;
-        margin-bottom: 24px;
-    }
-    .ktaGqG {
-        display: inline-block;
-        width: calc(100% - 10px);
-        transform: translateX(10px);
-        height: 139px;
-        background-color: #EF605D;
-        border-radius: 20px;
-        margin-bottom: 20px;
-        list-style-type: none;
-        position: relative;
-    }
-    .jZuajW {
-        position: absolute;
-        left: -10px;
-        z-index: 5;
-        display: flex;
-        flex-direction: column;
-        top: 50%;
-        transform: translateY(-50%);
-        height: 110px;
-        width: 25px;
-        -webkit-box-align: center;
-        align-items: center;
-        justify-content: space-around;
-    }
-    .hBxOSS {
-        cursor: pointer;
-        border-radius: 20px;
-        height: 139px;
-        box-shadow: rgba(101, 101, 101, 0.3) 2px 2px 4px 4px;
-    }
-    .iJGurJ {
-        position: relative;
-        height: 100%;
-        border-bottom: none;
-        background-color: white;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-        width: 92%;
-        padding: 22px 0px 22px 30px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-    .enbDhJ {
-        font-weight: bold;
-        height: 22px;
-        display: flex;
-        -webkit-box-align: center;
-        align-items: center;
-        -webkit-box-pack: start;
-        justify-content: flex-start;
-        border-radius: 10px;
-        color: black;
-    }
-    .ZyIFk {
-        display: flex;
-        gap: 8px;
-    }
-    .maints > div{
-		background-color:white;
- 		border: 2px solid #eaeaea;
- 		border-radius:15px;
-
-    }
-    section {
-	  background: linear-gradient(to bottom, #ffffff, #FFFAFA);
-	}
-
-    .section .content {
-        width: 90%;
-        margin: 30px;
-        text-align: center;
-        position: relative;
-    }
-    .section1-2b .txt1 {
-        font-weight: 700;
-        font-size: 20px;
-        color: #101219;
-    }
-    .section1-2b .ingredient-wrap {
- 		display:flex;
- 		flex-wrap: wrap;
-        width: calc(100% + 20px);
-        margin-top: 10px;
-        justify-content:center; 
-        align-items: center
-        
-    }
-    .section1-2b .txt1 span {
-        color: #EF605D;
-    }
-    .section1-2b .ingredient-wrap .ingredient-one .txt-fix {
-	    display: table-cell;
-	    vertical-align: middle;
-	    height: 120px;
-	    font-weight: bold;
-	    font-size: 16px;
-	    line-height: 20px;
-	    color: #101219;
-	    text-align: center;
-	    width: 100%;
-	}
-    .section1-2b .ingredient-wrap .ingredient-one {
-        width: calc(20% - 35px);
-        height: 80px;
-        margin: 15px 15px 0px 0px;
-        float: left;
-        border-radius: 20px;
-        box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
-        text-align: center;
-        background: #FFFFFF;
-        display: table;
-        border: 1px solid #E6E9ED;
-    }
-
-    .section1-2b .more-pop-ingredient {
-        float: right;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 1;
-        text-align: right;
-        margin: 10px 0px 0px 20px;
-        text-decoration: underline;
-        color: #9BA1AA;
-        cursor: pointer;
-    }
-    .ingredient-wrap a{
-  		flex-basis: 16%;
-    	text-align: center;
-        text-decoration:none; 
-    }
-    /*3번째 div 목록*/
-    .section1-2e {
-		margin: 30px;
-        width: 95%;
-    }
-    .section .content {
-        margin: 0px auto;
-        text-align: center;
-        position: relative;
-    }
-    .section1-2e .txt1 {
-        display: block;
-        color: #9BA1AA;
-        text-align: center;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 1;
-    }
-    .section1-2e .txt2 {
-        display: block;
-        font-weight: 700;
-        color: #101219;
-        font-size: 26px;
-        text-align: center;
-        line-height: 34px;
-        margin: 10px 0px 28px;
-    }
-    .section1-2e .txt2 span {
-        color: #EF605D;
-    }
-    .section1-2e .swiper-container2 {
-        overflow: hidden;
-        width: calc(100% + 20px);
-        padding: 0px 0px 80px;
-        transform: translateX(-10px);
-    }
-    .u510{
-        display: none;
-    }
-    .slideriview {
-    	border-radius: 20px;
-    	box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
-    }
-
-     .mainMap {
-         position: relative;
-         z-index: 10;
-         height: 340px;
-         border: 1px solid #ccc;
-     }
-      .mainMap button{
-       	   display: block;
-           z-index: 99;
-           background-color: white;
-           width: 180px;
-       	   height: 60px;
-           position: absolute;
-           cursor: pointer;
-           border: 1px solid #ccc;
-           border-radius: 20px; 
-           text-align: center;
-           top: 20px;
-           right: 10px;
-       }
-      .mainMap button:hover {
-      		background-color: #FDCDBC;
-          	color: black;
-          	font-weight: bold;
-      }
-      
-      .mainMap button span {
-      	 vertical-align:middle;
-      	 color: #EF605D;
-      	 font-weight: bold;
-      	 text-align: center;
-      	  font-size: 14px;
-      }
-      /* 맵에 레이어 부분 css*/
-      .mainMap .mapLayer {
-      		display: block;
-            margin-inline-start: 20px;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 10;
-            padding: 40px;
-            background-color: #fff;
-            border-radius: 10px;
-        }
-        .mapLayer h2 {
-            color: #EF605D;
-            overflow: hidden;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .mainMap a {
-            display: block;
-            width: 300px;
-            height: 48px;
-            margin-top: 10px;
-            border: 1px solid #ccc;
-            font-size: 18px;
-            text-align: center;
-            line-height: 48px;
-            border-radius:15px;
-            vertical-align: middle;
-            text-decoration: none;
-            font-weight:bold;
-            color:#EF605D;
-        }
-          .mainMap a:hover {
-          	background-color: #FDCDBC;
-          	color: black;
-          	font-weight: bold;
-          }
-
-        .closeLayerButton {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            cursor: pointer;
-
-            border-radius: 30px; 
-        }
-     
-   /*지도 모달 css */
-   .modal-content {
-   	align-content: center;
-   	vertical-align: middle;
-   }
-
-.map_wrap, .menu_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
-.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-.map_wrap {position:relative;width:100%;height:600px;}
-#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:30%;margin:10px 0 10px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
-.bg_white {background:#fff;}
-#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
-#menu_wrap .option{text-align: center;}
-#menu_wrap .option p {margin:10px 0;}  
-#menu_wrap .option button {margin-left:5px;}
-#placesList li {list-style: none;}
-#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
-#placesList .item span {display: block;margin-top:4px;}
-#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
-#placesList .item .info{padding:10px 0 10px 55px;}
-#placesList .info .gray {color:#8a8a8a;}
-#placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
-#placesList .info .tel {color:#009900;}
-#placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
-#placesList .item .marker_1 {background-position: 0 -10px;}
-#placesList .item .marker_2 {background-position: 0 -56px;}
-#placesList .item .marker_3 {background-position: 0 -102px}
-#placesList .item .marker_4 {background-position: 0 -148px;}
-#placesList .item .marker_5 {background-position: 0 -194px;}
-#placesList .item .marker_6 {background-position: 0 -240px;}
-#placesList .item .marker_7 {background-position: 0 -286px;}
-#placesList .item .marker_8 {background-position: 0 -332px;}
-#placesList .item .marker_9 {background-position: 0 -378px;}
-#placesList .item .marker_10 {background-position: 0 -423px;}
-#placesList .item .marker_11 {background-position: 0 -470px;}
-#placesList .item .marker_12 {background-position: 0 -516px;}
-#placesList .item .marker_13 {background-position: 0 -562px;}
-#placesList .item .marker_14 {background-position: 0 -608px;}
-#placesList .item .marker_15 {background-position: 0 -654px;}
-#pagination {margin:10px auto;text-align: center;}
-#pagination a {display:inline-block;margin-right:10px;}
-#pagination .on {font-weight: bold; cursor: default;color:#777;}
-
-/*여기는 하단 부분 css 적용 부분 */
-.section1-2c {
-	margin: 20px 0px 20px;
-}
-.section1-2c .content {
-    padding: 0px 0px 80px;
-    width: 938px;
-    margin: 0px auto;
-    text-align: center;
-    position: relative;
-    display: block;
-}
-.section1-2c .txt1 {
-    display: block;
-    width: 100%;
-    margin-top: 20px;
-}
-.section1-2c .txt1 .lottie1 {
-    width: 36px;
-    height: 36px;
-    float: left;
-    display: block;
-    overflow: hidden;
-    transform: translate3d(0,0,0);
-    text-align: center;
-    opacity: 1;
-}
-.section1-2c .txt1 span {
-    display: block;
-    color: #000;
-    text-align: left;
-    font-weight: 700;
-    font-size: 26px;
-    line-height: 1;
-    float: left;
-    padding: 7px 0px 0px 5px;
-}
-.section1-2c .txt2 {
-    display: block;
-    color: #9BA1AA;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 1;
-    margin-top: 10px;
-    text-align: left;
-}
-.section1-2c .banner-wrap {
-    background: #FDCDBC;
-    border-radius: 20px;
-    height: 180px;
-    display: block;
-    margin: 20px 0px 0px;
-    position: relative;
-}
-.section1-2c .banner-wrap .banner-txt1 {
-    font-weight: bold;
-    text-align: center;
-    font-size: 16px;
-    color: #535968;
-    padding: 20px 0px 0px;
-}
-.section1-2c .banner-wrap .banner-txt2 {
-    font-weight: 800;
-    text-align: center;
-    font-size: 34px;
-    color: #535968;
-    padding: 0px 0px 0px;
-    line-height: 42px;
-}
-.section1-2c .banner-wrap .banner-txt2 span {
-    background: linear-gradient(60deg, #EF605D 0%, #f38056  85.29%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-.section1-2c .banner-wrap .banner-bg {
-    position: absolute;
-    width: 397px;
-    height: 204px;
-    left: calc(50% - 198px);
-    z-index: 40;
-    top: 9px;
-}
-.section1-3 {
-    background: #F8F8FA;
-}
-.section1-3 .content {
-    padding: 80px 0px;
-}
-.section1-3 .txt1 {
-    display: block;
-    color: #9BA1AA;
-    font-weight: 700;
-    font-size: 26px;
-    line-height:1;
-}
-.section1-3 .txt2 {
-    display: block;
-    color: #535968;
-    font-weight: 700;
-    font-size: 26px;
-    line-height: 1;
-    margin-top: 20px;
-}
-.section1-3 .txt3 {
-    display: block;
-    color: #101219;
-    font-weight: 700;
-    font-size: 26px;
-    line-height: 1;
-    margin-top: 20px;
-}
-.section1-3 .txt3 span {
-    color: #EF605D;
-}
-.section1-5 {
-    background: #F8F8FA;
-}
-.section1-5 .content {
-    padding: 50px 0px 60px;
-}
-.section1-5 .txt1 {
-    display: block;
-    color: #101219;
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 1;
-}
-.section1-5 .txt2 {
-    display: block;
-    color: #101219;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
-    margin-top: 40px;
-    position: relative;
-}
-.section1-5 .rl-companies {
-    margin: 30px auto 0px;
-    display: inline-block;
-}
-.section1-5 .rl-companies .rl-company {
-    float: left;
-    width: 186px;
-    margin: 0px 0px 40px 40px;
-    height: 186px;
-    box-shadow: 2px 2px 8px rgba(70, 56, 147, 0.1);
-    border-radius: 93px;
-    font-size: 0;
-}
-.section1-5 .rl-company.rl-company1 {
-    background: #fff url(https://cdn.pillyze.io/web/img/c-logo1.webp) center no-repeat;
-    background-size: 155px 88px;
-}
-.section1-5 .rl-company.rl-company2 {
-    background: #fff url(https://cdn.pillyze.io/web/img/c-logo2.webp) center no-repeat;
-    background-size: 158px 89px;
-}
-.section1-5 .rl-company.rl-company3 {
-    background: #fff url(https://cdn.pillyze.io/web/img/c-logo3.webp) center no-repeat;
-    background-size: 161px 91px;
-}
-.section1-5 .rl-company.rl-company4 {
-    background: #fff url(https://cdn.pillyze.io/web/img/c-logo4.webp) center no-repeat;
-    background-size: 155px 100px;
-}
-.section1-5 .rl-company.rl-company5 {
-    background: #fff url(https://cdn.pillyze.io/web/img/c-logo5.webp) center no-repeat;
-    background-size: 143px 106px;
-}
-.section1-5 .rl-company.rl-company6 {
-    background: #fff url(https://cdn.pillyze.io/web/img/c-logo6.webp) center no-repeat;
-    background-size: 141px 104px;
-}
-
-
-/*5번째 다이브 스타일*/
-.section20-2-home{
-	margin-top: 20px;
-}
-.section20-2-home .content {
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 30px 0px 0px 30px;
-    padding: 0px 20px;
-    text-align: center;
-    position: relative;
-}
-.qna-mark-home {
-    display: block;
-    font-size: 0;
-    background: url(https://cdn.pillyze.io/web/img/qna-txt2.webp) left no-repeat;
-    width: 50px;
-    height: 20px;
-    background-size: 50px 20px;
-}
-.section20-2-home .get-20-2 {
-    text-align: left;
-    margin: 10px 0px 0px;
-    font-size: 26px;
-}
-.get-20-2 {
-    font-weight: 700;
-    color: rgba(39, 39, 39, 0.952);
-    line-height: 1;
-    font-size: 20px;
-    margin: 30px 0px 0px;
-    display: block;
-}
-.get-20-2-home-txt2 {
-    font-weight: 600;
-    text-align: left;
-    margin: 10px 0px 0px;
-    font-size: 16px;
-    line-height: 24px;
-    color: #787E8B;
-}
-.qna-list-wrap {
-    width: 100%;
-    display: block;
-}
-.qna-card {
-    width: 90%;
-    height: 250px;
-    display: block;
-    padding: 25px 40px 20px;
-    background: #FFFFFF;
-    border: 1px solid #E6E9ED;
-    box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
-    border-radius: 20px;
-    margin: 20px 0px 0px;
-    text-align: left;
-}
-.qna-card .ingredient-tags {
-    display: block;
-    width: 100%;
-    margin: 0px 0px 10px;
-}
-.qna-card .ingredient-tags .ingredient-tag {
-    background: #FDCDBC;
-    height: 22px;
-    line-height: 22px;
-    text-align: center;
-    color: #EF605D;
-    font-weight: 500;
-    display: inline-block;
-    padding: 0px 5px;
-    border-radius: 5px;
-    font-size: 12px;
-    float: left;
-    margin: 0px 10px 0px 0px;
-}
-.qna-main {
-    display: block;
-    width: 100%;
-    text-decoration: none;
-}
-.qna-card .qna-main .txt1 {
-    font-weight: 700;
-    display: block;
-    font-size: 18px;
-    line-height: 20px;
-    text-align: left;
-    color: #101219;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-}
-.qna-card .qna-main .txt1 .qmark {
-    color: #EF605D;
-}
-.qna-card .qna-main .txt2 {
-    font-weight: 600;
-    display: block;
-    text-align: left;
-    font-size: 16px;
-    line-height: 24px;
-    color: #787E8B;
-    margin: 8px 0px 0px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-}
-.qna-card .qna-user-wrap {
-    display: block;
-    width: 100%;
-    margin: 20px 0px 0px;
-}
-.qna-card .qna-user-wrap .qna-user-icon.qna-user-icon-1 {
-    border-radius: 50%;
-    background: url(https://cdn.pillyze.io/web/img/user-s-1.webp) center no-repeat;
-    background-size: contain !important;
-}
-.qna-card .qna-user-wrap .qna-user-icon {
-    width: 30px;
-    height: 30px;
-    float: left;
-}
-.qna-card .qna-user-wrap .qna-user-txt {
-    float: right;
-    width: calc(100% - 40px);
-    font-weight: 600;
-    color: #282a35;
-    text-align: left;
-    line-height: 24px;
-    font-size: 16px;
-    overflow: hidden;
-    padding: 3px 0px 0px;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-}
-.qna-card .qna-user-wrap .user-info-row {
-    display: block;
-    width: 100%;
-    margin: 20px 0px 0px;
-    float: left;
-}
-.qna-card .qna-user-wrap .user-info-row .user-name {
-    color: #787E8B;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 22px;
-}
-.qna-card .qna-user-wrap .user-info-row .user-agesex {
-    color: #9BA1AA;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 22px;
-}
-.clearfix {
-    display: block;
-}
-.more-qna {
-    float: right;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1;
-    text-align: right;
-    margin: 20px 0px 0px;
-    text-decoration: underline;
-    color: #9BA1AA;
-}
-</style>
 
  	<!-- 처음 인덱스 킬때 전체화면 비디오 출력 -->
 			<div id="tsvideo-container">
@@ -872,7 +100,7 @@
 		<!-- 검색창 밑 검색 태그용 버튼  -->
 		<div class="row justify-content-center mt-5 pt-5">
 	        <div class="col-lg-10 text-center">
-	            <h1 class="mb-5" style="font-weight:bold; color:black;"><span style="color: #EF605D;">제품명,영양성분</span>을 검색해보세요.</h1>
+	            <h1 class="my-5" style="font-weight:bold; color:black;"><span style="color: #EF605D;">제품명,영양성분</span>을 검색해보세요.</h1>
 	            <form class="position-relative w-75 mx-auto animated slideInDown d-flex input-wrapper" action="/hashtag.do" method="post" style="box-shadow: 0px 0px 5px gray; border-radius: 20px;">
 	                <input class="border-0 rounded-pill w-100 px-5 py-3 ps-4 pe-5 flex-grow-1" type="text" name="postTag" 
 	                placeholder="제품명 및 영양성분을 입력하세요" value="${not empty searchTags ? fn:replace(searchTags,'#',',#') : ''}">
@@ -882,25 +110,13 @@
 					</button>
 	            </form>
 	        </div>
-	        <div id="hashtaglink" class="ml-1 py-3 row" >
-	       	 	<button  href="#" class="btn btn-6 btn-6c">
-                    <img src="<c:url value="/resources/images/tsimages/free-icon-skin-protection-5228128.png"/>" loading="lazy" width="25" height="25">
-                <lable style="font-weight: bold; color: green;">#피부건강</lable></button>&nbsp;
-	        	<button  href="#" class="btn btn-6 btn-6c">
-                    <img src="<c:url value="/resources/images/tsimages/free-icon-immunity-5106341.png"/>" loading="lazy" width="25" height="25">
-                <lable style="font-weight: bold; color: palevioletred;">#면역력 증진</lable></button>&nbsp;
-                <button  href="#" class="btn btn-6 btn-6c">
-                    <img src="<c:url value="/resources/images/tsimages/free-icon-male-gender-2404544.png"/>" loading="lazy" width="25" height="25">
-                <lable style="font-weight: bold; color: mediumpurple;">#전립선 건강</lable></button>&nbsp;
-                <button  href="#" class="btn btn-6 btn-6c">
-                    <img src="<c:url value="/resources/images/tsimages/free-icon-weight-scale-7984802.png"/>" loading="lazy" width="25" height="25">
-                <lable style="font-weight: bold; color: sandybrown;">#체지방 감소</lable></button>&nbsp;
-                <button  href="#" class="btn btn-6 btn-6c">
-                    <img src="<c:url value="/resources/images/tsimages/free-icon-vitamins-525955.png"/>" loading="lazy" width="25" height="25">
-                <lable style="font-weight: bold; color: salmon;">#비타민</lable></button>&nbsp;
-                <button  href="#" class="btn btn-6 btn-6c">
-                    <img src="<c:url value="/resources/images/tsimages/free-icon-glucose-meter-4228683.png"/>" loading="lazy" width="25" height="25">
-                <lable style="font-weight: bold; color: lightskyblue;">#혈당</lable></button>&nbsp;
+	        <div id="hashtaglink" class="ml-1 py-5 row" >
+                <a href="#" style="font-style:italic;font-weight: bold;color:green">#피부건강</a>&nbsp;
+	        	<a href="#" style="font-style:italic;font-weight: bold;color:palevioletred">#면역력 증진</a>&nbsp;
+		        <a href="#" style="font-style:italic;font-weight: bold;color:mediumpurple ">#전립선 건강</a>&nbsp;
+		        <a href="#" style="font-style:italic;font-weight: bold;color:sandybrown">#체지방 감소</a>&nbsp;
+		        <a href="#" style="font-style:italic;font-weight: bold;color:salmon ">#비타민</a>&nbsp;
+		        <a href="#" style="font-style:italic;font-weight: bold;color:lightskyblue ">#혈당</a>&nbsp;
 		    </div >
 	    </div>
 	    
@@ -912,7 +128,7 @@
      	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
 	        <h1>$이태성$님의 최근 분석 리포트</h1>
 	        <div class="DefaultReportItem__ReportBook-sc-rysw89-0 ibNwmg">
-	            <a style="text-decoration:none;" data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="/analyzeMyFood.do">
+	            <a data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="/analyzeMyFood.do">
 	                <div class="DefaultReportItem__Springs-sc-rysw89-8 jZuajW">
 	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
 	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
@@ -976,7 +192,7 @@
 	    
   	  <!--  4번째 다이브 목록 -->
       <div class="mainInner">
-            <h3 style="text-align: center; margin-top: 20px; font-weight: bold;">우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
+            <h3 class="my-4" style="text-align: center; margin-top:20px; font-weight: bold;">우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
             <div class="container-xxl py-4">
                 <div class="container">
                     <div class="mainMap" id="map" >
@@ -1121,11 +337,217 @@
 	                        </a>
 	                    </div><!-- qna-card의 끝 -->
 	            </div>
-	            <div class="clearfix">
+	            <div class="clearfix mr-3">
 	                <a tabindex="0" class="more-qna" href="#">Q&amp;A 더보기</a>
 	            </div>
 	        </div>
 	    </div>
+	   <!--  6번째 다이브 목록 -->
+	   <div class="section section1-2s ranking-190">
+	        <div class="content">
+	            <div class="txt2">인기 영양제 <span>Top 10</span></div>
+	            <div class="tab-contents" style="display: block;">
+	                <div class="tab-content tab-content-001 new-wide-main-060 new-wide-main-090 active width-flt1">
+	                    <div class="filter-btns slt-sex">
+	                        <div class="filter-btns-in">
+	                            <a tabindex="0" class="filter-btn active" href="#">전체 성별</a>
+	                            <a tabindex="0" class="filter-btn" href="#">여성</a>
+	                            <a tabindex="0" class="filter-btn" href="#">남성</a>
+	                        </div>
+	                    </div>
+	                    <div class="filter-btns2">
+	                        <div class="filter-btns-in">
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b001 active"><div class="icon"><span style="font-size: 15px">ALL</span></div><div class="txt1">전체</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b002 "><div class="icon"><span>20</span></div><div class="txt1">20대 이하</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b003"><div class="icon"><span>30</span></div><div class="txt1">30대</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b004"><div class="icon"><span>40</span></div><div class="txt1">40대</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b005"><div class="icon"><span>50</span></div><div class="txt1">50대</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b006"><div class="icon"><span>60</span></div><div class="txt1">60대 이상</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b007"><div class="icon"><span span="" style="font-size: 15px">Kids</span></div><div class="txt1">키즈</div></a>
+	                        </div>
+	                    </div>
+	
+	                    <div class="ranking-card-wrap item-cards u510x">
+	                            <a id="a1730" href="#" tabindex="0" class="item-card" title="SAT 자세히 보기" data-href="#" data-product-id="1730">
+	                                <div class="ranking-no">
+	                                        <img src="https://cdn.pillyze.io/web/img/ranking1.webp" alt="1위">
+	                                </div>
+	                                <div class="ranging-title"></div>
+	                                <img src="http://imgproxy.pillyze.io/jWzfMp7Q4CluzuT1IKNirIa8EZg50ohtPdduFKu9E9E/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8xay85MzYzOGUyZS0xNzMwLzUwMA" class="item-img" alt="SAT">
+	                                <span class="txt1">쏜리서치</span>
+	                                <span class="txt2">SAT</span>
+	                                    <div class="review">
+	                                            <span class="star-point">4.77</span>
+	                                            <span class="txt3">(786개)</span>
+	                                    </div>
+	                                    <br/>
+	                                    <div class="card-tags tag-type3">
+                                             <div class="card-tag">피로 개선 <span>75%</span></div>
+                                             <div class="card-tag">숙취 감소 <span>47%</span></div>
+	                                    </div>
+	                            </a><!-- item-card의 끝 -->
+	                            <a id="a9360" href="#" tabindex="0" class="item-card" title="트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 950mg) 자세히 보기" data-href="#" data-product-id="9360">
+	
+	                                <div class="ranking-no">
+	                                        <img src="https://cdn.pillyze.io/web/img/ranking2.webp" alt="2위">
+	                                </div>
+	                                <div class="ranging-title"></div>
+	                                <img src="http://imgproxy.pillyze.io/PyQgu5-vNzgGdCRA0ySJresMwcYaGS8OZtw7AucDVzI/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS85ay85MTRmMjgxOS05MzYwLzEwMDA" class="item-img" alt="트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 950mg)">
+	                                <span class="txt1">스포츠리서치</span>
+	                                <span class="txt2">트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 950mg)</span>
+	                                    <div class="review">
+	                                            <span class="star-point">4.73</span>
+	                                            <span class="txt3">(1,200개)</span>
+	                                    </div>
+	                                    <br/>
+	                                    <div class="card-tags tag-type3">
+	                                                    <div class="card-tag">피로 개선 <span>53%</span></div>
+	                                                    <div class="card-tag">콜레스테롤 수치 개선 <span>28%</span></div>
+	                                    </div>
+	                            </a><!-- item-card의 끝 -->
+	                            <a id="a11070" href="/products/11070/칼슘-마그네슘-말레이트" tabindex="0" class="item-card" title="칼슘 마그네슘 말레이트 자세히 보기" data-href="/products/11070/칼슘-마그네슘-말레이트" data-product-id="11070">
+	
+	                                <div class="ranking-no">
+	                                        <img src="https://cdn.pillyze.io/web/img/ranking3.webp" alt="3위">
+	                                </div>
+	                                <div class="ranging-title"></div>
+	                                <img src="http://imgproxy.pillyze.io/qepgDD7uGSV96ukXRK4Q0HRX0bVjFn8XjMws4CGL7kQ/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8xMWsvMzVjZTM5MWItMTEwNzAvNTAw" class="item-img" alt="칼슘 마그네슘 말레이트">
+	                                <span class="txt1">쏜리서치</span>
+	                                <span class="txt2">칼슘 마그네슘 말레이트</span>
+	                                    <div class="review">
+	                                            <span class="star-point">4.71</span>
+	                                            <span class="txt3">(620개)</span>
+	                                    </div>
+	                                    <br/>
+	                                    <div class="card-tags tag-type3">
+	                                                    <div class="card-tag">눈 떨림 개선 <span>49%</span></div>
+	                                                    <div class="card-tag">근육통 완화 <span>26%</span></div>
+	                                    </div>
+	                            </a><!-- item-card의 끝 -->
+	                            <a id="a270" href="/products/270/우먼스-펨-도필러스-10억(해외)" tabindex="0" class="item-card" title="우먼스 펨 도필러스 10억(해외) 자세히 보기" data-href="/products/270/우먼스-펨-도필러스-10억(해외)" data-product-id="270">
+	
+	                                <div class="ranking-no">
+	                                        <div class="txt">4위</div>
+	                                </div>
+	                                <div class="ranging-title"></div>
+	                                <img src="http://imgproxy.pillyze.io/iv-IzX3mAF8tYvM_fLtjL1xJlag4r90gjG5dxDKm7gI/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8way9lOWJmOWY5ZC0yNzAvMTAwMA" class="item-img" alt="우먼스 펨 도필러스 10억(해외)">
+	                                <span class="txt1">자로우포뮬라</span>
+	                                <span class="txt2">우먼스 펨 도필러스 10억(해외)</span>
+	                                    <div class="review">
+	                                            <span class="star-point">4.71</span>
+	                                            <span class="txt3">(942개)</span>
+	                                    </div>
+	                                    <br/>
+	                                    <div class="card-tags tag-type3">
+	                                                    <div class="card-tag">질염 발생 빈도 감소 <span>77%</span></div>
+	                                                    <div class="card-tag">변비 개선 <span>26%</span></div>
+	                                    </div>
+	                            </a><!-- item-card의 끝 -->
+	                            <a id="a186" href="/products/186/엽산-400" tabindex="0" class="item-card" title="엽산 400 자세히 보기" data-href="/products/186/엽산-400" data-product-id="186">
+	
+	                                <div class="ranking-no">
+	                                        <div class="txt">5위</div>
+	                                </div>
+	                                <div class="ranging-title"></div>
+	                                <img src="http://imgproxy.pillyze.io/qcja-Q1JmYV7IAdOaQPjGRbAZE-w8bExs7BJcLt0gNw/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8way9hYzA3YjI1OC0xODYvNTAw" class="item-img" alt="엽산 400">
+	                                <span class="txt1">솔가</span>
+	                                <span class="txt2">엽산 400</span>
+	                                    <div class="review">
+	                                            <span class="star-point">4.75</span>
+	                                            <span class="txt3">(404개)</span>
+	                                    </div>
+	                                    <br/>
+	                                    <div class="card-tags tag-type3">
+	                                                    <div class="card-tag">피로 개선 <span>32%</span></div>
+	                                                    <div class="card-tag">스트레스 감소 <span>9%</span></div>
+	                                    </div>
+	                            </a><!-- item-card의 끝 -->
+	                            <a id="a9359" href="/products/9359/락토비프-프로바이오틱스-300억" tabindex="0" class="item-card" title="락토비프 프로바이오틱스 300억 자세히 보기" data-href="/products/9359/락토비프-프로바이오틱스-300억" data-product-id="9359">
+	
+	                                <div class="ranking-no">
+	                                        <div class="txt">6위</div>
+	                                </div>
+	                                <div class="ranging-title"></div>
+	                                <img src="http://imgproxy.pillyze.io/AmAYwp34igO1R7G46P110Wocvpu87IHE9CFpx_NNL4M/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS85ay8yNDI3M2Y2NC05MzU5LzEwMDA" class="item-img" alt="락토비프 프로바이오틱스 300억">
+	                                <span class="txt1">캘리포니아골드뉴트리션</span>
+	                                <span class="txt2">락토비프 프로바이오틱스 300억</span>
+	                                    <div class="review">
+	                                            <span class="star-point">4.7</span>
+	                                            <span class="txt3">(941개)</span>
+	                                    </div>
+	                                    <br/>
+	                                    <div class="card-tags tag-type3">
+	                                                    <div class="card-tag">변비 개선 <span>62%</span></div>
+	                                                    <div class="card-tag">복부 가스 덜 참 <span>38%</span></div>
+	                                    </div>
+	                            </a><!-- item-card의 끝 -->
+	                            <a id="a1" href="/products/1/비타민C-1000" tabindex="0" class="item-card" title="비타민C 1000 자세히 보기" data-href="/products/1/비타민C-1000" data-product-id="1">
+	
+	                                <div class="ranking-no">
+	                                        <div class="txt">7위</div>
+	                                </div>
+	                                <div class="ranging-title"></div>
+	                                <img src="http://imgproxy.pillyze.io/uhKCT4-An7gCM8xNkZyB8pxCA_bTzwBadeUKUIGdBEk/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8way8zYWFkMzU2Yy0xLzEwMDA" class="item-img" alt="비타민C 1000">
+	                                <span class="txt1">고려은단</span>
+	                                <span class="txt2">비타민C 1000</span>
+	                                    <div class="review">
+	                                            <span class="star-point">4.67</span>
+	                                            <span class="txt3">(4,689개)</span>
+	                                    </div>
+	                                    <br/>
+	                                    <div class="card-tags tag-type3">
+	                                                    <div class="card-tag">감기 덜 걸림 <span>53%</span></div>
+	                                                    <div class="card-tag">얼굴색 좋아짐 <span>26%</span></div>
+	                                    </div>
+	                            </a><!-- item-card의 끝 -->
+	                            <a id="a473" href="/products/473/비타민C-1000-이지-+-비타민D" tabindex="0" class="item-card" title="비타민C 1000 이지 + 비타민D 자세히 보기" data-href="/products/473/비타민C-1000-이지-+-비타민D" data-product-id="473">
+	
+	                                <div class="ranking-no">
+	                                        <div class="txt">8위</div>
+	                                </div>
+	                                <div class="ranging-title"></div>
+	                                <img src="http://imgproxy.pillyze.io/Mh_SZxAZTQ7s05t0MAEp3IWB5uJDNblD8ZLUxPsWbHI/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8way84ZDllZjBkNy00NzMvNTAw" class="item-img" alt="비타민C 1000 이지 + 비타민D">
+	                                <span class="txt1">고려은단</span>
+	                                <span class="txt2">비타민C 1000 이지 + 비타민D</span>
+	                                    <div class="review">
+	                                            <span class="star-point">4.69</span>
+	                                            <span class="txt3">(753개)</span>
+	                                    </div>
+	                                    <br/>
+	                                    <div class="card-tags tag-type3">
+	                                                    <div class="card-tag">감기 덜 걸림 <span>47%</span></div>
+	                                                    <div class="card-tag">수면질 개선 <span>20%</span></div>
+	                                    </div>
+	                            </a><!-- item-card의 끝 -->
+	                            <a id="a12940" href="/products/12940/트리플-스트렝스-오메가3-피쉬오일-(EPA+DHA-1000mg)" tabindex="0" class="item-card" title="트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 1000mg) 자세히 보기" data-href="/products/12940/트리플-스트렝스-오메가3-피쉬오일-(EPA+DHA-1000mg)" data-product-id="12940">
+	
+	                                <div class="ranking-no">
+	                                        <div class="txt">9위</div>
+	                                </div>
+	                                <div class="ranging-title"></div>
+	                                <img src="http://imgproxy.pillyze.io/Yg3c8dx-UnX3f3QKFof8CPvG6v-VGp8rt_nddgrzzx8/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8xMmsvMzA1MmJhMjQtMTI5NDAvMTAwMA" class="item-img" alt="트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 1000mg)">
+	                                <span class="txt1">스포츠리서치</span>
+	                                <span class="txt2">트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 1000mg)</span>
+	                                    <div class="review">
+	                                            <span class="star-point">4.69</span>
+	                                            <span class="txt3">(747개)</span>
+	                                    </div>
+	                                    <br/>
+	                                    <div class="card-tags tag-type3">
+	                                                    <div class="card-tag">피로 개선 <span>47%</span></div>
+	                                                    <div class="card-tag">콜레스테롤 수치 개선 <span>29%</span></div>
+	                                    </div>
+	                            </a><!-- item-card의 끝 -->
+	                    </div><!-- card-wrap의 끝 -->
+
+	                    <div class="clearfix">
+	                        <a tabindex="0" class="more-pop-health mt-5" href="/ranking/gender-age">성별&nbsp;·&nbsp;연령별 인기 영양제 더보기</a>
+	                    </div>
+	                </div><!-- tab-content-001의 끝 -->
+	            </div>
+	        </div>
+	    </div>
+	    
 	    
 	   <!--  *번째 다이브 목록 -->
 		<div class="m-5 " style="display:flex; justify-content: center;">
@@ -1168,11 +590,11 @@
                             <img src="<c:url value="/resources/images/tsimages/destination-1.jpg"/>" alt="*">
                         </div>
                         <div style="align-items: center; margin-top:20px; margin-left:10px; justify-content: center; text-align: start; line-height: 3px; font-weight:400;">
-                        	<p style="color:gray; font-size:8px; font-weight:bold;">종근당 건강</p>
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">종근당 건강</p>
                         	<br/>
-                        	<p style="flex-wrap:wrap; color:black; font-size:10px; font-weight:bold;  text-align: center;">락토핏</p>
+                        	<p style="flex-wrap:wrap; color:black; font-size:13px; font-weight:bold;  text-align: center;">락토핏</p>
                         	<br/>
-                        	<p style="color:gray; font-size:8px; font-weight:bold;">
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">
                         	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
                         	4.64(814)
                         	</p>
@@ -1183,11 +605,11 @@
                             <img src="<c:url value="/resources/images/tsimages/destination-2.jpg"/>" alt="*">
                         </div>
                          <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
-                        	<p style="color:gray; font-size:8px; font-weight:bold;">고려은단</p>
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">고려은단</p>
                         	<br/>
-                        	<p style="color:black; font-size:10px; font-weight:bold; text-align: center;">비타민C 1000</p>
+                        	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">비타민C 1000</p>
                         	<br/>
-                        	<p style="color:gray; font-size:8px; font-weight:bold;">
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">
                         	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
                         	4.66(178)
                         	</p>
@@ -1198,49 +620,16 @@
                             <img src="<c:url value="/resources/images/tsimages/destination-3.jpg"/>" alt="*">
                         </div>
                          <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
-                        	<p style="color:gray; font-size:8px; font-weight:bold;">종근당</p>
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">종근당</p>
                         	<br/>
-                        	<p style="color:black; font-size:10px; font-weight:bold; text-align: center;">칼슘앤마그네슘</p>
+                        	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">칼슘앤마그네슘</p>
                         	<br/>
-                        	<p style="color:gray; font-size:8px; font-weight:bold;">
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">
                         	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
                         	4.67(115)
                         	</p>
                         </div>
                     </li>
-                    <!--  랭킹 3개만 출력하기 위해서 잠시 주석
-                    <li>
-                        <div class="image d-flex">
-                             <p style="position: relative; text-align:top; left:5px; width:30px; height:30px; color:gray; font-weight:bold;">4위</p>
-                            <img src="<c:url value="/resources/images/tsimages/destination-4.jpg"/>" alt="*">
-                        </div>
-                         <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
-                        	<p style="color:gray; font-size:8px; font-weight:bold;">얼라이브</p>
-                        	<br/>
-                        	<p style="color:black; font-size:10px; font-weight:bold; text-align: center;">원스데일리 포 맨</p>
-                        	<br/>
-                        	<p style="color:gray; font-size:8px; font-weight:bold;">
-                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
-                        	4.41(37)
-                        	</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="image d-flex">
-                            <img src="<c:url value="/resources/images/tsimages/package-1.jpg"/>" alt="*">
-                        </div>
-                         <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
-                        	<p style="color:gray; font-size:8px; font-weight:bold;">쏜 리서치</p>
-                        	<br/>
-                        	<p style="color:black; font-size:10px; font-weight:bold; text-align: center;">Basic B Complex </p>
-                        	<br/>
-                        	<p style="color:gray; font-size:8px; font-weight:bold;">
-                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
-                        	4.63(19)
-                        	</p>
-                        </div>
-                    </li>
-                     -->
                 </ul>
             </div>
 		</aside>
@@ -1275,363 +664,10 @@
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/CSSRulePlugin3.min.js"></script>
 <!-- 지도 스크립트 키 -->
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=536a268ae501933d1ccf30618f1b4258&libraries=services"></script> 
-
+ <!-- 메인 js-->
+<script src="<c:url value="/resources/tsfolder/js/mainjs.js"/>" ></script>
 <script>
-// The DOM element you wish to replace with Tagify
-var input = document.querySelector('input[name=postTag]');
-var whitelist = ["#혈압","#당뇨","#면역력 증진","#전립선 건강","#체지방 감소","#피로개선","#혈당","#비타민","#오메가","#피부건강"];
-// initialize Tagify on the above input node reference
-var tagify = new Tagify(input,{
-    enforceWhitelist: true,
-    whitelist : whitelist
-})
-$('#hiddenInput').attr('value',tagify.value.map(function(e){return e.value}));
-tagify.on('input', e => console.log(e.detail));
-$('#hashtaglink button lable').click(function() {
-    tagify.addTags([{value:$(this).html(), style:"--tag-bg:"+$(this).css('color')}]);
-});
-tagify.on('add', e=> {
-    $('#hiddenInput').attr('value',tagify.value.map(function(e){return e.value}));
-});
-tagify.on('remove', e=> {
-    $('#hiddenInput').attr('value',tagify.value.map(function(e){return e.value}));
-});
-////////////////////슬라이드 로직///////////////////////////////////
-$(document).ready(function(){
-    $('.slider1').bxSlider({
-        slideWidth: 800,
-        minSlides: 1,
-        maxSlides: 1,
-        slideMargin: 1,
-        auto : true,
-        stopAutoOnClick : true,
-        pager : true,
-    });
-    
-    /* 처음 배너할 때 코드
-    $('.ba1').bxSlider({
-    	 slideWidth: 800,
-         minSlides: 2,
-         maxSlides: 2,
-         slideMargin: 1,
-         auto : true,
-         stopAutoOnClick : true,
-         pager : true,
-    }); */
-});
 
-
-//////////////////////비디오 히든 로직////////////////////////////
-document.addEventListener("DOMContentLoaded", function() {
-	  var checkbox = document.getElementById("stop-video-checkbox");
-	  var videoContainer = document.getElementById("tsvideo-container");
-
-	  // 저장된 값 가져오기
-	  var hideUntilDate = localStorage.getItem("hideUntilDate");
-
-	  // 저장된 값이 있고, 현재 날짜보다 크면 동영상 숨김
-	  if (hideUntilDate && hideUntilDate >= getCurrentDate()) {
-	    videoContainer.style.display = "none";
-	    checkbox.checked = true;
-	  }
-
-	  checkbox.addEventListener("change", function() {
-	    if (checkbox.checked) {
-	      // 하루 동안 동영상 숨기기
-	      var nextDay = new Date();
-	      nextDay.setDate(nextDay.getDate() + 1);
-	      var hideUntilDate = formatDate(nextDay);
-	      localStorage.setItem("hideUntilDate", hideUntilDate);
-	      videoContainer.style.display = "none";
-	    } else {
-	      // 체크 해제 시 동영상 표시
-	      localStorage.removeItem("hideUntilDate");
-	      videoContainer.style.display = "block";
-	    }
-	  });
-
-	  // 현재 날짜 반환하는 함수
-	  function getCurrentDate() {
-	    var now = new Date();
-	    return formatDate(now);
-	  }
-
-	  // 날짜를 "YYYY-MM-DD" 형식으로 변환하는 함수
-	  function formatDate(date) {
-	    var year = date.getFullYear();
-	    var month = ("0" + (date.getMonth() + 1)).slice(-2);
-	    var day = ("0" + date.getDate()).slice(-2);
-	    return year + "-" + month + "-" + day;
-	  }
-	});
-	
-/////////////////////////////////지도 함수//////////////////////////////////////////////////////
-// 닫기 버튼 클릭 시 mapLayer 숨김
-    var mapLayer = document.querySelector('.mapLayer');
-        function closeMapLayer() {
-            mapLayer.style.display = 'none';
-        }
-        
-// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-        mapOption = {
-            center: new kakao.maps.LatLng(37.481242, 126.883970), // 지도의 중심좌표
-            level: 3 // 지도의 확대 레벨
-        };  
-  //지도를 생성합니다    
-    var map = new kakao.maps.Map(mapContainer, mapOption); 
-  
-/////////////////////////지도 모달 버튼 함수////////////////////////////////
-    $(document).ready(function() {
-      $("#tsBtn").click(function() {
-        $("#tsModal").modal({ backdrop: false});
-        setTimeout(function(){ map.relayout(); }, 0);
-        initMap(); // 모달 열릴 때 지도 초기화 호출
-      });
-    });
-
-//지도 모달로 띄우기 
-    function initMap() {
-    	var markers = [];
-    	
-    	var mapContainer2 = document.getElementById('modalmap'), // 지도를 표시할 div 
-    	mapOption2 = {
-		   	center: new kakao.maps.LatLng(37.481387, 126.882676), // 지도의 중심좌표
-		   	level: 3 // 지도의 확대 레벨
-    	};  
-
-    	// 지도를 생성합니다    
-    	var map2 = new kakao.maps.Map(mapContainer2, mapOption2); 
-    	
-        setTimeout(function(){ map2.relayout(); }, 0);
-
-    	//장소 검색 객체를 생성합니다
-    	var ps = new kakao.maps.services.Places();  
-
-    	//검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
-    	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
-
-    	//키워드로 장소를 검색합니다
-    	searchPlaces();
-
-    	//키워드 검색을 요청하는 함수입니다
-    	function searchPlaces() {
-    	var keyword = document.getElementById('keyword').value;
-
-    	if (!keyword.replace(/^\s+|\s+$/g, '')) {
-    	alert('키워드를 입력해주세요!');
-    	return false;
-    	}
-
-    	// 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-    	ps.keywordSearch( keyword, placesSearchCB); 
-    	}
-
-    	//장소검색이 완료됐을 때 호출되는 콜백함수 입니다
-    	function placesSearchCB(data, status, pagination) {
-    	if (status === kakao.maps.services.Status.OK) {
-
-    	// 정상적으로 검색이 완료됐으면
-    	// 검색 목록과 마커를 표출합니다
-    	displayPlaces(data);
-
-    	// 페이지 번호를 표출합니다
-    	displayPagination(pagination);
-
-    	} else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-
-    	alert('검색 결과가 존재하지 않습니다.');
-    	return;
-
-    	} else if (status === kakao.maps.services.Status.ERROR) {
-
-    	alert('검색 결과 중 오류가 발생했습니다.');
-    	return;
-
-    	}
-    	}
-
-    	//검색 결과 목록과 마커를 표출하는 함수입니다
-    	function displayPlaces(places) {
-
-    	var listEl = document.getElementById('placesList'), 
-    	menuEl = document.getElementById('menu_wrap'),
-    	fragment = document.createDocumentFragment(), 
-    	bounds = new kakao.maps.LatLngBounds(), 
-    	listStr = '';
-
-    	// 검색 결과 목록에 추가된 항목들을 제거합니다
-    	removeAllChildNods(listEl);
-
-    	// 지도에 표시되고 있는 마커를 제거합니다
-    	removeMarker();
-
-    	for ( var i=0; i<places.length; i++ ) {
-
-    	// 마커를 생성하고 지도에 표시합니다
-    	var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
-    	    marker = addMarker(placePosition, i), 
-    	    itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
-
-    	// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-    	// LatLngBounds 객체에 좌표를 추가합니다
-    	bounds.extend(placePosition);
-
-    	// 마커와 검색결과 항목에 mouseover 했을때
-    	// 해당 장소에 인포윈도우에 장소명을 표시합니다
-    	// mouseout 했을 때는 인포윈도우를 닫습니다
-    	(function(marker, title) {
-    	    kakao.maps.event.addListener(marker, 'mouseover', function() {
-    	        displayInfowindow(marker, title);
-    	    });
-
-    	    kakao.maps.event.addListener(marker, 'mouseout', function() {
-    	        infowindow.close();
-    	    });
-
-    	    itemEl.onmouseover =  function () {
-    	        displayInfowindow(marker, title);
-    	    };
-
-    	    itemEl.onmouseout =  function () {
-    	        infowindow.close();
-    	    };
-    	})(marker, places[i].place_name);
-
-    	fragment.appendChild(itemEl);
-    	}
-
-    	// 검색결과 항목들을 검색결과 목록 Element에 추가합니다
-    	listEl.appendChild(fragment);
-    	menuEl.scrollTop = 0;
-
-    	// 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-    	map2.setBounds(bounds);
-    	}
-
-    	//검색결과 항목을 Element로 반환하는 함수입니다
-    	function getListItem(index, places) {
-
-    	var el = document.createElement('li'),
-    	itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-    	        '<div class="info">' +
-    	        '   <h5>' + places.place_name + '</h5>';
-
-    	if (places.road_address_name) {
-    	itemStr += '    <span>' + places.road_address_name + '</span>' +
-    	            '   <span class="jibun gray">' +  places.address_name  + '</span>';
-    	} else {
-    	itemStr += '    <span>' +  places.address_name  + '</span>'; 
-    	}
-    	         
-    	itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-    	        '</div>';           
-
-    	el.innerHTML = itemStr;
-    	el.className = 'item';
-
-    	return el;
-    	}
-
-    	//마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
-    	function addMarker(position, idx, title) {
-    	var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-    	imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
-    	imgOptions =  {
-    	    spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
-    	    spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-    	    offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
-    	},
-    	markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
-    	    marker = new kakao.maps.Marker({
-    	    position: position, // 마커의 위치
-    	    image: markerImage 
-    	});
-
-    	marker.setMap(map2); // 지도 위에 마커를 표출합니다
-    	markers.push(marker);  // 배열에 생성된 마커를 추가합니다
-
-    	return marker;
-    	}
-
-    	//지도 위에 표시되고 있는 마커를 모두 제거합니다
-    	function removeMarker() {
-    	for ( var i = 0; i < markers.length; i++ ) {
-    	markers[i].setMap(null);
-    	}   
-    	markers = [];
-    	}
-
-    	//검색결과 목록 하단에 페이지번호를 표시는 함수입니다
-    	function displayPagination(pagination) {
-    	var paginationEl = document.getElementById('pagination'),
-    	fragment = document.createDocumentFragment(),
-    	i; 
-
-    	// 기존에 추가된 페이지번호를 삭제합니다
-    	while (paginationEl.hasChildNodes()) {
-    	paginationEl.removeChild (paginationEl.lastChild);
-    	}
-
-    	for (i=1; i<=pagination.last; i++) {
-    	var el = document.createElement('a');
-    	el.href = "#";
-    	el.innerHTML = i;
-
-    	if (i===pagination.current) {
-    	    el.className = 'on';
-    	} else {
-    	    el.onclick = (function(i) {
-    	        return function() {
-    	            pagination.gotoPage(i);
-    	        }
-    	    })(i);
-    	}
-
-    	fragment.appendChild(el);
-    	}
-    	paginationEl.appendChild(fragment);
-    	}
-    	//검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
-    	//인포윈도우에 장소명을 표시합니다
-    	function displayInfowindow(marker, title) {
-    	var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
-
-    	infowindow.setContent(content);
-    	infowindow.open(map2, marker);
-    	}
-
-    	// 검색결과 목록의 자식 Element를 제거하는 함수입니다
-    	function removeAllChildNods(el) {   
-	    	while (el.hasChildNodes()) {
-	    	 el.removeChild (el.lastChild);
-	    	}
-    	}
-    	
-  }
-
-
-/////////////////////////상단 메인 배너///////////////////////////////////////////////
-/*배너 영상돌리기*/
-function bannerSwitcher() {
-    next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
-    if (next.length) next.prop('checked', true);
-    else $('.sec-1-input').first().prop('checked', true);
-  }
-
-  var bannerTimer = setInterval(bannerSwitcher, 5000);
-
-  $('.controls label').click(function() {
-    clearInterval(bannerTimer);
-    bannerTimer = setInterval(bannerSwitcher, 5000)
-  });
-
-
-
-/////////////////////////////////사이드바 함수 적용 라이브러리 적용///////////////////////
-$(document).ready(function() {
-  $('.tsidebar').stick_in_parent();
-});
 </script>
 </div><!-- id=main  -->
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>

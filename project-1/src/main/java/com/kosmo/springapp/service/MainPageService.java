@@ -11,4 +11,5 @@ import com.kosmo.springapp.model.FunctionalFoodListDTO;
 public interface MainPageService {
 	List<FunctionalFoodListDTO> selectFoodList();
 	FunctionalFoodListDTO selectFoodOneByNo(Map map);
+	List selectFoodNameList(String searchWord);
 }

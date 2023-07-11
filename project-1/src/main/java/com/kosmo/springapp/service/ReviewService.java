@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
 import com.kosmo.springapp.model.ReviewDTO;
+import com.kosmo.springapp.model.TotalReviewDTO;
 
 @Service
 public interface ReviewService {
@@ -14,5 +15,5 @@ public interface ReviewService {
 	int registerReview(Map map);
 	FunctionalFoodListDTO selectFoodOneByNo(int no);
 	List<ReviewDTO> selectReviewByFoodNo(Map map);
-	
+	TotalReviewDTO selectTotalReviewInfo(int no);
 }
