@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <style>
         .container {
@@ -105,12 +106,13 @@
 
         /*프로그레스 바*/
         .progress {
-            margin-top: 5px;
+        	margin-top: -7px;
             width: 100%;
             height: 30px;
-            background-color: #f2f2f2;
+            background-color: #fcf8e3;
             position: relative;
             overflow: hidden;
+            border: solid 1px;
         }
 
         .progress-bar-inner {
@@ -154,6 +156,15 @@
 			color: black;
 		}
         
+		/*아래방향 화살표*/
+		.arrow-down {
+			width: 0;
+	    	height: 0;
+			border-left: 7px solid transparent;
+			border-right: 7px solid transparent;
+			border-top: 7px solid black;
+		}
+
 
 
     </style>
@@ -193,53 +204,111 @@
                         <div class="mt-4">
                             <h4><b>1. 관련 건강고민</b></h4>
                             <hr class="bg-warning">
-                            <p style="font-size: 17px;">${n_FUNC }</p>
-                            <p style="font-size: 17px;">${i_FUNC }</p>
+                            <c:forEach var="n_func" items="${n_FUNC }" varStatus="loop">
+    							<span style="font-size: 15px; display: inline-block; width: 192px;"><mark>&nbsp;${loop.count}) ${n_func}&nbsp;</mark></span>
+    							<c:if test="${(loop.count % 3 == 0) && !loop.last}">
+    								<hr/>
+    							</c:if>
+                            </c:forEach>
+                            <c:forEach var="i_func" items="${i_FUNC }" varStatus="loop">
+    							<span style="font-size: 15px; display: inline-block; width: 192px;"><mark>&nbsp;${loop.count}) ${i_func}&nbsp;</mark></span>
+                            	<c:if test="${(loop.count % 3 == 0) && !loop.last}">
+    								<hr/>
+    							</c:if>
+                            </c:forEach>
                         </div>
                         <div class="mt-5">
                             <h4><b>2. 상세설명</b></h4>
                             <hr class="bg-warning">
-                            <p style="font-size: 17px;">${desc }</p>
-                            <p style="font-size: 17px;">${i_desc }</p>
+                            <p style="font-size: 15px;">${desc }</p>
+                            <p style="font-size: 15px;">${i_desc }</p>
                         </div>
-                        <div class="mt-5">
+                        <div class="mt-4">
                             <h4><b>3. 섭취량</b></h4>
                             <hr class="bg-warning">
-                            <c:if test="${not empty n_DRI_M }" var="vit">
-	                            <p style="font-size: 17px;">
-	                                	남성 권장 섭취량: ${n_DRI_M }<br/>
-	                                <c:if test="${not empty n_UL_M}">
+                            
+                            <div class="justify-content-center">
+                                <div class="d-flex flex-column align-items-center">
+                                
+                                <!-- 5대 상한 있음 -->
+	                            <c:if test="${not empty n_UL_M }" var="limit">
+                        	        <c:if test="${not empty n_UL_M}">
+		                            <p style="font-size: 13px; margin-bottom: 13px;" class="mt-2">
+	                                	남성 권장 섭취량: ${n_DRI_M }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                                	<c:if test="${not empty n_UL_M}">
 	                                	남성 상한 섭취량: ${n_UL_M }<br/>
-	                                </c:if>
-	                                	여성 권장 섭취량: ${n_DRI_F }<br/>
-	                                <c:if test="${not empty n_UL_F}">
-	                                	여성 상한 섭취량: ${n_UL_F }
-	                                </c:if>
-	                            </p>
-                                <div class="progress w-75 progress-bar text-danger mt-3" > 
-                                    <div class="progress-bar-inner"></div>
-                                    <div class="progress-text"></div>
-                                </div>       
-                            </c:if>
-                            <c:if test="${not vit }">
-                            	<p style="font-size: 17px;">
-	                                	권장 섭취량: ${i_DRI }<br/>
-	                                <c:if test="${not empty i_UL}">
-	                                	상한 섭취량: ${i_UL }<br/>
-	                                </c:if>
-	                            </p>
-                                <div class="progress w-75 progress-bar text-danger mt-3" > 
-                                    <div class="progress-bar-inner"></div>
-                                    <div class="progress-text"></div>
-                                </div>   
-                            </c:if>
+	                                	</c:if>
+		                                여성 권장 섭취량: ${n_DRI_F }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                                <c:if test="${not empty n_UL_F}">
+		                                	여성 상한 섭취량: ${n_UL_F }
+		                                </c:if>
+	                                
+		                                <div style="height:1px;">
+		                                	<span class="arrow-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow-down"></span>
+		                                </div>
+		                            </p>
+		                            <div class="progress w-75 progress-bar text-danger" > 
+	                                    <div class="progress-bar-inner"></div>
+	                                    <div class="progress-text"></div>
+	                                </div> 
+		                            </c:if>
+	                            </c:if>
+	                            
+	                            <!-- 5대 상한 없음 -->
+	                            <c:if test="${not limit && empty i_DRI}">
+		                            <p style="font-size: 13px; margin-bottom: 13px;" class="mt-2">
+	                                	남성 권장 섭취량: ${n_DRI_M }<br/><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/> -->
+		                                여성 권장 섭취량: ${n_DRI_F }<br/><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/> -->
+		                                <div style="height:1px;">
+		                                	<span class="arrow-down"></span><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+		                                </div>
+	                                </p> 
+	                                <div class="progress w-75 progress-bar text-danger" > 
+	                                    <div class="progress-bar-inner"></div>
+	                                    <div class="progress-text"></div>
+	                                </div> 
+	                            </c:if>
+	                            
+	                            	
+	                            
+	                            <!-- 기능성 상한 있음 -->
+	                            <c:if test="${not empty i_DRI && not empty i_UL }">
+		                            <p style="font-size: 13px; margin-bottom: 13px;" class="mt-2">
+		                                	권장 섭취량: ${i_DRI }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                                	상한 섭취량: ${i_UL }<br/>
+		                                <div style="height:1px;">
+		                                	<span class="arrow-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow-down"></span>
+		                                </div>
+		                            </p>
+		                            <div class="progress w-75 progress-bar text-danger" > 
+	                                    <div class="progress-bar-inner"></div>
+	                                    <div class="progress-text"></div>
+	                                </div> 
+                            	</c:if>
+	                            
+	                            <!-- 기능성 상한 없음 -->	
+	                            <c:if test="${not empty i_DRI && empty i_UL }">
+		                            <p style="font-size: 13px; margin-bottom: 13px;" class="mt-2">
+		                                	권장 섭취량: ${i_DRI }<br/><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/> -->
+		                                <div style="height:1px;">
+		                                	<span class="arrow-down"></span><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+		                                </div>
+		                            </p>
+		                            <div class="progress w-75 progress-bar text-danger" > 
+	                                    <div class="progress-bar-inner"></div>
+	                                    <div class="progress-text"></div>
+	                                </div> 
+                            	</c:if>
+                            	
+	                            </div>
+                            </div>
                         </div>
                         <c:if test="${vit }">
 	                        <div class="mt-5">
 		                        <c:if test="${not empty n_LACK }">
 		                            <h4><b>4. 결핍시 증상</b></h4>
 		                            <hr class="bg-warning">
-		                            <p style="font-size: 17px;">· ${n_LACK }이 있어요.</p>
+		                            <p style="font-size: 15px;">· ${n_LACK }이 있어요.</p>
 		                        </c:if>
 	                        </div>
                         </c:if>
@@ -248,7 +317,7 @@
 		                        <div class="mt-5">
 		                            <h4><b>5. 주의사항</b></h4>
 		                            <hr class="bg-warning">
-		                            <p style="font-size: 17px;">${caution }</p>
+		                            <p style="font-size: 15px;">${caution }</p>
 		                        </div>
 		                    </c:if>
                         </c:if>
@@ -257,7 +326,7 @@
 		                        <div class="mt-5">
 		                            <h4><b>4. 주의사항</b></h4>
 		                            <hr class="bg-warning">
-		                            <p style="font-size: 17px;">${i_caution }</p>
+		                            <p style="font-size: 15px;">${i_caution }</p>
 		                        </div>
 		                    </c:if>
                         </c:if>
@@ -266,12 +335,12 @@
 		                        <c:if test="${not empty caution}" var="exist">
 		                            <h4><b>6. 섭취 음식</b></h4>
 		                            <hr class="bg-warning">
-		                            <p style="font-size: 17px;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
+		                            <p style="font-size: 15px;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
 		                        </c:if>
 		                        <c:if test="${not exist }">
 		                        	<h4><b>5. 섭취 음식</b></h4>
 		                            <hr class="bg-warning">
-		                            <p style="font-size: 17px;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
+		                            <p style="font-size: 15px;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
 		                        </c:if>
 	                        </div>
 	                    </c:if>
@@ -280,14 +349,14 @@
 		                        <c:if test="${not empty caution}" var="exist">
 		                            <h4><b>7. 추천 영양제</b></h4>
 		                            <hr class="bg-warning">
-		                            <p style="font-size: 17px;">
+		                            <p style="font-size: 15px;">
 		                                영양제1, 영양제2, 영양제3                   
 		                            </p>
 		                        </c:if>
 		                        <c:if test="${not exist }">
 		                        	<h4><b>6. 추천 영양제</b></h4>
 		                            <hr class="bg-warning">
-		                            <p style="font-size: 17px;">
+		                            <p style="font-size: 15px;">
 		                                영양제1, 영양제2, 영양제3                 
 		                            </p>
 		                        </c:if>
@@ -298,7 +367,7 @@
 			                    <div class="mt-5">
 			                    	<h4><b>5. 추천 영양제</b></h4>
 		                            <hr class="bg-warning">
-		                            <p style="font-size: 17px;">
+		                            <p style="font-size: 15px;">
 		                                영양제1, 영양제2, 영양제3                  
 		                            </p>
 		                        </div>    
@@ -307,7 +376,7 @@
 		                    	<div class="mt-5">
 			                    	<h4><b>4. 추천 영양제</b></h4>
 		                            <hr class="bg-warning">
-		                            <p style="font-size: 17px;">
+		                            <p style="font-size: 15px;">
 		                                영양제1, 영양제2, 영양제3                  
 		                            </p>
 		                        </div> 
@@ -453,13 +522,25 @@
         var textElement = document.querySelector('.progress-text'); // 텍스트 요소 선택
 
         var animationDuration = 1500; // 애니메이션 지속 시간 (밀리초)
-        var targetValue = 50; // 목표 값 (%)
-        var updateInterval = 20; // 업데이트 간격 (밀리초)
+        var targetValue = 50; // 목표 값 (%) 27~73
+        
+        // 상한 존재시 50% -> 73%로 변경
+        var n_UL_M = "${n_UL_M}";
+        var i_UL = "${i_UL}";
+        
+        if(n_UL_M.trim() !== "" || i_UL.trim() !=="" ){
+        	targetValue = 73;
+        }
+        	
+        
+        
+        
+        var updateInterval = 30; // 업데이트 간격 (밀리초)
 
         var progressValue = 0; // 현재 진행 값
         var currentValue = 0; // 현재 표시 값
 
-        var increment = targetValue / (animationDuration / updateInterval); // 증가량 계산
+        var increment = 1; // 증가량 계산
 
         // 진행 바 업데이트 함수
         function updateProgress() {
@@ -467,7 +548,7 @@
             currentValue = Math.min(Math.round(progressValue), targetValue); // 현재 표시 값 계산
             
             progressElement.style.width = currentValue + '%'; // 진행 바 너비 설정
-            textElement.textContent = currentValue + '%'; // 텍스트 내용 설정
+            textElement.textContent = '💊 적합한 섭취량을 알아보세요!' // 텍스트 내용 설정
 
             if (currentValue >= targetValue) {
                 clearInterval(progressInterval); // 목표 값에 도달하면 업데이트 간격을 멈춤
