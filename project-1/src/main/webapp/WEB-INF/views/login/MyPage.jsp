@@ -364,7 +364,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 								<i class="fa-solid fa-angle-down"></i>
 							</div>
 							<div class="acco">
-								<span class="head">머리</span>
+								<div class="head">머리</div>
 								<div id="head">
 									<span class="btn btn-outline-secondary">두통</span>
 									<span class="btn btn-outline-secondary">어지러움</span>
@@ -373,14 +373,14 @@ ul li input[type=checkbox]:checked ~ .acco {
 									<span class="btn btn-outline-secondary">메스꺼움</span>
 									<span class="btn btn-outline-secondary">구토</span>
 								</div>
-								<span class="respiratory">호흡기</span>
+								<div class="respiratory">호흡기</div>
 								<div id="resp">
 									<span class="btn btn-outline-secondary">기침</span>
 									<span class="btn btn-outline-secondary">가래</span>
 									<span class="btn btn-outline-secondary">호흡곤란</span>
 									<span class="btn btn-outline-secondary">코막힘</span>
 								</div>
-								<span class="stomach">배</span>
+								<div class="stomach">배</div>
 								<div id="stomach">
 									<span class="btn btn-outline-secondary">복통</span>
 									<span class="btn btn-outline-secondary">설사</span>
@@ -391,7 +391,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 									<span class="btn btn-outline-secondary">식욕감퇴</span>
 									<span class="btn btn-outline-secondary">복부 팽만감</span>
 								</div>
-								<span class="mental">정신</span>
+								<div class="mental">정신</div>
 								<div id="mental">
 									<span class="btn btn-outline-secondary">우울</span>
 									<span class="btn btn-outline-secondary">불면증</span>
@@ -401,13 +401,13 @@ ul li input[type=checkbox]:checked ~ .acco {
 									<span class="btn btn-outline-secondary">피곤함</span>
 									<span class="btn btn-outline-secondary">집중력 감퇴</span>
 								</div>
-								<span class="chest">가슴</span>
+								<div class="chest">가슴</div>
 								<div id="chest">
 									<span class="btn btn-outline-secondary">호흡곤란</span>
 									<span class="btn btn-outline-secondary">가슴통증</span>
 									<span class="btn btn-outline-secondary">압박감</span>
 								</div>
-								<span class="body">신체</span>
+								<div class="body">신체</div>
 								<div id="body">
 									<span class="btn btn-outline-secondary">근육경련</span>
 									<span class="btn btn-outline-secondary">부종</span>
@@ -777,6 +777,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 </body>
 </html>
 <script>
+(function($){
 	var dates = '<c:out value="${date}"/>'
 	//console.log('dates:',dates.split(" "))
 	$.datepicker.setDefaults({
@@ -814,10 +815,26 @@ ul li input[type=checkbox]:checked ~ .acco {
 	$(function(){
 		 $('.datepicker').datepicker().toggle('.datepicker');
 	})
-	
+	console.log('test:',$('.add').slice('3'))
 	$('.datepicker').change(function(){
-		//console.log('datepicker:',$(this).val())	
-		$('.clickDate').html($(this).val())
+		//console.log('datepicker:',$(this).val())
+		if(confirm('날짜를 변경하시면 해당 날짜의 정보가 저장되지않습니다.\r\n변경하시겠습니까?')){
+			$('.clickDate').html($(this).val());
+			$('.acco:eq(0)').find('[name=condition]').removeClass();
+			$('.acco:eq(1)').find('span').each(function(){
+				$(this).removeClass()
+				$(this).addClass('btn btn-outline-secondary');
+			});
+			$('.add:eq(0)').find('input:eq(0)').val('비타민').end().find('input:eq(1)').val('').end();
+			$('.add:eq(1)').find('input:eq(0)').val('철분제').end().find('input:eq(1)').val('').end();
+			$('.add:eq(2)').find('input:eq(0)').val('엽산').end().find('input:eq(1)').val('').end();
+			$('.add').slice('3').remove();
+			$('.allergy').removeClass('full');
+			$('[name=h]').val('');
+			$('[name=w]').val('');
+			$('#content').val('');
+			$('.datepicker').css('display','none');
+		}
 	});
 	
 	//컨드롤러에서 가져온 정보 꾸리기(기본값=오늘날짜)
@@ -830,45 +847,57 @@ ul li input[type=checkbox]:checked ~ .acco {
 			$('.acco').find('[alt='+info_con+']').addClass('circle');
 		}
 		var info_head = '<c:out value="${head}"/>';
+		//console.log('head:',info_head)
 		$('#head').children().each(function(){
 			if(info_head.includes($(this).html())){
 				$(this).removeClass('btn-outline-secondary')
 				$(this).addClass('btn-danger');
+				$(this).toggleClass('headSelcted');
 			}
 		});
 		var info_resp = '<c:out value="${resp}"/>';
+		//console.log('resp:',info_resp)
 		$('#resp').children().each(function(){
 			if(info_resp.includes($(this).html())){
 				$(this).removeClass('btn-outline-secondary')
 				$(this).addClass('btn-danger');
+				$(this).toggleClass('respSelcted');
 			}
 		});
 		var info_stom = '<c:out value="${stom}"/>';
+		//console.log('stom:',info_stom)
 		$('#stomach').children().each(function(){
 			if(info_stom.includes($(this).html())){
 				$(this).removeClass('btn-outline-secondary')
 				$(this).addClass('btn-danger');
+				$(this).toggleClass('stomachSelcted');
 			}
 		});
 		var info_ment = '<c:out value="${ment}"/>';
+		//console.log('ment:',info_ment)
 		$('#mental').children().each(function(){
 			if(info_ment.includes($(this).html())){
 				$(this).removeClass('btn-outline-secondary')
 				$(this).addClass('btn-danger');
+				$(this).toggleClass('mentalSelcted');
 			}
 		});
 		var info_chest = '<c:out value="${chest}"/>';
+		//console.log('chest:',info_chest)
 		$('#chest').children().each(function(){
 			if(info_chest.includes($(this).html())){
 				$(this).removeClass('btn-outline-secondary')
 				$(this).addClass('btn-danger');
+				$(this).toggleClass('chestSelcted');
 			}
 		});
 		var info_body = '<c:out value="${body}"/>';
+		//console.log('body:',info_body)
 		$('#body').children().each(function(){
 			if(info_body.includes($(this).html())){
 				$(this).removeClass('btn-outline-secondary')
 				$(this).addClass('btn-danger');
+				$(this).toggleClass('bodySelcted');
 			}
 		});
 		//영양제 추가 갯수만큼 .add div 만들어야함
@@ -899,7 +928,8 @@ ul li input[type=checkbox]:checked ~ .acco {
 	}
 	
 	//클릭한 날짜가 오늘 날짜가 아닐 때
-	$('.clickDate').change(function(){
+	$('.clickDate').change(function(e){
+		console.log('e',e)
 		console.log('diff:',$(this).html())
 	});
 
@@ -915,8 +945,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 			$('.memoSend').slice(1).css('display','none');
 		}
 	})
-</script>
-<script>	
+	
 	//건강기록 저장하기
 	$('.diaryStart').find('.memoSend').click(function(){
 		//console.log('길이:',$('.acco').find('.circle').prop('alt')==undefined)
@@ -1023,9 +1052,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 		});
 		return false;
 	});
-</script>
-	
-<script>
+
 /*
 	//'+' 아이콘에 속성 추가(모달,마진)
 	$('.fa-plus').each(function(){
@@ -1117,10 +1144,8 @@ ul li input[type=checkbox]:checked ~ .acco {
 			$(this).parent().remove()
 		});
 	}
-</script>
 
-<!-- bmi 계산 -->
-<script>
+	//bmi 계산
  	var bmi = document.querySelector('.c-bmi');
  	var height = bmi.querySelector('input[name=h]');
  	var weight = bmi.querySelector('input[name=w]');
@@ -1156,9 +1181,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 	
 	bmi.addEventListener('submit', result);
 	bmi.dispatchEvent(new Event('input'));
-</script>
 
-<script>
 	//이미지 수정하기
 	$('#imgEdit').click(function(){
 		$(this).attr('data-toggle','modal');
@@ -1184,4 +1207,5 @@ ul li input[type=checkbox]:checked ~ .acco {
 		$('a[name=defaultImg]').css('display','none');
 		$('input[type=password]').css('display','');
 	});
+})(jQuery)
 </script>
