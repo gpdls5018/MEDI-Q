@@ -101,7 +101,7 @@
 	    text-align: center;
 	}
 	
-	@media (min-width:43.75em) {
+	@media (min-width:30em) {
 		.tscontainer {
 			max-width: 100%;
 			margin: 0 auto;
@@ -109,15 +109,15 @@
 		}
 		.maints {
 			display: inline-block;
-			width: 75%;
+			width: 70%;
 			vertical-align: top;
-			margin-right: 20px;
+			margin: 0px 20px 0px 20px;
 		}
 		.tsidebar {
 			display: inline-block;
-			width: 20%;
-			margin-left: 20px;
+			width: 16%;
 			vertical-align: top;
+			margin: 0px 20px 0px 20px;
 		}
 		.fixedsticky {
 			margin-top: 00px;
@@ -324,28 +324,82 @@
          height: 340px;
          border: 1px solid #ccc;
      }
-     #tsBtn {
-           display: block;
+      .mainMap button{
+       	   display: block;
            z-index: 99;
            background-color: white;
            width: 180px;
-       	   height: 80px;
+       	   height: 60px;
            position: absolute;
-           top: 20px;
-           right: 20px;
            cursor: pointer;
+           border: 1px solid #ccc;
            border-radius: 20px; 
            text-align: center;
+           top: 20px;
+           right: 10px;
        }
-      #tsBtn span {
+      .mainMap button:hover {
+      		background-color: #FDCDBC;
+          	color: black;
+          	font-weight: bold;
+      }
+      
+      .mainMap button span {
       	 vertical-align:middle;
       	 color: #EF605D;
       	 font-weight: bold;
       	 text-align: center;
+      	  font-size: 14px;
       }
+      /* 맵에 레이어 부분 css*/
+      .mainMap .mapLayer {
+      		display: block;
+            margin-inline-start: 20px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+        .mapLayer h2 {
+            color: #EF605D;
+            overflow: hidden;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .mainMap a {
+            display: block;
+            width: 300px;
+            height: 48px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            font-size: 18px;
+            text-align: center;
+            line-height: 48px;
+            border-radius:15px;
+            vertical-align: middle;
+            text-decoration: none;
+            font-weight:bold;
+            color:#EF605D;
+        }
+          .mainMap a:hover {
+          	background-color: #FDCDBC;
+          	color: black;
+          	font-weight: bold;
+          }
+
+        .closeLayerButton {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+
+            border-radius: 30px; 
+        }
      
    /*지도 모달 css */
-
    .modal-content {
    	align-content: center;
    	vertical-align: middle;
@@ -354,7 +408,7 @@
 .map_wrap, .menu_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:100%;height:600px;}
-#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:40%;margin:10px 0 10px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:30%;margin:10px 0 10px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
 .bg_white {background:#fff;}
 #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
 #menu_wrap .option{text-align: center;}
@@ -507,7 +561,7 @@
 <!-- 검색창 밑부분! 사이드바와 몸통 부분 -->
 <section class="tscontainer mt-5" style="width:90%;  border-radius: 5px;">
 	<!-- 왼쪽 몸통부분 -->
-     <article class="maints justify-content-center">
+     <article class="maints justify-content-center px-3">
      <!-- 1번째 다이브 목록 -->
      	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
 	        <h1>$이태성$님의 최근 분석 리포트</h1>
@@ -563,30 +617,38 @@
 	    
   	  <!--  *번째 다이브 목록 -->
       <div class="mainInner">
-            <h3 style="text-align: center;">우리 동네 약국</h3>
-            <p style="text-align: center;">약국에 대한 위치를 찾아보아요</p>
-            <div class="container-xxl py-5">
+            <h3 style="text-align: center; margin-top: 20px; font-weight: bold;">우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
+            <div class="container-xxl py-4">
                 <div class="container">
                     <div class="mainMap" id="map" >
-                        <button type="button" class="btn btn-primary" id="tsBtn">
-                        	<span>병원 또는 약국<br/> 찾아보기</span>
-                        </button>         
+                        <button type="button" class="btn" id="tsBtn">
+                        	<span>🩺병원 & 💊약국찾기</span>
+                        </button>
+                        <div class="mapLayer">
+                            <div class="closeLayerButton" onclick="closeMapLayer()">&times;</div>
+                            	<h2>주소</h2>
+      	                     	<p style="font-size:15px; color:gray;">가산디지털단지역<br/>(서울특별시 금천구 벚꽃로 309)</p>
+                           		<a href="https://naver.me/GEAidP59" target="_blank">
+                           		<img src="<c:url value="/resources/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
+                           		<a href="https://map.kakao.com/?urlX=473869&urlY=1105992&urlLevel=3&itemId=18761502&q=%EB%B2%84%EA%B1%B0%ED%82%B9%20%EA%B0%80%EC%82%B0%EB%94%94%EC%A7%80%ED%84%B8%EC%A0%90&srcid=18761502&map_type=TYPE_MAP#none" target="_blank"> 
+                           		<img src="<c:url value="/resources/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
+                        </div>          
                     </div>
                 </div>
             </div>
         </div>
-        <!--  지도 모달 누르면 나오는 부분 -->
+        <!--  병원찾기 지도 모달 누르면 나오는 부분 -->
 	       <div class="modal fade align-items-center" id="tsModal" role="dialog" style="background-color: rgba(0, 0, 0, 0.5);">
-			 <div class="modal-dialog modal-dialog-centered" style="align-content :center; width: 80%; height: 60%;">
+			 <div class="modal-dialog modal-dialog-centered" style="align-content :center; width: 100%; height: 60%; max-width: 1400px;">
 			   <!-- Modal content-->
-			   <div class="modal-content" style="width: 1200px; height: 100%;">
-			     <div class="modal-header" style="width: 1200px;">
-			       <h4 class="modal-title">우리동네 병원 및 약국찾기</h4>
+			   <div class="modal-content" style="width: 100%; height: 100%;">
+			     <div class="modal-header" >
+			       <h4 class="modal-title">우리동네 병원&약국 찾기</h4>
 			       <button type="button" class="close" data-dismiss="modal">&times;</button>
 			     </div>
 			     <div class="modal-body">
-			       <h3 style="text-align: center;">병원 및 약국정보</h3>
-			       <p style="text-align: center;">병원·약국찾기에 대한 위치 찾기</p>
+			       <h3 style="text-align: center;">병원정보</h3>
+			       <p style="text-align: center;">병원에 대한 위치 찾기</p>
 			       <div class="container-xxl py-5">
 			         <div class="map_wrap">
 			           <div id="modalmap" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -594,7 +656,7 @@
 			             <div class="option">
 			               <div>
 			                 <form onsubmit="searchPlaces(); return false;">
-			                    키워드 : <input type="text" value="가산디지털단지역" placeholder="ㅇㅇ동 약국을 입력" id="keyword" size="15">
+			                    키워드 : <input type="text" value="가산동 병원" placeholder="ㅇㅇ동 병원을 입력" id="keyword" size="15">
 			                    <button type="submit">검색하기</button>
 			                  </form>
 			                </div>
@@ -605,9 +667,6 @@
 			            </div>
 			          </div>
 			        </div>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 			      </div>
 			    </div>
 			  </div>
@@ -629,7 +688,7 @@
 
 	</article>
 		<!-- 오른쪽 슬라이드 -->
-		<aside class="tsidebar fixedsticky">
+		<aside class="tsidebar fixedsticky pr-3">
 			<!--  로그인 목록 창
 			<div class="login-section justify-content-center">
 		        <p style="text-align: center; font-weight:bold; font-size:13px;"><span style="color:#EF605D">Madi-Q</span>를 더 안전하고<br/> 편리하게 이용하세요</p>
@@ -762,7 +821,7 @@ tagify.on('add', e=> {
 tagify.on('remove', e=> {
     $('#hiddenInput').attr('value',tagify.value.map(function(e){return e.value}));
 });
-
+////////////////////슬라이드 로직///////////////////////////////////
 $(document).ready(function(){
     $('.slider1').bxSlider({
         slideWidth: 800,
@@ -787,7 +846,7 @@ $(document).ready(function(){
 });
 
 
-//비디오 히든 로직
+//////////////////////비디오 히든 로직////////////////////////////
 document.addEventListener("DOMContentLoaded", function() {
 	  var checkbox = document.getElementById("stop-video-checkbox");
 	  var videoContainer = document.getElementById("tsvideo-container");
@@ -831,10 +890,14 @@ document.addEventListener("DOMContentLoaded", function() {
 	  }
 	});
 	
-
+/////////////////////////////////지도 함수//////////////////////////////////////////////////////
+// 닫기 버튼 클릭 시 mapLayer 숨김
+    var mapLayer = document.querySelector('.mapLayer');
+        function closeMapLayer() {
+            mapLayer.style.display = 'none';
+        }
+        
 // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-    var infowindow = new kakao.maps.InfoWindow({zIndex:1});
-
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
         mapOption = {
             center: new kakao.maps.LatLng(37.481242, 126.883970), // 지도의 중심좌표
@@ -842,24 +905,238 @@ document.addEventListener("DOMContentLoaded", function() {
         };  
   //지도를 생성합니다    
     var map = new kakao.maps.Map(mapContainer, mapOption); 
+  
+/////////////////////////지도 모달 버튼 함수////////////////////////////////
+    $(document).ready(function() {
+      $("#tsBtn").click(function() {
+        $("#tsModal").modal({ backdrop: false});
+        setTimeout(function(){ map.relayout(); }, 0);
+        initMap(); // 모달 열릴 때 지도 초기화 호출
+      });
+    });
 
 //지도 모달로 띄우기 
     function initMap() {
-    var mapContainer = document.getElementById('modalmap');
-    var mapOption = {
-      center: new kakao.maps.LatLng(37.481242, 126.883970),
-      level: 3
-    };
-    var map = new kakao.maps.Map(mapContainer, mapOption);
+    	var markers = [];
+    	
+    	var mapContainer2 = document.getElementById('modalmap'), // 지도를 표시할 div 
+    	mapOption2 = {
+		   	center: new kakao.maps.LatLng(37.481387, 126.882676), // 지도의 중심좌표
+		   	level: 3 // 지도의 확대 레벨
+    	};  
+
+    	// 지도를 생성합니다    
+    	var map2 = new kakao.maps.Map(mapContainer2, mapOption2); 
+    	
+        setTimeout(function(){ map2.relayout(); }, 0);
+
+    	//장소 검색 객체를 생성합니다
+    	var ps = new kakao.maps.services.Places();  
+
+    	//검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+    	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+
+    	//키워드로 장소를 검색합니다
+    	searchPlaces();
+
+    	//키워드 검색을 요청하는 함수입니다
+    	function searchPlaces() {
+    	var keyword = document.getElementById('keyword').value;
+
+    	if (!keyword.replace(/^\s+|\s+$/g, '')) {
+    	alert('키워드를 입력해주세요!');
+    	return false;
+    	}
+
+    	// 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+    	ps.keywordSearch( keyword, placesSearchCB); 
+    	}
+
+    	//장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+    	function placesSearchCB(data, status, pagination) {
+    	if (status === kakao.maps.services.Status.OK) {
+
+    	// 정상적으로 검색이 완료됐으면
+    	// 검색 목록과 마커를 표출합니다
+    	displayPlaces(data);
+
+    	// 페이지 번호를 표출합니다
+    	displayPagination(pagination);
+
+    	} else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+
+    	alert('검색 결과가 존재하지 않습니다.');
+    	return;
+
+    	} else if (status === kakao.maps.services.Status.ERROR) {
+
+    	alert('검색 결과 중 오류가 발생했습니다.');
+    	return;
+
+    	}
+    	}
+
+    	//검색 결과 목록과 마커를 표출하는 함수입니다
+    	function displayPlaces(places) {
+
+    	var listEl = document.getElementById('placesList'), 
+    	menuEl = document.getElementById('menu_wrap'),
+    	fragment = document.createDocumentFragment(), 
+    	bounds = new kakao.maps.LatLngBounds(), 
+    	listStr = '';
+
+    	// 검색 결과 목록에 추가된 항목들을 제거합니다
+    	removeAllChildNods(listEl);
+
+    	// 지도에 표시되고 있는 마커를 제거합니다
+    	removeMarker();
+
+    	for ( var i=0; i<places.length; i++ ) {
+
+    	// 마커를 생성하고 지도에 표시합니다
+    	var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
+    	    marker = addMarker(placePosition, i), 
+    	    itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+
+    	// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+    	// LatLngBounds 객체에 좌표를 추가합니다
+    	bounds.extend(placePosition);
+
+    	// 마커와 검색결과 항목에 mouseover 했을때
+    	// 해당 장소에 인포윈도우에 장소명을 표시합니다
+    	// mouseout 했을 때는 인포윈도우를 닫습니다
+    	(function(marker, title) {
+    	    kakao.maps.event.addListener(marker, 'mouseover', function() {
+    	        displayInfowindow(marker, title);
+    	    });
+
+    	    kakao.maps.event.addListener(marker, 'mouseout', function() {
+    	        infowindow.close();
+    	    });
+
+    	    itemEl.onmouseover =  function () {
+    	        displayInfowindow(marker, title);
+    	    };
+
+    	    itemEl.onmouseout =  function () {
+    	        infowindow.close();
+    	    };
+    	})(marker, places[i].place_name);
+
+    	fragment.appendChild(itemEl);
+    	}
+
+    	// 검색결과 항목들을 검색결과 목록 Element에 추가합니다
+    	listEl.appendChild(fragment);
+    	menuEl.scrollTop = 0;
+
+    	// 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+    	map2.setBounds(bounds);
+    	}
+
+    	//검색결과 항목을 Element로 반환하는 함수입니다
+    	function getListItem(index, places) {
+
+    	var el = document.createElement('li'),
+    	itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
+    	        '<div class="info">' +
+    	        '   <h5>' + places.place_name + '</h5>';
+
+    	if (places.road_address_name) {
+    	itemStr += '    <span>' + places.road_address_name + '</span>' +
+    	            '   <span class="jibun gray">' +  places.address_name  + '</span>';
+    	} else {
+    	itemStr += '    <span>' +  places.address_name  + '</span>'; 
+    	}
+    	         
+    	itemStr += '  <span class="tel">' + places.phone  + '</span>' +
+    	        '</div>';           
+
+    	el.innerHTML = itemStr;
+    	el.className = 'item';
+
+    	return el;
+    	}
+
+    	//마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+    	function addMarker(position, idx, title) {
+    	var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+    	imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
+    	imgOptions =  {
+    	    spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+    	    spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+    	    offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+    	},
+    	markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+    	    marker = new kakao.maps.Marker({
+    	    position: position, // 마커의 위치
+    	    image: markerImage 
+    	});
+
+    	marker.setMap(map2); // 지도 위에 마커를 표출합니다
+    	markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+
+    	return marker;
+    	}
+
+    	//지도 위에 표시되고 있는 마커를 모두 제거합니다
+    	function removeMarker() {
+    	for ( var i = 0; i < markers.length; i++ ) {
+    	markers[i].setMap(null);
+    	}   
+    	markers = [];
+    	}
+
+    	//검색결과 목록 하단에 페이지번호를 표시는 함수입니다
+    	function displayPagination(pagination) {
+    	var paginationEl = document.getElementById('pagination'),
+    	fragment = document.createDocumentFragment(),
+    	i; 
+
+    	// 기존에 추가된 페이지번호를 삭제합니다
+    	while (paginationEl.hasChildNodes()) {
+    	paginationEl.removeChild (paginationEl.lastChild);
+    	}
+
+    	for (i=1; i<=pagination.last; i++) {
+    	var el = document.createElement('a');
+    	el.href = "#";
+    	el.innerHTML = i;
+
+    	if (i===pagination.current) {
+    	    el.className = 'on';
+    	} else {
+    	    el.onclick = (function(i) {
+    	        return function() {
+    	            pagination.gotoPage(i);
+    	        }
+    	    })(i);
+    	}
+
+    	fragment.appendChild(el);
+    	}
+    	paginationEl.appendChild(fragment);
+    	}
+    	//검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
+    	//인포윈도우에 장소명을 표시합니다
+    	function displayInfowindow(marker, title) {
+    	var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+
+    	infowindow.setContent(content);
+    	infowindow.open(map2, marker);
+    	}
+
+    	// 검색결과 목록의 자식 Element를 제거하는 함수입니다
+    	function removeAllChildNods(el) {   
+	    	while (el.hasChildNodes()) {
+	    	 el.removeChild (el.lastChild);
+	    	}
+    	}
+    	
   }
 
-  $(document).ready(function() {
-    $("#tsBtn").click(function() {
-      $("#tsModal").modal({ backdrop: true });
-      initMap(); // 모달 열릴 때 지도 초기화 호출
-    });
-  });
-	 
+
+/////////////////////////상단 메인 배너///////////////////////////////////////////////
 /*배너 영상돌리기*/
 function bannerSwitcher() {
     next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
@@ -876,7 +1153,7 @@ function bannerSwitcher() {
 
 
 
-//사이드바 함수 적용
+/////////////////////////////////사이드바 함수 적용 라이브러리 적용///////////////////////
 $(document).ready(function() {
   $('.tsidebar').stick_in_parent();
 });
