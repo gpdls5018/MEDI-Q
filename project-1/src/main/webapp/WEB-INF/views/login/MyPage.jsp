@@ -438,17 +438,17 @@ ul li input[type=checkbox]:checked ~ .acco {
 							<div class="acco">
 								<div class="add">
 									<input class="form-control" value="비타민" style="height: 35px; width: 100px">
-									<input class="form-control mx-2" type="number" min="1" max="6" value="1" style="height: 35px; width: 50px"> 정
+									<input class="form-control mx-2" type="number" min="1" max="6" style="height: 35px; width: 50px"> 정
 									<i class="xmark fa-regular fa-circle-xmark ml-1"></i>
 								</div>
 								<div class="add">
 									<input class="form-control" value="철분제" style="height: 35px; width: 100px">
-									<input class="form-control mx-2" type="number" min="1" max="6" value="1" style="height: 35px; width: 50px"> 정
+									<input class="form-control mx-2" type="number" min="1" max="6" style="height: 35px; width: 50px"> 정
 									<i class="xmark fa-regular fa-circle-xmark ml-1"></i>
 								</div>
 								<div class="add">
 									<input class="form-control" value="엽산" style="height: 35px; width: 100px">
-									<input class="form-control mx-2" type="number" min="1" max="6" value="1" style="height: 35px; width: 50px"> 정
+									<input class="form-control mx-2" type="number" min="1" max="6" style="height: 35px; width: 50px"> 정
 									<i class="xmark fa-regular fa-circle-xmark ml-1"></i>
 								</div>
 								<a href="javascript:addList()" id="add">추가</a>	
@@ -684,13 +684,9 @@ ul li input[type=checkbox]:checked ~ .acco {
 							</div>
 						</li>
 					</ul>
-					<c:if test="${empty memo }" var="isEmpty">
-						<button type="submit" class="memoSend btn btn-outline-primary mt-3">확인</button>
-					</c:if>
-					<c:if test="${not isEmpty }">
+						<button type="submit" class="memoSend btn btn-outline-primary mt-3">확인</button>>
 						<button type="submit" class="memoSend btn btn-outline-primary mt-3">수정</button>
 						<button type="submit" class="memoSend btn btn-outline-primary mt-3">삭제</button>
-					</c:if>
 				</form>
 			</div>
 	    </div>
@@ -758,6 +754,8 @@ ul li input[type=checkbox]:checked ~ .acco {
 		</div>
 		<!-- 수정/삭제시 사용할 모달 끝 -->
 	</div><!-- 컨테이너 -->
+	<c:set var="current" value="${current}"/>
+	
 	<c:set var="date" value="${memo.mm_Date}"/>
 	<c:set var="condition" value="${memo.mm_Condition}"/>
 	<c:set var="head" value="${memo.mm_Head}"/>
@@ -779,8 +777,9 @@ ul li input[type=checkbox]:checked ~ .acco {
 </body>
 </html>
 <script>
-var dates = '<c:out value="${date}"/>'
-console.log('dates:',dates.split(" "))
+	var dates = '<c:out value="${date}"/>'
+	//console.log('dates:',dates.split(" "))
+	
 	$.datepicker.setDefaults({
 	    dateFormat: 'yy-mm-dd',
 	    prevText: '이전 달',
@@ -791,7 +790,7 @@ console.log('dates:',dates.split(" "))
 	    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
 	    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
 	    showMonthAfterYear: true,
-	    beforeShowDay:function(date){
+	    beforeShowDay:function(date){ //달력 클릭 시 저장된 값이 있을 때 클래스 추가하기
 	    	var month = date.getMonth().toString().length==1?'0'+(date.getMonth()+1).toString():(date.getMonth()+1).toString()
 	    	var day = date.getDate().toString().length==1?'0'+date.getDate().toString():date.getDate().toString()
 	    	var fulldate = date.getFullYear()+'-'+month+'-'+day;
@@ -823,10 +822,9 @@ console.log('dates:',dates.split(" "))
 	});
 	
 	//컨드롤러에서 가져온 정보 꾸리기(기본값=오늘날짜)
-	var info_date = '<c:out value="${date}"/>';
-	//console.log('date:',info_date)
-	//console.log('click:',$('.clickDate').html())
-	if($('.clickDate').html()==info_date){//기본값=오늘날짜
+	var current = '<c:out value="${current}"/>';
+	console.log('click:',$('.clickDate').html())
+	if($('.clickDate').html()==current){//기본값=오늘날짜
 		var info_con = '<c:out value="${condition}"/>';
 		if($('.acco').find('[alt='+info_con+']')){
 			$('.acco').find('[alt='+info_con+']').addClass('circle');
@@ -899,9 +897,14 @@ console.log('dates:',dates.split(" "))
 		var info_content = '<c:out value="${content}"/>';
 		$('#content').val(info_content);
 	}
-	else{//클릭한 날짜가 오늘 날짜가 아닐 때
-		console.log('diff:',$('.clickDate').html())
-	}
+	
+	//클릭한 날짜가 오늘 날짜가 아닐 때
+	$('.clickDate').change(function(){
+		console.log('diff:',$(this).html())
+	});
+	
+	//확인,수정,삭제 어떻게 보일 지
+	//if('.')
 </script>
 <script>	
 	//건강기록 저장하기
@@ -1074,18 +1077,18 @@ console.log('dates:',dates.split(" "))
 		$(this).toggleClass('full');
 	});
 	
-	//복용 약 추가하기
+	//복용 영양제 추가하기
 	function addList(){
 		var origin = $('#add').prev();
 		var clone = origin.clone();
-		origin.after(clone.children(':eq(0)').val('').end().children(':eq(1)').val('1').end())
-		//복용 약 삭제하기
+		origin.after(clone.children(':eq(0)').val('').end().children(':eq(1)').val('').end())
+		//복용 영양제 삭제하기
 		$('.xmark').click(function(){
 			$(this).parent().remove()
 		});
 	}
 	
-	//복용 약 삭제하기
+	//복용 영양제 삭제하기
 	$('.xmark').click(function(){
 		$(this).parent().remove()
 	});

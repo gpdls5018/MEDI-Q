@@ -61,8 +61,9 @@ public class MypageController {
 		map.put("mm_Id", member.getId());
 		map.put("mm_Date", current);
 		HealthMemoDTO memo = healthMemoIServicempl.selectOne(map);
-		memo.setMm_Date(memo.getMm_Date().split(" ")[0]);
-		System.out.println("date: "+memo.getMm_Date());
+		if(memo != null) {
+			memo.setMm_Date(memo.getMm_Date().split(" ")[0]);
+		}
 		model.addAttribute("current", current);
 		model.addAttribute("info", member);//추후 더 추가해야함
 		model.addAttribute("profImg", profImg);
