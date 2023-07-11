@@ -84,7 +84,7 @@
     }
 
     .skeleton-card {
-      height: 100px;
+      height: 150px;
       width: 100%;
       margin: 8px;
       border-radius: 3px;
@@ -109,7 +109,7 @@
 	
 	<!-- 탭 -->
 	<div class="tab-content">
-	  	<div class="tab-pane fade show active mb-5" id="detailTable"><!-- 탭 1 시작 -->
+	  	<div class="tab-pane fade show active" id="detailTable"><!-- 탭 1 시작 -->
            	<table class="type09 mt-3">
                 <thead>
 	                <tr>
