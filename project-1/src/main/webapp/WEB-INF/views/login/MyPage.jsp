@@ -134,7 +134,6 @@
 	width: 40px;
 	margin-left: 5px;
 	cursor: pointer;
-	border-radius: 
 }
 .transition {
   transition: all 0.25s ease-in-out;
@@ -203,13 +202,22 @@ ul li {
   animation: flipdown 0.5s ease both;
 }
 ul li:nth-of-type(1) {
-  animation-delay: 0.5s;
+  animation-delay: 0.3s;
 }
 ul li:nth-of-type(2) {
-  animation-delay: 0.75s;
+  animation-delay: 0.5s;
 }
 ul li:nth-of-type(3) {
+  animation-delay: 0.75s;
+}
+ul li:nth-of-type(4) {
   animation-delay: 1.0s;
+}
+ul li:nth-of-type(5) {
+  animation-delay: 1.25s;
+}
+ul li:nth-of-type(6) {
+  animation-delay: 1.5s;
 }
 ul li:last-of-type {
   padding-bottom: 0;
@@ -338,7 +346,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 	        	<form action="#">
 	        		<input type="hidden" name="img" value=""/>
 	        		<!-- 다른 날짜 클릭하면 클릭한 날짜가 보이도록 -->
-					<h1><span class="clickDate">${current }</span> 건강 기록</h1>
+					<h1><span class="clickDate">${empty clickDate ? current : clickDate }</span> 건강 기록</h1>
 					
 					<ul>
 						<li>
@@ -552,7 +560,6 @@ ul li input[type=checkbox]:checked ~ .acco {
 								    	<small class="d-block text-center">잣</small>	
 							    	</div>
 							    </div>
-								<a href="javascript:addInput()" id="addInput">추가</a>	
 							</div>
 						</li>
 						
@@ -778,8 +785,9 @@ ul li input[type=checkbox]:checked ~ .acco {
 </html>
 <script>
 (function($){
-	var dates = '<c:out value="${date}"/>'
-	//console.log('dates:',dates.split(" "))
+	var dates_ = '<c:out value="${date}"/>'
+	var dates = dates_.substring(1);
+	//console.log('dates:',dates)
 	$.datepicker.setDefaults({
 	    dateFormat: 'yy-mm-dd',
 	    prevText: '이전 달',
@@ -815,10 +823,13 @@ ul li input[type=checkbox]:checked ~ .acco {
 	$(function(){
 		 $('.datepicker').datepicker().toggle('.datepicker');
 	})
-	console.log('test:',$('.add').slice('3'))
+	//console.log('test:',$('.add').slice('3'))
 	$('.datepicker').change(function(){
 		//console.log('datepicker:',$(this).val())
+		var clickDate = $(this).val()
 		if(confirm('날짜를 변경하시면 해당 날짜의 정보가 저장되지않습니다.\r\n변경하시겠습니까?')){
+			location.href='/project/ClickDate.do?clickDate='+clickDate;
+			/*
 			$('.clickDate').html($(this).val());
 			$('.acco:eq(0)').find('[name=condition]').removeClass();
 			$('.acco:eq(1)').find('span').each(function(){
@@ -834,16 +845,36 @@ ul li input[type=checkbox]:checked ~ .acco {
 			$('[name=w]').val('');
 			$('#content').val('');
 			$('.datepicker').css('display','none');
+			*/
+			//확인,수정,삭제 어떻게 보일 지
+			var isExist = false;
+			console.log('저장된 날짜:',dates.split(" "))
+			console.log('클릭한 날짜:',$('.clickDate').html())
+			dates.split(" ").forEach(function(d){
+				if($('.clickDate').html()==d){//클릭한 날짜에 기록이 있을 시
+					return isExist = true;
+				}	
+			});//////////forEach
+			if(isExist){
+				$('.memoSend:eq(0)').css('display','none');
+				$('.memoSend').slice(1).css('display','');
+			}
+			else{//클릭한 날짜에 기록이 없을 시
+				$('.memoSend:eq(0)').css('display','');
+				$('.memoSend').slice(1).css('display','none');
+			}
+			
 		}
 	});
 	
 	//컨드롤러에서 가져온 정보 꾸리기(기본값=오늘날짜)
-	var current = '<c:out value="${current}"/>';
+	var current_ = '<c:out value="${current}"/>';
+	var current = current_.length==0 ? '<c:out value="${clickDate}"/>' : current_;
 	console.log('click:',$('.clickDate').html())
 	//console.log('dates:',dates.length)
 	if(dates.length && $('.clickDate').html()==current){//기본값=오늘날짜
 		var info_con = '<c:out value="${condition}"/>';
-		if($('.acco').find('[alt='+info_con+']')){
+		if(info_con.length && $('.acco').find('[alt='+info_con+']')){
 			$('.acco').find('[alt='+info_con+']').addClass('circle');
 		}
 		var info_head = '<c:out value="${head}"/>';
@@ -900,7 +931,6 @@ ul li input[type=checkbox]:checked ~ .acco {
 				$(this).toggleClass('bodySelcted');
 			}
 		});
-		//영양제 추가 갯수만큼 .add div 만들어야함
 		var info_nutr = '<c:out value="${nutr}"/>';
 		//console.log('nutr:',info_nutr.split('$'))
 		info_nutr.split('$').forEach(function(item,index){
@@ -926,25 +956,22 @@ ul li input[type=checkbox]:checked ~ .acco {
 		var info_content = '<c:out value="${content}"/>';
 		$('#content').val(info_content);
 	}
-	
-	//클릭한 날짜가 오늘 날짜가 아닐 때
-	$('.clickDate').change(function(e){
-		console.log('e',e)
-		console.log('diff:',$(this).html())
-	});
 
 	//확인,수정,삭제 어떻게 보일 지
+	var isExist = false;
 	dates.split(" ").forEach(function(d){
-		console.log('check:',$('.clickDate').html()==d)
 		if($('.clickDate').html()==d){//클릭한 날짜에 기록이 있을 시
-			$('.memoSend:eq(0)').css('display','none');
-			$('.memoSend').slice(1).css('display','');
-		}
-		else{//클릭한 날짜에 기록이 없을 시
-			$('.memoSend:eq(0)').css('display','');
-			$('.memoSend').slice(1).css('display','none');
-		}
-	})
+			return isExist = true;
+		}	
+	});//////////forEach
+	if(isExist){
+		$('.memoSend:eq(0)').css('display','none');
+		$('.memoSend').slice(1).css('display','');
+	}
+	else{//클릭한 날짜에 기록이 없을 시
+		$('.memoSend:eq(0)').css('display','');
+		$('.memoSend').slice(1).css('display','none');
+	}
 	
 	//건강기록 저장하기
 	$('.diaryStart').find('.memoSend').click(function(){
@@ -1006,11 +1033,14 @@ ul li input[type=checkbox]:checked ~ .acco {
 			}		
 		});
 		nutrients = nutrients.substring(0,parseInt(nutrients.length)-1);
-		
+		console.log('allergy:',$('.acco').find('input.allergy'))
 		//알레르기
 		var allergy = '';
 		$('.acco').find('.full').each(function(){
 			allergy += $(this).find('small').html()+' ';
+		});
+		$('.acco').find('input.allergy').each(function(){
+			allergy += $(this).val()+' ';
 		});
 		allergy = allergy.substring(0,parseInt(allergy.length)-1);
 
@@ -1114,37 +1144,11 @@ ul li input[type=checkbox]:checked ~ .acco {
 		$(this).toggleClass('full');
 	});
 	
-	//복용 영양제 추가하기
-	function addList(){
-		var origin = $('#add').prev();
-		var clone = origin.clone();
-		origin.after(clone.children(':eq(0)').val('').end().children(':eq(1)').val('').end())
-		//복용 영양제 삭제하기
-		$('.xmark').click(function(){
-			$(this).parent().remove()
-		});
-	}
-	
 	//복용 영양제 삭제하기
 	$('.xmark').click(function(){
 		$(this).parent().remove()
 	});
 	
-	
-	//알레르기 추가하기
-	function addInput(){
-		var input = `<div class="row m-1">
-						<input class="form-control" placeholder="알레르기명" style="height: 35px; width: 110px">
-						<i class="xmark fa-regular fa-circle-xmark ml-2 align-self-center"></i>
-					</div>`;
-		$('#addInput').prev().after(input);
-		
-		//추가한 알레르기 삭제하기
-		$('.xmark').click(function(){
-			$(this).parent().remove()
-		});
-	}
-
 	//bmi 계산
  	var bmi = document.querySelector('.c-bmi');
  	var height = bmi.querySelector('input[name=h]');
@@ -1208,4 +1212,33 @@ ul li input[type=checkbox]:checked ~ .acco {
 		$('input[type=password]').css('display','');
 	});
 })(jQuery)
+
+	//복용 영양제 추가하기
+	function addList(){
+		var origin = $('#add').prev();
+		var clone = origin.clone();
+		origin.after(clone.children(':eq(0)').val('').end().children(':eq(1)').val('').end())
+		//복용 영양제 삭제하기
+		$('.xmark').click(function(){
+			$(this).parent().remove()
+		});
+	}
+	/*
+	//알레르기 추가하기
+	function addInput(name){
+		var valueTag = name.length==0 ?
+				`<input class="form-control allergy" placeholder="알레르기명" style="height: 35px; width: 110px">` : 
+				`<input class="form-control allergy" value=name style="height: 35px; width: 110px">`;
+		var inputTag = `<div class="row m-1">`
+						+ valueTag +
+						`<i class="xmark fa-regular fa-circle-xmark ml-2 align-self-center"></i>
+					</div>`;
+		$('#addInput').prev().after(inputTag);
+		
+		//추가한 알레르기 삭제하기
+		$('.xmark').click(function(){
+			$(this).parent().remove()
+		});
+	}
+	*/
 </script>

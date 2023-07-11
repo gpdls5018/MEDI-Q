@@ -30,13 +30,12 @@ public class HealthMemoIServicempl implements HealthMemoService<HealthMemoDTO>{
 	private String tokenName;
 
 	@Override
-	public List<HealthMemoDTO> selectAll(HttpServletRequest req, LocalDate current) {
+	public List<HealthMemoDTO> selectAll(HttpServletRequest req) {
 		String token = jwTokensService.getToken(req, tokenName);
 		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
 		String id = payloads.get("sub").toString();
 		
 		payloads.put("mm_Id", id);
-		payloads.put("mm_Date", current);
 		
 		return mapper.findAllMemo(payloads);
 	}

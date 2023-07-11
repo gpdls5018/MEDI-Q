@@ -50,10 +50,10 @@ public class MypageController {
 	public String mypage(HttpServletRequest req, HttpServletResponse resp, Model model) {
 		LocalDate current = LocalDate.now(); //현재날짜 구하기
 		Map map = new HashMap<>();
-		
+		//System.out.println("date: "+date);
 		MemberDTO member = loginService.selectOne(req,resp);
 		ProfileImageDTO profImg = loginService.selectProfImg(member.getId());
-		List<HealthMemoDTO> memos = healthMemoIServicempl.selectAll(req,current);
+		List<HealthMemoDTO> memos = healthMemoIServicempl.selectAll(req);
 		for(HealthMemoDTO m : memos) {
 			m.setMm_Date(m.getMm_Date().split(" ")[0]);
 		}
@@ -65,6 +65,30 @@ public class MypageController {
 			memo.setMm_Date(memo.getMm_Date().split(" ")[0]);
 		}
 		model.addAttribute("current", current);
+		model.addAttribute("info", member);//추후 더 추가해야함
+		model.addAttribute("profImg", profImg);
+		model.addAttribute("memos", memos);
+		model.addAttribute("memo", memo);
+		
+		return "login/MyPage";
+	}
+	
+	@GetMapping("/ClickDate.do")
+	public String clickDate(@RequestParam String clickDate, HttpServletRequest req, HttpServletResponse resp, Model model) {
+		MemberDTO member = loginService.selectOne(req,resp);
+		ProfileImageDTO profImg = loginService.selectProfImg(member.getId());
+		List<HealthMemoDTO> memos = healthMemoIServicempl.selectAll(req);
+		for(HealthMemoDTO m : memos) {
+			m.setMm_Date(m.getMm_Date().split(" ")[0]);
+		}
+		Map map = new HashMap<>();
+		map.put("mm_Id", member.getId());
+		map.put("mm_Date", clickDate);
+		HealthMemoDTO memo = healthMemoIServicempl.selectOne(map);
+		if(memo != null) {
+			memo.setMm_Date(memo.getMm_Date().split(" ")[0]);
+		}
+		model.addAttribute("clickDate", clickDate);
 		model.addAttribute("info", member);//추후 더 추가해야함
 		model.addAttribute("profImg", profImg);
 		model.addAttribute("memos", memos);
