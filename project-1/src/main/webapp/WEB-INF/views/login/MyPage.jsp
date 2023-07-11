@@ -684,7 +684,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 							</div>
 						</li>
 					</ul>
-						<button type="submit" class="memoSend btn btn-outline-primary mt-3">확인</button>>
+						<button type="submit" class="memoSend btn btn-outline-primary mt-3">확인</button>
 						<button type="submit" class="memoSend btn btn-outline-primary mt-3">수정</button>
 						<button type="submit" class="memoSend btn btn-outline-primary mt-3">삭제</button>
 				</form>
@@ -779,7 +779,6 @@ ul li input[type=checkbox]:checked ~ .acco {
 <script>
 	var dates = '<c:out value="${date}"/>'
 	//console.log('dates:',dates.split(" "))
-	
 	$.datepicker.setDefaults({
 	    dateFormat: 'yy-mm-dd',
 	    prevText: '이전 달',
@@ -824,7 +823,8 @@ ul li input[type=checkbox]:checked ~ .acco {
 	//컨드롤러에서 가져온 정보 꾸리기(기본값=오늘날짜)
 	var current = '<c:out value="${current}"/>';
 	console.log('click:',$('.clickDate').html())
-	if($('.clickDate').html()==current){//기본값=오늘날짜
+	//console.log('dates:',dates.length)
+	if(dates.length && $('.clickDate').html()==current){//기본값=오늘날짜
 		var info_con = '<c:out value="${condition}"/>';
 		if($('.acco').find('[alt='+info_con+']')){
 			$('.acco').find('[alt='+info_con+']').addClass('circle');
@@ -902,9 +902,19 @@ ul li input[type=checkbox]:checked ~ .acco {
 	$('.clickDate').change(function(){
 		console.log('diff:',$(this).html())
 	});
-	
+
 	//확인,수정,삭제 어떻게 보일 지
-	//if('.')
+	dates.split(" ").forEach(function(d){
+		console.log('check:',$('.clickDate').html()==d)
+		if($('.clickDate').html()==d){//클릭한 날짜에 기록이 있을 시
+			$('.memoSend:eq(0)').css('display','none');
+			$('.memoSend').slice(1).css('display','');
+		}
+		else{//클릭한 날짜에 기록이 없을 시
+			$('.memoSend:eq(0)').css('display','');
+			$('.memoSend').slice(1).css('display','none');
+		}
+	})
 </script>
 <script>	
 	//건강기록 저장하기
