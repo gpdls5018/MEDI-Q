@@ -100,7 +100,7 @@
 		<!-- 검색창 밑 검색 태그용 버튼  -->
 		<div class="row justify-content-center mt-5 pt-5">
 	        <div class="col-lg-10 text-center">
-	            <h1 class="mb-5" style="font-weight:bold; color:black;"><span style="color: #EF605D;">제품명,영양성분</span>을 검색해보세요.</h1>
+	            <h1 class="my-5" style="font-weight:bold; color:black;"><span style="color: #EF605D;">제품명,영양성분</span>을 검색해보세요.</h1>
 	            <form class="position-relative w-75 mx-auto animated slideInDown d-flex input-wrapper" action="/hashtag.do" method="post" style="box-shadow: 0px 0px 5px gray; border-radius: 20px;">
 	                <input class="border-0 rounded-pill w-100 px-5 py-3 ps-4 pe-5 flex-grow-1" type="text" name="postTag" 
 	                placeholder="제품명 및 영양성분을 입력하세요" value="${not empty searchTags ? fn:replace(searchTags,'#',',#') : ''}">
@@ -110,7 +110,7 @@
 					</button>
 	            </form>
 	        </div>
-	        <div id="hashtaglink" class="ml-1 py-3 row" >
+	        <div id="hashtaglink" class="ml-1 py-5 row" >
                 <a href="#" style="font-style:italic;font-weight: bold;color:green">#피부건강</a>&nbsp;
 	        	<a href="#" style="font-style:italic;font-weight: bold;color:palevioletred">#면역력 증진</a>&nbsp;
 		        <a href="#" style="font-style:italic;font-weight: bold;color:mediumpurple ">#전립선 건강</a>&nbsp;
@@ -192,7 +192,7 @@
 	    
   	  <!--  4번째 다이브 목록 -->
       <div class="mainInner">
-            <h3 style="text-align: center; margin-top: 20px; font-weight: bold;">우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
+            <h3 class="my-4" style="text-align: center; margin-top:20px; font-weight: bold;">우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
             <div class="container-xxl py-4">
                 <div class="container">
                     <div class="mainMap" id="map" >
@@ -337,7 +337,7 @@
 	                        </a>
 	                    </div><!-- qna-card의 끝 -->
 	            </div>
-	            <div class="clearfix">
+	            <div class="clearfix mr-3">
 	                <a tabindex="0" class="more-qna" href="#">Q&amp;A 더보기</a>
 	            </div>
 	        </div>
