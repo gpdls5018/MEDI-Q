@@ -20,7 +20,7 @@ import lombok.Setter;
 @Component
 @Alias("totalReviewDto")
 public class TotalReviewDTO {
-	int starScoreTotal;
+	float starScoreTotal;
 	Map starScore;
 	List<Map<String,Integer>> effectList;
 	List<Map<String,Integer>> noEffectList;

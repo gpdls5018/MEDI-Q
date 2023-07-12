@@ -49,7 +49,7 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public TotalReviewDTO selectTotalReviewInfo(int no) {
 		TotalReviewDTO totalReviewDto = new TotalReviewDTO();
-		int starScoreAVG = reviewMapper.selectTotalReviewInfoStarScoreAverage(no);
+		float starScoreAVG = reviewMapper.selectTotalReviewInfoStarScoreAverage(no);
 		System.out.println("starScoreAVG : "+starScoreAVG);
 		totalReviewDto.setStarScoreTotal(starScoreAVG);
 		Map starScore = reviewMapper.selectTotalReviewInfoStarScore(no);

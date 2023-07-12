@@ -18,7 +18,7 @@ public interface ReviewMapper {
 
 	List<ReviewDTO> selectReviewByFoodNo(Map map);
 
-	int selectTotalReviewInfoStarScoreAverage(int no);
+	float selectTotalReviewInfoStarScoreAverage(int no);
 
 	Map selectTotalReviewInfoStarScore(int no);
 
