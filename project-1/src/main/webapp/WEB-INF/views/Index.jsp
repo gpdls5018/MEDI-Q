@@ -68,7 +68,7 @@
             <div id="top-banner-3" class="banner" id="tsbaimg3">
 	            <a href="#">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper3" >
-	                 <h1>📷 사진으로 약을 검색해요!</h1>       
+	                 <h1>📷 사진으로 약을 검색해보세요!</h1>       
 	              </div>
 	            </a>
             </div>
@@ -130,7 +130,7 @@
      	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
 	        <h1>$이태성$님의 최근 분석 리포트</h1>
 	        <div class="DefaultReportItem__ReportBook-sc-rysw89-0 ibNwmg">
-	            <a data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="/analyzeMyFood.do">
+	            <a data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="/analyzeMyFood.do" style="text-decoration: none;">
 	                <div class="DefaultReportItem__Springs-sc-rysw89-8 jZuajW">
 	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
 	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
