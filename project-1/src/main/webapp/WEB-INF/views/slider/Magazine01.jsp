@@ -23,7 +23,7 @@
   }
   .paragraph{
   	margin-top: 120px;
-  	font-size: 25px;
+  	font-size: 22px;
   }
   
   .custom-text{
@@ -130,7 +130,7 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3 " style="background-color: #ffb1b1;">
   	<div class="container">
-	    <img src="resources/images/magazine_images/basic/search.png" class="img-fluid" style="width:40px">
+	    <img src="<c:url value="resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">영양소 A to Z</span>
 	    <h4><strong style="color:#ee4949; font-size:40px;">운동러들의 필수 보충제, 아르기닌의 부작용</strong></h4>
   	</div>
@@ -142,14 +142,14 @@
    	   어떤 영양제든 과다하게 섭취할 경우 부작용이 있을 수 있으니 부작용을 꼼꼼히 살펴보고 선택하도록 해주세요.
   </div>
   <div class="mt-5">
-    <img src="resources/images/magazine_images/01/01_IMG.png" class="img-fluid">
+    <img src="<c:url value="resources/images/magazine_images/01/01_IMG.png"/>" class="img-fluid">
   </div>
   <!-- 
   <hr class="my-hr mt-5 mb-5">
    -->
       
   <div class="paragraph">
-	<img src="resources/images/magazine_images/basic/work-time.png" class="img-fluid" style="width:100px">
+	<img src="<c:url value="resources/images/magazine_images/basic/work-time.png"/>" class="img-fluid" style="width:100px">
 	<span style="font-size: xx-large; color: #FF7C4C">&nbsp;&nbsp;&nbsp;<strong>메디의 1분 요약</strong></span>
 	<div class="wrap">
 	    <div class="box">Click</div>
@@ -159,13 +159,13 @@
   
   <div class="paragraph">
     <div class="mt-5">
-    <img src="resources/images/magazine_images/basic/QuestionMark.png" class="img-fluid" style="width:60px; margin-bottom: 15px;">
+    <img src="<c:url value="resources/images/magazine_images/basic/QuestionMark.png"/>" class="img-fluid" style="width:60px; margin-bottom: 15px;">
       <span class="title" style="font-size:30px"><strong>&nbsp;아르기닌이 탈모를 유발한다?</strong></span>
     </div>
     <div class="mt-3">
       아르기닌을 먹으면 탈모가 온다는 얘기가 종종 들려오는데 아직
-      <span class="highLight">탈모와의 직접적인 상관관계는 밝혀진 바가 없어요.</span>
-      &nbsp;오히려 아르기닌은 혈관을 확장시켜서 혈액순환을 도와주기 때문에
+      <span class="highLight">탈모와의 직접적인 상관관계는 밝혀진 바가 없어요.</span><br/>
+      오히려 아르기닌은 혈관을 확장시켜서 혈액순환을 도와주기 때문에
       <span class="underLine">모근으로 공급되는 혈액량을 늘리고 머리카락의 성장에 도움을 줄 수 있다는 주장</span>도 있습니다.
     </div>
   </div>
@@ -216,7 +216,7 @@
   <!-- 
   <hr class="mt-5 my-hr">
    -->
-  <div class="mt-5 mb-5 jumbotron" style="font-size: 23px;">
+  <div class="mt-5 mb-5 jumbotron" style="font-size: 21px;">
     국내에서는 특정 회사에서 개별적으로 인정받은 아르기닌만이 건강기능식품 인증을 받았는데,
     <span class="highLight">혈관 이완을 통한 혈액 순환 개선을 위해서 하루 6g의 아르기닌을 섭취하도록 권장</span>하고 있어요.
     <span class="underLine">보충제로 복용할 경우 명확하게 정해진 용량은 없지만 보통 1~3g 정도를 시작으로 효과나 부작용에 따라 조절</span>하면서 나에게 맞는 섭취량을 찾아보세요!
@@ -224,7 +224,7 @@
 </div>
 <div class="container custom-footer">
   <span class="custom-text">  
-	<img src="resources/images/magazine_images/basic/happy.png" class="img-fluid" style="width:50px">
+	<img src="<c:url value="resources/images/magazine_images/basic/happy.png"/>" class="img-fluid" style="width:50px">
   	&nbsp;&nbsp;관련 영양제 인기 TOP 10 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
