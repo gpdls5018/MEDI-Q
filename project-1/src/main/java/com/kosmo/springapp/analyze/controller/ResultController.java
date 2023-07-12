@@ -56,7 +56,7 @@ public class ResultController {
             NutrientDTO nutdto = analyzeService.findNutrientByName(nut);//현재 영양소에 해당하는 정보를 가져온다(서브네임과 비교한다)
             String listpattern = nut + "[^0-9.]*([0-9.]+)";//영양소 이름 다음에 나오는 숫자 또는 (.) 까지를 무시하고 숫자와.만 가져온다
             Pattern listregex = Pattern.compile(listpattern);
-            Matcher listmatcher = listregex.matcher(listOne.getStandard().replaceAll(" ",""));//건기식 정보를 가져올때 비타민 C 같은 경우가 있어 띄워쓰기를 없애는 용도
+            Matcher listmatcher = listregex.matcher(listOne.getStandard());//건기식 정보를 가져올때 비타민 C 같은 경우가 있어 띄워쓰기를 없애는 용도
 	        Matcher DMmatcher = cappattern.matcher(nutdto.getN_DRI_M());
             Matcher DFmatcher = cappattern.matcher(nutdto.getN_DRI_F());
             if (listmatcher.find()) {//남자 28가지영양소 점수 부여
