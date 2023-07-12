@@ -24,9 +24,27 @@
         }
 </style>
 <body>
+	
 	<div class="container" style="margin-top: 100px">
-        <!--심리적 스트레스-->
-        <h2 class="text-primary font-weight-bold">심리적 스트레스</h2>
+		<!-- tap 화면 -->
+		<div>
+			<ul class="nav nav-tabs nav-justified">
+				<li class="nav-item">
+			    	<a class="nav-link" href='<c:url value="/project/MentalTest1.do"/>'>심리적 스트레스</a>
+			    </li>
+			    <li class="nav-item">
+			      	<a class="nav-link" href='<c:url value="/project/MentalTest2.do"/>'>흡연 유형 평가</a>
+			    </li>
+			    <li class="nav-item">
+			      	<a class="nav-link active" href='#'>알코올 의존(AUDIT-K)</a>
+			    </li>
+			    <li class="nav-item">
+			      	<a class="nav-link" href='<c:url value="/project/MentalTest4.do"/>'>우울증(CES-D)</a>
+			    </li>
+			</ul>
+		</div>
+	
+        <h2 class="text-primary font-weight-bold mt-5">심리적 스트레스</h2>
         <small><strong class="small font-weight-bold text-black-50">평가도구원문 : Psychosocial Wellbeing Index-short form(PWI-SF)</strong></small>
         <p class="mt-2" style="font-size: 1rem">
             다음 문항은 심리적인 스트레스의 정도를 파악하기 위한 것입니다.<br/>
@@ -37,7 +55,7 @@
 	        <table>
 	            <tbody>
 	                <tr class="trTitle">
-	                    <th ><span class="text-primary">01</span> 현재 매우 편안하며 건강하다고 느낀다</th>
+	                    <th class="pt-4"><span class="text-primary">01</span> 현재 매우 편안하며 건강하다고 느낀다</th>
 	                </tr>
 	                <tr class="border-bottom tr-content">
 	                    <td class="py-4">

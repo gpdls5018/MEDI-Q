@@ -169,9 +169,25 @@ public class MypageController {
 		return "login/Message";
 	}
 	
-	//정신건강테스트
-	@GetMapping("/MentalTest.do")
-	public String mentalTest() {
-		return "mentaltest/MentalTest";
+	//정신건강테스트1
+	@GetMapping("/MentalTest1.do")
+	public String mentalTest1() {
+		return "mentaltest/MentalTest1";
 	}
+	//정신건강테스트2
+	@GetMapping("/MentalTest2.do")
+	public String mentalTest2() {
+		return "mentaltest/MentalTest2";
+	}
+	//정신건강테스트3
+	@GetMapping("/MentalTest3.do")
+	public String mentalTest3() {
+		return "mentaltest/MentalTest3";
+	}
+	//정신건강테스트4
+	@GetMapping("/MentalTest4.do")
+	public String mentalTest4() {
+		return "mentaltest/MentalTest4";
+	}
+	
 }
