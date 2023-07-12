@@ -56,7 +56,7 @@ public class AnalyzeMyReportServiceImpl {
 							}
 						}
 						for(String nutrient : nutrient_list) {//필수 영양소에서 하나를 가져옴 -> 모든 건기식에 대해 수행해야 한다
-							
+							System.out.println("item : "+ item);
 							if(nutrient.contains(item)) {//필수 비타민을 섭취 중이라면
 								if(!nutrient_list_report.contains(nutrient)) { // 중복 제거
 									nutrient_list_no_report.remove(nutrient);
@@ -90,7 +90,7 @@ public class AnalyzeMyReportServiceImpl {
 		nutrient_score = nutrient_list_report.size() *3;
 		int resultScore = ingredient_score*30 + nutrient_score;
 		analyzeResultListDTO.setResultScore(resultScore);
-		analyzeResultListDTO.setIngredientCount(ingredient_score);
+		analyzeResultListDTO.setIngredientCount(((List)map.get("takeFood")).size());
 		return analyzeResultListDTO;
 	}
 }

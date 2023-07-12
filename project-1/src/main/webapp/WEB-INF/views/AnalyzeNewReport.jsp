@@ -519,9 +519,9 @@
 
 
 
-  const takeFoods = Array();
+  var takeFoods = Array();
   $('#save-take-food').click(function() {
-    var takeFood = document.querySelectorAll('#last-choose-food-data .food-li-checked');
+    var takeFood = document.querySelectorAll('#searchFoodList .food-li-checked');
     var foodContainer = $('.food-selected-list ul');
     //$('.food-selected-list ul li').remove('li'); 
     $('#take-foodList-modal .food-li-checked').clone(true).appendTo(foodContainer);
@@ -537,8 +537,8 @@
     event.preventDefault(); // 전송을 막는 메소드
   }
   $('#analyze-myFood').click(function() {
-    document.querySelector("#takePurPose").value=takePurPoses;
-    document.querySelector("#takeFood").value=takeFoods;
+    document.querySelector("#takePurPose").value = takePurPoses;
+    document.querySelector("#takeFood").value = takeFoods;
     let timerInterval;
     Swal.fire({
       title: '분석중입니다!',
