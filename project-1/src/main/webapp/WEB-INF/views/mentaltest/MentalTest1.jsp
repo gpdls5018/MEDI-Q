@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 <style>
         .line{
             border: rgb(241, 79, 106) 1px solid;
@@ -21,6 +19,10 @@
             width: 50px;
             height: 50px;
             cursor: pointer;
+        }
+        #text img{
+        	width: 30px;
+        	height: 30px;
         }
 </style>
 <body>
@@ -361,7 +363,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <div class="d-flex flex-wrap">
+                    <div id="text" class="d-flex flex-wrap">
                         <h5 id="resultT" class="text-danger font-weight-bold mb-3">위험군</h5>
                         <p id="resultC">부가설명</p>
                     </div>
@@ -387,47 +389,24 @@
 		else{
 			var sum=0;
 			$(':radio:checked').each(function(){
-				
-				//swal 시작
-				var timerInterval
-				Swal.fire({
-				  title: 'Auto close alert!',
-				  html: 'I will close in <b></b> milliseconds.',
-				  timer: 2000,
-				  timerProgressBar: true,
-				  didOpen: () => {
-				    Swal.showLoading()
-				    var b = Swal.getHtmlContainer().querySelector('b')
-				    timerInterval = setInterval(() => {
-				      b.textContent = Swal.getTimerLeft()
-				    }, 100)
-				  },
-				  willClose: () => {
-				    clearInterval(timerInterval)
-				  }
-				}).then((result) => {
-				  if (result.dismiss === Swal.DismissReason.timer) {					  
-					  $('#result').css('display','block');
-				  }
-				});
-				//swal 끝
 
+				//$('#result').css('display','block');
 				sum += parseInt($(this).val());
 				//console.log('sum:',sum,$(this).val())
 				if(sum >= 27){//고위험군
-					$('#resultT').html('스트레스 고위험군입니다');
+					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>스트레스 고위험군입니다`);
 					$('#resultC').html(`현재 스트레스를 매우 많이 경험하고 있습니다.<br/>
 						    심리적으로 불현감이 높고, 직장 및 일상생활 또는 신체에 부정적인 영향이 있을 수 있습니다.<br/>
 						    혼자서 고민하고 힘들어 하기보다, 전문가의 상담을 받는다면 심리적이나 신체적인 어려움을 극복하는데 도움이 됩니다.<br/>
 						    의사 또는 상담심리사와 상담을 권유합니다.`);
 				}
 				else if(sum <= 8){//잠재적 스트레스군
-					$('#resultT').html('스트레스 건강군입니다.');
+					$('#resultT').html(`<img alt='엄지' src='/resources/images/basic/like.png'/>스트레스 건강군입니다.`);
 					$('#resultC').html(`현재 스트레스를 경험하지 않고 있으며, 심리적으로 건강하게 생활하고 있습니다.<br/>
 						    평소의 스트레스 관리방법을 꾸준히 유지하시기 바랍니다.`);
 				}
 				else{//건강군
-					$('#resultT').html('스트레스 잠재군입니다.');
+					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>스트레스 잠재군입니다.`);
 					$('#resultC').html(`현재 스트레스를 많이 경험하지는 않고 있습니다.<br/>
 						    그러나 상황의 변화에 따라 스트레스 고위험군으로 변경될 가능성이 있습니다.<br/>
 						    스트레스 상황에서 대처하는 방법을 미리 준비해 둔다면, 스트레스를 받더라도 쉽게 좌절하지 않고 문제를 해결해 나갈 수 있을 것입니다.<br/>
