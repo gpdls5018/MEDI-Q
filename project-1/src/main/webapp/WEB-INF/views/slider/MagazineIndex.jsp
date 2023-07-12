@@ -18,20 +18,17 @@
 
 
 <style>
- aside > div {
-	  border: 1px solid #ccc;
-	  border-radius: 10px;
-	  padding: 20px;
-	  background-color: white;
-	  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	  margin-bottom: 20px;
-    }
+	.magimg div{
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		border-radius: 20px;
+		margin-bottom: 50px;
+	}
     .magimg div a img{
     	border-radius: 20px;
-    	padding: 15px;
+    	padding: 5px;
+    	margin: 10px 5px 0 5px;
     	width: 370px;
-    	height: 220px;
-    	
+    	height: 220px;    	
     }
 	
 </style>
@@ -78,7 +75,7 @@
                 <ul class="sidemgrg" style=" list-style:none; padding-inline-start: 0px;">
                     <a href="<c:url value="/magazine.do?no=01"/>" >
                         <div class="image d-flex">
-                        	<img src="<c:url value="/resources/images/tsimages/rank_crown_gold_48.svg"/>" style=" position: absolute; vertical-align:top; left:40px; width:50px; height:40px; z-index:20; " alt="*">
+                        	<img src="<c:url value="/resources/images/tsimages/rank_crown_gold_48.svg"/>" style=" position: absolute; left:40px; width:50px; height:40px; z-index:20; " alt="*">
                         	<img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" alt="*" style="width:300px; height:100px;">
                         </div>
                         <div style="align-items: center; margin-top:20px; margin-left:10px; justify-content: center; text-align: start; line-height: 3px; font-weight:400;">
@@ -92,7 +89,7 @@
                     </a>
                     <a href="<c:url value="/magazine.do?no=02"/>" >
                         <div class="image d-flex">
-	                        <img src="<c:url value="/resources/images/tsimages/rank_crown_silver_48.svg"/>" style=" position: absolute; vertical-align:top; left:40px; width:50px; height:40px; z-index:20; " alt="*">
+	                        <img src="<c:url value="/resources/images/tsimages/rank_crown_silver_48.svg"/>" style=" position: absolute; left:40px; width:50px; height:40px; z-index:20; " alt="*">
                         	<img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" alt="*" style="width:300px; height:100px;">
                         </div>
                         <div style="align-items: center; margin-top:20px; margin-left:10px; justify-content: center; text-align: start; line-height: 3px; font-weight:400;">
@@ -106,7 +103,7 @@
                     </a>
                     <a href="<c:url value="/magazine.do?no=03"/>" >
                         <div class="image d-flex">
-                             <img src="<c:url value="/resources/images/tsimages/rank_crown_bronze_48.svg"/>" style=" position: absolute; vertical-align:top; left:40px; width:50px; height:40px; z-index:20; " alt="*">
+                             <img src="<c:url value="/resources/images/tsimages/rank_crown_bronze_48.svg"/>" style=" position: absolute; left:40px; width:50px; height:40px; z-index:20; " alt="*">
                         	 <img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>" alt="*" style="width:300px; height:100px;">
                         </div>
                         <div style="align-items: center; margin-top:20px; margin-left:10px; justify-content: center; text-align: start; line-height: 3px; font-weight:400;">
