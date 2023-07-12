@@ -4,69 +4,239 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp" />
 <style>
-	.social a:hover{
-		text-decoration:none;
-	}
+ :root{
+    --background-theme:#e6e9f0;
+    --text-color:#000;
+}
+
+*,html{
+    margin:0px;
+    padding:0px;
+    font-size: 10px;
+    color: var(--text-color);
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    width:100%;
+    background-color:var(--background-theme);
+}
+h1{
+    font-size: 3.2rem;
+}
+p{
+  font-size: 1.2rem;  
+}
+/* Sections */
+.login_section{
+    min-height: 100vh;
+    display: flex;
+    align-items:center;
+    position: relative;
+    justify-content:center;
+}
+
+.accounts_container{
+    height: 550px;
+    min-height: 550px;
+    max-height: 100%;
+    border-radius:10px;
+    box-shadow: 8px 8px 8px rgba(0,0,0,0.1);
+    background-color: #fcfcfc;
+    overflow: hidden; 
+}
+
+
+.accounts_image img{
+    object-fit: cover;
+    object-position: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.accounts_col form .form-group{
+    position: relative !important;
+}
+.accounts_col form .form-control{
+    font-size:1.6rem;
+    padding:20px 10px;
+    margin-bottom:20px;
+    background:transparent !important;
+}
+.accounts_col form label,
+.accounts_col form .form-group i{
+    position:absolute;
+    z-index: 1;
+    pointer-events: none;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size:1.2rem;
+    left:10px;
+
+}
+.accounts_col form label{
+    transition: .2s linear;
+}
+.change_label{
+    background-color:#fcfcfc;
+    transition: .2s linear;
+    transform: scale(0.8);
+    top:0 !important;
+}
+.accounts_col form .form-group i{
+    left:90% !important;
+    cursor: pointer;
+    pointer-events:visible;
+}
+.register_btn{
+    padding:10px 0!important;
+    font-size: 1.6rem !important;
+    font-weight: 600 !important;
+
+}
+
+.already_member_box p,
+.already_member_box span{
+    cursor: pointer;
+}
+.login_form{
+    display:none;
+}
+.signup_form{
+    display:none;
+}
+.css-tbibp8 {
+    margin: 20px 0px 16px;
+    border: 1px solid rgb(228, 229, 237);
+    padding: 16px;
+    border-radius: 8px;
+}
+.css-1y19fas {
+    margin: 0px;
+    color: rgb(33, 34, 36);
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0px;
+}
+.css-1dqn28w {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+.css-18u83hy {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+.enu6cyp2 img {
+    border-style: none;
+}
 </style>
-<div class="img" style="background-image: url(<c:url value="/resources/images/basic/bg.jpg" />); background-size: cover;">   
-	<div class="container d-flex justify-content-center align-items-center vh-100">
-		<div class="row justify-content-center">
-			<div class="col">
-				<div class="login-wrap p-0">
-					<c:if test="${not empty searchPwd }">
+	<section class="login_section">
+          <div class="container outer_container accounts_container">
+            <div class="row h-100">
+              <div class="col col-sm-12 col-md-12 col-lg-8 m-0 p-0 w-100 h-100 accounts_col">
+                <div class="accounts_image w-100 h-100">
+                  <img src="https://img.freepik.com/free-photo/social-media-instagram-digital-marketing-concept-3d-rendering_106244-1717.jpg?t=st=1647414398~exp=1647414998~hmac=2c478ef6affd973ccd71ea4d394d9283db4a0c6c4c686ba0b9f6091c8a56e5a1&w=1480" alt="accounts_image" class="img-fluid w-100 h-100" />
+                </div>
+                <!--accounts_image-->
+              </div>
+              <!--account_col-->
+              <div class="col col-sm-12 col-md-12 col-lg-4 m-0 p-0 accounts_col">
+                <!--accounts_forms-->
+                <div class="accounts_forms  w-100 h-100" id="login">
+                    <c:if test="${not empty searchPwd }">
 						<c:set var="asterisks" value=""/>
 						<c:forEach begin="0" end="${fn:length(searchPwd) - 4}" varStatus="loop">
 							 <c:set var="asterisks" value="${asterisks}*"/>
 						</c:forEach>
 						<c:set var="searchPwdFn" value="${fn:substring(searchPwd, 0, 3)}${asterisks}"/>
 					</c:if>
-					<h1 class="mb-5 text-center">Login</h1>
-					
-					<c:if test="${! empty NOT_LOGIN }">
-						<span class="font-weight-bold">${NOT_LOGIN }</span>
-					</c:if>
-					<form action="<c:url value="/project/Login.do" />" class="signin-form" method="POST">
-						<div class="form-group">
-							<input type="text" id="id" name="id" class="form-control" placeholder="Username" value="${username }"/>
-						</div>
-						<div class="form-group">
-							<input type="password" id="password" name="password" class="form-control" placeholder="Password"/> 
-						</div>
-						<div class="form-group d-flex justify-content-between">
-							<div class="custom-control custom-checkbox mb-3 align-self-center">
-					            <!--label로 감싸지 말자 : 감싸면 체크 X-->
-					            <input type="checkbox" class="custom-control-input" name="saveId" id="id-save" value="Y" ${empty username ? "" : "checked" }/>
-					            <label class="custom-control-label" for="id-save"><h6>Remember Me</h6></label>
-					        </div>
-					        <div class="form-group">
-							<button type="submit" class="form-control btn btn-primary submit px-3">
-								Sign In
-							</button>
-						</div>
-						</div>
-					</form>
-					<div class="social d-flex justify-content-between">
-						<a href="https://kauth.kakao.com/oauth/authorize?client_id=16c1121d0de60f9066904fb3ffc57c36&redirect_uri=http://localhost:9090/project/kakaoLogin.do&response_type=code">
-							<img src="<c:url value="/resources/images/basic/kakao.png"/>" class="px-2 py-2 mr-md-1" />
-						</a> <!-- 카카오로그인 -->
-						<a href="https://nid.naver.com/oauth2.0/authorize?client_id=m0_NavLMe3aWfFRsood6&response_type=code&redirect_uri=http://localhost:9090/project/naverLogin.do&state=">
-							<img src="<c:url value="/resources/images/basic/naver.png"/>" class="px-2 py-2 mr-md-1" style="width: 100px"/>
-						</a> <!-- 네이버로그인 -->
-						<a href="#" id="searchId" class="px-2 py-2 mr-md-1 text-dark search" data-toggle="modal" data-target="#modalSearchIdNPwd" data-backdrop="static">
-							<strong>아이디찾기</strong>
-						</a> 
-						<a href="#"	id="searchPwd" class="px-2 py-2 ml-md-1 text-dark search" data-target="#modalSearchIdNPwd" data-backdrop="static">
-							<strong>비밀번호찾기</strong>
-						</a>
-						<a href="<c:url value="/project/Join.do" />" class="px-2 py-2 mr-md-1 text-dark">
-							<strong>회원가입</strong>
-						</a> 
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+                  <div class="title  mt-4 p-4 w-100">
+                    <img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+           			<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+           			 <h1 class="mt-3 mx-5" style="font-weight: bold; color:#FD9F28">로그인</h1>
+                  </div>
+
+                  <!--title-->
+                  <c:if test="${! empty NOT_LOGIN }">
+						<span class="pl-5 font-weight-bold">${NOT_LOGIN }</span>
+				  </c:if>
+                  <form  action="<c:url value="/project/Login.do" />" method="post" name="form" class="form  w-100 p-4" id="form">
+                    <div class="form-group">
+                      <label for="email">아이디</label>
+                      <input  value="${username}" type="text" name="id" class="form-control" id=id onfocus="labelUp(this)" onblur="labelDown(this)" required />
+                    </div>
+                    <div class="form-group">
+                      <label for="login_password">비밀번호</label>
+                      <i class="fa fa-eye-slash" id="eye_icon_login"></i>
+                      <input type="password" name="password" class="form-control" id="password" onfocus="labelUp(this)" onblur="labelDown(this)" required />
+                    </div>
+
+                     <div class="custom-control custom-checkbox ml-3 px-2 mb-3 align-self-center">
+                         <!--label로 감싸지 말자 : 감싸면 체크 X-->
+                         <label class="custom-control-label" for="id-save"><h6 style="font-size:12px">아이디 저장하기</h6></label>   
+                         <input type="checkbox" class="custom-control-input" name="saveId" id="id-save" value="Y" ${empty username ? "" : "checked" }/>
+                     </div>
+
+                    <div class="form-group mb-0">
+                        <button type="submit" class="btn btn-primary register_btn w-100">로그인</button>
+                    </div>
+
+                  </form>
+      
+                  
+                  <div class="css-tbibp8 enu6cyp0">
+                    <h5 class="css-1y19fas e870mj50">SNS 간편 로그인</h5>
+                    <div class="css-1dqn28w enu6cyp1">
+                        <a href="https://nid.naver.com/oauth2.0/authorize?client_id=m0_NavLMe3aWfFRsood6&response_type=code&redirect_uri=http://localhost:9090/project/naverLogin.do&state=" class="css-18u83hy enu6cyp2" style="background-color: rgb(30, 200, 0);">
+                            <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/naver-logo_v2.png" width="24" height="24" alt="소셜 로고">
+                        </a>
+                        <a href="https://kauth.kakao.com/oauth/authorize?client_id=16c1121d0de60f9066904fb3ffc57c36&redirect_uri=http://localhost:9090/project/kakaoLogin.do&response_type=code" class="css-18u83hy enu6cyp2" style="background-color: rgb(249, 224, 0);">
+                            <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/kakao-logo_v2.png" width="24" height="24" alt="소셜 로고">
+                        </a>
+                        <a href="#" class="css-18u83hy enu6cyp2" style="background-color: rgb(24, 119, 242);">
+                            <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/facebook-logo_v2.png" width="24" height="24" alt="소셜 로고">
+                        </a>
+                        <a href="#" class="css-18u83hy enu6cyp2" style="background-color: rgb(255, 255, 255); border: 1px solid rgb(228, 229, 237);">
+                            <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/google-logo_v2.png" width="24" height="24" alt="소셜 로고">
+                        </a>
+                        <a href="#" class="css-18u83hy enu6cyp2" style="background-color: rgb(0, 0, 0);">
+                            <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/apple-logo_v2.png" width="24" height="24" alt="소셜 로고">
+                        </a>
+                    </div>
+                </div>
+                <div class="social d-flex justify-content-center">
+                    <a href="#" id="searchId" class="px-2 py-2 mr-md-1 text-dark search" data-toggle="modal" data-target="#modalSearchIdNPwd" data-backdrop="static">
+                        <strong>아이디찾기</strong>
+                    </a> 
+                    <a href="#"	id="searchPwd" class="px-2 py-2 ml-md-1 text-dark search" data-target="#modalSearchIdNPwd" data-backdrop="static">
+                        <strong>비밀번호찾기</strong>
+                    </a>
+                    <a href="<c:url value="/project/Join.do" />" class="px-2 py-2 mr-md-1 text-dark">
+                        <strong>회원가입</strong>
+                    </a> 
+                </div>
+                </div>
+                <!--accounts_forms-->
+              </div>
+              <!--account_col-->
+            </div>
+            <!--row-->
+          </div>
+          <!--accounts_container-->
+        </section>
+        <!--login_section-->
 <div class="modal fade" id="modalSearchIdNPwd">	
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content" style="width: 450px">
@@ -90,6 +260,12 @@
 		</div>
 	</div>
 </div>
+ <!-- jQuery library -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 	//유효성 검사
 	var form = document.forms[1];
@@ -192,7 +368,44 @@
 		
 			}
 	})
-	
+	// call when focus on input
+        function labelUp(input){
+            input.parentElement.children[0].setAttribute("class", "change_label");    
+        }  
+
+        // call when focus out on input
+        function labelDown(input){
+            if(input.value.length === 0){
+                input.parentElement.children[0].classList.remove("change_label");
+            }
+                
+        } 
+
+        // show & hide password
+        var eye_icon_signup = document.getElementById('eye_icon_signup');
+        var eye_icon_login = document.getElementById('eye_icon_login');
+        var sign_up_password = document.getElementById("signup_password");
+        var login_password = document.getElementById("login_password");
+        eye_icon_signup.addEventListener('click', ()=>{
+            hideAndShowPass(eye_icon_signup, signup_password); 
+        });
+        eye_icon_login.addEventListener('click', ()=>{
+            hideAndShowPass(eye_icon_login, login_password);  
+        });
+
+        const hideAndShowPass = (eye_icon, password) => {
+            if(eye_icon.classList.contains("fa-eye-slash")){
+                eye_icon.classList.remove('fa-eye-slash');
+                eye_icon.classList.add('fa-eye');
+                password.setAttribute('type', 'text');
+                
+            }
+            else{
+                eye_icon.classList.remove('fa-eye');
+                eye_icon.classList.add('fa-eye-slash');
+                password.setAttribute('type', 'password');
+            }
+        };
 </script>
 </body>
 </html>
