@@ -44,321 +44,217 @@
 			</ul>
 		</div>
 	
-        <h2 class="text-primary font-weight-bold mt-5">심리적 스트레스</h2>
-        <small><strong class="small font-weight-bold text-black-50">평가도구원문 : Psychosocial Wellbeing Index-short form(PWI-SF)</strong></small>
+        <h2 class="text-primary font-weight-bold mt-5">알코올 사용장애 평가(AUDIT-K)</h2>
+        <small><strong class="small font-weight-bold text-black-50">평가도구원문 : Alcohol Use Disorder Identification Test-Korea(AUDIT-K)</strong></small>
         <p class="mt-2" style="font-size: 1rem">
-            다음 문항은 심리적인 스트레스의 정도를 파악하기 위한 것입니다.<br/>
+            다음 문항은 알코올 의존 정도를 파악하기 위한 것입니다.<br/>
             각 문항을 읽고, 자신의 현재 상태를 가장 잘 나타내는 것에 표시해주시기 바랍니다.
         </p>
         <div class="line"></div>
-	    <form>
+	    <div>
 	        <table>
 	            <tbody>
-	                <tr class="trTitle">
-	                    <th class="pt-4"><span class="text-primary">01</span> 현재 매우 편안하며 건강하다고 느낀다</th>
+	            	<tr class="trTitle">
+	                    <th class="pt-4"><span class="text-primary">Q</span> 성별을 선택해주세요</th>
 	                </tr>
 	                <tr class="border-bottom tr-content">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q01" id="str_q01_01" value="3"/>
-	                        <label for="str_q01_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q01" id="str_q01_02" value="2"/>
-	                        <label for="str_q01_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q01" id="str_q01_03" value="1"/>
-	                        <label for="str_q01_03">그렇다</label>
-	                        <input type="radio" name="str_q01" id="str_q01_04" value="0"/>
-	                        <label for="str_q01_04">매우 그렇다</label>
+	                        <input type="radio" name="alc_q00" id="alc_q00_01" value="m"/>
+	                        <label for="alc_q00_01">남성</label>
+	                        <input type="radio" name="alc_q00" id="alc_q00_02" value="f"/>
+	                        <label for="alc_q00_02">여성</label>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <th class="pt-4"><span class="text-primary">01</span> 얼마나 자주 술을 마십니까?</th>
+	                </tr>
+	                <tr class="border-bottom tr-content">
+	                    <td class="py-4">
+	                        <input type="radio" name="alc_q01" id="alc_q01_01" value="0"/>
+	                        <label for="alc_q01_01">전혀 안마심</label>
+	                        <input type="radio" name="alc_q01" id="alc_q01_02" value="1"/>
+	                        <label for="alc_q01_02">월 1회 미만</label>
+	                        <input type="radio" name="alc_q01" id="alc_q01_03" value="2"/>
+	                        <label for="alc_q01_03">월 2~4회</label>
+	                        <input type="radio" name="alc_q01" id="alc_q01_04" value="3"/>
+	                        <label for="alc_q01_04">주 2~3회</label>
+	                        <input type="radio" name="alc_q01" id="alc_q01_05" value="4"/>
+	                        <label for="alc_q01_05">주 4회 이상</label>
 	                    </td>
 	                </tr>
 	                
 	                <tr>
-	                    <th><span class="text-primary">02</span> 잠자고 난 후에도 개운하지 않다</th>
+	                    <th><span class="text-primary">02</span> 술을 마시면 한 번에 몇 잔 정도 마십니까?</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q02" id="str_q02_01" value="0"/>
-	                        <label for="str_q02_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q02" id="str_q02_02" value="1"/>
-	                        <label for="str_q02_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q02" id="str_q02_03" value="2"/>
-	                        <label for="str_q02_03">그렇다</label>
-	                        <input type="radio" name="str_q02" id="str_q02_04" value="3"/>
-	                        <label for="str_q02_04">매우 그렇다</label>
+	                        <input type="radio" name="alc_q02" id="alc_q02_01" value="0"/>
+	                        <label for="alc_q02_01">한두 잔</label>
+	                        <input type="radio" name="alc_q02" id="alc_q02_02" value="1"/>
+	                        <label for="alc_q02_02">3~4 잔</label>
+	                        <input type="radio" name="alc_q02" id="alc_q02_03" value="2"/>
+	                        <label for="alc_q02_03">5~6 잔</label>
+	                        <input type="radio" name="alc_q02" id="alc_q02_04" value="3"/>
+	                        <label for="alc_q02_04">7~9 잔</label>
+	                        <input type="radio" name="alc_q02" id="alc_q02_05" value="4"/>
+	                        <label for="alc_q02_05">10잔 이상</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">03</span> 매우 피곤하고 지쳐있어 먹는 것조차 힘들다고 느낀다.</th>
+	                    <th><span class="text-primary">03</span> 한 번에 소주 1병 또는 맥주 4병 이상 마시는 경우는 얼마나 자주 있습니까?</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q03" id="str_q03_01" value="0"/>
-	                        <label for="str_q03_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q03" id="str_q03_02" value="1"/>
-	                        <label for="str_q03_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q03" id="str_q03_03" value="2"/>
-	                        <label for="str_q03_03">그렇다</label>
-	                        <input type="radio" name="str_q03" id="str_q03_04" value="3"/>
-	                        <label for="str_q03_04">매우 그렇다</label>
+	                        <input type="radio" name="alc_q03" id="alc_q03_01" value="0"/>
+	                        <label for="alc_q03_01">전혀 없다</label>
+	                        <input type="radio" name="alc_q03" id="alc_q03_02" value="1"/>
+	                        <label for="alc_q03_02">월 1회 미만</label>
+	                        <input type="radio" name="alc_q03" id="alc_q03_03" value="2"/>
+	                        <label for="alc_q03_03">월 1회</label>
+	                        <input type="radio" name="alc_q03" id="alc_q03_04" value="3"/>
+	                        <label for="alc_q03_04">주 1회</label>
+	                        <input type="radio" name="alc_q03" id="alc_q03_05" value="4"/>
+	                        <label for="alc_q03_05">거의 매일</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">04</span> 근심 걱정 때문에 편안하게 잠을 자지 못한다.</th>
+	                    <th><span class="text-primary">04</span> 지난 1년간 한번 술을 마시기 시작하면 멈출 수 없었던 때가 얼마나 자주 있었습니까?</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q04" id="str_q04_01" value="0"/>
-	                        <label for="str_q04_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q04" id="str_q04_02" value="1"/>
-	                        <label for="str_q04_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q04" id="str_q04_03" value="2"/>
-	                        <label for="str_q04_03">그렇다</label>
-	                        <input type="radio" name="str_q04" id="str_q04_04" value="3"/>
-	                        <label for="str_q04_04">매우 그렇다</label>
+	                        <input type="radio" name="alc_q04" id="alc_q04_01" value="0"/>
+	                        <label for="alc_q04_01">전혀 없다</label>
+	                        <input type="radio" name="alc_q04" id="alc_q04_02" value="1"/>
+	                        <label for="alc_q04_02">월 1회 미만</label>
+	                        <input type="radio" name="alc_q04" id="alc_q04_03" value="2"/>
+	                        <label for="alc_q04_03">월 1회</label>
+	                        <input type="radio" name="alc_q04" id="alc_q04_04" value="3"/>
+	                        <label for="alc_q04_04">주 1회</label>
+	                        <input type="radio" name="alc_q04" id="alc_q04_05" value="4"/>
+	                        <label for="alc_q04_05">거의 매일</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">05</span> 정신이 맑고 깨끗하다고 느낀다.</th>
+	                    <th><span class="text-primary">05</span> 지난 1년간 평소 같으면 할 수 있었던 일을 술 때문에 하지 못한적이 얼마나 자주 있었습니까?</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q05" id="str_q05_01" value="3"/>
-	                        <label for="str_q05_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q05" id="str_q05_02" value="2"/>
-	                        <label for="str_q05_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q05" id="str_q05_03" value="1"/>
-	                        <label for="str_q05_03">그렇다</label>
-	                        <input type="radio" name="str_q05" id="str_q05_04" value="0"/>
-	                        <label for="str_q05_04">매우 그렇다</label>
+	                        <input type="radio" name="alc_q05" id="alc_q05_01" value="0"/>
+	                        <label for="alc_q05_01">전혀 없다</label>
+	                        <input type="radio" name="alc_q05" id="alc_q05_02" value="1"/>
+	                        <label for="alc_q05_02">월 1회 미만</label>
+	                        <input type="radio" name="alc_q05" id="alc_q05_03" value="2"/>
+	                        <label for="alc_q05_03">월 1회</label>
+	                        <input type="radio" name="alc_q05" id="alc_q05_04" value="3"/>
+	                        <label for="alc_q05_04">주 1회</label>
+	                        <input type="radio" name="alc_q05" id="alc_q05_05" value="4"/>
+	                        <label for="alc_q05_05">거의 매일</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">06</span> 기력(원기)이 왕성하다고 느낀다.</th>
+	                    <th><span class="text-primary">06</span> 지난 1년간 술 마신 다음 날 해장술을 마신 적은 얼마나 자주 있었습니까?</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q06" id="str_q06_01" value="3"/>
-	                        <label for="str_q06_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q06" id="str_q06_02" value="2"/>
-	                        <label for="str_q06_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q06" id="str_q06_03" value="1"/>
-	                        <label for="str_q06_03">그렇다</label>
-	                        <input type="radio" name="str_q06" id="str_q06_04" value="0"/>
-	                        <label for="str_q06_04">매우 그렇다</label>
+	                        <input type="radio" name="alc_q06" id="alc_q06_01" value="0"/>
+	                        <label for="alc_q06_01">전혀 없다</label>
+	                        <input type="radio" name="alc_q06" id="alc_q06_02" value="1"/>
+	                        <label for="alc_q06_02">월 1회 미만</label>
+	                        <input type="radio" name="alc_q06" id="alc_q06_03" value="2"/>
+	                        <label for="alc_q06_03">월 1회</label>
+	                        <input type="radio" name="alc_q06" id="alc_q06_04" value="3"/>
+	                        <label for="alc_q06_04">주 1회</label>
+	                        <input type="radio" name="alc_q06" id="alc_q06_05" value="4"/>
+	                        <label for="alc_q06_05">거의 매일</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">07</span> 밤이면 심란해지거나 불안해진다.</th>
+	                    <th><span class="text-primary">07</span> 지난 1년간 술 마신 후에 죄책감이 들거나 후회를 한 적이 얼마나 자주 있었습니까?</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q07" id="str_q07_01" value="0"/>
-	                        <label for="str_q07_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q07" id="str_q07_02" value="1"/>
-	                        <label for="str_q07_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q07" id="str_q07_03" value="2"/>
-	                        <label for="str_q07_03">그렇다</label>
-	                        <input type="radio" name="str_q07" id="str_q07_04" value="3"/>
-	                        <label for="str_q07_04">매우 그렇다</label>
+	                        <input type="radio" name="alc_q07" id="alc_q07_01" value="0"/>
+	                        <label for="alc_q07_01">전혀 없다</label>
+	                        <input type="radio" name="alc_q07" id="alc_q07_02" value="1"/>
+	                        <label for="alc_q07_02">월 1회 미만</label>
+	                        <input type="radio" name="alc_q07" id="alc_q07_03" value="2"/>
+	                        <label for="alc_q07_03">월 1회</label>
+	                        <input type="radio" name="alc_q07" id="alc_q07_04" value="3"/>
+	                        <label for="alc_q07_04">주 1회</label>
+	                        <input type="radio" name="alc_q07" id="alc_q07_05" value="4"/>
+	                        <label for="alc_q07_05">거의 매일</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">08</span> 대다수의 사람들과 마찬가지로 나를 잘 관리해 나간다고 생각한다.</th>
+	                    <th><span class="text-primary">08</span> 지난 1년간 음주 때문에 전날 밤 일이 기억나지 않았던 적이 얼마나 자주 있었습니까?</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q08" id="str_q08_01" value="3"/>
-	                        <label for="str_q08_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q08" id="str_q08_02" value="2"/>
-	                        <label for="str_q08_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q08" id="str_q08_03" value="1"/>
-	                        <label for="str_q08_03">그렇다</label>
-	                        <input type="radio" name="str_q08" id="str_q08_04" value="0"/>
-	                        <label for="str_q08_04">매우 그렇다</label>
+	                        <input type="radio" name="alc_q08" id="alc_q08_01" value="0"/>
+	                        <label for="alc_q08_01">전혀 없다</label>
+	                        <input type="radio" name="alc_q08" id="alc_q08_02" value="1"/>
+	                        <label for="alc_q08_02">월 1회 미만</label>
+	                        <input type="radio" name="alc_q08" id="alc_q08_03" value="2"/>
+	                        <label for="alc_q08_03">월 1회</label>
+	                        <input type="radio" name="alc_q08" id="alc_q08_04" value="3"/>
+	                        <label for="alc_q08_04">주 1회</label>
+	                        <input type="radio" name="alc_q08" id="alc_q08_05" value="4"/>
+	                        <label for="alc_q08_05">거의 매일</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">09</span> 전체적으로 현재 내가 하고 있는 일은 잘 되어가고 있다고 느낀다.</th>
+	                    <th><span class="text-primary">09</span> 음주로 인해 자신이나 다른 사람이 다친적이 있습니까?</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q09" id="str_q09_01" value="3"/>
-	                        <label for="str_q09_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q09" id="str_q09_02" value="2"/>
-	                        <label for="str_q09_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q09" id="str_q09_03" value="1"/>
-	                        <label for="str_q09_03">그렇다</label>
-	                        <input type="radio" name="str_q09" id="str_q09_04" value="0"/>
-	                        <label for="str_q09_04">매우 그렇다</label>
+	                        <input type="radio" name="alc_q09" id="alc_q09_01" value="0"/>
+	                        <label for="alc_q09_01">없었다</label>
+	                        <input type="radio" name="alc_q09" id="alc_q09_02" value="2"/>
+	                        <label for="alc_q09_02">있지만, 지난 1년간에는 없었다</label>
+	                        <input type="radio" name="alc_q09" id="alc_q09_03" value="4"/>
+	                        <label for="alc_q09_03">지난 1년간 있었다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">10</span> 내가 행한 일의 방법이나 절차에 만족한다.</th>
+	                    <th><span class="text-primary">10</span> 가족이나 친구, 혹은 건강 전문가나 의사가 당신이 술 마시는 것을 걱정하거나 술 끊기를 권유한 적이 있었습니까?</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q10" id="str_q10_01" value="3"/>
-	                        <label for="str_q10_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q10" id="str_q10_02" value="2"/>
-	                        <label for="str_q10_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q10" id="str_q10_03" value="1"/>
-	                        <label for="str_q10_03">그렇다</label>
-	                        <input type="radio" name="str_q10" id="str_q10_04" value="0"/>
-	                        <label for="str_q10_04">매우 그렇다</label>
+	                        <input type="radio" name="alc_q10" id="alc_q10_01" value="0"/>
+	                        <label for="alc_q10_01">없었다</label>
+	                        <input type="radio" name="alc_q10" id="alc_q10_02" value="2"/>
+	                        <label for="alc_q10_02">있지만, 지난 1년간에는 없었다</label>
+	                        <input type="radio" name="alc_q10" id="alc_q10_03" value="4"/>
+	                        <label for="alc_q10_03">지난 1년간 있었다</label>
 	                    </td>
 	                </tr>
 	
-	                <tr>
-	                    <th><span class="text-primary">11</span> 어떤 일을 바로 착수(시작)할 수 있다.</th>
-	                </tr>
-	                <tr class="border-bottom">
-	                    <td class="py-4">
-	                        <input type="radio" name="str_q11" id="str_q11_01" value="3"/>
-	                        <label for="str_q11_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q11" id="str_q11_02" value="2"/>
-	                        <label for="str_q11_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q11" id="str_q11_03" value="1"/>
-	                        <label for="str_q11_03">그렇다</label>
-	                        <input type="radio" name="str_q11" id="str_q11_04" value="0"/>
-	                        <label for="str_q11_04">매우 그렇다</label>
-	                    </td>
-	                </tr>
-	
-	                <tr>
-	                    <th><span class="text-primary">12</span> 정상적인 일상생활을 즐길 수 있다.</th>
-	                </tr>
-	                <tr class="border-bottom">
-	                    <td class="py-4">
-	                        <input type="radio" name="str_q12" id="str_q12_01" value="3"/>
-	                        <label for="str_q12_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q12" id="str_q12_02" value="2"/>
-	                        <label for="str_q12_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q12" id="str_q12_03" value="1"/>
-	                        <label for="str_q12_03">그렇다</label>
-	                        <input type="radio" name="str_q12" id="str_q12_04" value="0"/>
-	                        <label for="str_q12_04">매우 그렇다</label>
-	                    </td>
-	                </tr>
-	
-	                <tr>
-	                    <th><span class="text-primary">13</span> 안절부절 못하거나 성질이 심술궂게 된다.</th>
-	                </tr>
-	                <tr class="border-bottom">
-	                    <td class="py-4">
-	                        <input type="radio" name="str_q13" id="str_q13_01" value="0"/>
-	                        <label for="str_q13_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q13" id="str_q13_02" value="1"/>
-	                        <label for="str_q13_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q13" id="str_q13_03" value="2"/>
-	                        <label for="str_q13_03">그렇다</label>
-	                        <input type="radio" name="str_q13" id="str_q13_04" value="3"/>
-	                        <label for="str_q13_04">매우 그렇다</label>
-	                    </td>
-	                </tr>
-	
-	                <tr>
-	                    <th><span class="text-primary">14</span> 닥친 문제를 해결해 나갈 수 있다.</th>
-	                </tr>
-	                <tr class="border-bottom">
-	                    <td class="py-4">
-	                        <input type="radio" name="str_q14" id="str_q14_01" value="3"/>
-	                        <label for="str_q14_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q14" id="str_q14_02" value="2"/>
-	                        <label for="str_q14_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q14" id="str_q14_03" value="1"/>
-	                        <label for="str_q14_03">그렇다</label>
-	                        <input type="radio" name="str_q14" id="str_q14_04" value="0"/>
-	                        <label for="str_q14_04">매우 그렇다</label>
-	                    </td>
-	                </tr>
-	
-	                <tr>
-	                    <th><span class="text-primary">15</span> 불행하고 우울하다고 느낀다.</th>
-	                </tr>
-	                <tr class="border-bottom">
-	                    <td class="py-4">
-	                        <input type="radio" name="str_q15" id="str_q15_01" value="0"/>
-	                        <label for="str_q15_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q15" id="str_q15_02" value="1"/>
-	                        <label for="str_q15_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q15" id="str_q15_03" value="2"/>
-	                        <label for="str_q15_03">그렇다</label>
-	                        <input type="radio" name="str_q15" id="str_q15_04" value="3"/>
-	                        <label for="str_q15_04">매우 그렇다</label>
-	                    </td>
-	                </tr>
-	
-	                <tr>
-	                    <th><span class="text-primary">16</span> 자신에 대한 신뢰감이 없어진다.</th>
-	                </tr>
-	                <tr class="border-bottom">
-	                    <td class="py-4">
-	                        <input type="radio" name="str_q16" id="str_q16_01" value="0"/>
-	                        <label for="str_q16_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q16" id="str_q16_02" value="1"/>
-	                        <label for="str_q16_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q16" id="str_q16_03" value="2"/>
-	                        <label for="str_q16_03">그렇다</label>
-	                        <input type="radio" name="str_q16" id="str_q16_04" value="3"/>
-	                        <label for="str_q16_04">매우 그렇다</label>
-	                    </td>
-	                </tr>
-	
-	                <tr>
-	                    <th><span class="text-primary">17</span> 모든 것을 고려해볼 때 행복감을 느낀다.</th>
-	                </tr>
-	                <tr class="border-bottom">
-	                    <td class="py-4">
-	                        <input type="radio" name="str_q17" id="str_q17_01" value="3"/>
-	                        <label for="str_q17_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q17" id="str_q17_02" value="2"/>
-	                        <label for="str_q17_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q17" id="str_q17_03" value="1"/>
-	                        <label for="str_q17_03">그렇다</label>
-	                        <input type="radio" name="str_q17" id="str_q17_04" value="0"/>
-	                        <label for="str_q17_04">매우 그렇다</label>
-	                    </td>
-	                </tr>
-	
-	                <tr>
-	                    <th><span class="text-primary">18</span> 삶을 살아갈 만한 가치가 있다고 느낀다.</th>
-	                </tr>
-	                <tr class="border-bottom">
-	                    <td class="py-4">
-	                        <input type="radio" name="str_q18" id="str_q18_01" value="3"/>
-	                        <label for="str_q18_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q18" id="str_q18_02" value="2"/>
-	                        <label for="str_q18_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q18" id="str_q18_03" value="1"/>
-	                        <label for="str_q18_03">그렇다</label>
-	                        <input type="radio" name="str_q18" id="str_q18_04" value="0"/>
-	                        <label for="str_q18_04">매우 그렇다</label>
-	                    </td>
-	                </tr>
 	            </tbody>
 	        </table>
 	
 	        <div class="d-inline-flex">
-	            <button id="resultM" class="btn btn-lg btn-primary my-4" data-toggle="modal" data-target="#result" data-backdrop="static" >심리적 스트레스 검사결과 보기</button>
+	            <button id="resultM" class="btn btn-lg btn-primary my-4" data-toggle="modal" data-target="#result" data-backdrop="static" >알코올 사용장애 검사결과 보기</button>
 	            <!--
 	            <img class="topBtn" src="./img/top-btn.png" alt="top-button"/>
 	            -->
 	            <img class="topBtn" src='<c:url value="/resources/images/basic/top-btn2.png"/>' alt="top-button"/>
 	        </div>
-        </form>
+        </div>
     </div><!--container-->
     <!-- The Modal -->
     <div class="modal fade" id="result" style="display: none">
         <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header justify-content-between">
-                    <h4 class="modal-title my-3">심리적 스트레스 검사결과 보기</h4>
+                    <h4 class="modal-title my-3">알코올 사용장애 검사결과 보기</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -382,41 +278,29 @@
     topBtn.onclick = (()=>{
     	window.scrollTo({ top: 0, behavior: "smooth" });  
     })
- 
-    //심리적 스트레스 결과 뿌리기
-	document.forms[0].onsubmit=function(){
-		//console.log($('[name=str_q01]'))
-		if($(':radio:checked').length != 18){
+ /*
+ 알콜중독이 의심되지 않습니다
+ 알코올 의존 가능성
+이미 알코올 사용장애, 특히 알코올 의존 상태입니다 전문의의 진찰을 받고 전문화된 치료를 시작하는 것이 좋습니다
+ */
+    //알코올 사용장애 결과 뿌리기
+	$('#resultM').click(function(){
+		var sum=0;
+		if($(':radio:checked').length != 11){
 			alert('모든 항목을 체크해주세요');
-			return false;
+			$(this).attr('data-toggle','');
+		}
+		else if($('[name=alc_q00]:checked').val()=='m'){
+			$(':radio:checked').slice(1).each(function(){
+				sum += parseInt($(this).val());
+				console.log('sum:',sum)
+				if(sum <= 10){
+					
+				}
+			});
 		}
 		else{
-			var sum=0;
 			$(':radio:checked').each(function(){
-				
-				//swal 시작
-				var timerInterval
-				Swal.fire({
-				  title: 'Auto close alert!',
-				  html: 'I will close in <b></b> milliseconds.',
-				  timer: 2000,
-				  timerProgressBar: true,
-				  didOpen: () => {
-				    Swal.showLoading()
-				    var b = Swal.getHtmlContainer().querySelector('b')
-				    timerInterval = setInterval(() => {
-				      b.textContent = Swal.getTimerLeft()
-				    }, 100)
-				  },
-				  willClose: () => {
-				    clearInterval(timerInterval)
-				  }
-				}).then((result) => {
-				  if (result.dismiss === Swal.DismissReason.timer) {					  
-					  $('#result').css('display','block');
-				  }
-				});
-				//swal 끝
 
 				sum += parseInt($(this).val());
 				//console.log('sum:',sum,$(this).val())
@@ -440,9 +324,9 @@
 						    스트레스 대처 방법에 대해서 궁금하시다면 상담심리사와 상담하시길 바랍니다.`);
 				}
 			});
-			return false;
+			
 		}
-	};
+	});
 
 </script>
 </html>
