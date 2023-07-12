@@ -1,12 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/marshallku/infinite-scroll/dist/infiniteScroll.min.js"></script>
+<c:set value="${totalReviewDto.starScore.COUNT_1 + totalReviewDto.starScore.COUNT_2 + totalReviewDto.starScore.COUNT_3 + totalReviewDto.starScore.COUNT_4 + totalReviewDto.starScore.COUNT_5}" var="totalStarCount"/>
+<c:set value="${totalReviewDto.effectList[0].COUNT + totalReviewDto.effectList[1].COUNT + totalReviewDto.effectList[2].COUNT + totalReviewDto.effectList[3].COUNT}" var="totalEffectCount"/>
+<c:set value="${totalReviewDto.noEffectList[0].COUNT + totalReviewDto.noEffectList[1].COUNT + totalReviewDto.noEffectList[2].COUNT + totalReviewDto.noEffectList[3].COUNT}" var="totalNoEffectCount"/>
 <style>
     table.type09 {
         border-collapse: collapse;
@@ -219,38 +223,50 @@
 	          			<i class="bi bi-star rating"></i>
 	        		</div>
 	        		<div class="print-score mt-3" style="text-align:center;">
-	          			<span style="font-family: 'Noto Sans KR', sans-serif;font-size:40px;">4.6점</span>
+	          			<span style="font-family: 'Noto Sans KR', sans-serif;font-size:40px;">${totalReviewDto.starScoreTotal}점</span>
 	        		</div>
 	      		</div>
 	      		<div class="progress-board m-auto col-6">
 	        		<div class="bar-rating mt-5 d-flex">
             			<div class="mr-4">
               				<div class="progress rounded-pill">
-                				<div class="progress-bar" style="height: 20%;"></div>
+              				<fmt:formatNumber var="totalStarCount" value="${totalStarCount}" />
+              				<fmt:formatNumber var="COUNT_5" value="${totalReviewDto.starScore.COUNT_5}" />
+              				<fmt:formatNumber value="${1-(COUNT_5 div totalStarCount)}" type="percent" var="count_5"/>
+                				<div class="progress-bar" style="height: ${count_5};"></div>
               				</div>
               				<span style="font-family: 'Noto Sans KR', sans-serif;">5점</span>
             			</div>
             			<div class="mr-4">
               				<div class="progress rounded-pill">
-                				<div class="progress-bar" style="height: 30%;"></div>
+              				<fmt:formatNumber var="COUNT_4" value="${totalReviewDto.starScore.COUNT_4}" />
+              				<fmt:formatNumber value="${1-(COUNT_4 div totalStarCount)}" type="percent" var="count_4"/>
+                				<div class="progress-bar" style="height:${count_4};">
+                				</div>
               				</div>
               				<span style="font-family: 'Noto Sans KR', sans-serif;">4점</span>
             			</div>
             			<div class="mr-4">
               				<div class="progress rounded-pill">
-                				<div class="progress-bar" style="height: 80%;"></div>
+              				<fmt:formatNumber var="COUNT_3" value="${totalReviewDto.starScore.COUNT_3}" />
+              				<fmt:formatNumber value="${1-(COUNT_3 div totalStarCount)}" type="percent" var="count_3"/>
+                				<div class="progress-bar" style="height:${count_3};"></div>
              					</div>
               				<span style="font-family: 'Noto Sans KR', sans-serif;">3점</span>
             			</div>
             			<div class="mr-4">
               				<div class="progress rounded-pill">
-                				<div class="progress-bar" style="height: 40%;"></div>
+              				<fmt:formatNumber var="COUNT_2" value="${totalReviewDto.starScore.COUNT_2}" />
+              				<fmt:formatNumber value="${1-(COUNT_2 div totalStarCount)}" type="percent" var="count_2"/>
+                				<div class="progress-bar" style="height: ${count_2};"></div>
               				</div>
               				<span style="font-family: 'Noto Sans KR', sans-serif;">2점</span>
             			</div>
             			<div class="mr-4">
               				<div class="progress rounded-pill">
-                				<div class="progress-bar" style="height: 23%;"></div>
+              				<fmt:formatNumber var="COUNT_1" value="${totalReviewDto.starScore.COUNT_1}" />
+              				<fmt:formatNumber value="${1-(COUNT_1 div totalStarCount)}" type="percent" var="count_1"/>
+                				<div class="progress-bar" style="height: ${count_1};"></div>
               				</div>
               				<span class="effect-custom-font">1점</span>
             			</div>
@@ -265,34 +281,18 @@
 		   			</div>
 		   			<br>
 		   			<ul class="list-unstyled p-2">
-	   					<li class="m-2" style="line-height: 25px;">
-	   						<div class="d-flex">
-		   						<div class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:15px;">효과 1</div>
-		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
-		   						<div class="p-1" style="color:#25a6fe;border-radius: 15px;font-size=25px;">36%</div>
+		   			<c:forEach items="${totalReviewDto.effectList}" var="effectOne">
+	   					<li class="m-2" style="line-height: 25px;width:80%;">
+	   						<div class="d-flex justify-content-between" style="width:100%;">
+		   						<div class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:15px;">${effectOne.VALUE}</div>
+		   						<div style="border-bottom:dashed 3px #ccc;width:50%;font-size:1px;"></div>
+		   						<fmt:formatNumber var="totalEffectCount" value="${totalEffectCount}" />
+		   						<fmt:formatNumber var="effectCOUNT" value="${effectOne.COUNT}" />
+              					<fmt:formatNumber value="${effectCOUNT div totalEffectCount}" type="percent" var="effectpercent"/>
+		   						<div class="p-1" style="color:#25a6fe;border-radius: 15px;font-size=25px;">${effectpercent}</div>
 	   						</div>
 	 					</li>
-	   					<li class="m-2" style="line-height: 25px;">
-	   						<div class="d-flex">
-		   						<div class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:15px;">효과 2</div>
-		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
-		   						<div class="p-1" style="color:#25a6fe;border-radius: 15px;font-size=25px;">20%</div>
-	   						</div>
-	   					</li>
-	   					<li class="m-2" style="line-height: 25px;">
-	   						<div class="d-flex">
-		   						<div class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:15px;">효과 3</div>
-		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
-		   						<div class="p-1" style="color:#25a6fe;border-radius: 15px;font-size=25px;">17%</div>
-	   						</div>
-	   					</li>
-	   					<li class="m-2" style="line-height: 25px;">
-	   						<div class="d-flex">
-		   						<div class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:15px;">효과 4</div>
-		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
-		   						<div class="p-1" style="color:#25a6fe;border-radius: 15px;font-size=25px;">6%</div>
-	   						</div>
-	   					</li>
+	 				</c:forEach>
 	   				</ul>
 				</div><!-- 효과 부분 끝-->
 				<div class="col-6"><!-- 부작용 부분 시작 -->
@@ -301,34 +301,18 @@
 		   			</div>
 		   			<br>
 		   			<ul class="list-unstyled p-2">
-	   					<li class="m-2" style="line-height: 25px;">
-	   						<div class="d-flex">
-		   						<div class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:15px;">부작용 1</div>
-		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
-		   						<div class="p-1" style="color:#ff4b4b;border-radius: 15px;font-size=25px;">36%</div>
+		   			<c:forEach items="${totalReviewDto.noEffectList}" var="noEffectOne">
+	   					<li class="m-2" style="line-height: 25px;width:80%;">
+	   						<div class="d-flex justify-content-between" style="width:100%;">
+		   						<div class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:15px;">${noEffectOne.VALUE}</div>
+		   						<div style="border-bottom:dashed 3px #ccc;width:50%;font-size:1px;"></div>
+		   						<fmt:formatNumber var="totalNoEffectCount" value="${totalNoEffectCount}" />
+		   						<fmt:formatNumber var="noEffectCount" value="${noEffectOne.COUNT}" />
+              					<fmt:formatNumber value="${noEffectCount div totalNoEffectCount}" type="percent" var="noEffectpercent"/>
+		   						<div class="p-1" style="color:#ff4b4b;border-radius: 15px;font-size=25px;">${noEffectpercent}</div>
 	   						</div>
 	 					</li>
-	   					<li class="m-2" style="line-height: 25px;">
-	   						<div class="d-flex">
-		   						<div class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:15px;">부작용 2</div>
-		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
-		   						<div class="p-1" style="color:#ff4b4b;border-radius: 15px;font-size=25px;">20%</div>
-	   						</div>
-	   					</li>
-	   					<li class="m-2" style="line-height: 25px;">
-	   						<div class="d-flex">
-		   						<div class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:15px;">부작용 3</div>
-		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
-		   						<div class="p-1" style="color:#ff4b4b;border-radius: 15px;font-size=25px;">17%</div>
-	   						</div>
-	   					</li>
-	   					<li class="m-2" style="line-height: 25px;">
-	   						<div class="d-flex">
-		   						<div class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:15px;">부작용 4</div>
-		   						<div style="border-bottom:dashed 3px #ccc;width:40%;font-size:1px;"></div>
-		   						<div class="p-1" style="color:#ff4b4b;border-radius: 15px;font-size=25px;">6%</div>
-	   						</div>
-	   					</li>
+	 				</c:forEach>
 	   				</ul>
 				</div><!-- 부작용 부분 끝-->
    			</div><!-- effected Board 끝 -->
@@ -388,6 +372,17 @@
 </div>
 <input type="hidden" value="${listOne.no}" id="productNo">
 <script>
+//리뷰 정보 출력(총 별점 평균 등, 효과들)
+  var totalStarScore = document.querySelectorAll("div.star-rating.mt-5 > i");
+  for(var i=0; i<${totalReviewDto.starScoreTotal}; i++) {
+	  totalStarScore[i].className = totalStarScore[i].className.replace("bi-star","bi-star-fill");
+  }
+  
+  
+  
+  
+  
+//무한 스크롤 
   const cardContainer = document.getElementById("review-ul");
   const cardCountElem = document.getElementById("card-count");
   const cardTotalElem = document.getElementById("card-total");

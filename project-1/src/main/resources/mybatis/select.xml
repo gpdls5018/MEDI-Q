@@ -19,61 +19,84 @@
 	</select>
 	<!-- 선택한 영양소의 관련 건강고민 -->
 	<select id="getN_FUNCbyVitaminName" parameterType="String" resultType="String">
-	    SELECT N_FUNC FROM NUTRIENT WHERE N_NAME = #{selectedName}
+	    SELECT N_FUNC FROM NUTRIENT WHERE N_NAME = #{name}
 	</select>
 	<!-- 선택한 영양소의 상세설명 -->
 	<select id="getN_DESCbyVitaminName" parameterType="String" resultType="String">
-	    SELECT N_DESC FROM NUTRIENT WHERE N_NAME = #{selectedName}
+	    SELECT N_DESC FROM NUTRIENT WHERE N_NAME = #{name}
 	</select>
 	<!-- 선택한 영양소의 남성 권장섭취량 -->
 	<select id="getN_DRI_MbyVitaminName" parameterType="String" resultType="String">
-	    SELECT N_DRI_M FROM NUTRIENT WHERE N_NAME = #{selectedName}
+	    SELECT N_DRI_M FROM NUTRIENT WHERE N_NAME = #{name}
 	</select>
 	<!-- 선택한 영양소의 여성 권장섭취량 -->
 	<select id="getN_DRI_FbyVitaminName" parameterType="String" resultType="String">
-	    SELECT N_DRI_F FROM NUTRIENT WHERE N_NAME = #{selectedName}
+	    SELECT N_DRI_F FROM NUTRIENT WHERE N_NAME = #{name}
 	</select>
 	<!-- 선택한 영양소의 남성 상한섭취량 -->
 	<select id="getN_UL_MbyVitaminName" parameterType="String" resultType="String">
-	    SELECT N_UL_M FROM NUTRIENT WHERE N_NAME = #{selectedName}
+	    SELECT N_UL_M FROM NUTRIENT WHERE N_NAME = #{name}
 	</select>
 	<!-- 선택한 영양소의 여성 상한섭취량 -->
 	<select id="getN_UL_FbyVitaminName" parameterType="String" resultType="String">
-	    SELECT N_UL_F FROM NUTRIENT WHERE N_NAME = #{selectedName}
+	    SELECT N_UL_F FROM NUTRIENT WHERE N_NAME = #{name}
 	</select>
 	<!-- 선택한 영양소의 결핍시 증상 -->
 	<select id="getN_LACKbyVitaminName" parameterType="String" resultType="String">
-	    SELECT N_LACK FROM NUTRIENT WHERE N_NAME = #{selectedName}
+	    SELECT N_LACK FROM NUTRIENT WHERE N_NAME = #{name}
 	</select>
 	<!-- 선택한 영양소의 주의사항 -->
 	<select id="getN_CAUTIONbyVitaminName" parameterType="String" resultType="String">
-	    SELECT N_CAUTION FROM NUTRIENT WHERE N_NAME = #{selectedName}
+	    SELECT N_CAUTION FROM NUTRIENT WHERE N_NAME = #{name}
 	</select>
 	<!-- 선택한 영양소의 섭취 음식 -->
 	<select id="getN_FOODNbyVitaminName" parameterType="String" resultType="String">
-	    SELECT N_FOOD FROM NUTRIENT WHERE N_NAME = #{selectedName}
+	    SELECT N_FOOD FROM NUTRIENT WHERE N_NAME = #{name}
 	</select>
 	
 	<!-- 선택한 원료의 관련 건강고민 -->
 	<select id="getI_FUNCbyIngredientName" parameterType="String" resultType="String">
-	    SELECT I_FUNC FROM INGREDIENT WHERE I_NAME = #{selectedName}
+	    SELECT I_FUNC FROM INGREDIENT WHERE I_NAME = #{name}
 	</select>
 	<!-- 선택한 원료의 권장섭취량 -->
 	<select id="getI_DRIbyIngredientName" parameterType="String" resultType="String">
-	    SELECT I_DRI FROM INGREDIENT WHERE I_NAME = #{selectedName}
+	    SELECT I_DRI FROM INGREDIENT WHERE I_NAME = #{name}
 	</select>
 	<!-- 선택한 원료의 상한섭취량 -->
 	<select id="getI_ULbyIngredientName" parameterType="String" resultType="String">
-	    SELECT I_UL FROM INGREDIENT WHERE I_NAME = #{selectedName}
+	    SELECT I_UL FROM INGREDIENT WHERE I_NAME = #{name}
 	</select>
 	<!-- 선택한 원료의 상세설명 -->
 	<select id="getI_DESCbyIngredientName" parameterType="String" resultType="String">
-	    SELECT I_DESC FROM INGREDIENT WHERE I_NAME = #{selectedName}
+	    SELECT I_DESC FROM INGREDIENT WHERE I_NAME = #{name}
 	</select>
 	<!-- 선택한 원료의 주의사항 -->
 	<select id="getI_CAUTIONbyIngredientName" parameterType="String" resultType="String">
-	    SELECT I_CAUTION FROM INGREDIENT WHERE I_NAME = #{selectedName}
+	    SELECT I_CAUTION FROM INGREDIENT WHERE I_NAME = #{name}
 	</select>
+	
+	<!-- 영양제 가져오기 -->
+	<!-- 이름 -->
+	<select id="getProductNameNImgUrlFromFoodtable" parameterType="String" resultType="Map">
+	    SELECT PRODUCTNAME, IMGURL
+			FROM (
+			    SELECT PRODUCTNAME, IMGURL
+			    FROM FOODTABLE
+			    WHERE (NUTRIENT LIKE '%' || #{name} || '%' OR STANDARD LIKE '%' || #{name} || '%')
+			        AND IMGURL IS NOT NULL
+			        AND ROWNUM &lt;= 5
+		)
+	</select>
+		
+	<!-- 이미지url 
+	<select id="getImgurlFromFoodtable" parameterType="String" resultType="String">
+    	SELECT IMGURL FROM FOODTABLE WHERE NUTRIENT LIKE '%' || #{name} || '%' OR STANDARD LIKE '%' || #{name} || '%'
+	</select>-->
+	
+	
+	
+	
+	
 	
 	
 	

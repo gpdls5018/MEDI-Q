@@ -158,10 +158,8 @@
     			</div>
                 <div class="box-container">
 	                <c:forEach var="name" items="${vitaminNames}">
-					    <div class="box col-sm-2" style="white-space: nowrap;">
-					    	<a href="<c:url value="/NutrientDetail.do?name=${name}"/>"> 
-					    		<b style="font-size: 14px;">${name}</b>
-					    	</a>
+					    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
+					        <b style="font-size: 14px;">${name}</b>
 					    </div>
 					</c:forEach>
                 </div>
@@ -179,10 +177,8 @@
     			</div>
     			<div class="box-container">
 	                <c:forEach var="name" items="${vitaminNames}">
-					    <div class="box col-sm-2" style="white-space: nowrap;">
-					    	<a href="<c:url value="/NutrientDetail.do?name=${name}"/>">  
-					    		<b style="font-size: 14px;">${name}</b>
-					    	</a>
+					    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
+					        <b style="font-size: 14px;">${name}</b>
 					    </div>
 					</c:forEach>
                 </div>
@@ -199,10 +195,8 @@
     			</div>
     			<div class="box-container">
     			    <c:forEach var="name" items="${etcNames}">
-					    <div class="box col-sm-2" style="white-space: nowrap;">
-					    	<a href="<c:url value="/NutrientDetail.do?name=${name}"/>">
-					    		<b style="font-size: 14px;">${name}</b>
-					    	</a>
+					    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
+					        <b style="font-size: 14px;">${name}</b>
 					    </div>
 					</c:forEach>
                 </div>
@@ -219,10 +213,8 @@
     			</div>
     			<div class="box-container">
 	                <c:forEach var="name" items="${ingredientNames}">
-					    <div class="box col-sm-2" style="white-space: nowrap;">
-					    	<a href="<c:url value="/NutrientDetail.do?name=${name}"/>">
-					    		<b style="font-size: 14px;">${name}</b>
-					    	</a>
+					    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
+					        <b style="font-size: 14px;">${name}</b>
 					    </div>
 					</c:forEach>
                 </div>

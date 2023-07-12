@@ -1,6 +1,7 @@
 package com.kosmo.springapp.nutrient.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -49,6 +50,17 @@ public interface NutrientSelectMapper {
 	
 	// 선택한 원료의 주의사항 가져오는 쿼리
 	String getI_CAUTIONbyIngredientName(String name);
+
+	// 해당 영양소 포함한 영양제 가져오는 쿼리
+	// 이름
+	List<Map<String, Object>> getProductNameNImgUrlFromFoodtable(String name);
+	
+	// 이미지 url
+	String getImgurlFromFoodtable(String name);
+
+	
+
+	
 	
 	
 	
