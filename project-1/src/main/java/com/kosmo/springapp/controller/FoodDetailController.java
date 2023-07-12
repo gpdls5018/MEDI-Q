@@ -53,6 +53,7 @@ public class FoodDetailController {
 		   FunctionalFoodListDTO listOne = mainPageServiceImpl.selectFoodOneByNo(map);
 		   TotalReviewDTO totalReviewDto = reviewServiceImpl.selectTotalReviewInfo(Integer.parseInt(no));
 		   model.addAttribute("listOne",listOne);
+		   model.addAttribute("totalReviewDto",totalReviewDto);
 		   return "Detail";
 	 }
 	 
