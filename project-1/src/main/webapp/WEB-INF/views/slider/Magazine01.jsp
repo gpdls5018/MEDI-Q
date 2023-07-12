@@ -14,11 +14,18 @@
 <style>
   .custom-top {
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 15px;
-    margin-bottom: 80px;
+    font-size: 20px;
+    margin-bottom : 150px;
+    padding-top : 120px;   
   }
   .navbar-text{
   	padding-left: 6px; 
+  }
+  .contentTop{
+  	margin-top: 100px;
+  }
+  .paragraph{
+  	margin-top: 120px;
   }
   
   .custom-text{
@@ -76,18 +83,19 @@
     border: #ccc solid 1px;
   }
 </style>
-<div class="container mt-5">
-  <div class="jumbotron rounded-3 custom-top" style="background-color: #ffb1b1;">
-    <i class='fas fa-thumbtack' style='font-size:24px'></i>
-    <span class="navbar-text">영양소 A to Z</span>
-    <p><strong style="color:#ee4949; font-size:xx-large;">운동러들의 필수 보충제, 아르기닌의 부작용</strong></p>
+<div class="container custom-top">
+  <div class="jumbotron rounded-3 " style="background-color: #ffb1b1;">
+  	<div class="container">
+	    <i class='fas fa-thumbtack' style='font-size:24px; color: red;'></i>
+	    <span class="navbar-text">영양소 A to Z</span>
+	    <h4><strong style="color:#ee4949; font-size:xx-large;">운동러들의 필수 보충제, 아르기닌의 부작용</strong></h4>
+  	</div>
   </div>
 
-  <div style="font-size:15px;">
- 	<i class='fas fa-user-alt' style='font-size:36px'></i>
-    &nbsp;<strong style="background-color: #FFE5E5; font-size:20px;">아르기닌</strong>이 운동 능력 향상에 도움이 된다고 알려져 최근 운동을 하는 분들이 많이 찾고 있죠.<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아르기닌은 운동과 관련된 역할 외에도 우리 몸에서 다양한 역할을 하는 아미노산이지만 <br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;어떤 영양제든 과다하게 섭취할 경우 부작용이 있을 수 있으니 부작용을 꼼꼼히 살펴보고 선택하도록 해주세요.
+  <div style="font-size:18px;" class="contentTop">
+   	  <strong style="background-color: #FFE5E5; font-size:30px;">아르기닌</strong>이 운동 능력 향상에 도움이 된다고 알려져 최근 운동을 하는 분들이 많이 찾고 있죠.<br/>
+   	   아르기닌은 운동과 관련된 역할 외에도 우리 몸에서 다양한 역할을 하는 아미노산이지만 <br/>
+   	   어떤 영양제든 과다하게 섭취할 경우 부작용이 있을 수 있으니 부작용을 꼼꼼히 살펴보고 선택하도록 해주세요.
   </div>
   <div class="mt-5">
     <img src="resources/images/magazine_images/01/01_IMG.png" class="img-fluid">
@@ -95,28 +103,36 @@
   <!-- 
   <hr class="my-hr mt-5 mb-5">
    -->
+      
   <div class="paragraph">
     <div class="mt-5">
-      <span class="title">아르기닌이 탈모를 유발한다?</span>
+    <img src="resources/images/magazine_images/basic/QuestionMark.png" class="img-fluid" style="width:50px">
+      <span class="title">&nbsp;&nbsp;&nbsp;아르기닌이 탈모를 유발한다?</span>
     </div>
     <div class="mt-3">
       아르기닌을 먹으면 탈모가 온다는 얘기가 종종 들려오는데 아직
-      <span class="highLight">탈모와의 직접적인 상관관계는 밝혀진 바가 없어요. </span>
+      <span class="highLight">탈모와의 직접적인 상관관계는 밝혀진 바가 없어요. </span><br/>
       오히려 아르기닌은 혈관을 확장시켜서 혈액순환을 도와주기 때문에
-      모근으로 공급되는 혈액량을 늘리고 머리카락의 성장에 도움을 줄 수 있다는 주장도 있습니다.
+      <span class="underLine">모근으로 공급되는 혈액량을 늘리고 머리카락의 성장에 도움을 줄 수 있다는 주장</span>도 있습니다.
     </div>
+  </div>
+  
+  <div class="paragraph">
+    <div class="mt-5">
+  		<i class='fas fa-edit' style='font-size:36px; color: #FFCCDA'>요약</i>
+  	</div>
   </div>
   <div class="paragraph">
     <div class="mt-5">
       <span class="para_title">헤르페스 바이러스</span>
     </div>
     <div class="mt-3">
-      입술이나 남녀의 성기 부분에 포진을 발생시키는 <span class="highLight">헤르페스 바이러스가 있는 분들은 주의가 필요해요. </span>
+      입술이나 남녀의 성기 부분에 포진을 발생시키는 <span class="highLight">헤르페스 바이러스가 있는 분들은 주의가 필요해요. </span><br/>
       아르기닌이 헤르페스 바이러스의 증식에 관여하기 때문에
       평소 컨디션이 안 좋으면 입술 포진이 잘 올라오는 분들은 아르기닌을 먹기보다 목적에 맞는 다른 영양제를 선택하시는 것이 좋습니다.
     </div>
     <div class="mt-3">
-      하지만 헤르페스 바이러스 자체를 만들어내는 것은 아니기 때문에 헤르페스가 있었던 적이 없는 분들은 안심하셔도 괜찮아요!
+      하지만 헤르페스 바이러스 자체를 만들어내는 것은 아니기 때문에 <span class="underLine">헤르페스가 있었던 적이 없는 분들은 안심하셔도 괜찮아요!</span>
     </div>
   </div>
   <div class="paragraph">
@@ -125,7 +141,7 @@
     </div>
     <div class="mt-3">
       아르기닌은 혈관을 확장하여 혈액 잘 순환되도록 돕는데요.
-      과다하게 섭취할 경우에는 오히려 혈압을 낮출 수 있기 때문에 <span class="underLine">평소 저혈압이 있거나 혈압약을 복용하는 중인 경우 전문가와 상담 후 복용하는 것이 좋아요. </span>
+      과다하게 섭취할 경우에는 오히려 혈압을 낮출 수 있기 때문에 <span class="underLine">평소 저혈압이 있거나 혈압약을 복용하는 중인 경우 전문가와 상담 후 복용</span>하는 것이 좋아요.
       비아그라와 같은 약도 혈관을 이완하기 때문에 이런 약을 먹고 있다면 아르기닌 섭취량을 반드시 체크해 주세요.
     </div>
   </div>
@@ -149,14 +165,16 @@
       또한 천식이나 다른 알레르기가 있는 분들은 이런 증상이 아르기닌에 의해서 악화될 수 있습니다.
     </div>
   </div>
+  <!-- 
   <hr class="mt-5 my-hr">
+   -->
   <div class="mt-5 mb-5 jumbotron">
     국내에서는 특정 회사에서 개별적으로 인정받은 아르기닌만이 건강기능식품 인증을 받았는데,
-    <span class="highLight">혈관 이완을 통한 혈액 순환 개선을 위해서 하루 6g의 아르기닌을 섭취하도록 권장하고 있어요.</span>
-    <span class="underLine">보충제로 복용할 경우 명확하게 정해진 용량은 없지만 보통 1~3g 정도를 시작으로 효과나 부작용에 따라 조절하면서 나에게 맞는 섭취량을 찾아보세요!</span>
+    <span class="highLight">혈관 이완을 통한 혈액 순환 개선을 위해서 하루 6g의 아르기닌을 섭취하도록 권장</span>하고 있어요.
+    <span class="underLine">보충제로 복용할 경우 명확하게 정해진 용량은 없지만 보통 1~3g 정도를 시작으로 효과나 부작용에 따라 조절</span>하면서 나에게 맞는 섭취량을 찾아보세요!
   </div>
 </div>
-<div class="container">
+<div class="container mb-5">
   <span class="custom-text">&#x1F601; 관련 영양제 인기 TOP 10 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
