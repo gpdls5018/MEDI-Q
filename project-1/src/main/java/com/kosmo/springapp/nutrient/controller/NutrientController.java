@@ -1,6 +1,7 @@
 package com.kosmo.springapp.nutrient.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -85,7 +86,6 @@ public class NutrientController {
 		model.addAttribute("n_FOOD",n_FOOD);
 		
 		// 원료 상세정보들
-		
 		String i_FUNC = nutrietnSelectMapper.getI_FUNCbyIngredientName(name);
 		model.addAttribute("i_FUNC",i_FUNC);
 		
@@ -106,6 +106,19 @@ public class NutrientController {
 		
 		String i_caution = nutrientSelectServiceImpl.editI_CAUTIONbyIngredientName(name);
 		model.addAttribute("i_caution",i_caution);
+		
+		List<Map<String, Object>> productInfoList = nutrietnSelectMapper.getProductNameNImgUrlFromFoodtable(name);
+		model.addAttribute("productInfoList", productInfoList);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		

@@ -15,4 +15,6 @@ public interface NutrientSelectService {
 	String editI_CAUTIONbyIngredientName(String name);
 	
 	
+	
+	
 }

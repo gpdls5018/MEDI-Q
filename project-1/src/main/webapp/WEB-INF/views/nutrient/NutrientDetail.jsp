@@ -165,12 +165,101 @@
 			border-top: 7px solid black;
 		}
 
+		/* 관련 영양제 뿌려주기 */
+	    .scrollable-container {
+	        height: 750px;  /* 스크롤 가능한 컨테이너의 높이 */
+	        overflow-y: auto;  /* 세로 스크롤바 표시 */
+	    }
+	
+	    .nutrient-item {
+	        padding: 10px;
+	        border-bottom: 1px solid #ccc;  /* 각 영양소 항목의 아래 경계선 설정 */
+    	}
+    	
+    	/* WebKit 스크롤바 스타일링 */
+	    .scrollable-container::-webkit-scrollbar {
+	        width: 8px;  /* 스크롤바 너비 */
+	    }
 
+		.scrollable-container::-webkit-scrollbar-thumb {
+	        background-color: rgb(253, 186, 41);  /* 스크롤바 썸네일 배경색 */
+	        border-radius: 4px;  /* 스크롤바 썸네일 모서리 반경 */
+	    }
+		
+	    .scrollable-container::-webkit-scrollbar-track {
+	        background-color: #f1f1f1;  /* 스크롤바 트랙 배경색 */
+	        border-radius: 4px;  /* 스크롤바 트랙 모서리 반경 */
+	    }
+	    
+	    .scrollable-container::-webkit-scrollbar-thumb:hover {
+		    background-color: #dc3545;  /* 스크롤바 썸네일 배경색 (호버 상태) */
+		}
+		
+		/* 스타일 추가 */
+
+		.search {
+		  display: flex;
+		}
+		
+		.searchTerm {
+		  width: 500px;
+		  border: 3px solid #0062cc;
+		  border-right: none;
+		  padding: 5px;
+		  height: 50px;
+		  border-radius: 10px 0 0 10px;
+		  outline: none;
+		}
+		
+		.searchTerm:focus{
+		  color: black;
+		}
+		
+		.searchButton {
+		  width: 60px;
+		  height: 50px;
+		  border: 1px solid #0062cc;
+		  background: #0062cc;
+		  text-align: center;
+		  color: #fff;
+		  border-radius: 0 10px 10px 0;
+		  cursor: pointer;
+		  font-size: 20px;
+		}
+	
+		.searchResults {
+			width: 500px;
+			text-align: left;
+			margin-top: 20px;
+			display: none; /* 초기에 숨김 처리 
+			max-height: 100px;
+			overflow-y: auto;
+			border: 1px solid #ccc;
+			padding: 10px;
+		}			
+		
+		.searchResult {
+		    cursor: pointer;
+		    margin-bottom: 5px;
+		}
+	
+		
 
     </style>
 </head>
 <body>
-    <div class="container mb-5" style="margin-top: 80px;">
+
+	<!-- 검색창 -->
+	<div class="search d-flex justify-content-center" style="margin-top: 120px;">
+	    <input style="font-size:17px;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
+	    <div class="searchResults"></div>
+	    <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+   	    </button>
+    </div>
+
+
+    <div class="container mb-5" style="margin-top: 50px;">
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
@@ -203,7 +292,7 @@
                     <div id="inner" class="w-75 ">
                         <div class="mt-4">
                             <h4><b>1. 관련 건강고민</b></h4>
-                            <hr class="bg-warning">
+                            <hr class="bg-warning mb-4">
                             <c:forEach var="n_func" items="${n_FUNC }" varStatus="loop">
     							<span style="font-size: 15px; display: inline-block; width: 192px;"><mark>&nbsp;${loop.count}) ${n_func}&nbsp;</mark></span>
     							<c:if test="${(loop.count % 3 == 0) && !loop.last}">
@@ -219,13 +308,13 @@
                         </div>
                         <div class="mt-5">
                             <h4><b>2. 상세설명</b></h4>
-                            <hr class="bg-warning">
+                            <hr class="bg-warning mb-4">
                             <p style="font-size: 15px;">${desc }</p>
                             <p style="font-size: 15px;">${i_desc }</p>
                         </div>
                         <div class="mt-4">
                             <h4><b>3. 섭취량</b></h4>
-                            <hr class="bg-warning">
+                            <hr class="bg-warning mb-4">
                             
                             <div class="justify-content-center">
                                 <div class="d-flex flex-column align-items-center">
@@ -269,8 +358,6 @@
 	                                </div> 
 	                            </c:if>
 	                            
-	                            	
-	                            
 	                            <!-- 기능성 상한 있음 -->
 	                            <c:if test="${not empty i_DRI && not empty i_UL }">
 		                            <p style="font-size: 13px; margin-bottom: 13px;" class="mt-2">
@@ -303,20 +390,21 @@
 	                            </div>
                             </div>
                         </div>
+                        <c:if test="${not empty n_DRI_M }" var="vit"></c:if>
                         <c:if test="${vit }">
 	                        <div class="mt-5">
 		                        <c:if test="${not empty n_LACK }">
 		                            <h4><b>4. 결핍시 증상</b></h4>
-		                            <hr class="bg-warning">
+		                            <hr class="bg-warning mb-4">
 		                            <p style="font-size: 15px;">· ${n_LACK }이 있어요.</p>
 		                        </c:if>
 	                        </div>
                         </c:if>
                         <c:if test="${vit }">
                         	<c:if test="${not empty caution }">
-		                        <div class="mt-5">
+		                        <div class="mt-5 pt-1">
 		                            <h4><b>5. 주의사항</b></h4>
-		                            <hr class="bg-warning">
+		                            <hr class="bg-warning mb-4">
 		                            <p style="font-size: 15px;">${caution }</p>
 		                        </div>
 		                    </c:if>
@@ -325,21 +413,21 @@
                             <c:if test="${not empty i_caution }">
 		                        <div class="mt-5">
 		                            <h4><b>4. 주의사항</b></h4>
-		                            <hr class="bg-warning">
+		                            <hr class="bg-warning mb-4">
 		                            <p style="font-size: 15px;">${i_caution }</p>
 		                        </div>
 		                    </c:if>
                         </c:if>
                         <c:if test="${vit }">
-	                        <div class="mt-5">
+	                        <div class="mt-4">
 		                        <c:if test="${not empty caution}" var="exist">
 		                            <h4><b>6. 섭취 음식</b></h4>
-		                            <hr class="bg-warning">
+		                            <hr class="bg-warning mb-4">
 		                            <p style="font-size: 15px;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
 		                        </c:if>
 		                        <c:if test="${not exist }">
 		                        	<h4><b>5. 섭취 음식</b></h4>
-		                            <hr class="bg-warning">
+		                            <hr class="bg-warning mb-4">
 		                            <p style="font-size: 15px;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
 		                        </c:if>
 	                        </div>
@@ -348,9 +436,40 @@
 	                        <div class="mt-5">
 		                        <c:if test="${not empty caution}" var="exist">
 		                            <h4><b>7. 추천 영양제</b></h4>
-		                            <hr class="bg-warning">
+		                            <hr class="bg-warning mb-4">
+		                            <p class="text-center pt-4" style="font-size: 17px;"><b>'${param.name}'을(를) 포함하고 있는 영양제 Top 5에요!</b></p>
 		                            <p style="font-size: 15px;">
-		                                영양제1, 영양제2, 영양제3                   
+		                                <div class="scrollable-container">
+										    <div class="box-container justify-content-center">
+											    <c:forEach var="productInfo" items="${productInfoList}" varStatus="loop">
+												    <div class="box" style="white-space: nowrap; width:550px; onclick="location.href='/NutrientDetail.do?name=${productInfo.PRODUCTNAME}'">
+					    								<c:if test="${loop.count == 1 }">
+															<b class="text-center" style="width:115px; font-size: 15px;">🥇 ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count == 2 }">
+															<b class="text-center" style="width:115px; font-size: 15px;">🥈 ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count == 3 }">
+															<b class="text-center" style="width:115px; font-size: 15px;">🥉 ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count > 3 }">
+															<b class="text-center" style="width:115px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
+														</c:if>
+														
+												    	<!-- imgurl 있으면 가져옴 -->
+												    	<c:if test="${productInfo.IMGURL != null }" var="existimg">
+												        	<img src="${productInfo.IMGURL}" alt="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+												        </c:if>
+												        <!-- imgurl 없으면 대체이미지 -->
+												        <c:if test="${not existimg }">
+  													        <img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+												        </c:if>
+												        
+												        <b class="text-center" style="font-size: 13px; width: 230px;">${productInfo.PRODUCTNAME}</b>
+												    </div>
+												</c:forEach>
+											</div>
+										</div>        
 		                            </p>
 		                        </c:if>
 		                        <c:if test="${not exist }">
@@ -382,17 +501,14 @@
 		                        </div> 
 		                    </c:if>
 	                    </c:if>
-	                    
-	                    
-	                    
-	                    
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- 탭 이동처리 -->
+        	<!-- 탭 이동처리 -->
        		<div id="popular" class="tab active border-0" style="display:none;">
+			
                 <!-- 인기성분에 해당하는 상자 내용 -->
    				<div class="image mt-2">
 	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
@@ -403,10 +519,8 @@
     			</div>
                 <div class="box-container">
 	                <c:forEach var="name" items="${vitaminNames}">
-					    <div class="box col-sm-2" style="white-space: nowrap;">
-					    	<a href="<c:url value="/NutrientDetail.do?name=${name}"/>"> 
-					    		<b style="font-size: 14px;">${name}</b>
-					    	</a>
+					    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
+					        <b style="font-size: 14px;">${name}</b>
 					    </div>
 					</c:forEach>
                 </div>
@@ -423,10 +537,8 @@
     			</div>
     			<div class="box-container">
 	                <c:forEach var="name" items="${vitaminNames}">
-					    <div class="box col-sm-2" style="white-space: nowrap;">
-					    	<a href="<c:url value="/NutrientDetail.do?name=${name}"/>"> 
-					    		<b style="font-size: 14px;">${name}</b>
-					    	</a>
+					    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
+					        <b style="font-size: 14px;">${name}</b>
 					    </div>
 					</c:forEach>
                 </div>
@@ -443,10 +555,8 @@
     			</div>
     			<div class="box-container">
 	                <c:forEach var="name" items="${etcNames}">
-					    <div class="box col-sm-2" style="white-space: nowrap;">
-					    	<a href="<c:url value="/NutrientDetail.do?name=${name }"/>">
-					    		<b style="font-size: 14px;">${name}</b>
-					    	</a>
+					    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
+					        <b style="font-size: 14px;">${name}</b>
 					    </div>
 					</c:forEach>
                 </div>
@@ -463,10 +573,8 @@
     			</div>
     			<div class="box-container">
 	                <c:forEach var="name" items="${ingredientNames}">
-					    <div class="box col-sm-2" style="white-space: nowrap;">
-					    	<a href="<c:url value="/NutrientDetail.do?name=${name}"/>">
-					    		<b style="font-size: 14px;">${name}</b>
-					    	</a>
+					   <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
+					        <b style="font-size: 14px;">${name}</b>
 					    </div>
 					</c:forEach>
                 </div>
@@ -531,9 +639,6 @@
         if(n_UL_M.trim() !== "" || i_UL.trim() !=="" ){
         	targetValue = 73;
         }
-        	
-        
-        
         
         var updateInterval = 30; // 업데이트 간격 (밀리초)
 
@@ -566,6 +671,83 @@
     			removetarget.classList.remove("active");
   			}
 		});
+        
+        // 제품 이미지 로드 에러시 해당 img태그 삭제 후 대체 img태그 수정
+        function handleImageError(imgElement) {
+			// 대체 이미지 태그 생성
+			var altSrc = imgElement.alt;
+			var newImg = document.createElement('img');
+			newImg.setAttribute('src', altSrc);
+			newImg.setAttribute('style', imgElement.getAttribute('style'));
+			
+			// 기존 img 태그를 대체 이미지 태그로 교체
+			imgElement.parentNode.replaceChild(newImg, imgElement);
+		}
+		
+		// 모든 img 태그에 대해 이벤트 리스너 등록
+		var imgTags = document.getElementsByTagName('img');
+		for (var i = 0; i < imgTags.length; i++) {
+			imgTags[i].addEventListener('error', function() {
+			handleImageError(this);
+			});
+		}
+        
+		//영양소 검색
+        // 영양소 검색 기능
+var searchResultsContainer = document.querySelector('.searchResults');
+var searchTermInput = document.querySelector('.searchTerm');
+
+// 영양소 입력란 입력 시 이벤트 핸들러
+searchTermInput.addEventListener('input', searchNutrient);
+
+// 영양소 검색 함수
+function searchNutrient() {
+    // 입력된 영양소 정보 가져오기
+    var searchTerm = searchTermInput.value;
+
+    // 검색 결과 가져오기 (가상의 결과로 예시를 보여줍니다)
+    var searchResults = searchNutrients(searchTerm);
+
+    // 결과 표시하기
+    searchResultsContainer.innerHTML = ''; // 이전 결과 지우기
+
+    if (searchResults.length > 0) {
+        for (var i = 0; i < searchResults.length; i++) {
+            var result = document.createElement('p');
+            result.textContent = searchResults[i];
+            result.classList.add('searchResult');
+            searchResultsContainer.appendChild(result);
+        }
+        searchResultsContainer.style.display = 'block'; // 결과 창 표시
+    } else {
+        searchResultsContainer.style.display = 'none'; // 결과 창 숨김
+    }
+}
+
+// 가상의 영양소 검색 함수 (실제로는 데이터베이스나 API 등을 활용해야 함)
+function searchNutrients(searchTerm) {
+    // 가상의 검색 결과 (예시)
+    var nutrients = [
+        '비타민 A',
+        '비타민 B',
+        '비타민 C',
+        '비타민 D',
+        '칼슘',
+        '철분',
+        '아연',
+        '마그네슘',
+        '오메가-3',
+        '단백질'
+    ];
+
+    // 입력된 영양소 정보와 일치하는 결과 필터링
+    var results = nutrients.filter(function(nutrient) {
+        return nutrient.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+
+    return results;
+}
+        
         
         
         
