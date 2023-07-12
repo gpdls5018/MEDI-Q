@@ -64,10 +64,10 @@ document.addEventListener("DOMContentLoaded", function() {
   ////////////////////슬라이드 로직///////////////////////////////////
   $(document).ready(function(){
       $('.slider1').bxSlider({
-          slideWidth: 800,
-          minSlides: 1,
-          maxSlides: 1,
-          slideMargin: 1,
+          slideWidth: 1100,
+          minSlides: 2,
+          maxSlides: 2,
+          slideMargin: 10,
           auto : true,
           stopAutoOnClick : true,
           pager : true,

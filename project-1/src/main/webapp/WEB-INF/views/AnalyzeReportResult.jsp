@@ -133,18 +133,31 @@
 		
 	</div>
 	<script>
+	console.log('${resultListDto.nutrient_list_report}');
+	var listVitamin = '${resultListDto.nutrient_list_report}';
+	var reg_ex = /[\[\]\\\/ ]/gim;
+	listVitamin = listVitamin.replace(reg_ex,'').split(',');
+	var graph_data = [1,1,1,1,1,1];
+	var check_list = ['비타민A','비타민B','비타민C','비타민D','칼슘','마그네슘']
+	check_list.forEach(function(checkitem,index){
+	    listVitamin.forEach(function(listitem){
+	        if(listitem.includes(checkitem)) {
+	           graph_data[index] = 6;
+	        }
+	    })
+	})
 	const data = {
 			  labels: [
 			    '비타민 A',
 			    '비타민 B',
 			    '비타민 C',
-			    '프로바이오틱스',
-			    '비타민 E',
 			    '비타민 D',
+			    '칼슘',
+			    '마그네슘',
 			  ],
 			  datasets: [{
 			    label: '영양소',
-			    data: [6, 1, 1, 6, 6, 1, 6],
+			    data: graph_data,
 			    fill: true,
 			    backgroundColor: 'rgba(255, 99, 132, 0.2)',
 			    borderColor: 'rgb(255, 99, 132)',

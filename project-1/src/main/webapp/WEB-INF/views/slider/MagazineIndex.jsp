@@ -18,47 +18,7 @@
 
 
 <style>
-	@media (min-width:43.75em) {
-		.tscontainer {
-			max-width: 100%;
-			margin: 0 auto;
-			position: relative;
-		}
-		.maints {
-			display: inline-block;
-			width: 80%;
-			vertical-align: top;
-			margin-right: 20px;
-		}
-		.tsidebar {
-			display: inline-block;
-			width: 17%;
-			margin-left: 20px;
-			vertical-align: top;
-		}
-		.fixedsticky {
-			margin-top: 00px;
-		}
-	}
-	.tsidebar {
-		padding: 16px 1.5em;
-		margin-top:80px;
-		margin-bottom:10px;
-	}
-
-	.tscontainer {
-		max-width: 85%;
-		margin: 0 auto;
-		position: relative;
-	}
-	.maints > div{
-		background-color:white;
-		border-radius:15px;
-    }
-    #tsmain{
-  	  background: linear-gradient(to bottom, #ffffff, #FFFAFA);
-    }
-    aside > div {
+ aside > div {
 	  border: 1px solid #ccc;
 	  border-radius: 10px;
 	  padding: 20px;
@@ -67,9 +27,10 @@
 	  margin-bottom: 20px;
     }
     .magimg div a img{
-    	padding: 10px;
-    	width: 200px;
-    	height: 150px;
+    	border-radius: 20px;
+    	padding: 15px;
+    	width: 370px;
+    	height: 220px;
     	
     }
 	
@@ -100,8 +61,6 @@
 			        <div class="tsmg"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>"></a></div>
 		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>"></a></div>
 		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>"></a></div>
-		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>"></a></div>
-		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>"></a></div>
 	        	</div>
 		    </div>    
 	     </article>
