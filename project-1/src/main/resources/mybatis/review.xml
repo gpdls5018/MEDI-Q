@@ -21,8 +21,8 @@
 		)
 		WHERE row_num &gt;= #{current} AND row_num &lt; #{current} + 1
 	</select>
-	<select id="selectTotalReviewInfoStarScoreAverage" parameterType="int" resultType="int">
-		SELECT ROUND(AVG(starscore),1) AS average_value
+	<select id="selectTotalReviewInfoStarScoreAverage" parameterType="int" resultType="integer">
+		SELECT COALESCE(ROUND(AVG(starscore),1), 0) AS average_value
 		FROM reviewtable
 		WHERE R_PRODUCTNO = #{no}
 	</select>
@@ -51,7 +51,7 @@
 		ORDER BY count DESC
 	</select>
 	<select id="selectTotalReviewInfoNoEffectList" parameterType="int" resultType="Map">
-		SELECT value, get_no_effect_count(1, value) AS count
+		SELECT value, get_no_effect_count(#{no}, value) AS count
 		FROM (
 		  SELECT '부작용이 없었어요' AS value FROM DUAL UNION ALL
 		  SELECT '변비' FROM DUAL UNION ALL
