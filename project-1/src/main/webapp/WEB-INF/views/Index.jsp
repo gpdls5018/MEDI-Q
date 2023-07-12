@@ -51,32 +51,34 @@
           <input type="radio" id="banner4" class="sec-1-input" name="banner">
           <div class="slider">
             <div id="top-banner-1" class="banner">
-              <div class="banner-inner-wrapper" >
-                <h1>글자입력</h1>
-                <div class="line"></div>
-                <div class="learn-more-button"><a href="#">홈으로</a></div>
-              </div>
+	            <a href="#">
+	              <div class="banner-inner-wrapper" id="banner-inner-wrapper1" >
+	
+	              </div>
+	            </a>
             </div>
-            <div id="top-banner-2" class="banner">
-              <div class="banner-inner-wrapper" id="tsbaimg2">
-                 <h1>글자</h1>
-                <div class="line"></div>
-                <div class="learn-more-button"><a href="#">건강 및 분석하기</a></div>
-              </div>
+            <div id="top-banner-2" class="banner" id="tsbaimg2">
+	            <a href="#">
+	              <div class="banner-inner-wrapper" id="banner-inner-wrapper2"  >
+	               	 <p style="color:gray;">과도하거나 부족하지 않을까?</p>
+	                 <h1>💊 영양제를 분석 받으세요!</h1>
+	              </div>
+	            </a>
             </div>
             <div id="top-banner-3" class="banner" id="tsbaimg3">
-              <div class="banner-inner-wrapper">
-                 <h1>글자</h1>
-                <div class="line"></div>
-                <div class="learn-more-button"><a href="#">사진으로 약 검색하기</a></div>
-              </div>
+	            <a href="#">
+	              <div class="banner-inner-wrapper" id="banner-inner-wrapper3" >
+	                 <h1>📷 사진으로 약을 검색해요!</h1>       
+	              </div>
+	            </a>
             </div>
             <div id="top-banner-4" class="banner" id="tsbaimg4">
-              <div class="banner-inner-wrapper">
-                 <h1>졸리닭</h1>
-                <div class="line"></div>
-                <div class="learn-more-button"><a href="#">건강검진</a></div>
-              </div>
+	            <a href="#">
+	              <div class="banner-inner-wrapper" id="banner-inner-wrapper4" >
+	              	 <p style="color:gray;">내 위암 발병률은 몇 퍼센트일까?</p>
+	                 <h1>😥 주요 질환의 발병<br/> 위험도를 예측해드려요!</h1>
+	              </div>
+	            </a>
             </div>
           </div>
           <nav>
@@ -222,8 +224,7 @@
 			       <button type="button" class="close" data-dismiss="modal">&times;</button>
 			     </div>
 			     <div class="modal-body">
-			       <h3 style="text-align: center;">병원 & 약국정보</h3>
-			       <p style="text-align: center;">병원&약국에 대한 위치 찾기</p>
+			       <h3 style="text-align: center;">🩺병원 & 💊약국정보</h3>
 			       <div class="container-xxl py-5">
 			         <div class="map_wrap">
 			           <div id="modalmap" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -552,16 +553,16 @@
 	   <!--  *번째 다이브 목록 -->
 		<div class="m-5 " style="display:flex; justify-content: center;">
 	        <div class="slider1 ">
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>"></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>"></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>"></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>"></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>"></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:400px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:100%; height:400px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>" style="width:100%; height:400px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>" style="width:100%; height:400px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:400px" ></a></div>
 	        </div>
 	    </div>
 	</article>
-		<!-- 오른쪽 슬라이드 -->
-		<aside class="tsidebar fixedsticky pr-3">
+		<!-- 오른쪽 슬라이드-->
+		<aside class="tsidebar fixedsticky pr-3 mt-5"> 
 			<!--  로그인 목록 창
 			<div class="login-section justify-content-center">
 		        <p style="text-align: center; font-weight:bold; font-size:13px;"><span style="color:#EF605D">Madi-Q</span>를 더 안전하고<br/> 편리하게 이용하세요</p>
@@ -574,7 +575,7 @@
 		        	<a href="<c:url value="/project/Join.do" />" class="px-2 py-2 mr-md-1 text-dark"><strong style="color:#606060; font-weight:bold; text-decoration: underline;">회원가입</strong></a>
 		        </div>
 		    </div>
-		     -->
+			 -->
             <div class="sidebar-item pt-5 mt-5">
             	<img src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
             	<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
@@ -586,7 +587,6 @@
                 <ul class="unlist" style="padding-inline-start: 0px;">
                     <li>
                         <div class="image">
-                        	<!--<img src="<c:url value="/resources/images/tsimages/ranking1.webp"/>" style=" position: relative; vertical-align:top; left:5px; width:30px; height:30px;" alt="*">-->
                             <img src="<c:url value="/resources/images/tsimages/destination-1.jpg"/>" alt="*">
                         </div>
                         <div style="align-items: center; margin-top:20px; margin-left:10px; justify-content: center; text-align: start; line-height: 3px; font-weight:400;">
@@ -634,6 +634,8 @@
             </div>
 		</aside>
 </section>
+
+	<!--  메인 하단 -->
 	<div class="section section1-3">
        <div class="content">
            <span class="txt1">건강한 영양제 &amp; 식단 관리를 위한 모든 것</span>
@@ -646,7 +648,7 @@
         <div class="content">
 
             <span class="txt1"><span style="color: #EF605D"> Medi-Q</span>는 신뢰가 가득하여 믿을 수 있어요.</span>
-            <span class="txt2"><span style="color: #EF605D"> Medi-Q</span>는 국내외 검증된 기관과<br>신뢰도 높은 연구 결과를 바탕으로 개인 맞춤형 분석 결과를 제공합니다.</span>
+            <span class="txt2" style="font-weight: bold;"><span style="color: #EF605D"> Medi-Q</span>는 국내외 검증된 기관과<br>신뢰도 높은 연구 결과를 바탕으로 개인 맞춤형 분석 결과를 제공합니다.</span>
 
             <div class="rl-companies">
                 <div class="rl-company rl-company1">식품의약품안전처</div>
