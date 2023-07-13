@@ -113,7 +113,7 @@
 		  border-radius: 5px;
 		  background-color: #eaf818;
 		  background-image: linear-gradient(315deg, #eaf818 0%, #f6fc9c 74%);
-		   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5);
+		   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
 		   7px 7px 20px 0px rgba(0,0,0,.1),
 		   4px 4px 5px 0px rgba(0,0,0,.1);
 		  transition: all 0.3s ease;
@@ -153,21 +153,32 @@
 		function checkLoginStatus() {
 		var token = getCookieValue("User-Token");
 		//console.log("token",token);
-		  	if(token) {
-		    	// 토큰이 존재하면 로그인 상태로 간주
-		    	// 로그아웃 버튼 보이기
-		    	document.querySelector(".mypage").style.display = "";
-		    	document.querySelector(".logout").style.display = "";
-		    	document.querySelector(".login").style.display = "none";
-		  	} else {
-		    	// 토큰이 존재하지 않으면 로그아웃 상태로 간주
-		    	// 로그아웃 버튼 숨기기
-		    	document.querySelector(".mypage").style.display = "none";
-		    	document.querySelector(".logout").style.display = "none";
-		    	document.querySelector(".login").style.display = "";
-		  	}
-		}
-		
+		if (token) {
+            // 토큰이 존재하면 로그인 상태로 간주
+            // 모든 .logout 요소에 스타일 적용
+            var logoutElements = document.querySelectorAll(".logout");
+            for (var i = 0; i < logoutElements.length; i++) {
+                logoutElements[i].style.display = "";
+            }
+            // 모든 .login 요소에 스타일 적용
+            var loginElements = document.querySelectorAll(".login");
+            for (var j = 0; j < loginElements.length; j++) {
+                loginElements[j].style.display = "none";
+            }
+        } else {
+            // 토큰이 존재하지 않으면 로그아웃 상태로 간주
+            // 모든 .logout 요소에 스타일 적용
+            var logoutElements = document.querySelectorAll(".logout");
+            for (var i = 0; i < logoutElements.length; i++) {
+                logoutElements[i].style.display = "none";
+            }
+            // 모든 .login 요소에 스타일 적용
+            var loginElements = document.querySelectorAll(".login");
+            for (var j = 0; j < loginElements.length; j++) {
+                loginElements[j].style.display = "";
+            }
+        }
+    }
 		// 페이지 로딩 시 로그인 상태 확인
 		checkLoginStatus();
 	});
@@ -215,14 +226,14 @@
         	<img src="<c:url value="/resources/images/mainicon.png" />" width="50" height="50">
         	<img src="<c:url value="/resources/images/maintitle.png" />" width="200" height="50">
         </a>
-        <ul class="navbar-nav mr-3">
+        <ul class="navbar-nav mr-3 " >
             <li class="nav-item text2 m-1 login">
                 <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Join.do"/>">회원가입</a>
             </li>
             <li class="nav-item text2 m-1 login">
                 <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Login.do"/>">로그인</a>
             </li>
-            <li class="nav-item text2 m-1 mypage">
+            <li class="nav-item text2 m-1 logout">
                 <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>
             </li>
             <li class="nav-item text2 m-1 logout">
