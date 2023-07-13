@@ -63,7 +63,15 @@ p{
     margin-bottom:20px;
     background:transparent !important;
 }
-.accounts_col form label,
+.accounts_col form label{
+	position:absolute;
+    z-index: 1;
+    pointer-events: none;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size:1.2rem;
+    left:10px;
+}
 .accounts_col form .form-group i{
     position:absolute;
     z-index: 1;
@@ -106,7 +114,7 @@ p{
     display:none;
 }
 .css-tbibp8 {
-    margin: 20px 0px 16px;
+    margin: 20px 0px 10px;
     border-top: 1px solid rgb(228, 229, 237);
     padding: 16px;
 }
@@ -140,6 +148,31 @@ p{
 .enu6cyp2 img {
     border-style: none;
 }
+.social a:before{
+	content: '';
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: -5px;
+    width: 5px;
+    height: 5px;
+    background: #b0b2b4;
+    border-radius: 100%;
+}
+.social a {
+	display: inline-block;
+    position: relative;
+    color: black;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.social a strong { 
+    color: black;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
 </style>
 	<section class="login_section">
           <div class="container outer_container accounts_container">
@@ -147,10 +180,8 @@ p{
               <div class="col col-sm-12 col-md-12 col-lg-8 m-0 p-0 w-100 h-100 accounts_col">
                 <div class="accounts_image w-100 h-100">
                   <img src="https://img.freepik.com/free-photo/social-media-instagram-digital-marketing-concept-3d-rendering_106244-1717.jpg?t=st=1647414398~exp=1647414998~hmac=2c478ef6affd973ccd71ea4d394d9283db4a0c6c4c686ba0b9f6091c8a56e5a1&w=1480" alt="accounts_image" class="img-fluid w-100 h-100" />
-                </div>
-                <!--accounts_image-->
-              </div>
-              <!--account_col-->
+                </div> <!--accounts_image-->
+              </div> <!--account_col-->
               <div class="col col-sm-12 col-md-12 col-lg-4 m-0 p-0 accounts_col">
                 <!--accounts_forms-->
                 <div class="accounts_forms  w-100 h-100" id="login">
@@ -161,7 +192,7 @@ p{
 						</c:forEach>
 						<c:set var="searchPwdFn" value="${fn:substring(searchPwd, 0, 3)}${asterisks}"/>
 					</c:if>
-                  <div class="title  mt-4 p-4 w-100">
+                  <div class="title  mt-2 p-2 w-100">
                     <img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
            			<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
            			 <h1 class="mt-3 mx-5" style="font-weight: bold; color:#FD9F28">로그인</h1>
@@ -169,98 +200,86 @@ p{
 
                   <!--title-->
                   <c:if test="${! empty NOT_LOGIN }">
-						<span class="pl-5 font-weight-bold">${NOT_LOGIN }</span>
+						<span class="pl-5 font-weight-bold" style="font-size:16px;">${NOT_LOGIN }</span>
 				  </c:if>
                   <form  action="<c:url value="/project/Login.do" />" method="post" name="form" class="form  w-100 p-4" id="form">
-                    <div class="form-group">
-                      <label for="email">아이디</label>
-                      <input  value="${username}" type="text" name="id" class="form-control" id=id onfocus="labelUp(this)" onblur="labelDown(this)" required />
-                    </div>
-                    <div class="form-group">
-                      <label for="login_password">비밀번호</label>
-                      <i class="fa fa-eye-slash" id="eye_icon_login"></i>
-                      <input type="password" name="password" class="form-control" id="password" onfocus="labelUp(this)" onblur="labelDown(this)" required />
-                    </div>
-
-                     <div class="custom-control custom-checkbox ml-3 px-2 mb-3 align-self-center">
-                         <!--label로 감싸지 말자 : 감싸면 체크 X-->
-                         <input type="checkbox" class="custom-control-input" name="saveId" id="id-save" value="Y" ${empty username ? "" : "checked" }/>
-                         <label class="custom-control-label" for="id-save" style="font-size:12px">아이디 저장하기</label>   
-                     </div>
-
-                    <div class="form-group mb-0">
-                        <button type="submit" class="btn btn-primary register_btn w-100">로그인</button>
-                    </div>
-
+	                   <div class="form-group">
+	                     <label for="id">아이디</label>
+	                     <input  value="${username}" type="text" name="id" class="form-control" id=id onfocus="labelUp(this)" onblur="labelDown(this)" required />
+	                   </div>
+	                   <div class="form-group">
+	                     <label for="password">비밀번호</label>
+	                     <i class="fa fa-eye-slash" id="eye_icon_login"></i>
+	                     <input type="password" name="password" class="form-control" id="password" onfocus="labelUp(this)" onblur="labelDown(this)" required />
+	                   </div>
+	                    <div class="custom-control custom-checkbox ml-3 px-2 mb-3 align-self-center">
+	                        <!--label로 감싸지 말자 : 감싸면 체크 X-->
+	                        <input type="checkbox" class="custom-control-input" name="saveId" id="id-save" value="Y" ${empty username ? "" : "checked" }/>
+	                        <label class="custom-control-label" for="id-save" style="font-size:12px">아이디 저장하기</label>   
+	                    </div>
+	                   <div class="form-group mb-0">
+	                       <button type="submit" class="btn btn-primary register_btn w-100">로그인</button>
+	                   </div>
                   </form>
       
                   
-                  <div class="css-tbibp8 enu6cyp0">
-                    <h5 class="css-1y19fas e870mj50">SNS 간편 로그인</h5>
-                    <div class="css-1dqn28w enu6cyp1" style="justify-content: space-around;">
-                        <a href="https://nid.naver.com/oauth2.0/authorize?client_id=m0_NavLMe3aWfFRsood6&response_type=code&redirect_uri=http://localhost:9090/project/naverLogin.do&state=" class="css-18u83hy enu6cyp2" style="background-color: rgb(30, 200, 0);">
-                            <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/naver-logo_v2.png" width="24" height="24" alt="소셜 로고">
-                        </a>
-                        <a href="https://kauth.kakao.com/oauth/authorize?client_id=16c1121d0de60f9066904fb3ffc57c36&redirect_uri=http://localhost:9090/project/kakaoLogin.do&response_type=code" class="css-18u83hy enu6cyp2" style="background-color: rgb(249, 224, 0);">
-                            <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/kakao-logo_v2.png" width="24" height="24" alt="소셜 로고">
-                        </a>
-                    </div>
-                </div>
-                <div class="social d-flex justify-content-center">
-                    <a href="#" id="searchId" class="px-2 py-2 mr-md-1 text-dark search" data-toggle="modal" data-target="#modalSearchIdNPwd" data-backdrop="static">
-                        <strong>아이디찾기</strong>
-                    </a> 
-                    <a href="#"	id="searchPwd" class="px-2 py-2 ml-md-1 text-dark search" data-target="#modalSearchIdNPwd" data-backdrop="static">
-                        <strong>비밀번호찾기</strong>
-                    </a>
-                    <a href="<c:url value="/project/Join.do" />" class="px-2 py-2 mr-md-1 text-dark">
-                        <strong>회원가입</strong>
-                    </a> 
-                </div>
-                </div>
-                <!--accounts_forms-->
-              </div>
-              <!--account_col-->
-            </div>
-            <!--row-->
-          </div>
-          <!--accounts_container-->
-        </section>
-        <!--login_section-->
-<div class="modal fade" id="modalSearchIdNPwd">	
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content" style="width: 450px">
-			<!-- Modal Header -->
-			<div class="modal-header">
-				<h5 class="modal-title">타이틀</h5>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-			<!-- Modal body -->
-			<div class="modal-body d-flex justify-content-center" style="height: 190px">
-				<form class="form-inline" action="" method="POST">
-					<h6 class="ml-2 text">내용</h6>
-					<input type="hidden" name="mode"/>
-					<input type="text" class="form-control mx-2" name="email" placeholder="이메일 입력해주세요" style="width: 300px"/>
-					<input type="text" class="form-control mx-2" name="user" placeholder="아이디를 입력해주세요" style="width: 300px; display: none"/>
-					<input type="text" class="form-control mx-2 my-2" name="name" placeholder="이름를 입력해주세요"  style="width: 300px;"/>
-					<a type="button" class="btn btn-info mx-3 submit">확인</a>
-					<span id="checkOK" class="mx-3" style="display:none"></span>
-				</form>			
+	                <div class="css-tbibp8 enu6cyp0">
+	                   <h5 class="css-1y19fas e870mj50">SNS 간편 로그인</h5>
+	                   <div class="css-1dqn28w enu6cyp1 mt-5" style="justify-content: space-around;">
+	                       <a href="https://nid.naver.com/oauth2.0/authorize?client_id=m0_NavLMe3aWfFRsood6&response_type=code&redirect_uri=http://localhost:9090/project/naverLogin.do&state=" class="css-18u83hy enu6cyp2" style="background-color: rgb(30, 200, 0);">
+	                           <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/naver-logo_v2.png" width="24" height="24" alt="소셜 로고">
+	                       </a>
+	                       <a href="https://kauth.kakao.com/oauth/authorize?client_id=16c1121d0de60f9066904fb3ffc57c36&redirect_uri=http://localhost:9090/project/kakaoLogin.do&response_type=code" class="css-18u83hy enu6cyp2" style="background-color: rgb(249, 224, 0);">
+	                           <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/kakao-logo_v2.png" width="24" height="24" alt="소셜 로고">
+	                       </a>
+	                   </div>
+	               </div>
+	               <div class="social d-flex" style="justify-content: space-evenly">
+	                   <a href="#" id="searchId" class="mx-3 px-2 py-2 mr-md-1 search" data-toggle="modal" data-target="#modalSearchIdNPwd" data-backdrop="static">
+	                       <strong>아이디찾기</strong>
+	                   </a> 
+	                   <a href="#" id="searchPwd" class="mx-3 px-2 py-2 ml-md-1 search" data-target="#modalSearchIdNPwd" data-backdrop="static">
+	                       <strong>비밀번호찾기</strong>
+	                   </a>
+	                   <a href="<c:url value="/project/Join.do" />" class="mx-3 px-2 py-2 mr-md-1">
+	                       회원가입
+	                   </a> 
+	               </div>
+                </div> <!--accounts_forms-->
+              </div> <!--account_col-->
+            </div> <!--row-->
+          </div><!--accounts_container-->
+        </section> <!--login_section-->
+		<div class="modal fade" id="modalSearchIdNPwd">	
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content" style="width: 450px">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h5 class="modal-title">타이틀</h5>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<!-- Modal body -->
+					<div class="modal-body d-flex" style="height: 190px">
+						<form class="form-inline" action="" method="POST">
+							<h6 class="ml-2 text">내용</h6>
+							<input type="hidden" name="mode"/>
+							<input type="text" class="form-control mx-2" name="email" placeholder="이메일 입력해주세요" style="width: 300px"/>
+							<input type="text" class="form-control mx-2" name="user" placeholder="아이디를 입력해주세요" style="width: 300px; display: none"/>
+							<input type="text" class="form-control mx-2 my-2" name="name" placeholder="이름를 입력해주세요"  style="width: 300px;"/>
+							<a type="button" class="btn btn-info mx-3 submit">확인</a>
+							<span id="checkOK" class="mx-3" style="display:none"></span>
+						</form>			
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
- <!-- jQuery library -->
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-        <!-- Popper JS -->
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-        <!-- Latest compiled JavaScript -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+		
+		
 <script>
 	//유효성 검사
 	var form = document.forms[1];
 	var span = document.querySelector('#checkOK');
-	//console.log(form.email.style.display.length)
+	//console.log(form)
 	form.onsubmit = function(e){
 		var isValidate = false;
 		if(!form.email.value){
@@ -310,55 +329,56 @@ p{
 	
 	var mode = document.querySelector('input[name=mode]');
 	var searchTags = document.querySelectorAll('.search');
-	
+	//console.log(searchTags)
 	searchTags.forEach(function(search) {
-		search.onclick = function(e) {
-			document.querySelector('input[name=name]').textContent='';
-			document.querySelector('input[name=email]').value='';
-			document.querySelector('input[name=user]').textContent='';
-			span.textContent='';
-			if(e.target.textContent === '아이디찾기'){
-				mode.value = 'ID';
-				document.querySelector('.modal-title').textContent = '아이디 찾기';
-				document.querySelector('.text').textContent = "아이디를 찾기 위해 이메일과 이름을 입력해주세요";
-				document.querySelector('input[name=user]').style.display='none';
-				document.querySelector('input[name=name]').style.display='';
-			}
-			else if(e.target.textContent === '비밀번호찾기'){
-				mode.value = 'PWD';
-				e.target.parentElement.setAttribute("data-toggle", "modal");
-				document.querySelector('.modal-title').textContent = '비밀번호 찾기';
-				document.querySelector('.text').textContent = "비밀번호를 찾기 위해 이메일과 아이디를 입력해주세요";
-				document.querySelector('input[name=user]').style.display='';
-				document.querySelector('input[name=name]').style.display='none';
-			}
-	
-		//아이디 비밀번호 찾기 ajax로 넘기기
-		$('.submit').click(function(){
-			$.ajax({
-				url:'<c:url value="/project/SearchIdNPwd.do"/>',
-				dataType:'json',
-				data:{id:$('input[name=user]').val(),
-						email:$('input[name=email]').val(),
-						name:$('input[name=name]').val(),
-						mode:$('input[name=mode]').val()}
-			}).done(function(data){
-				span.style.display='';
-				span.style.color='black';
-				if(data.mode=='ID'){
-					span.innerHTML = "입력하신 이메일로 아이디 전송을 완료했습니다";
+			search.onclick = function(e) {
+				document.querySelector('input[name=name]').textContent='';
+				document.querySelector('input[name=email]').value='';
+				document.querySelector('input[name=user]').textContent='';
+				span.textContent='';
+				//console.log(e.target.textContent)
+				if(e.target.textContent === '아이디찾기'){
+					mode.value = 'ID';
+					document.querySelector('.modal-title').textContent = '아이디 찾기';
+					document.querySelector('.text').textContent = "아이디를 찾기 위해 이메일과 이름을 입력해주세요";
+					document.querySelector('input[name=user]').style.display='none';
+					document.querySelector('input[name=name]').style.display='';
 				}
-				else{//이메일 보냈다고 문자남기기
-					span.innerHTML = "입력하신 이메일로 비밀번호 전송을 완료했습니다";
+				else if(e.target.textContent === '비밀번호찾기'){
+					mode.value = 'PWD';
+					e.target.parentElement.setAttribute("data-toggle", "modal");
+					document.querySelector('.modal-title').textContent = '비밀번호 찾기';
+					document.querySelector('.text').textContent = "비밀번호를 찾기 위해 이메일과 아이디를 입력해주세요";
+					document.querySelector('input[name=user]').style.display='';
+					document.querySelector('input[name=name]').style.display='none';
 				}
-			}).fail(function(){
-				console.log('error');
-			});
-		});
 		
-			}
+		//아이디 비밀번호 찾기 ajax로 넘기기
+		//console.log($('.submit'))
+			$('.submit').click(function(){
+				$.ajax({
+					url:'<c:url value="/project/SearchIdNPwd.do"/>',
+					dataType:'json',
+					data:{id:$('input[name=user]').val(),
+							email:$('input[name=email]').val(),
+							name:$('input[name=name]').val(),
+							mode:$('input[name=mode]').val()}
+				}).done(function(data){
+					span.style.display='';
+					span.style.color='black';
+					if(data.mode=='ID'){
+						span.innerHTML = "입력하신 이메일로 아이디 전송을 완료했습니다";
+					}
+					else{//이메일 보냈다고 문자남기기
+						span.innerHTML = "입력하신 이메일로 비밀번호 전송을 완료했습니다";
+					}
+				}).fail(function(){
+					console.log('error');
+				});
+			});
+		}
 	})
-	// call when focus on input
+	// 아이디 플레이스 홀더가 위로 올라가는 로직
         function labelUp(input){
             input.parentElement.children[0].setAttribute("class", "change_label");    
         }  
