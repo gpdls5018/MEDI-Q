@@ -107,9 +107,8 @@ p{
 }
 .css-tbibp8 {
     margin: 20px 0px 16px;
-    border: 1px solid rgb(228, 229, 237);
+    border-top: 1px solid rgb(228, 229, 237);
     padding: 16px;
-    border-radius: 8px;
 }
 .css-1y19fas {
     margin: 0px;
@@ -185,8 +184,8 @@ p{
 
                      <div class="custom-control custom-checkbox ml-3 px-2 mb-3 align-self-center">
                          <!--label로 감싸지 말자 : 감싸면 체크 X-->
-                         <label class="custom-control-label" for="id-save"><h6 style="font-size:12px">아이디 저장하기</h6></label>   
                          <input type="checkbox" class="custom-control-input" name="saveId" id="id-save" value="Y" ${empty username ? "" : "checked" }/>
+                         <label class="custom-control-label" for="id-save" style="font-size:12px">아이디 저장하기</label>   
                      </div>
 
                     <div class="form-group mb-0">
@@ -198,21 +197,12 @@ p{
                   
                   <div class="css-tbibp8 enu6cyp0">
                     <h5 class="css-1y19fas e870mj50">SNS 간편 로그인</h5>
-                    <div class="css-1dqn28w enu6cyp1">
+                    <div class="css-1dqn28w enu6cyp1" style="justify-content: space-around;">
                         <a href="https://nid.naver.com/oauth2.0/authorize?client_id=m0_NavLMe3aWfFRsood6&response_type=code&redirect_uri=http://localhost:9090/project/naverLogin.do&state=" class="css-18u83hy enu6cyp2" style="background-color: rgb(30, 200, 0);">
                             <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/naver-logo_v2.png" width="24" height="24" alt="소셜 로고">
                         </a>
                         <a href="https://kauth.kakao.com/oauth/authorize?client_id=16c1121d0de60f9066904fb3ffc57c36&redirect_uri=http://localhost:9090/project/kakaoLogin.do&response_type=code" class="css-18u83hy enu6cyp2" style="background-color: rgb(249, 224, 0);">
                             <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/kakao-logo_v2.png" width="24" height="24" alt="소셜 로고">
-                        </a>
-                        <a href="#" class="css-18u83hy enu6cyp2" style="background-color: rgb(24, 119, 242);">
-                            <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/facebook-logo_v2.png" width="24" height="24" alt="소셜 로고">
-                        </a>
-                        <a href="#" class="css-18u83hy enu6cyp2" style="background-color: rgb(255, 255, 255); border: 1px solid rgb(228, 229, 237);">
-                            <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/google-logo_v2.png" width="24" height="24" alt="소셜 로고">
-                        </a>
-                        <a href="#" class="css-18u83hy enu6cyp2" style="background-color: rgb(0, 0, 0);">
-                            <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/apple-logo_v2.png" width="24" height="24" alt="소셜 로고">
                         </a>
                     </div>
                 </div>
@@ -384,11 +374,7 @@ p{
         // show & hide password
         var eye_icon_signup = document.getElementById('eye_icon_signup');
         var eye_icon_login = document.getElementById('eye_icon_login');
-        var sign_up_password = document.getElementById("signup_password");
-        var login_password = document.getElementById("login_password");
-        eye_icon_signup.addEventListener('click', ()=>{
-            hideAndShowPass(eye_icon_signup, signup_password); 
-        });
+        var login_password = document.getElementById("password");
         eye_icon_login.addEventListener('click', ()=>{
             hideAndShowPass(eye_icon_login, login_password);  
         });
