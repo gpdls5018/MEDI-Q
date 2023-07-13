@@ -193,15 +193,15 @@
 @media only screen and (max-width: 1919px) {
 	body {font-size: 20px;}
 	.main-header .header-wrapper {width: 60%;}
-	#section-119 {height: 18em;}
-	#section-119 .content-slider .slider .banner .banner-inner-wrapper {padding-top: 3em;}
+	#section-119 {height: 48em;}
+	#section-119 .content-slider .slider .banner .banner-inner-wrapper {padding-top: 20em;}
 }
 
 @media only screen and (max-width: 1680px) {
 	body {font-size: 18px;}
 	.main-header .header-wrapper {width: 65%;}
-	#section-119 {height: 16em;}
-	#section-119 .content-slider .slider .banner .banner-inner-wrapper {padding-top: 3em;}
+	#section-119 {height: 45em;}
+	#section-119 .content-slider .slider .banner .banner-inner-wrapper {padding-top: 18em;}
 }
 
 @media only screen and (max-width: 1366px) {
