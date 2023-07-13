@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
         .container {
             margin-top: 80px;
@@ -167,7 +170,7 @@
 
 		/* 관련 영양제 뿌려주기 */
 	    .scrollable-container {
-	        height: 750px;  /* 스크롤 가능한 컨테이너의 높이 */
+	        /*height: 750px;   스크롤 가능한 컨테이너의 높이 */
 	        overflow-y: auto;  /* 세로 스크롤바 표시 */
 	    }
 	
@@ -179,6 +182,7 @@
     	/* WebKit 스크롤바 스타일링 */
 	    .scrollable-container::-webkit-scrollbar {
 	        width: 8px;  /* 스크롤바 너비 */
+	        height: 4px;
 	    }
 
 		.scrollable-container::-webkit-scrollbar-thumb {
@@ -195,7 +199,7 @@
 		    background-color: #dc3545;  /* 스크롤바 썸네일 배경색 (호버 상태) */
 		}
 		
-		/* 스타일 추가 */
+		/* 검색창 스타일 추가 */
 
 		.search {
 		  display: flex;
@@ -203,12 +207,12 @@
 		
 		.searchTerm {
 		  width: 500px;
-		  border: 3px solid #0062cc;
 		  border-right: none;
 		  padding: 5px;
 		  height: 50px;
 		  border-radius: 10px 0 0 10px;
 		  outline: none;
+		  /*border: 3px solid #EF605D;*/
 		}
 		
 		.searchTerm:focus{
@@ -218,29 +222,13 @@
 		.searchButton {
 		  width: 60px;
 		  height: 50px;
-		  border: 1px solid #0062cc;
-		  background: #0062cc;
+		  /*border: #EF605D;*/
+		  background: #EF605D;
 		  text-align: center;
 		  color: #fff;
 		  border-radius: 0 10px 10px 0;
 		  cursor: pointer;
 		  font-size: 20px;
-		}
-	
-		.searchResults {
-			width: 500px;
-			text-align: left;
-			margin-top: 20px;
-			display: none; /* 초기에 숨김 처리 
-			max-height: 100px;
-			overflow-y: auto;
-			border: 1px solid #ccc;
-			padding: 10px;
-		}			
-		
-		.searchResult {
-		    cursor: pointer;
-		    margin-bottom: 5px;
 		}
 	
 		
@@ -251,8 +239,7 @@
 
 	<!-- 검색창 -->
 	<div class="search d-flex justify-content-center" style="margin-top: 120px;">
-	    <input style="font-size:17px;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
-	    <div class="searchResults"></div>
+	    <input id="searchInput" style="font-size:17px;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
 	    <button type="submit" class="searchButton">
         <i class="fa fa-search"></i>
    	    </button>
@@ -333,7 +320,7 @@
 		                                </c:if>
 	                                
 		                                <div style="height:1px;">
-		                                	<span class="arrow-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow-down"></span>
+		                                	<span class="arrow-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow-down"></span>
 		                                </div>
 		                            </p>
 		                            <div class="progress w-75 progress-bar text-danger" > 
@@ -364,7 +351,7 @@
 		                                	권장 섭취량: ${i_DRI }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		                                	상한 섭취량: ${i_UL }<br/>
 		                                <div style="height:1px;">
-		                                	<span class="arrow-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow-down"></span>
+		                                	<span class="arrow-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow-down"></span>
 		                                </div>
 		                            </p>
 		                            <div class="progress w-75 progress-bar text-danger" > 
@@ -433,9 +420,97 @@
 	                        </div>
 	                    </c:if>
 	                    <c:if test="${vit }">
+	                    <!-- 개수 6,7 은 5대 영양소 / 개수 4,5 는 기능성 원료 -->
 	                        <div class="mt-5">
 		                        <c:if test="${not empty caution}" var="exist">
 		                            <h4><b>7. 추천 영양제</b></h4>
+		                            <hr class="bg-warning mb-4">
+		                            <c:forEach var="productInfo" items="${productInfoList}" varStatus="loop">
+		                            <c:if test="${loop.count == 1 && productInfoList.size() != 0 }">
+		                            	<p class="text-center pt-4" style="font-size: 17px;"><b>'${param.name}'을(를) 포함하고 있는 영양제 Top ${productInfoList.size()}에요!</b></p>
+		                            </c:if>
+		                            <c:if test="${productInfoList.size() == 0 }">
+		                            	<p class="text-center pt-4" style="font-size: 17px;"><b>'${param.name}'을(를) 포함하고 있는 등록된 영양제가 없어요.😓<br/><small>한국 식품의약품안전처에서 검증된 원료인지 확인해주세요!</small></b></p>
+		                            </c:if>
+		                            <p style="font-size: 15px;">
+		                                <div class="scrollable-container">
+										    <div class="box-container justify-content-center">
+										    	
+										    	<!-- 이미지 있는 경우 우선 가져옴 -->
+											    <c:if test="${not empty productInfo.PRODUCTNAME && not empty productInfo.IMGURL}" var="first">
+													<div class="box" style="white-space: nowrap; width:580px;" onclick="location.href='/NutrientToFoodDetail.do?name=${productInfo.PRODUCTNAME}'">
+					    								<c:if test="${loop.count == 1}">
+															<b class="text-center" style="width:115px; font-size: 15px;">🥇 ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count == 2}">
+															<b class="text-center" style="width:115px; font-size: 15px;">🥈 ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count == 3}">
+															<b class="text-center" style="width:115px; font-size: 15px;">🥉 ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count == 4}">
+															<b class="text-center" style="width:115px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count == 5}">
+															<b class="text-center" style="width:115px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
+														</c:if>
+														
+												    	<!-- imgurl 있으면 가져옴 -->
+												    	<c:if test="${productInfo.IMGURL != null }" var="existimg">
+												        	<img src="${productInfo.IMGURL}" alt="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+												        </c:if>
+												        <!-- imgurl 없으면 대체이미지 -->
+												        <c:if test="${not existimg }">
+ 													        <img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+												        </c:if>
+												        
+												        <b class="text-center" style="font-size: 13px; width: 230px;">&nbsp;${productInfo.PRODUCTNAME}</b>
+												    </div>
+											    </c:if>
+											    
+											    <!-- 이미지 없는 경우 -->
+											    <c:if test="${! first}">
+													<div class="box" style="white-space: nowrap; width:580px;" onclick="location.href='/NutrientToFoodDetail.do?name=${productInfo.PRODUCTNAME}'">
+					    								<c:if test="${loop.count == 1}">
+															<b class="text-center" style="width:115px; font-size: 15px;">🥇 ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count == 2}">
+															<b class="text-center" style="width:115px; font-size: 15px;">🥈 ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count == 3}">
+															<b class="text-center" style="width:115px; font-size: 15px;">🥉 ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count == 4}">
+															<b class="text-center" style="width:115px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count == 5}">
+															<b class="text-center" style="width:115px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
+														</c:if>
+														
+												    	<!-- imgurl 있으면 가져옴 -->
+												    	<c:if test="${productInfo.IMGURL != null }" var="existimg">
+												        	<img src="${productInfo.IMGURL}" alt="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+												        </c:if>
+												        <!-- imgurl 없으면 대체이미지 -->
+												        <c:if test="${not existimg }">
+ 													        <img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+												        </c:if>
+												        
+												        <b class="text-center" style="font-size: 13px; width: 230px;">&nbsp;${productInfo.PRODUCTNAME}</b>
+												    </div>
+											    </c:if>
+											    
+											    
+											    
+											    
+											    
+											</div>
+										</div>  
+									</p>
+									</c:forEach>     
+		                        </c:if>
+		                        <c:if test="${not exist }">
+		                        	<h4><b>6. 추천 영양제</b></h4>
 		                            <hr class="bg-warning mb-4">
 		                            <p class="text-center pt-4" style="font-size: 17px;"><b>'${param.name}'을(를) 포함하고 있는 영양제 Top 5에요!</b></p>
 		                            <p style="font-size: 15px;">
@@ -472,31 +547,86 @@
 										</div>        
 		                            </p>
 		                        </c:if>
-		                        <c:if test="${not exist }">
-		                        	<h4><b>6. 추천 영양제</b></h4>
-		                            <hr class="bg-warning">
-		                            <p style="font-size: 15px;">
-		                                영양제1, 영양제2, 영양제3                 
-		                            </p>
-		                        </c:if>
 	                        </div>
 	                    </c:if>
 	                    <c:if test="${not vit }">
 	                    	<c:if test="${not empty i_caution }">
 			                    <div class="mt-5">
 			                    	<h4><b>5. 추천 영양제</b></h4>
-		                            <hr class="bg-warning">
+		                            <hr class="bg-warning mb-4">
+		                            <p class="text-center pt-4" style="font-size: 17px;"><b>'${param.name}'을(를) 포함하고 있는 영양제 Top 5에요!</b></p>
 		                            <p style="font-size: 15px;">
-		                                영양제1, 영양제2, 영양제3                  
+		                                <div class="scrollable-container">
+										    <div class="box-container justify-content-center">
+											    <c:forEach var="productInfo" items="${productInfoList}" varStatus="loop">
+												    <div class="box" style="white-space: nowrap; width:550px; onclick="location.href='/NutrientDetail.do?name=${productInfo.PRODUCTNAME}'">
+					    								<c:if test="${loop.count == 1 }">
+															<b class="text-center" style="width:115px; font-size: 15px;">🥇 ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count == 2 }">
+															<b class="text-center" style="width:115px; font-size: 15px;">🥈 ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count == 3 }">
+															<b class="text-center" style="width:115px; font-size: 15px;">🥉 ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count > 3 }">
+															<b class="text-center" style="width:115px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
+														</c:if>
+														
+												    	<!-- imgurl 있으면 가져옴 -->
+												    	<c:if test="${productInfo.IMGURL != null }" var="existimg">
+												        	<img src="${productInfo.IMGURL}" alt="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+												        </c:if>
+												        <!-- imgurl 없으면 대체이미지 -->
+												        <c:if test="${not existimg }">
+  													        <img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+												        </c:if>
+												        
+												        <b class="text-center" style="font-size: 13px; width: 230px;">${productInfo.PRODUCTNAME}</b>
+												    </div>
+												</c:forEach>
+											</div>
+										</div>        
 		                            </p>
 		                        </div>    
 		                    </c:if>
 		                    <c:if test="${empty i_caution }">
 		                    	<div class="mt-5">
 			                    	<h4><b>4. 추천 영양제</b></h4>
-		                            <hr class="bg-warning">
+		                            <hr class="bg-warning mb-4">
+		                            <p class="text-center pt-4" style="font-size: 17px;"><b>'${param.name}'을(를) 포함하고 있는 영양제 Top 5에요!</b></p>
 		                            <p style="font-size: 15px;">
-		                                영양제1, 영양제2, 영양제3                  
+		                                <div class="scrollable-container">
+										    <div class="box-container justify-content-center">
+											    <c:forEach var="productInfo" items="${productInfoList}" varStatus="loop">
+												    <div class="box" style="white-space: nowrap; width:550px; onclick="location.href='/NutrientToFoodDetail.do?name=${productInfo.PRODUCTNAME}'">
+					    								<c:if test="${loop.count == 1 }">
+															<b class="text-center" style="width:115px; font-size: 15px;">🥇 ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count == 2 }">
+															<b class="text-center" style="width:115px; font-size: 15px;">🥈 ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count == 3 }">
+															<b class="text-center" style="width:115px; font-size: 15px;">🥉 ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count > 3 }">
+															<b class="text-center" style="width:115px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
+														</c:if>
+														
+												    	<!-- imgurl 있으면 가져옴 -->
+												    	<c:if test="${productInfo.IMGURL != null }" var="existimg">
+												        	<img src="${productInfo.IMGURL}" alt="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+												        </c:if>
+												        <!-- imgurl 없으면 대체이미지 -->
+												        <c:if test="${not existimg }">
+  													        <img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+												        </c:if>
+												        
+												        <b class="text-center" style="font-size: 13px; width: 230px;">${productInfo.PRODUCTNAME}</b>
+												    </div>
+												</c:forEach>
+											</div>
+										</div>        
 		                            </p>
 		                        </div> 
 		                    </c:if>
@@ -511,8 +641,8 @@
 			
                 <!-- 인기성분에 해당하는 상자 내용 -->
    				<div class="image mt-2">
-	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
-	                <div class="text text-color:black text-center">
+	                <img class="bg-img w-100" style="height:240px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
+	                <div class="text text-color:black text-center" style="margin:35px;">
 		           		<b style="font-size: 30px;">👨‍⚕&nbsp;인기 성분 Top 10</b><br/>
 		           		<small>100개 영양성분 중 가장 인기있는 10개 성분의 Best 제품을 만나보세요!</small>
                 	</div>
@@ -692,64 +822,76 @@
 			});
 		}
         
-		//영양소 검색
-        // 영양소 검색 기능
-var searchResultsContainer = document.querySelector('.searchResults');
-var searchTermInput = document.querySelector('.searchTerm');
+		//영양소 검색 및 자동완성
+        $(function() {    //화면 다 뜨면 시작
+        	
+        	var searchSource = []; // 자동완성 목록
+        	
+        	var vit = "${vitaminNames}"; // 비타민명 추가
+        	var vitArray = vit.slice(1, -1).split(","); // 적절한 구분자에 따라 문자열을 배열로 분할합니다.
+        	Array.prototype.push.apply(searchSource, vitArray);
+        	
+        	var etc = "${etcNames}"; // 기타명 추가
+        	var etcArray = etc.slice(1, -1).split(",");
+        	Array.prototype.push.apply(searchSource, etcArray);
+        	
+        	var ing = "${ingredientNames}";
+        	var ingArray = ing.slice(1, -1).split(",");
+        	Array.prototype.push.apply(searchSource, ingArray);
+        	
+        	
+	        
+	        $("#searchInput").autocomplete({  //오토 컴플릿트 시작
+	            source : searchSource,    // source 는 자동 완성 대상
+	            select : function(event, ui) {    //아이템 선택시
+	                //console.log(ui.item);
+	                var name = ui.item.value.trim();
+	                var url = "/NutrientDetail.do?name="+encodeURIComponent(name);
+	                window.location.href = url; // 페이지를 해당 URL로 이동합니다.
+	            },
+	            focus : function(event, ui) {    //포커스 가면
+	                return false;//한글 에러 잡기용도로 사용됨
+	            },
+	            minLength: 1,// 최소 글자수
+	            autoFocus: true, //첫번째 항목 자동 포커스 기본값 false
+	            classes: {    //잘 모르겠음
+	                "ui-autocomplete": "highlight"	                
+	            },
+	            delay: 10,    //검색창에 글자 써지고 나서 autocomplete 창 뜰 때 까지 딜레이 시간(ms)
+	//            disabled: true, //자동완성 기능 끄기
+	            position: { 
+	            	my : "right top",
+	            	at: "right+7 bottom"
+	            },   
+	            close : function(event){    //자동완성창 닫아질때 호출
+	                //console.log(event);
+	            },
+	            open: function(event, ui) {
+	                $(this).autocomplete("widget").css("width", "494px");
+	                $(this).autocomplete("widget").css("text-align","center");
+	            }
+	        });
 
-// 영양소 입력란 입력 시 이벤트 핸들러
-searchTermInput.addEventListener('input', searchNutrient);
-
-// 영양소 검색 함수
-function searchNutrient() {
-    // 입력된 영양소 정보 가져오기
-    var searchTerm = searchTermInput.value;
-
-    // 검색 결과 가져오기 (가상의 결과로 예시를 보여줍니다)
-    var searchResults = searchNutrients(searchTerm);
-
-    // 결과 표시하기
-    searchResultsContainer.innerHTML = ''; // 이전 결과 지우기
-
-    if (searchResults.length > 0) {
-        for (var i = 0; i < searchResults.length; i++) {
-            var result = document.createElement('p');
-            result.textContent = searchResults[i];
-            result.classList.add('searchResult');
-            searchResultsContainer.appendChild(result);
-        }
-        searchResultsContainer.style.display = 'block'; // 결과 창 표시
-    } else {
-        searchResultsContainer.style.display = 'none'; // 결과 창 숨김
-    }
-}
-
-// 가상의 영양소 검색 함수 (실제로는 데이터베이스나 API 등을 활용해야 함)
-function searchNutrients(searchTerm) {
-    // 가상의 검색 결과 (예시)
-    var nutrients = [
-        '비타민 A',
-        '비타민 B',
-        '비타민 C',
-        '비타민 D',
-        '칼슘',
-        '철분',
-        '아연',
-        '마그네슘',
-        '오메가-3',
-        '단백질'
-    ];
-
-    // 입력된 영양소 정보와 일치하는 결과 필터링
-    var results = nutrients.filter(function(nutrient) {
-        return nutrient.toLowerCase().includes(searchTerm.toLowerCase());
-    });
-
-    return results;
-}
+	        
+	    });
+		
         
+        // 이미지 있는 경우
+        var firstBlock = document.querySelector('c\\:if[test="${not empty productInfo.PRODUCTNAME && not empty productInfo.IMGURL}"][var="first"]');
         
+        // 이미지 없는 경우
+        var secondBlock = document.querySelector('c\\:if[test="${! first}"]');
+		
+        if (secondBlock && secondBlock.parentNode) {
+        	  secondBlock.parentNode.insertBefore(firstBlock, secondBlock);
+       	}
         
+		
+		
+		
+		
+		
+		
         
         
     </script>

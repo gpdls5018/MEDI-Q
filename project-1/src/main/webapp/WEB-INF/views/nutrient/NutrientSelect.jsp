@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
-	<style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
         .container {
             margin-top: 80px;
         }
@@ -124,11 +127,52 @@
 			
 		}
 		
+		/* 검색창 스타일 추가 */
+
+		.search {
+		  display: flex;
+		}
+		
+		.searchTerm {
+		  width: 500px;
+		  border-right: none;
+		  padding: 5px;
+		  height: 50px;
+		  border-radius: 10px 0 0 10px;
+		  outline: none;
+		  /*border: 3px solid #EF605D;*/
+		}
+		
+		.searchTerm:focus{
+		  color: black;
+		}
+		
+		.searchButton {
+		  width: 60px;
+		  height: 50px;
+		  /*border: #EF605D;*/
+		  background: #EF605D;
+		  text-align: center;
+		  color: #fff;
+		  border-radius: 0 10px 10px 0;
+		  cursor: pointer;
+		  font-size: 20px;
+		}
+		
 
     </style>
 </head>
 <body>
-    <div class="container pb-5" style="margin-top: 80px;">
+
+	<!-- 검색창 -->
+	<div class="search d-flex justify-content-center" style="margin-top: 120px;">
+	    <input id="searchInput" style="font-size:17px;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
+	    <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+   	    </button>
+    </div>
+    
+    <div class="container pb-5" style="margin-top: 50px;">
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
@@ -221,7 +265,6 @@
             </div>
         </div>
 
-
     </div>
     <script>
 
@@ -264,6 +307,57 @@
 	
 	        evt.currentTarget.classList.add("active");  // 선택한 탭 링크에 'active' 클래스 추가
         }
+        
+        //영양소 검색 및 자동완성
+        $(function() {    //화면 다 뜨면 시작
+        	
+        	var searchSource = []; // 자동완성 목록
+        	
+        	var vit = "${vitaminNames}"; // 비타민명 추가
+        	var vitArray = vit.slice(1, -1).split(","); // 적절한 구분자에 따라 문자열을 배열로 분할합니다.
+        	Array.prototype.push.apply(searchSource, vitArray);
+        	
+        	var etc = "${etcNames}"; // 기타명 추가
+        	var etcArray = etc.slice(1, -1).split(",");
+        	Array.prototype.push.apply(searchSource, etcArray);
+        	
+        	var ing = "${ingredientNames}";
+        	var ingArray = ing.slice(1, -1).split(",");
+        	Array.prototype.push.apply(searchSource, ingArray);
+	        
+	        $("#searchInput").autocomplete({  //오토 컴플릿트 시작
+	            source : searchSource,    // source 는 자동 완성 대상
+	            select : function(event, ui) {    //아이템 선택시
+	                //console.log(ui.item);
+	                var name = ui.item.value.trim();
+	                var url = "/NutrientDetail.do?name="+encodeURIComponent(name);
+	                window.location.href = url; // 페이지를 해당 URL로 이동합니다.
+	            },
+	            focus : function(event, ui) {    //포커스 가면
+	                return false;//한글 에러 잡기용도로 사용됨
+	            },
+	            minLength: 1,// 최소 글자수
+	            autoFocus: true, //첫번째 항목 자동 포커스 기본값 false
+	            classes: {    //잘 모르겠음
+	                "ui-autocomplete": "highlight"	                
+	            },
+	            delay: 10,    //검색창에 글자 써지고 나서 autocomplete 창 뜰 때 까지 딜레이 시간(ms)
+	//            disabled: true, //자동완성 기능 끄기
+	            position: { 
+	            	my : "right top",
+	            	at: "right+7 bottom"
+	            },   
+	            close : function(event){    //자동완성창 닫아질때 호출
+	                //console.log(event);
+	            },
+	            open: function(event, ui) {
+	                $(this).autocomplete("widget").css("width", "494px");
+	                $(this).autocomplete("widget").css("text-align","center");
+	            }
+	        });
+
+	        
+	    });
         
     </script>
 

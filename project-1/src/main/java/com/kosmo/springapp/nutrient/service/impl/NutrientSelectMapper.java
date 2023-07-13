@@ -52,11 +52,10 @@ public interface NutrientSelectMapper {
 	String getI_CAUTIONbyIngredientName(String name);
 
 	// 해당 영양소 포함한 영양제 가져오는 쿼리
-	// 이름
+	// 이름, 이미지 가져오기(이미지O)
 	List<Map<String, Object>> getProductNameNImgUrlFromFoodtable(String name);
-	
-	// 이미지 url
-	String getImgurlFromFoodtable(String name);
+
+	String findNobyFoodName(String name);
 
 	
 
