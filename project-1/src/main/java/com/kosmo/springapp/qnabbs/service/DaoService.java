@@ -1,11 +1,13 @@
 package com.kosmo.springapp.qnabbs.service;
 
-import java.util.List;
+
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 public interface DaoService {
 
-	List<Map> selectList(Map map);
+	ListPagingData<Map> selectList(Map map, HttpServletRequest req, int nowPage);
 	Map selectOne(Map map);
 	int insert(Map map);
 	int update(Map map);
