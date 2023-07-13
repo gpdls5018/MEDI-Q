@@ -377,12 +377,12 @@ p{
 	})
 	
 	
-	// 아이디 플레이스 홀더가 위로 올라가는 로직
+		// 아이디 플레이스 홀더가 위로 올라가는 로직
         function labelUp(input){
             input.parentElement.children[0].setAttribute("class", "change_label");    
         }  
 
-        // call when focus out on input
+        // 포커스가 끊기면 다시 내려옴
         function labelDown(input){
             if(input.value.length === 0){
                 input.parentElement.children[0].classList.remove("change_label");
@@ -390,7 +390,7 @@ p{
                 
         } 
 
-        // show & hide password
+        // 비밀번호 show & hide
         var eye_icon_signup = document.getElementById('eye_icon_signup');
         var eye_icon_login = document.getElementById('eye_icon_login');
         var login_password = document.getElementById("password");
