@@ -3,21 +3,41 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kosmo.springapp.qnabbs.service.impl.board.BoardMapper">
+	<!-- 입력 -->
 	<insert id="insert" parameterType="map">
+		<!-- sequence번호생성 -->
 		<selectKey resultType="int" order="BEFORE" keyProperty="no">
 			SELECT SEQ_BOARD.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO board VALUES(#{no},#{id},#{title},#{content},DEFAULT)
 	</insert>
+	<!-- 상세보기 -->
 	<select id="selectOne" parameterType="map" resultType="map">
 		SELECT * FROM board WHERE no = #{no}
 	</select>
+	<!-- 전체목록보기 -->
 	<select id="selectList" parameterType="map" resultType="map" >
 		SELECT * FROM board ORDER BY NO DESC
 	</select>
+	<!-- 전체 레코드 수 조회 -->
+	<select id="count" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM board b JOIN member m ON m.id=b.id
+		<!-- 검색용 쿼리 -->
+		<!-- 
+		<where>
+			<if test="searchWord !=null">
+				${searchColumn} LIKE '%' || #{searchWord} || '%'
+			</if>
+		</where>
+		 -->		
+	</select>
+	
+	<!-- 수정 -->
 	<update id="update" parameterType="map">
 		UPDATE board SET title=#{title},content=#{content} WHERE no=#{no}
 	</update>
+	<!-- 삭제 -->
 	<delete id="delete" parameterType="map">
 		DELETE board WHERE no=#{no}
 	</delete>
