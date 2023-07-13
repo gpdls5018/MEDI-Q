@@ -393,7 +393,7 @@
     </div><!--container-->
     <!-- The Modal -->
     <div class="modal fade" id="result" style="display: none">
-        <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header justify-content-between">
                     <h4 class="modal-title my-3">흡연 유형 검사결과 보기</h4>
@@ -407,6 +407,13 @@
                         -->
                     </div>
                 </div>
+                <div class="modal-footer justify-content-between">
+                	<p class="text-primary">
+                		※본 결과는 정신건강에 대한 대체적인 경향을 체크할 수 있도록 제공된 것입니다.<br/>
+                		  정확한 증상과 판단을 위해서는 전문가의 상담 또는 진료가 필요함을 안내드립니다.
+                	</p>
+		          	<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+		        </div>
             </div>
         </div>
     </div><!--container-->

@@ -20,6 +20,10 @@
             height: 50px;
             cursor: pointer;
         }
+        #text img{
+        	width: 30px;
+        	height: 30px;
+        }
 </style>
 <body>
 	
@@ -41,334 +45,368 @@
 			    </li>
 			</ul>
 		</div>
-        <h2 class="text-primary font-weight-bold mt-5">심리적 스트레스</h2>
-        <small><strong class="small font-weight-bold text-black-50">평가도구원문 : Psychosocial Wellbeing Index-short form(PWI-SF)</strong></small>
+        <h2 class="text-primary font-weight-bold mt-5">통합적 한국판 우울증 척도(CES-D)</h2>
+        <small><strong class="small font-weight-bold text-black-50">평가도구원문 : The Center for Epidemiologic Studies Depression Scale(CES-D)</strong></small>
         <p class="mt-2" style="font-size: 1rem">
-            다음 문항은 심리적인 스트레스의 정도를 파악하기 위한 것입니다.<br/>
-            각 문항을 읽고, 자신의 현재 상태를 가장 잘 나타내는 것에 표시해주시기 바랍니다.
+            다음 문항은 마음건강의 정도를 파악하기 위한 것입니다.<br/>
+            아래에 적혀 있는 문항을 잘 읽으신 후, 지난 일주일 동안의 자신의 현재 상태를 가장 잘 나타내는 것에 표시해주시기 바랍니다.
         </p>
         <div class="line"></div>
-	    <form>
+	    <div>
 	        <table>
 	            <tbody>
 	                <tr class="trTitle">
-	                    <th class="pt-4"><span class="text-primary">01</span> 현재 매우 편안하며 건강하다고 느낀다</th>
+	                    <th class="pt-4"><span class="text-primary">01</span> 평소에는 아무렇지도 않던 일들이 괴롭고 귀찮게 느껴졌다</th>
 	                </tr>
 	                <tr class="border-bottom tr-content">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q01" id="str_q01_01" value="3"/>
-	                        <label for="str_q01_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q01" id="str_q01_02" value="2"/>
-	                        <label for="str_q01_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q01" id="str_q01_03" value="1"/>
-	                        <label for="str_q01_03">그렇다</label>
-	                        <input type="radio" name="str_q01" id="str_q01_04" value="0"/>
-	                        <label for="str_q01_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q01" id="dep_q01_01" value="0"/>
+	                        <label for="dep_q01_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q01" id="dep_q01_02" value="1"/>
+	                        <label for="dep_q01_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q01" id="dep_q01_03" value="2"/>
+	                        <label for="dep_q01_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q01" id="dep_q01_04" value="3"/>
+	                        <label for="dep_q01_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	                
 	                <tr>
-	                    <th><span class="text-primary">02</span> 잠자고 난 후에도 개운하지 않다</th>
+	                    <th><span class="text-primary">02</span> 먹고 싶지 않고 식욕이 없었다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q02" id="str_q02_01" value="0"/>
-	                        <label for="str_q02_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q02" id="str_q02_02" value="1"/>
-	                        <label for="str_q02_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q02" id="str_q02_03" value="2"/>
-	                        <label for="str_q02_03">그렇다</label>
-	                        <input type="radio" name="str_q02" id="str_q02_04" value="3"/>
-	                        <label for="str_q02_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q02" id="dep_q02_01" value="0"/>
+	                        <label for="dep_q02_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q02" id="dep_q02_02" value="1"/>
+	                        <label for="dep_q02_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q02" id="dep_q02_03" value="2"/>
+	                        <label for="dep_q02_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q02" id="dep_q02_04" value="3"/>
+	                        <label for="dep_q02_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">03</span> 매우 피곤하고 지쳐있어 먹는 것조차 힘들다고 느낀다.</th>
+	                    <th><span class="text-primary">03</span> 어느 누가 도와준다 하더라도, 나의 울적한 기분을 떨쳐 버릴 수 없을 것 같았다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q03" id="str_q03_01" value="0"/>
-	                        <label for="str_q03_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q03" id="str_q03_02" value="1"/>
-	                        <label for="str_q03_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q03" id="str_q03_03" value="2"/>
-	                        <label for="str_q03_03">그렇다</label>
-	                        <input type="radio" name="str_q03" id="str_q03_04" value="3"/>
-	                        <label for="str_q03_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q03" id="dep_q03_01" value="0"/>
+	                        <label for="dep_q03_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q03" id="dep_q03_02" value="1"/>
+	                        <label for="dep_q03_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q03" id="dep_q03_03" value="2"/>
+	                        <label for="dep_q03_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q03" id="dep_q03_04" value="3"/>
+	                        <label for="dep_q03_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">04</span> 근심 걱정 때문에 편안하게 잠을 자지 못한다.</th>
+	                    <th><span class="text-primary">04</span> 무슨 일을 하던 정신을 집중하기가 힘들었다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q04" id="str_q04_01" value="0"/>
-	                        <label for="str_q04_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q04" id="str_q04_02" value="1"/>
-	                        <label for="str_q04_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q04" id="str_q04_03" value="2"/>
-	                        <label for="str_q04_03">그렇다</label>
-	                        <input type="radio" name="str_q04" id="str_q04_04" value="3"/>
-	                        <label for="str_q04_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q04" id="dep_q04_01" value="0"/>
+	                        <label for="dep_q04_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q04" id="dep_q04_02" value="1"/>
+	                        <label for="dep_q04_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q04" id="dep_q04_03" value="2"/>
+	                        <label for="dep_q04_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q04" id="dep_q04_04" value="3"/>
+	                        <label for="dep_q04_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">05</span> 정신이 맑고 깨끗하다고 느낀다.</th>
+	                    <th><span class="text-primary">05</span> 다른 사람들만큼 능력이 있다고 느꼈다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q05" id="str_q05_01" value="3"/>
-	                        <label for="str_q05_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q05" id="str_q05_02" value="2"/>
-	                        <label for="str_q05_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q05" id="str_q05_03" value="1"/>
-	                        <label for="str_q05_03">그렇다</label>
-	                        <input type="radio" name="str_q05" id="str_q05_04" value="0"/>
-	                        <label for="str_q05_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q05" id="dep_q05_01" value="3"/>
+	                        <label for="dep_q05_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q05" id="dep_q05_02" value="2"/>
+	                        <label for="dep_q05_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q05" id="dep_q05_03" value="1"/>
+	                        <label for="dep_q05_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q05" id="dep_q05_04" value="0"/>
+	                        <label for="dep_q05_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">06</span> 기력(원기)이 왕성하다고 느낀다.</th>
+	                    <th><span class="text-primary">06</span> 상당히 우울했다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q06" id="str_q06_01" value="3"/>
-	                        <label for="str_q06_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q06" id="str_q06_02" value="2"/>
-	                        <label for="str_q06_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q06" id="str_q06_03" value="1"/>
-	                        <label for="str_q06_03">그렇다</label>
-	                        <input type="radio" name="str_q06" id="str_q06_04" value="0"/>
-	                        <label for="str_q06_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q06" id="dep_q06_01" value="0"/>
+	                        <label for="dep_q06_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q06" id="dep_q06_02" value="1"/>
+	                        <label for="dep_q06_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q06" id="dep_q06_03" value="2"/>
+	                        <label for="dep_q06_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q06" id="dep_q06_04" value="3"/>
+	                        <label for="dep_q06_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">07</span> 밤이면 심란해지거나 불안해진다.</th>
+	                    <th><span class="text-primary">07</span> 하는 일마다 힘들게 느껴졌다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q07" id="str_q07_01" value="0"/>
-	                        <label for="str_q07_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q07" id="str_q07_02" value="1"/>
-	                        <label for="str_q07_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q07" id="str_q07_03" value="2"/>
-	                        <label for="str_q07_03">그렇다</label>
-	                        <input type="radio" name="str_q07" id="str_q07_04" value="3"/>
-	                        <label for="str_q07_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q07" id="dep_q07_01" value="0"/>
+	                        <label for="dep_q07_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q07" id="dep_q07_02" value="1"/>
+	                        <label for="dep_q07_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q07" id="dep_q07_03" value="2"/>
+	                        <label for="dep_q07_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q07" id="dep_q07_04" value="3"/>
+	                        <label for="dep_q07_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">08</span> 대다수의 사람들과 마찬가지로 나를 잘 관리해 나간다고 생각한다.</th>
+	                    <th><span class="text-primary">08</span> 앞 일이 암담하게 느껴졌다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q08" id="str_q08_01" value="3"/>
-	                        <label for="str_q08_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q08" id="str_q08_02" value="2"/>
-	                        <label for="str_q08_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q08" id="str_q08_03" value="1"/>
-	                        <label for="str_q08_03">그렇다</label>
-	                        <input type="radio" name="str_q08" id="str_q08_04" value="0"/>
-	                        <label for="str_q08_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q08" id="dep_q08_01" value="0"/>
+	                        <label for="dep_q08_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q08" id="dep_q08_02" value="1"/>
+	                        <label for="dep_q08_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q08" id="dep_q08_03" value="2"/>
+	                        <label for="dep_q08_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q08" id="dep_q08_04" value="3"/>
+	                        <label for="dep_q08_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">09</span> 전체적으로 현재 내가 하고 있는 일은 잘 되어가고 있다고 느낀다.</th>
+	                    <th><span class="text-primary">09</span> 내 인생은 실패작이라는 생각이 들었다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q09" id="str_q09_01" value="3"/>
-	                        <label for="str_q09_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q09" id="str_q09_02" value="2"/>
-	                        <label for="str_q09_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q09" id="str_q09_03" value="1"/>
-	                        <label for="str_q09_03">그렇다</label>
-	                        <input type="radio" name="str_q09" id="str_q09_04" value="0"/>
-	                        <label for="str_q09_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q09" id="dep_q09_01" value="0"/>
+	                        <label for="dep_q09_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q09" id="dep_q09_02" value="1"/>
+	                        <label for="dep_q09_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q09" id="dep_q09_03" value="2"/>
+	                        <label for="dep_q09_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q09" id="dep_q09_04" value="3"/>
+	                        <label for="dep_q09_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">10</span> 내가 행한 일의 방법이나 절차에 만족한다.</th>
+	                    <th><span class="text-primary">10</span> 적어도 보통사람들 만큼의 능력은 있었다고 생각한다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q10" id="str_q10_01" value="3"/>
-	                        <label for="str_q10_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q10" id="str_q10_02" value="2"/>
-	                        <label for="str_q10_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q10" id="str_q10_03" value="1"/>
-	                        <label for="str_q10_03">그렇다</label>
-	                        <input type="radio" name="str_q10" id="str_q10_04" value="0"/>
-	                        <label for="str_q10_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q10" id="dep_q10_01" value="3"/>
+	                        <label for="dep_q10_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q10" id="dep_q10_02" value="2"/>
+	                        <label for="dep_q10_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q10" id="dep_q10_03" value="1"/>
+	                        <label for="dep_q10_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q10" id="dep_q10_04" value="0"/>
+	                        <label for="dep_q10_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">11</span> 어떤 일을 바로 착수(시작)할 수 있다.</th>
+	                    <th><span class="text-primary">11</span> 잠을 설쳤다(잠을 잘 이루지 못했다).</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q11" id="str_q11_01" value="3"/>
-	                        <label for="str_q11_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q11" id="str_q11_02" value="2"/>
-	                        <label for="str_q11_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q11" id="str_q11_03" value="1"/>
-	                        <label for="str_q11_03">그렇다</label>
-	                        <input type="radio" name="str_q11" id="str_q11_04" value="0"/>
-	                        <label for="str_q11_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q11" id="dep_q11_01" value="0"/>
+	                        <label for="dep_q11_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q11" id="dep_q11_02" value="1"/>
+	                        <label for="dep_q11_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q11" id="dep_q11_03" value="2"/>
+	                        <label for="dep_q11_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q11" id="dep_q11_04" value="3"/>
+	                        <label for="dep_q11_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">12</span> 정상적인 일상생활을 즐길 수 있다.</th>
+	                    <th><span class="text-primary">12</span> 두려움을 느꼈다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q12" id="str_q12_01" value="3"/>
-	                        <label for="str_q12_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q12" id="str_q12_02" value="2"/>
-	                        <label for="str_q12_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q12" id="str_q12_03" value="1"/>
-	                        <label for="str_q12_03">그렇다</label>
-	                        <input type="radio" name="str_q12" id="str_q12_04" value="0"/>
-	                        <label for="str_q12_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q12" id="dep_q12_01" value="0"/>
+	                        <label for="dep_q12_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q12" id="dep_q12_02" value="1"/>
+	                        <label for="dep_q12_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q12" id="dep_q12_03" value="2"/>
+	                        <label for="dep_q12_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q12" id="dep_q12_04" value="3"/>
+	                        <label for="dep_q12_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">13</span> 안절부절 못하거나 성질이 심술궂게 된다.</th>
+	                    <th><span class="text-primary">13</span> 평소에 비해 말수가 적었다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q13" id="str_q13_01" value="0"/>
-	                        <label for="str_q13_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q13" id="str_q13_02" value="1"/>
-	                        <label for="str_q13_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q13" id="str_q13_03" value="2"/>
-	                        <label for="str_q13_03">그렇다</label>
-	                        <input type="radio" name="str_q13" id="str_q13_04" value="3"/>
-	                        <label for="str_q13_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q13" id="dep_q13_01" value="0"/>
+	                        <label for="dep_q13_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q13" id="dep_q13_02" value="1"/>
+	                        <label for="dep_q13_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q13" id="dep_q13_03" value="2"/>
+	                        <label for="dep_q13_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q13" id="dep_q13_04" value="3"/>
+	                        <label for="dep_q13_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">14</span> 닥친 문제를 해결해 나갈 수 있다.</th>
+	                    <th><span class="text-primary">14</span> 세상에 홀로 있는 듯한 외로움을 느꼈다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q14" id="str_q14_01" value="3"/>
-	                        <label for="str_q14_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q14" id="str_q14_02" value="2"/>
-	                        <label for="str_q14_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q14" id="str_q14_03" value="1"/>
-	                        <label for="str_q14_03">그렇다</label>
-	                        <input type="radio" name="str_q14" id="str_q14_04" value="0"/>
-	                        <label for="str_q14_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q14" id="dep_q14_01" value="0"/>
+	                        <label for="dep_q14_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q14" id="dep_q14_02" value="1"/>
+	                        <label for="dep_q14_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q14" id="dep_q14_03" value="2"/>
+	                        <label for="dep_q14_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q14" id="dep_q14_04" value="3"/>
+	                        <label for="dep_q14_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">15</span> 불행하고 우울하다고 느낀다.</th>
+	                    <th><span class="text-primary">15</span> 큰 불만 없이 생활했다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q15" id="str_q15_01" value="0"/>
-	                        <label for="str_q15_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q15" id="str_q15_02" value="1"/>
-	                        <label for="str_q15_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q15" id="str_q15_03" value="2"/>
-	                        <label for="str_q15_03">그렇다</label>
-	                        <input type="radio" name="str_q15" id="str_q15_04" value="3"/>
-	                        <label for="str_q15_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q15" id="dep_q15_01" value="3"/>
+	                        <label for="dep_q15_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q15" id="dep_q15_02" value="2"/>
+	                        <label for="dep_q15_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q15" id="dep_q15_03" value="1"/>
+	                        <label for="dep_q15_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q15" id="dep_q15_04" value="0"/>
+	                        <label for="dep_q15_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">16</span> 자신에 대한 신뢰감이 없어진다.</th>
+	                    <th><span class="text-primary">16</span> 사람들이 나에게 차갑게 대하는 것 같았다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q16" id="str_q16_01" value="0"/>
-	                        <label for="str_q16_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q16" id="str_q16_02" value="1"/>
-	                        <label for="str_q16_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q16" id="str_q16_03" value="2"/>
-	                        <label for="str_q16_03">그렇다</label>
-	                        <input type="radio" name="str_q16" id="str_q16_04" value="3"/>
-	                        <label for="str_q16_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q16" id="dep_q16_01" value="0"/>
+	                        <label for="dep_q16_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q16" id="dep_q16_02" value="1"/>
+	                        <label for="dep_q16_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q16" id="dep_q16_03" value="2"/>
+	                        <label for="dep_q16_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q16" id="dep_q16_04" value="3"/>
+	                        <label for="dep_q16_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">17</span> 모든 것을 고려해볼 때 행복감을 느낀다.</th>
+	                    <th><span class="text-primary">17</span> 갑자기 울음이 나왔다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q17" id="str_q17_01" value="3"/>
-	                        <label for="str_q17_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q17" id="str_q17_02" value="2"/>
-	                        <label for="str_q17_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q17" id="str_q17_03" value="1"/>
-	                        <label for="str_q17_03">그렇다</label>
-	                        <input type="radio" name="str_q17" id="str_q17_04" value="0"/>
-	                        <label for="str_q17_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q17" id="dep_q17_01" value="0"/>
+	                        <label for="dep_q17_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q17" id="dep_q17_02" value="1"/>
+	                        <label for="dep_q17_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q17" id="dep_q17_03" value="2"/>
+	                        <label for="dep_q17_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q17" id="dep_q17_04" value="3"/>
+	                        <label for="dep_q17_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	
 	                <tr>
-	                    <th><span class="text-primary">18</span> 삶을 살아갈 만한 가치가 있다고 느낀다.</th>
+	                    <th><span class="text-primary">18</span> 마음이 슬펐다.</th>
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q18" id="str_q18_01" value="3"/>
-	                        <label for="str_q18_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q18" id="str_q18_02" value="2"/>
-	                        <label for="str_q18_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q18" id="str_q18_03" value="1"/>
-	                        <label for="str_q18_03">그렇다</label>
-	                        <input type="radio" name="str_q18" id="str_q18_04" value="0"/>
-	                        <label for="str_q18_04">매우 그렇다</label>
+	                        <input type="radio" name="dep_q18" id="dep_q18_01" value="0"/>
+	                        <label for="dep_q18_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q18" id="dep_q18_02" value="1"/>
+	                        <label for="dep_q18_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q18" id="dep_q18_03" value="2"/>
+	                        <label for="dep_q18_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q18" id="dep_q18_04" value="3"/>
+	                        <label for="dep_q18_04">대부분 그랬다</label>
+	                    </td>
+	                </tr>
+	                
+	                <tr>
+	                    <th><span class="text-primary">19</span> 사람들이 나를 싫어하는 것 같았다.</th>
+	                </tr>
+	                <tr class="border-bottom">
+	                    <td class="py-4">
+	                        <input type="radio" name="dep_q19" id="dep_q19_01" value="0"/>
+	                        <label for="dep_q19_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q19" id="dep_q19_02" value="1"/>
+	                        <label for="dep_q19_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q19" id="dep_q19_03" value="2"/>
+	                        <label for="dep_q19_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q19" id="dep_q19_04" value="3"/>
+	                        <label for="dep_q19_04">대부분 그랬다</label>
+	                    </td>
+	                </tr>
+	                
+	                <tr>
+	                    <th><span class="text-primary">20</span> 도무지 무엇을 시작할 기운이 나지 않았다.</th>
+	                </tr>
+	                <tr class="border-bottom">
+	                    <td class="py-4">
+	                        <input type="radio" name="dep_q20" id="dep_q20_01" value="0"/>
+	                        <label for="dep_q20_01">극히 드물다</label>
+	                        <input type="radio" name="dep_q20" id="dep_q20_02" value="1"/>
+	                        <label for="dep_q20_02">가끔 있었다</label>
+	                        <input type="radio" name="dep_q20" id="dep_q20_03" value="2"/>
+	                        <label for="dep_q20_03">종종 있었다</label>
+	                        <input type="radio" name="dep_q20" id="dep_q20_04" value="3"/>
+	                        <label for="dep_q20_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
 	            </tbody>
 	        </table>
 	
 	        <div class="d-inline-flex">
-	            <button id="resultM" class="btn btn-lg btn-primary my-4" data-toggle="modal" data-target="#result" data-backdrop="static" >심리적 스트레스 검사결과 보기</button>
+	            <button id="resultM" class="btn btn-lg btn-primary my-4" data-toggle="modal" data-target="#result" data-backdrop="static" >우울증 검사결과 보기</button>
 	            <!--
 	            <img class="topBtn" src="./img/top-btn.png" alt="top-button"/>
 	            -->
 	            <img class="topBtn" src='<c:url value="/resources/images/basic/top-btn2.png"/>' alt="top-button"/>
 	        </div>
-        </form>
+        </div>
     </div><!--container-->
     <!-- The Modal -->
     <div class="modal fade" id="result" style="display: none">
-        <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header justify-content-between">
-                    <h4 class="modal-title my-3">심리적 스트레스 검사결과 보기</h4>
+                    <h4 class="modal-title my-3">우울증 검사결과 보기</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <div class="d-flex flex-wrap">
-                        <h5 id="resultT" class="text-danger font-weight-bold mb-3">스트레스 고위험군입니다</h5>
-                        <p id="resultC">
-                            현재 스트레스를 매우 많이 경험하고 있습니다.<br/>
-                            심리적으로 불현감이 높고, 직장 및 일상생활 또는 신체에 부정적인 영향이 있을 수 있습니다.<br/>
-                            혼자서 고민하고 힘들어 하기보다, 전문가의 상담을 받는다면 심리적이나 신체적인 어려움을 극복하는데 도움이 됩니다.<br/>
-                            의사 또는 상담심리사와 상담을 권유합니다.
-                        </p>
+                    <div id="text" class="d-flex flex-wrap">
+                        <h5 id="resultT" class="font-weight-bold mb-3">위험군</h5>
+                        <p id="resultC">부가설명</p>
                     </div>
                 </div>
+                <div class="modal-footer justify-content-between">
+                	<p class="text-primary">
+                		※본 결과는 정신건강에 대한 대체적인 경향을 체크할 수 있도록 제공된 것입니다.<br/>
+                		  정확한 증상과 판단을 위해서는 전문가의 상담 또는 진료가 필요함을 안내드립니다.
+                	</p>
+		          	<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+		        </div>
             </div>
         </div>
     </div><!--container-->
@@ -379,67 +417,102 @@
     topBtn.onclick = (()=>{
     	window.scrollTo({ top: 0, behavior: "smooth" });  
     })
- 
-    //심리적 스트레스 결과 뿌리기
-	document.forms[0].onsubmit=function(){
-		//console.log($('[name=str_q01]'))
-		if($(':radio:checked').length != 18){
+/*
+0~20점 정상적인 우울감.
+21~40점 주의가 필요한 우울감. 2주 이상 지속된다면 가까운 전문기관을 방문하기를 권해요.
+41~60점 심각한 우울증. 우울증은 의지로 극복할 순 없습니다. 적극적으로 정신건강 전문가의 도움을 받기를 추천해요.
+*/ 
+    //우울증 척도 결과 뿌리기
+	$('#resultM').click(function(){
+		if($(':radio:checked').length != 20){
 			alert('모든 항목을 체크해주세요');
-			return false;
+			$(this).attr('data-toggle','');
 		}
 		else{
 			var sum=0;
+			$('#resultT').removeClass('text-danger text-primary');
 			$(':radio:checked').each(function(){
-				
-				//swal 시작
-				var timerInterval
-				Swal.fire({
-				  title: 'Auto close alert!',
-				  html: 'I will close in <b></b> milliseconds.',
-				  timer: 2000,
-				  timerProgressBar: true,
-				  didOpen: () => {
-				    Swal.showLoading()
-				    var b = Swal.getHtmlContainer().querySelector('b')
-				    timerInterval = setInterval(() => {
-				      b.textContent = Swal.getTimerLeft()
-				    }, 100)
-				  },
-				  willClose: () => {
-				    clearInterval(timerInterval)
-				  }
-				}).then((result) => {
-				  if (result.dismiss === Swal.DismissReason.timer) {					  
-					  $('#result').css('display','block');
-				  }
-				});
-				//swal 끝
 
 				sum += parseInt($(this).val());
 				//console.log('sum:',sum,$(this).val())
-				if(sum >= 27){//고위험군
-					$('#resultT').html('스트레스 고위험군입니다');
-					$('#resultC').html(`현재 스트레스를 매우 많이 경험하고 있습니다.<br/>
-						    심리적으로 불현감이 높고, 직장 및 일상생활 또는 신체에 부정적인 영향이 있을 수 있습니다.<br/>
-						    혼자서 고민하고 힘들어 하기보다, 전문가의 상담을 받는다면 심리적이나 신체적인 어려움을 극복하는데 도움이 됩니다.<br/>
-						    의사 또는 상담심리사와 상담을 권유합니다.`);
+				if(sum > 24){//매우 심한 우울감
+					$('#resultT').addClass('text-danger');
+					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>매우 심한 우울감`);
+					$('#resultC').html(`광범위한 우울 증상을 매우 자주 심한 수준에서 경험하는 것으로 나타납니다.<br/>
+							우울증은 의지로 극복할 순 없습니다.<br/>
+							일상생활의 다양한 영역에서 어려움이 초래될경우 추가적인 평가나 정신건강 전문가의 도움을 받아보시기를 권해 드립니다.<br/>
+							적극적으로 정신건강 전문가의 도움을 받기를 추천합니다.`);
 				}
-				else if(sum <= 8){//잠재적 스트레스군
-					$('#resultT').html('스트레스 건강군입니다.');
-					$('#resultC').html(`현재 스트레스를 경험하지 않고 있으며, 심리적으로 건강하게 생활하고 있습니다.<br/>
-						    평소의 스트레스 관리방법을 꾸준히 유지하시기 바랍니다.`);
+				else if(sum > 20 && sum <= 24){//심한 우울감
+					$('#resultT').addClass('text-danger');
+					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>심한 우울감.`);
+					$('#resultC').html(`직업적, 사회적 적응에 일부 영향을 미칠 경우이거나 2주 이상 지속된다면 가까운 전문기관을 방문하기를 권해드립니다.<br/><br>
+							아래는 가벼운 경증의 우울 증상의 경우 효과적이라고 검증된 방법입니다.<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/>아로마테라피<br/>
+							식물에서 추출된 농축된 오일의 특정 화학성분이심신의 이완 효과와 우울감, 불안함, 불쾌감의 감소 효과를 나타냅니다.
+							그러나 아로마테라피는 어디까지나 우울증 치료의 보조적인 방법으로써 표준적 치료를 대체해서는 안 됩니다.<br/><br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/>독서요법<br/>
+							독서요법은 우울감, 지나친 죄책감, 비관적 사고 등의 부정적인 정서를 스스로 조절하기 위한 다양한 전략과 이러한 전략을 실생활에 적용하는 방법이 적혀있는 책(매뉴얼)을 읽는 자가 관리법입니다.
+							독서 요법의 궁극적 목적은 독자로 하여금 우울증에 도움이 되지 않는 생각이나 행동들을 자각하고 변화시킬 수 있도록 하고, 나아가 자기관리 기술이나 대처기술을 증진할 수 있도록 가이드를 제공해주고 격려해주는 것입니다.<br/><br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/>컴퓨터를 활용한 중재법<br/>
+							온라인 프로그램(웹사이트, 모바일 애플리케이션 등)을 이용해 정신 건강을 증진하는 자가 관리법입니다.
+							일반적으로 독서 요법과 유사하게 인지 치료나 행동 치료적 접근, 심신 의학적 접근(명상, 이완훈련 등)을 기반으로 
+							스스로 자신의 감정과 기분, 생각을 체크하고 문제가 되는 생각이나 행동을 수정하거나 조절할 수 있는 대처기술을 증진하는 프로그램으로 구성됩니다.<br/><br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/>광선요법<br/>
+							겨울철과 같이 일조량이 줄어드는 시기에 생체의 24시간 주기 리듬이 지연되어 우울증이 쉽게 발생할 수 있습니다. 
+							광선요법은 이러한 가설을 기반으로 사용되고 있는 방법으로 이른 아침에 30분에서 한 시간 정도 밝은 빛을 노출함으로써 우울증 개선에 도움이 될 수 있습니다. 
+							특히 겨울철에 반복되는 계절성 우울증뿐만 아니라 비계절성 우울증에도 효과가 있다는 연구 결과가 있어 항우울제 등의 표준적인 약물치료에 보조적인 요법으로도 권고되고 있습니다.<br/><br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/>이완 요법<br/>
+							이완 요법은 스스로 이완시킬 수 있는 방법을 익혀 육체적인 혹은 정신적인 긴장을 감소시키는 방법입니다. 
+							대표적으로는 복식호흡, 요가, 점진적 근육 이완법, 마사지, 명상 등이 포함되며, 
+							특히 복식호흡과 점진적 근육 이완은 훈련을 통해 익힌 후에는 언제 어디서나 이완이 필요한 순간에 적용할 수 있는 장점이 있습니다. 
+							이완 요법은 우울증, 공황장애 등의 불안장애, 불면증 등 다양한 정신질환의 치료에도 효과적으로 이용되고 있습니다.<br/><br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/>운동<br/>
+							운동은 우울증의 위험도를 낮추고, 우울증 환자에서 증상을 경감시켜 줄 수 있습니다. 
+							최근 캐나다의 가이드라인에서는 매주 3회 이상 중등도의 강도로 최소 9주 동안 운동을 지속하는 것이 우울감 감소에 효과적이라고 말합니다.<br/><br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/>기타<br/>
+							기타 방법으로는 스트레스 피하기, 식이, 절주, 적정 체중 유지 방법이 있습니다
+							`);
 				}
-				else{//건강군
-					$('#resultT').html('스트레스 잠재군입니다.');
-					$('#resultC').html(`현재 스트레스를 많이 경험하지는 않고 있습니다.<br/>
-						    그러나 상황의 변화에 따라 스트레스 고위험군으로 변경될 가능성이 있습니다.<br/>
-						    스트레스 상황에서 대처하는 방법을 미리 준비해 둔다면, 스트레스를 받더라도 쉽게 좌절하지 않고 문제를 해결해 나갈 수 있을 것입니다.<br/>
-						    스트레스 대처 방법에 대해서 궁금하시다면 상담심리사와 상담하시길 바랍니다.`);
+				else if(sum > 15 && sum <= 20){//약간의/보통의 우울감
+					$('#resultT').addClass('text-danger');
+					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>약간의/보통의 우울감.`);
+					$('#resultC').html(`가벼운 경증의 우울감이 느껴질 때 다음의 방법들이 도움이 될 수 있습니다.<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/>아로마테라피<br/>
+							식물에서 추출된 농축된 오일의 특정 화학성분이심신의 이완 효과와 우울감, 불안함, 불쾌감의 감소 효과를 나타냅니다.
+							그러나 아로마테라피는 어디까지나 우울증 치료의 보조적인 방법으로써 표준적 치료를 대체해서는 안 됩니다.<br/><br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/>독서요법<br/>
+							독서요법은 우울감, 지나친 죄책감, 비관적 사고 등의 부정적인 정서를 스스로 조절하기 위한 다양한 전략과 이러한 전략을 실생활에 적용하는 방법이 적혀있는 책(매뉴얼)을 읽는 자가 관리법입니다.
+							독서 요법의 궁극적 목적은 독자로 하여금 우울증에 도움이 되지 않는 생각이나 행동들을 자각하고 변화시킬 수 있도록 하고, 나아가 자기관리 기술이나 대처기술을 증진할 수 있도록 가이드를 제공해주고 격려해주는 것입니다.<br/><br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/>컴퓨터를 활용한 중재법<br/>
+							온라인 프로그램(웹사이트, 모바일 애플리케이션 등)을 이용해 정신 건강을 증진하는 자가 관리법입니다.
+							일반적으로 독서 요법과 유사하게 인지 치료나 행동 치료적 접근, 심신 의학적 접근(명상, 이완훈련 등)을 기반으로 
+							스스로 자신의 감정과 기분, 생각을 체크하고 문제가 되는 생각이나 행동을 수정하거나 조절할 수 있는 대처기술을 증진하는 프로그램으로 구성됩니다.<br/><br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/>광선요법<br/>
+							겨울철과 같이 일조량이 줄어드는 시기에 생체의 24시간 주기 리듬이 지연되어 우울증이 쉽게 발생할 수 있습니다. 
+							광선요법은 이러한 가설을 기반으로 사용되고 있는 방법으로 이른 아침에 30분에서 한 시간 정도 밝은 빛을 노출함으로써 우울증 개선에 도움이 될 수 있습니다. 
+							특히 겨울철에 반복되는 계절성 우울증뿐만 아니라 비계절성 우울증에도 효과가 있다는 연구 결과가 있어 항우울제 등의 표준적인 약물치료에 보조적인 요법으로도 권고되고 있습니다.<br/><br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/>이완 요법<br/>
+							이완 요법은 스스로 이완시킬 수 있는 방법을 익혀 육체적인 혹은 정신적인 긴장을 감소시키는 방법입니다. 
+							대표적으로는 복식호흡, 요가, 점진적 근육 이완법, 마사지, 명상 등이 포함되며, 
+							특히 복식호흡과 점진적 근육 이완은 훈련을 통해 익힌 후에는 언제 어디서나 이완이 필요한 순간에 적용할 수 있는 장점이 있습니다. 
+							이완 요법은 우울증, 공황장애 등의 불안장애, 불면증 등 다양한 정신질환의 치료에도 효과적으로 이용되고 있습니다.<br/><br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/>운동<br/>
+							운동은 우울증의 위험도를 낮추고, 우울증 환자에서 증상을 경감시켜 줄 수 있습니다. 
+							최근 캐나다의 가이드라인에서는 매주 3회 이상 중등도의 강도로 최소 9주 동안 운동을 지속하는 것이 우울감 감소에 효과적이라고 말합니다.<br/><br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/>기타<br/>
+							기타 방법으로는 스트레스 피하기, 식이, 절주, 적정 체중 유지 방법이 있습니다
+							`);
+				}
+				else{//정상적인 우울감
+					$('#resultT').addClass('text-primary');
+					$('#resultT').html(`<img alt='엄지' src='/resources/images/basic/like.png'/>정상적인 우울감.`);
+					$('#resultC').html(`현재 지장을 초래할만한 우울현상을 경험하지 않고 있으며, 심리적으로 건강하게 생활하고 있습니다.<br/>
+						    평소의 마음건강 관리방법을 꾸준히 유지하시기 바랍니다.`);
 				}
 			});
-			return false;
 		}
-	};
+	});
 
 </script>
 </html>

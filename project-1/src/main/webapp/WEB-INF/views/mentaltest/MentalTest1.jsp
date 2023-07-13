@@ -356,7 +356,7 @@
     </div><!--container-->
     <!-- The Modal -->
     <div class="modal fade" id="result" style="display: none">
-        <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header justify-content-between">
                     <h4 class="modal-title my-3">심리적 스트레스 검사결과 보기</h4>
@@ -364,10 +364,17 @@
                 </div>
                 <div class="modal-body">
                     <div id="text" class="d-flex flex-wrap">
-                        <h5 id="resultT" class="text-danger font-weight-bold mb-3">위험군</h5>
+                        <h5 id="resultT" class="font-weight-bold mb-3">위험군</h5>
                         <p id="resultC">부가설명</p>
                     </div>
                 </div>
+                <div class="modal-footer justify-content-between">
+                	<p class="text-primary">
+                		※본 결과는 정신건강에 대한 대체적인 경향을 체크할 수 있도록 제공된 것입니다.<br/>
+                		  정확한 증상과 판단을 위해서는 전문가의 상담 또는 진료가 필요함을 안내드립니다.
+                	</p>
+		          	<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+		        </div>
             </div>
         </div>
     </div><!--container-->
@@ -387,6 +394,7 @@
 			$(this).attr('data-toggle','');
 		}
 		else{
+			$('#resultT').removeClass('text-danger text-primary');
 			var sum=0;
 			$(':radio:checked').each(function(){
 
@@ -394,18 +402,21 @@
 				sum += parseInt($(this).val());
 				//console.log('sum:',sum,$(this).val())
 				if(sum >= 27){//고위험군
+					$('#resultT').addClass('text-danger');
 					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>스트레스 고위험군입니다`);
 					$('#resultC').html(`현재 스트레스를 매우 많이 경험하고 있습니다.<br/>
 						    심리적으로 불현감이 높고, 직장 및 일상생활 또는 신체에 부정적인 영향이 있을 수 있습니다.<br/>
 						    혼자서 고민하고 힘들어 하기보다, 전문가의 상담을 받는다면 심리적이나 신체적인 어려움을 극복하는데 도움이 됩니다.<br/>
 						    의사 또는 상담심리사와 상담을 권유합니다.`);
 				}
-				else if(sum <= 8){//잠재적 스트레스군
+				else if(sum <= 8){//건강군
+					$('#resultT').addClass('text-primary');
 					$('#resultT').html(`<img alt='엄지' src='/resources/images/basic/like.png'/>스트레스 건강군입니다.`);
 					$('#resultC').html(`현재 스트레스를 경험하지 않고 있으며, 심리적으로 건강하게 생활하고 있습니다.<br/>
 						    평소의 스트레스 관리방법을 꾸준히 유지하시기 바랍니다.`);
 				}
-				else{//건강군
+				else{//잠재적 스트레스군
+					$('#resultT').addClass('text-danger');
 					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>스트레스 잠재군입니다.`);
 					$('#resultC').html(`현재 스트레스를 많이 경험하지는 않고 있습니다.<br/>
 						    그러나 상황의 변화에 따라 스트레스 고위험군으로 변경될 가능성이 있습니다.<br/>
