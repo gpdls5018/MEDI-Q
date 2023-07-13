@@ -50,6 +50,7 @@
         <small><strong class="small font-weight-bold text-black-50">평가도구원문 : Alcohol Use Disorder Identification Test-Korea(AUDIT-K)</strong></small>
         <p class="mt-2" style="font-size: 1rem">
             다음 문항은 알코올 의존 정도를 파악하기 위한 것입니다.<br/>
+            질문에 나오는 1잔이란 술의 종류와 관계없이 1잔의 양을 의미합니다.<br/>
             각 문항을 읽고, 자신의 현재 상태를 가장 잘 나타내는 것에 표시해주시기 바랍니다.
         </p>
         <div class="line"></div>
@@ -261,11 +262,15 @@
                 </div>
                 <div class="modal-body">
                     <div id="text" class="d-flex flex-wrap">
-                        <h5 id="resultT" class="text-danger font-weight-bold mb-3">음주군</h5>
+                        <h5 id="resultT" class="font-weight-bold mb-3">음주군</h5>
                         <p id="resultC">부가설명</p>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer justify-content-between">
+                	<p class="text-primary">
+                		※본 결과는 정신건강에 대한 대체적인 경향을 체크할 수 있도록 제공된 것입니다.<br/>
+                		  정확한 증상과 판단을 위해서는 전문가의 상담 또는 진료가 필요함을 안내드립니다.
+                	</p>
 		          	<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
 		        </div>
             </div>
@@ -278,14 +283,11 @@
     topBtn.onclick = (()=>{
     	window.scrollTo({ top: 0, behavior: "smooth" });  
     })
- /*
- 알콜중독이 의심되지 않습니다
- 알코올 의존 가능성
-이미 알코올 사용장애, 특히 알코올 의존 상태입니다 전문의의 진찰을 받고 전문화된 치료를 시작하는 것이 좋습니다
- */
+
     //알코올 사용장애 결과 뿌리기
 	$('#resultM').click(function(){
 		var sum=0;
+		$('#resultT').removeClass('text-danger text-primary');
 		if($(':radio:checked').length != 11){
 			alert('모든 항목을 체크해주세요');
 			$(this).attr('data-toggle','');
@@ -293,8 +295,9 @@
 		else if($('[name=alc_q00]:checked').val()=='m'){//남자일 때
 			$(':radio:checked').slice(1).each(function(){
 				sum += parseInt($(this).val());
-				console.log('sum:',sum)
+				//console.log('sum:',sum)
 				if(sum < 10){
+					$('#resultT').addClass('text-primary');
 					$('#resultT').html(`<img alt='엄지' src='/resources/images/basic/like.png'/>정상 음주군입니다`);
 					$('#resultC').html(`
 							비교적 안전하고 건강한 음주습관을 지니고 있으며<br/>
@@ -309,10 +312,12 @@
 							`);
 				}
 				else if(sum >= 10 && sum <= 19){
+					$('#resultT').addClass('text-danger');
 					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>위험 음주군입니다`);
 					$('#resultC').html(`
 							음주량과 음주횟수가 너무 많은 위험음주 습관을 지니고 있습니다.<br/>
-							아직은 술 때문에 큰 문제는 없지만 음주습관을 바꾸도록 해야합니다.<br/><br/>
+							아직은 술 때문에 큰 문제는 없지만 음주습관을 바꾸도록 해야합니다.<br/>
+							단기 개입 및 모니터링이 필요합니다.<br/><br/>
 							<img alt='해결' src='/resources/images/basic/solution.png'/>음주량과 횟수를 모두 줄여야 합니다.
 							1.과음하지 않아야 합니다.1일 5잔(여자4잔) 이상, 1주일 동안 남자 13잔, 여자 6잔 이상은 과음입니다.<br/>
 							2.과음한 후 2~3일은 반드시 금주해야 합니다.<br/>
@@ -345,10 +350,12 @@
 							`);
 				}
 				else{
+					$('#resultT').addClass('text-danger');
 					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>알코올 사용 장애군입니다`);
 					$('#resultC').html(`
 							알코올의존 상태에 이미 들어셨습니다.<br/>
-							전문의의 진찰과 치료를 시작하는 것이 필요합니다.<br/>
+							사용 장애 추정군, 신체증상/불안/불면/사회부적응/우울 등이 나타날 수 있어<br/>
+							세심한 관심과 전문가의 치료적 개입이 필요합니다.<br/>
 							술은 줄이는 단계가 아니라 끊어야 합니다.<br/><br/>
 							<img alt='해결' src='/resources/images/basic/solution.png'/>음주와 관련된 목표를 조정해야합니다.<br/>
 							1.음주량과 횟수를 조절하는 것이 매우 어려운 단계입니다.<br/>
@@ -372,6 +379,7 @@
 			$(':radio:checked').slice(1).each(function(){
 				sum += parseInt($(this).val());
 				if(sum < 6){
+					$('#resultT').addClass('text-primary');
 					$('#resultT').html(`<img alt='엄지' src='/resources/images/basic/like.png'/>정상 음주군입니다`);
 					$('#resultC').html(`
 							비교적 안전하고 건강한 음주습관을 지니고 있으며<br/>
@@ -386,10 +394,13 @@
 							`);
 				}
 				else if(sum >= 6 && sum < 10){
+					$('#resultT').addClass('text-danger');
 					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>위험 음주군입니다`);
 					$('#resultC').html(`
-							음주량과 음주횟수가 너무 많은 위험음주 습관을 지니고 있습니다.<br/>
-							아직은 술 때문에 큰 문제는 없지만 음주습관을 바꾸도록 해야합니다.<br/><br/>
+							알코올의존 상태에 이미 들어셨습니다.<br/>
+							사용 장애 추정군, 신체증상/불안/불면/사회부적응/우울 등이 나타날 수 있어<br/>
+							세심한 관심과 전문가의 치료적 개입이 필요합니다.<br/>
+							술은 줄이는 단계가 아니라 끊어야 합니다.<br/><br/>
 							<img alt='해결' src='/resources/images/basic/solution.png'/>음주량과 횟수를 모두 줄여야 합니다.
 							1.과음하지 않아야 합니다.1일 5잔(여자4잔) 이상, 1주일 동안 남자 13잔, 여자 6잔 이상은 과음입니다.<br/>
 							2.과음한 후 2~3일은 반드시 금주해야 합니다.<br/>
@@ -422,6 +433,7 @@
 							`);
 				}
 				else{
+					$('#resultT').addClass('text-danger');
 					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>알코올 사용 장애군입니다`);
 					$('#resultC').html(`
 							알코올의존 상태에 이미 들어셨습니다.<br/>

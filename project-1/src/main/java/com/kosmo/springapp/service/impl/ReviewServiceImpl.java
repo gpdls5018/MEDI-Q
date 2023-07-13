@@ -24,7 +24,6 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int registerReview(Map map) {
 		reviewDTO.setR_id(map.get("id").toString());
-		System.out.println("map.get(id).toString():"+map.get("id").toString());
 		reviewDTO.setTakeTime(map.get("takeTime").toString());
 		reviewDTO.setStarScore(map.get("starScore").toString());
 		reviewDTO.setEffect(map.get("effect").toString());

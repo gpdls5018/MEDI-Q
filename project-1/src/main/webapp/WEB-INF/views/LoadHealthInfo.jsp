@@ -32,8 +32,8 @@
 		</div>
 		<div class="hr-class mt-5 mb-5"></div>
 		<div>&#x1F601; 올바르게 불러왔는지 값을 확인한 후 저장을 눌러주세요!</div>
-		<div class="health-info-table effect-custom-font">
-			<table class="table table-bordered">
+		<div class="health-info-table effect-custom-font row">
+			<table class="table table-bordered col-8">
 		        <colgroup>
 		            <col width=10%>
 		            <col width=20%>
@@ -130,6 +130,7 @@
 		        	<td><input class="inputValue" type="text" value="40">U/L</td>
 		        </tr> 
 		    </table>
+		    <div class="col-4"><canvas id="canvas"></canvas></div>
 		</div>
 		<button class="btn btn-warning" style="width:100%;">저장하기</button>
 	</div>
@@ -150,13 +151,10 @@
 	          	dataType : 'json'
 		    })
 		    .done(function(data) {
-		    	console.log("구글 서버로부터 받은 데이터 : ",data);
-		    	console.log(data['responses'][0]['fullTextAnnotation']['text']);
 		    	var array;
 		    	var healthArray =Array();
 		    	var string_health = data['responses'][0]['fullTextAnnotation']['text'];
 		    	array = string_health.split('\n');
-		    	console.log(array);
 		    	var flag = false;
 	          	for(var str of array) {
 	              var juminRule=/^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))-[1-8][0-9]{6}$/;
@@ -177,6 +175,45 @@
 	          	inputItems.forEach(function(item,index) {
 	          		item.value = values[index];
 	          	});
+	          	
+	          	//이미지에 그림 그리기
+	          	var point = data['responses'][0]['fullTextAnnotation']['pages'][0]['blocks'];
+				
+				var canvas = document. getElementById ( "canvas" );
+				var context = canvas.getContext( "2d" );
+				var img = new Image (); //이미지 객체 생성
+				img.src = e.target.result; //code.jpg라는 이미지 파일을 로딩 시작
+				img.onload = function () {
+					//(20,20)을 중심으로 100*100의 사이즈로 이미지를 그림 
+					canvas.width = img.width;
+					canvas.height = img.height;
+					context.drawImage(img,0,0);
+					point.forEach(function(item) {
+						context.strokeStyle = '#00ff00';
+						context.lineWidth = 3;
+						var paragraph =  '';
+						item['paragraphs'].forEach(function(code) {
+							code['words'].forEach(function(text) {
+								text['symbols'].forEach(function(last) {
+									paragraph += last['text'];
+								});
+							});
+						});
+						let reg = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/ ]/gim;
+						let reg2 = /[a-zA-Z0-9]/gim;
+						let resultData = paragraph.replace(reg, "");
+						resultData = resultData.replace(reg2,"");
+						console.log("resultData",resultData);
+						
+						var start_x = item['boundingBox']['vertices'][0]['x'];
+						var start_y = item['boundingBox']['vertices'][0]['y'];
+						var end_x = item['boundingBox']['vertices'][2]['x'] - item['boundingBox']['vertices'][0]['x'];
+						var end_y =  item['boundingBox']['vertices'][3]['y']- item['boundingBox']['vertices'][0]['y'];
+						context.strokeRect(start_x,start_y,end_x,end_y);
+					});
+				}
+	          	
+	          	
 		    })
 		  };
 		  reader.readAsDataURL(file);

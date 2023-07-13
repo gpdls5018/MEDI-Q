@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kosmo.springapp.qnabbs.service.impl.board.BoardMapper">
+	<insert id="insert" parameterType="map">
+		<selectKey resultType="int" order="BEFORE" keyProperty="no">
+			SELECT SEQ_BOARD.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO board VALUES(#{no},#{id},#{title},#{content},DEFAULT)
+	</insert>
+	<select id="selectOne" parameterType="map" resultType="map">
+		SELECT * FROM board WHERE no = #{no}
+	</select>
+	<select id="selectList" parameterType="map" resultType="map" >
+		SELECT * FROM board ORDER BY NO DESC
+	</select>
+	<update id="update" parameterType="map">
+		UPDATE board SET title=#{title},content=#{content} WHERE no=#{no}
+	</update>
+	<delete id="delete" parameterType="map">
+		DELETE board WHERE no=#{no}
+	</delete>
+</mapper>
