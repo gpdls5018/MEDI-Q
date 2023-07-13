@@ -542,7 +542,7 @@
 	                    </div><!-- card-wrap의 끝 -->
 
 	                    <div class="clearfix">
-	                        <a tabindex="0" class="more-pop-health mt-5" href="/ranking/gender-age">성별&nbsp;·&nbsp;연령별 인기 영양제 더보기</a>
+	                        <a tabindex="0" class="more-pop-health mt-5" href="/ranking/selectfood.do">성별&nbsp;·&nbsp;연령별 인기 영양제 더보기</a>
 	                    </div>
 	                </div><!-- tab-content-001의 끝 -->
 	            </div>
