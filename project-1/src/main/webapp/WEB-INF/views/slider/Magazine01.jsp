@@ -16,7 +16,7 @@
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 25px;
     margin-bottom : 150px;
-    padding-top : 120px;   
+    padding-top : 120px;
   }
   .contentTop{
   	margin-top: 100px;
@@ -25,19 +25,35 @@
   	margin-top: 120px;
   	font-size: 22px;
   }
-  
   .custom-text{
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 30px;
   }
+  .custom-modal{
+    width: 120px;
+    background: #242F9B;
+    padding: 10px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+  }
+  .modal-content{
+  	background-color: #FFFAF0;
+  	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 530px;
+  	height: 540px;
+  }
   .highLight {
-    background-color : #f4bfbf;
+    background-color : #F4BFBF;
   }
   .underLine {
     text-decoration : underline;
   }
   .para_title {
-    color : #ee4949;
+    color : #EE4949;
     font-size: 35px;
     font-weight: bold;
   }
@@ -47,7 +63,6 @@
     background-color: #ccc;
   }
   .wrap-vertical{
-
     padding: 20px;
     overflow: scroll;
     color: #112031;
@@ -70,97 +85,73 @@
   }
   .card-title {
     font-size: 12px;
-    color:#a7a4a4;
+    color:#A7A4A4;
   }
   .card-content {
-
     width: 100px;
   }
   .product-img {
     border-radius: 20%;
     border: #ccc solid 1px;
   }
-  
   .custom-footer{
   	padding-top : 100px;
   	margin-bottom: 250px;
   }
 </style>
-
-<style type="text/css">
-  .wrap{
-    position: relative; 
-    display: inline-block;
-  }
-  .box{
-    width: 150px; 
-    background: #242F9B; 
-    padding: 10px; 
-    border-radius: 5px; 
-    color: #ffffff; 
-    text-align: center;
-  }
-  .tooltip{
-    position:absolute; 
-    left:0px; 
-    top:52px; 
-    background: #646FD4; 
-    padding: 10px; 
-    border-radius:5px; 
-    color: #fff; 
-    text-align: center; 
-    display: none;
-  }
-  .tooltip:after{
-    display: block; 
-    content: ''; 
-    position: absolute; 
-    top: -7px; 
-    left:15px; 
-    width: 0px; 
-    height: 0px; 
-    border-top: 8px solid none; 
-    border-left: 8psolid transparent; 
-    border-right: 8px solid transparent; 
-    border-bottom: 8px solid #646FD4;
-  } 
-  .wrap:hover .tooltip{display: block;}
-</style>
-
 <div class="container custom-top">
-  <div class="jumbotron rounded-3 " style="background-color: #ffb1b1;">
+  <div class="jumbotron rounded-3 " style="background-color: #FFB1B1;">
   	<div class="container">
-	    <img src="<c:url value="resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+	    <img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">영양소 A to Z</span>
-	    <h4><strong style="color:#ee4949; font-size:40px;">운동러들의 필수 보충제, 아르기닌의 부작용</strong></h4>
+	    <h4><strong style="color:#EE4949; font-size:40px;">운동러들의 필수 보충제, 아르기닌의 부작용</strong></h4>
   	</div>
   </div>
-
   <div style="font-size:24px;" class="contentTop">
    	  <strong style="background-color: #FFE5E5; font-size:35px;">아르기닌</strong>이 운동 능력 향상에 도움이 된다고 알려져 최근 운동을 하는 분들이 많이 찾고 있죠.<br/>
    	   아르기닌은 운동과 관련된 역할 외에도 우리 몸에서 다양한 역할을 하는 아미노산이지만 <br/>
    	   어떤 영양제든 과다하게 섭취할 경우 부작용이 있을 수 있으니 부작용을 꼼꼼히 살펴보고 선택하도록 해주세요.
   </div>
   <div class="mt-5">
-    <img src="<c:url value="resources/images/magazine_images/01/01_IMG.png"/>" class="img-fluid">
+    <img src="<c:url value="/resources/images/magazine_images/01/01_IMG.png"/>" class="img-fluid">
   </div>
-  <!-- 
+  <!--
   <hr class="my-hr mt-5 mb-5">
    -->
-      
   <div class="paragraph">
-	<img src="<c:url value="resources/images/magazine_images/basic/work-time.png"/>" class="img-fluid" style="width:100px">
-	<span style="font-size: xx-large; color: #FF7C4C">&nbsp;&nbsp;&nbsp;<strong>메디의 1분 요약</strong></span>
-	<div class="wrap">
-	    <div class="box">Click</div>
-	    <div class="tooltip">말풍선 나왔다!</div>
-	</div>
+	<img src="<c:url value="/resources/images/magazine_images/basic/work-time.png"/>" class="img-fluid mr-4" style="width:100px">
+	<span style="font-size: xx-large; color: #FF7C4C"><strong>메디의 1분 요약</strong></span>
+	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
+   		 Click
+  		</button>
+	  <div class="modal" id="myModal">
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
+	          메디의 1분 요약
+	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          </h4>
+	        </div>
+	        <div class="modal-body">
+	        <img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	         아르기닌은 모근의 혈액 공급을 도와 머리카락의 성장에 도움을 줄 수 있어요. (탈모 걱정은 No!)<br/>
+	        <img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			 헤르페스 바이러스의 증식에 관여하기 때문에 평소 헤르페스가 있던 분들은 주의가 필요해요.<br/>
+			<img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+		   	 그 외에도 저혈압, 소화 문제, 알레르기의 악화 등의 부작용이 있을 수 있으니 본인에게 맞는 섭취량을 찾아서 먹도록 해주세요.
+	        </div>	       
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	        </div>
+	 	 </div>
+	   </div>
+	  </div>
   </div>
-  
   <div class="paragraph">
     <div class="mt-5">
-    <img src="<c:url value="resources/images/magazine_images/basic/QuestionMark.png"/>" class="img-fluid" style="width:60px; margin-bottom: 15px;">
-      <span class="title" style="font-size:30px"><strong>&nbsp;아르기닌이 탈모를 유발한다?</strong></span>
+    <img src="<c:url value="/resources/images/magazine_images/basic/QuestionMark.png"/>" class="img-fluid" style="width:60px; margin-bottom: 15px;">
+      <span class="title ml-2" style="font-size:30px"><strong>아르기닌이 탈모를 유발한다?</strong></span>
     </div>
     <div class="mt-3">
       아르기닌을 먹으면 탈모가 온다는 얘기가 종종 들려오는데 아직
@@ -169,7 +160,6 @@
       <span class="underLine">모근으로 공급되는 혈액량을 늘리고 머리카락의 성장에 도움을 줄 수 있다는 주장</span>도 있습니다.
     </div>
   </div>
-  
   <div class="paragraph">
     <div class="mt-5">
       <span class="para_title">헤르페스 바이러스</span>
@@ -213,7 +203,7 @@
       또한 천식이나 다른 알레르기가 있는 분들은 이런 증상이 아르기닌에 의해서 악화될 수 있습니다.
     </div>
   </div>
-  <!-- 
+  <!--
   <hr class="mt-5 my-hr">
    -->
   <div class="mt-5 mb-5 jumbotron" style="font-size: 21px;">
@@ -223,8 +213,8 @@
   </div>
 </div>
 <div class="container custom-footer">
-  <span class="custom-text">  
-	<img src="<c:url value="resources/images/magazine_images/basic/happy.png"/>" class="img-fluid" style="width:50px">
+  <span class="custom-text">
+	<img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid" style="width:50px">
   	&nbsp;&nbsp;관련 영양제 인기 TOP 10 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -250,7 +240,4 @@
     </c:if>
   </div>
 </div>
-
-
-
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>

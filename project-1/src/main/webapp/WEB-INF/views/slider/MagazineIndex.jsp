@@ -71,7 +71,7 @@
             	<br/>
             	<p class="my-3" style="margin-bottom:20px; color:gray; font-size:13px; font-weight:500;">
             		영양제와 건강에 대한 모든 것,<br/>
-					<span style="color:#EF605D">Madi-Q</span>에서 확인하세요!</p>
+					<span style="color:#EF605D">Medi-Q</span>에서 확인하세요!</p>
                 <ul class="sidemgrg" style=" list-style:none; padding-inline-start: 0px;">
                     <a href="<c:url value="/magazine.do?no=01"/>" >
                         <div class="image d-flex">
