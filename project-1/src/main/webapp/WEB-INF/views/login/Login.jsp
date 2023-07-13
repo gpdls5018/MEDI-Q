@@ -264,9 +264,9 @@ p{
 							<h6 class="ml-2 text">내용</h6>
 							<input type="hidden" name="mode"/>
 							<input type="text" class="form-control mx-2" name="email" placeholder="이메일 입력해주세요" style="width: 300px"/>
-							<input type="text" class="form-control mx-2" name="user" placeholder="아이디를 입력해주세요" style="width: 300px; display: none"/>
+							<input type="text" class="form-control mx-2" id="user" name="id" placeholder="아이디를 입력해주세요" style="width: 300px; display: none"/>
 							<input type="text" class="form-control mx-2 my-2" name="name" placeholder="이름를 입력해주세요"  style="width: 300px;"/>
-							<a type="button" class="btn btn-info mx-3 submit">확인</a>
+							<button type="button" class="btn btn-info mx-3 submit">확인</button>
 							<span id="checkOK" class="mx-3" style="display:none"></span>
 						</form>			
 					</div>
@@ -278,106 +278,105 @@ p{
 <script>
 	//유효성 검사
 	var form = document.forms[1];
-	var span = document.querySelector('#checkOK');
-	//console.log(form)
-	form.onsubmit = function(e){
-		var isValidate = false;
-		if(!form.email.value){
-			span.style.display='';
-			span.style.color='red';
-			span.textContent = '이메일을 입력해주세요';
-			isValidate = false;
-			return false;
-		}
-		else{
-			isValidate = true;
-		}
-		
-		if(!form.name.style.display){
-			if(!form.name.value){
-				span.style.display='';
-				span.style.color='red';
-				span.textContent = '이름을 입력해주세요';
-				isValidate = false;
-				return false;
-			}
-			else{
-				isValidate = true;
-			}
-		}
-		
-		if(form.id.style.display.length){
-			if(!form.id.value){
-				span.style.display='';
-				span.style.color='red';
-				span.textContent = '아이디를 입력해주세요';
-				isValidate = false;
-				return false;
-			}
-			else{
-				isValidate = true;
-			}
-		}
-		
-		if(!isValidate){
-			return false;			
-		}
-		else{
-			return true;
-		}
-	}
-	
+	var span = document.querySelector('#checkOK');	
 	var mode = document.querySelector('input[name=mode]');
 	var searchTags = document.querySelectorAll('.search');
 	//console.log(searchTags)
 	searchTags.forEach(function(search) {
-			search.onclick = function(e) {
-				document.querySelector('input[name=name]').textContent='';
-				document.querySelector('input[name=email]').value='';
-				document.querySelector('input[name=user]').textContent='';
-				span.textContent='';
-				//console.log(e.target.textContent)
-				if(e.target.textContent === '아이디찾기'){
-					mode.value = 'ID';
-					document.querySelector('.modal-title').textContent = '아이디 찾기';
-					document.querySelector('.text').textContent = "아이디를 찾기 위해 이메일과 이름을 입력해주세요";
-					document.querySelector('input[name=user]').style.display='none';
-					document.querySelector('input[name=name]').style.display='';
-				}
-				else if(e.target.textContent === '비밀번호찾기'){
-					mode.value = 'PWD';
-					e.target.parentElement.setAttribute("data-toggle", "modal");
-					document.querySelector('.modal-title').textContent = '비밀번호 찾기';
-					document.querySelector('.text').textContent = "비밀번호를 찾기 위해 이메일과 아이디를 입력해주세요";
-					document.querySelector('input[name=user]').style.display='';
-					document.querySelector('input[name=name]').style.display='none';
-				}
+		search.onclick = function(e) {
+			document.querySelector('input[name=name]').textContent='';
+			document.querySelector('input[name=email]').value='';
+			document.querySelector('input[name=id]').textContent='';
+			span.textContent='';
+			//console.log(e.target.textContent)
+			if(e.target.textContent === '아이디찾기'){
+				mode.value = 'ID';
+				document.querySelector('.modal-title').textContent = '아이디 찾기';
+				document.querySelector('.text').textContent = "아이디를 찾기 위해 이메일과 이름을 입력해주세요";
+				document.querySelector('#user').style.display='none';
+				document.querySelector('input[name=name]').style.display='';
+			}
+			else if(e.target.textContent === '비밀번호찾기'){
+				mode.value = 'PWD';
+				e.target.parentElement.setAttribute("data-toggle", "modal");
+				document.querySelector('.modal-title').textContent = '비밀번호 찾기';
+				document.querySelector('.text').textContent = "비밀번호를 찾기 위해 이메일과 아이디를 입력해주세요";
+				document.querySelector('#user').style.display='';
+				document.querySelector('input[name=name]').style.display='none';
+			}
 		
-		//아이디 비밀번호 찾기 ajax로 넘기기
-		//console.log($('.submit'))
+			//아이디 비밀번호 찾기 ajax로 넘기기
+			//console.log($('.submit'))
 			$('.submit').click(function(){
-				$.ajax({
-					url:'<c:url value="/project/SearchIdNPwd.do"/>',
-					dataType:'json',
-					data:{id:$('input[name=user]').val(),
-							email:$('input[name=email]').val(),
-							name:$('input[name=name]').val(),
-							mode:$('input[name=mode]').val()}
-				}).done(function(data){
+				console.log('form.id:',form.id.style.display)
+				var isValidate = false;
+				if(!form.email.value){
 					span.style.display='';
-					span.style.color='black';
-					if(data.mode=='ID'){
-						span.innerHTML = "입력하신 이메일로 아이디 전송을 완료했습니다";
+					span.style.color='red';
+					span.textContent = '이메일을 입력해주세요';
+					isValidate = false;
+					return false;
+				}
+				else{
+					isValidate = true;
+				}
+				
+				if(!form.name.style.display){
+					if(!form.name.value){
+						span.style.display='';
+						span.style.color='red';
+						span.textContent = '이름을 입력해주세요';
+						isValidate = false;
+						return false;
 					}
-					else{//이메일 보냈다고 문자남기기
-						span.innerHTML = "입력하신 이메일로 비밀번호 전송을 완료했습니다";
+					else{
+						isValidate = true;
 					}
-				}).fail(function(){
-					console.log('error');
-				});
+				}
+				
+				if(!form.id.style.display.length){
+					if(!form.id.value){
+						span.style.display='';
+						span.style.color='red';
+						span.textContent = '아이디를 입력해주세요';
+						isValidate = false;
+						return false;
+					}
+					else{
+						isValidate = true;
+					}
+				}
+				console.log('isValidate:',isValidate)
+				if(!isValidate){
+					return false;			
+				}
+				else{
+					$.ajax({
+						url:'<c:url value="/project/SearchIdNPwd.do"/>',
+						dataType:'json',
+						data:{id:$('#user').val(),
+								email:$('input[name=email]').val(),
+								name:$('input[name=name]').val(),
+								mode:$('input[name=mode]').val()}
+					}).done(function(data){
+						$('#checkOK').css({'display':'','color':'black'});
+						if(data.mode=='ID'){
+							$('#checkOK').html("입력하신 이메일로 아이디 전송을 완료했습니다");
+						}
+						else{//이메일 보냈다고 문자남기기
+							$('#checkOK').html("입력하신 이메일로 비밀번호 전송을 완료했습니다");
+						}
+					}).fail(function(){
+						console.log('error');
+					});	
+					
+					return true;
+				}
 			});
 		}
 	})
+	
+	
 	// 아이디 플레이스 홀더가 위로 올라가는 로직
         function labelUp(input){
             input.parentElement.children[0].setAttribute("class", "change_label");    
