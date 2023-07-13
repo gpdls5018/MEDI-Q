@@ -102,7 +102,7 @@
     <main>
         <div class="container-fluid">
             <figure>
-                <img src="pharm.png">
+                <img src="<c:url value="/resources/images/qna/pharm.png"/>">
                 <div class="inner">
                     <h1>Q & A</h1>
                     <h3>답답했던 영양제의 모든 것!</h3>
@@ -156,17 +156,21 @@
                         <br/>
                         <br/>
                         <br/>
+  
                         <h2 class="m-2 font-weight-bold font-weight-bold">Q & A 게시판</h2>
+                      	<h1>
+							Spring Framework <small>한줄 댓글-전체 목록 페이지(${listPagingData.map.nowPage }/${listPagingData.map.totalPage })</small>
+						</h1>                        
                         <!-- 질문에 대한 컨테이너 -->
                         <a  href='<c:url value="/board/Write.do"/>'><span class="btn_text">글쓰기</span></a>
                         <div class="row justify-content-center">
                         	
-                        	<c:if test="${empty records }" var="result">
+                        	<c:if test="${empty listPagingData.records }" var="isEmpty">
 								<div>등록된 자료가 없습니다.</div>
 							</c:if>
                             <!-- 여기부터 리스트 나올 것: 1제목,2내용,3작성자,나이,성별 -->
-                            <c:if test="${not result }">
-                            	<c:forEach items="${records }" var="record">
+                            <c:if test="${not isEmpty }">
+                            	<c:forEach var="record" items="${listPagingData.records }">
 	                                <div class="card col-12 m-2 p-0">
 		                                <a class="card-body text-dark text-decoration-none p-2" href="/board/View.do?no=${record.NO }">
 		                                    
@@ -236,21 +240,14 @@
             </div>
         </div>
     </main>
-
-    <ul class="pagination pagination-lg  justify-content-center">
+	<!-- 페이징 출력 -->
+	<div>${listPagingData.pagingString}</div>
+	<!-- css적용 안했음  -->
+    <!-- <ul class="pagination pagination-lg  justify-content-center">
         <li class="page-item"><a class="page-link" href="#">Prev</a></li>
         <li class="page-item active"><a class="page-link" href="#">1</a></li>
         <li class="page-item"><a class="page-link" href="#">2</a></li>
         <li class="page-item"><a class="page-link" href="#">3</a></li>
         <li class="page-item"><a class="page-link" href="#">Next</a></li>
-    </ul>
-    
-    <footer class="d-flex flex-wrap justify-content-between align-items-center pt-3 mt-4 border-top" style="background-color:#FDCDBC;">
-        <p class="col-md-4 mb-0 text-muted" style="font-weight:bold; color:black;">
-        © 2023 (주)한국소프트웨어아이엔씨 (153-759)<br/> 서울시 금천구 가산동 426-5 월드메르디앙 2차 413호 <br/> <a href="#"> ikosmo.co.kr</a></p>
-    
-        <ul class="nav col-md-4 justify-content-end mr-4">
-            <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
-        </ul>        
-    </footer>
+    </ul> -->
 </body>

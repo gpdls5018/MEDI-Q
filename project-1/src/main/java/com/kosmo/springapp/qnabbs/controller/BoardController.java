@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kosmo.springapp.qnabbs.service.ListPagingData;
+import com.kosmo.springapp.qnabbs.service.PagingUtil;
 import com.kosmo.springapp.qnabbs.service.impl.board.BoardServiceImpl;
 
 
@@ -25,13 +29,19 @@ public class BoardController {
 	private BoardServiceImpl board;
 	
 	@GetMapping("/List.do")
-	public String list(Model model) {
-		
-		Map map = new HashMap<>();
-		List<Map> records = board.selectList(map);
-		System.out.println(records);
-		model.addAttribute("records", records);
-		
+	public String list(
+			@RequestParam Map map,
+			@RequestParam(required = false,defaultValue = "1",value = PagingUtil.NOWPAGE) int nowPage,HttpServletRequest req,
+			Model model) {
+		//Map map = new HashMap<>();
+		//List<Map> records = board.selectList(map);
+		//System.out.println("페이징적용 후");
+		//System.out.println("페이징 처리 확인용");
+		ListPagingData<Map> listPagingData= board.selectList(map, req, nowPage);
+		//System.out.println("페이징 처리 확인용1");
+		//System.out.println(listPagingData);
+		model.addAttribute("listPagingData", listPagingData);
+		//System.out.println("페이징 처리 확인용2");
 		return "board/List";
 	}
 	@GetMapping("/Write.do")
@@ -43,10 +53,9 @@ public class BoardController {
 		map.put("id", "KIM");
 		int affected = board.insert(map);
 		System.out.println(affected);
-		
-		System.out.println("SELECT 전"+map);
+		//System.out.println("SELECT 전"+map);
 		map = board.selectOne(map);
-		System.out.println("SELECT 후"+map);
+		//System.out.println("SELECT 후"+map);
 		model.addAttribute("result", map);
 		
 		return  "board/View";
