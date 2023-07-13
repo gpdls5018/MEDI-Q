@@ -1,13 +1,16 @@
+<jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
-<jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/marshallku/infinite-scroll/dist/infiniteScroll.min.js"></script>
+<script src="https://unpkg.com/three"></script>
+<script src="https://unpkg.com/three-spritetext"></script>
+<script src="https://unpkg.com/3d-force-graph"></script>
 <c:set value="${totalReviewDto.starScore.COUNT_1 + totalReviewDto.starScore.COUNT_2 + totalReviewDto.starScore.COUNT_3 + totalReviewDto.starScore.COUNT_4 + totalReviewDto.starScore.COUNT_5}" var="totalStarCount"/>
 <c:set value="${totalReviewDto.effectList[0].COUNT + totalReviewDto.effectList[1].COUNT + totalReviewDto.effectList[2].COUNT + totalReviewDto.effectList[3].COUNT}" var="totalEffectCount"/>
 <c:set value="${totalReviewDto.noEffectList[0].COUNT + totalReviewDto.noEffectList[1].COUNT + totalReviewDto.noEffectList[2].COUNT + totalReviewDto.noEffectList[3].COUNT}" var="totalNoEffectCount"/>
@@ -52,7 +55,7 @@
     .bi-star-fill{
         font-size: 30px;
         line-height: 30px;
-        color: #fff236;
+        color: #dfc230;
         
     }
     .bi-star {
@@ -68,7 +71,7 @@
     .progress-bar {
       width: 15px;
       height: 20%;
-      background-color: #e9ecef;
+      background-color: #c0c0c0;
     }
     
     
@@ -97,23 +100,67 @@
       background-color: #eaeaea;
     }
 
+.bubble
+{
+position: relative;
+width: 800px;
+height: 120px;
+padding: 7px;
+background: #FFFFFF;
+-webkit-border-radius: 80px;
+-moz-border-radius: 80px;
+border-radius: 80px;
+border: #E17613 solid 5px;
+margin-top :20px;
+}
+
+.bubble:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 16px 12px 0;
+border-color: #FFFFFF transparent;
+display: block;
+width: 0;
+z-index: 1;
+bottom: -16px;
+left: 150px;
+}
+
+.bubble:before
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 20px 16px 0;
+border-color: #E3AB7F transparent;
+display: block;
+width: 0;
+z-index: 0;
+bottom: -25px;
+left: 146px;
+}
 </style>
 
 <div class="container">
+<div class="empty-space" style="height:100px;"></div>
     <h1 class="display-4 mt-5" style="background-color: lightsteelblue;width:100%">${listOne.productName}</h1>
-    <h1 class="display-4 mt-5">여기엔 이미지가 나온다</h1>
-    <ul class="nav nav-pills">
-  		<li class="nav-item content-link">
-    		<a class="nav-link active " data-toggle="tab" href="#detailTable">상세 정보</a>
-  		</li>
-  		<li class="nav-item content-link">
-    		<a class="nav-link " data-toggle="tab" href="#review">리뷰 정보</a>
-  		</li>
-	</ul>
-	
+    
+    <h1 class="display-4 mt-5">
+    <c:if test="${empty listOne.imgURL}" var="emptyIMG">
+    	<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" width="400px;" height="300px;" style="border-radius:20px;"/>
+    </c:if>
+    <c:if test="${not emptyIMG}">
+    	<img src="${listOne.imgURL}" width="400px;" height="300px;" style="border-radius:20px;"/>
+   	</c:if>
+    </h1>
+
 	<!-- 탭 -->
-	<div class="tab-content">
-	  	<div class="tab-pane fade show active" id="detailTable"><!-- 탭 1 시작 -->
+	<div class="tab-content mt-5 mb-5">
+	
+	  	<div class="effect-custom-font mt-5" style="font-size:40px;">제품의 상세정보 내용이에요! </div>
+	  	<div class="" id="detailTable"><!-- 탭 1 시작 -->
            	<table class="type09 mt-3">
                 <thead>
 	                <tr>
@@ -210,69 +257,107 @@
                 </tbody>
             </table>
        	</div><!-- 탭 1 끝 -->
-	 
-	  
-	    <div class="tab-pane fade" id="review"><!-- 탭 2 시작 -->
-   			<div class="row mb-3">
-	      		<div class="star-board col-6">
-	        		<div class="star-rating mt-5" style="text-align:center;">
-	          			<i class="bi bi-star rating"></i>
-	          			<i class="bi bi-star rating"></i>
-	          			<i class="bi bi-star rating"></i>
-	          			<i class="bi bi-star rating"></i>
-	          			<i class="bi bi-star rating"></i>
-	        		</div>
-	        		<div class="print-score mt-3" style="text-align:center;">
-	          			<span style="font-family: 'Noto Sans KR', sans-serif;font-size:40px;">${totalReviewDto.starScoreTotal}점</span>
-	        		</div>
-	      		</div>
-	      		<div class="progress-board m-auto col-6">
-	        		<div class="bar-rating mt-5 d-flex">
-            			<div class="mr-4">
-              				<div class="progress rounded-pill">
-              				<fmt:formatNumber var="totalStarCount" value="${totalStarCount}" />
-              				<fmt:formatNumber var="COUNT_5" value="${totalReviewDto.starScore.COUNT_5}" />
-              				<fmt:formatNumber value="${1-(COUNT_5 div totalStarCount)}" type="percent" var="count_5"/>
-                				<div class="progress-bar" style="height: ${count_5};"></div>
-              				</div>
-              				<span style="font-family: 'Noto Sans KR', sans-serif;">5점</span>
-            			</div>
-            			<div class="mr-4">
-              				<div class="progress rounded-pill">
-              				<fmt:formatNumber var="COUNT_4" value="${totalReviewDto.starScore.COUNT_4}" />
-              				<fmt:formatNumber value="${1-(COUNT_4 div totalStarCount)}" type="percent" var="count_4"/>
-                				<div class="progress-bar" style="height:${count_4};">
-                				</div>
-              				</div>
-              				<span style="font-family: 'Noto Sans KR', sans-serif;">4점</span>
-            			</div>
-            			<div class="mr-4">
-              				<div class="progress rounded-pill">
-              				<fmt:formatNumber var="COUNT_3" value="${totalReviewDto.starScore.COUNT_3}" />
-              				<fmt:formatNumber value="${1-(COUNT_3 div totalStarCount)}" type="percent" var="count_3"/>
-                				<div class="progress-bar" style="height:${count_3};"></div>
-             					</div>
-              				<span style="font-family: 'Noto Sans KR', sans-serif;">3점</span>
-            			</div>
-            			<div class="mr-4">
-              				<div class="progress rounded-pill">
-              				<fmt:formatNumber var="COUNT_2" value="${totalReviewDto.starScore.COUNT_2}" />
-              				<fmt:formatNumber value="${1-(COUNT_2 div totalStarCount)}" type="percent" var="count_2"/>
-                				<div class="progress-bar" style="height: ${count_2};"></div>
-              				</div>
-              				<span style="font-family: 'Noto Sans KR', sans-serif;">2점</span>
-            			</div>
-            			<div class="mr-4">
-              				<div class="progress rounded-pill">
-              				<fmt:formatNumber var="COUNT_1" value="${totalReviewDto.starScore.COUNT_1}" />
-              				<fmt:formatNumber value="${1-(COUNT_1 div totalStarCount)}" type="percent" var="count_1"/>
-                				<div class="progress-bar" style="height: ${count_1};"></div>
-              				</div>
-              				<span class="effect-custom-font">1점</span>
-            			</div>
-	          			
-	        		</div><!-- <div class="bar-rating mt-5"> -->
-      			</div><!-- <div class="progress-board"> -->
+	 	<div class="empty-space" style="height:100px;"></div>
+	  	<div class="effect-custom-font mt-5" style="font-size:40px;">구매전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
+	  	<div class="bubble p-4 effect-custom-font" style="font-size:17px;">
+		  	아래는 구매자들의 리뷰를 분석한 키워드 입니다.^^
+		  	<br>가운데 <span style="background-color:#ffdcdc;color:#ff4b4b">제품명</span>을 바탕으로
+		  	<span style="background-color:#f0ffd1;color:#86B817">부정 키워드</span>, <span style="background-color:#cfebff;color:blue">긍정 키워드</span>를 확인해보세요!
+	  	 </div>
+	    <div class="review-scroll" id="review"><!-- 탭 2 시작 -->
+   			<div class="jumbotron mt-1 row pt-3" style="background-color:#f5f5f5">
+   				<div class="col-7" style="background-color:white;border-radius:15px;">
+   					<div id="3d-graph" style="width:300px;height:300px;"></div>
+   				</div>
+   				    <script>
+				      let Graph = ForceGraph3D()
+				        (document.getElementById('3d-graph'))
+				          .jsonUrl('<c:url value="/resources/3dData/data.json"/>')
+				          .nodeAutoColorBy('group')
+				          .width("600")
+				          .height("380")
+				          .linkWidth(2)
+				          .backgroundColor("white")
+				          .nodeThreeObject(node => {
+				            const sprite = new SpriteText(node.id);
+				            sprite.material.depthWrite = false; // make sprite background transparent
+				            sprite.color = node.color;
+				            sprite.textHeight = 20;
+				            if(sprite.text === '고려 비타민 정 1000C') {
+				                sprite.color = "#ee4949";
+				                sprite.textHeight = 30;
+				            }
+				            else {
+				              sprite.textHeight = node.val+30
+				            }
+				            return sprite;
+				          });
+				  
+				      // Spread nodes a little wider
+				      Graph.d3Force('charge').strength(-1500);
+				    </script>
+	   			<div class="review-board col-5">
+	   				<div class="ml-5 effect-custom-font" style="font-size:35px;">별점을 확인해보세요!</div>
+		      		<div class="star-board ml-5">
+		        		<div class="star-rating mt-2 ml-5">
+		          			<i class="bi bi-star rating"></i>
+		          			<i class="bi bi-star rating"></i>
+		          			<i class="bi bi-star rating"></i>
+		          			<i class="bi bi-star rating"></i>
+		          			<i class="bi bi-star rating"></i>
+		        		</div>
+		        		<div class="print-score mt-3 ml-5 pl-5">
+		          			<span style="font-family: 'Noto Sans KR', sans-serif;font-size:40px;">${totalReviewDto.starScoreTotal}점</span>
+		        		</div>
+		      		</div>
+		      		<div class="progress-board ml-5">
+		        		<div class="bar-rating mt-5 d-flex ml-4">
+	            			<div class="mr-4">
+	              				<div class="progress rounded-pill">
+	              				<fmt:formatNumber var="totalStarCount" value="${totalStarCount}" />
+	              				<fmt:formatNumber var="COUNT_5" value="${totalReviewDto.starScore.COUNT_5}" />
+	              				<fmt:formatNumber value="${1-(COUNT_5 div totalStarCount)}" type="percent" var="count_5"/>
+	                				<div class="progress-bar" style="height: ${count_5};"></div>
+	              				</div>
+	              				<span style="font-family: 'Noto Sans KR', sans-serif;">5점</span>
+	            			</div>
+	            			<div class="mr-4">
+	              				<div class="progress rounded-pill">
+	              				<fmt:formatNumber var="COUNT_4" value="${totalReviewDto.starScore.COUNT_4}" />
+	              				<fmt:formatNumber value="${1-(COUNT_4 div totalStarCount)}" type="percent" var="count_4"/>
+	                				<div class="progress-bar" style="height:${count_4};">
+	                				</div>
+	              				</div>
+	              				<span style="font-family: 'Noto Sans KR', sans-serif;">4점</span>
+	            			</div>
+	            			<div class="mr-4">
+	              				<div class="progress rounded-pill">
+	              				<fmt:formatNumber var="COUNT_3" value="${totalReviewDto.starScore.COUNT_3}" />
+	              				<fmt:formatNumber value="${1-(COUNT_3 div totalStarCount)}" type="percent" var="count_3"/>
+	                				<div class="progress-bar" style="height:${count_3};"></div>
+	             					</div>
+	              				<span style="font-family: 'Noto Sans KR', sans-serif;">3점</span>
+	            			</div>
+	            			<div class="mr-4">
+	              				<div class="progress rounded-pill">
+	              				<fmt:formatNumber var="COUNT_2" value="${totalReviewDto.starScore.COUNT_2}" />
+	              				<fmt:formatNumber value="${1-(COUNT_2 div totalStarCount)}" type="percent" var="count_2"/>
+	                				<div class="progress-bar" style="height: ${count_2};"></div>
+	              				</div>
+	              				<span style="font-family: 'Noto Sans KR', sans-serif;">2점</span>
+	            			</div>
+	            			<div class="mr-4">
+	              				<div class="progress rounded-pill">
+	              				<fmt:formatNumber var="COUNT_1" value="${totalReviewDto.starScore.COUNT_1}" />
+	              				<fmt:formatNumber value="${1-(COUNT_1 div totalStarCount)}" type="percent" var="count_1"/>
+	                				<div class="progress-bar" style="height: ${count_1};"></div>
+	              				</div>
+	              				<span class="effect-custom-font">1점</span>
+	            			</div>
+		          			
+		        		</div><!-- <div class="bar-rating mt-5"> -->
+	      			</div><!-- <div class="progress-board"> -->
+      			</div>
    			</div><!-- <div class="row"> -->
    			<div class="effect-board effect-custom-font mt-3 row ">
    				<div class="col-6">
@@ -372,8 +457,11 @@
 </div>
 <input type="hidden" value="${listOne.no}" id="productNo">
 <script>
+
+
+
 //리뷰 정보 출력(총 별점 평균 등, 효과들)
-  var totalStarScore = document.querySelectorAll("div.star-rating.mt-5 > i");
+  var totalStarScore = document.querySelectorAll("div.star-rating.mt-2 > i");
   for(var i=0; i<${totalReviewDto.starScoreTotal}; i++) {
 	  totalStarScore[i].className = totalStarScore[i].className.replace("bi-star","bi-star-fill");
   }
@@ -495,5 +583,8 @@
   };
 
   window.addEventListener("scroll", handleInfiniteScroll);
+
+
 </script>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
+   			
