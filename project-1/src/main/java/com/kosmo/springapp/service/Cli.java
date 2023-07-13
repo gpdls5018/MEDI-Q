@@ -15,7 +15,7 @@ public class Cli {
     private static final String SEND_NOTIFICATION = "send-notification";
 
     public static void main(String[] args) {
-        Security.addProvider(new BouncyCastleProvider());
+        //Security.addProvider(new BouncyCastleProvider());
 
         GenerateKeyCommand generateKeyCommand = new GenerateKeyCommand();
         SendNotificationCommand sendNotificationCommand = new SendNotificationCommand();
