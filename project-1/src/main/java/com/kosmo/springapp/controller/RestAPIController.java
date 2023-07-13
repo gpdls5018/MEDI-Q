@@ -39,7 +39,7 @@ public class RestAPIController {
 	    });
 
 	    HttpHeaders headers = new HttpHeaders();
-	    headers.add("Authorization", "Bearer ya29.a0AbVbY6PXa3SCoMbJ4Yi7R2Xtf_rcKKxkek7Wt3EkPDy2ltXZDKbuKRxWArem7M7DasV-zQThHhuKBn3_faN5Pudj88uJlz3rtwiN7yGkNOwJzY9Bx7ZwWtayhm77ZVMkadEApf8Tr850C3Mmful8Xlt2FafQfJyuzlBc3DPSdVEjW5F4pHXCnyITe4lv6v9dahXFndeU7s4XBB9O9HvaHGOCv0HXOhbtmJt0bgfzAnGSwd2el1Tg0RdvA4lqJfBUNS0jFou3X4kmkSSYothJ5c6NdCi8Q98HkkLT44n-hWHKndov7H8J-5pGbF4a1oGCeKbGOlD5QJE-cDfPmRcdFAQfr3uXwhaeJhbAEjFNmzYDjzemR29tU1_FLKmtDW0aaJyP3JOrNticSlCC8aRDIhkvrro7aCgYKATESARASFQFWKvPl8mHtyQTnBfquj4mAdhwVrA0419");
+	    headers.add("Authorization", "Bearer ya29.a0AbVbY6N3EsYN6hl1KczWpJCWMrCU99dnWsRQegLzOS3i5NHgEpsjdj6VgwPrraJHwqomQVoING9D3hUD5w2wC660_vskGRQFAVkk0TIXxzIcwutc0eu_tj1hqM1XIfN5HcNDJ9uRs_PZyYBxNdacK95tOxG9ekbKbvsxvtX92YRsEK-ImOn-uumep8y-poCtaebhyxBOWX8lHcbMz7sFIx0LjSlub40KY0JjfSariLuFGtJd2XVdtycU26RlU1h1CHeWJHGvtGR84COixPNAHJGQJL3RIApxDFavTESQb77r594ZcqmLAC7fInzrwPKTem4bU53BBbbd7A3Jns7dcR_l50hmE1isnEvu9QTf3mGuhmEYx8ioxZb34jrHGyQ5Nu65ax5j3eDa4QXSfTxjpohGPK4aCgYKAcoSARASFQFWKvPliJ4g1kDB2zY7Esxy2sLM0g0418");
 	    headers.add("x-goog-user-project", "sonic-trail-391102");
 	    headers.add("Content-Type", "application/json;charset=utf-8");
 	    headers.add("Accept-Language","ko-KR");
@@ -74,10 +74,6 @@ public class RestAPIController {
 	            entity,//HttpEntity(요청 바디와 요청 헤더
 	            Map.class //응답 데이터가 {} 일 때
 	    );
-	    System.out.println("응답 코드 : " + responseEntity.getStatusCodeValue());
-	    System.out.println("응답 헤더 : " + responseEntity.getHeaders());
-	    System.out.println("응답 바디 : " + responseEntity.getBody());
-
 	    return responseEntity.getBody();
 	}
 }
