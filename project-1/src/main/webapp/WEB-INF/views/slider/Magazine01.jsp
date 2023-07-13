@@ -43,16 +43,9 @@
   	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 600px;
-  	height: 700px;
+	width: 530px;
+  	height: 540px;
   }
-  .modalB{
-  	margin-bottom: 50px;
-  }
-  .modalC{
-  margin-left: 61px;
-  }
-  
   .highLight {
     background-color : #F4BFBF;
   }
@@ -141,16 +134,12 @@
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
-	         아르기닌은 모근의 혈액 공급을 도와 머리카락의<br/> 
-	         <span class="modalC">성장에 도움을 줄 수 있어요. (탈모 걱정은 No!)<br/></span></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
-			 헤르페스 바이러스의 증식에 관여하기 때문에<br/> 
-			 <span class="modalC">평소 헤르페스가 있던 분들은 주의가 필요해요.<br/></span></p>
-			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
-		   	 그 외에도 저혈압, 소화 문제, 알레르기의 악화 등의<br/> 
-		   	  <span class="modalC">부작용이 있을 수 있으니 본인에게 맞는 섭취량을</span><br/>
-		   	  <span class="modalC">찾아서 먹도록 해주세요.</span></p>
+	        <img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	         아르기닌은 모근의 혈액 공급을 도와 머리카락의 성장에 도움을 줄 수 있어요. (탈모 걱정은 No!)<br/>
+	        <img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			 헤르페스 바이러스의 증식에 관여하기 때문에 평소 헤르페스가 있던 분들은 주의가 필요해요.<br/>
+			<img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+		   	 그 외에도 저혈압, 소화 문제, 알레르기의 악화 등의 부작용이 있을 수 있으니 본인에게 맞는 섭취량을 찾아서 먹도록 해주세요.
 	        </div>	       
 	        <div class="modal-footer">
 	          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
