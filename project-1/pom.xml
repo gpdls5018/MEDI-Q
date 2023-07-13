@@ -136,10 +136,35 @@
 			<optional>true</optional>
 		</dependency>
 		<!-- RestApi 설정-->
-				<dependency>
+		<dependency>
 		    <groupId>org.apache.httpcomponents</groupId>
 		    <artifactId>httpclient</artifactId>
 		 </dependency>
+		
+		<!-- web push -->
+		<dependency>
+		    <groupId>nl.martijndwars</groupId>
+		    <artifactId>web-push</artifactId>
+		    <version>5.1.1</version>
+		</dependency>
+		
+		<!-- 스프링 시큐리티 -->
+		<dependency>
+	    	<groupId>org.springframework.boot</groupId>
+	    	<artifactId>spring-boot-starter-security</artifactId>
+    
+		</dependency>		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>			
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.bouncycastle</groupId>
+		    <artifactId>bcprov-jdk16</artifactId>
+		    <version>1.46</version>
+		</dependency>
+		 
 	</dependencies>
 
 	
