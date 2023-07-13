@@ -124,13 +124,25 @@
     border-right: 8px solid transparent; 
     border-bottom: 8px solid #646FD4;
   } 
-  .wrap:hover .tooltip{display: block;}
+
 </style>
+
+<script type="text/javascript">
+  function showTooltip() {
+    var tooltip = document.getElementById("tooltip");
+    tooltip.style.display = "block";
+  }
+
+  function hideTooltip() {
+    var tooltip = document.getElementById("tooltip");
+    tooltip.style.display = "none";
+  }
+</script>
 
 <div class="container custom-top">
   <div class="jumbotron rounded-3 " style="background-color: #ffb1b1;">
   	<div class="container">
-	    <img src="<c:url value="resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+	    <img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">영양소 A to Z</span>
 	    <h4><strong style="color:#ee4949; font-size:40px;">운동러들의 필수 보충제, 아르기닌의 부작용</strong></h4>
   	</div>
@@ -142,24 +154,24 @@
    	   어떤 영양제든 과다하게 섭취할 경우 부작용이 있을 수 있으니 부작용을 꼼꼼히 살펴보고 선택하도록 해주세요.
   </div>
   <div class="mt-5">
-    <img src="<c:url value="resources/images/magazine_images/01/01_IMG.png"/>" class="img-fluid">
+    <img src="<c:url value="/resources/images/magazine_images/01/01_IMG.png"/>" class="img-fluid">
   </div>
   <!-- 
   <hr class="my-hr mt-5 mb-5">
    -->
       
   <div class="paragraph">
-	<img src="<c:url value="resources/images/magazine_images/basic/work-time.png"/>" class="img-fluid" style="width:100px">
+	<img src="<c:url value="/resources/images/magazine_images/basic/work-time.png"/>" class="img-fluid" style="width:100px">
 	<span style="font-size: xx-large; color: #FF7C4C">&nbsp;&nbsp;&nbsp;<strong>메디의 1분 요약</strong></span>
-	<div class="wrap">
+	<div class="wrap" onmouseover="showTooltip()" onmouseout="hideTooltip()">
 	    <div class="box">Click</div>
-	    <div class="tooltip">말풍선 나왔다!</div>
+	    <div class="tooltip" id="tooltip">말풍선 나왔다!</div>
 	</div>
   </div>
   
   <div class="paragraph">
     <div class="mt-5">
-    <img src="<c:url value="resources/images/magazine_images/basic/QuestionMark.png"/>" class="img-fluid" style="width:60px; margin-bottom: 15px;">
+    <img src="<c:url value="/resources/images/magazine_images/basic/QuestionMark.png"/>" class="img-fluid" style="width:60px; margin-bottom: 15px;">
       <span class="title" style="font-size:30px"><strong>&nbsp;아르기닌이 탈모를 유발한다?</strong></span>
     </div>
     <div class="mt-3">
@@ -224,7 +236,7 @@
 </div>
 <div class="container custom-footer">
   <span class="custom-text">  
-	<img src="<c:url value="resources/images/magazine_images/basic/happy.png"/>" class="img-fluid" style="width:50px">
+	<img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid" style="width:50px">
   	&nbsp;&nbsp;관련 영양제 인기 TOP 10 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
