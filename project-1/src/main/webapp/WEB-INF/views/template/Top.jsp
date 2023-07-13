@@ -129,6 +129,31 @@
 		.btn-14:active {
 		  top: 2px;
 		}
+		.sidemenu a{
+			display: block;
+		    height: 60px;
+		    line-height: 60px;
+		    width: 100%;
+		    position: relative;
+		    margin-left: 17px;
+		    color:black;
+		}
+		.sidemenu a:hover {
+			cursor: pointer;
+			color:blue;
+			font-weight: bold;
+			background-color: transparent;
+
+		}
+		.firstdown a {
+			display:block;
+			text-decoration:none;
+		}
+		.firstdown a:hover {
+			cursor: pointer;
+			border: 2px solid #FD9F28;
+			border-radius: 20px;
+		}
     </style>
 </head>
 <script>
@@ -217,9 +242,9 @@
 <body>
 <div class="container-fluid position-relative p-0">
 	 <nav class="navbar navbar-expand-sm navbar-dark fixed-top justify-content-between" id="navbar">
-        <div class="display-4 p-1 mx-4">
-            <a class="pull-bs-canvas-left d-block text-dark text-decoration-none">
-                <span>&#9776;</span>
+        <div class="firstdown display-4 p-1 mx-4">
+            <a class="pull-bs-canvas-left">
+                <span style="color:#EF605D">&#9776;</span>
             </a>
         </div>
         <a class="navbar-brand" href="/">
@@ -244,63 +269,57 @@
     <!-- navbar left side -->
     <div class="bs-canvas bs-canvas-left position-fixed bg-light h-100 justify-content-start">
         <header class="bs-canvas-header p-3 bg-gra1 justify-content-center">
-        	<h4 class="d-inline-block text-light mb-0 text1">MEDI Q</h4>
+        	<h4 class="d-inline-block text-light mb-0 text1">Medi-Q</h4>
             <button type="button" class="bs-canvas-close close" aria-label="Close">
                 <span aria-hidden="true" class="text-light text1">&times;</span>
             </button>
         </header>
         <div class="bs-canvas-content px-3 py-5 ">
-            <div class="m-1">
-                <a class="text-dark text-decoration-none font-weight-bold" href="<c:url value="/NutrientSelect.do"/>">
+            <div class="sidemenu m-1 d-flex" style="align-items: center;">
+                <a class="text-decoration-none font-weight-bold" style="font-size:20px;" href="<c:url value="/NutrientSelect.do"/>">
                 	<img src="<c:url value="/resources/images/tsimages/free-icon-vitamins-525955.png"/>" width="25" height="25">
                 	영양소
                 </a>
             </div>
             <hr>
-            <div class="m-1">
-                <a class="text-dark text-decoration-none font-weight-bold" href="<c:url value="/magazineindex.do"/>">
+            <div class="sidemenu m-1 d-flex">
+                <a class="text-decoration-none font-weight-bold" style="font-size:20px;" href="<c:url value="/magazineindex.do"/>">
                 	<img src="<c:url value="/resources/images/tsimages/free-icon-whats-new-5511348.png"/>" width="25" height="25">
-                	Magazine(뉴스)
+                	메디큐 칼럼
                 </a>
             </div>
             <hr>
-            <div class="m-1">
-                <a class="text-dark text-decoration-none font-weight-bold" href="#">
+            <div class="sidemenu m-1 d-flex">
+                <a class="text-decoration-none font-weight-bold" style="font-size:20px;" href="#">
                 	<img src="<c:url value="/resources/images/tsimages/free-icon-data-analysis-3449317.png"/>" width="25" height="25">
                 	분석 및 결과
                 </a>
             </div>
             <hr>
-            <div class="m-1">
-                <a class="text-dark text-decoration-none font-weight-bold" href="#">
-                	<img src="<c:url value="/resources/images/tsimages/free-icon-checkmark-9887473.png"/>" width="25" height="25">
-                	섭취 / 체크
-                </a>
-            </div>
-            <hr>
-            <div class="m-1">
-                <a class="text-dark text-decoration-none font-weight-bold" href="#">
+            <div class="sidemenu m-1 d-flex">
+                <a class="text-decoration-none font-weight-bold" style="font-size:20px;" href="#">
                 	<img src="<c:url value="/resources/images/tsimages/free-icon-chat-724715.png"/>" width="25" height="25">
                 	커뮤니티
                 </a>
             </div>
             <hr>
-            <div class="m-1">
-                <a class="text-dark text-decoration-none font-weight-bold" href="#">
+            <div class="sidemenu m-1 d-flex">
+                <a class="text-decoration-none font-weight-bold" style="font-size:20px;" href="#">
                 	<img src="<c:url value="/resources/images/tsimages/free-icon-lifestyle-4807765.png"/>" width="25" height="25">
                 	건강예측
                 </a>
             </div>
             <hr>
-            <div class="dropdown m-1">
-                <button type="button" class="btn dropdown-toggle p-0" data-toggle="dropdown">
+            <div class="dropdown sidemenu m-1 d-flex p-0" data-toggle="dropdown">
+                <button type="button" class="btn dropdown-toggle" style="font-size:20px;" data-toggle="dropdown">
                 	<img src="<c:url value="/resources/images/tsimages/free-icon-pharmacy-1404402.png"/>" width="25" height="25">
-                	정신 건강 분석
+                	정신건강 테스트
                 </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Link 1</a>
-                  <a class="dropdown-item" href="#">Link 2</a>
-                  <a class="dropdown-item" href="#">Link 3</a>
+                <div class="dropdown-menu w-100 ">
+                  <a class="dropdown-item" href='<c:url value="/project/MentalTest1.do"/>'>심리적 스트레스</a>
+                  <a class="dropdown-item" href='<c:url value="/project/MentalTest2.do"/>'>흡연 유형 평가</a>
+                  <a class="dropdown-item" href='<c:url value="/project/MentalTest3.do"/>'>알코올 의존(AUDIT-K)</a>
+                  <a class="dropdown-item" href='<c:url value="/project/MentalTest4.do"/>'>우울증(CES-D)</a>
                 </div>
             </div>
         </div>
