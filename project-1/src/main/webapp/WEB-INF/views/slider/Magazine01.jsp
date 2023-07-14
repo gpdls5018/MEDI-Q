@@ -31,7 +31,7 @@
   }
   .custom-modal{
     width: 120px;
-    background: #242F9B;
+    background: #87CEEB;
     padding: 10px;
     border-radius: 5px;
     color: #FFFFFF;
@@ -54,13 +54,13 @@
   }
   
   .highLight {
-    background-color : #F4BFBF;
+    background-color : #FFC7B2;
   }
   .underLine {
     text-decoration : underline;
   }
   .para_title {
-    color : #EE4949;
+    color : #ED1941;
     font-size: 35px;
     font-weight: bold;
   }
@@ -107,7 +107,7 @@
   }
 </style>
 <div class="container custom-top">
-  <div class="jumbotron rounded-3 " style="background-color: #FFB1B1;">
+  <div class="jumbotron rounded-3 " style="background-color: #FEDCBD;">
   	<div class="container">
 	    <img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">영양소 A to Z</span>
@@ -115,7 +115,7 @@
   	</div>
   </div>
   <div style="font-size:24px;" class="contentTop">
-   	  <span style="background-color: #FFE5E5; font-size:35px;">아르기닌</span>이 운동 능력 향상에 도움이 된다고 알려져 최근 운동을 하는 분들이 많이 찾고 있죠.<br/>
+   	  <span style="background-color: #FFC7B2; font-size:32px;">아르기닌</span>이 운동 능력 향상에 도움이 된다고 알려져 최근 운동을 하는 분들이 많이 찾고 있죠.<br/>
    	   아르기닌은 운동과 관련된 역할 외에도 우리 몸에서 다양한 역할을 하는 아미노산이지만 <br/>
    	   어떤 영양제든 과다하게 섭취할 경우 부작용이 있을 수 있으니 부작용을 꼼꼼히 살펴보고 선택하도록 해주세요.
   </div>
@@ -235,7 +235,7 @@
       <c:forEach var="record" begin="0" end="10" items="${listData}" >
         <div class="card" style="width:150px;height:400px;">
           <c:if test="${record.imgURL eq '/assets/image_search_sample.svg'}" var="notImage">
-            <a href='/detail.do?no=${record.no}'><img src="resources/images/thumbnail_img/No_IMG.jpeg" style="object-fit:fill" class="img-fluid product-img"></a>
+            <a href='/detail.do?no=${record.no}'><img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="object-fit:fill" class="img-fluid product-img"></a>
           </c:if>
           <c:if test="${not notImage}">
             <a href='/detail.do?no=${record.no}'><img src="${record.imgURL}" style="width:150px;height:150px;" class="img-fluid product-img"></a>
