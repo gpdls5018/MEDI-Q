@@ -14,6 +14,7 @@ public interface NutrientSelectService {
 	// 원료 주의사항 줄바꿈 및 수정
 	String editI_CAUTIONbyIngredientName(String name);
 	
+	// 5대 + 기능성 영양소에서 TOP10 선별
 	
 	
 	

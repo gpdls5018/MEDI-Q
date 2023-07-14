@@ -1,5 +1,7 @@
 package com.kosmo.springapp.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.Map;
 import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,10 +24,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.springapp.analyze.model.AnalyzeResultListDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
+import com.kosmo.springapp.model.MemberDTO;
+import com.kosmo.springapp.model.ProfileImageDTO;
 import com.kosmo.springapp.model.ReviewDTO;
 import com.kosmo.springapp.model.TotalReviewDTO;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.AnalyzeMyReportServiceImpl;
+import com.kosmo.springapp.service.impl.LoginServiceImpl;
 import com.kosmo.springapp.service.impl.MainPageServiceImpl;
 import com.kosmo.springapp.service.impl.ReviewServiceImpl;
 
@@ -68,13 +74,49 @@ public class FoodDetailController {
 		return "Review";
 	 }
 	 
+	 
+	 @Autowired
+	 private LoginServiceImpl loginService;
+	 
 	 @GetMapping("/analyzeMyFood.do")
-	 public String analyzeMyFood() {
+	 public String analyzeMyFood(HttpServletRequest req, HttpServletResponse resp, Model model) throws IOException {
+		 String userName;
+		 ProfileImageDTO profImg;
+		 try {
+			 MemberDTO member = loginService.selectOne(req,resp);
+			 System.out.println("member.getId() :"+member.getId());
+			 profImg = loginService.selectProfImg(member.getId());
+			 userName = member.getName();
+		 }
+		 catch(NullPointerException e) {
+			 resp.setContentType("text/html; charset=UTF-8");
+			 resp.setCharacterEncoding("UTF-8");
+			 PrintWriter out = resp.getWriter();
+			 out.println("<script>alert('로그인 후 이용해 주세요');history.back();</script>");
+			 out.flush();
+			 return null;
+		 }
+		 model.addAttribute("UserName" , userName);
+		 model.addAttribute("profImg", profImg);
 		 return "Analyze";
 	 }
 	 
 	 @GetMapping("/AnalyzeNewReport.do")
-	 public String analyzeNewReport() {
+	 public String analyzeNewReport(HttpServletRequest req, HttpServletResponse resp, Model model) throws IOException {
+		 String userName;
+		 try {
+			 MemberDTO member = loginService.selectOne(req,resp);
+			 userName = member.getName();
+		 }
+		 catch(NullPointerException e) {
+			 resp.setContentType("text/html; charset=UTF-8");
+			 resp.setCharacterEncoding("UTF-8");
+			 PrintWriter out = resp.getWriter();
+			 out.println("<script>alert('로그인 후 이용해 주세요');history.back();</script>");
+			 out.flush();
+			 return null;
+		 }
+		 model.addAttribute("UserName" , userName);
 		 return "AnalyzeNewReport";
 	 }
 	 
@@ -83,7 +125,7 @@ public class FoodDetailController {
 	 
 	 @CrossOrigin
 	 @PostMapping("/analyzeMyReport.do")
-	 public String analyzeMyReport(@RequestParam Map<String,String> map,Model model) {
+	 public String analyzeMyReport(@RequestParam Map<String,String> map,Model model,HttpServletRequest req,HttpServletResponse resp) {
 		 
 		 List<String> takeList = Arrays.asList(map.get("takePurpose").split(","));
 		 List<String> foodList = Arrays.asList(map.get("takeFood").split(","));
@@ -91,6 +133,8 @@ public class FoodDetailController {
 		 userMap.put("takePurpose", takeList);
 		 userMap.put("takeFood", foodList);
 		 AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReport(userMap);
+		 MemberDTO memberDto = loginService.selectOne(req,resp);
+		 model.addAttribute("memberDto",memberDto);
 		 model.addAttribute("resultListDto",resultListDto);
 		 return "AnalyzeReportResult";
 	 }

@@ -11,6 +11,19 @@
  		SELECT * FROM foodtable WHERE no=#{no}
 	</select>
 	<select id="selectFoodNameList" resultType="Map" parameterType="String">
-	SELECT * FROM (SELECT PRODUCTNAME,IMGURL FROM foodtable WHERE PRODUCTNAME LIKE '%' || #{searchWord} || '%') WHERE ROWNUM &lt;= 8
+	SELECT *
+FROM (
+  SELECT PRODUCTNAME, IMGURL
+  FROM foodtable
+  WHERE PRODUCTNAME LIKE #{searchWord} || '%'
+    AND IMGURL IS NOT NULL
+  UNION ALL
+  SELECT PRODUCTNAME, IMGURL
+  FROM foodtable
+  WHERE PRODUCTNAME LIKE #{searchWord} || '%'
+    AND IMGURL IS NULL
+)
+WHERE ROWNUM &lt;= 8
+ORDER BY IMGURL ASC
 	</select>
 </mapper>

@@ -92,9 +92,9 @@
 		  transition: all 0.3s ease;
 		  position: relative;
 		  display: inline-block;
-		   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-		   7px 7px 20px 0px rgba(0,0,0,.1),
-		   4px 4px 5px 0px rgba(0,0,0,.1);
+		  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+		  7px 7px 20px 0px rgba(0,0,0,.1),
+		  4px 4px 5px 0px rgba(0,0,0,.1);
 		  outline: none;
 		}
 		.btn-14 {
@@ -111,11 +111,11 @@
 		  left: 0;
 		  z-index: -1;
 		  border-radius: 5px;
-		  background-color: #eaf818;
-		  background-image: linear-gradient(315deg, #eaf818 0%, #f6fc9c 74%);
-		   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-		   7px 7px 20px 0px rgba(0,0,0,.1),
-		   4px 4px 5px 0px rgba(0,0,0,.1);
+		  background-color: #ff771c;
+          background-image: linear-gradient(315deg, #ff771c 0%, #ff5e00 74%);
+		  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,0.5),
+		  7px 7px 20px 0px rgba(0,0,0,0.1),
+		  4px 4px 5px 0px rgba(0,0,0,0.1);
 		  transition: all 0.3s ease;
 		}
 		.btn-14:hover {
@@ -151,8 +151,7 @@
 		}
 		.firstdown a:hover {
 			cursor: pointer;
-			border: 2px solid #FD9F28;
-			border-radius: 20px;
+			text-decoration:none;
 		}
     </style>
 </head>
@@ -238,6 +237,17 @@
             }
         });
     });
+	
+	document.addEventListener("DOMContentLoaded", function() {
+	    var dropdownItems = document.querySelectorAll(".dropdown-item");
+	    dropdownItems.forEach(function(item) {
+	      var url = item.getAttribute("data-url");
+	      item.addEventListener("click", function(event) {
+	        event.preventDefault();
+	        window.location.href = url;
+	      });
+	    });
+	  });
 </script>
 <body>
 <div class="container-fluid position-relative p-0">
@@ -316,10 +326,10 @@
                 	정신건강 테스트
                 </button>
                 <div class="dropdown-menu w-100 ">
-                  <a class="dropdown-item" href='<c:url value="/project/MentalTest1.do"/>'>심리적 스트레스</a>
-                  <a class="dropdown-item" href='<c:url value="/project/MentalTest2.do"/>'>흡연 유형 평가</a>
-                  <a class="dropdown-item" href='<c:url value="/project/MentalTest3.do"/>'>알코올 의존(AUDIT-K)</a>
-                  <a class="dropdown-item" href='<c:url value="/project/MentalTest4.do"/>'>우울증(CES-D)</a>
+                  <a class="dropdown-item" href="#" data-url="<c:url value="/project/MentalTest1.do"/>">심리적 스트레스</a>
+				  <a class="dropdown-item" href="#" data-url="<c:url value="/project/MentalTest2.do"/>">흡연 유형 평가</a>
+				  <a class="dropdown-item" href="#" data-url="<c:url value="/project/MentalTest3.do"/>">알코올 의존(AUDIT-K)</a>
+				  <a class="dropdown-item" href="#" data-url="<c:url value="/project/MentalTest4.do"/>">우울증(CES-D)</a>
                 </div>
             </div>
         </div>
