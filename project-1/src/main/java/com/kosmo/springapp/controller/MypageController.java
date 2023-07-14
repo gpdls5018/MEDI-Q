@@ -225,7 +225,9 @@ public class MypageController {
 	}
 	//정신건강테스트3
 	@GetMapping("/MentalTest3.do")
-	public String mentalTest3() {
+	public String mentalTest3(HttpServletRequest req, HttpServletResponse resp, Model model) {
+		MemberDTO member = loginService.selectOne(req,resp);
+		model.addAttribute("info", member);
 		return "mentaltest/MentalTest3";
 	}
 	//정신건강테스트4

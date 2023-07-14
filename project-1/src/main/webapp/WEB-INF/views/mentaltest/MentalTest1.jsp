@@ -394,6 +394,7 @@
 			$(this).attr('data-toggle','');
 		}
 		else{
+			$(this).attr('data-toggle','modal');
 			$('#resultT').removeClass('text-danger text-primary');
 			var sum=0;
 			$(':radio:checked').each(function(){

@@ -62,9 +62,9 @@
 	                </tr>
 	                <tr class="border-bottom tr-content">
 	                    <td class="py-4">
-	                        <input type="radio" name="alc_q00" id="alc_q00_01" value="m"/>
+	                        <input type="radio" name="alc_q00" id="alc_q00_01" value="m" ${not empty info.gender && info.gender eq 'M' ? "checked" : "" }/>
 	                        <label for="alc_q00_01">남성</label>
-	                        <input type="radio" name="alc_q00" id="alc_q00_02" value="f"/>
+	                        <input type="radio" name="alc_q00" id="alc_q00_02" value="f" ${not empty info.gender && info.gender eq 'F' ? "checked" : "" }/>
 	                        <label for="alc_q00_02">여성</label>
 	                    </td>
 	                </tr>
@@ -293,6 +293,7 @@
 			$(this).attr('data-toggle','');
 		}
 		else if($('[name=alc_q00]:checked').val()=='m'){//남자일 때
+			$(this).attr('data-toggle','modal');
 			$(':radio:checked').slice(1).each(function(){
 				sum += parseInt($(this).val());
 				//console.log('sum:',sum)
@@ -302,7 +303,7 @@
 					$('#resultC').html(`
 							비교적 안전하고 건강한 음주습관을 지니고 있으며<br/>
 							알콜중독이 의심되지 않습니다<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>이런 때는 금주가 필수입니다!<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">이런 때는 금주가 필수입니다!</span<br/>
 							1.임신 중이거나 임신을 계획 중인 여성인 경우
 							2.고혈압, 협심증, 간질환, 우울, 불면 등의 증상이 있는 경우
 							3.약을 복용하는 경우<br/>
@@ -318,29 +319,29 @@
 							음주량과 음주횟수가 너무 많은 위험음주 습관을 지니고 있습니다.<br/>
 							아직은 술 때문에 큰 문제는 없지만 음주습관을 바꾸도록 해야합니다.<br/>
 							단기 개입 및 모니터링이 필요합니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>음주량과 횟수를 모두 줄여야 합니다.
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">음주량과 횟수를 모두 줄여야 합니다.</span><br/>
 							1.과음하지 않아야 합니다.1일 5잔(여자4잔) 이상, 1주일 동안 남자 13잔, 여자 6잔 이상은 과음입니다.<br/>
 							2.과음한 후 2~3일은 반드시 금주해야 합니다.<br/>
 							3.자신만의 절주방법을 정해야 합니다.<br/>
 							예) 2차 안가기, 천천히 마시기, 약한 술 마시기, 섞어 마시지 않기 등<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>과음을 계속할 경우 발생할 수 있는 문제점은?<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">과음을 계속할 경우 발생할 수 있는 문제점은?</span><br/>
 							1.건강문제 : 간질환, 췌장질환, 위장질환, 성기능저하, 노화, 불면증 ,암 발생 증가<br/>
 							2.사고발생 : 교통사고, 음주운전, 작업중 사고, 운동중 사고, 경찰에 불려다니는 일<br/>
 							3.대인관계 : 부부, 자녀, 동료, 친구와의 불화, 잦은 실수<br/>
 							4.일(직업) : 업무능력 저하, 지각, 결근, 약속불이행<br/>
 							5.경제문제 : 물건분실, 치료비용, 지나친 술값 지불<br/>
 							6.정신적문제 : 기억력 저하, 뇌의 노화, 알코올성 치매, 우울증, 자살충동<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>과음충동이 들 때는 어떻게 해야 하나 ?<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">과음충동이 들 때는 어떻게 해야 할까?</span><br/>
 							1.과음우려가 있을 때는 바로 집으로 간다.<br/>
 							2.뒤에 할 일을 남겨 놓거나 다른 대안활동(공연, 운동, 차마시기 등)을 찾는다.<br/>
 							3.술 친구를 만나지 않는다.<br/>
 							4.2잔 정도만 마시고 음료수를 마신다.<br/>
 							5.절주해야하는 이유를 다시 한번 떠올린다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>주기적으로 건강상태를 체크해야 합니다.<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">주기적으로 건강상태를 체크해야 합니다.</span><br/>
 							1.신체증상을 주의 깊게 살피고 주기적인 검진을 받아야 합니다.<br/>
 							2.숙취가 오랫동안 지속되고 필름끊김 현상이 6개월에 2~3회이상 될 때는 금주해야 합니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>음주문제를 위해 알코올상담센터나 정신보건센터의 도움을 받도록 합니다.</br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>이런 때는 금주가 필수입니다!<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">음주문제를 위해 알코올상담센터나 정신보건센터의 도움을 받도록 합니다.</span></br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">이런 때는 금주가 필수입니다!</span><br/>
 							1.임신 중이거나 임신을 계획 중인 여성인 경우<br/>
 							2.고혈압, 협심증, 간질환, 우울, 불면 등의 증상이 있는 경우<br/>
 							3.약을 복용하는 경우<br/>
@@ -357,25 +358,26 @@
 							사용 장애 추정군, 신체증상/불안/불면/사회부적응/우울 등이 나타날 수 있어<br/>
 							세심한 관심과 전문가의 치료적 개입이 필요합니다.<br/>
 							술은 줄이는 단계가 아니라 끊어야 합니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>음주와 관련된 목표를 조정해야합니다.<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">음주와 관련된 목표를 조정해야합니다.</span><br/>
 							1.음주량과 횟수를 조절하는 것이 매우 어려운 단계입니다.<br/>
 							2.술을 마셔야 기분도 좋고, 일도 잘되고 관계도 좋아진다고 생각합니다.<br/>
 							3.술을 마시고 실수하는 경우와 중요한 업무를 처리하지 못하는 일이 늘어납니다.<br/>
 							4.술을 끊는 것이 알코올 사용장애에서 벗어나는 가장 확실한 방법입니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>정신의료기관(정신과 전문의)이나 알코올상담센터, 정신보건센터에서 전문서비스를 받도록 합니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>자조집단에 참여를 권유합니다.<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">정신의료기관(정신과 전문의)이나 알코올상담센터, 정신보건센터에서 전문서비스를 받도록 합니다.</span><br/><br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">자조집단에 참여를 권유합니다.</span><br/>
 							1.알코올 중독자 및 가족분들을 위한 익명 상담 사이트 : <a href='http://cafe.naver.com/woori1339'>http:\/\/cafe.naver.com/woori1339</a>, 1644-6139<br/>
 							2.술을 마셔야 기분도 좋고, 일도 잘되고 관계도 좋아진다고 생각합니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>알코올 의존증 개선을 위한 치료를 꼭 받으셔야 합니다.<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">알코올 의존증 개선을 위한 치료를 꼭 받으셔야 합니다.</span><br/>
 							1.비타민 등 영양공급<br/>
 							2.금단증상에 대한 제독치료<br/>
 							3.단주를 촉진하기 위한 약물치료(충동억제제, 항불안제, 항우울제)<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>신체에 병이 생기면 치료를 받아서 나을 수 있는 것처럼 알코올 중독도 치료받으면 나을 수 있습니다.
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">신체에 병이 생기면 치료를 받아서 나을 수 있는 것처럼 알코올 중독도 치료받으면 나을 수 있습니다.</span>
 							`);
 				}
 			});
 		}///////////남자일 때
 		else{//여자일 때
+			$(this).attr('data-toggle','modal');
 			$(':radio:checked').slice(1).each(function(){
 				sum += parseInt($(this).val());
 				if(sum < 6){
@@ -384,7 +386,7 @@
 					$('#resultC').html(`
 							비교적 안전하고 건강한 음주습관을 지니고 있으며<br/>
 							알콜중독이 의심되지 않습니다<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>이런 때는 금주가 필수입니다!<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">이런 때는 금주가 필수입니다!</span><br/>
 							1.임신 중이거나 임신을 계획 중인 여성인 경우
 							2.고혈압, 협심증, 간질환, 우울, 불면 등의 증상이 있는 경우
 							3.약을 복용하는 경우<br/>
@@ -401,29 +403,29 @@
 							사용 장애 추정군, 신체증상/불안/불면/사회부적응/우울 등이 나타날 수 있어<br/>
 							세심한 관심과 전문가의 치료적 개입이 필요합니다.<br/>
 							술은 줄이는 단계가 아니라 끊어야 합니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>음주량과 횟수를 모두 줄여야 합니다.
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">음주량과 횟수를 모두 줄여야 합니다.</span><br/>
 							1.과음하지 않아야 합니다.1일 5잔(여자4잔) 이상, 1주일 동안 남자 13잔, 여자 6잔 이상은 과음입니다.<br/>
 							2.과음한 후 2~3일은 반드시 금주해야 합니다.<br/>
 							3.자신만의 절주방법을 정해야 합니다.<br/>
 							예) 2차 안가기, 천천히 마시기, 약한 술 마시기, 섞어 마시지 않기 등<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>과음을 계속할 경우 발생할 수 있는 문제점은?<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">과음을 계속할 경우 발생할 수 있는 문제점은?</span><br/>
 							1.건강문제 : 간질환, 췌장질환, 위장질환, 성기능저하, 노화, 불면증 ,암 발생 증가<br/>
 							2.사고발생 : 교통사고, 음주운전, 작업중 사고, 운동중 사고, 경찰에 불려다니는 일<br/>
 							3.대인관계 : 부부, 자녀, 동료, 친구와의 불화, 잦은 실수<br/>
 							4.일(직업) : 업무능력 저하, 지각, 결근, 약속불이행<br/>
 							5.경제문제 : 물건분실, 치료비용, 지나친 술값 지불<br/>
 							6.정신적문제 : 기억력 저하, 뇌의 노화, 알코올성 치매, 우울증, 자살충동<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>과음충동이 들 때는 어떻게 해야 하나 ?<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">과음충동이 들 때는 어떻게 해야 할까?</span><br/>
 							1.과음우려가 있을 때는 바로 집으로 간다.<br/>
 							2.뒤에 할 일을 남겨 놓거나 다른 대안활동(공연, 운동, 차마시기 등)을 찾는다.<br/>
 							3.술 친구를 만나지 않는다.<br/>
 							4.2잔 정도만 마시고 음료수를 마신다.<br/>
 							5.절주해야하는 이유를 다시 한번 떠올린다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>주기적으로 건강상태를 체크해야 합니다.<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">주기적으로 건강상태를 체크해야 합니다.</span><br/>
 							1.신체증상을 주의 깊게 살피고 주기적인 검진을 받아야 합니다.<br/>
 							2.숙취가 오랫동안 지속되고 필름끊김 현상이 6개월에 2~3회이상 될 때는 금주해야 합니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>음주문제를 위해 알코올상담센터나 정신보건센터의 도움을 받도록 합니다.</br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>이런 때는 금주가 필수입니다!<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">음주문제를 위해 알코올상담센터나 정신보건센터의 도움을 받도록 합니다.</span></br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">이런 때는 금주가 필수입니다!</span><br/>
 							1.임신 중이거나 임신을 계획 중인 여성인 경우<br/>
 							2.고혈압, 협심증, 간질환, 우울, 불면 등의 증상이 있는 경우<br/>
 							3.약을 복용하는 경우<br/>
@@ -439,20 +441,20 @@
 							알코올의존 상태에 이미 들어셨습니다.<br/>
 							전문의의 진찰과 치료를 시작하는 것이 필요합니다.<br/>
 							술은 줄이는 단계가 아니라 끊어야 합니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>음주와 관련된 목표를 조정해야합니다.<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">음주와 관련된 목표를 조정해야합니다.</span><br/>
 							1.음주량과 횟수를 조절하는 것이 매우 어려운 단계입니다.<br/>
 							2.술을 마셔야 기분도 좋고, 일도 잘되고 관계도 좋아진다고 생각합니다.<br/>
 							3.술을 마시고 실수하는 경우와 중요한 업무를 처리하지 못하는 일이 늘어납니다.<br/>
 							4.술을 끊는 것이 알코올 사용장애에서 벗어나는 가장 확실한 방법입니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>정신의료기관(정신과 전문의)이나 알코올상담센터, 정신보건센터에서 전문서비스를 받도록 합니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>자조집단에 참여를 권유합니다.<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">정신의료기관(정신과 전문의)이나 알코올상담센터, 정신보건센터에서 전문서비스를 받도록 합니다.</span><br/><br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">자조집단에 참여를 권유합니다.</span><br/>
 							1.알코올 중독자 및 가족분들을 위한 익명 상담 사이트 : <a href='http://cafe.naver.com/woori1339'>http:\/\/cafe.naver.com/woori1339</a>, 1644-6139<br/>
 							2.술을 마셔야 기분도 좋고, 일도 잘되고 관계도 좋아진다고 생각합니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>알코올 의존증 개선을 위한 치료를 꼭 받으셔야 합니다.<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">알코올 의존증 개선을 위한 치료를 꼭 받으셔야 합니다.</span><br/>
 							1.비타민 등 영양공급<br/>
 							2.금단증상에 대한 제독치료<br/>
 							3.단주를 촉진하기 위한 약물치료(충동억제제, 항불안제, 항우울제)<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>신체에 병이 생기면 치료를 받아서 나을 수 있는 것처럼 알코올 중독도 치료받으면 나을 수 있습니다.
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">신체에 병이 생기면 치료를 받아서 나을 수 있는 것처럼 알코올 중독도 치료받으면 나을 수 있습니다</span>.
 							`);
 				}
 			});
