@@ -151,7 +151,7 @@
   
   <div class="paragraph-title">
 	<img src="<c:url value="/resources/images/magazine_images/basic/time.png"/>" class="img-fluid mr-4" style="width:100px">
-	<span style="font-size: xx-large; color: #2E8B57"><strong>메디의 1분 요약</strong></span>
+	<span style="font-size: xx-large; color: #2E8B57"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
   		</button>
@@ -160,7 +160,7 @@
 	      <div class="modal-content">
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
-	          메디의 1분 요약
+	          MEDI-Q의 1분 요약
 	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
@@ -194,7 +194,7 @@
     <div>
       <img src="<c:url value="/resources/images/magazine_images/05/01_IMG.png"/>" class="img-fluid">
     </div>
-    <div class="mt-3">
+    <div class="mt-5">
       <p>
         일반적으로 운동 전이나 후에 단백질 보충제를 드시는데, <span class="highLight">단백질은 운동하지 않는 시간에도 일정하게 보충하는 것이 필요해요!</span>
         단백질을 잘 먹지 않으면 우리 몸에서 근육의 단백질을 사용하게 되고,
@@ -209,6 +209,12 @@
         특히 신장 기능이 떨어진 상태에서 많은 단백질을 먹으면 더 많은 손상이 발생할 수 있으니, 주의가 필요합니다.
       </p>
     </div>
+    <div class="mt-5">
+      <p>
+        일반적으로 단백질은 체중 1kg당 단백질 0.8~1g 정도를 권장하며, <span class="underLine">운동을 하고 근육을 키우는 목적으로 드실 경우 체중 1kg당 최대 2g 정도까지는 섭취가 가능</span>해요. 
+        다만 일반 식품으로도 단백질을 섭취하기 때문에 운동 전후 보충제로 <span class="highLight">이 양을 모두 먹는 것은 피하고, 이 양을 하루 동안 나눠서 먹는 것이 좋습니다.</span>
+      </p>
+    </div>
   </div>
   
   <div class="paragraph">
@@ -220,10 +226,10 @@
     <div>
       <img src="<c:url value="/resources/images/magazine_images/05/02_IMG.png"/>" class="img-fluid">
     </div>
-    <div class="mt-3">
+    <div class="mt-5">
       <p>
         운동 시에 섭취하면 좋은 영양제에는 대표적으로 <span class="highLight">아르기닌</span>이 있어요.
-        아르기닌은 <span class="underLine">근육으로 가는 혈액의 순환을 도와 근육을 키우는 데에 도움을 주고, 근육을 덜 지치게 해서 운동을 지속할 수 있도록 하는 효과</span>가 있습니다.
+        아르기닌은 근육으로 가는 혈액의 순환을 도와 <span class="underLine">근육을 키우는 데에 도움을 주고, 근육을 덜 지치게 해서 운동을 지속할 수 있도록 하는 효과</span>가 있습니다.
       </p>
     </div>
     <div class="mt-5">
@@ -250,7 +256,7 @@
     <div>
       <img src="<c:url value="/resources/images/magazine_images/05/03_IMG.png"/>" class="img-fluid">
     </div>
-    <div class="mt-3">
+    <div class="mt-5">
       <p>
         <span class="highLight">L-카르니틴</span>은 <span class="underLine">근육의 구성 성분이면서 운동으로 인한 피로 개선과 체지방 감소에도 도움을 주는 영양제</span>예요.
         L-카르니틴은 지방을 에너지로 전환하는 역할을 하여 체중 감량에 도움을 줄 수 있습니다.
@@ -277,7 +283,7 @@
     <div>
       <img src="<c:url value="/resources/images/magazine_images/05/04_IMG.png"/>" class="img-fluid">
     </div>
-    <div class="mt-3">
+    <div class="mt-5">
       <p>
         운동을 했을 때 운동의 효과를 잘 보기 위해 근육을 키우거나 체지방 감소에 도움이 되는 보충제를 먹는 것도 좋지만,
         운동을 꾸준히 하기 위한 능력 향상에 도움이 되는 보충제를 먹을 수도 있어요. <span class="highLight">옥타코사놀은 지구력 증진에 도움을 줄 수 있고,
