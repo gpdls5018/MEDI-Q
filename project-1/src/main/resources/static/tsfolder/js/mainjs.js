@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // 저장된 값 가져오기
     var hideUntilDate = localStorage.getItem("hideUntilDate");
-    
+   
     // 저장된 값이 있고, 현재 날짜보다 크면 동영상 숨김
     if (hideUntilDate && hideUntilDate >= getCurrentDate()) {
     videoContainer.style.display = "none";
@@ -41,6 +41,11 @@ document.addEventListener("DOMContentLoaded", function() {
     return year + "-" + month + "-" + day;
     }
     });
+   
+   function closeVideo() {
+    var videoContainer = document.getElementById("tsvideo-container");
+    videoContainer.style.display = "none";
+  }
     
   // The DOM element you wish to replace with Tagify
   var input = document.querySelector('input[name=postTag]');
@@ -61,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
   tagify.on('remove', e=> {
       $('#hiddenInput').attr('value',tagify.value.map(function(e){return e.value}));
   });
+  
   ////////////////////슬라이드 로직///////////////////////////////////
   $(document).ready(function(){
       $('.slider1').bxSlider({

@@ -4,9 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 
-<!-- jQuery를 위한 CDN
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
- -->
+
 <!-- 슬라이더를 위한 CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" rel="stylesheet" />
@@ -22,7 +20,7 @@
 
  	<!-- 처음 인덱스 킬때 전체화면 비디오 출력 -->
 			<div id="tsvideo-container">
-			    <video id="video" autoplay muted>
+			    <video id="video" autoplay muted loop>
 	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
 			    <div class="videologo">
@@ -30,7 +28,7 @@
 	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
 			    </div>
 			    <div id="video-controls">
-			      <button class="btn btn-warning" onclick="closeVideo()">Home<br/>가기</button>
+			      <button class="btn btn-warning" onclick="closeVideo()">Home</button>
 			    </div>
 			    <div id="video-label">
 		    	  <label for="stop-video-checkbox">

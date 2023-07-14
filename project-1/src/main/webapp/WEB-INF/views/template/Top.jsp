@@ -151,8 +151,7 @@
 		}
 		.firstdown a:hover {
 			cursor: pointer;
-			border: 2px solid #FD9F28;
-			border-radius: 20px;
+			text-decoration:none;
 		}
     </style>
 </head>
@@ -238,6 +237,17 @@
             }
         });
     });
+	
+	document.addEventListener("DOMContentLoaded", function() {
+	    var dropdownItems = document.querySelectorAll(".dropdown-item");
+	    dropdownItems.forEach(function(item) {
+	      var url = item.getAttribute("data-url");
+	      item.addEventListener("click", function(event) {
+	        event.preventDefault();
+	        window.location.href = url;
+	      });
+	    });
+	  });
 </script>
 <body>
 <div class="container-fluid position-relative p-0">
@@ -316,10 +326,10 @@
                 	정신건강 테스트
                 </button>
                 <div class="dropdown-menu w-100 ">
-                  <a class="dropdown-item" href='<c:url value="/project/MentalTest1.do"/>'>심리적 스트레스</a>
-                  <a class="dropdown-item" href='<c:url value="/project/MentalTest2.do"/>'>흡연 유형 평가</a>
-                  <a class="dropdown-item" href='<c:url value="/project/MentalTest3.do"/>'>알코올 의존(AUDIT-K)</a>
-                  <a class="dropdown-item" href='<c:url value="/project/MentalTest4.do"/>'>우울증(CES-D)</a>
+                  <a class="dropdown-item" href="#" data-url="/project/MentalTest1.do">심리적 스트레스</a>
+				  <a class="dropdown-item" href="#" data-url="/project/MentalTest2.do">흡연 유형 평가</a>
+				  <a class="dropdown-item" href="#" data-url="/project/MentalTest3.do">알코올 의존(AUDIT-K)</a>
+				  <a class="dropdown-item" href="#" data-url="/project/MentalTest4.do">우울증(CES-D)</a>
                 </div>
             </div>
         </div>

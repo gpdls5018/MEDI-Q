@@ -286,8 +286,8 @@
     }
     #video-label {
       position: absolute;
-      top: 60px;
-      right: 130px;
+      top: 40px;
+      right: 100px;
     }
     #video-label label {
     	font-weight:bold;
