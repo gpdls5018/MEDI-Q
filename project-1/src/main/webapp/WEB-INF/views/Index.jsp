@@ -39,7 +39,7 @@
 			</div>
 
 <!-- 메인 바디 부분 -->
-<div id="tsmain" style="margin-top: 10px;">
+<div id="tsmain">
 	 
   <section id="section-119">
         <div class="content-slider">
@@ -66,6 +66,7 @@
             <div id="top-banner-3" class="banner" id="tsbaimg3">
 	            <a href="#">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper3" >
+	              	 <p style="color:gray;">내가 먹고 있는 약 괜찮을까?</p>
 	                 <h1>📷 사진으로 약을 검색해보세요!</h1>       
 	              </div>
 	            </a>
@@ -80,7 +81,7 @@
             </div>
           </div>
           <nav>
-            <div class="controls">
+            <div class="controls" >
               <label for="banner1"><span class="progressbar"><span class="progressbar-fill"></span></span><p>홈페이지</p></label>
               <label for="banner2"><span class="progressbar"><span class="progressbar-fill"></span></span><p>건강 및 분석</p></label>
               <label for="banner3"><span class="progressbar"><span class="progressbar-fill"></span></span><p>사진으로 약 검색하기</p></label>

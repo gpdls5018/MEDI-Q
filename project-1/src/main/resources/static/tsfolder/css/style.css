@@ -41,19 +41,19 @@
                }
             #banner-inner-wrapper2 {
 				height: 100%;
-				background-image: url("http://www.philipmed.com/home/dist/img/intro/slide-03.jpg");
+				background-image: url("http://cdn.hitnews.co.kr/news/photo/202303/44381_56651_1017.jpg");
 				box-sizing: border-box;
 				background-size: cover;
                }
            	#banner-inner-wrapper3 {
 				height: 100%;
-				background-image: url("http://res.heraldm.com/content/image/2017/04/25/20170425000143_0.jpg") ;
+				background-image: url("https://cdn.pharmnews.com/news/photo/202307/226775_99331_76.jpg")  ;
 				box-sizing: border-box;
 				background-size: cover;
                }
 			#banner-inner-wrapper4 {
 				height: 100%;
-				background-image: url("http://www.philipmed.com/home/dist/img/intro/slide-02.jpg");
+				background-image: url("http://www.philipmed.com/home/dist/img/intro/slide-03.jpg");
 				box-sizing: border-box;
 				background-size: cover;
                }
@@ -186,7 +186,7 @@
 /* Media Queries */
 @media only screen and (min-width: 1920px) {
 	.main-header .header-wrapper {width: 57%;}
-	#section-119 {height: 50em;}
+	#section-119 {height: 51em;}
 	#section-119 .content-slider .slider .banner .banner-inner-wrapper {padding-top: 20em;}
 }
 
@@ -1455,7 +1455,7 @@ a {
     color: #EF605D;
 }
 .section1-5 {
-    background: #F8F8FA;
+    background: white;
 }
 .section1-5 .content {
     padding: 50px 0px 60px;
