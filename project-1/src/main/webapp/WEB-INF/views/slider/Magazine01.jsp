@@ -19,11 +19,11 @@
     padding-top : 120px;
   }
   .contentTop{
-  	margin-top: 100px;
+  	margin-top: 130px;
   }
   .paragraph{
-  	margin-top: 120px;
-  	font-size: 22px;
+  	margin-top: 160px;
+  	font-size: 23px;
   }
   .custom-text{
     font-family: 'Noto Sans KR', sans-serif;
@@ -115,7 +115,7 @@
   	</div>
   </div>
   <div style="font-size:24px;" class="contentTop">
-   	  <strong style="background-color: #FFE5E5; font-size:35px;">아르기닌</strong>이 운동 능력 향상에 도움이 된다고 알려져 최근 운동을 하는 분들이 많이 찾고 있죠.<br/>
+   	  <span style="background-color: #FFE5E5; font-size:35px;">아르기닌</span>이 운동 능력 향상에 도움이 된다고 알려져 최근 운동을 하는 분들이 많이 찾고 있죠.<br/>
    	   아르기닌은 운동과 관련된 역할 외에도 우리 몸에서 다양한 역할을 하는 아미노산이지만 <br/>
    	   어떤 영양제든 과다하게 섭취할 경우 부작용이 있을 수 있으니 부작용을 꼼꼼히 살펴보고 선택하도록 해주세요.
   </div>

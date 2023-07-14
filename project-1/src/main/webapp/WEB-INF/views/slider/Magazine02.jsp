@@ -148,7 +148,7 @@
       그래서 이러한 피부 노화를 되돌리기 위해 콜라겐 성분의 화장품을 바르거나 콜라겐 영양제를 먹고는 하죠.
     </div>
     <div class="custom-img">
-    	<img src="resources/images/magazine_images/02/01_IMG.png" class="img-fluid">
+    	<img src="<c:url value="/resources/images/magazine_images/02/01_IMG.png"/>" class="img-fluid">
   	</div>
   	<div class="paragraph-title d-flex">
 	    <img src="<c:url value="/resources/images/magazine_images/basic/question.png"/>" class="img-fluid mr-2 mb-5" style="width:90px"> 
