@@ -343,94 +343,6 @@
     border-bottom: 3px dashed #F4F4F4;   
   }
   
-  /* The navigation menu links 
-  하나씩 설정하고 싶을 때 열어서 따로 설정
-  .sidenav .sidenava1 {
-    padding: 8px 30px 8px 32px;
-    text-decoration: none;
-    font-size: 30px;
-    color: black;
-    display: block;
-    transition: 0.3s;
-    justify-content: space-between;
-    text-align: right;
-  }
-  .sidenav .sidenava2 {
-    margin-top: 10px;
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-    display: block;
-    transition: 0.3s;
-    border-bottom: 2px dashed gray;
-    border-top: 2px dashed gray;
-
-
-  }
-  .sidenav .sidenava3 {
-    margin-top: 10px;
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-    display: block;
-    transition: 0.3s;
-    border-bottom: 2px dashed gray;
-
-  }
-  .sidenav .sidenava4 {
-    margin-top: 10px;
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-    display: block;
-    transition: 0.3s;
-    border-bottom: 2px dashed gray;
-
-  }
-  .sidenav .sidenava5 {
-    margin-top: 10px;
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-    display: block;
-    border-bottom: 2px dashed gray;
-    transition: 0.3s;
-  }
-  .sidenav .sidenava6 {
-    margin-top: 10px;
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-    display: block;
-    transition: 0.3s;
-    border-bottom: 2px dashed gray;    
-  }
-  .sidenav .sidenava7 {
-    margin-top: 10px;
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-    display: block;
-    transition: 0.3s;
-    border-bottom: 2px dashed gray;    
-  }
-  .sidenav .sidenava8 {
-    margin-top: 10px;
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-    display: block;
-    transition: 0.3s;
-    border-bottom: 2px dashed gray;    
-  }
-  */
   /* 사이드바 색 넣기 */
 
   .sidebar-header{
@@ -1949,4 +1861,25 @@ a {
     margin: 20px 0px 0px;
     text-decoration: underline;
     color: #9BA1AA;
+}
+
+/*메인 배너 스타일*/
+#tsmain{
+	height: 100%;
+}
+.everybanner1{
+    display: flex; 
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    width:100%; 
+}
+.everybanner1-1 {
+    width: 90%;
+    min-height: 350px;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-image: url("http://www.kbpharma.co.kr/images/pc/facility/img_qaqc1.png");
+    background-size: cover;
+    border-radius: 10px;
 }

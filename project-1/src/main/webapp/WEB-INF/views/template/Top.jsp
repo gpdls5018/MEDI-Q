@@ -326,10 +326,10 @@
                 	정신건강 테스트
                 </button>
                 <div class="dropdown-menu w-100 ">
-                  <a class="dropdown-item" href="#" data-url="/project/MentalTest1.do">심리적 스트레스</a>
-				  <a class="dropdown-item" href="#" data-url="/project/MentalTest2.do">흡연 유형 평가</a>
-				  <a class="dropdown-item" href="#" data-url="/project/MentalTest3.do">알코올 의존(AUDIT-K)</a>
-				  <a class="dropdown-item" href="#" data-url="/project/MentalTest4.do">우울증(CES-D)</a>
+                  <a class="dropdown-item" href="#" data-url="<c:url value="/project/MentalTest1.do"/>">심리적 스트레스</a>
+				  <a class="dropdown-item" href="#" data-url="<c:url value="/project/MentalTest2.do"/>">흡연 유형 평가</a>
+				  <a class="dropdown-item" href="#" data-url="<c:url value="/project/MentalTest3.do"/>">알코올 의존(AUDIT-K)</a>
+				  <a class="dropdown-item" href="#" data-url="<c:url value="/project/MentalTest4.do"/>">우울증(CES-D)</a>
                 </div>
             </div>
         </div>
