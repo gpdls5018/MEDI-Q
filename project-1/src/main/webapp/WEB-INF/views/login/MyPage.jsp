@@ -7,6 +7,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-messaging.js"></script>
+
 <!-- 로그인 후에만 들어올 수 있도록 -->
 <style>
 	a:hover{
@@ -932,12 +937,33 @@ ul li input[type=checkbox]:checked ~ .acco {
 			}
 		});
 		var info_nutr = '<c:out value="${nutr}"/>';
-		//console.log('nutr:',info_nutr.split('$'))
-		info_nutr.split('$').forEach(function(item,index){
-			var nutr = item.split('/')[0];
-			var count = item.split('/')[1];
-			$('.add:eq('+index+')').children(':eq(0)').val(nutr).end().children(':eq(1)').val(count);
-		});
+		console.log('info_nutr:',info_nutr.split('$').length)
+		var nutr;
+		var count;
+		if(info_nutr.length && info_nutr.split('$').length!=3){
+			var clone = $('.add:eq(0)').clone();
+			$('.add').remove()
+			var k = info_nutr.split('$').length;
+			var target = $("#add");
+			var appendedList = Array(k).fill(null).map(_ => clone.clone());
+			target.before(appendedList);
+			
+			info_nutr.split('$').forEach(function(item,index){
+				nutr = item.split('/')[0];
+				count = item.split('/')[1];
+				$('.add:eq('+index+')').children(':eq(0)').val(nutr).end().children(':eq(1)').val(count);
+			});
+		}
+		else if(info_nutr.length){ //0개가 아닐 때 일 때
+			info_nutr.split('$').forEach(function(item,index){
+				nutr = item.split('/')[0];
+				count = item.split('/')[1];
+				if(info_nutr.split('$').length==3){
+					$('.add:eq('+index+')').children(':eq(0)').val(nutr).end().children(':eq(1)').val(count);
+				}
+			});
+		}
+		
 		var info_allergy = '<c:out value="${allergy}"/>';
 		info_allergy.split(' ').forEach(function(item){
 			$('.allergy').children('small').each(function(){			
@@ -1242,4 +1268,68 @@ ul li input[type=checkbox]:checked ~ .acco {
 		});
 	}
 	*/
+</script>
+<script>/*
+    const firebaseModule = (function () {
+    async function init() {
+        // Your web app's Firebase configuration
+        //console.log('serviceWorker' in navigator)//localhost로 설정
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+            	//D:\JHI\Workspace\gitHub\project\project-1\src\main\webapp\WEB-INF\views\login
+            	//D:\JHI\Workspace\gitHub\project\project-1\src\main\resources\static
+            	//D:\JHI\Workspace\gitHub\project\project-1\target\classes\static\webpush\firebase-messaging-sw.js
+            	navigator.serviceWorker.register("D:/JHI/Workspace/gitHub/project/project-1/target/classes/static/webpush/firebase-messaging-sw.js")
+                    .then(registration => {
+                        const firebaseConfig = {
+                            apiKey: "AIzaSyBVyjlJuzy9Qd41-v2meIh79Ti7OEm0TSc",
+                            authDomain: "my-project-a3614.firebaseapp.com",
+                            projectId: "my-project-a3614",
+                            storageBucket: "my-project-a3614.appspot.com",
+                            messagingSenderId: "337911613778",
+                            appId: "1:337911613778:web:707752d0cacb5e27eed28b",
+                            measurementId: "G-D28J07Z2PH"
+                        };
+  
+                        // Initialize Firebase
+                        //const app = initializeApp(firebaseConfig);
+                        //const analytics = getAnalytics(app);
+                        firebase.initializeApp(firebaseConfig);
+
+                         // Show Notificaiton Dialog
+                         const messaging = firebase.messaging();
+                        messaging.requestPermission()
+                        .then(function() {
+                        	console.log('두번째 then 안')
+                            return messaging.getToken();  
+                        })
+                        .then(async function(token) {
+                        	console.log('세번째 then 안')
+                        	await fetch('/register', { method: 'post', body: token })
+                            messaging.onMessage(payload => {
+                                const title = payload.notification.title
+                                const options = {
+                                    body : payload.notification.body
+                                }
+                                navigator.serviceWorker.ready.then(registration => {
+                                    registration.showNotification(title, options);
+                                })
+                            })
+                        })
+                        .catch(function(err) {
+                            console.log("Error Occured");
+                        })
+                    })
+            })
+        }
+    }      
+
+    return {
+        init: function () {
+            init()
+        }
+    }
+})()
+
+firebaseModule.init()*/
 </script>

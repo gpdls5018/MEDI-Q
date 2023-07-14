@@ -8,7 +8,6 @@ import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import com.google.auth.oauth2.GoogleCredentials;
@@ -26,7 +25,7 @@ public class FCMInitializer {
 	 */
 
     private static final Logger logger = LoggerFactory.getLogger(FCMInitializer.class);
-    private static final String FIREBASE_CONFIG_PATH = "webpush.json";
+    public static final String FIREBASE_CONFIG_PATH = "webpush.json";
 
     @PostConstruct
     public void initialize() {
@@ -34,7 +33,7 @@ public class FCMInitializer {
         try {
             FirebaseOptions options = new FirebaseOptions.Builder()
             		//다운받은 비밀키로 증명
-                    .setCredentials(GoogleCredentials.fromStream(new ClassPathResource("json/"+FIREBASE_CONFIG_PATH).getInputStream())).build();
+                    .setCredentials(GoogleCredentials.fromStream(new ClassPathResource("json"+File.separator+FIREBASE_CONFIG_PATH).getInputStream())).build();
             if (FirebaseApp.getApps().isEmpty()) {
                 FirebaseApp.initializeApp(options);
                 logger.info("Firebase application has been initialized");

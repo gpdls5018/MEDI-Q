@@ -19,6 +19,10 @@
 		WHERE MM_ID=#{mm_Id} AND MM_DATE=#{mm_Date}
 	</update>
 	
+	<delete id="delete" parameterType="Map">
+		DELETE FROM HEALTH_MEMO WHERE MM_ID=#{mm_Id} AND MM_DATE=#{mm_Date}
+	</delete>
+	
 	<select id="findMemo" parameterType="Map" resultType="MemoDto">
 		SELECT * FROM HEALTH_MEMO WHERE MM_ID=#{mm_Id} AND MM_DATE=#{mm_Date}
 	</select>

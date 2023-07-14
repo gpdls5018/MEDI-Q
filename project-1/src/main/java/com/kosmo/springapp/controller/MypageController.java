@@ -1,5 +1,7 @@
 package com.kosmo.springapp.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -12,6 +14,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,9 +26,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
 import com.kosmo.springapp.model.HealthMemoDTO;
 import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.model.ProfileImageDTO;
+import com.kosmo.springapp.service.FCMInitializer;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.HealthMemoIServicempl;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
@@ -47,7 +55,43 @@ public class MypageController {
 
 	//마이페이지 클릭 시
 	@GetMapping("/MyPage.do")
-	public String mypage(HttpServletRequest req, HttpServletResponse resp, Model model) {
+	public String mypage(HttpServletRequest req, HttpServletResponse resp, Model model) throws IOException {
+		String filePath = "json";
+        
+		Resource resource = new ClassPathResource(filePath);
+		String directoryPath = resource.getFile().getAbsolutePath()+File.separator+FCMInitializer.FIREBASE_CONFIG_PATH;
+		/*
+        // ClassPathResource객체 생성.
+        ClassPathResource resource = new ClassPathResource(filePath);
+        
+        //물리적 경로 얻기
+        File file = resource.getFile();
+        String directoryPath = file.getAbsolutePath();
+        */
+		System.out.println("directoryPath: "+directoryPath);
+		//"path/to/serviceAccountKey.json"
+		FileInputStream serviceAccount = new FileInputStream(directoryPath);
+		
+		FirebaseApp firebaseApp = null;
+		List<FirebaseApp> firebaseApps = FirebaseApp.getApps();
+		if(firebaseApps != null && !firebaseApps.isEmpty()) {
+			System.out.println("if문 안");
+			for(FirebaseApp app : firebaseApps) {
+				System.out.println("app: "+app);
+				if(app.getName().equals(FirebaseApp.DEFAULT_APP_NAME))
+					firebaseApp = app;
+			}
+		}
+		else {
+			System.out.println("else문 안");
+			FirebaseOptions options = new FirebaseOptions.Builder()
+					   .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+					   .build();
+	
+			firebaseApp = FirebaseApp.initializeApp(options);
+		}
+		System.out.println("firebaseApp: "+firebaseApp);
+		
 		LocalDate current = LocalDate.now(); //현재날짜 구하기
 		Map map = new HashMap<>();
 		//System.out.println("date: "+date);
