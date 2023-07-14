@@ -539,6 +539,8 @@
   $('#analyze-myFood').click(function() {
     document.querySelector("#takePurPose").value = takePurPoses;
     document.querySelector("#takeFood").value = takeFoods;
+    console.log('takePurPoses :',takePurPoses);
+    console.log('takeFoods :',takeFoods);
     let timerInterval;
     Swal.fire({
       title: '분석중입니다!',

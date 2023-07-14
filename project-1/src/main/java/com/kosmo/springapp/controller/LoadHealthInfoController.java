@@ -1,9 +1,13 @@
 package com.kosmo.springapp.controller;
 
 import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.kosmo.springapp.model.HealthInfoDTO;
 
 @Controller
 public class LoadHealthInfoController {
@@ -12,5 +16,10 @@ public class LoadHealthInfoController {
 	public String loadHealthInfoByOCR(@RequestParam String userId,Model model) {
 		model.addAttribute("userId",userId);
 		return "LoadHealthInfo";
+	}
+	
+	@PostMapping("/saveHealthData.do")
+	public String saveHealthData(@RequestParam HealthInfoDTO dto) {
+		return null;
 	}
 }
