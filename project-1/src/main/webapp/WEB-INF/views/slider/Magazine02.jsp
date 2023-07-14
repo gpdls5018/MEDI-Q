@@ -118,8 +118,8 @@
   }
   
   .custom-footer{
-  	padding-top : 230px;
-  	margin-bottom: 250px;
+  	padding-top : 250px;
+  	margin-bottom: 260px;
   }
 </style>
 <div class="container custom-top">
