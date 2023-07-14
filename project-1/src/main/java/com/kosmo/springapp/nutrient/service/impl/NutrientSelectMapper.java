@@ -51,11 +51,30 @@ public interface NutrientSelectMapper {
 	// 선택한 원료의 주의사항 가져오는 쿼리
 	String getI_CAUTIONbyIngredientName(String name);
 
-	// 해당 영양소 포함한 영양제 가져오는 쿼리
-	// 이름, 이미지 가져오기(이미지O)
-	List<Map<String, Object>> getProductNameNImgUrlFromFoodtable(String name);
-
+	// 이름, 이미지 가져오기(이미지 있을때만)
+	// 5대 영양소 포함한 영양제 가져오는 쿼리
+	List<Map<String, Object>> getProductNameNImgUrlFromFoodtableByN(String name);
+	// 기능성 원료 포함한 영양제 가져오는 쿼리
+	List<Map<String, Object>> getProductNameNImgUrlFromFoodtableByI(String name);
+	// 추천영양제 링크로 넘어가기
 	String findNobyFoodName(String name);
+	
+	
+	//조회수 가져오기
+	int getN_VIEW(String name);
+	int getI_VIEW(String name);
+	int getF_VIEW(String name);
+	
+	//조회수 증가
+	void increaseN_VIEW(String name);
+	void increaseI_VIEW(String name);
+	void increaseF_VIEW(String name);
+	
+	// 조회수로 Top10 가져오기
+	List<String> getTop10();
+
+	
+	
 
 	
 
@@ -68,7 +87,5 @@ public interface NutrientSelectMapper {
 	
 	
 	
-	
-	
-	
+	;
 }
