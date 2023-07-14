@@ -314,7 +314,7 @@
             <a href='/detail.do?no=${record.no}'><img src="${record.imgURL}" style="width:150px;height:150px;" class="img-fluid product-img"></a>
           </c:if>
           <c:if test="${empty record.imgURL}">
-            <a href='/detail.do?no=${record.no}'><img src="resources/images/thumbnail_img/No_IMG.jpeg" style="object-fit:fill" class="img-fluid product-img"></a>
+            <a href='/detail.do?no=${record.no}'><img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="object-fit:fill" class="img-fluid product-img"></a>
           </c:if>
           <div class="card-footer" style="white-space:normal">
             <span class="card-title">${record.company}</span><br>

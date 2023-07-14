@@ -125,7 +125,7 @@ public class FoodDetailController {
 	 
 	 @CrossOrigin
 	 @PostMapping("/analyzeMyReport.do")
-	 public String analyzeMyReport(@RequestParam Map<String,String> map,Model model) {
+	 public String analyzeMyReport(@RequestParam Map<String,String> map,Model model,HttpServletRequest req,HttpServletResponse resp) {
 		 
 		 List<String> takeList = Arrays.asList(map.get("takePurpose").split(","));
 		 List<String> foodList = Arrays.asList(map.get("takeFood").split(","));
@@ -133,6 +133,8 @@ public class FoodDetailController {
 		 userMap.put("takePurpose", takeList);
 		 userMap.put("takeFood", foodList);
 		 AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReport(userMap);
+		 MemberDTO memberDto = loginService.selectOne(req,resp);
+		 model.addAttribute("memberDto",memberDto);
 		 model.addAttribute("resultListDto",resultListDto);
 		 return "AnalyzeReportResult";
 	 }
