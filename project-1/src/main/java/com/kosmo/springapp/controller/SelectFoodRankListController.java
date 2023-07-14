@@ -22,7 +22,6 @@ public class SelectFoodRankListController {
 	@GetMapping("/ranking/selectfood.do")
 	public String foodrank(Model model) {		
 		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFoodScore();
-		System.out.println(listData.get(1).getAVG_Score());
 		model.addAttribute("listData", listData);
 		return "ranking/FoodRank";
 	}
