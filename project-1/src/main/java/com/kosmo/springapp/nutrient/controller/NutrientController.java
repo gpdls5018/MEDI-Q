@@ -114,7 +114,7 @@ public class NutrientController {
 		List<Map<String, Object>> n_productInfoList = nutrietnSelectMapper.getProductNameNImgUrlFromFoodtableByN(name);
 		model.addAttribute("n_productInfoList", n_productInfoList);
 
-		// 5대 영양소 포함 추천 영양제 Top5
+		// 기능성 원료 포함 추천 영양제 Top5
 		List<Map<String, Object>> i_productInfoList = nutrietnSelectMapper.getProductNameNImgUrlFromFoodtableByI(name);
 		model.addAttribute("i_productInfoList", i_productInfoList);
 
