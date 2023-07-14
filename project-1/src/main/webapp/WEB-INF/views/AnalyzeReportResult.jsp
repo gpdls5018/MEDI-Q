@@ -50,7 +50,12 @@
 			<div class="jumbotron effect-custom-font" style="border-radius:25px;">
 				<div class="row">
 					<div class="col-6">
-						<span style="font-size:25px;text-weight:bold;">🔥 MEDI-Q 와 조금 더 노력해봐요! 🔥</span>
+						<c:if test="${resultListDto.resultScore < 50}" var="score">
+							<span style="font-size:25px;text-weight:bold;">🔥 MEDI-Q 와 조금 더 노력해봐요! 🔥</span>
+						</c:if>
+						<c:if test="${not score}">
+							<span style="font-size:25px;text-weight:bold;">🎉 와우! 정말 잘하고 있어요 🎉</span>
+						</c:if>
 						<div class="mt-5" style="font-size:15px;">
 							<ul style="line-height: 40px;">
 								<li style="color:#6e6e6e;">
