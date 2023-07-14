@@ -203,10 +203,11 @@
                         <div class="mapLayer">
                             <div class="closeLayerButton" onclick="closeMapLayer()">&times;</div>
                             	<h2>주소</h2>
-      	                     	<p style="font-size:15px; color:gray;">가산디지털단지역<br/>(서울특별시 금천구 벚꽃로 309)</p>
-                           		<a href="https://naver.me/GEAidP59" target="_blank">
+      	                     	<p style="font-size:17px; color:gray; font-weight: bold; margin-bottom: 0px;">서울시 금천구 가산동 426-5<br/> 월드메르디앙 2차 413호(Madi-Q팀)</p>
+      	                     	<p style="font-size:15px; color:gray;">(주)한국소프트웨어아이엔씨 (153-759)</p>
+                           		<a href="https://naver.me/Fcacgzd6" target="_blank">
                            		<img src="<c:url value="/resources/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
-                           		<a href="https://map.kakao.com/?urlX=473869&urlY=1105992&urlLevel=3&itemId=18761502&q=%EB%B2%84%EA%B1%B0%ED%82%B9%20%EA%B0%80%EC%82%B0%EB%94%94%EC%A7%80%ED%84%B8%EC%A0%90&srcid=18761502&map_type=TYPE_MAP#none" target="_blank"> 
+                           		<a href="https://place.map.kakao.com/1784287516" target="_blank"> 
                            		<img src="<c:url value="/resources/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
                         </div>          
                     </div>

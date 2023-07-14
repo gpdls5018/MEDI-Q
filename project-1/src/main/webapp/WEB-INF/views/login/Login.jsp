@@ -132,18 +132,24 @@ p{
     justify-content: space-between;
     margin-top: 8px;
 }
+
 .css-18u83hy {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+    width: 150px;
+    height: 60px;
     display: flex;
     -webkit-box-pack: center;
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
-    border: none;
     cursor: pointer;
     text-decoration: none;
+    color:white;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 10px;
 }
 .enu6cyp2 img {
     border-style: none;
@@ -228,9 +234,11 @@ p{
 	                   <div class="css-1dqn28w enu6cyp1 mt-5" style="justify-content: space-around;">
 	                       <a href="https://nid.naver.com/oauth2.0/authorize?client_id=m0_NavLMe3aWfFRsood6&response_type=code&redirect_uri=http://localhost:9090/project/naverLogin.do&state=" class="css-18u83hy enu6cyp2" style="background-color: rgb(30, 200, 0);">
 	                           <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/naver-logo_v2.png" width="24" height="24" alt="소셜 로고">
+	                           네이버 로그인
 	                       </a>
 	                       <a href="https://kauth.kakao.com/oauth/authorize?client_id=16c1121d0de60f9066904fb3ffc57c36&redirect_uri=http://localhost:9090/project/kakaoLogin.do&response_type=code" class="css-18u83hy enu6cyp2" style="background-color: rgb(249, 224, 0);">
 	                           <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/kakao-logo_v2.png" width="24" height="24" alt="소셜 로고">
+	                           카카오 로그인
 	                       </a>
 	                   </div>
 	               </div>
