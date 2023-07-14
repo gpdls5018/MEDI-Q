@@ -1,7 +1,9 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
@@ -23,7 +25,7 @@
 	<div class="container mt-5">
 		<div style="background-image:url(<c:url value="/resources/images/basic/result.png"/>);background-repeat : no-repeat;background-size : contain;background-position:right,center;">
 			<div class="my-title d-flex effect-custom-font justify-content-right m-auto" style="width:80%;">
-				<div class="mt-5 float-right" style="font-size:40px;"><span style="background-color:#ffdcdc;">홍성민</span>님의 분석 결과</div>
+				<div class="mt-5 float-right" style="font-size:40px;"><span style="background-color:#ffdcdc;">${memberDto.name}</span>님의 분석 결과</div>
 			</div>
 			<div class="m-5">
 				<div class="effect-custom-font ml-5" >총 점수는 <span style="font-size:70px;">${resultListDto.resultScore}</span></div>
@@ -33,7 +35,17 @@
 		</div>
 		<div class="m-5">
 			<div class="effect-custom-font m-1" style="font-size:30px;color:#868686;text-align:center;">영양제 분석 리포트</div>
-			<div class="effect-custom-font mb-3" style="font-size:20px;text-align:center;"><span style="color:#868686;font-size:15px;">성별</span> 남 <span style="color:#868686;font-size:15px;">나이</span> 24</div>
+			<div class="effect-custom-font mb-3" style="font-size:20px;text-align:center;">
+			<span style="color:#868686;font-size:15px;">성별</span>
+			<c:if test="${memberDto.gender eq 'M'}" var="gender">
+				남
+			</c:if>
+			<c:if test="${not gender}">
+				여
+			</c:if>
+			<span style="color:#868686;font-size:15px;">나이</span>
+			${memberDto.birth}
+			</div>
 			
 			<div class="jumbotron effect-custom-font" style="border-radius:25px;">
 				<div class="row">
