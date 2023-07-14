@@ -201,7 +201,7 @@
                 	</div>
     			</div>
                 <div class="box-container">
-	                <c:forEach var="name" items="${vitaminNames}">
+	                <c:forEach var="name" items="${top10}">
 					    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
 					        <b style="font-size: 14px;">${name}</b>
 					    </div>
