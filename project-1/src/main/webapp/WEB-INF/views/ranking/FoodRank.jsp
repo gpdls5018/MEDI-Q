@@ -56,7 +56,7 @@
 							<span class="txt1">${item.company}</span>
 							<span class="txt2">${item.productName}</span>
 							<div class="review">
-								<span class="star-point">${item.AVG_Score }</span>
+								<span class="star-point">&nbsp;${item.AVG_Score }</span>
 								<span class="txt3">(${item.REVIEW_Count }개)</span>
 							</div>
 							<div class="card-tags">
@@ -79,7 +79,7 @@
 						<span class="txt1">${item.company}</span>
 						<span class="txt2">${item.productName}</span>
 						<div class="review">
-							<span class="star-point">0</span>
+							<span class="star-point">&nbsp;0</span>
 							<span class="txt3">(0개)</span>
 						</div>
 						<div class="card-tags">
@@ -140,7 +140,7 @@
 							<span class="txt1">${item.company}</span>
 							<span class="txt2">${item.productName}</span>
 							<div class="review">
-								<span class="star-point">${item.AVG_Score }</span>
+								<span class="star-point">&nbsp;${item.AVG_Score }</span>
 								<span class="txt3">(${item.REVIEW_Count }개)</span>
 							</div>
 							<div class="card-tags">
