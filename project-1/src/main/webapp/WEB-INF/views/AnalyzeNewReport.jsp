@@ -78,7 +78,7 @@
 <body>
 	<div class="container mt-5 effect-custom-font">
 		<div class="my-title d-flex justify-content-between m-auto" style="width:80%;">
-			<div class="mt-5" style="font-size:40px;"><span style="background-color:#ffdcdc;">홍성민</span>님의 분석 리포트</div>
+			<div class="mt-5" style="font-size:40px;"><span style="background-color:#ffdcdc;">${UserName}</span>님의 분석 리포트</div>
 		</div>
 		<div class="m-5" style="height:3px;background-color:#ccc"></div>
     <!--Q1#-->

@@ -80,13 +80,13 @@ public class FoodDetailController {
 	 
 	 @GetMapping("/analyzeMyFood.do")
 	 public String analyzeMyFood(HttpServletRequest req, HttpServletResponse resp, Model model) throws IOException {
-		 String userId;
+		 String userName;
 		 ProfileImageDTO profImg;
 		 try {
 			 MemberDTO member = loginService.selectOne(req,resp);
 			 System.out.println("member.getId() :"+member.getId());
 			 profImg = loginService.selectProfImg(member.getId());
-			 userId = member.getId();
+			 userName = member.getName();
 		 }
 		 catch(NullPointerException e) {
 			 resp.setContentType("text/html; charset=UTF-8");
@@ -96,13 +96,27 @@ public class FoodDetailController {
 			 out.flush();
 			 return null;
 		 }
-		 model.addAttribute("UserId" , userId);
+		 model.addAttribute("UserName" , userName);
 		 model.addAttribute("profImg", profImg);
 		 return "Analyze";
 	 }
 	 
 	 @GetMapping("/AnalyzeNewReport.do")
-	 public String analyzeNewReport() {
+	 public String analyzeNewReport(HttpServletRequest req, HttpServletResponse resp, Model model) throws IOException {
+		 String userName;
+		 try {
+			 MemberDTO member = loginService.selectOne(req,resp);
+			 userName = member.getName();
+		 }
+		 catch(NullPointerException e) {
+			 resp.setContentType("text/html; charset=UTF-8");
+			 resp.setCharacterEncoding("UTF-8");
+			 PrintWriter out = resp.getWriter();
+			 out.println("<script>alert('로그인 후 이용해 주세요');history.back();</script>");
+			 out.flush();
+			 return null;
+		 }
+		 model.addAttribute("UserName" , userName);
 		 return "AnalyzeNewReport";
 	 }
 	 

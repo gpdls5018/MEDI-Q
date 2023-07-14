@@ -22,7 +22,7 @@
 <body>
 	<div class="container mt-5">
 		<div class="my-title d-flex effect-custom-font justify-content-between m-auto" style="width:80%;height:200px;">
-			<div class="mt-5" style="font-size:40px;"><span style="background-color:#ffdcdc;">${UserId}</span>님의 <br>영양제 분석 리포트</div>
+			<div class="mt-5" style="font-size:40px;"><span style="background-color:#ffdcdc;">${UserName}</span>님의 <br>영양제 분석 리포트</div>
 			<div class="mt-3">
 			<c:if test="${info.prof_Img_Fl eq 'Y' }" var="isProfImg">
 				<c:set var="uploadFolder" value="${fn:split(profImg.pi_Path,'\\\\')[fn:length(fn:split(profImg.pi_Path, '\\\\'))-1] }"/>
