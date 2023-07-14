@@ -19,14 +19,15 @@
     padding-top : 120px;
   }
   .contentTop{
-  	padding-top: 80px;
+  	padding-top: 130px;
   }
   .paragraph{
-  	margin-top: 150px;
+  	margin-top: 180px;
   	font-size: 22px;
   }
   .paragraph-title{
-  	margin-top: 250px;
+  	margin-top: 90px;
+  	margin-bottom: 200px;
   }
 
   .custom-text{
@@ -34,8 +35,16 @@
     font-size: 30px;
   }
   .custom-img{
-  	margin-top: 130px;
+  	margin-top: 60px;
+  	margin-left: 40px;
   }
+  .contents{
+  	margin-top: 17px;
+  	margin-left: 23px;
+  }
+  
+  
+  
   .custom-modal{
     width: 120px;
     background: #FF6347;
@@ -54,6 +63,7 @@
   	height: 680px;
   }
   .modalB{
+    margin-top : 20px;
   	margin-bottom: 50px;
   }
   .modalC{
@@ -118,8 +128,8 @@
   }
   
   .custom-footer{
-  	padding-top : 230px;
-  	margin-bottom: 250px;
+  	padding-top : 250px;
+  	margin-bottom: 260px;
   }
 </style>
 <div class="container custom-top">
@@ -131,16 +141,24 @@
    </div>
   </div>
 
-  <div class="custom-img">
-    <img src="resources/images/magazine_images/02/01_IMG.png" class="img-fluid">
-  </div>
+  
    <div style="font-size:24px;" class="contentTop">
       <span style="background-color: #FFE4E1; font-size:35px;">콜라겐</span>은 피부의 약 70%를 차지하는 구성 물질로, <span class="underLine">피부 탄력을 유지하는 데 중요한 단백질</span>입니다.<br/>
       나이가 들면서 콜라겐이 감소하기 시작하여 피부의 탄력이 떨어지고 주름이 생겨요.
       그래서 이러한 피부 노화를 되돌리기 위해 콜라겐 성분의 화장품을 바르거나 콜라겐 영양제를 먹고는 하죠.
     </div>
-    
-    
+    <div class="custom-img">
+    	<img src="resources/images/magazine_images/02/01_IMG.png" class="img-fluid">
+  	</div>
+  	<div class="paragraph-title d-flex">
+	    <img src="<c:url value="/resources/images/magazine_images/basic/question.png"/>" class="img-fluid mr-2 mb-5" style="width:90px"> 
+        <div class="contents">
+            그런데 <span style="background-color: #FFE4E1; font-size:24px;">콜라겐은 분자가 커서 절대 흡수가 될 수 없다</span>는 말을 많이 들어보셨을 것 같아요.<br/> 
+            과연 콜라겐을 외부에서 공급하는 것이 정말 효과가 있을까요?
+        </div>
+  	</div>
+  	
+  	
     <div class="paragraph-title">
 	<img src="<c:url value="/resources/images/magazine_images/basic/work-time.png"/>" class="img-fluid mr-4" style="width:100px">
 	<span style="font-size: xx-large; color: #9370DB"><strong>메디의 1분 요약</strong></span>
@@ -176,13 +194,6 @@
   </div>
     
     
-  <div class="paragraph-title">
-    <div class="mt-5">
-    <img src="<c:url value="/resources/images/magazine_images/basic/QuestionMark.png"/>" class="img-fluid mr-2" style="width:60px; margin-bottom: 15px;">
-      그런데 <span class="highLight">콜라겐은 분자가 커서 절대 흡수가 될 수 없다</span>는 말을 많이 들어보셨을 것 같아요.<br/>
-      <span class="ml-5">&nbsp;&nbsp;&nbsp;&nbsp;과연 콜라겐을 외부에서 공급하는 것이 정말 효과가 있을까요?</span>
-    </div>
-  </div>
   
   <div class="paragraph">
     <div class="mt-5">
