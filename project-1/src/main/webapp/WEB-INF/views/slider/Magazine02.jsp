@@ -161,7 +161,7 @@
   	
     <div class="paragraph-title">
 	<img src="<c:url value="/resources/images/magazine_images/basic/work-time.png"/>" class="img-fluid mr-4" style="width:100px">
-	<span style="font-size: xx-large; color: #9370DB"><strong>메디의 1분 요약</strong></span>
+	<span style="font-size: xx-large; color: #9370DB"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
   		</button>
@@ -170,7 +170,7 @@
 	      <div class="modal-content">
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
-	          메디의 1분 요약
+	          MEDI-Q의 1분 요약
 	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
