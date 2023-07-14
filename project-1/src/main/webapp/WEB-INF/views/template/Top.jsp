@@ -257,16 +257,16 @@
                 <span style="color:#EF605D">&#9776;</span>
             </a>
         </div>
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" style="position: absolute; margin-left: 42%; href="/">
         	<img src="<c:url value="/resources/images/mainicon.png" />" width="50" height="50">
         	<img src="<c:url value="/resources/images/maintitle.png" />" width="200" height="50">
         </a>
         <ul class="navbar-nav mr-3 " >
             <li class="nav-item text2 m-1 login">
-                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Join.do"/>">회원가입</a>
+                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Login.do"/>">로그인</a>
             </li>
             <li class="nav-item text2 m-1 login">
-                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Login.do"/>">로그인</a>
+                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Join.do"/>">회원가입</a>
             </li>
             <li class="nav-item text2 m-1 logout">
                 <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>

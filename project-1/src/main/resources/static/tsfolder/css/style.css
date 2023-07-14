@@ -898,7 +898,6 @@ a {
 	    margin: 0 0 20px 0;
 	    background-color: #ffffff;
 	    border-radius: 8px;
-	    box-shadow: 0px 0px 2px #444;
 	    align-items: center;
 	}
 
@@ -906,6 +905,9 @@ a {
 	    width: 50px;
 	    height: 35px;
 	    text-align: center;
+	}
+	.tsidebar .unlist li p {
+		margin:5px;
 	}
 	
 	@media (min-width:30em) {
@@ -1430,14 +1432,16 @@ a {
 /*5번째 다이브 스타일*/
 .section20-2-home{
 	margin-top: 20px;
+	justify-content: center;
 }
 .section20-2-home .content {
     width: 100% !important;
     max-width: 1200px !important;
-    margin: 30px 0px 30px 30px;
-    padding: 0px 20px;
+    margin: 30px 0px 30px 100px;
     text-align: center;
     position: relative;
+    justify-content: center;
+    flex-direction: column;
 }
 .qna-mark-home {
     display: block;

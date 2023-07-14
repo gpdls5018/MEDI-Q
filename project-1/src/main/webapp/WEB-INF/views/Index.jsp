@@ -431,7 +431,7 @@
 		        </div>
 		    </div>
 			 -->
-            <div class="sidebar-item pt-5 mt-5">
+            <div class="sidebar-item py-2 my-5">
             	<img src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
             	<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
             	<br/>
@@ -451,11 +451,11 @@
 								<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
 							</c:if>
                         </div>
-                        <div style="align-items: center; margin-top:20px; margin-left:10px; justify-content: center; text-align: start; line-height: 3px; font-weight:400;">
+                        <div style=" align-items: center; margin-top:20px; margin-left:10px; justify-content: center; text-align: start; line-height: 3px; font-weight:400;">
                         	<p style="color:gray; font-size:10px; font-weight:bold;">${item.company}</p>
-                        	<br/>
-                        	<p style="flex-wrap:wrap; color:black; font-size:13px; font-weight:bold;  text-align: center;">${item.productName}</p>
-                        	<br/>
+							<br/>
+                        	<p style="flex-wrap:wrap; color:black; font-size:12px; font-weight:bold; line-height: 20px;  text-align: center;">${item.productName}</p>
+							<br/>
                         	<p style="color:gray; font-size:10px; font-weight:bold;">
                         	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
                         	${item.AVG_Score }(${item.REVIEW_Count})
