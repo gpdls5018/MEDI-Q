@@ -5,6 +5,6 @@
   
 <mapper namespace="com.kosmo.springapp.service.SelectFoodMapper">
 	<select id="selectFoodListFormName" parameterType="String" resultType="FunctionalFoodListDTO">
-	    select * from foodtable where (productname LIKE '%${foodname}%') OR (company LIKE '%${foodname}%')
+	    select * from foodtable where (productname LIKE '%${foodname}%') OR (company LIKE '%${foodname}%') ORDER by imgurl
 	</select>
 </mapper>
