@@ -77,54 +77,62 @@
 	
 	<!-- 5대영양소 추천 영양제 가져오기 -->
 	<select id="getProductNameNImgUrlFromFoodtableByN" parameterType="String" resultType="Map">
-		SELECT ft.PRODUCTNAME, ft.IMGURL
-			FROM FOODTABLE ft
-			WHERE (
-			    ft.NUTRIENT IN (
-			        SELECT ns.N_FINDINGNAME
-			        FROM NUTRIENT ns
-			        WHERE ns.N_FINDINGNAME = (
-			            SELECT N_FINDINGNAME
-			            FROM NUTRIENT
-			            WHERE N_NAME = #{name}
-			        )
-		    )
-		    OR 
-		    	ft.STANDARD LIKE '%' || (
+		SELECT PRODUCTNAME, IMGURL
+		FROM (
+		    SELECT ft.PRODUCTNAME, ft.IMGURL
+		    FROM FOODTABLE ft
+		    WHERE (
+		        ft.NUTRIENT LIKE '%' || (
 		            SELECT N_FINDINGNAME
 		            FROM NUTRIENT
 		            WHERE N_NAME = #{name}
 		        ) || '%'
+		        OR
+		        ft.STANDARD LIKE '%' || (
+		            SELECT N_FINDINGNAME
+		            FROM NUTRIENT
+		            WHERE N_NAME = #{name}
+		        ) || '%'
+		        OR
+		        ft.CAUTION LIKE '%' || (
+		            SELECT N_FINDINGNAME
+		            FROM NUTRIENT
+		            WHERE N_NAME = #{name}
+		        ) || '%'
+		    )
+		    ORDER BY ft.IMGURL
 		)
-	 	AND ft.IMGURL IS NOT NULL 
-		AND ROWNUM &lt;= 5
-		ORDER BY ft.F_VIEW DESC
+		WHERE ROWNUM &lt;= 5
 	</select>
 	
 	<!-- 기능성원료 추천 영양제 가져오기 -->
 	<select id="getProductNameNImgUrlFromFoodtableByI" parameterType="String" resultType="Map">
-		SELECT ft.PRODUCTNAME, ft.IMGURL
-			FROM FOODTABLE ft
-			WHERE (
-			    ft.NUTRIENT IN (
-			        SELECT ing.I_FINDINGNAME
-			        FROM INGREDIENT ing
-			        WHERE ing.I_FINDINGNAME = (
-			            SELECT I_FINDINGNAME
-			            FROM INGREDIENT
-			            WHERE I_NAME = #{name}
-			        )
-		    )
-		    OR 
-		    	ft.STANDARD LIKE '%' || (
+		SELECT PRODUCTNAME, IMGURL
+		FROM (
+		    SELECT ft.PRODUCTNAME, ft.IMGURL
+		    FROM FOODTABLE ft
+		    WHERE (
+		        ft.NUTRIENT LIKE '%' || (
 		            SELECT I_FINDINGNAME
 		            FROM INGREDIENT
 		            WHERE I_NAME = #{name}
 		        ) || '%'
+		        OR
+		        ft.STANDARD LIKE '%' || (
+		            SELECT I_FINDINGNAME
+		            FROM INGREDIENT
+		            WHERE I_NAME = #{name}
+		        ) || '%'
+		        OR
+		        ft.CAUTION LIKE '%' || (
+		            SELECT I_FINDINGNAME
+		            FROM INGREDIENT
+		            WHERE I_NAME = #{name}
+		        ) || '%'
+		    )
+		    ORDER BY ft.IMGURL
 		)
-	 	AND ft.IMGURL IS NOT NULL 
-		AND ROWNUM &lt;= 5
-		ORDER BY ft.F_VIEW DESC 
+		WHERE ROWNUM &lt;= 5
 	</select>
 	
 	
