@@ -368,176 +368,30 @@
 	                    </div>
 	
 	                    <div class="ranking-card-wrap item-cards u510x">
-	                            <a id="a1730" href="#" tabindex="0" class="item-card" title="SAT 자세히 보기" data-href="#" data-product-id="1730">
-	                                <div class="ranking-no">
-	                                        <img src="https://cdn.pillyze.io/web/img/ranking1.webp" alt="1위">
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/jWzfMp7Q4CluzuT1IKNirIa8EZg50ohtPdduFKu9E9E/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8xay85MzYzOGUyZS0xNzMwLzUwMA" class="item-img" alt="SAT">
-	                                <span class="txt1">쏜리서치</span>
-	                                <span class="txt2">SAT</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.77</span>
-	                                            <span class="txt3">(786개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-                                             <div class="card-tag">피로 개선 <span>75%</span></div>
-                                             <div class="card-tag">숙취 감소 <span>47%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a9360" href="#" tabindex="0" class="item-card" title="트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 950mg) 자세히 보기" data-href="#" data-product-id="9360">
-	
-	                                <div class="ranking-no">
-	                                        <img src="https://cdn.pillyze.io/web/img/ranking2.webp" alt="2위">
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/PyQgu5-vNzgGdCRA0ySJresMwcYaGS8OZtw7AucDVzI/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS85ay85MTRmMjgxOS05MzYwLzEwMDA" class="item-img" alt="트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 950mg)">
-	                                <span class="txt1">스포츠리서치</span>
-	                                <span class="txt2">트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 950mg)</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.73</span>
-	                                            <span class="txt3">(1,200개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">피로 개선 <span>53%</span></div>
-	                                                    <div class="card-tag">콜레스테롤 수치 개선 <span>28%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a11070" href="/products/11070/칼슘-마그네슘-말레이트" tabindex="0" class="item-card" title="칼슘 마그네슘 말레이트 자세히 보기" data-href="/products/11070/칼슘-마그네슘-말레이트" data-product-id="11070">
-	
-	                                <div class="ranking-no">
-	                                        <img src="https://cdn.pillyze.io/web/img/ranking3.webp" alt="3위">
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/qepgDD7uGSV96ukXRK4Q0HRX0bVjFn8XjMws4CGL7kQ/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8xMWsvMzVjZTM5MWItMTEwNzAvNTAw" class="item-img" alt="칼슘 마그네슘 말레이트">
-	                                <span class="txt1">쏜리서치</span>
-	                                <span class="txt2">칼슘 마그네슘 말레이트</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.71</span>
-	                                            <span class="txt3">(620개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">눈 떨림 개선 <span>49%</span></div>
-	                                                    <div class="card-tag">근육통 완화 <span>26%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a270" href="/products/270/우먼스-펨-도필러스-10억(해외)" tabindex="0" class="item-card" title="우먼스 펨 도필러스 10억(해외) 자세히 보기" data-href="/products/270/우먼스-펨-도필러스-10억(해외)" data-product-id="270">
-	
-	                                <div class="ranking-no">
-	                                        <div class="txt">4위</div>
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/iv-IzX3mAF8tYvM_fLtjL1xJlag4r90gjG5dxDKm7gI/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8way9lOWJmOWY5ZC0yNzAvMTAwMA" class="item-img" alt="우먼스 펨 도필러스 10억(해외)">
-	                                <span class="txt1">자로우포뮬라</span>
-	                                <span class="txt2">우먼스 펨 도필러스 10억(해외)</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.71</span>
-	                                            <span class="txt3">(942개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">질염 발생 빈도 감소 <span>77%</span></div>
-	                                                    <div class="card-tag">변비 개선 <span>26%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a186" href="/products/186/엽산-400" tabindex="0" class="item-card" title="엽산 400 자세히 보기" data-href="/products/186/엽산-400" data-product-id="186">
-	
-	                                <div class="ranking-no">
-	                                        <div class="txt">5위</div>
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/qcja-Q1JmYV7IAdOaQPjGRbAZE-w8bExs7BJcLt0gNw/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8way9hYzA3YjI1OC0xODYvNTAw" class="item-img" alt="엽산 400">
-	                                <span class="txt1">솔가</span>
-	                                <span class="txt2">엽산 400</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.75</span>
-	                                            <span class="txt3">(404개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">피로 개선 <span>32%</span></div>
-	                                                    <div class="card-tag">스트레스 감소 <span>9%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a9359" href="/products/9359/락토비프-프로바이오틱스-300억" tabindex="0" class="item-card" title="락토비프 프로바이오틱스 300억 자세히 보기" data-href="/products/9359/락토비프-프로바이오틱스-300억" data-product-id="9359">
-	
-	                                <div class="ranking-no">
-	                                        <div class="txt">6위</div>
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/AmAYwp34igO1R7G46P110Wocvpu87IHE9CFpx_NNL4M/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS85ay8yNDI3M2Y2NC05MzU5LzEwMDA" class="item-img" alt="락토비프 프로바이오틱스 300억">
-	                                <span class="txt1">캘리포니아골드뉴트리션</span>
-	                                <span class="txt2">락토비프 프로바이오틱스 300억</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.7</span>
-	                                            <span class="txt3">(941개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">변비 개선 <span>62%</span></div>
-	                                                    <div class="card-tag">복부 가스 덜 참 <span>38%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a1" href="/products/1/비타민C-1000" tabindex="0" class="item-card" title="비타민C 1000 자세히 보기" data-href="/products/1/비타민C-1000" data-product-id="1">
-	
-	                                <div class="ranking-no">
-	                                        <div class="txt">7위</div>
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/uhKCT4-An7gCM8xNkZyB8pxCA_bTzwBadeUKUIGdBEk/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8way8zYWFkMzU2Yy0xLzEwMDA" class="item-img" alt="비타민C 1000">
-	                                <span class="txt1">고려은단</span>
-	                                <span class="txt2">비타민C 1000</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.67</span>
-	                                            <span class="txt3">(4,689개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">감기 덜 걸림 <span>53%</span></div>
-	                                                    <div class="card-tag">얼굴색 좋아짐 <span>26%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a473" href="/products/473/비타민C-1000-이지-+-비타민D" tabindex="0" class="item-card" title="비타민C 1000 이지 + 비타민D 자세히 보기" data-href="/products/473/비타민C-1000-이지-+-비타민D" data-product-id="473">
-	
-	                                <div class="ranking-no">
-	                                        <div class="txt">8위</div>
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/Mh_SZxAZTQ7s05t0MAEp3IWB5uJDNblD8ZLUxPsWbHI/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8way84ZDllZjBkNy00NzMvNTAw" class="item-img" alt="비타민C 1000 이지 + 비타민D">
-	                                <span class="txt1">고려은단</span>
-	                                <span class="txt2">비타민C 1000 이지 + 비타민D</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.69</span>
-	                                            <span class="txt3">(753개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">감기 덜 걸림 <span>47%</span></div>
-	                                                    <div class="card-tag">수면질 개선 <span>20%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a12940" href="/products/12940/트리플-스트렝스-오메가3-피쉬오일-(EPA+DHA-1000mg)" tabindex="0" class="item-card" title="트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 1000mg) 자세히 보기" data-href="/products/12940/트리플-스트렝스-오메가3-피쉬오일-(EPA+DHA-1000mg)" data-product-id="12940">
-	
-	                                <div class="ranking-no">
-	                                        <div class="txt">9위</div>
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/Yg3c8dx-UnX3f3QKFof8CPvG6v-VGp8rt_nddgrzzx8/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8xMmsvMzA1MmJhMjQtMTI5NDAvMTAwMA" class="item-img" alt="트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 1000mg)">
-	                                <span class="txt1">스포츠리서치</span>
-	                                <span class="txt2">트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 1000mg)</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.69</span>
-	                                            <span class="txt3">(747개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">피로 개선 <span>47%</span></div>
-	                                                    <div class="card-tag">콜레스테롤 수치 개선 <span>29%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
+	                            <c:forEach items="${listData}" var="item" varStatus="status">
+	                            <c:if test="${status.index < 9}">
+									<a id="${item.no}" href="/detail.do?no=${item.no}" tabindex="0" class="item-card" title="${item.productName} 자세히 보기" data-href="/products/1/비타민C-1000" data-product-id="1">
+									<c:if test="${not empty item.imgURL}">
+										<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
+									</c:if>
+			          				<c:if test="${empty item.imgURL}">	
+										<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+									</c:if>
+										<span class="txt1">${item.company}</span>
+										<span class="txt2">${item.productName}</span>
+										<div class="review">
+											<span class="star-point">${item.AVG_Score }</span>
+											<span class="txt3">(${item.REVIEW_Count }개)</span>
+										</div>
+										<div class="card-tags">
+										<c:set var="materialList" value="${fn:split(item.material, '$')}" />
+											<c:forEach items="${materialList}" var="mater">
+												<div class="card-tag">${mater }</div>
+											</c:forEach>
+										</div>
+									</a>
+								</c:if>
+								</c:forEach>
 	                    </div><!-- card-wrap의 끝 -->
 
 	                    <div class="clearfix">
