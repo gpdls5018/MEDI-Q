@@ -356,6 +356,7 @@
 	                            <a tabindex="0" class="filter-btn" href="#">남성</a>
 	                        </div>
 	                    </div>
+	                    <!--
 	                    <div class="filter-btns2">
 	                        <div class="filter-btns-in">
 	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b001 active"><div class="icon"><span style="font-size: 15px">ALL</span></div><div class="txt1">전체</div></a>
@@ -367,7 +368,7 @@
 	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b007"><div class="icon"><span span="" style="font-size: 15px">Kids</span></div><div class="txt1">키즈</div></a>
 	                        </div>
 	                    </div>
-	
+	 					 -->
 	                    <div class="ranking-card-wrap item-cards u510x">
 	                            <c:forEach items="${listData}" var="item" varStatus="status">
 	                            <c:if test="${status.index < 9}">
@@ -380,7 +381,7 @@
 									</c:if>
 										<span class="txt1">${item.company}</span>
 										<span class="txt2">${item.productName}</span>
-										<div class="review">
+										<div class="review d-flex">
 											<span class="star-point">${item.AVG_Score }</span>
 											<span class="txt3">(${item.REVIEW_Count }개)</span>
 										</div>
@@ -439,51 +440,30 @@
             		40만 건의 분석 결과를 <br/>토대로 선정된
 					믿을 수<br/> 있는 진짜 랭킹을<br/>  확인해 보세요.</span></p>
                 <ul class="unlist" style="padding-inline-start: 0px;">
+				<c:forEach items="${listData}" var="item" varStatus="status">
+	            	<c:if test="${status.index < 3}">
                     <li>
                         <div class="image">
-                            <img src="<c:url value="/resources/images/tsimages/destination-1.jpg"/>" alt="*">
+                            <c:if test="${not empty item.imgURL}">
+								<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
+							</c:if>
+	          				<c:if test="${empty item.imgURL}">	
+								<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+							</c:if>
                         </div>
                         <div style="align-items: center; margin-top:20px; margin-left:10px; justify-content: center; text-align: start; line-height: 3px; font-weight:400;">
-                        	<p style="color:gray; font-size:10px; font-weight:bold;">종근당 건강</p>
+                        	<p style="color:gray; font-size:10px; font-weight:bold;">${item.company}</p>
                         	<br/>
-                        	<p style="flex-wrap:wrap; color:black; font-size:13px; font-weight:bold;  text-align: center;">락토핏</p>
-                        	<br/>
-                        	<p style="color:gray; font-size:10px; font-weight:bold;">
-                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
-                        	4.64(814)
-                        	</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="image">
-                            <img src="<c:url value="/resources/images/tsimages/destination-2.jpg"/>" alt="*">
-                        </div>
-                         <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
-                        	<p style="color:gray; font-size:10px; font-weight:bold;">고려은단</p>
-                        	<br/>
-                        	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">비타민C 1000</p>
+                        	<p style="flex-wrap:wrap; color:black; font-size:13px; font-weight:bold;  text-align: center;">${item.productName}</p>
                         	<br/>
                         	<p style="color:gray; font-size:10px; font-weight:bold;">
                         	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
-                        	4.66(178)
+                        	${item.AVG_Score }(${item.REVIEW_Count})
                         	</p>
                         </div>
                     </li>
-                    <li>
-                        <div class="image">
-                            <img src="<c:url value="/resources/images/tsimages/destination-3.jpg"/>" alt="*">
-                        </div>
-                         <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
-                        	<p style="color:gray; font-size:10px; font-weight:bold;">종근당</p>
-                        	<br/>
-                        	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">칼슘앤마그네슘</p>
-                        	<br/>
-                        	<p style="color:gray; font-size:10px; font-weight:bold;">
-                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
-                        	4.67(115)
-                        	</p>
-                        </div>
-                    </li>
+                    </c:if>
+				</c:forEach>
                 </ul>
             </div>
 		</aside>
