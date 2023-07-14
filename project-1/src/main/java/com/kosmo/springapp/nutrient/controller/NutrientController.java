@@ -3,7 +3,6 @@ package com.kosmo.springapp.nutrient.controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -112,21 +111,35 @@ public class NutrientController {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		return "nutrient/NutrientDetail";
 	}
+	
+	// 추천 영양제 상세페이지로 이동
+	@GetMapping("/NutrientToFoodDetail.do")
+	public String nutrientdetail(@RequestParam String name) {
+		
+		String no = nutrietnSelectMapper.findNobyFoodName(name);
+		System.out.println(no);
+		
+	    return "redirect:/detail.do?no=" + no;
+	}
+		
+		
+		
+		
+	
+	
+	
 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

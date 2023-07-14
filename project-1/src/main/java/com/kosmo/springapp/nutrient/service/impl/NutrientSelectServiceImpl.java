@@ -230,7 +230,7 @@ public class NutrientSelectServiceImpl implements NutrientSelectService {
 	        caution = caution.replace("· 유제품 알러지 주의해야해요.", "<span style=\"font-size: 27px;\">🥛</span> 유제품 알러지 주의해야해요.");
 	        caution = caution.replace("· 출산 시 혈액 응고에", "<span style=\"font-size: 27px;\">🤰</span> 출산 시 혈액 응고에");
 	        caution = caution.replace("· 임신 준비 중에는 전문가와 상담이 필요해요.", "<span style=\"font-size: 27px;\">🤰</span> 임신 준비 중에는 전문가와 상담이 필요해요.");
-	        caution = caution.replace("· 인삼/홍삼 알러지 주의해야해요.", "<span style=\"font-size: 27px;\">🌱</span> 인삼/홍삼 알러지를 주의해야해요.");
+	        caution = caution.replace("· 인삼/홍삼 알러지 주의해야해요.", "<span style=\"font-size: 27px;\">🌱</span> 인삼/홍삼 알러지 주의해야해요.");
 	        caution = caution.replace("· 태아의 건강에 영향을 줄 수 있으므로 섭취 주의해야해요.", "<span style=\"font-size: 27px;\">👶</span> 태아의 건강에 영향을 줄 수 있으므로 섭취 주의해야해요.");
 	        caution = caution.replace("· 고용량 섭취하면 수면을 방해할", "<span style=\"font-size: 27px;\">😴</span> 고용량 섭취하면 수면을 방해할");
 	        caution = caution.replace("· 수면을 방해하여 증상을 악화시킬 수 있으므로 정신 질환이", "<span style=\"font-size: 27px;\">🧠</span> 수면을 방해하여 증상을 악화시킬 수 있으므로 정신 질환이");
@@ -247,7 +247,6 @@ public class NutrientSelectServiceImpl implements NutrientSelectService {
 	        caution = caution.replace("· 유당불내증 주의해야해요.", "<span style=\"font-size: 27px;\">🥛</span> 유당불내증 주의해야해요.");
 	        caution = caution.replace("· 간 질환이 있는 경우 전문가와 상담이 필요해요.", "<span style=\"font-size: 27px;\">🩺</span> 간 질환이 있는 경우 전문가와 상담이 필요해요.");
 	        caution = caution.replace("· 히알루론산 알러지 주의해야해요.", "<span style=\"font-size: 27px;\">🩹</span> 히알루론산 알러지 주의해야해요.");
-	        
 	        
 	    } 
 	    else {

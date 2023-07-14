@@ -76,27 +76,54 @@
 	</select>
 	
 	<!-- 영양제 가져오기 -->
-	<!-- 이름 -->
+	
+	
 	<select id="getProductNameNImgUrlFromFoodtable" parameterType="String" resultType="Map">
-	    SELECT PRODUCTNAME, IMGURL
-			FROM (
-			    SELECT PRODUCTNAME, IMGURL
-			    FROM FOODTABLE
-			    WHERE (NUTRIENT LIKE '%' || #{name} || '%' OR STANDARD LIKE '%' || #{name} || '%')
-			        AND IMGURL IS NOT NULL
-			        AND ROWNUM &lt;= 5
+		SELECT ft.PRODUCTNAME, ft.IMGURL
+			FROM FOODTABLE ft
+			WHERE (
+			    ft.NUTRIENT IN (
+			        SELECT ns.N_FINDINGNAME
+			        FROM NUTRIENT ns
+			        WHERE ns.N_FINDINGNAME = (
+			            SELECT N_FINDINGNAME
+			            FROM NUTRIENT
+			            WHERE N_NAME = #{name}
+			        )
+		    )
+		    OR 
+		    	ft.STANDARD LIKE '%' || (
+		            SELECT N_FINDINGNAME
+		            FROM NUTRIENT
+		            WHERE N_NAME = #{name}
+		        ) || '%'
 		)
+	 	AND ft.IMGURL IS NOT NULL 
+		AND ROWNUM &lt;= 5
+		<!-- ORDER BY ft.IMGURL DESC -->
 	</select>
-		
-	<!-- 이미지url 
-	<select id="getImgurlFromFoodtable" parameterType="String" resultType="String">
-    	SELECT IMGURL FROM FOODTABLE WHERE NUTRIENT LIKE '%' || #{name} || '%' OR STANDARD LIKE '%' || #{name} || '%'
-	</select>-->
 	
 	
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 추천 영양제로 링크 넘어가기 -->
+	<select id="findNobyFoodName" parameterType="String" resultType="String">
+		SELECT NO
+		FROM FOODTABLE
+		WHERE PRODUCTNAME = #{name}
+	</select>
 	
 	
 	

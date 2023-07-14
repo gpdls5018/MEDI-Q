@@ -13,4 +13,5 @@ public interface BoardMapper {
 	int insert(Map map);
 	int update(Map map);
 	int delete(Map map);
+	int count(Map map);
 }
