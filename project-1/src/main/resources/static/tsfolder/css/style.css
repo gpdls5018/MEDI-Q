@@ -1865,6 +1865,7 @@ a {
 
 /*메인 배너 스타일*/
 #tsmain{
+	min-height: 1000px;
 	height: 100%;
 }
 .everybanner1{
