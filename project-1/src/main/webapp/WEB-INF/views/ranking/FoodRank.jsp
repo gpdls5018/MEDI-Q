@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
     
 <!DOCTYPE html>
@@ -56,7 +57,7 @@
 							<span class="txt1">${item.company}</span>
 							<span class="txt2">${item.productName}</span>
 							<div class="review">
-								<span class="star-point">&nbsp;${item.AVG_Score }</span>
+								<span class="star-point">&nbsp;<fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }</span>
 								<span class="txt3">(${item.REVIEW_Count }개)</span>
 							</div>
 							<div class="card-tags">
@@ -140,7 +141,7 @@
 							<span class="txt1">${item.company}</span>
 							<span class="txt2">${item.productName}</span>
 							<div class="review">
-								<span class="star-point">&nbsp;${item.AVG_Score }</span>
+								<span class="star-point">&nbsp;<fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }</span>
 								<span class="txt3">(${item.REVIEW_Count }개)</span>
 							</div>
 							<div class="card-tags">
