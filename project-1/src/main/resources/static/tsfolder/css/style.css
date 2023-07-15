@@ -1,6 +1,7 @@
 
 /* Section-119 Styles */
 #section-119 {
+	width: 100%;
 	height: 25em;
 	color: #fff;
 	background-color: #222;
@@ -184,20 +185,14 @@
 }
 
 /* Media Queries */
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 1700px) {
 	.main-header .header-wrapper {width: 57%;}
 	#section-119 {height: 51em;}
 	#section-119 .content-slider .slider .banner .banner-inner-wrapper {padding-top: 20em;}
 }
 
-@media only screen and (max-width: 1919px) {
-	body {font-size: 20px;}
-	.main-header .header-wrapper {width: 60%;}
-	#section-119 {height: 48em;}
-	#section-119 .content-slider .slider .banner .banner-inner-wrapper {padding-top: 20em;}
-}
 
-@media only screen and (max-width: 1680px) {
+@media only screen and (max-width: 1550px) {
 	body {font-size: 18px;}
 	.main-header .header-wrapper {width: 65%;}
 	#section-119 {height: 45em;}
@@ -838,9 +833,33 @@
 a {
 	text-decoration: none;
 }
+#hashtaglink {
+	text-align: center;
+	margin: 5px;
+	font-size:20px;
+	
+}
 #hashtaglink a {
 	text-align: center;
-	margin: 10px;
+	margin-left: 20px;
+}
+.s-txt1 {
+	text-align: center;
+    height: 42px;
+    font-weight: 700;
+    font-size: 20px;
+    float: left;
+    color: #787E8B;
+    padding-right: 20px;
+    margin-left: 20px;
+}
+.s-txt2 {
+	text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    color: #C4C8CE;
+    float: left;
+    margin: 10px 0px 0px 30px;
 }
 /*
  .btn-6c img {
@@ -889,7 +908,7 @@ a {
 		margin: 1em 0em 1em 1em;
 	}
 	.tsidebar {
-		padding: 16px 1.5em;
+		padding: 16px 1em;
 		margin-bottom:10px;
 	}
 	.tsidebar .unlist li {
@@ -912,9 +931,9 @@ a {
 		margin:5px;
 	}
 	
-	@media (min-width:30em) {
+	@media (min-width:1000px) {
 		.tscontainer {
-			max-width: 100%;
+			max-width: 80%;
 			margin: 0 auto 0 auto;
 			position: relative;
 		 	justify-content: center;
@@ -928,9 +947,9 @@ a {
 		}
 		.tsidebar {
 			display: inline-block;
-			width: 15%;
+			width: 16%;
 			vertical-align: top;
-			margin: 0px 20px 0px 20px;
+			margin: 0px 0px 0px 20px;
 		}
 		.fixedsticky {
 			margin-top: 0px;
@@ -948,7 +967,9 @@ a {
         display: flex;
         flex-direction: column;
         position: relative;
-        padding: 40px 20px;
+        padding: 20px 20px;
+        justify-content: center;
+        margin: 50px 0px;
     }
     .gCSEJp > h1 {
         color: gray;
@@ -959,7 +980,7 @@ a {
         display: inline-block;
         width: calc(100% - 10px);
         transform: translateX(10px);
-        height: 139px;
+        height: 180px;
         background-color: #EF605D;
         border-radius: 20px;
         margin-bottom: 20px;
@@ -983,7 +1004,7 @@ a {
     .hBxOSS {
         cursor: pointer;
         border-radius: 20px;
-        height: 139px;
+        height: 180px;
         box-shadow: rgba(101, 101, 101, 0.3) 2px 2px 4px 4px;
     }
     .iJGurJ {
@@ -993,7 +1014,7 @@ a {
         background-color: white;
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
-        width: 92%;
+        width: 86%;
         padding: 22px 0px 22px 30px;
         display: flex;
         flex-direction: column;
@@ -1016,8 +1037,6 @@ a {
     }
     .maints > div{
     	justify-content: center;
- 		border-radius:15px;
- 		margin: 100px 0px 100px 0px;
 
     }
     section {
@@ -1025,10 +1044,13 @@ a {
 	}
 
     .section .content {
-        width: 90%;
-        margin: 30px;
+        width: 100%;
+        margin: 10px;
         text-align: center;
         position: relative;
+    }
+    .section1-2b{
+    	margin: 50px 0px;
     }
     .section1-2b .txt1 {
         font-weight: 700;
@@ -1038,11 +1060,10 @@ a {
     .section1-2b .ingredient-wrap {
  		display:flex;
  		flex-wrap: wrap;
-        width: calc(100% + 20px);
-        margin-top: 10px;
+        width: 100%;
+        margin-top: 15px;
         justify-content:center; 
-        align-items: center
-        
+        align-items: center;
     }
     .section1-2b .txt1 span {
         color: #EF605D;
@@ -1052,16 +1073,16 @@ a {
 	    vertical-align: middle;
 	    height: 120px;
 	    font-weight: bold;
-	    font-size: 16px;
+	    font-size: 18px;
 	    line-height: 20px;
 	    color: #101219;
 	    text-align: center;
 	    width: 100%;
 	}
     .section1-2b .ingredient-wrap .ingredient-one {
-        width: calc(20% - 35px);
+        width: calc(20%);
         height: 80px;
-        margin: 15px 15px 0px 0px;
+        margin: 10px;
         float: left;
         border-radius: 20px;
         box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
@@ -1257,11 +1278,11 @@ a {
 
 /*여기는 하단 부분 css 적용 부분 */
 .section1-2c {
-	margin: 20px 0px 20px;
+	margin: 50px 0px;
 }
 .section1-2c .content {
     padding: 0px 0px 80px;
-    width: 938px;
+    width: 1100px;
     margin: 0px auto;
     text-align: center;
     position: relative;
@@ -1433,13 +1454,13 @@ a {
 
 /*5번째 다이브 스타일*/
 .section20-2-home{
-	margin-top: 20px;
+	margin: 50px 0px;
 	justify-content: center;
 }
 .section20-2-home .content {
     width: 100% !important;
     max-width: 1200px !important;
-    margin: 30px 0px 30px 100px;
+    margin: 30px 0px 30px 30px;
     text-align: center;
     position: relative;
     justify-content: center;
@@ -1479,15 +1500,15 @@ a {
     display: block;
 }
 .qna-card {
-    width: 90%;
+    width: 92%;
     height: 250px;
     display: block;
-    padding: 25px 40px 20px;
+    padding: 25px 0px 20px 30px;
     background: #FFFFFF;
     border: 1px solid #E6E9ED;
     box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
     border-radius: 20px;
-    margin: 20px 0px 0px;
+    margin: 30px 0px 0px;
     text-align: left;
 }
 .qna-card .ingredient-tags {
@@ -1606,15 +1627,22 @@ a {
     color: #9BA1AA;
 }
 
-/*6번째 다이브 css*/
+/* *번째 다이브 css*/
+.section6 {
+	margin: 50px 0px;
+	
+}
 .section20-2-home + .ranking-190 {
     margin: 20px 0px 0px;
+}
+.section1-2s{
+	  margin: 50px 0px;
 }
 .section1-2s .content {
     padding: 0px 20px 40px;
     width: auto;
     max-width: inherit;
-    margin: 50px auto;
+    margin: 30px auto;
     text-align: center;
     position: relative;
 }
@@ -1759,7 +1787,7 @@ a {
     box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
     border-radius: 20px;
     background: #fff;
-    height: 350px;
+    height: 320px;
     float: left;
     padding: 0px 20px;
 }
@@ -1777,7 +1805,7 @@ a {
     width: 130px;
     height: 130px;
     display: block;
-    margin: 40px auto 0px;
+    margin: 20px auto 0px;
     border:none;
 }
 .ranking-190 .item-card .txt1 {
