@@ -20,6 +20,7 @@ public class LoadHealthInfoController {
 	
 	@GetMapping("/loadHealthInfo.do")
 	public String loadHealthInfoByOCR(HttpServletRequest req, HttpServletResponse resp, @RequestParam String userId,Model model) throws IOException {
+		/*
 		try {
 			 if (userId == null || userId.isEmpty()) {
 		        throw new NullPointerException();
@@ -32,12 +33,14 @@ public class LoadHealthInfoController {
 			 out.flush();
 			 return null;
 		}
+		*/
 		model.addAttribute("userId",userId);
 		return "LoadHealthInfo";		
 	}
 	
 	@PostMapping("/saveHealthData.do")
 	public String saveHealthData(@RequestParam HealthInfoDTO dto) {
+		//System.out.println(dto.getBloodPressure_high());
 		return null;
 	}
 }
