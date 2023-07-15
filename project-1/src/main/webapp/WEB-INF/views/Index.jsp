@@ -112,12 +112,12 @@
 	            </form>
 	        </div>
 	        <div id="hashtaglink" class="ml-1 py-5 row" >
-                <a href="#" style="font-style:italic;font-weight: bold;color:green">#피부건강</a>&nbsp;
-	        	<a href="#" style="font-style:italic;font-weight: bold;color:palevioletred">#면역력 증진</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:mediumpurple ">#전립선 건강</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:sandybrown">#체지방 감소</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:salmon ">#비타민</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:lightskyblue ">#혈당</a>&nbsp;
+                <a href="#" style="font-weight: bold;color:green">#피부건강</a>&nbsp;
+	        	<a href="#" style="font-weight: bold;color:palevioletred">#면역력 증진</a>&nbsp;
+		        <a href="#" style="font-weight: bold;color:mediumpurple ">#전립선 건강</a>&nbsp;
+		        <a href="#" style="font-weight: bold;color:sandybrown">#체지방 감소</a>&nbsp;
+		        <a href="#" style="font-weight: bold;color:salmon ">#비타민</a>&nbsp;
+		        <a href="#" style="font-weight: bold;color:lightskyblue ">#혈당</a>&nbsp;
 		    </div >
 	    </div>
 	    
