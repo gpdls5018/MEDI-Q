@@ -1257,8 +1257,8 @@ a {
 }
 .section1-2c .content {
     padding: 0px 0px 80px;
-    width: 938px;
-    margin: 0px auto;
+    width: auto;
+    margin: inherit;
     text-align: center;
     position: relative;
     display: block;
@@ -1606,8 +1606,8 @@ a {
 }
 .section1-2s .content {
     padding: 0px 20px 40px;
-    width: 100%;
-    max-width: 978px;
+    width: auto;
+    max-width: inherit;
     margin: 50px auto;
     text-align: center;
     position: relative;
@@ -1745,7 +1745,7 @@ a {
     justify-content: center;
 }
 .ranking-190 .item-card {
-    width: 290px;
+    width: 200px;
     margin: 20px 10px 0px 10px;
     display: block;
     position: relative;
@@ -1753,7 +1753,7 @@ a {
     box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
     border-radius: 20px;
     background: #fff;
-    height: 400px;
+    height: 350px;
     float: left;
     padding: 0px 20px;
 }
