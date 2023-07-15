@@ -339,7 +339,7 @@
 	                    </div><!-- qna-card의 끝 -->
 	            </div>
 	            <div class="clearfix mr-3">
-	                <a tabindex="0" class="more-qna" href="#">Q&amp;A 더보기</a>
+	                <a tabindex="0" class="more-qna" href="<c:url value="/board/List.do" />">Q&amp;A 더보기</a>
 	            </div>
 	        </div>
 	    </div>
