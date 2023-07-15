@@ -13,7 +13,7 @@
 	<div class="container">
 		<div class="row d-flex justify-content-center align-items-center vh-100">
 			<div class="col-md-6 mb-4">
-				<h3 class="heading mb-4">Edit member information!</h3>
+				<h3 class="heading mb-4">내 정보 수정하기</h3>
 				<p>
 				<span class="text-info" style="font-size: 1.3rem">${member.id }</span>님 안녕하세요!<br/>
 				회원정보 수정 양식을 입력해주세요

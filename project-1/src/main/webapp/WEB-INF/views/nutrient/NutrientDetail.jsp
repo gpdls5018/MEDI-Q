@@ -277,7 +277,7 @@
                 <div class="image mt-2">
 	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text" style="color: black; margin-top:22px;">
-		           		<b style="font-size: 30px;">💊&nbsp;${param.name }</b><br/>
+		           		<b style="font-size: 30px;">💊&nbsp;${title_name}</b><br/>
 		           		<small>궁금했던 모든 것, 바로 확인해보세요!</small>
                 	</div>
     			</div>

@@ -43,6 +43,46 @@ public class NutrientController {
 	
 	@GetMapping("/NutrientDetail.do")
 	public String nutrientdetail(@RequestParam String name, Model model) {
+		if(name.equals("비타민B1") || name.equals("티아민")) {
+			name = "비타민B1(티아민)";
+		}
+		if(name.equals("비타민B2") || name.equals("리보플라빈")) {
+			name = "비타민B2(리보플라빈)";
+		}
+		if(name.equals("나이아신") || name.equals("비타민B3")) {
+			name = "비타민B3(나이아신)";
+		}
+		if(name.equals("비타민B5") || name.equals("판토텐산")) {
+			name = "비타민B5(판토텐산)";
+		}
+		if(name.equals("피리독신") || name.equals("비타민B6")) {
+			name = "비타민B6(피리독신)";
+		}
+		if(name.equals("비타민B7") || name.equals("비오틴")) {
+			name = "비타민B7(비오틴)";
+		}
+		if(name.equals("비타민B9") || name.equals("엽산")) {
+			name = "비타민B9(엽산)";
+		}
+		if(name.equals("코발라민") || name.equals("비타민B12")) {
+			name = "비타민B12(코발라민)";
+		}
+		if(name.equals("아스코르브산") || name.equals("비타민C")) {
+			name = "비타민C(아스코르브산)";
+		}
+		if(name.equals("콜레칼시페롤") || name.equals("비타민D")) {
+			name = "비타민D(콜레칼시페롤)";
+		}
+		if(name.equals("토코페롤") || name.equals("비타민E")) {
+			name = "비타민E(토코페롤)";
+		}
+		if(name.equals("필로퀴논") || name.equals("비타민K")) {
+			name = "비타민K(필로퀴논)";
+		}
+
+		
+
+
 		
 		// 탭 이동시 뿌려주기
 		List<String> vitaminNames = nutrietnSelectMapper.getVitaminName();
@@ -141,7 +181,7 @@ public class NutrientController {
 		
 		
 		
-		
+		model.addAttribute("title_name",name);
 		return "nutrient/NutrientDetail";
 		
 	}
