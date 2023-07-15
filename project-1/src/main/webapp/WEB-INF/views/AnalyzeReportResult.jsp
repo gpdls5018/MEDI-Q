@@ -130,7 +130,7 @@
 						섭취하고 있는 필수 영양소들 입니다
 						<ul class="list-unstyled mt-3">
 							<c:forEach items="${resultListDto.nutrient_list_report}" var="nutrient">
-							<li>✅ ${nutrient}</li>
+							<a href="/NutrientDetail.do?name=${nutrient}"><li>✅ ${nutrient}</li></a>
 							</c:forEach>
 						</ul>
 					</div>
@@ -139,7 +139,7 @@
 						<div class="mt-3" style="overflow: auto;height:300px;">
 							<ul class="list-unstyled mt-3">
 							<c:forEach items="${resultListDto.nutrient_list_no_report}" var="no_nutrient">
-								<li style="font-size:15px;">❌ ${no_nutrient}</li>
+								<a href="/NutrientDetail.do?name=${no_nutrient}"><li style="font-size:15px;">❌ ${no_nutrient}</li></a>
 							</c:forEach>
 							</ul>
 						</div>
