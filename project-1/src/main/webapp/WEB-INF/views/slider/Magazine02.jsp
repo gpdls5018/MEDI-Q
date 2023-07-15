@@ -59,8 +59,8 @@
   	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 800px;
-  	height: 680px;
+	width: 830px;
+  	height: 700px;
   }
   .modalB{
     margin-top : 20px;

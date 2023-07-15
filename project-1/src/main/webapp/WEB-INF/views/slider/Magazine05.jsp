@@ -59,7 +59,7 @@
 	justify-content: center;
 	align-items: center;
 	width: 835px;
-  	height: 650px;
+  	height: 710px;
   }
   .modalB{
     margin-top : 20px;
