@@ -370,30 +370,30 @@
 	                    </div>
 	 					 -->
 	                    <div class="ranking-card-wrap item-cards u510x">
-	                            <c:forEach items="${listData}" var="item" varStatus="status">
-	                            <c:if test="${status.index < 9}">
-									<a id="${item.no}" href="/detail.do?no=${item.no}" tabindex="0" class="item-card" title="${item.productName} 자세히 보기" data-href="/products/1/비타민C-1000" data-product-id="1">
-									<c:if test="${not empty item.imgURL}">
-										<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
-									</c:if>
-			          				<c:if test="${empty item.imgURL}">	
-										<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
-									</c:if>
-										<span class="txt1">${item.company}</span>
-										<span class="txt2">${item.productName}</span>
-										<div class="review d-flex">
-											<span class="star-point">${item.AVG_Score }</span>
-											<span class="txt3">(${item.REVIEW_Count }개)</span>
-										</div>
-										<div class="card-tags">
-										<c:set var="materialList" value="${fn:split(item.material, '$')}" />
-											<c:forEach items="${materialList}" var="mater">
-												<div class="card-tag">${mater }</div>
-											</c:forEach>
-										</div>
-									</a>
+                            <c:forEach items="${listData}" var="item" varStatus="status">
+                            <c:if test="${status.index < 10}">
+								<a id="${item.no}" href="/detail.do?no=${item.no}" tabindex="0" class="item-card" title="${item.productName} 자세히 보기">
+								<c:if test="${not empty item.imgURL}">
+									<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
 								</c:if>
-								</c:forEach>
+		          				<c:if test="${empty item.imgURL}">	
+									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+								</c:if>
+									<span class="txt1">${item.company}</span>
+									<span class="txt2">${item.productName}</span>
+									<div class="review d-flex" style="width:inherit;">
+										<span class="star-point">${item.AVG_Score }</span>
+										<span class="txt3">(${item.REVIEW_Count }개)</span>
+									</div>
+									<!--<div class="card-tags">
+									<c:set var="materialList" value="${fn:split(item.material, '$')}" />
+										<c:forEach items="${materialList}" var="mater">
+											<div class="card-tag">${mater }</div>
+										</c:forEach>
+									</div>  -->
+								</a>
+							</c:if>
+							</c:forEach>
 	                    </div><!-- card-wrap의 끝 -->
 
 	                    <div class="clearfix">
@@ -431,7 +431,7 @@
 		        </div>
 		    </div>
 			 -->
-            <div class="sidebar-item py-2 my-5">
+            <div class="sidebar-item pt-5 mt-5">
             	<img src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
             	<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
             	<br/>
@@ -443,23 +443,27 @@
 				<c:forEach items="${listData}" var="item" varStatus="status">
 	            	<c:if test="${status.index < 3}">
                     <li>
-                        <div class="image">
-                            <c:if test="${not empty item.imgURL}">
-								<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
-							</c:if>
-	          				<c:if test="${empty item.imgURL}">	
-								<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
-							</c:if>
+                        <div class="image" >
+	            			<a href="/detail.do?no=${item.no}">
+	                            <c:if test="${not empty item.imgURL}">
+									<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
+								</c:if>
+		          				<c:if test="${empty item.imgURL}">	
+									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+								</c:if>
+                    		</a>
                         </div>
-                        <div style=" align-items: center; margin-top:20px; margin-left:10px; justify-content: center; text-align: start; line-height: 3px; font-weight:400;">
-                        	<p style="color:gray; font-size:10px; font-weight:bold;">${item.company}</p>
-							<br/>
-                        	<p style="flex-wrap:wrap; color:black; font-size:12px; font-weight:bold; line-height: 20px;  text-align: center;">${item.productName}</p>
-							<br/>
-                        	<p style="color:gray; font-size:10px; font-weight:bold;">
-                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
-                        	${item.AVG_Score }(${item.REVIEW_Count})
-                        	</p>
+                        <div style="align-items: center; margin-top:25px; margin-left:10px; justify-content: center; text-align: start; line-height: 1px; font-weight:400;">
+	            			<a href="/detail.do?no=${item.no}">
+	                        	<p style="color:gray; font-size:9px; font-weight:bold;">${item.company}</p>
+	                        	<br/>
+	                        	<p style="line-height: 11px;color:black; font-size:11px; font-weight:bold;">${item.productName}</p>
+	                        	<br/>
+	                        	<p style="color:gray; font-size:10px; font-weight:bold;">
+	                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
+	                        	&nbsp;${item.AVG_Score }&nbsp;(${item.REVIEW_Count})
+	                        	</p>
+                    		</a>
                         </div>
                     </li>
                     </c:if>
