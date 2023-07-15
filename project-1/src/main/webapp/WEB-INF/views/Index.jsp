@@ -99,9 +99,9 @@
 	    </div>
 	
 		<!-- 검색창 밑 검색 태그용 버튼  -->
-		<div class="row justify-content-center mt-5 pt-5">
+		<div class="row justify-content-center mt-5 pt-5" style="margin: 40px 0px 0px 0px">
 	        <div class="col-lg-10 text-center">
-	            <h1 class="my-5" style="font-weight:bold; color:black;"><span style="color: #EF605D;">제품명,영양성분</span>을 검색해보세요.</h1>
+	            <h1 class="my-5" style="font-weight:bold; color:black;"><span style="color: #EF605D;">💊 제품명 영양성분</span>을 검색해보세요.</h1>
 	            <form class="position-relative w-75 mx-auto animated slideInDown d-flex input-wrapper" action="/hashtag.do" method="post" style="box-shadow: 0px 0px 5px gray; border-radius: 20px;">
 	                <input class="border-0 rounded-pill w-100 px-5 py-3 ps-4 pe-5 flex-grow-1" type="text" name="postTag" 
 	                placeholder="제품명 및 영양성분을 입력하세요" value="${not empty searchTags ? fn:replace(searchTags,'#',',#') : ''}">
@@ -112,23 +112,25 @@
 	            </form>
 	        </div>
 	        <div id="hashtaglink" class="ml-1 py-5 row" >
+       	        <span class="s-txt1">인기 검색어</span>
                 <a href="#" style="font-weight: bold;color:green">#피부건강</a>&nbsp;
 	        	<a href="#" style="font-weight: bold;color:palevioletred">#면역력 증진</a>&nbsp;
 		        <a href="#" style="font-weight: bold;color:mediumpurple ">#전립선 건강</a>&nbsp;
 		        <a href="#" style="font-weight: bold;color:sandybrown">#체지방 감소</a>&nbsp;
 		        <a href="#" style="font-weight: bold;color:salmon ">#비타민</a>&nbsp;
 		        <a href="#" style="font-weight: bold;color:lightskyblue ">#혈당</a>&nbsp;
+		        <span class="s-txt2">(07/15&nbsp;기준)</span>
 		    </div >
 	    </div>
 	    
 <!-- 검색창 밑부분! 사이드바와 몸통 부분 -->
-<section class="tscontainer mt-5" style="width:90%;  border-radius: 5px;">
+<section class="tscontainer" style="width:100%;  border-radius: 5px;">
 	<!-- 왼쪽 몸통부분 -->
      <article class="maints justify-content-center px-3">
      <!-- 1번째 다이브 목록 -->
      	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
-	        <h1>$이태성$님의 최근 분석 리포트</h1>
-	        <div class="DefaultReportItem__ReportBook-sc-rysw89-0 ibNwmg">
+	        <h1>$사용자$님의 최근 분석 리포트</h1>
+	        <div class="DefaultReportItem__ReportBook-sc-rysw89-0 ml-1 ibNwmg d-flex" style="justify-content:flex-start;">
 	            <a data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none;">
 	                <div class="DefaultReportItem__Springs-sc-rysw89-8 jZuajW">
 	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
@@ -152,29 +154,7 @@
 	          </div>
 	     </div>
 	     
-	  <!-- 2번째 다이브 목록 -->
-	  <div class="section section1-2b py-4 my-2">
-	        <div class="content">
-	            <span class="txt1"><span>인기 성분</span>이에요</span>
-	            <div class="ingredient-wrap">
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">포스트<br/>바이오틱스</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">오메가3</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">프로바이오틱스<br/>(유산균)</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">비타민C</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">가르시니아<br/>캄보지아</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">레시틴</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">코엔자임Q10</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">비타민B1</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">비타민A</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">칼슘</div></a>
-	            </div>
-	            <div class="clearfix">
-	                <a tabindex="0" class="more-pop-ingredient pt-4 mr-5" href="#">인기성분 더보기</a>
-	            </div>
-	        </div>
-	    </div>
-	    
-	  <!--  3번째 다이브 목록 -->
+	     <!--  2번째 다이브 목록 -->
 		<div class="section section1-2c">
 	       <a href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>" style="text-decoration: none;">
 	           <div class="content">
@@ -189,64 +169,89 @@
 	           </div>
 	       </a>
 	   </div>
+	     
+	  <!-- 3번째 다이브 목록 -->
+	  <div class="section section1-2b my-1" style="align-content: center;">
+	        <div class="content" style="margin: 0px 0px 0px 0px;">
+	            <span class="txt1"><span>인기 성분</span>이에요</span>
+	            <div class="ingredient-wrap">
+	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">포스트<br/>바이오틱스</div></a>
+	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">오메가3</div></a>
+	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">프로바이오틱스<br/>(유산균)</div></a>
+	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">비타민C</div></a>
+	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">가르시니아<br/>캄보지아</div></a>
+	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">레시틴</div></a>
+	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">코엔자임Q10</div></a>
+	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">비타민B1</div></a>
+	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">비타민A</div></a>
+	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">칼슘</div></a>
+	            </div>
+	            <div class="clearfix">
+	                <a tabindex="0" class="more-pop-ingredient pt-4 mr-3" href="#">인기성분 더보기</a>
+	            </div>
+	        </div>
+	    </div>
 	    
-	    
-  	  <!--  4번째 다이브 목록 -->
-      <div class="mainInner">
-            <h3 class="my-4" style="text-align: center; margin-top:20px; font-weight: bold;">우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
-            <div class="container-xxl py-4">
-                <div class="container">
-                    <div class="mainMap" id="map" >
-                        <button type="button" class="btn" id="tsBtn">
-                        	<span>🩺병원 & 💊약국찾기</span>
-                        </button>
-                        <div class="mapLayer">
-                            <div class="closeLayerButton" onclick="closeMapLayer()">&times;</div>
-                            	<h2>주소</h2>
-      	                     	<p style="font-size:17px; color:gray; font-weight: bold; margin-bottom: 0px;">서울시 금천구 가산동 426-5<br/> 월드메르디앙 2차 413호(Madi-Q팀)</p>
-      	                     	<p style="font-size:15px; color:gray;">(주)한국소프트웨어아이엔씨 (153-759)</p>
-                           		<a href="https://naver.me/Fcacgzd6" target="_blank">
-                           		<img src="<c:url value="/resources/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
-                           		<a href="https://place.map.kakao.com/1784287516" target="_blank"> 
-                           		<img src="<c:url value="/resources/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
-                        </div>          
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--  병원찾기 지도 모달 누르면 나오는 부분 -->
-	       <div class="modal fade align-items-center" id="tsModal" role="dialog" style="background-color: rgba(0, 0, 0, 0.5);">
-			 <div class="modal-dialog modal-dialog-centered" style="align-content :center; width: 100%; height: 60%; max-width: 1400px;">
-			   <!-- Modal content-->
-			   <div class="modal-content" style="width: 100%; height: 100%;">
-			     <div class="modal-header" >
-			       <h4 class="modal-title">우리동네 병원&약국 찾기</h4>
-			       <button type="button" class="close" data-dismiss="modal">&times;</button>
-			     </div>
-			     <div class="modal-body">
-			       <h3 style="text-align: center;">🩺병원 & 💊약국정보</h3>
-			       <div class="container-xxl py-5">
-			         <div class="map_wrap">
-			           <div id="modalmap" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-			           <div id="menu_wrap" class="bg_white">
-			             <div class="option">
-			               <div>
-			                 <form onsubmit="searchPlaces(); return false;">
-			                    키워드 : <input type="text" value="가산동 병원" placeholder="ㅇㅇ동 병원을 입력" id="keyword" size="15">
-			                    <button type="submit">검색하기</button>
-			                  </form>
-			                </div>
-			              </div>
-			              <hr>
-			              <ul id="placesList"></ul>
-			              <div id="pagination"></div>
-			            </div>
-			          </div>
-			        </div>
-			      </div>
-			    </div>
-			  </div>
-			</div>
+	     <!--  4번째 다이브 목록 -->
+	   <div class="section section1-2s ranking-190">
+	        <div class="content">
+	            <div class="txt2">인기 영양제 <span>Top 10</span></div>
+	            <div class="tab-contents" style="display: block;">
+	                <div class="tab-content tab-content-001 new-wide-main-060 new-wide-main-090 active width-flt1">
+	                    <div class="filter-btns slt-sex">
+	                        <div class="filter-btns-in">
+	                            <a tabindex="0" class="filter-btn active" href="#">전체 성별</a>
+	                            <a tabindex="0" class="filter-btn" href="#">여성</a>
+	                            <a tabindex="0" class="filter-btn" href="#">남성</a>
+	                        </div>
+	                    </div>
+	                    <!--
+	                    <div class="filter-btns2">
+	                        <div class="filter-btns-in">
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b001 active"><div class="icon"><span style="font-size: 15px">ALL</span></div><div class="txt1">전체</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b002 "><div class="icon"><span>20</span></div><div class="txt1">20대 이하</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b003"><div class="icon"><span>30</span></div><div class="txt1">30대</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b004"><div class="icon"><span>40</span></div><div class="txt1">40대</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b005"><div class="icon"><span>50</span></div><div class="txt1">50대</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b006"><div class="icon"><span>60</span></div><div class="txt1">60대 이상</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b007"><div class="icon"><span span="" style="font-size: 15px">Kids</span></div><div class="txt1">키즈</div></a>
+	                        </div>
+	                    </div>
+	 					 -->
+	                    <div class="ranking-card-wrap item-cards u510x">
+                            <c:forEach items="${listData}" var="item" varStatus="status">
+                            <c:if test="${status.index < 10}">
+								<a id="${item.no}" href="/detail.do?no=${item.no}" tabindex="0" class="item-card" title="${item.productName} 자세히 보기">
+								<c:if test="${not empty item.imgURL}">
+									<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
+								</c:if>
+		          				<c:if test="${empty item.imgURL}">	
+									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+								</c:if>
+									<span class="txt1">${item.company}</span>
+									<span class="txt2">${item.productName}</span>
+									<div class="review d-flex" style="width:inherit;">
+										<span class="star-point"><fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }</span>
+										<span class="txt3">(${item.REVIEW_Count }개)</span>
+									</div>
+									<!--<div class="card-tags">
+									<c:set var="materialList" value="${fn:split(item.material, '$')}" />
+										<c:forEach items="${materialList}" var="mater">
+											<div class="card-tag">${mater }</div>
+										</c:forEach>
+									</div>  -->
+								</a>
+							</c:if>
+							</c:forEach>
+	                    </div><!-- card-wrap의 끝 -->
+
+	                    <div class="clearfix">
+	                        <a tabindex="0" class="more-pop-health mt-5" href="/ranking/selectfood.do">성별&nbsp;·&nbsp;연령별 인기 영양제 더보기</a>
+	                    </div>
+	                </div><!-- tab-content-001의 끝 -->
+	            </div>
+	        </div>
+	    </div>
        
       
       <!--  5번째 다이브 목록 -->
@@ -338,75 +343,17 @@
 	                        </a>
 	                    </div><!-- qna-card의 끝 -->
 	            </div>
-	            <div class="clearfix mr-3">
+
+	            <div class="clearfix my-2 mr-3">
 	                <a tabindex="0" class="more-qna" href="<c:url value="/board/List.do" />">Q&amp;A 더보기</a>
 	            </div>
 	        </div>
 	    </div>
+	  
+	    
+	    
 	   <!--  6번째 다이브 목록 -->
-	   <div class="section section1-2s ranking-190">
-	        <div class="content">
-	            <div class="txt2">인기 영양제 <span>Top 10</span></div>
-	            <div class="tab-contents" style="display: block;">
-	                <div class="tab-content tab-content-001 new-wide-main-060 new-wide-main-090 active width-flt1">
-	                    <div class="filter-btns slt-sex">
-	                        <div class="filter-btns-in">
-	                            <a tabindex="0" class="filter-btn active" href="#">전체 성별</a>
-	                            <a tabindex="0" class="filter-btn" href="#">여성</a>
-	                            <a tabindex="0" class="filter-btn" href="#">남성</a>
-	                        </div>
-	                    </div>
-	                    <!--
-	                    <div class="filter-btns2">
-	                        <div class="filter-btns-in">
-	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b001 active"><div class="icon"><span style="font-size: 15px">ALL</span></div><div class="txt1">전체</div></a>
-	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b002 "><div class="icon"><span>20</span></div><div class="txt1">20대 이하</div></a>
-	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b003"><div class="icon"><span>30</span></div><div class="txt1">30대</div></a>
-	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b004"><div class="icon"><span>40</span></div><div class="txt1">40대</div></a>
-	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b005"><div class="icon"><span>50</span></div><div class="txt1">50대</div></a>
-	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b006"><div class="icon"><span>60</span></div><div class="txt1">60대 이상</div></a>
-	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b007"><div class="icon"><span span="" style="font-size: 15px">Kids</span></div><div class="txt1">키즈</div></a>
-	                        </div>
-	                    </div>
-	 					 -->
-	                    <div class="ranking-card-wrap item-cards u510x">
-                            <c:forEach items="${listData}" var="item" varStatus="status">
-                            <c:if test="${status.index < 10}">
-								<a id="${item.no}" href="/detail.do?no=${item.no}" tabindex="0" class="item-card" title="${item.productName} 자세히 보기">
-								<c:if test="${not empty item.imgURL}">
-									<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
-								</c:if>
-		          				<c:if test="${empty item.imgURL}">	
-									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
-								</c:if>
-									<span class="txt1">${item.company}</span>
-									<span class="txt2">${item.productName}</span>
-									<div class="review d-flex" style="width:inherit;">
-										<span class="star-point"><fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }</span>
-										<span class="txt3">(${item.REVIEW_Count }개)</span>
-									</div>
-									<!--<div class="card-tags">
-									<c:set var="materialList" value="${fn:split(item.material, '$')}" />
-										<c:forEach items="${materialList}" var="mater">
-											<div class="card-tag">${mater }</div>
-										</c:forEach>
-									</div>  -->
-								</a>
-							</c:if>
-							</c:forEach>
-	                    </div><!-- card-wrap의 끝 -->
-
-	                    <div class="clearfix">
-	                        <a tabindex="0" class="more-pop-health mt-5" href="/ranking/selectfood.do">성별&nbsp;·&nbsp;연령별 인기 영양제 더보기</a>
-	                    </div>
-	                </div><!-- tab-content-001의 끝 -->
-	            </div>
-	        </div>
-	    </div>
-	    
-	    
-	   <!--  *번째 다이브 목록 -->
-		<div class="m-5 " style="display:flex; justify-content: center;">
+		<div class="section6 pt-5" style="display:flex; justify-content: center;">
 	        <div class="slider1 ">
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:400px" ></a></div>
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:100%; height:400px" ></a></div>
@@ -415,6 +362,63 @@
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:400px" ></a></div>
 	        </div>
 	    </div>
+	    
+	    <!--  7번째 다이브 목록 -->
+      <div class="mainInner" style="margin: 50px 0px;">
+            <h3 class="my-4" style="text-align: center; margin-top:20px; font-weight: bold;">우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
+            <div class="container-xxl py-4">
+                <div class="container">
+                    <div class="mainMap" id="map" style="border-radius: 10px;">
+                        <button type="button" class="btn" id="tsBtn">
+                        	<span>🩺병원 & 💊약국찾기</span>
+                        </button>
+                        <div class="mapLayer">
+                            <div class="closeLayerButton" onclick="closeMapLayer()">&times;</div>
+                            	<h2>주소</h2>
+      	                     	<p style="font-size:17px; color:gray; font-weight: bold; margin-bottom: 0px;">서울시 금천구 가산동 426-5<br/> 월드메르디앙 2차 413호(Madi-Q팀)</p>
+      	                     	<p style="font-size:15px; color:gray;">(주)한국소프트웨어아이엔씨 (153-759)</p>
+                           		<a href="https://naver.me/Fcacgzd6" target="_blank">
+                           		<img src="<c:url value="/resources/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
+                           		<a href="https://place.map.kakao.com/1784287516" target="_blank"> 
+                           		<img src="<c:url value="/resources/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
+                        </div>          
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  병원찾기 지도 모달 누르면 나오는 부분 -->
+	       <div class="modal fade align-items-center" id="tsModal" role="dialog" style="background-color: rgba(0, 0, 0, 0.5);">
+			 <div class="modal-dialog modal-dialog-centered" style="align-content :center; width: 100%; height: 60%; max-width: 1400px;">
+			   <!-- Modal content-->
+			   <div class="modal-content" style="width: 100%; height: 100%;">
+			     <div class="modal-header" >
+			       <h4 class="modal-title">우리동네 병원&약국 찾기</h4>
+			       <button type="button" class="close" data-dismiss="modal">&times;</button>
+			     </div>
+			     <div class="modal-body">
+			       <h3 style="text-align: center;">🩺병원 & 💊약국정보</h3>
+			       <div class="container-xxl py-5">
+			         <div class="map_wrap">
+			           <div id="modalmap" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+			           <div id="menu_wrap" class="bg_white">
+			             <div class="option">
+			               <div>
+			                 <form onsubmit="searchPlaces(); return false;">
+			                    키워드 : <input type="text" value="가산동 병원" placeholder="ㅇㅇ동 병원을 입력" id="keyword" size="15">
+			                    <button type="submit">검색하기</button>
+			                  </form>
+			                </div>
+			              </div>
+			              <hr>
+			              <ul id="placesList"></ul>
+			              <div id="pagination"></div>
+			            </div>
+			          </div>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 	</article>
 		<!-- 오른쪽 슬라이드-->
 		<aside class="tsidebar fixedsticky pr-3 mt-5"> 
@@ -455,9 +459,9 @@
                         </div>
                         <div style="align-items: center; margin-top:25px; margin-left:10px; justify-content: center; text-align: start; line-height: 1px; font-weight:400;">
 	            			<a href="/detail.do?no=${item.no}">
-	                        	<p style="color:gray; font-size:9px; font-weight:bold;">${item.company}</p>
+	                        	<p style="line-height: 10px; color:gray; font-size:9px; font-weight:bold;">${item.company}</p>
 	                        	<br/>
-	                        	<p style="line-height: 11px;color:black; font-size:11px; font-weight:bold;">${item.productName}</p>
+	                        	<p style="line-height: 11px; color:black; font-size:11px; font-weight:bold;">${item.productName}</p>
 	                        	<br/>
 	                        	<p style="color:gray; font-size:10px; font-weight:bold;">
 	                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
