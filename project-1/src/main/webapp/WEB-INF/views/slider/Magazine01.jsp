@@ -108,6 +108,9 @@
    body {
     zoom: 0.65;
   }
+  .modal-backdrop {
+  	background-color: transparent !important;
+  }
 </style>
 <div class="container custom-top">
   <div class="jumbotron rounded-3 " style="background-color: #FEDCBD;">
@@ -156,7 +159,7 @@
 		   	  <span class="modalC">찾아서 먹도록 해주세요.</span></p>
 	        </div>	       
 	        <div class="modal-footer">
-	          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width: 100px; height: 50px; font-size: 20px;">Close</button>
 	        </div>
 	 	 </div>
 	   </div>

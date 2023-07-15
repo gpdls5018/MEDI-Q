@@ -133,6 +133,9 @@
    body {
     zoom: 0.65;
   }
+  .modal-backdrop {
+  	background-color: transparent !important;
+  }
 </style>
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #87CEFA;">
@@ -180,7 +183,7 @@
 		   	  <span class="modalC">인증 마크를 확인해 주세요!</span></p>
 	        </div>	       
 	        <div class="modal-footer">
-	          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width: 100px; height: 50px; font-size: 20px;">Close</button>
 	        </div>
 	 	 </div>
 	   </div>

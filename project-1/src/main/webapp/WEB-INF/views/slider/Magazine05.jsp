@@ -132,6 +132,9 @@
    body {
     zoom: 0.65;
   }
+  .modal-backdrop {
+  	background-color: transparent !important;
+  }
 </style>
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #fff3d6;">
@@ -178,7 +181,7 @@
 		   	  <span class="modalC">체지방 감소에도 도움을 주는 L-카르니틴 등을 같이 조합해 보세요!</span></p>
 	        </div>	       
 	        <div class="modal-footer">
-	          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width: 100px; height: 50px; font-size: 20px;">Close</button>
 	        </div>
 	 	 </div>
 	   </div>
