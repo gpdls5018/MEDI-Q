@@ -257,9 +257,9 @@
                 <span style="color:#EF605D">&#9776;</span>
             </a>
         </div>
-        <a class="navbar-brand" style="position: absolute; margin-left: 42%; href="/">
-        	<img src="<c:url value="/resources/images/mainicon.png" />" width="50" height="50">
-        	<img src="<c:url value="/resources/images/maintitle.png" />" width="200" height="50">
+        <a class="navbar-brand" style="position: absolute; margin-left: 42%;" href="<c:url value='/' />">
+        	<img src="<c:url value='/resources/images/mainicon.png' />" width="50" height="50">
+        	<img src="<c:url value='/resources/images/maintitle.png' />" width="200" height="50">
         </a>
         <ul class="navbar-nav mr-3 " >
             <li class="nav-item text2 m-1 login">
