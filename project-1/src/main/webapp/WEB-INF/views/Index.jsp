@@ -25,11 +25,11 @@
 	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
 			    <div class="videologo">
-			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
-	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="100" height="50">
+	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="200" height="50">
 			    </div>
 			    <div id="video-controls">
-			      <button class="btn btn-warning" onclick="closeVideo()">Home</button>
+			      <button class="btn" onclick="closeVideo()">Home</button>
 			    </div>
 			    <div id="video-label">
 		    	  <label for="stop-video-checkbox">

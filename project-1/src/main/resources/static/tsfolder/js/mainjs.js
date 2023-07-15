@@ -1,4 +1,5 @@
 //////////////////////비디오 히든 로직////////////////////////////
+
 document.addEventListener("DOMContentLoaded", function() {
     var checkbox = document.getElementById("stop-video-checkbox");
     var videoContainer = document.getElementById("tsvideo-container");
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var videoContainer = document.getElementById("tsvideo-container");
     videoContainer.style.display = "none";
   }
-    
+  
   // The DOM element you wish to replace with Tagify
   var input = document.querySelector('input[name=postTag]');
   var whitelist = ["#혈압","#당뇨","#면역력 증진","#전립선 건강","#체지방 감소","#피로개선","#혈당","#비타민","#오메가","#피부건강"];
