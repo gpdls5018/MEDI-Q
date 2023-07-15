@@ -130,7 +130,9 @@
   	padding-top : 140px;
   	margin-bottom: 260px;
   }
-  
+   body {
+    zoom: 0.65;
+  }
 </style>
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #A3CF62;">
