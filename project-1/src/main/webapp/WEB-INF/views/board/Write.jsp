@@ -85,7 +85,7 @@
         }
     </style>
 </head>
-
+<jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <body>
     <header class="p-3 bg-danger" alt="메뉴 부분">
         <div class="container">
@@ -104,7 +104,7 @@
     <main>
         <div class="container-fluid">
             <figure>
-                <img src="pharm.png">
+                <img src="<c:url value="/resources/images/qna/pharm.png"/>">
                 <div class="inner">
                     <h1>Q & A</h1>
                     <h3>답답했던 영양제의 모든 것!</h3>
@@ -137,13 +137,5 @@
             </div>
         </div>
     </main>
-
-    <footer class="d-flex flex-wrap justify-content-between align-items-center pt-3 mt-4 border-top" style="background-color:#FDCDBC;">
-        <p class="col-md-4 mb-0 text-muted" style="font-weight:bold; color:black;">
-        © 2023 (주)한국소프트웨어아이엔씨 (153-759)<br/> 서울시 금천구 가산동 426-5 월드메르디앙 2차 413호 <br/> <a href="#"> ikosmo.co.kr</a></p>
-    
-        <ul class="nav col-md-4 justify-content-end mr-4">
-            <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
-        </ul>
-    </footer>
 </body>
+<jsp:include page="/WEB-INF/views/template/Footer.jsp"/>

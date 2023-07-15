@@ -83,9 +83,11 @@
         }
     </style>
 </head>
-
+<jsp:include page="/WEB-INF/views/template/Top.jsp"/>
+<div id="tsmain">
 <body>
-    <header class="p-3 bg-danger" alt="메뉴 부분">
+	
+    <!-- <header class="p-3 bg-danger" alt="메뉴 부분">
         <div class="container">
             <div class="row">
                 <h1 class="col-6 text-center"><a class="text-light text-decoration-none" href="#">Logo Position(Top)</a></h1>
@@ -98,7 +100,7 @@
                 </ul>
             </div>
         </div>
-    </header>
+    </header> -->
     <main>
         <div class="container-fluid">
             <figure>
@@ -110,6 +112,9 @@
                 </div>
             </figure>
         </div>
+        <div class="everybanner1">
+			<div class="everybanner1-1 clearfix"></div>
+		</div>
         <div class="container-fluid pt-3 mt-3">
             <div class="row d-flex flex-wrap align-content-stretch">
                 <div class="d-flex col-2">
@@ -158,17 +163,18 @@
                         <br/>
   
                         <h2 class="m-2 font-weight-bold font-weight-bold">Q & A 게시판</h2>
-                      	<h1>
-							Spring Framework <small>한줄 댓글-전체 목록 페이지(${listPagingData.map.nowPage }/${listPagingData.map.totalPage })</small>
-						</h1>                        
                         <!-- 질문에 대한 컨테이너 -->
-                        <a  href='<c:url value="/board/Write.do"/>'><span class="btn_text">글쓰기</span></a>
+                        <a  href='<c:url value="/board/Write.do"/>'><span class="btn_text">질문 작성</span></a>
                         <div class="row justify-content-center">
-                        	
+                        	<div class="jumbotron bg-info">
+								<h1>
+									Spring Framework <small>한줄 댓글-전체 목록 페이지(${listPagingData.map.nowPage }/${listPagingData.map.totalPage })</small>
+								</h1>
+							</div>
                         	<c:if test="${empty listPagingData.records }" var="isEmpty">
 								<div>등록된 자료가 없습니다.</div>
 							</c:if>
-                            <!-- 여기부터 리스트 나올 것: 1제목,2내용,3작성자,나이,성별 -->
+                            <!-- 여기부터 리스트 나올 것: 1제목,2내용,3나이,4성별,5작성자 -->
                             <c:if test="${not isEmpty }">
                             	<c:forEach var="record" items="${listPagingData.records }">
 	                                <div class="card col-12 m-2 p-0">
@@ -176,61 +182,12 @@
 		                                    
 		                                    <p class="card-title text1 font-weight-bold"><h4>${record.TITLE }</h4></p>
 		                                    <p class="card-text"><h6>${record.CONTENT }</h6></p>
-		                                    <p class="card-text text2 font-weight-bold pt-1"><h5>답글:영양제 유통기한이 지났다면 아깝지만 건강을 위해서 버리는게 나아요.</h5></p>
-		                                    <p class="card-text"><h6 class="font-weight-bold">${record.ID } 30대/여 작성일:${record.POSTDATE }</h6></p>
+		                                    <p class="card-text text2 font-weight-bold pt-1"><h5>답글:영양제 유통기한이 지났다면 아깝지만 건강을 위해서 버리는게 나아요.</h5></p><!-- A는 admin(관리자) --> 
+		                                    <p class="card-text"><h6 class="font-weight-bold">${record.NAME } ${record.AGE_GROUP} / ${record.GENDER} <%-- 작성일:${record.POSTDATE } --%></h6></p>
 		                                </a>
 	                                </div>
                                 </c:forEach>
                             </c:if>
-                            
-                            <div class="card col-12 m-2 p-0">
-                                <a class="card-body text-dark text-decoration-none p-2" href="https://www.daum.net">
-                                    <p class="card-title text1 font-weight-bold"><h4>Q.과다 복용 관련</h4></p>
-                                    <p class="card-text"><h6>인터넷에서 찾아보니깐 섭취권장량이 남성 16mgNE라고 하는데 어플은 50~1000mgNE 까지가 최적적량이라고
-                                        나와있는데 뭐가 맞는건가요? 제가 잘못 이해하고 있는건가요?</h6>
-                                    </p>
-                                    <p class="card-text text2 font-weight-bold pt-1"><h5>권장섭취량과 충분섭취량,상한섭취량을 구분해서 영양소를 복용해주세요</h5></p>
-                                    <p class="card-text"><h6 class="font-weight-bold">만** 30대/남</h6></p>
-                                </a>
-                            </div>
-                            <div class="card col-12 m-2 p-0">
-                                <a class="card-body text-dark text-decoration-none p-2" href="https://www.naver.com">
-                                    <p class="card-title text1 font-weight-bold"><h4>Q.포스트 바이오틱스가 4세대로 여러 효능(?)이 더 좋고 피부에도 좋다 그래서 구매하려고 하는데</h4></p>
-                                    <p class="card-text"><h6>프로바이오틱스를 섭취해야 장 건강에 좋다고 하는 글들도 많아서 헷갈립니다ㅜ 
-                                        포스트바이오틱스로는 장 건장에 도움을 줄 수 없는걸까요?</h6>
-                                    </p>
-                                    <p class="card-text text2 font-weight-bold pt-1">
-                                        <h5>A.프로바이오틱스와 포스트바이오틱스는 사람마다 효과 차이가 큰편이니, 효과를 모니터링하면서 나에게 잘 맞는 제품인지 확인해보세요.</h5>
-                                    </p>
-                                    <p class="card-text"><h6 class="font-weight-bold">먕** 10대/여</h6></p>
-                                </a>
-                            </div>
-                            <div class="card col-12 m-2 p-0">
-                                <a class="card-body text-dark text-decoration-none p-2" href="https://www.naver.com">
-                                    <p class="card-title text1 font-weight-bold"><h4>Q.복용 문의드립니다.</h4></p>
-                                    <p class="card-text"><h6>흡연자이고 오메가3,비타민D 섭취중. 추가로 밀크씨슬을 섭취하려고 하는데 먹는 영양제와 같이 섭취하면
-                                        안좋은 점이 있는지, 흡연자가 밀크씨슬을 섭취를 해도 상관이 없는지 궁금합니다.
-                                    </h6>
-                                    </p>
-                                    <p class="card-text text2 font-weight-bold pt-1">
-                                        <h5>밀크씨슬은 흡연자를 대상으로 한 연구가 많지 않지만. 작용 원리를 생각해볼 때 별다른 우려는 없으니 드셔도 좋아요.</h5>
-                                    </p>
-                                    <p class="card-text"><h6 class="font-weight-bold">전** 40대/남</h6></p>
-                                </a>
-                            </div>
-                            <div class="card col-12 m-2 p-0">
-                                <a class="card-body text-dark text-decoration-none p-2" href="https://www.naver.com">
-                                    <p class="card-title text1 font-weight-bold"><h4>Q.코로나 걸렸을 때 영양제</h4></p>
-                                    <p class="card-text">
-                                        <h6>코로나 확진 4일차에요. 혹시 같이 먹으면 좋은 영양제 있을까요? 궁금합니다.</h6>
-                                    </p>
-                                    <p class="card-text text2 font-weight-bold pt-1">
-                                        <h5>A.코로나 감염을 예방하기 위해, 또는 코로나 후유증에서 빨리 벗어나기 위해서는 비타민 C, 비타민 D, 아연 등
-                                        면역에 관련된 영양제가 도움이 됩니다.</h5>
-                                    </p>
-                                    <p class="card-text"><h6 class="font-weight-bold">나** 20대/여</h6></p>
-                                </a>
-                            </div>
                         </div>
                         <hr>
                     </div>
@@ -251,3 +208,4 @@
         <li class="page-item"><a class="page-link" href="#">Next</a></li>
     </ul> -->
 </body>
+<jsp:include page="/WEB-INF/views/template/Footer.jsp"/>

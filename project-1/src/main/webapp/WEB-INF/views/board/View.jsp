@@ -182,25 +182,13 @@ h6 {
          font-size: 2rem;
      }
 </style>
+<jsp:include page="/WEB-INF/views/template/Top.jsp"/>
+<!-- 메인 바디 부분 -->
 <body>
-	<header class="p-3 bg-danger" alt="메뉴 부분">
-	    <div class="container">
-	        <div class="row">
-	            <h1 class="col-6 text-center"><a class="text-light text-decoration-none" href="#">Logo Position(Top)</a></h1>
-	            <ul class="list-unstyled d-flex align-items-center p-1">
-	                <li class="col"><a class="text-light text-decoration-none" href="#">MENU1</a></li>
-	                <li class="col"><a class="text-light text-decoration-none" href="#">MENU2</a></li>
-	                <li class="col"><a class="text-light text-decoration-none" href="#">MENU3</a></li>
-	                <li class="col"><a class="text-light text-decoration-none" href="#">MENU4</a></li>
-	                <li class="col"><a class="text-light text-decoration-none" href="#">MENU5</a></li>
-	            </ul>
-	        </div>
-	    </div>
-	</header>
 	<main>
 	    <div class="container-fluid">
 	        <figure>
-	            <img src="pharm.png">
+	            <img src="<c:url value="/resources/images/qna/pharm.png"/>">
 	            <div class="inner">
 	                <h1>Q & A</h1>
 	                <h3>답답했던 영양제의 모든 것!</h3>
@@ -227,18 +215,18 @@ h6 {
 							<!-- 출력 부분 -->
 	                        <div class="card col-12 m-2 p-1">
 	                            <div class="card-body text-dark text-decoration-none p-2">
-	                                <p class="card-title font-weight-bold m-2"><h4>${result.TITLE }</h4></p>
-	                                <p class="card-text"><h6>${result.CONTENT }</h6></p>
+	                                <p class="card-title font-weight-bold m-2"><h4>${record.TITLE }</h4></p>
+	                                <p class="card-text"><h6>${record.CONTENT }</h6></p>
 	                                <br/>
 	                                <hr style="border: 1px solid gray;"/>
 	                                <br/>
-	                                <p class="card-text"><h6 class="font-weight-bold">${result.ID } 30대/여</h6></p>
-	                                <p class="card-text"><h6 class="font-weight-bold">${result.POSTDATE }</h6></p>
+	                                <p class="card-text"><h6 class="font-weight-bold">${record.NAME } ${record.AGE_GROUP} / ${record.GENDER}</h6></p>
+	                                <p class="card-text"><h6 class="font-weight-bold">${record.POSTDATE }</h6></p>
 	                            </div>
 	                        </div>
 	                        <!-- 임시위치 버튼 -->
 	                        <div class="text-center mt-auto" id="content_footer">
-					<a href='<c:url value="/board/Edit.do?no=${result.NO}"/>' class="btn btn_write">
+					<a href='<c:url value="/board/Edit.do?no=${record.NO}"/>' class="btn btn_write">
 						<span class="btn_text">수정</span>
 					</a> 
 					<!-- <a href="javascript:deleteArticle();" class="btn btn_write"> -->
@@ -270,7 +258,7 @@ h6 {
 	                </div>
 	                <div class="d-flex col flex-wrap flex-direction justify-content-between mt-3">
 	                    <a class="text4 text-decoration-none">이전 질문</a>
-	                    <a class="text4 text-decoration-none">질문 목록</a>
+	                    <a class="text4 text-decoration-none" href="<c:url value="/board/List.do"/>">질문 목록</a><!-- 그냥 넘길지 page번호까지 넘길지 고민 중 -->
 	                    <a class="text4 text-decoration-none" >다음 질문</a>
 	                </div>
 	                <br/>
@@ -290,10 +278,11 @@ h6 {
         </ul>
     </footer>
 </body>
+<jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
 <script>
 	function isDelete(){
 		if(confirm("삭제하시겠습니까?")){
-			location.replace("<c:url value="/board/Delete.do?no=${result.NO}"/>");
+			location.replace("<c:url value="/board/Delete.do?no=${record.NO}"/>");
 		}
 	}
 </script>
