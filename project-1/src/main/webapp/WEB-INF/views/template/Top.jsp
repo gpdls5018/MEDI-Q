@@ -70,7 +70,7 @@
             z-index: 500;
         }
         .bg-gra1{
-            background:linear-gradient(180deg,#ffa585,#fedacd);
+
             z-index: 500;
         }
         .text1{
@@ -251,40 +251,44 @@
 </script>
 <body>
 <div class="container-fluid position-relative p-0">
-	 <nav class="navbar navbar-expand-sm navbar-dark fixed-top justify-content-between" id="navbar">
-        <div class="firstdown display-4 p-1 mx-4">
-            <a class="pull-bs-canvas-left">
-                <span style="color:#EF605D">&#9776;</span>
+	 <nav class="navbar navbar-expand-sm navbar-dark fixed-top justify-content-between" style="padding:0px;" id="navbar">
+        <div class="firstdown p-0 mx-4">
+            <a class="pull-bs-canvas-left ml-5 d-flex">
+                <span style="font-weight:bold; font-size:50px; color:#EF605D">&#9776;</span>
             </a>
         </div>
         <a class="navbar-brand" style="position: absolute; margin-left: 42%;" href="<c:url value='/' />">
-        	<img src="<c:url value='/resources/images/mainicon.png' />" width="50" height="50">
-        	<img src="<c:url value='/resources/images/maintitle.png' />" width="200" height="50">
+        	<img src="<c:url value='/resources/images/mainicon.png' />" width="40" height="40">
+        	<img src="<c:url value='/resources/images/maintitle.png' />" width="160" height="40">
         </a>
-        <ul class="navbar-nav mr-3 " >
-            <li class="nav-item text2 m-1 login">
+        <ul class="navbar-nav mx-5 " >
+            <li class="nav-item text2 m-2 login">
                 <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Login.do"/>">로그인</a>
             </li>
-            <li class="nav-item text2 m-1 login">
+            <li class="nav-item text2 m-2 login">
                 <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Join.do"/>">회원가입</a>
             </li>
-            <li class="nav-item text2 m-1 logout">
+            <li class="nav-item text2 m-2 logout">
                 <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>
             </li>
-            <li class="nav-item text2 m-1 logout">
+            <li class="nav-item text2 m-2 logout">
                 <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Logout.do"/>">로그아웃</a>
             </li>
         </ul>
     </nav>
     <!-- navbar left side -->
-    <div class="bs-canvas bs-canvas-left position-fixed bg-light h-100 justify-content-start">
+    <div class="bs-canvas bs-canvas-left position-fixed h-100 justify-content-start" style="background: linear-gradient(to bottom, #ffffff, #FFFAFA);">
         <header class="bs-canvas-header p-3 bg-gra1 justify-content-center">
-        	<h4 class="d-inline-block text-light mb-0 text1">Medi-Q</h4>
+        	<h4 class="d-inline-block mb-0 text1">
+        		<img src="<c:url value='/resources/images/mainicon.png' />" width="40" height="40">
+        		<img src="<c:url value='/resources/images/maintitle.png' />" width="160" height="40">
+        	</h4>
             <button type="button" class="bs-canvas-close close" aria-label="Close">
-                <span aria-hidden="true" class="text-light text1">&times;</span>
+                <span aria-hidden="true" class="text-dark text1">&times;</span>
             </button>
         </header>
-        <div class="bs-canvas-content px-3 py-5 ">
+        <hr>
+        <div class="bs-canvas-content px-3 pb-5 ">
             <div class="sidemenu m-1 d-flex" style="align-items: center;">
                 <a class="text-decoration-none font-weight-bold" style="font-size:20px;" href="<c:url value="/NutrientSelect.do"/>">
                 	<img src="<c:url value="/resources/images/tsimages/free-icon-vitamins-525955.png"/>" width="25" height="25">
@@ -320,7 +324,7 @@
                 </a>
             </div>
             <hr>
-            <div class="dropdown sidemenu m-1 d-flex p-0" data-toggle="dropdown">
+            <div class="dropdown sidemenu m-1 d-flex py-2" data-toggle="dropdown">
                 <button type="button" class="btn dropdown-toggle" style="font-size:20px;" data-toggle="dropdown">
                 	<img src="<c:url value="/resources/images/tsimages/free-icon-pharmacy-1404402.png"/>" width="25" height="25">
                 	정신건강 테스트
