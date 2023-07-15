@@ -16,13 +16,13 @@
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 25px;
     margin-bottom : 150px;
-    padding-top : 120px;
+    padding-top : 145px;
   }
   .contentTop{
-  	margin-top: 130px;
+  	margin-top: 70px;
   }
   .paragraph{
-  	margin-top: 160px;
+  	margin-top: 115px;
   	font-size: 23px;
   }
   .custom-text{
@@ -76,7 +76,8 @@
     background: white;
     /* 가로 스크롤 */
     white-space: nowrap;
-    height: 300px;
+    height: 400px;
+    width: 1500px;
   }
   .card {
     display: inline-flex;
@@ -91,22 +92,33 @@
     text-overflow: ellipsis;
   }
   .card-title {
-    font-size: 12px;
+    font-size: 15px;
     color:#A7A4A4;
   }
   .card-content {
     width: 100px;
+    font-size: 22px;
   }
   .product-img {
     border-radius: 20%;
     border: #ccc solid 1px;
   }
   .custom-footer{
-  	padding-top : 100px;
-  	margin-bottom: 250px;
+  	padding-top : 20px;
+  	margin-bottom: 180px;
   }
    body {
-    zoom: 0.65;
+    zoom: 0.70;
+  }
+  .modal-backdrop {
+  	background-color: transparent !important;
+  }
+  .modal-dialog {
+   margin-top: 300px;
+   margin-right: 1300px;
+  }
+  .wrap-vertical {
+    overflow: hidden; /* 스크롤바 숨김 */
   }
 </style>
 <div class="container custom-top">
@@ -156,7 +168,7 @@
 		   	  <span class="modalC">찾아서 먹도록 해주세요.</span></p>
 	        </div>	       
 	        <div class="modal-footer">
-	          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width: 100px; height: 50px; font-size: 20px;">Close</button>
 	        </div>
 	 	 </div>
 	   </div>
@@ -228,21 +240,26 @@
 </div>
 <div class="container custom-footer">
   <span class="custom-text">
-	<img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid" style="width:50px">
-  	&nbsp;&nbsp;관련 영양제 인기 TOP 10 <i class="bi bi-chat-quote"></i></span>
+	<img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-1" style="width:65px">
+  	&nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
       등록된 제품이 없습니다
     </c:if>
     <c:if test="${not listIsEmpty}">
-      <c:forEach var="record" begin="0" end="10" items="${listData}" >
-        <div class="card" style="width:150px;height:400px;">
-          <c:if test="${record.imgURL eq '/assets/image_search_sample.svg'}" var="notImage">
-            <a href='/detail.do?no=${record.no}'><img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="object-fit:fill" class="img-fluid product-img"></a>
-          </c:if>
-          <c:if test="${not notImage}">
-            <a href='/detail.do?no=${record.no}'><img src="${record.imgURL}" style="width:150px;height:150px;" class="img-fluid product-img"></a>
-          </c:if>
+      <c:forEach var="record" begin="0" end="4" items="${listData}" >
+        <div class="card" style="width:190px;height:400px;">
+          <a href='/detail.do?no=${record.no}'>
+  			<c:choose>
+    		  <c:when test="${not empty record.imgURL}">
+     			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
+   			  </c:when>
+    		  <c:otherwise>
+      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+    		  </c:otherwise>
+  			</c:choose>
+		  </a>
+
           <div class="card-footer" style="white-space:normal">
             <span class="card-title">${record.company}</span><br>
             <span class="card-content">
