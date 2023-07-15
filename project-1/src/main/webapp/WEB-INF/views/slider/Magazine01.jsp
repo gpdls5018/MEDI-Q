@@ -115,6 +115,9 @@
    margin-top: 300px;
    margin-right: 1300px;
   }
+  .wrap-vertical {
+    overflow: hidden; /* 스크롤바 숨김 */
+  }
 </style>
 <div class="container custom-top">
   <div class="jumbotron rounded-3 " style="background-color: #FEDCBD;">
@@ -236,13 +239,13 @@
 <div class="container custom-footer">
   <span class="custom-text">
 	<img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid" style="width:50px">
-  	&nbsp;&nbsp;관련 영양제 인기 TOP 10 <i class="bi bi-chat-quote"></i></span>
+  	&nbsp;&nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
       등록된 제품이 없습니다
     </c:if>
     <c:if test="${not listIsEmpty}">
-      <c:forEach var="record" begin="0" end="10" items="${listData}" >
+      <c:forEach var="record" begin="0" end="5" items="${listData}" >
         <div class="card" style="width:150px;height:400px;">
           <c:if test="${record.imgURL eq '/assets/image_search_sample.svg'}" var="notImage">
             <a href='/detail.do?no=${record.no}'><img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="object-fit:fill" class="img-fluid product-img"></a>
