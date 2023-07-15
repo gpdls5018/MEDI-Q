@@ -135,6 +135,10 @@
   .modal-backdrop {
   	background-color: transparent !important;
   }
+  .modal-dialog {
+   margin-top: 300px;
+   margin-right: 1300px;
+  }
 </style>
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #fff3d6;">
