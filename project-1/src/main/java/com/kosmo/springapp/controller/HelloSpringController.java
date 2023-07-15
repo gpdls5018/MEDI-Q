@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.kosmo.springapp.model.AvgStarScoreCountDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
+import com.kosmo.springapp.nutrient.service.impl.NutrientSelectMapper;
 import com.kosmo.springapp.service.MainPageService;
 import com.kosmo.springapp.service.impl.MainPageServiceImpl;
 import com.kosmo.springapp.service.impl.SelectFoodServiceImpl;
@@ -22,6 +23,9 @@ public class HelloSpringController {
 	MainPageServiceImpl mainPageService;
 	@Autowired
 	SelectFoodServiceImpl selectfoodservice;
+	@Autowired
+	private NutrientSelectMapper nutrietnSelectMapper;
+	
 	
 	@GetMapping("/") 
 	public String index(Model model) {
@@ -29,6 +33,14 @@ public class HelloSpringController {
 		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFoodScore();
 		model.addAttribute("listData", listData);
 		model.addAttribute("foodList",foodList);
+		
+		// 조회수에 따른 인기영양소 Top10 가져오기
+		List<String> top10 = nutrietnSelectMapper.getTop10();
+		model.addAttribute("top10",top10);
+		
+		
+		
+		
 		return "Index";
 	}
 }

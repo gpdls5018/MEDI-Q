@@ -267,10 +267,8 @@
             <div class="active border-0 text-center" style="padding-top:20px">
             	<!-- 조회수 -->
             	<div class="d-flex justify-content-end">
-            		<span class="badge badge-warning" style="width: 100px;">
-            		
-           				<a style="color:black; text-decoration: none;" href="/NutrientSelect.do">&nbsp;조회수: ${n_view }${i_view }&nbsp;</a>
-           			
+            		<span class="badge badge-warning" style="width: 130px;">
+           				<a style="font-size:16px; color:black; text-decoration: none;" href="/NutrientSelect.do">&nbsp;조회수: ${n_view }${i_view }&nbsp;</a>
            			</span>
             	</div>
                 <!-- 이미지 -->
