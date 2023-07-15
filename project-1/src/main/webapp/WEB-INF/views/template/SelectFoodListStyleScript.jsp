@@ -13,65 +13,15 @@
 
     @font-face {
         font-family: 'Pretendard';
-        font-weight: 900;
-        font-display: swap;
-        src: local('Pretendard Black'), url('https://cdn.pillyze.io/web/fonts/Pretendard-Black.subset.woff2') format('woff2'), url('./woff-subset/Pretendard-Black.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'Pretendard';
         font-weight: 800;
         font-display: swap;
         src: local('Pretendard ExtraBold'), url('https://cdn.pillyze.io/web/fonts/Pretendard-ExtraBold.subset.woff2') format('woff2'), url('./woff-subset/Pretendard-ExtraBold.woff') format('woff');
     }
-
-    @font-face {
-        font-family: 'Pretendard';
-        font-weight: 700;
-        font-display: swap;
-        src: local('Pretendard Bold'), url('https://cdn.pillyze.io/web/fonts/Pretendard-Bold.subset.woff2') format('woff2'), url('./woff-subset/Pretendard-Bold.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'Pretendard';
-        font-weight: 600;
-        font-display: swap;
-        src: local('Pretendard SemiBold'), url('https://cdn.pillyze.io/web/fonts/Pretendard-SemiBold.subset.woff2') format('woff2'), url('./woff-subset/Pretendard-SemiBold.woff') format('woff');
-    }
-
     @font-face {
         font-family: 'Pretendard';
         font-weight: 500;
         font-display: swap;
         src: local('Pretendard Medium'), url('https://cdn.pillyze.io/web/fonts/Pretendard-Medium.subset.woff2') format('woff2'), url('./woff-subset/Pretendard-Medium.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'Pretendard';
-        font-weight: 400;
-        font-display: swap;
-        src: local('Pretendard Regular'), url('https://cdn.pillyze.io/web/fonts/Pretendard-Regular.subset.woff2') format('woff2'), url('./woff-subset/Pretendard-Regular.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'Pretendard';
-        font-weight: 300;
-        font-display: swap;
-        src: local('Pretendard Light'), url('https://cdn.pillyze.io/web/fonts/Pretendard-Light.subset.woff2') format('woff2'), url('./woff-subset/Pretendard-Light.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'Pretendard';
-        font-weight: 200;
-        font-display: swap;
-        src: local('Pretendard ExtraLight'), url('https://cdn.pillyze.io/web/fonts/Pretendard-ExtraLight.subset.woff2') format('woff2'), url('./woff-subset/Pretendard-ExtraLight.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'Pretendard';
-        font-weight: 100;
-        font-display: swap;
-        src: local('Pretendard Thin'), url('https://cdn.pillyze.io/web/fonts/Pretendard-Thin.subset.woff2') format('woff2'), url('./woff-subset/Pretendard-Thin.woff') format('woff');
     }
 
     html{-webkit-text-size-adjust:none; /*-ms-user-select:none; -khtml-user-select:none; -webkit-user-select:none; user-select:none;*/-webkit-touch-callout:none; }
@@ -2126,7 +2076,7 @@ background-size: 128px 116px; */margin: 6px 0px 0px 0px;}
     .ingredient-search-top .ipt-main-wrap .ipt-main:focus{outline: none !important;}
     .ingredient-search-top .ipt-main-wrap .btn-search{position: absolute; z-index: 91;
         width: 124px; top: 0px; right: 1px; border-radius: 32px;
-        height: 64px; background: linear-gradient(90deg, #FDCDBC 0%, #EF605D 100%);}
+        height: 64px; background: #EF605D;}
     .ingredient-search-top .ipt-main-wrap .btn-search:after{position: absolute; content: "";
         display: block; width: 20px; height: 20px; top: 22px; left: calc(50% - 10px);
         background:url(https://cdn.pillyze.io/web/img/plz-search.webp) center no-repeat;
