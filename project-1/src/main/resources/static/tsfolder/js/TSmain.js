@@ -28,13 +28,13 @@ function showChannel(data) {
 
   let output = `
     <div class="col-md-6 mb-4 text-center">
-        <img class="img-fluid" src='/resources/images/tsimages/ba2.jpg' style="border-radius: 10px; width:450px; height:300px;" >
+        <img class="img-fluid" src='/resources/images/tsimages/ba2.jpg' style="border-radius: 10px; width:450px; height:315px;" >
         <img class="img-fluid" src="${imageLink}" hidden> 
         <br>
         <a class="btn btn-danger btn-sm" href="https://youtube.com/@Kalo_Lee/${channellId}"
         target="_blank" hidden>약 정보 채널</a>
     </div>
-    <div class="col-md-6 mb-4">
+    <div class="col-md-6 mt-3">
         <ul class="list-group shadow-lg" style="border-radius: 20px;">
             <li class="list-group-item bg-danger text-white" hidden><strong>이름: ${title}</li>
             <li class="list-group-item " hidden>소개:<br/><br/>${desc}<br/><br/><br/><br/></li>

@@ -44,13 +44,13 @@
 	}
 	.custom-main{
 		padding-left:170px;
-		margin-bottom: 150px;
+		margin-bottom: 130px;
 	}
 	.first-text{
-		margin-top: 150px;
+		margin-top: 100px;
 	}
 	.second-text{
-		margin-top: 70px;
+		margin-top: 60px;
 	}
 	.medi-img{
 		margin-right: 25px;
