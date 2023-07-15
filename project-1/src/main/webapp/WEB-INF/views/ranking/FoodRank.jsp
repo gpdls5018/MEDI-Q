@@ -16,7 +16,7 @@
 			<!-- 건기식 또는 회사이름을 적었을 경우 -->
 			<c:if test="${not empty foodname}">
 				<div class="top-wrap-070">
-					<h1 class="txt2">${foodname}에 대한 <br class="u680">제품 검색 결과 <span>${listData.size() + listData2.size()}</span>건</h1>
+					<h1 class="txt2" style="margin-bottom: 24px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>${foodname}</span>에 대한 <br class="u680">제품 검색 결과 <span>${listData.size() + listData2.size()}</span>건</h1>
 				</div>
 				<div class="ipt-main-wrap">
 				<form action="/functionfood/select.do">
@@ -100,7 +100,7 @@
 				<!-- 화면을 처음들어 갔을 경우 건기식 또는 회사이름을 안적었을 경우 -->
 				<c:if test="${empty foodname}">
 				<div class="top-wrap-070">
-					<h1 class="txt2">인기 영양제</h1>
+					<h1 class="txt2" style="margin-bottom: 30px; text-align: center; font-size: 2.5em;"><b><span>인기 건강기능식품</span></b></h1>
 				</div>
 				<div class="ipt-main-wrap">
 				<form action="/functionfood/select.do">
