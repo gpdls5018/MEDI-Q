@@ -158,7 +158,8 @@ left: 146px;
 
 	<!-- 탭 -->
 	<div class="tab-content mt-5 mb-5">
-	
+		<button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')">구매하러 가기</button>
+		<button onclick="window.location.href = '/ranking/selectfood.do'">검색하러 가기</button>
 	  	<div class="effect-custom-font mt-5" style="font-size:40px;">제품의 상세정보 내용이에요! </div>
 	  	<div class="" id="detailTable"><!-- 탭 1 시작 -->
            	<table class="type09 mt-3">
@@ -241,7 +242,10 @@ left: 146px;
 	                    <c:set var="nutrientList" value="${fn:split(listOne.nutrient, '$')}" />
 	                    <td>
 	                        <c:forEach items="${nutrientList}" var="item">
-	                            <span class="badge badge-warning">${item}</span>
+	                    	<c:set var="item" value="${fn:replace(item, ' ', '')}" />
+		                        <a href="/NutrientDetail.do?name=${item}">
+		                            <span class="badge badge-warning">${item}</span>
+		                        </a>
 	                        </c:forEach>
 	                    </td>
 	                </tr>
