@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 
 
@@ -51,7 +52,6 @@
             <div id="top-banner-1" class="banner">
 	            <a href="#">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper1" >
-	
 	              </div>
 	            </a>
             </div>
@@ -382,7 +382,7 @@
 									<span class="txt1">${item.company}</span>
 									<span class="txt2">${item.productName}</span>
 									<div class="review d-flex" style="width:inherit;">
-										<span class="star-point">${item.AVG_Score }</span>
+										<span class="star-point"><fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }</span>
 										<span class="txt3">(${item.REVIEW_Count }개)</span>
 									</div>
 									<!--<div class="card-tags">
