@@ -25,11 +25,11 @@
 	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
 			    <div class="videologo">
-			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
-	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="100" height="50">
+	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="200" height="50">
 			    </div>
 			    <div id="video-controls">
-			      <button class="btn btn-warning" onclick="closeVideo()">Home</button>
+			      <button class="btn" onclick="closeVideo()">Home</button>
 			    </div>
 			    <div id="video-label">
 		    	  <label for="stop-video-checkbox">
@@ -112,12 +112,12 @@
 	            </form>
 	        </div>
 	        <div id="hashtaglink" class="ml-1 py-5 row" >
-                <a href="#" style="font-style:italic;font-weight: bold;color:green">#피부건강</a>&nbsp;
-	        	<a href="#" style="font-style:italic;font-weight: bold;color:palevioletred">#면역력 증진</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:mediumpurple ">#전립선 건강</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:sandybrown">#체지방 감소</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:salmon ">#비타민</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:lightskyblue ">#혈당</a>&nbsp;
+                <a href="#" style="font-weight: bold;color:green">#피부건강</a>&nbsp;
+	        	<a href="#" style="font-weight: bold;color:palevioletred">#면역력 증진</a>&nbsp;
+		        <a href="#" style="font-weight: bold;color:mediumpurple ">#전립선 건강</a>&nbsp;
+		        <a href="#" style="font-weight: bold;color:sandybrown">#체지방 감소</a>&nbsp;
+		        <a href="#" style="font-weight: bold;color:salmon ">#비타민</a>&nbsp;
+		        <a href="#" style="font-weight: bold;color:lightskyblue ">#혈당</a>&nbsp;
 		    </div >
 	    </div>
 	    
@@ -339,7 +339,7 @@
 	                    </div><!-- qna-card의 끝 -->
 	            </div>
 	            <div class="clearfix mr-3">
-	                <a tabindex="0" class="more-qna" href="#">Q&amp;A 더보기</a>
+	                <a tabindex="0" class="more-qna" href="<c:url value="/board/List.do" />">Q&amp;A 더보기</a>
 	            </div>
 	        </div>
 	    </div>

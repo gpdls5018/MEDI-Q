@@ -5,7 +5,7 @@
 <!-- 매퍼 파일 -->
 <mapper namespace="com.kosmo.springapp.service.AnalyzeMyReportMapper">
  	<select id="selectFoodListForMyTakePurpose" parameterType="String" resultType="String">
- 		SELECT * FROM INGREDIENT WHERE I_FUNC LIKE '%' || #{takePurpose} || '%'
+ 		SELECT I_FINDINGNAME FROM INGREDIENT WHERE I_FUNC LIKE '%' || #{takePurpose} || '%'
  	</select>
  	<select id="selectMyFoodList" parameterType="String" resultType="String">
  		SELECT nutrient FROM FOODTABLE WHERE productname LIKE '%' || #{takeFood} || '%'

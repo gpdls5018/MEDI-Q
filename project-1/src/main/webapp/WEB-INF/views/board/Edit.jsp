@@ -85,25 +85,12 @@
         }
     </style>
 </head>
+<jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <body>
-    <header class="p-3 bg-danger" alt="메뉴 부분">
-        <div class="container">
-            <div class="row">
-                <h1 class="col-6 text-center"><a class="text-light text-decoration-none" href="#">Logo Position(Top)</a></h1>
-                <ul class="list-unstyled d-flex align-items-center p-1">
-                    <li class="col"><a class="text-light text-decoration-none" href="#">MENU1</a></li>
-                    <li class="col"><a class="text-light text-decoration-none" href="#">MENU2</a></li>
-                    <li class="col"><a class="text-light text-decoration-none" href="#">MENU3</a></li>
-                    <li class="col"><a class="text-light text-decoration-none" href="#">MENU4</a></li>
-                    <li class="col"><a class="text-light text-decoration-none" href="#">MENU5</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
     <main>
         <div class="container-fluid">
             <figure>
-                <img src="pharm.png">
+                <img src="<c:url value="/resources/images/qna/pharm.png"/>">
                 <div class="inner">
                     <h1>Q & A</h1>
                     <h3>답답했던 영양제의 모든 것!</h3>
@@ -115,20 +102,24 @@
             <div class="row d-flex flex-wrap align-content-stretch">
                 <div class="d-flex col-2">
                 </div>
-                
+                <c:if test="${! empty InputError}">
+					<div class="alert alert-success alert-dismissible fade show">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Failure!</strong> ${InputError}
+					</div>
+				</c:if>
                 <div class="d-flex col-8 flex-wrap flex-direction justify-content-center align-content-stretch">
                     <div class="col">
-                    	<strong>Failure!</strong> ${InputError}
                         <form method="post" action="/board/EditProcess.do">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             <div class="form-group">
                                 <label><kbd class="lead bg-success text3" style="background:linear-gradient(0deg,#ffa585,#fedacd);">제목</kbd></label>
-                                <input type="hidden" name="no" value="${empty result.NO ? param.NO :result.NO}" />
-                                <input type="text"  value='${result.TITLE}${param.TITLE}' class="form-control" placeholder="제목을 입력하세요" name="title">
+                                <input type="hidden" name="no" value="${empty record.NO ? param.NO :record.NO}" />
+                                <input type="text"  value='${record.TITLE}${param.TITLE}' class="form-control" placeholder="제목을 입력하세요" name="title">
                             </div>
                             <div class="form-group">
                                 <label><kbd class="lead bg-success text3" style="background:linear-gradient(0deg,#ffa585,#fedacd);">내용</kbd></label>
-                                <textarea class="form-control" rows="15" name="content">${result.CONTENT}${param.CONTENT }</textarea>
+                                <textarea class="form-control" rows="15" name="content">${record.CONTENT}${param.CONTENT }</textarea>
                             </div>
                             <button type="submit" class="btn btn-light text-light text1"style="background:linear-gradient(0deg,#ffa585,#fedacd);">수정</button>
                         </form>
@@ -139,13 +130,5 @@
             </div>
         </div>
     </main>
-
-    <footer class="d-flex flex-wrap justify-content-between align-items-center pt-3 mt-4 border-top" style="background-color:#FDCDBC;">
-        <p class="col-md-4 mb-0 text-muted" style="font-weight:bold; color:black;">
-        © 2023 (주)한국소프트웨어아이엔씨 (153-759)<br/> 서울시 금천구 가산동 426-5 월드메르디앙 2차 413호 <br/> <a href="#"> ikosmo.co.kr</a></p>
-    
-        <ul class="nav col-md-4 justify-content-end mr-4">
-            <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
-        </ul>
-    </footer>
 </body>
+<jsp:include page="/WEB-INF/views/template/Footer.jsp"/>

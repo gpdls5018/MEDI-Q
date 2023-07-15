@@ -158,7 +158,8 @@ left: 146px;
 
 	<!-- 탭 -->
 	<div class="tab-content mt-5 mb-5">
-	
+		<button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')">구매하러 가기</button>
+		<button onclick="window.location.href = '/ranking/selectfood.do'">검색하러 가기</button>
 	  	<div class="effect-custom-font mt-5" style="font-size:40px;">제품의 상세정보 내용이에요! </div>
 	  	<div class="" id="detailTable"><!-- 탭 1 시작 -->
            	<table class="type09 mt-3">
@@ -169,23 +170,30 @@ left: 146px;
 	                </tr>
                 </thead>
                 <tbody>
+                	<c:if test="${not empty listOne.postNo }">
 	                <tr>
 	                    <th scope="row">등록번호</th>
 	                    <td>${listOne.postNo}</td>
 	                </tr>
+	                </c:if>
+	                <c:if test="${not empty listOne.company }">
 	                <tr>
 	                    <th scope="row">회사명</th>
 	                    <td>${listOne.company}</td>
 	                </tr>
+	                </c:if>
+	                <c:if test="${not empty listOne.expiration }">
 	                <tr>
 	                    <th scope="row">유통기한</th>
 	                    <td>${listOne.expiration}</td>
 	                </tr>
+	                </c:if>
+	                <c:if test="${not empty listOne.shape }">
 	                <tr>
 	                    <th scope="row">형태</th>
 	                    <td>
 	                        <c:choose>
-	                            <c:when test="${listOne.shape eq '정제'}">
+	                            <c:when test="${listOne.shape eq '정제' or listOne.shape eq '정'}">
 	                                <img src="<c:url value="resources/images/shape/정제.png"/>" style="width:100px;height:100px;"/><br>
 	                                정제
 	                            </c:when>
@@ -224,36 +232,55 @@ left: 146px;
 	                        </c:choose>
 	                    </td>
 	                </tr>
+	                </c:if>
+	                <c:if test="${not empty listOne.intake }">
 	                <tr>
 	                    <th scope="row">복용방법</th>
 	                    <td>${fn:replace(listOne.intake,'$',',')}</td>
 	                </tr>
+	                </c:if>
+	                <c:if test="${not empty listOne.standard }">
 	                <tr>
 	                    <th scope="row">규격</th>
-	                    <td>${fn:replace(listOne.standard,'$',',')}</td>
+	                    <td>
+	                    ${fn:replace(listOne.standard,'$',',')}<br/>
+	                    </td>
 	                </tr>
+	                </c:if>
+	                
+	                <c:if test="${not empty listOne.caution }">
 	                <tr>
 	                    <th scope="row">주의사항</th>
-	                    <td>${listOne.caution}</td>
+	                    <td>
+	                    	${fn:replace(listOne.caution,'$',',')}
+	                    </td>
 	                </tr>
+	                </c:if>
+	                <c:if test="${not empty listOne.nutrient }">
 	                <tr>
 	                    <th scope="row">성분</th>
 	                    <c:set var="nutrientList" value="${fn:split(listOne.nutrient, '$')}" />
 	                    <td>
 	                        <c:forEach items="${nutrientList}" var="item">
-	                            <span class="badge badge-warning">${item}</span>
+	                    	<c:set var="item" value="${fn:replace(item, ' ', '')}" />
+		                        <a href="/NutrientDetail.do?name=${item}">
+		                            <span class="badge badge-warning" style="font-size: 15px;">${item}</span>&nbsp;&nbsp;
+		                        </a>
 	                        </c:forEach>
 	                    </td>
 	                </tr>
+	                </c:if>
+	                <c:if test="${not empty listOne.material }">
 	                <tr>
 	                    <th scope="row">기능성 정보</th>
 	                    <c:set var="materialList" value="${fn:split(listOne.material, '$')}" />
 	                    <td>
 	                        <c:forEach items="${materialList}" var="item">
-	                            <span class="badge badge-danger">${item}</span>
+	                            <span class="badge badge-danger" style="font-size: 15px;">${item}</span><br/>
 	                        </c:forEach>
 	                    </td>
 	                </tr>
+	                </c:if>
                 </tbody>
             </table>
        	</div><!-- 탭 1 끝 -->

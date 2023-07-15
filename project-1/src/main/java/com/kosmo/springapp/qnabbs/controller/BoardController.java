@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosmo.springapp.qnabbs.service.ListPagingData;
@@ -27,11 +28,12 @@ public class BoardController {
 	
 	@Autowired
 	private BoardServiceImpl board;
-	
-	@GetMapping("/List.do")
+	//@GetMapping("/List.do")
+	@RequestMapping(value="/List.do",method = {RequestMethod.GET,RequestMethod.POST})
 	public String list(
 			@RequestParam Map map,
-			@RequestParam(required = false,defaultValue = "1",value = PagingUtil.NOWPAGE) int nowPage,HttpServletRequest req,
+			@RequestParam(required = false,defaultValue = "1",value = PagingUtil.NOWPAGE) int nowPage,
+			HttpServletRequest req,
 			Model model) {
 		//Map map = new HashMap<>();
 		//List<Map> records = board.selectList(map);
@@ -50,13 +52,13 @@ public class BoardController {
 	}
 	@PostMapping("/WriteProcess.do")
 	public String writeProcess(@RequestParam Map map,Model model) {
-		map.put("id", "KIM");
+		map.put("id", "xogus3308");
 		int affected = board.insert(map);
 		System.out.println(affected);
 		//System.out.println("SELECT 전"+map);
 		map = board.selectOne(map);
 		//System.out.println("SELECT 후"+map);
-		model.addAttribute("result", map);
+		model.addAttribute("record", map);
 		
 		return  "board/View";
 	}
@@ -65,8 +67,8 @@ public class BoardController {
 	public String view(@RequestParam Map map,Model model) { 
 		
 		map = board.selectOne(map);
-		model.addAttribute("result", map);
-		
+		model.addAttribute("record", map);
+		//System.out.println(model);//콘솔 체크용
 		return "board/View";
 	}
 	@GetMapping("/Edit.do")
@@ -75,8 +77,8 @@ public class BoardController {
 		map.put("id", "KIM");
 		map=board.selectOne(map);
 		System.out.println(map);
-		model.addAttribute("result", map);
-		System.out.println("result값확인"+model);
+		model.addAttribute("record", map);
+		System.out.println("record값확인"+model);
 		return "board/Edit";
 	}
 	@PostMapping("/EditProcess.do")
@@ -86,7 +88,7 @@ public class BoardController {
 		int affected = board.update(map);
 	    if (affected == 0) {
 	        model.addAttribute("inputError", "입력 오류입니다. 다시 입력해주세요");
-	        model.addAttribute("result", map);
+	        model.addAttribute("record", map);
 	        return "board/Edit";
 	    }
 	    //redircet로도 가능
