@@ -73,15 +73,15 @@
 	                </tr>
 	                <tr class="border-bottom tr-content">
 	                    <td class="py-4">
-	                        <input type="radio" name="alc_q01" id="alc_q01_01" value="0"/>
+	                        <input type="radio" name="alc_q1" id="alc_q01_01" value="0"/>
 	                        <label for="alc_q01_01">전혀 안마심</label>
-	                        <input type="radio" name="alc_q01" id="alc_q01_02" value="1"/>
+	                        <input type="radio" name="alc_q1" id="alc_q01_02" value="1"/>
 	                        <label for="alc_q01_02">월 1회 미만</label>
-	                        <input type="radio" name="alc_q01" id="alc_q01_03" value="2"/>
+	                        <input type="radio" name="alc_q1" id="alc_q01_03" value="2"/>
 	                        <label for="alc_q01_03">월 2~4회</label>
-	                        <input type="radio" name="alc_q01" id="alc_q01_04" value="3"/>
+	                        <input type="radio" name="alc_q1" id="alc_q01_04" value="3"/>
 	                        <label for="alc_q01_04">주 2~3회</label>
-	                        <input type="radio" name="alc_q01" id="alc_q01_05" value="4"/>
+	                        <input type="radio" name="alc_q1" id="alc_q01_05" value="4"/>
 	                        <label for="alc_q01_05">주 4회 이상</label>
 	                    </td>
 	                </tr>
@@ -91,15 +91,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="alc_q02" id="alc_q02_01" value="0"/>
+	                        <input type="radio" name="alc_q2" id="alc_q02_01" value="0"/>
 	                        <label for="alc_q02_01">한두 잔</label>
-	                        <input type="radio" name="alc_q02" id="alc_q02_02" value="1"/>
+	                        <input type="radio" name="alc_q2" id="alc_q02_02" value="1"/>
 	                        <label for="alc_q02_02">3~4 잔</label>
-	                        <input type="radio" name="alc_q02" id="alc_q02_03" value="2"/>
+	                        <input type="radio" name="alc_q2" id="alc_q02_03" value="2"/>
 	                        <label for="alc_q02_03">5~6 잔</label>
-	                        <input type="radio" name="alc_q02" id="alc_q02_04" value="3"/>
+	                        <input type="radio" name="alc_q2" id="alc_q02_04" value="3"/>
 	                        <label for="alc_q02_04">7~9 잔</label>
-	                        <input type="radio" name="alc_q02" id="alc_q02_05" value="4"/>
+	                        <input type="radio" name="alc_q2" id="alc_q02_05" value="4"/>
 	                        <label for="alc_q02_05">10잔 이상</label>
 	                    </td>
 	                </tr>
@@ -109,15 +109,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="alc_q03" id="alc_q03_01" value="0"/>
+	                        <input type="radio" name="alc_q3" id="alc_q03_01" value="0"/>
 	                        <label for="alc_q03_01">전혀 없다</label>
-	                        <input type="radio" name="alc_q03" id="alc_q03_02" value="1"/>
+	                        <input type="radio" name="alc_q3" id="alc_q03_02" value="1"/>
 	                        <label for="alc_q03_02">월 1회 미만</label>
-	                        <input type="radio" name="alc_q03" id="alc_q03_03" value="2"/>
+	                        <input type="radio" name="alc_q3" id="alc_q03_03" value="2"/>
 	                        <label for="alc_q03_03">월 1회</label>
-	                        <input type="radio" name="alc_q03" id="alc_q03_04" value="3"/>
+	                        <input type="radio" name="alc_q3" id="alc_q03_04" value="3"/>
 	                        <label for="alc_q03_04">주 1회</label>
-	                        <input type="radio" name="alc_q03" id="alc_q03_05" value="4"/>
+	                        <input type="radio" name="alc_q3" id="alc_q03_05" value="4"/>
 	                        <label for="alc_q03_05">거의 매일</label>
 	                    </td>
 	                </tr>
@@ -127,15 +127,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="alc_q04" id="alc_q04_01" value="0"/>
+	                        <input type="radio" name="alc_q4" id="alc_q04_01" value="0"/>
 	                        <label for="alc_q04_01">전혀 없다</label>
-	                        <input type="radio" name="alc_q04" id="alc_q04_02" value="1"/>
+	                        <input type="radio" name="alc_q4" id="alc_q04_02" value="1"/>
 	                        <label for="alc_q04_02">월 1회 미만</label>
-	                        <input type="radio" name="alc_q04" id="alc_q04_03" value="2"/>
+	                        <input type="radio" name="alc_q4" id="alc_q04_03" value="2"/>
 	                        <label for="alc_q04_03">월 1회</label>
-	                        <input type="radio" name="alc_q04" id="alc_q04_04" value="3"/>
+	                        <input type="radio" name="alc_q4" id="alc_q04_04" value="3"/>
 	                        <label for="alc_q04_04">주 1회</label>
-	                        <input type="radio" name="alc_q04" id="alc_q04_05" value="4"/>
+	                        <input type="radio" name="alc_q4" id="alc_q04_05" value="4"/>
 	                        <label for="alc_q04_05">거의 매일</label>
 	                    </td>
 	                </tr>
@@ -145,15 +145,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="alc_q05" id="alc_q05_01" value="0"/>
+	                        <input type="radio" name="alc_q5" id="alc_q05_01" value="0"/>
 	                        <label for="alc_q05_01">전혀 없다</label>
-	                        <input type="radio" name="alc_q05" id="alc_q05_02" value="1"/>
+	                        <input type="radio" name="alc_q5" id="alc_q05_02" value="1"/>
 	                        <label for="alc_q05_02">월 1회 미만</label>
-	                        <input type="radio" name="alc_q05" id="alc_q05_03" value="2"/>
+	                        <input type="radio" name="alc_q5" id="alc_q05_03" value="2"/>
 	                        <label for="alc_q05_03">월 1회</label>
-	                        <input type="radio" name="alc_q05" id="alc_q05_04" value="3"/>
+	                        <input type="radio" name="alc_q5" id="alc_q05_04" value="3"/>
 	                        <label for="alc_q05_04">주 1회</label>
-	                        <input type="radio" name="alc_q05" id="alc_q05_05" value="4"/>
+	                        <input type="radio" name="alc_q5" id="alc_q05_05" value="4"/>
 	                        <label for="alc_q05_05">거의 매일</label>
 	                    </td>
 	                </tr>
@@ -163,15 +163,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="alc_q06" id="alc_q06_01" value="0"/>
+	                        <input type="radio" name="alc_q6" id="alc_q06_01" value="0"/>
 	                        <label for="alc_q06_01">전혀 없다</label>
-	                        <input type="radio" name="alc_q06" id="alc_q06_02" value="1"/>
+	                        <input type="radio" name="alc_q6" id="alc_q06_02" value="1"/>
 	                        <label for="alc_q06_02">월 1회 미만</label>
-	                        <input type="radio" name="alc_q06" id="alc_q06_03" value="2"/>
+	                        <input type="radio" name="alc_q6" id="alc_q06_03" value="2"/>
 	                        <label for="alc_q06_03">월 1회</label>
-	                        <input type="radio" name="alc_q06" id="alc_q06_04" value="3"/>
+	                        <input type="radio" name="alc_q6" id="alc_q06_04" value="3"/>
 	                        <label for="alc_q06_04">주 1회</label>
-	                        <input type="radio" name="alc_q06" id="alc_q06_05" value="4"/>
+	                        <input type="radio" name="alc_q6" id="alc_q06_05" value="4"/>
 	                        <label for="alc_q06_05">거의 매일</label>
 	                    </td>
 	                </tr>
@@ -181,15 +181,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="alc_q07" id="alc_q07_01" value="0"/>
+	                        <input type="radio" name="alc_q7" id="alc_q07_01" value="0"/>
 	                        <label for="alc_q07_01">전혀 없다</label>
-	                        <input type="radio" name="alc_q07" id="alc_q07_02" value="1"/>
+	                        <input type="radio" name="alc_q7" id="alc_q07_02" value="1"/>
 	                        <label for="alc_q07_02">월 1회 미만</label>
-	                        <input type="radio" name="alc_q07" id="alc_q07_03" value="2"/>
+	                        <input type="radio" name="alc_q7" id="alc_q07_03" value="2"/>
 	                        <label for="alc_q07_03">월 1회</label>
-	                        <input type="radio" name="alc_q07" id="alc_q07_04" value="3"/>
+	                        <input type="radio" name="alc_q7" id="alc_q07_04" value="3"/>
 	                        <label for="alc_q07_04">주 1회</label>
-	                        <input type="radio" name="alc_q07" id="alc_q07_05" value="4"/>
+	                        <input type="radio" name="alc_q7" id="alc_q07_05" value="4"/>
 	                        <label for="alc_q07_05">거의 매일</label>
 	                    </td>
 	                </tr>
@@ -199,15 +199,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="alc_q08" id="alc_q08_01" value="0"/>
+	                        <input type="radio" name="alc_q8" id="alc_q08_01" value="0"/>
 	                        <label for="alc_q08_01">전혀 없다</label>
-	                        <input type="radio" name="alc_q08" id="alc_q08_02" value="1"/>
+	                        <input type="radio" name="alc_q8" id="alc_q08_02" value="1"/>
 	                        <label for="alc_q08_02">월 1회 미만</label>
-	                        <input type="radio" name="alc_q08" id="alc_q08_03" value="2"/>
+	                        <input type="radio" name="alc_q8" id="alc_q08_03" value="2"/>
 	                        <label for="alc_q08_03">월 1회</label>
-	                        <input type="radio" name="alc_q08" id="alc_q08_04" value="3"/>
+	                        <input type="radio" name="alc_q8" id="alc_q08_04" value="3"/>
 	                        <label for="alc_q08_04">주 1회</label>
-	                        <input type="radio" name="alc_q08" id="alc_q08_05" value="4"/>
+	                        <input type="radio" name="alc_q8" id="alc_q08_05" value="4"/>
 	                        <label for="alc_q08_05">거의 매일</label>
 	                    </td>
 	                </tr>
@@ -217,11 +217,11 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="alc_q09" id="alc_q09_01" value="0"/>
+	                        <input type="radio" name="alc_q9" id="alc_q09_01" value="0"/>
 	                        <label for="alc_q09_01">없었다</label>
-	                        <input type="radio" name="alc_q09" id="alc_q09_02" value="2"/>
+	                        <input type="radio" name="alc_q9" id="alc_q09_02" value="2"/>
 	                        <label for="alc_q09_02">있지만, 지난 1년간에는 없었다</label>
-	                        <input type="radio" name="alc_q09" id="alc_q09_03" value="4"/>
+	                        <input type="radio" name="alc_q9" id="alc_q09_03" value="4"/>
 	                        <label for="alc_q09_03">지난 1년간 있었다</label>
 	                    </td>
 	                </tr>
@@ -289,8 +289,25 @@
 		var sum=0;
 		$('#resultT').removeClass('text-danger text-primary');
 		if($(':radio:checked').length != 11){
-			alert('모든 항목을 체크해주세요');
 			$(this).attr('data-toggle','');
+			if (!$('[name=alc_q00]:checked').length){
+		    	var this_ = $('[name=alc_q00]')
+			   	alert("성별을 선택하세요.");
+			   	this_.focus();
+			   	return;
+		    }
+			else{
+				for (i=1;i<$(':radio').parent().length;i++){
+					//console.log('i:',i)
+					//console.log('checked:',$('[name=str_q1]:checked'))
+				    if (!$('[name=alc_q'+i+']:checked').length){
+				    	var this_ = $('[name=alc_q'+i+']')
+					   	alert(i+"번 질문에 답을 선택하세요.");
+					   	this_.focus();
+					   	return;
+				    }
+				}
+			}
 		}
 		else if($('[name=alc_q00]:checked').val()=='m'){//남자일 때
 			$(this).attr('data-toggle','modal');

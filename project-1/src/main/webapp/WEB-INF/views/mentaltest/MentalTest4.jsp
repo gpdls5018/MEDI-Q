@@ -60,13 +60,13 @@
 	                </tr>
 	                <tr class="border-bottom tr-content">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q01" id="dep_q01_01" value="0"/>
+	                        <input type="radio" name="dep_q1" id="dep_q01_01" value="0"/>
 	                        <label for="dep_q01_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q01" id="dep_q01_02" value="1"/>
+	                        <input type="radio" name="dep_q1" id="dep_q01_02" value="1"/>
 	                        <label for="dep_q01_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q01" id="dep_q01_03" value="2"/>
+	                        <input type="radio" name="dep_q1" id="dep_q01_03" value="2"/>
 	                        <label for="dep_q01_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q01" id="dep_q01_04" value="3"/>
+	                        <input type="radio" name="dep_q1" id="dep_q01_04" value="3"/>
 	                        <label for="dep_q01_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -76,13 +76,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q02" id="dep_q02_01" value="0"/>
+	                        <input type="radio" name="dep_q2" id="dep_q02_01" value="0"/>
 	                        <label for="dep_q02_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q02" id="dep_q02_02" value="1"/>
+	                        <input type="radio" name="dep_q2" id="dep_q02_02" value="1"/>
 	                        <label for="dep_q02_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q02" id="dep_q02_03" value="2"/>
+	                        <input type="radio" name="dep_q2" id="dep_q02_03" value="2"/>
 	                        <label for="dep_q02_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q02" id="dep_q02_04" value="3"/>
+	                        <input type="radio" name="dep_q2" id="dep_q02_04" value="3"/>
 	                        <label for="dep_q02_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -92,13 +92,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q03" id="dep_q03_01" value="0"/>
+	                        <input type="radio" name="dep_q3" id="dep_q03_01" value="0"/>
 	                        <label for="dep_q03_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q03" id="dep_q03_02" value="1"/>
+	                        <input type="radio" name="dep_q3" id="dep_q03_02" value="1"/>
 	                        <label for="dep_q03_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q03" id="dep_q03_03" value="2"/>
+	                        <input type="radio" name="dep_q3" id="dep_q03_03" value="2"/>
 	                        <label for="dep_q03_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q03" id="dep_q03_04" value="3"/>
+	                        <input type="radio" name="dep_q3" id="dep_q03_04" value="3"/>
 	                        <label for="dep_q03_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -108,13 +108,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q04" id="dep_q04_01" value="0"/>
+	                        <input type="radio" name="dep_q4" id="dep_q04_01" value="0"/>
 	                        <label for="dep_q04_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q04" id="dep_q04_02" value="1"/>
+	                        <input type="radio" name="dep_q4" id="dep_q04_02" value="1"/>
 	                        <label for="dep_q04_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q04" id="dep_q04_03" value="2"/>
+	                        <input type="radio" name="dep_q4" id="dep_q04_03" value="2"/>
 	                        <label for="dep_q04_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q04" id="dep_q04_04" value="3"/>
+	                        <input type="radio" name="dep_q4" id="dep_q04_04" value="3"/>
 	                        <label for="dep_q04_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -124,13 +124,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q05" id="dep_q05_01" value="3"/>
+	                        <input type="radio" name="dep_q5" id="dep_q05_01" value="3"/>
 	                        <label for="dep_q05_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q05" id="dep_q05_02" value="2"/>
+	                        <input type="radio" name="dep_q5" id="dep_q05_02" value="2"/>
 	                        <label for="dep_q05_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q05" id="dep_q05_03" value="1"/>
+	                        <input type="radio" name="dep_q5" id="dep_q05_03" value="1"/>
 	                        <label for="dep_q05_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q05" id="dep_q05_04" value="0"/>
+	                        <input type="radio" name="dep_q5" id="dep_q05_04" value="0"/>
 	                        <label for="dep_q05_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -140,13 +140,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q06" id="dep_q06_01" value="0"/>
+	                        <input type="radio" name="dep_q6" id="dep_q06_01" value="0"/>
 	                        <label for="dep_q06_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q06" id="dep_q06_02" value="1"/>
+	                        <input type="radio" name="dep_q6" id="dep_q06_02" value="1"/>
 	                        <label for="dep_q06_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q06" id="dep_q06_03" value="2"/>
+	                        <input type="radio" name="dep_q6" id="dep_q06_03" value="2"/>
 	                        <label for="dep_q06_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q06" id="dep_q06_04" value="3"/>
+	                        <input type="radio" name="dep_q6" id="dep_q06_04" value="3"/>
 	                        <label for="dep_q06_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -156,13 +156,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q07" id="dep_q07_01" value="0"/>
+	                        <input type="radio" name="dep_q7" id="dep_q07_01" value="0"/>
 	                        <label for="dep_q07_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q07" id="dep_q07_02" value="1"/>
+	                        <input type="radio" name="dep_q7" id="dep_q07_02" value="1"/>
 	                        <label for="dep_q07_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q07" id="dep_q07_03" value="2"/>
+	                        <input type="radio" name="dep_q7" id="dep_q07_03" value="2"/>
 	                        <label for="dep_q07_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q07" id="dep_q07_04" value="3"/>
+	                        <input type="radio" name="dep_q7" id="dep_q07_04" value="3"/>
 	                        <label for="dep_q07_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -172,13 +172,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q08" id="dep_q08_01" value="0"/>
+	                        <input type="radio" name="dep_q8" id="dep_q08_01" value="0"/>
 	                        <label for="dep_q08_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q08" id="dep_q08_02" value="1"/>
+	                        <input type="radio" name="dep_q8" id="dep_q08_02" value="1"/>
 	                        <label for="dep_q08_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q08" id="dep_q08_03" value="2"/>
+	                        <input type="radio" name="dep_q8" id="dep_q08_03" value="2"/>
 	                        <label for="dep_q08_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q08" id="dep_q08_04" value="3"/>
+	                        <input type="radio" name="dep_q8" id="dep_q08_04" value="3"/>
 	                        <label for="dep_q08_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -188,13 +188,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q09" id="dep_q09_01" value="0"/>
+	                        <input type="radio" name="dep_q9" id="dep_q09_01" value="0"/>
 	                        <label for="dep_q09_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q09" id="dep_q09_02" value="1"/>
+	                        <input type="radio" name="dep_q9" id="dep_q09_02" value="1"/>
 	                        <label for="dep_q09_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q09" id="dep_q09_03" value="2"/>
+	                        <input type="radio" name="dep_q9" id="dep_q09_03" value="2"/>
 	                        <label for="dep_q09_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q09" id="dep_q09_04" value="3"/>
+	                        <input type="radio" name="dep_q9" id="dep_q09_04" value="3"/>
 	                        <label for="dep_q09_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -421,8 +421,17 @@
     //우울증 척도 결과 뿌리기
 	$('#resultM').click(function(){
 		if($(':radio:checked').length != 20){
-			alert('모든 항목을 체크해주세요');
 			$(this).attr('data-toggle','');
+			for (i=1;i<=$(':radio').parent().length;i++){
+				//console.log('i:',i)
+				//console.log('checked:',$('[name=str_q1]:checked'))
+			    if (!$('[name=dep_q'+i+']:checked').length){
+			    	var this_ = $('[name=dep_q'+i+']')
+				   	alert(i+"번 질문에 답을 선택하세요.");
+				   	this_.focus();
+				   	return;
+			    }
+			}
 		}
 		else{
 			$(this).attr('data-toggle','modal');

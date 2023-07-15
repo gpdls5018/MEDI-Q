@@ -12,7 +12,7 @@
 	<div class="container">
 		<div class="row d-flex justify-content-center align-items-center vh-100">
 			<div class="col-md-6 mb-4">
-				<h3 class="heading mb-4">Join The Membership!</h3>
+				<h3 class="heading mb-4">회원가입</h3>
 				<p>
 				반갑습니다!<br/>
 				회원가입을 위한 양식을 입력해주세요

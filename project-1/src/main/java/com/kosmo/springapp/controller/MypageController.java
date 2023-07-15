@@ -149,15 +149,15 @@ public class MypageController {
 		if (!flag) {
 			return "<script>alert('비밀번호가 일치하지 않아요');history.back();</script>";
 		}
-		String queryString = "/project/JoinEdit.do?id="+map.get("id");
 		// 비밀번호가 일치하는 경우
-		return "<script>location.href='"+queryString+"'</script>";
+		return "<script>location.href='/project/JoinEdit.do'</script>";
 	}
 	
 	//회원수정 클릭 후 비밀번호 일치 시
 	@GetMapping("/JoinEdit.do")
-	public String joinEdit(@RequestParam String id, Map map) {
-		map.put("id", id);
+	public String joinEdit(HttpServletRequest req, HttpServletResponse resp, Map map) {
+		MemberDTO member = loginService.selectOne(req,resp);
+		map.put("id", member.getId());
 		map.put("member",loginService.selectOne(map));
 		
 		return "login/JoinEdit";
