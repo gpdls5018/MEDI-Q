@@ -73,9 +73,8 @@ public class FoodDetailController {
 		   if(listOne.getStandard() != null) {
 			   if(listOne.getStandard().contains("1)")) {
 				   if(listOne.getStandard().contains("(1)")) {
-					   System.out.println("들어옴)");
 					   String input = listOne.getStandard();
-					   String pattern = "\\(\\d+\\)\\s.*?(?=\\(\\d+\\)|$)";
+					   String pattern = "\\(\\d+\\).*?(?=\\(\\d+\\)|$)";
 				        Pattern regex = Pattern.compile(pattern);
 				        Matcher matcher = regex.matcher(input);
 				        
@@ -88,7 +87,6 @@ public class FoodDetailController {
 				        model.addAttribute("Sgroups", Sgroups);
 				   }
 				   else {
-					   System.out.println("들어옴()");
 					   String input = listOne.getStandard();
 					   String pattern = "\\d+\\)\\s.*?(?=\\d+\\)|$)";
 				        Pattern regex = Pattern.compile(pattern);
@@ -124,9 +122,8 @@ public class FoodDetailController {
 			   }
 			   
 			   if(listOne.getStandard().contains("1. ")) {
-				   System.out.println("들어옴.");
 				   String input = listOne.getStandard();
-				   String pattern = "\\d+\\.\\s.*?(?=\\d+\\.|$)";
+				   String pattern = "\\d+\\.\\s?.*?(?=\\d+\\.|$)";
 			        Pattern regex = Pattern.compile(pattern);
 			        Matcher matcher = regex.matcher(input);
 			        
@@ -193,9 +190,8 @@ public class FoodDetailController {
 			   }
 			   
 			   if(listOne.getCaution().contains("1. ")) {
-				   System.out.println("들어옴.");
 				   String input = listOne.getCaution();
-				   String pattern = "\\d+\\.\\s.*?(?=\\d+\\.|$)";
+				   String pattern = "\\d+\\.\\s?.*?(?=\\d+\\.|$)";
 			        Pattern regex = Pattern.compile(pattern);
 			        Matcher matcher = regex.matcher(input);
 			        
