@@ -2,11 +2,14 @@ package com.kosmo.springapp.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -60,6 +63,144 @@ public class FoodDetailController {
 		   String nutrient_before = listOne.getNutrient();
 		   String nutrient_after = change_nutrientName(nutrient_before);
 		   TotalReviewDTO totalReviewDto = reviewServiceImpl.selectTotalReviewInfo(Integer.parseInt(no));
+		   if(listOne.getStandard() != null) {
+			   if(listOne.getStandard().contains("1)")) {
+				   if(listOne.getStandard().contains("(1)")) {
+					   System.out.println("들어옴)");
+					   String input = listOne.getStandard();
+					   String pattern = "\\(\\d+\\)\\s.*?(?=\\(\\d+\\)|$)";
+				        Pattern regex = Pattern.compile(pattern);
+				        Matcher matcher = regex.matcher(input);
+				        
+				        List<String> Sgroups = new ArrayList<>();
+				        
+				        while (matcher.find()) {
+				            String item = matcher.group().trim();
+				            Sgroups.add(item);
+				        }
+				        model.addAttribute("Sgroups", Sgroups);
+				   }
+				   else {
+					   System.out.println("들어옴()");
+					   String input = listOne.getStandard();
+					   String pattern = "\\d+\\)\\s.*?(?=\\d+\\)|$)";
+				        Pattern regex = Pattern.compile(pattern);
+				        Matcher matcher = regex.matcher(input);
+				        
+				        List<String> Sgroups = new ArrayList<>();
+				        
+				        while (matcher.find()) {
+				            String item = matcher.group().trim();
+				            Sgroups.add(item);
+				        }
+				        model.addAttribute("Sgroups", Sgroups);
+				   }
+			   }
+			   if(listOne.getStandard().contains("①")) {
+				   String input = listOne.getStandard();
+				   String pattern = "①|②|③|④|⑤|⑥|⑦|⑧|⑨|⑩";
+			        Pattern regex = Pattern.compile(pattern);
+			        Matcher matcher = regex.matcher(input);
+			        
+			        List<String> Sgroups = new ArrayList<>();
+			        
+			        int start = 0;
+			        while (matcher.find()) {
+			            String item = input.substring(start, matcher.start()).trim();
+			            Sgroups.add(item);
+			            start = matcher.start();
+			        }
+			        String lastGroup = input.substring(start).trim();
+			        Sgroups.add(lastGroup);
+			        
+			        model.addAttribute("Sgroups", Sgroups);
+			   }
+			   
+			   if(listOne.getStandard().contains("2. ")) {
+				   System.out.println("들어옴.");
+				   String input = listOne.getStandard();
+				   String pattern = "\\d+\\.\\s.*?(?=\\d+\\.|$)";
+			        Pattern regex = Pattern.compile(pattern);
+			        Matcher matcher = regex.matcher(input);
+			        
+			        List<String> Sgroups = new ArrayList<>();
+			        
+			        while (matcher.find()) {
+			            String item = matcher.group().trim();
+			            Sgroups.add(item);
+			        }
+			        model.addAttribute("Sgroups", Sgroups);
+			   }
+			   
+		   }
+		   if(listOne.getCaution() != null) {
+			   if(listOne.getStandard().contains("1)")) {  
+				   if(listOne.getCaution().contains("(1)")) {
+					   String input = listOne.getCaution();
+					   String pattern = "\\(\\d+\\)\\s.*?(?=\\(\\d+\\)|$)";
+				        Pattern regex = Pattern.compile(pattern);
+				        Matcher matcher = regex.matcher(input);
+				        
+				        List<String> Cgroups = new ArrayList<>();
+				        
+				        while (matcher.find()) {
+				            String item = matcher.group().trim();
+				            Cgroups.add(item);
+				        }
+				        model.addAttribute("Cgroups", Cgroups);
+				   }
+				   else {
+					   String input = listOne.getCaution();
+					   String pattern = "\\d+\\)\\s.*?(?=\\d+\\)|$)";
+				        Pattern regex = Pattern.compile(pattern);
+				        Matcher matcher = regex.matcher(input);
+				        
+				        List<String> Cgroups = new ArrayList<>();
+				        
+				        while (matcher.find()) {
+				            String item = matcher.group().trim();
+				            Cgroups.add(item);
+				        }
+				        model.addAttribute("Cgroups", Cgroups);
+				   }
+			   }
+			   if(listOne.getCaution().contains("①")) {
+				   String input = listOne.getCaution();
+				   String pattern = "①|②|③|④|⑤|⑥|⑦|⑧|⑨|⑩";
+			        Pattern regex = Pattern.compile(pattern);
+			        Matcher matcher = regex.matcher(input);
+			        
+			        List<String> Cgroups = new ArrayList<>();
+			        
+			        int start = 0;
+			        while (matcher.find()) {
+			            String item = input.substring(start, matcher.start()).trim();
+			            Cgroups.add(item);
+			            start = matcher.start();
+			        }
+			        String lastGroup = input.substring(start).trim();
+			        Cgroups.add(lastGroup);
+			        
+			        model.addAttribute("Cgroups", Cgroups);
+			   }
+			   
+			   if(listOne.getCaution().contains("1. ")) {
+				   System.out.println("들어옴.");
+				   String input = listOne.getCaution();
+				   String pattern = "\\d+\\.\\s.*?(?=\\d+\\.|$)";
+			        Pattern regex = Pattern.compile(pattern);
+			        Matcher matcher = regex.matcher(input);
+			        
+			        List<String> Cgroups = new ArrayList<>();
+			        
+			        while (matcher.find()) {
+			            String item = matcher.group().trim();
+			            Cgroups.add(item);
+			        }
+			        model.addAttribute("Cgroups", Cgroups);
+			   }
+		   }
+		   
 		   model.addAttribute("listOne",listOne);
 		   model.addAttribute("totalReviewDto",totalReviewDto);
 		   return "Detail";
