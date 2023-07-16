@@ -386,7 +386,7 @@
 	                    </div><!-- qna-card의 끝 -->
 	            </div>
 
-	            <div class="clearfix my-2 mr-3">
+	            <div class="clearfix mt-5 my-2 mr-5">
 	                <a tabindex="0" class="more-qna" href="<c:url value="/board/List.do" />"><b>Q&amp;A 더보기</b></a>
 	            </div>
 	        </div>
@@ -395,13 +395,14 @@
 	    
 	    
 	   <!--  6번째 다이브 목록 -->
-		<div class="section6 pt-5" style="display:flex; justify-content: center;">
-	        <div class="slider1 ">
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:400px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:100%; height:400px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>" style="width:100%; height:400px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>" style="width:100%; height:400px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:400px" ></a></div>
+		<div class="section6 pt-5" style="display:flex; align-items:center; max-width: 1050px; flex-direction: column;">
+			<span style="font-weight: bold;">영양제와 건강에 대한 모든 것,<br/> <p stlye="#EF605D">MEDI-Q</p>에서 확인하세요</span>
+	        <div class="slider1">
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:340px" ></a></div>
 	        </div>
 	    </div>
 	    
