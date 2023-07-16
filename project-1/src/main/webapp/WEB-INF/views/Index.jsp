@@ -161,7 +161,7 @@
 		        <a href="#" style="font-weight: bold;color:sandybrown">#체지방 감소</a>&nbsp;
 		        <a href="#" style="font-weight: bold;color:salmon ">#비타민</a>&nbsp;
 		        <a href="#" style="font-weight: bold;color:lightskyblue ">#혈당</a>&nbsp;
-		        <span class="s-txt2">(07/15&nbsp;기준)</span>
+		        <span class="s-txt2">(07/18&nbsp;기준)</span>
 		    </div >
 	    </div>
 	    
@@ -171,36 +171,38 @@
      <article class="maints justify-content-center px-3">
      <!-- 1번째 다이브 목록 -->
      	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
-	        <h1 class="text-center mb-3" style="font-size: 30px; color: black;">${id}님의 최근 분석 리포트</h1>
-	        <div class="DefaultReportItem__ReportBook-sc-rysw89-0 ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
-	            <a data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none;">
-	                <div class="DefaultReportItem__Springs-sc-rysw89-8 jZuajW">
-	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
-	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
-	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
-	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
-	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
-	                </div>
-	                <article class="DefaultReportItem__InnerContents-sc-rysw89-2 hBxOSS" style="display: block;">
-	                    <div class="DefaultReportItem__BackgroundWrapper-sc-rysw89-3 iJGurJ">
-	                    <c:if test="${not empty analyzeReport}">
-	                        <div>
-	                            <div class="DefaultReportItem__ScoreDate-sc-rysw89-5 enbDhJ">최근 분석 리포트입니다</div>
-	                            <p class="DefaultReportItem__Score-sc-rysw89-6 jeiOCr" style="">${analyzeReport.score}<span>점</span></p>
+     	<c:if test="${not empty analyzeReport}">
+	        <h1 class="text-center mb-3" style="font-size: 30px; color: black;">📋 <span style="color:#EF605D; font-size: 34px;">${id}</span>님의 최근 분석 리포트</h1>
+	        <div class="ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
+	            <a data-gtm-id="report-home-recent-blank" class="ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none;">
+	                <article class="hBxOSS" style="display: block;">
+	                    <div class="iJGurJ">
+	                        <div style="margin: 10px 0px 0px 20px;">
+	                            <div class="enbDhJ1">👀 최근 분석 리포트입니다</div>
+	                            <p class="jeiOCr1" style="">${analyzeReport.score}<span class="ml-3" style="color:black; font-size: 20px;">점</span></p>
 	                        </div>
-	                        <div class="DefaultReportItem__Purpose-sc-rysw89-7 ZyIFk d-block">
-	                            <div>섭취 목적 : ${analyzeReport.takePurposes}</div>
-	                            <div>섭취중인 영양제 : ${analyzeReport.takeFoods}</div>
+	                        <div class="ZyIFk1 d-block mt-3" style="margin-left: 20px;">
+	                            <div><span style="color:#545454; font-weight: bold;">섭취 목적</span> : &nbsp; ${analyzeReport.takePurposes}</div>
+	                            <div><span style="color:#545454; font-weight: bold;">섭취중인 영양제</span> :<br/> ${analyzeReport.takeFoods}</div>
+	                        </div>	                   
+         </c:if>
+            <c:if test="${empty analyzeReport}">
+                <h1 class="text-center mb-3" style="font-size: 30px; color: black;">📋 나와 잘 맞는 영양제일까?</h1>
+                <p style="text-align: center; color:gray; font-weight: bold;">적절하게 영양제를 먹고 있는지 MEDI-Q가 분석해 드릴게요</p>
+		        <div class="ibNwmg ml-1 d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
+		            <a data-gtm-id="report-home-recent-blank" class=" ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none;">
+		                <article class=" hBxOSS" style="display: block;">
+		                    <div class=" iJGurJ">
+	                        	<div>
+		                        	<img src="https://cdn.pillyze.io/web/img/qna_anna_2x.webp" class="qwdfe" alt="전문가 그림">
+			                            <div class=" enbDhJ ">나의 영양제 분석하고 추천받기</div>
+			                            <p class="jeiOCr">답답했던 <span style="color:#EF605D;">영양제의 모든 것!</span> <br/>전문가와 함께해요 </p>
+		                        </div>
+	                        <!-- 
+	                        <div class="ZyIFk">
+	                            <p>내 영양제 분석하기</p>
 	                        </div>
-                        </c:if>
-                        <c:if test="${empty analyzeReport}">
-                        	<div>
-	                            <div class="DefaultReportItem__ScoreDate-sc-rysw89-5 enbDhJ ">분석 정보가 없습니다</div>
-	                            <p class="DefaultReportItem__Score-sc-rysw89-6 jeiOCr">??<span>점</span></p>
-	                        </div>
-	                        <div class="DefaultReportItem__Purpose-sc-rysw89-7 ZyIFk">
-	                            <p>먹고 있는 영양제를 분석해 보세요!</p>
-	                        </div>
+	                         -->
                         </c:if>
 	                    </div>
 	                </article>
@@ -214,7 +216,7 @@
 	           <div class="content">
 	               <span class="txt1" style="text-align: center; width: 100%;">👨‍⚕️ 주요 질환의 발병 위험도를 예측해드려요 </span>
 	               <br/>
-	               <span class="text-center txt2" style="margin-top: 0px; margin-bottom: 40px;">MEDI-Q의 인공지능 기술로 분석하는 건강검진!</span>
+	               <span class="text-center txt2" style="margin-top: 0px; margin-bottom: 20px;">MEDI-Q의 인공지능 기술로 분석하는 건강검진!</span>
 	               <div class="banner-wrap">
 	                   <div class="banner-txt1 mb-1">내 건강검진 결과를 입력하고</div>
 	                   <div class="banner-txt2"><span>맞춤형 영양제를 추천</span> 받으세요</div>
@@ -301,7 +303,7 @@
 	                    </div><!-- card-wrap의 끝 -->
 
 	                    <div class="clearfix">
-	                        <a tabindex="0" class="more-pop-health mt-5" href="/ranking/selectfood.do"><b>건강기능식품 더보기</b></a>
+	                        <a tabindex="0" class="more-pop-health mt-5" href='<c:url value="/ranking/selectfood.do"/>' > <b>건강기능식품 더보기</b></a>
 	                    </div>
 	                </div><!-- tab-content-001의 끝 -->
 	            </div>

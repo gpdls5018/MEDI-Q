@@ -155,7 +155,7 @@
 
 .accordion .section {
     border-bottom: 2px dashed #ccc;
-    padding: 10px 20px;
+    padding: 10px 10px;
     background: #fff;
 }
 
@@ -220,7 +220,7 @@
 	align-items:center;
 	margin: 10px;
 	padding: 3.5px;
-	
+	text-decoration: none;
 }
     </style>
 </head>
@@ -373,7 +373,10 @@
              <div class="section" >
 		          <h3>
 		            <a class="text-decoration-none font-weight-bold" href="<c:url value="/"/>">
-		                	홈으로 가기
+		            <img src="<c:url value="/resources/images/tsimages/free-icon-home-3771140.png"/>" style="opacity: 0.7;" width="25" height="25">
+		         
+		             &nbsp; 홈으로 가기
+		            
 		            </a>
 		          </h3>
 	        </div>
@@ -382,7 +385,7 @@
 	          <h3 class="d-flex">
 	            <a href="#one" style="align-items: center;">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-vitamins-525955.png"/>" width="25" height="25">
-	                영양성분 검색
+	                &nbsp; 영양성분 검색
 	                <span class="arrow-down" style="margin-left: 70px;" ></span>
 	            </a>
 	          </h3>
@@ -398,9 +401,9 @@
 	        </div>
 	        <div class="section">
 	          <h3>
-	            <a class="text-decoration-none"  href="<c:url value="/NutrientSelect.do"/>">
-	                <img src="<c:url value="/resources/images/tsimages/free-icon-pharmacy-1404402.png"/>" width="25" height="25">
-	                	영양소
+	            <a class="text-decoration-none"  href="<c:url value="/ranking/selectfood.do"/>">
+	                <img src="<c:url value="/resources/images/shape/캡슐.png"/>" style="opacity: 0.8;" width="25" height="25">
+	                &nbsp; 영양제 검색
 	            </a>
 	          </h3>
 	        </div>
@@ -408,14 +411,14 @@
 	          <h3>
 	            <a class="text-decoration-none" href="<c:url value="/magazineindex.do"/>">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-whats-new-5511348.png"/>" width="25" height="25">
-	                메디큐 칼럼
+	                &nbsp; 메디큐 칼럼
 	            </a>
 	        </div>
 	        <div id="four" class="section large">
 	          <h3>
 	            <a class="text-decoration-none" href="#">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-data-analysis-3449317.png"/>" width="25" height="25">
-	                분석 및 결과
+	                &nbsp; 분석 및 결과
 	            </a>
 	          </h3>
 	        </div>
@@ -423,7 +426,7 @@
 	          <h3>
 	            <a class="text-decoration-none" href="<c:url value="/board/List.do" />">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-chat-724715.png"/>" width="25" height="25">
-	                커뮤니티
+	                &nbsp; 커뮤니티
 	            </a>
 	          </h3>
 	        </div>
@@ -431,7 +434,7 @@
 	          <h3 class="d-flex">
 	            <a href="#six" style="align-items: center;">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-lifestyle-4807765.png"/>" width="25" height="25">
-	                	건강예측
+	                &nbsp; 건강예측
 	                <span class="arrow-down" style="margin-left: 120px;"></span>
 	            </a>
 	          </h3>

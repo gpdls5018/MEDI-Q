@@ -1011,7 +1011,7 @@ a {
         position: relative;
         height: 100%;
         border-bottom: none;
-        background-color: white;
+        background-color: #fff8f5;
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
         width: 86%;
@@ -1020,7 +1020,15 @@ a {
         flex-direction: column;
         gap: 8px;
     }
-    .enbDhJ {
+    .qwdfe{
+    	position: absolute;
+    	top:0px;
+    	right: 5px;
+    	width: 200px;
+    	height: 180px;
+    }
+    .enbDhJ1{
+    	font-size: 25px;
         font-weight: bold;
         height: 22px;
         display: flex;
@@ -1031,9 +1039,46 @@ a {
         border-radius: 10px;
         color: black;
     }
-    .ZyIFk {
+    .enbDhJ {
+    	font-size: 18px;
+        font-weight: bold;
+        height: 22px;
         display: flex;
-        gap: 8px;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: start;
+        justify-content: flex-start;
+        border-radius: 10px;
+        color: black;
+    }
+    .jeiOCr1{
+    	position: absolute;
+    	top:20px;
+    	right: 30px;
+    	font-size: 80px;
+    	font-weight:bold;
+    	color: #EF605D;
+    	margin-bottom: 20px;
+    }
+    .jeiOCr{
+    	text-align:center;
+    	font-size: 25px;
+    	font-weight:bold;
+    	color: black;
+    	margin-bottom: 20px;
+    }
+    .ZyIFk1{
+    	 text-align:left;
+        font-weight:bold;
+        color: #7b7b7b;
+        margin-right: 200px;
+    }
+    .ZyIFk {
+        text-align:right;
+        font-weight:bold;
+        color: black;
+        margin-right: 20px;
+        z-index: 300;
     }
     .maints > div{
     	justify-content: center;

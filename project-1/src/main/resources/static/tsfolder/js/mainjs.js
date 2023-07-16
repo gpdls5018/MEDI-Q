@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function() {
   /////////////////////////지도 모달 버튼 함수////////////////////////////////
       $(document).ready(function() {
         $("#tsBtn").click(function() {
-          $("#tsModal").modal({ backdrop: false});
+          $("#tsModal").modal({ backdrop: true});
           setTimeout(function(){ map.relayout(); }, 0);
           initMap(); // 모달 열릴 때 지도 초기화 호출
         });
