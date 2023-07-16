@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
     
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
 			<!-- 건기식 또는 회사이름을 적었을 경우 -->
 			<c:if test="${not empty foodname}">
 				<div class="top-wrap-070">
-					<h1 class="txt2">${foodname}에 대한 <br class="u680">제품 검색 결과 <span>${listData.size() + listData2.size()}</span>건</h1>
+					<h1 class="txt2" style="margin-bottom: 24px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>${foodname}</span>에 대한 <br class="u680">제품 검색 결과 <span>${listData.size() + listData2.size()}</span>건</h1>
 				</div>
 				<div class="ipt-main-wrap">
 				<form action="/functionfood/select.do">
@@ -56,7 +57,7 @@
 							<span class="txt1">${item.company}</span>
 							<span class="txt2">${item.productName}</span>
 							<div class="review">
-								<span class="star-point">${item.AVG_Score }</span>
+								<span class="star-point">&nbsp;<fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }</span>
 								<span class="txt3">(${item.REVIEW_Count }개)</span>
 							</div>
 							<div class="card-tags">
@@ -79,7 +80,7 @@
 						<span class="txt1">${item.company}</span>
 						<span class="txt2">${item.productName}</span>
 						<div class="review">
-							<span class="star-point">0</span>
+							<span class="star-point">&nbsp;0</span>
 							<span class="txt3">(0개)</span>
 						</div>
 						<div class="card-tags">
@@ -99,7 +100,7 @@
 				<!-- 화면을 처음들어 갔을 경우 건기식 또는 회사이름을 안적었을 경우 -->
 				<c:if test="${empty foodname}">
 				<div class="top-wrap-070">
-					<h1 class="txt2">인기 영양제</h1>
+					<h1 class="txt2" style="margin-bottom: 30px; text-align: center; font-size: 2.5em;"><b><span>인기 건강기능식품</span></b></h1>
 				</div>
 				<div class="ipt-main-wrap">
 				<form action="/functionfood/select.do">
@@ -140,7 +141,7 @@
 							<span class="txt1">${item.company}</span>
 							<span class="txt2">${item.productName}</span>
 							<div class="review">
-								<span class="star-point">${item.AVG_Score }</span>
+								<span class="star-point">&nbsp;<fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }</span>
 								<span class="txt3">(${item.REVIEW_Count }개)</span>
 							</div>
 							<div class="card-tags">

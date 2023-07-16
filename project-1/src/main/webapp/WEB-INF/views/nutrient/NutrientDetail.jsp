@@ -250,77 +250,88 @@
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
-                    <a class="nav-link active" href="#" onclick="openTab(event, 'popular')">인기 영양소</a>
+                    <a style="font-size: 18px;" class="nav-link active" href="#" onclick="openTab(event, 'popular')">인기 영양소</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a class="nav-link" href="#" onclick="openTab(event, 'vitamin')">비타민</a>
+                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'vitamin')">비타민</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a class="nav-link" href="#" onclick="openTab(event, 'mineral')">미네랄 및 기타영양소</a>
+                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'mineral')">미네랄 및 기타영양소</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a class="nav-link" href="#" onclick="openTab(event, 'functional')">기능성 원료</a>
+                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'functional')">기능성 원료</a>
                 </li>
             </ul>
         </div>
         <div class="tab pt-1 pb-5" style="display:block; border:0px;">
             <div class="active border-0 text-center" style="padding-top:20px">
+            	<!-- 조회수 -->
+            	<div class="d-flex justify-content-end">
+            		<span class="badge badge-warning" style="width: 130px;">
+           				<span style="font-size:16px; color:black; text-decoration: none;">&nbsp;조회수: ${n_view }${i_view }&nbsp;</span>
+           			</span>
+            	</div>
                 <!-- 이미지 -->
                 <div class="image mt-2">
-	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
-	                <div class="text" style="color: black;">
-		           		<b style="font-size: 30px;">💊&nbsp;${param.name }</b><br/>
+	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
+	                <div class="text" style="color: black; margin-top:22px;">
+		           		<b style="font-size: 30px;">💊&nbsp;${title_name}</b><br/>
 		           		<small>궁금했던 모든 것, 바로 확인해보세요!</small>
                 	</div>
     			</div>
             </div>
             <div class="d-flex justify-content-center">
-                <div id="outer" class="d-flex justify-content-center w-75 mt-5 pt-4 pb-5" style="border: #ddd solid; border-radius: 10px;">
+                <div id="outer" class="d-flex justify-content-center mt-4 pt-4 pb-5 w-100"><!-- style="border: #ddd solid; border-radius: 10px;" -->
                     <div id="inner" class="w-75 ">
-                        <div class="mt-4">
-                            <h4><b>1. 관련 건강고민</b></h4>
-                            <hr class="bg-warning mb-4">
+                        <div class="">
+                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 관련 건강고민</b></h4>
+                            <hr class="bg-warning" style="margin-bottom: 35px;">
                             <c:forEach var="n_func" items="${n_FUNC }" varStatus="loop">
-    							<span style="font-size: 15px; display: inline-block; width: 192px;"><mark>&nbsp;${loop.count}) ${n_func}&nbsp;</mark></span>
+    							<span class="text-center" style="font-size: 15px; display: inline-block; width: 260px;"><mark>&nbsp;${loop.count}) ${n_func}&nbsp;</mark></span>
     							<c:if test="${(loop.count % 3 == 0) && !loop.last}">
     								<hr/>
     							</c:if>
                             </c:forEach>
                             <c:forEach var="i_func" items="${i_FUNC }" varStatus="loop">
-    							<span style="font-size: 15px; display: inline-block; width: 192px;"><mark>&nbsp;${loop.count}) ${i_func}&nbsp;</mark></span>
+    							<span class="text-center" style="font-size: 15px; display: inline-block; width: 260px;"><mark>&nbsp;${loop.count}) ${i_func}&nbsp;</mark></span>
                             	<c:if test="${(loop.count % 3 == 0) && !loop.last}">
     								<hr/>
     							</c:if>
                             </c:forEach>
                         </div>
                         <div class="mt-5">
-                            <h4><b>2. 상세설명</b></h4>
-                            <hr class="bg-warning mb-4">
-                            <p style="font-size: 15px;">${desc }</p>
-                            <p style="font-size: 15px;">${i_desc }</p>
+                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 상세설명</b></h4>
+                            <hr class="bg-warning" style="margin-bottom: 35px;">
+                            <div class="d-flex justify-content-center">
+                            <c:if test="${not empty desc }">
+	                            <p style="font-size: 15px; width: 650px;">${desc }</p>
+	                        </c:if>    
+	                        <c:if test="${not empty i_desc }">
+	                            <p style="font-size: 15px; width: 650px;">${i_desc }</p>
+	                        </c:if>    
+                            </div>
                         </div>
                         <div class="mt-4">
-                            <h4><b>3. 섭취량</b></h4>
-                            <hr class="bg-warning mb-4">
-                            
+                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 섭취량</b></h4>
+                            <hr class="bg-warning" style="margin-bottom: 35px;">
                             <div class="justify-content-center">
-                                <div class="d-flex flex-column align-items-center">
+                                <div class="d-flex flex-column align-items-center pb-4">
                                 
                                 <!-- 5대 상한 있음 -->
 	                            <c:if test="${not empty n_UL_M }" var="limit">
                         	        <c:if test="${not empty n_UL_M}">
 		                            <p style="font-size: 13px; margin-bottom: 13px;" class="mt-2">
-	                                	남성 권장 섭취량: ${n_DRI_M }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                                	남성 권장 섭취량: ${n_DRI_M }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	                                	<c:if test="${not empty n_UL_M}">
 	                                	남성 상한 섭취량: ${n_UL_M }<br/>
 	                                	</c:if>
-		                                여성 권장 섭취량: ${n_DRI_F }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                                여성 권장 섭취량: ${n_DRI_F }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		                                <c:if test="${not empty n_UL_F}">
 		                                	여성 상한 섭취량: ${n_UL_F }
 		                                </c:if>
 	                                
 		                                <div style="height:1px;">
-		                                	<span class="arrow-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow-down"></span>
+		                                	<span class="arrow-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow-down"></span>
 		                                </div>
 		                            </p>
 		                            <div class="progress w-75 progress-bar text-danger" > 
@@ -348,10 +359,10 @@
 	                            <!-- 기능성 상한 있음 -->
 	                            <c:if test="${not empty i_DRI && not empty i_UL }">
 		                            <p style="font-size: 13px; margin-bottom: 13px;" class="mt-2">
-		                                	권장 섭취량: ${i_DRI }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                                	권장 섭취량: ${i_DRI }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		                                	상한 섭취량: ${i_UL }<br/>
 		                                <div style="height:1px;">
-		                                	<span class="arrow-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow-down"></span>
+		                                	<span class="arrow-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow-down"></span>
 		                                </div>
 		                            </p>
 		                            <div class="progress w-75 progress-bar text-danger" > 
@@ -379,80 +390,91 @@
                         </div>
                         <c:if test="${not empty n_DRI_M }" var="vit"></c:if>
                         <c:if test="${vit }">
-	                        <div class="mt-5">
+	                        <div style="margin-top: 60px;">
 		                        <c:if test="${not empty n_LACK }">
-		                            <h4><b>4. 결핍시 증상</b></h4>
-		                            <hr class="bg-warning mb-4">
-		                            <p style="font-size: 15px;">· ${n_LACK }이 있어요.</p>
+		                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. 결핍시 증상</b></h4>
+                            		<hr class="bg-warning" style="margin-bottom: 35px;">
+		                            <div class="d-flex justify-content-center">
+		                            	<p style="font-size: 15px; width: 650px;">· ${n_LACK }이 있어요.</p>
+		                            </div>
 		                        </c:if>
 	                        </div>
                         </c:if>
                         <c:if test="${vit }">
                         	<c:if test="${not empty caution }">
-		                        <div class="mt-5 pt-1">
-		                            <h4><b>5. 주의사항</b></h4>
-		                            <hr class="bg-warning mb-4">
-		                            <p style="font-size: 15px;">${caution }</p>
+		                        <div class="mt-5">
+		                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. 주의사항</b></h4>
+                            		<hr class="bg-warning" style="margin-bottom: 35px;">
+		                            <div class="d-flex justify-content-center">
+		                            	<p style="font-size: 15px; width: 650px;">${caution }</p>
+		                            </div>	
 		                        </div>
 		                    </c:if>
                         </c:if>
                         <c:if test="${not vit }">
                             <c:if test="${not empty i_caution }">
 		                        <div class="mt-5">
-		                            <h4><b>4. 주의사항</b></h4>
-		                            <hr class="bg-warning mb-4">
-		                            <p style="font-size: 15px;">${i_caution }</p>
+		                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. 주의사항</b></h4>
+		                            <hr class="bg-warning" style="margin-bottom: 35px;">
+		                            <div class="d-flex justify-content-center">
+		                            	<p style="font-size: 15px; width: 650px;">${i_caution }</p>
+		                            </div>
 		                        </div>
 		                    </c:if>
                         </c:if>
                         <c:if test="${vit }">
 	                        <div class="mt-4">
 		                        <c:if test="${not empty caution}" var="exist">
-		                            <h4><b>6. 섭취 음식</b></h4>
-		                            <hr class="bg-warning mb-4">
-		                            <p style="font-size: 15px;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
+		                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. 섭취 음식</b></h4>
+		                            <hr class="bg-warning" style="margin-bottom: 35px;">
+		                            <div class="d-flex justify-content-center">
+		                            	<p style="font-size: 15px; width: 650px;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
+		                            </div>
 		                        </c:if>
 		                        <c:if test="${not exist }">
-		                        	<h4><b>5. 섭취 음식</b></h4>
-		                            <hr class="bg-warning mb-4">
-		                            <p style="font-size: 15px;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
+		                        	<h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. 섭취 음식</b></h4>
+		                            <hr class="bg-warning" style="margin-bottom: 35px;">
+		                            <div class="d-flex justify-content-center">
+		                            	<p style="font-size: 15px; width: 650px;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
+		                            </div>
 		                        </c:if>
 	                        </div>
 	                    </c:if>
+	                    <!-- 5대 영양소 -->
 	                    <c:if test="${vit }">
-	                    <!-- 개수 6,7 은 5대 영양소 / 개수 4,5 는 기능성 원료 -->
 	                        <div class="mt-5">
 		                        <c:if test="${not empty caution}" var="exist">
-		                            <h4><b>7. 추천 영양제</b></h4>
-		                            <hr class="bg-warning mb-4">
-		                            <c:forEach var="productInfo" items="${productInfoList}" varStatus="loop">
-		                            <c:if test="${loop.count == 1 && productInfoList.size() != 0 }">
-		                            	<p class="text-center pt-4" style="font-size: 17px;"><b>'${param.name}'을(를) 포함하고 있는 영양제 Top ${productInfoList.size()}에요!</b></p>
-		                            </c:if>
-		                            <c:if test="${productInfoList.size() == 0 }">
-		                            	<p class="text-center pt-4" style="font-size: 17px;"><b>'${param.name}'을(를) 포함하고 있는 등록된 영양제가 없어요.😓<br/><small>한국 식품의약품안전처에서 검증된 원료인지 확인해주세요!</small></b></p>
+		                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. 추천 영양제</b></h4>
+		                        </c:if>
+		                        <c:if test="${not exist }">
+		                        	<h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. 추천 영양제</b></h4>
+		                        </c:if>
+		                            <hr class="bg-warning" style="margin-bottom: 35px;">
+		                            <c:forEach var="productInfo" items="${n_productInfoList}" varStatus="loop">
+		                            <c:if test="${loop.count == 1 && n_productInfoList.size() != 0 }">
+		                            	<p class="text-center pt-4" style="font-size: 17px;"><b>'${param.name}'을(를) 포함하고 있는 영양제 Top ${n_productInfoList.size()}에요!</b></p>
 		                            </c:if>
 		                            <p style="font-size: 15px;">
 		                                <div class="scrollable-container">
 										    <div class="box-container justify-content-center">
 										    	
 										    	<!-- 이미지 있는 경우 우선 가져옴 -->
-											    <c:if test="${not empty productInfo.PRODUCTNAME && not empty productInfo.IMGURL}" var="first">
-													<div class="box" style="white-space: nowrap; width:580px;" onclick="location.href='/NutrientToFoodDetail.do?name=${productInfo.PRODUCTNAME}'">
+											    <c:if test="${not empty productInfo.PRODUCTNAME}" var="first">
+													<div class="box" style="white-space: nowrap; width:700px;" onclick="location.href='/NutrientToFoodDetail.do?name=${productInfo.PRODUCTNAME}'">
 					    								<c:if test="${loop.count == 1}">
-															<b class="text-center" style="width:115px; font-size: 15px;">🥇 ${loop.count }위</b>
+															<b class="text-center" style="width:150px; font-size: 15px;">🥇 ${loop.count }위</b>
 														</c:if>
 														<c:if test="${loop.count == 2}">
-															<b class="text-center" style="width:115px; font-size: 15px;">🥈 ${loop.count }위</b>
+															<b class="text-center" style="width:150px; font-size: 15px;">🥈 ${loop.count }위</b>
 														</c:if>
 														<c:if test="${loop.count == 3}">
-															<b class="text-center" style="width:115px; font-size: 15px;">🥉 ${loop.count }위</b>
+															<b class="text-center" style="width:150px; font-size: 15px;">🥉 ${loop.count }위</b>
 														</c:if>
 														<c:if test="${loop.count == 4}">
-															<b class="text-center" style="width:115px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
+															<b class="text-center" style="width:150px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
 														</c:if>
 														<c:if test="${loop.count == 5}">
-															<b class="text-center" style="width:115px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
+															<b class="text-center" style="width:150px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
 														</c:if>
 														
 												    	<!-- imgurl 있으면 가져옴 -->
@@ -464,113 +486,84 @@
  													        <img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
 												        </c:if>
 												        
-												        <b class="text-center" style="font-size: 13px; width: 230px;">&nbsp;${productInfo.PRODUCTNAME}</b>
+												        <b class="text-center" style="font-size: 13px; width: 300px;">&nbsp;${productInfo.PRODUCTNAME}</b>
 												    </div>
 											    </c:if>
 											    
-											    <!-- 이미지 없는 경우 -->
+											    <!-- 이미지 없는 경우
 											    <c:if test="${! first}">
-													<div class="box" style="white-space: nowrap; width:580px;" onclick="location.href='/NutrientToFoodDetail.do?name=${productInfo.PRODUCTNAME}'">
+													<div class="box" style="white-space: nowrap; width:700px;" onclick="location.href='/NutrientToFoodDetail.do?name=${productInfo.PRODUCTNAME}'">
 					    								<c:if test="${loop.count == 1}">
-															<b class="text-center" style="width:115px; font-size: 15px;">🥇 ${loop.count }위</b>
+															<b class="text-center" style="width:150px; font-size: 15px;">🥇 ${loop.count }위</b>
 														</c:if>
 														<c:if test="${loop.count == 2}">
-															<b class="text-center" style="width:115px; font-size: 15px;">🥈 ${loop.count }위</b>
+															<b class="text-center" style="width:150px; font-size: 15px;">🥈 ${loop.count }위</b>
 														</c:if>
 														<c:if test="${loop.count == 3}">
-															<b class="text-center" style="width:115px; font-size: 15px;">🥉 ${loop.count }위</b>
+															<b class="text-center" style="width:150px; font-size: 15px;">🥉 ${loop.count }위</b>
 														</c:if>
 														<c:if test="${loop.count == 4}">
-															<b class="text-center" style="width:115px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
+															<b class="text-center" style="width:150px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
 														</c:if>
 														<c:if test="${loop.count == 5}">
-															<b class="text-center" style="width:115px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
+															<b class="text-center" style="width:150px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
 														</c:if>
 														
-												    	<!-- imgurl 있으면 가져옴 -->
+												    	
 												    	<c:if test="${productInfo.IMGURL != null }" var="existimg">
 												        	<img src="${productInfo.IMGURL}" alt="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
 												        </c:if>
-												        <!-- imgurl 없으면 대체이미지 -->
+
 												        <c:if test="${not existimg }">
  													        <img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
 												        </c:if>
 												        
-												        <b class="text-center" style="font-size: 13px; width: 230px;">&nbsp;${productInfo.PRODUCTNAME}</b>
+												        <b class="text-center" style="font-size: 13px; width: 300px;">&nbsp;${productInfo.PRODUCTNAME}</b>
 												    </div>
-											    </c:if>
-											    
-											    
-											    
-											    
-											    
+											    </c:if> -->
 											</div>
 										</div>  
 									</p>
-									</c:forEach>     
-		                        </c:if>
-		                        <c:if test="${not exist }">
-		                        	<h4><b>6. 추천 영양제</b></h4>
-		                            <hr class="bg-warning mb-4">
-		                            <p class="text-center pt-4" style="font-size: 17px;"><b>'${param.name}'을(를) 포함하고 있는 영양제 Top 5에요!</b></p>
-		                            <p style="font-size: 15px;">
-		                                <div class="scrollable-container">
-										    <div class="box-container justify-content-center">
-											    <c:forEach var="productInfo" items="${productInfoList}" varStatus="loop">
-												    <div class="box" style="white-space: nowrap; width:550px; onclick="location.href='/NutrientDetail.do?name=${productInfo.PRODUCTNAME}'">
-					    								<c:if test="${loop.count == 1 }">
-															<b class="text-center" style="width:115px; font-size: 15px;">🥇 ${loop.count }위</b>
-														</c:if>
-														<c:if test="${loop.count == 2 }">
-															<b class="text-center" style="width:115px; font-size: 15px;">🥈 ${loop.count }위</b>
-														</c:if>
-														<c:if test="${loop.count == 3 }">
-															<b class="text-center" style="width:115px; font-size: 15px;">🥉 ${loop.count }위</b>
-														</c:if>
-														<c:if test="${loop.count > 3 }">
-															<b class="text-center" style="width:115px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
-														</c:if>
-														
-												    	<!-- imgurl 있으면 가져옴 -->
-												    	<c:if test="${productInfo.IMGURL != null }" var="existimg">
-												        	<img src="${productInfo.IMGURL}" alt="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
-												        </c:if>
-												        <!-- imgurl 없으면 대체이미지 -->
-												        <c:if test="${not existimg }">
-  													        <img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
-												        </c:if>
-												        
-												        <b class="text-center" style="font-size: 13px; width: 230px;">${productInfo.PRODUCTNAME}</b>
-												    </div>
-												</c:forEach>
-											</div>
-										</div>        
-		                            </p>
-		                        </c:if>
+									</c:forEach>   
+	                            <c:if test="${n_productInfoList.size() == 0 }">
+	                            	<p class="text-center pt-4" style="font-size: 17px;"><b>'${param.name}'을(를) 포함하고 있는 등록된 영양제가 없어요.😓<br/><small>한국 식품의약품안전처에서 검증된 원료인지 확인해주세요!</small></b></p>
+	                            </c:if> 
 	                        </div>
 	                    </c:if>
+	                    <!-- 기능성 원료인 경우 -->
 	                    <c:if test="${not vit }">
-	                    	<c:if test="${not empty i_caution }">
-			                    <div class="mt-5">
-			                    	<h4><b>5. 추천 영양제</b></h4>
-		                            <hr class="bg-warning mb-4">
-		                            <p class="text-center pt-4" style="font-size: 17px;"><b>'${param.name}'을(를) 포함하고 있는 영양제 Top 5에요!</b></p>
+		                    <div class="mt-5">
+		                    	<c:if test="${empty i_caution }">
+		                    		<h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. 추천 영양제</b></h4>
+		                    	</c:if>
+		                    	<c:if test="${not empty i_caution }">
+		                    		<h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. 추천 영양제</b></h4>
+		                    	</c:if>
+	                            <hr class="bg-warning" style="margin-bottom: 35px;">
+	                            <c:forEach var="productInfo" items="${i_productInfoList}" varStatus="loop">
+	                            <c:if test="${loop.count == 1 && i_productInfoList.size() != 0 }">
+	                            	<p class="text-center pt-4" style="font-size: 17px;"><b>'${param.name}'을(를) 포함하고 있는 영양제 Top ${i_productInfoList.size()}에요!</b></p>
+		                        </c:if>    
 		                            <p style="font-size: 15px;">
 		                                <div class="scrollable-container">
 										    <div class="box-container justify-content-center">
-											    <c:forEach var="productInfo" items="${productInfoList}" varStatus="loop">
-												    <div class="box" style="white-space: nowrap; width:550px; onclick="location.href='/NutrientDetail.do?name=${productInfo.PRODUCTNAME}'">
-					    								<c:if test="${loop.count == 1 }">
-															<b class="text-center" style="width:115px; font-size: 15px;">🥇 ${loop.count }위</b>
+										    	<!-- 이미지 있는 경우 우선 가져옴 -->
+											    <c:if test="${not empty productInfo.PRODUCTNAME}" var="first">
+													<div class="box" style="white-space: nowrap; width:700px;" onclick="location.href='/NutrientToFoodDetail.do?name=${productInfo.PRODUCTNAME}'">
+					    								<c:if test="${loop.count == 1}">
+															<b class="text-center" style="width:150px; font-size: 15px;">🥇 ${loop.count }위</b>
 														</c:if>
-														<c:if test="${loop.count == 2 }">
-															<b class="text-center" style="width:115px; font-size: 15px;">🥈 ${loop.count }위</b>
+														<c:if test="${loop.count == 2}">
+															<b class="text-center" style="width:150px; font-size: 15px;">🥈 ${loop.count }위</b>
 														</c:if>
-														<c:if test="${loop.count == 3 }">
-															<b class="text-center" style="width:115px; font-size: 15px;">🥉 ${loop.count }위</b>
+														<c:if test="${loop.count == 3}">
+															<b class="text-center" style="width:150px; font-size: 15px;">🥉 ${loop.count }위</b>
 														</c:if>
-														<c:if test="${loop.count > 3 }">
-															<b class="text-center" style="width:115px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
+														<c:if test="${loop.count == 4}">
+															<b class="text-center" style="width:150px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
+														</c:if>
+														<c:if test="${loop.count == 5}">
+															<b class="text-center" style="width:150px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
 														</c:if>
 														
 												    	<!-- imgurl 있으면 가져옴 -->
@@ -579,58 +572,21 @@
 												        </c:if>
 												        <!-- imgurl 없으면 대체이미지 -->
 												        <c:if test="${not existimg }">
-  													        <img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+ 													        <img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
 												        </c:if>
 												        
-												        <b class="text-center" style="font-size: 13px; width: 230px;">${productInfo.PRODUCTNAME}</b>
+												        <b class="text-center" style="font-size: 13px; width: 300px;">&nbsp;${productInfo.PRODUCTNAME}</b>
 												    </div>
-												</c:forEach>
+											    </c:if>
 											</div>
-										</div>        
-		                            </p>
-		                        </div>    
-		                    </c:if>
-		                    <c:if test="${empty i_caution }">
-		                    	<div class="mt-5">
-			                    	<h4><b>4. 추천 영양제</b></h4>
-		                            <hr class="bg-warning mb-4">
-		                            <p class="text-center pt-4" style="font-size: 17px;"><b>'${param.name}'을(를) 포함하고 있는 영양제 Top 5에요!</b></p>
-		                            <p style="font-size: 15px;">
-		                                <div class="scrollable-container">
-										    <div class="box-container justify-content-center">
-											    <c:forEach var="productInfo" items="${productInfoList}" varStatus="loop">
-												    <div class="box" style="white-space: nowrap; width:550px; onclick="location.href='/NutrientToFoodDetail.do?name=${productInfo.PRODUCTNAME}'">
-					    								<c:if test="${loop.count == 1 }">
-															<b class="text-center" style="width:115px; font-size: 15px;">🥇 ${loop.count }위</b>
-														</c:if>
-														<c:if test="${loop.count == 2 }">
-															<b class="text-center" style="width:115px; font-size: 15px;">🥈 ${loop.count }위</b>
-														</c:if>
-														<c:if test="${loop.count == 3 }">
-															<b class="text-center" style="width:115px; font-size: 15px;">🥉 ${loop.count }위</b>
-														</c:if>
-														<c:if test="${loop.count > 3 }">
-															<b class="text-center" style="width:115px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
-														</c:if>
-														
-												    	<!-- imgurl 있으면 가져옴 -->
-												    	<c:if test="${productInfo.IMGURL != null }" var="existimg">
-												        	<img src="${productInfo.IMGURL}" alt="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
-												        </c:if>
-												        <!-- imgurl 없으면 대체이미지 -->
-												        <c:if test="${not existimg }">
-  													        <img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
-												        </c:if>
-												        
-												        <b class="text-center" style="font-size: 13px; width: 230px;">${productInfo.PRODUCTNAME}</b>
-												    </div>
-												</c:forEach>
-											</div>
-										</div>        
-		                            </p>
-		                        </div> 
-		                    </c:if>
-	                    </c:if>
+										</div>  
+									</p>
+								</c:forEach>   
+								<c:if test="${i_productInfoList.size() == 0  }">
+	                            	<p class="text-center pt-4" style="font-size: 17px;"><b>'${param.name}'을(를) 포함하고 있는 등록된 영양제가 없어요.😓<br/><small>한국 식품의약품안전처에서 검증된 원료인지 확인해주세요!</small></b></p>
+	                            </c:if>
+	                        </div>
+	                    </c:if>	
                     </div>
                 </div>
             </div>
@@ -640,15 +596,15 @@
        		<div id="popular" class="tab active border-0" style="display:none;">
 			
                 <!-- 인기성분에 해당하는 상자 내용 -->
-   				<div class="image mt-2">
-	                <img class="bg-img w-100" style="height:240px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
-	                <div class="text text-color:black text-center" style="margin:35px;">
+   				<div class="image mt-4">
+	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
+	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">👨‍⚕&nbsp;인기 성분 Top 10</b><br/>
-		           		<small>100개 영양성분 중 가장 인기있는 10개 성분의 Best 제품을 만나보세요!</small>
+		           		<small>100가지 영양성분 중 가장 인기있는 10개 성분의 Best 제품을 만나보세요!</small>
                 	</div>
     			</div>
                 <div class="box-container">
-	                <c:forEach var="name" items="${vitaminNames}">
+	                <c:forEach var="name" items="${top10}">
 					    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
 					        <b style="font-size: 14px;">${name}</b>
 					    </div>
@@ -658,11 +614,11 @@
             
 	        <div id="vitamin" class="tab" style="display: none;">
                	<!-- 비타민에 해당하는 상자 내용 -->
-   				<div class="image mt-2">
-	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
-	                <div class="text text-color:black text-center">
+   				<div class="image mt-4">
+	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
+	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">🍊&nbsp;비타민 찾아보기</b><br/>
-		           		<small>비타민의 중요성과 효과를 자세히 알아보세요!</small>
+		           		<small>14가지 비타민의 중요성과 효과를 자세히 알아보세요!</small>
                 	</div>
     			</div>
     			<div class="box-container">
@@ -676,11 +632,11 @@
 
             <div id="mineral" class="tab">
                 <!-- 미네랄에 해당하는 상자 내용 -->
-                <div class="image mt-2">
-	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
-	                <div class="text text-color:black text-center">
+                <div class="image mt-4">
+	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
+	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">🥗&nbsp;미네랄 및 기타영양소 찾아보기</b><br/>
-		           		<small>미네랄 및 기타영양소의 중요성과 효과를 자세히 알아보세요!</small>
+		           		<small>14가지 미네랄 및 기타영양소의 중요성과 효과를 자세히 알아보세요!</small>
                 	</div>
     			</div>
     			<div class="box-container">
@@ -694,11 +650,11 @@
                 
             <div id="functional" class="tab">
                 <!-- 기능성 원료에 해당하는 상자 내용 -->
-                <div class="image mt-2">
-	                <img class="bg-img w-100" style="height:150px" src="<c:url value="/resources/images/nutrient_img/bg_nt.jpg"/>"/>
-	                <div class="text text-color:black text-center">
+                <div class="image mt-4">
+	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
+	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">🌿&nbsp;기능성 원료 찾아보기</b><br/>
-		           		<small>기능성 원료의 중요성과 효과를 자세히 알아보세요!</small>
+		           		<small>74가지 기능성 원료의 중요성과 효과를 자세히 알아보세요!</small>
                 	</div>
     			</div>
     			<div class="box-container">
@@ -767,7 +723,7 @@
         var i_UL = "${i_UL}";
         
         if(n_UL_M.trim() !== "" || i_UL.trim() !=="" ){
-        	targetValue = 73;
+        	targetValue = 72;
         }
         
         var updateInterval = 30; // 업데이트 간격 (밀리초)

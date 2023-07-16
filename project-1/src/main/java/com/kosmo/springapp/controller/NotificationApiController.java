@@ -27,5 +27,5 @@ public class NotificationApiController {
         notificationService.register(member.getId(), token);
         return ResponseEntity.ok().build();
     }
-
+ 
 }

@@ -15,19 +15,19 @@
  .custom-top {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 25px;
-    margin-bottom : 150px;
-    padding-top : 120px;
+    
+    padding-top : 145px;
   }
   .contentTop{
-  	padding-top: 130px;
+  	padding-top: 50px;
   }
   .paragraph{
-  	margin-top: 180px;
+  	margin-top: 100px;
   	font-size: 22px;
   }
   .paragraph-title{
-  	margin-top: 90px;
-  	margin-bottom: 200px;
+  	margin-top: 50px;
+  	margin-bottom: 70px;
   }
 
   .custom-text{
@@ -59,8 +59,8 @@
   	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 800px;
-  	height: 680px;
+	width: 830px;
+  	height: 700px;
   }
   .modalB{
     margin-top : 20px;
@@ -115,11 +115,11 @@
     text-overflow: ellipsis;
   }
   .card-title {
-    font-size: 12px;
+    font-size: 15px;
     color:#a7a4a4;
   }
   .card-content {
-
+	font-size: 22px;
     width: 100px;
   }
   .product-img {
@@ -128,8 +128,21 @@
   }
   
   .custom-footer{
-  	padding-top : 250px;
-  	margin-bottom: 260px;
+  	padding-top : 180px;
+  	margin-bottom: 240px;
+  }
+   body {
+    zoom: 0.70;
+  }
+  .modal-backdrop {
+  	background-color: transparent !important;
+  }
+  .modal-dialog {
+   margin-top: 300px;
+   margin-right: 1300px;
+  }
+  .wrap-vertical {
+    overflow: hidden;
   }
 </style>
 <div class="container custom-top">
@@ -148,7 +161,7 @@
       그래서 이러한 피부 노화를 되돌리기 위해 콜라겐 성분의 화장품을 바르거나 콜라겐 영양제를 먹고는 하죠.
     </div>
     <div class="custom-img">
-    	<img src="resources/images/magazine_images/02/01_IMG.png" class="img-fluid">
+    	<img src="<c:url value="/resources/images/magazine_images/02/01_IMG.png"/>" class="img-fluid">
   	</div>
   	<div class="paragraph-title d-flex">
 	    <img src="<c:url value="/resources/images/magazine_images/basic/question.png"/>" class="img-fluid mr-2 mb-5" style="width:90px"> 
@@ -159,9 +172,9 @@
   	</div>
   	
   	
-    <div class="paragraph-title">
+    <div>
 	<img src="<c:url value="/resources/images/magazine_images/basic/work-time.png"/>" class="img-fluid mr-4" style="width:100px">
-	<span style="font-size: xx-large; color: #9370DB"><strong>메디의 1분 요약</strong></span>
+	<span style="font-size: xx-large; color: #9370DB"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
   		</button>
@@ -170,7 +183,7 @@
 	      <div class="modal-content">
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
-	          메디의 1분 요약
+	          MEDI-Q의 1분 요약
 	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
@@ -186,7 +199,7 @@
 		   	  <span class="modalC">제형, 부원료 등을 확인하고 골라주세요!</span></p>
 	        </div>	       
 	        <div class="modal-footer">
-	          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width: 100px; height: 50px; font-size: 20px;">Close</button>
 	        </div>
 	 	 </div>
 	   </div>
@@ -301,21 +314,25 @@
   <hr class="my-hr mt-5 mb-5">
    -->
   <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid" style="width:50px">
-  &nbsp;&nbsp;관련 영양제 인기 TOP 10 <i class="bi bi-chat-quote"></i></span>
+  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-1" style="width:65px">
+  &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
       등록된 제품이 없습니다
     </c:if>
     <c:if test="${not listIsEmpty}">
-      <c:forEach var="record" begin="0" end="10" items="${listData}" >
-        <div class="card" style="width:150px;height:400px;">
-          <c:if test="${not empty record.imgURL}">
-            <a href='/detail.do?no=${record.no}'><img src="${record.imgURL}" style="width:150px;height:150px;" class="img-fluid product-img"></a>
-          </c:if>
-          <c:if test="${empty record.imgURL}">
-            <a href='/detail.do?no=${record.no}'><img src="resources/images/thumbnail_img/No_IMG.jpeg" style="object-fit:fill" class="img-fluid product-img"></a>
-          </c:if>
+      <c:forEach var="record" begin="0" end="4" items="${listData}" >
+        <div class="card" style="width:190px;height:400px;">
+          <a href='/detail.do?no=${record.no}'>
+  			<c:choose>
+    		  <c:when test="${not empty record.imgURL}">
+     			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
+   			  </c:when>
+    		  <c:otherwise>
+      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+    		  </c:otherwise>
+  			</c:choose>
+		  </a>
           <div class="card-footer" style="white-space:normal">
             <span class="card-title">${record.company}</span><br>
             <span class="card-content">

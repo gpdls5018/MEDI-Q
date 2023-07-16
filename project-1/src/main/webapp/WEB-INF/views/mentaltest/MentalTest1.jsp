@@ -60,13 +60,13 @@
 	                </tr>
 	                <tr class="border-bottom tr-content">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q01" id="str_q01_01" value="3"/>
+	                        <input type="radio" name="str_q1" id="str_q01_01" value="3"/>
 	                        <label for="str_q01_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q01" id="str_q01_02" value="2"/>
+	                        <input type="radio" name="str_q1" id="str_q01_02" value="2"/>
 	                        <label for="str_q01_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q01" id="str_q01_03" value="1"/>
+	                        <input type="radio" name="str_q1" id="str_q01_03" value="1"/>
 	                        <label for="str_q01_03">그렇다</label>
-	                        <input type="radio" name="str_q01" id="str_q01_04" value="0"/>
+	                        <input type="radio" name="str_q1" id="str_q01_04" value="0"/>
 	                        <label for="str_q01_04">매우 그렇다</label>
 	                    </td>
 	                </tr>
@@ -76,13 +76,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q02" id="str_q02_01" value="0"/>
+	                        <input type="radio" name="str_q2" id="str_q02_01" value="0"/>
 	                        <label for="str_q02_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q02" id="str_q02_02" value="1"/>
+	                        <input type="radio" name="str_q2" id="str_q02_02" value="1"/>
 	                        <label for="str_q02_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q02" id="str_q02_03" value="2"/>
+	                        <input type="radio" name="str_q2" id="str_q02_03" value="2"/>
 	                        <label for="str_q02_03">그렇다</label>
-	                        <input type="radio" name="str_q02" id="str_q02_04" value="3"/>
+	                        <input type="radio" name="str_q2" id="str_q02_04" value="3"/>
 	                        <label for="str_q02_04">매우 그렇다</label>
 	                    </td>
 	                </tr>
@@ -92,13 +92,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q03" id="str_q03_01" value="0"/>
+	                        <input type="radio" name="str_q3" id="str_q03_01" value="0"/>
 	                        <label for="str_q03_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q03" id="str_q03_02" value="1"/>
+	                        <input type="radio" name="str_q3" id="str_q03_02" value="1"/>
 	                        <label for="str_q03_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q03" id="str_q03_03" value="2"/>
+	                        <input type="radio" name="str_q3" id="str_q03_03" value="2"/>
 	                        <label for="str_q03_03">그렇다</label>
-	                        <input type="radio" name="str_q03" id="str_q03_04" value="3"/>
+	                        <input type="radio" name="str_q3" id="str_q03_04" value="3"/>
 	                        <label for="str_q03_04">매우 그렇다</label>
 	                    </td>
 	                </tr>
@@ -108,13 +108,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q04" id="str_q04_01" value="0"/>
+	                        <input type="radio" name="str_q4" id="str_q04_01" value="0"/>
 	                        <label for="str_q04_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q04" id="str_q04_02" value="1"/>
+	                        <input type="radio" name="str_q4" id="str_q04_02" value="1"/>
 	                        <label for="str_q04_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q04" id="str_q04_03" value="2"/>
+	                        <input type="radio" name="str_q4" id="str_q04_03" value="2"/>
 	                        <label for="str_q04_03">그렇다</label>
-	                        <input type="radio" name="str_q04" id="str_q04_04" value="3"/>
+	                        <input type="radio" name="str_q4" id="str_q04_04" value="3"/>
 	                        <label for="str_q04_04">매우 그렇다</label>
 	                    </td>
 	                </tr>
@@ -124,13 +124,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q05" id="str_q05_01" value="3"/>
+	                        <input type="radio" name="str_q5" id="str_q05_01" value="3"/>
 	                        <label for="str_q05_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q05" id="str_q05_02" value="2"/>
+	                        <input type="radio" name="str_q5" id="str_q05_02" value="2"/>
 	                        <label for="str_q05_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q05" id="str_q05_03" value="1"/>
+	                        <input type="radio" name="str_q5" id="str_q05_03" value="1"/>
 	                        <label for="str_q05_03">그렇다</label>
-	                        <input type="radio" name="str_q05" id="str_q05_04" value="0"/>
+	                        <input type="radio" name="str_q5" id="str_q05_04" value="0"/>
 	                        <label for="str_q05_04">매우 그렇다</label>
 	                    </td>
 	                </tr>
@@ -140,13 +140,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q06" id="str_q06_01" value="3"/>
+	                        <input type="radio" name="str_q6" id="str_q06_01" value="3"/>
 	                        <label for="str_q06_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q06" id="str_q06_02" value="2"/>
+	                        <input type="radio" name="str_q6" id="str_q06_02" value="2"/>
 	                        <label for="str_q06_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q06" id="str_q06_03" value="1"/>
+	                        <input type="radio" name="str_q6" id="str_q06_03" value="1"/>
 	                        <label for="str_q06_03">그렇다</label>
-	                        <input type="radio" name="str_q06" id="str_q06_04" value="0"/>
+	                        <input type="radio" name="str_q6" id="str_q06_04" value="0"/>
 	                        <label for="str_q06_04">매우 그렇다</label>
 	                    </td>
 	                </tr>
@@ -156,13 +156,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q07" id="str_q07_01" value="0"/>
+	                        <input type="radio" name="str_q7" id="str_q07_01" value="0"/>
 	                        <label for="str_q07_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q07" id="str_q07_02" value="1"/>
+	                        <input type="radio" name="str_q7" id="str_q07_02" value="1"/>
 	                        <label for="str_q07_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q07" id="str_q07_03" value="2"/>
+	                        <input type="radio" name="str_q7" id="str_q07_03" value="2"/>
 	                        <label for="str_q07_03">그렇다</label>
-	                        <input type="radio" name="str_q07" id="str_q07_04" value="3"/>
+	                        <input type="radio" name="str_q7" id="str_q07_04" value="3"/>
 	                        <label for="str_q07_04">매우 그렇다</label>
 	                    </td>
 	                </tr>
@@ -172,13 +172,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q08" id="str_q08_01" value="3"/>
+	                        <input type="radio" name="str_q8" id="str_q08_01" value="3"/>
 	                        <label for="str_q08_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q08" id="str_q08_02" value="2"/>
+	                        <input type="radio" name="str_q8" id="str_q08_02" value="2"/>
 	                        <label for="str_q08_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q08" id="str_q08_03" value="1"/>
+	                        <input type="radio" name="str_q8" id="str_q08_03" value="1"/>
 	                        <label for="str_q08_03">그렇다</label>
-	                        <input type="radio" name="str_q08" id="str_q08_04" value="0"/>
+	                        <input type="radio" name="str_q8" id="str_q08_04" value="0"/>
 	                        <label for="str_q08_04">매우 그렇다</label>
 	                    </td>
 	                </tr>
@@ -188,13 +188,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="str_q09" id="str_q09_01" value="3"/>
+	                        <input type="radio" name="str_q9" id="str_q09_01" value="3"/>
 	                        <label for="str_q09_01">전혀 그렇지 않다</label>
-	                        <input type="radio" name="str_q09" id="str_q09_02" value="2"/>
+	                        <input type="radio" name="str_q9" id="str_q09_02" value="2"/>
 	                        <label for="str_q09_02">그렇지 않다</label>
-	                        <input type="radio" name="str_q09" id="str_q09_03" value="1"/>
+	                        <input type="radio" name="str_q9" id="str_q09_03" value="1"/>
 	                        <label for="str_q09_03">그렇다</label>
-	                        <input type="radio" name="str_q09" id="str_q09_04" value="0"/>
+	                        <input type="radio" name="str_q9" id="str_q09_04" value="0"/>
 	                        <label for="str_q09_04">매우 그렇다</label>
 	                    </td>
 	                </tr>
@@ -390,10 +390,20 @@
 	$('#resultM').click(function(){
 		//console.log($('[name=str_q01]'))
 		if($(':radio:checked').length != 18){
-			alert('모든 항목을 체크해주세요');
 			$(this).attr('data-toggle','');
+			for (i=1;i<=$(':radio').parent().length;i++){
+				//console.log('i:',i)
+				//console.log('checked:',$('[name=str_q1]:checked'))
+			    if (!$('[name=str_q'+i+']:checked').length){
+			    	var this_ = $('[name=str_q'+i+']')
+				   	alert(i+"번 질문에 답을 선택하세요.");
+				   	this_.focus();
+				   	return;
+			    }
+			}
 		}
 		else{
+			$(this).attr('data-toggle','modal');
 			$('#resultT').removeClass('text-danger text-primary');
 			var sum=0;
 			$(':radio:checked').each(function(){

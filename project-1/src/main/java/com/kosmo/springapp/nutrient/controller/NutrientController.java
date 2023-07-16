@@ -34,11 +34,55 @@ public class NutrientController {
 		List<String> ingredientNames = nutrietnSelectMapper.getIngredientName();
 		model.addAttribute("ingredientNames",ingredientNames);
 		
+		// 조회수에 따른 Top10 가져오기
+		List<String> top10 = nutrietnSelectMapper.getTop10();
+		model.addAttribute("top10",top10);
+		
 		return "nutrient/NutrientSelect";
 	}
 	
 	@GetMapping("/NutrientDetail.do")
 	public String nutrientdetail(@RequestParam String name, Model model) {
+		if(name.equals("비타민B1") || name.equals("티아민")) {
+			name = "비타민B1(티아민)";
+		}
+		if(name.equals("비타민B2") || name.equals("리보플라빈")) {
+			name = "비타민B2(리보플라빈)";
+		}
+		if(name.equals("나이아신") || name.equals("비타민B3")) {
+			name = "비타민B3(나이아신)";
+		}
+		if(name.equals("비타민B5") || name.equals("판토텐산")) {
+			name = "비타민B5(판토텐산)";
+		}
+		if(name.equals("피리독신") || name.equals("비타민B6")) {
+			name = "비타민B6(피리독신)";
+		}
+		if(name.equals("비타민B7") || name.equals("비오틴")) {
+			name = "비타민B7(비오틴)";
+		}
+		if(name.equals("비타민B9") || name.equals("엽산")) {
+			name = "비타민B9(엽산)";
+		}
+		if(name.equals("코발라민") || name.equals("비타민B12")) {
+			name = "비타민B12(코발라민)";
+		}
+		if(name.equals("아스코르브산") || name.equals("비타민C")) {
+			name = "비타민C(아스코르브산)";
+		}
+		if(name.equals("콜레칼시페롤") || name.equals("비타민D")) {
+			name = "비타민D(콜레칼시페롤)";
+		}
+		if(name.equals("토코페롤") || name.equals("비타민E")) {
+			name = "비타민E(토코페롤)";
+		}
+		if(name.equals("필로퀴논") || name.equals("비타민K")) {
+			name = "비타민K(필로퀴논)";
+		}
+
+		
+
+
 		
 		// 탭 이동시 뿌려주기
 		List<String> vitaminNames = nutrietnSelectMapper.getVitaminName();
@@ -106,20 +150,60 @@ public class NutrientController {
 		String i_caution = nutrientSelectServiceImpl.editI_CAUTIONbyIngredientName(name);
 		model.addAttribute("i_caution",i_caution);
 		
-		List<Map<String, Object>> productInfoList = nutrietnSelectMapper.getProductNameNImgUrlFromFoodtable(name);
-		model.addAttribute("productInfoList", productInfoList);
+		// 5대 영양소 포함 추천 영양제 Top5
+		List<Map<String, Object>> n_productInfoList = nutrietnSelectMapper.getProductNameNImgUrlFromFoodtableByN(name);
+		model.addAttribute("n_productInfoList", n_productInfoList);
+
+		// 기능성 원료 포함 추천 영양제 Top5
+		List<Map<String, Object>> i_productInfoList = nutrietnSelectMapper.getProductNameNImgUrlFromFoodtableByI(name);
+		model.addAttribute("i_productInfoList", i_productInfoList);
+
+		
+		// 조회수
+		// 5대 영양소
+		if (vitaminNames.contains(name) || etcNames.contains(name)) {
+			int n_view = nutrietnSelectMapper.getN_VIEW(name);
+			//System.out.println(n_view);
+			nutrietnSelectMapper.increaseN_VIEW(name);
+			model.addAttribute("n_view",n_view+1);
+		}
+		// 기능성 원료
+		else {
+			int i_view = nutrietnSelectMapper.getI_VIEW(name);
+			//System.out.println(i_view);
+			nutrietnSelectMapper.increaseI_VIEW(name);
+			model.addAttribute("i_view",i_view+1);
+		}
+		
+		// 조회수에 따른 Top10 가져오기
+		List<String> top10 = nutrietnSelectMapper.getTop10();
+		model.addAttribute("top10",top10);
 		
 		
 		
+		model.addAttribute("title_name",name);
 		return "nutrient/NutrientDetail";
+		
 	}
 	
 	// 추천 영양제 상세페이지로 이동
 	@GetMapping("/NutrientToFoodDetail.do")
-	public String nutrientdetail(@RequestParam String name) {
+	public String nutrientToFoodDetail(@RequestParam String name, Model model) {
 		
+		// 영양제의 번호 가져오기
 		String no = nutrietnSelectMapper.findNobyFoodName(name);
-		System.out.println(no);
+		//System.out.println(no);
+		
+		// 영양제의 조회수 가져오기
+		int f_view = nutrietnSelectMapper.getF_VIEW(name);
+		nutrietnSelectMapper.increaseF_VIEW(name);
+		model.addAttribute("f_view",f_view+1);
+		
+		
+		
+		
+		
+		
 		
 	    return "redirect:/detail.do?no=" + no;
 	}

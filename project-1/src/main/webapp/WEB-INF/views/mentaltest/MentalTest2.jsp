@@ -61,15 +61,15 @@
 	                </tr>
 	                <tr class="border-bottom tr-content">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_a01" id="smo_a01_01" value="5"/>
+	                        <input type="radio" name="smo_q1" id="smo_a01_01" value="5"/>
 	                        <label for="smo_a01_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_a01" id="smo_a01_02" value="4"/>
+	                        <input type="radio" name="smo_q1" id="smo_a01_02" value="4"/>
 	                        <label for="smo_a01_02">그렇다</label>
-	                        <input type="radio" name="smo_a01" id="smo_a01_03" value="3"/>
+	                        <input type="radio" name="smo_q1" id="smo_a01_03" value="3"/>
 	                        <label for="smo_a01_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_a01" id="smo_a01_04" value="2"/>
+	                        <input type="radio" name="smo_q1" id="smo_a01_04" value="2"/>
 	                        <label for="smo_a01_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_a01" id="smo_a01_05" value="1"/>
+	                        <input type="radio" name="smo_q1" id="smo_a01_05" value="1"/>
 	                        <label for="smo_a01_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -79,15 +79,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_a02" id="smo_a02_01" value="5"/>
+	                        <input type="radio" name="smo_q2" id="smo_a02_01" value="5"/>
 	                        <label for="smo_a02_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_a02" id="smo_a02_02" value="4"/>
+	                        <input type="radio" name="smo_q2" id="smo_a02_02" value="4"/>
 	                        <label for="smo_a02_02">그렇다</label>
-	                        <input type="radio" name="smo_a02" id="smo_a02_03" value="3"/>
+	                        <input type="radio" name="smo_q2" id="smo_a02_03" value="3"/>
 	                        <label for="smo_a02_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_a02" id="smo_a02_04" value="2"/>
+	                        <input type="radio" name="smo_q2" id="smo_a02_04" value="2"/>
 	                        <label for="smo_a02_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_a02" id="smo_a02_05" value="1"/>
+	                        <input type="radio" name="smo_q2" id="smo_a02_05" value="1"/>
 	                        <label for="smo_a02_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -97,15 +97,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_a03" id="smo_a03_01" value="5"/>
+	                        <input type="radio" name="smo_q3" id="smo_a03_01" value="5"/>
 	                        <label for="smo_a03_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_a03" id="smo_a03_02" value="4"/>
+	                        <input type="radio" name="smo_q3" id="smo_a03_02" value="4"/>
 	                        <label for="smo_a03_02">그렇다</label>
-	                        <input type="radio" name="smo_a03" id="smo_a03_03" value="3"/>
+	                        <input type="radio" name="smo_q3" id="smo_a03_03" value="3"/>
 	                        <label for="smo_a03_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_a03" id="smo_a03_04" value="2"/>
+	                        <input type="radio" name="smo_q3" id="smo_a03_04" value="2"/>
 	                        <label for="smo_a03_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_a03" id="smo_a03_05" value="1"/>
+	                        <input type="radio" name="smo_q3" id="smo_a03_05" value="1"/>
 	                        <label for="smo_a03_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -115,15 +115,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_b01" id="smo_b01_01" value="5"/>
+	                        <input type="radio" name="smo_q4" id="smo_b01_01" value="5"/>
 	                        <label for="smo_b01_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_b01" id="smo_b01_02" value="4"/>
+	                        <input type="radio" name="smo_q4" id="smo_b01_02" value="4"/>
 	                        <label for="smo_b01_02">그렇다</label>
-	                        <input type="radio" name="smo_b01" id="smo_b01_03" value="3"/>
+	                        <input type="radio" name="smo_q4" id="smo_b01_03" value="3"/>
 	                        <label for="smo_b01_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_b01" id="smo_b01_04" value="2"/>
+	                        <input type="radio" name="smo_q4" id="smo_b01_04" value="2"/>
 	                        <label for="smo_b01_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_b01" id="smo_b01_05" value="1"/>
+	                        <input type="radio" name="smo_q4" id="smo_b01_05" value="1"/>
 	                        <label for="smo_b01_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -133,15 +133,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_b02" id="smo_b02_01" value="5"/>
+	                        <input type="radio" name="smo_q5" id="smo_b02_01" value="5"/>
 	                        <label for="smo_b02_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_b02" id="smo_b02_02" value="4"/>
+	                        <input type="radio" name="smo_q5" id="smo_b02_02" value="4"/>
 	                        <label for="smo_b02_02">그렇다</label>
-	                        <input type="radio" name="smo_b02" id="smo_b02_03" value="3"/>
+	                        <input type="radio" name="smo_q5" id="smo_b02_03" value="3"/>
 	                        <label for="smo_b02_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_b02" id="smo_b02_04" value="2"/>
+	                        <input type="radio" name="smo_q5" id="smo_b02_04" value="2"/>
 	                        <label for="smo_b02_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_b02" id="smo_b02_05" value="1"/>
+	                        <input type="radio" name="smo_q5" id="smo_b02_05" value="1"/>
 	                        <label for="smo_b02_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -151,15 +151,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_b03" id="smo_b03_01" value="5"/>
+	                        <input type="radio" name="smo_q6" id="smo_b03_01" value="5"/>
 	                        <label for="smo_b03_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_b03" id="smo_b03_02" value="4"/>
+	                        <input type="radio" name="smo_q6" id="smo_b03_02" value="4"/>
 	                        <label for="smo_b03_02">그렇다</label>
-	                        <input type="radio" name="smo_b03" id="smo_b03_03" value="3"/>
+	                        <input type="radio" name="smo_q6" id="smo_b03_03" value="3"/>
 	                        <label for="smo_b03_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_b03" id="smo_b03_04" value="2"/>
+	                        <input type="radio" name="smo_q6" id="smo_b03_04" value="2"/>
 	                        <label for="smo_b03_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_b03" id="smo_b03_05" value="1"/>
+	                        <input type="radio" name="smo_q6" id="smo_b03_05" value="1"/>
 	                        <label for="smo_b03_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -169,15 +169,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_c01" id="smo_c01_01" value="5"/>
+	                        <input type="radio" name="smo_q7" id="smo_c01_01" value="5"/>
 	                        <label for="smo_c01_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_c01" id="smo_c01_02" value="4"/>
+	                        <input type="radio" name="smo_q7" id="smo_c01_02" value="4"/>
 	                        <label for="smo_c01_02">그렇다</label>
-	                        <input type="radio" name="smo_c01" id="smo_c01_03" value="3"/>
+	                        <input type="radio" name="smo_q7" id="smo_c01_03" value="3"/>
 	                        <label for="smo_c01_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_c01" id="smo_c01_04" value="2"/>
+	                        <input type="radio" name="smo_q7" id="smo_c01_04" value="2"/>
 	                        <label for="smo_c01_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_c01" id="smo_c01_05" value="1"/>
+	                        <input type="radio" name="smo_q7" id="smo_c01_05" value="1"/>
 	                        <label for="smo_c01_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -187,15 +187,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_c02" id="smo_c02_01" value="5"/>
+	                        <input type="radio" name="smo_q8" id="smo_c02_01" value="5"/>
 	                        <label for="smo_c02_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_c02" id="smo_c02_02" value="4"/>
+	                        <input type="radio" name="smo_q8" id="smo_c02_02" value="4"/>
 	                        <label for="smo_c02_02">그렇다</label>
-	                        <input type="radio" name="smo_c02" id="smo_c02_03" value="3"/>
+	                        <input type="radio" name="smo_q8" id="smo_c02_03" value="3"/>
 	                        <label for="smo_c02_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_c02" id="smo_c02_04" value="2"/>
+	                        <input type="radio" name="smo_q8" id="smo_c02_04" value="2"/>
 	                        <label for="smo_c02_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_c02" id="smo_c02_05" value="1"/>
+	                        <input type="radio" name="smo_q8" id="smo_c02_05" value="1"/>
 	                        <label for="smo_c02_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -205,15 +205,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_c03" id="smo_c03_01" value="5"/>
+	                        <input type="radio" name="smo_q9" id="smo_c03_01" value="5"/>
 	                        <label for="smo_c03_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_c03" id="smo_c03_02" value="4"/>
+	                        <input type="radio" name="smo_q9" id="smo_c03_02" value="4"/>
 	                        <label for="smo_c03_02">그렇다</label>
-	                        <input type="radio" name="smo_c03" id="smo_c03_03" value="3"/>
+	                        <input type="radio" name="smo_q9" id="smo_c03_03" value="3"/>
 	                        <label for="smo_c03_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_c03" id="smo_c03_04" value="2"/>
+	                        <input type="radio" name="smo_q9" id="smo_c03_04" value="2"/>
 	                        <label for="smo_c03_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_c03" id="smo_c03_05" value="1"/>
+	                        <input type="radio" name="smo_q9" id="smo_c03_05" value="1"/>
 	                        <label for="smo_c03_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -223,15 +223,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_d01" id="smo_d01_01" value="5"/>
+	                        <input type="radio" name="smo_q10" id="smo_d01_01" value="5"/>
 	                        <label for="smo_d01_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_d01" id="smo_d01_02" value="4"/>
+	                        <input type="radio" name="smo_q10" id="smo_d01_02" value="4"/>
 	                        <label for="smo_d01_02">그렇다</label>
-	                        <input type="radio" name="smo_d01" id="smo_d01_03" value="3"/>
+	                        <input type="radio" name="smo_q10" id="smo_d01_03" value="3"/>
 	                        <label for="smo_d01_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_d01" id="smo_d01_04" value="2"/>
+	                        <input type="radio" name="smo_q10" id="smo_d01_04" value="2"/>
 	                        <label for="smo_d01_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_d01" id="smo_d01_05" value="1"/>
+	                        <input type="radio" name="smo_q10" id="smo_d01_05" value="1"/>
 	                        <label for="smo_d01_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -241,15 +241,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_d02" id="smo_d02_01" value="5"/>
+	                        <input type="radio" name="smo_q11" id="smo_d02_01" value="5"/>
 	                        <label for="smo_d02_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_d02" id="smo_d02_02" value="4"/>
+	                        <input type="radio" name="smo_q11" id="smo_d02_02" value="4"/>
 	                        <label for="smo_d02_02">그렇다</label>
-	                        <input type="radio" name="smo_d02" id="smo_d02_03" value="3"/>
+	                        <input type="radio" name="smo_q11" id="smo_d02_03" value="3"/>
 	                        <label for="smo_d02_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_d02" id="smo_d02_04" value="2"/>
+	                        <input type="radio" name="smo_q11" id="smo_d02_04" value="2"/>
 	                        <label for="smo_d02_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_d02" id="smo_d02_05" value="1"/>
+	                        <input type="radio" name="smo_q11" id="smo_d02_05" value="1"/>
 	                        <label for="smo_d02_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -259,15 +259,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_d03" id="smo_d03_01" value="5"/>
+	                        <input type="radio" name="smo_q12" id="smo_d03_01" value="5"/>
 	                        <label for="smo_d03_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_d03" id="smo_d03_02" value="4"/>
+	                        <input type="radio" name="smo_q12" id="smo_d03_02" value="4"/>
 	                        <label for="smo_d03_02">그렇다</label>
-	                        <input type="radio" name="smo_d03" id="smo_d03_03" value="3"/>
+	                        <input type="radio" name="smo_q12" id="smo_d03_03" value="3"/>
 	                        <label for="smo_d03_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_d03" id="smo_d03_04" value="2"/>
+	                        <input type="radio" name="smo_q12" id="smo_d03_04" value="2"/>
 	                        <label for="smo_d03_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_d03" id="smo_d03_05" value="1"/>
+	                        <input type="radio" name="smo_q12" id="smo_d03_05" value="1"/>
 	                        <label for="smo_d03_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -277,15 +277,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_e01" id="smo_e01_01" value="5"/>
+	                        <input type="radio" name="smo_q13" id="smo_e01_01" value="5"/>
 	                        <label for="smo_e01_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_e01" id="smo_e01_02" value="4"/>
+	                        <input type="radio" name="smo_q13" id="smo_e01_02" value="4"/>
 	                        <label for="smo_e01_02">그렇다</label>
-	                        <input type="radio" name="smo_e01" id="smo_e01_03" value="3"/>
+	                        <input type="radio" name="smo_q13" id="smo_e01_03" value="3"/>
 	                        <label for="smo_e01_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_e01" id="smo_e01_04" value="2"/>
+	                        <input type="radio" name="smo_q13" id="smo_e01_04" value="2"/>
 	                        <label for="smo_e01_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_e01" id="smo_e01_05" value="1"/>
+	                        <input type="radio" name="smo_q13" id="smo_e01_05" value="1"/>
 	                        <label for="smo_e01_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -295,15 +295,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_e02" id="smo_e02_01" value="5"/>
+	                        <input type="radio" name="smo_q14" id="smo_e02_01" value="5"/>
 	                        <label for="smo_e02_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_e02" id="smo_e02_02" value="4"/>
+	                        <input type="radio" name="smo_q14" id="smo_e02_02" value="4"/>
 	                        <label for="smo_e02_02">그렇다</label>
-	                        <input type="radio" name="smo_e02" id="smo_e02_03" value="3"/>
+	                        <input type="radio" name="smo_q14" id="smo_e02_03" value="3"/>
 	                        <label for="smo_e02_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_e02" id="smo_e02_04" value="2"/>
+	                        <input type="radio" name="smo_q14" id="smo_e02_04" value="2"/>
 	                        <label for="smo_e02_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_e02" id="smo_e02_05" value="1"/>
+	                        <input type="radio" name="smo_q14" id="smo_e02_05" value="1"/>
 	                        <label for="smo_e02_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -313,15 +313,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_e03" id="smo_e03_01" value="5"/>
+	                        <input type="radio" name="smo_q15" id="smo_e03_01" value="5"/>
 	                        <label for="smo_e03_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_e03" id="smo_e03_02" value="4"/>
+	                        <input type="radio" name="smo_q15" id="smo_e03_02" value="4"/>
 	                        <label for="smo_e03_02">그렇다</label>
-	                        <input type="radio" name="smo_e03" id="smo_e03_03" value="3"/>
+	                        <input type="radio" name="smo_q15" id="smo_e03_03" value="3"/>
 	                        <label for="smo_e03_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_e03" id="smo_e03_04" value="2"/>
+	                        <input type="radio" name="smo_q15" id="smo_e03_04" value="2"/>
 	                        <label for="smo_e03_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_e03" id="smo_e03_05" value="1"/>
+	                        <input type="radio" name="smo_q15" id="smo_e03_05" value="1"/>
 	                        <label for="smo_e03_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -331,15 +331,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_f01" id="smo_f01_01" value="5"/>
+	                        <input type="radio" name="smo_q16" id="smo_f01_01" value="5"/>
 	                        <label for="smo_f01_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_f01" id="smo_f01_02" value="4"/>
+	                        <input type="radio" name="smo_q16" id="smo_f01_02" value="4"/>
 	                        <label for="smo_f01_02">그렇다</label>
-	                        <input type="radio" name="smo_f01" id="smo_f01_03" value="3"/>
+	                        <input type="radio" name="smo_q16" id="smo_f01_03" value="3"/>
 	                        <label for="smo_f01_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_f01" id="smo_f01_04" value="2"/>
+	                        <input type="radio" name="smo_q16" id="smo_f01_04" value="2"/>
 	                        <label for="smo_f01_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_f01" id="smo_f01_05" value="1"/>
+	                        <input type="radio" name="smo_q16" id="smo_f01_05" value="1"/>
 	                        <label for="smo_f01_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -349,15 +349,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_f02" id="smo_f02_01" value="5"/>
+	                        <input type="radio" name="smo_q17" id="smo_f02_01" value="5"/>
 	                        <label for="smo_f02_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_f02" id="smo_f02_02" value="4"/>
+	                        <input type="radio" name="smo_q17" id="smo_f02_02" value="4"/>
 	                        <label for="smo_f02_02">그렇다</label>
-	                        <input type="radio" name="smo_f02" id="smo_f02_03" value="3"/>
+	                        <input type="radio" name="smo_q17" id="smo_f02_03" value="3"/>
 	                        <label for="smo_f02_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_f02" id="smo_f02_04" value="2"/>
+	                        <input type="radio" name="smo_q17" id="smo_f02_04" value="2"/>
 	                        <label for="smo_f02_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_f02" id="smo_f02_05" value="1"/>
+	                        <input type="radio" name="smo_q17" id="smo_f02_05" value="1"/>
 	                        <label for="smo_f02_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -367,15 +367,15 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="smo_f03" id="smo_f03_01" value="5"/>
+	                        <input type="radio" name="smo_q18" id="smo_f03_01" value="5"/>
 	                        <label for="smo_f03_01">자주 그렇다</label>
-	                        <input type="radio" name="smo_f03" id="smo_f03_02" value="4"/>
+	                        <input type="radio" name="smo_q18" id="smo_f03_02" value="4"/>
 	                        <label for="smo_f03_02">그렇다</label>
-	                        <input type="radio" name="smo_f03" id="smo_f03_03" value="3"/>
+	                        <input type="radio" name="smo_q18" id="smo_f03_03" value="3"/>
 	                        <label for="smo_f03_03">가끔 그렇다</label>
-	                        <input type="radio" name="smo_f03" id="smo_f03_04" value="2"/>
+	                        <input type="radio" name="smo_q18" id="smo_f03_04" value="2"/>
 	                        <label for="smo_f03_04">그렇지 않다</label>
-	                        <input type="radio" name="smo_f03" id="smo_f03_05" value="1"/>
+	                        <input type="radio" name="smo_q18" id="smo_f03_05" value="1"/>
 	                        <label for="smo_f03_05">전혀 그렇지 않다</label>
 	                    </td>
 	                </tr>
@@ -427,37 +427,46 @@
     
     //흡연유형 결과 뿌리기
 	$('#resultM').click(function(){
-		//console.log($('[name*=smo_b]:checked'))
 		$('#text').children().remove();
 		if($(':radio:checked').length != 18){
-			alert('모든 항목을 체크해주세요');
 			$(this).attr('data-toggle','');
+			for (i=1;i<=$(':radio').parent().length;i++){
+				//console.log('i:',i)
+				//console.log('checked:',$('[name=str_q1]:checked'))
+			    if (!$('[name=smo_q'+i+']:checked').length){
+			    	var this_ = $('[name=smo_q'+i+']')
+				   	alert(i+"번 질문에 답을 선택하세요.");
+				   	this_.focus();
+				   	return;
+			    }
+			}
 		}
 		else{
+			$(this).attr('data-toggle','modal');
 			var text='';
 			var suma=0, sumb=0, sumc=0, sumd=0, sume=0; sumf=0;
-			$('[name*=smo_a]:checked').each(function(){
+			$('[id*=smo_a]:checked').each(function(){
 				suma += parseInt($(this).val());
 			});
-			$('[name*=smo_b]:checked').each(function(){
+			$('[id*=smo_b]:checked').each(function(){
 				sumb += parseInt($(this).val());
 			});
-			$('[name*=smo_c]:checked').each(function(){
+			$('[id*=smo_c]:checked').each(function(){
 				sumc += parseInt($(this).val());
 			});
-			$('[name*=smo_d]:checked').each(function(){
+			$('[id*=smo_d]:checked').each(function(){
 				sumd += parseInt($(this).val());
 			});
-			$('[name*=smo_e]:checked').each(function(){
+			$('[id*=smo_e]:checked').each(function(){
 				sume += parseInt($(this).val());
 			});
-			$('[name*=smo_f]:checked').each(function(){
+			$('[id*=smo_f]:checked').each(function(){
 				sumf += parseInt($(this).val());
 			});
 			//console.log('suma:%s,sumb:%s,sumc:%s,sumd:%s,sume:%s,sumf:%s',suma,sumb,sumc,sumd,sume,sumf);
 			if(suma >= 11){
 				text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/resources/images/basic/warning2.png'/>흡연유형 해석결과 당신은 자극형 입니다</h5>
-					<p id="resultC"><img alt='해결' src='/resources/images/basic/solution.png'/>대체 자극을 찾아라!<br/>
+					<p id="resultC"><img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">대체 자극을 찾아라!</span><br/>
 					자극형 흡연자는 흡연행위를 생활의 활력을 북돋는 것처럼 느끼고, 
 					이것이 습관화된 상태이므로, 다른 방법을 생활의 활력소로 이용한다면 금연에 도움이 될 수 있다. 
 					우선, 담배를 잊을 정도로 매우 바쁘게 지내고, 집에 있는 동안에도 산책이나 집안청소, 요리, 운동 등 활동적으로 생활한다. 
@@ -467,7 +476,7 @@
 			}
 			if(sumb >= 11){
 				text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/resources/images/basic/warning2.png'/>흡연유형 해석결과 당신은 손장난형 입니다</h5>
-					<p id="resultC"><img alt='해결' src='/resources/images/basic/solution.png'/>손을 바쁘게 만들어라!<br/>
+					<p id="resultC"><img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">손을 바쁘게 만들어라!</span><br/>
 					손장난형 흡연자는 담배 피우는 행위 자체를 즐기며 담배를 손장난을 위한 도구로 활용한다. 
 					따라서 담배 이외의 다른 대용품이 금연을 유지하는데 꼭 필요하다. 
 					휴대가 간편한 악력기, 지압봉, 작은공 등을 사용하여 담배 이외의 것으로 주의를 환기시킨다. 
@@ -476,7 +485,7 @@
 			}
 			if(sumc >= 11){
 				text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/resources/images/basic/warning2.png'/>흡연유형 해석결과 당신은 즐거움과 편안함형 입니다</h5>
-					<p id="resultC"><img alt='해결' src='/resources/images/basic/solution.png'/>다른 즐거움의 대안을 찾아라!<br/>
+					<p id="resultC"><img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">다른 즐거움의 대안을 찾아라!</span><br/>
 					즐거움과 편안함형 흡연자는 흡연을 통해 신체적, 정신적 즐거움을 얻는다고 생각한다. 
 					따라서 우선적으로 금연을 했을 때 얻을수 있는 즐거움에 대해서 목록을 작성해보는 것이 좋다. 
 					또한 즐길 수 있는 가벼운 운동이나 독서를 시작하거나, 음악 감상과 온수목욕 등으로 편안한 마음상태를 만들도록 한다. 
@@ -484,7 +493,7 @@
 			}
 			if(sumd >= 11){
 				text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/resources/images/basic/warning2.png'/>흡연유형 해석결과 당신은 스트레스 해소형 입니다</h5>
-					<p id="resultC"><img alt='해결' src='/resources/images/basic/solution.png'/>이완할 수 있는 대안을 찾아라!<br/>
+					<p id="resultC"><img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">이완할 수 있는 대안을 찾아라!</span><br/>
 					스트레스 해소형 흡연자는 말 그대로 일상의 스트레스를 담배에 의지하여 해결하고 있다. 
 					이런 경우에는 흡연이 일시적인 긴장이완에 도움이 될 수도 있지만 
 					오히려 만성스트레스를 일으킨다는 사실을 깨닫고 담배 이외의 스트레스 해소법을 마련해야 한다. 
@@ -495,7 +504,7 @@
 			}
 			if(sume >= 11){
 				text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/resources/images/basic/warning2.png'/>흡연유형 해석결과 당신은 육체, 심리적 중독형 입니다</h5>
-					<p id="resultC"><img alt='해결' src='/resources/images/basic/solution.png'/>흡연갈망에 대한 대처방법을 찾아라!<br/>
+					<p id="resultC"><img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">흡연갈망에 대한 대처방법을 찾아라!</span><br/>
 					육체, 심리적 중독형 흡연자는 과도한 흡연으로 니코틴에 대한 의존도가 심한 경우에 해당한다. 
 					이런 경우는 금연 시 금단증세가 심하게 나타날 수 있기 때문에 
 					금연상담가의 도움을 얻어 니코틴 보조제(패치, 껌, 사탕)를 사용하는 것이 도움이 될 수 있다. 
@@ -505,7 +514,7 @@
 			}
 			if(sumf >= 11){
 				text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/resources/images/basic/warning2.png'/>흡연유형 해석결과 당신은 습관형 입니다</h5>
-					<p id="resultC"><img alt='해결' src='/resources/images/basic/solution.png'/>자동적 흡연을 유발하는 환경을 바꿔라<br/>
+					<p id="resultC"><img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">자동적 흡연을 유발하는 환경을 바꿔라</span><br/>
 					습관형 흡연자는 자신도 모르게 담배를 피우는 경우가 많다. 
 					따라서 흡연일기를 작성하여 어떠한 상황에서 흡연충동이 일어나는지를 확인하고 
 					그러한 장소나 상황 등을 피하도록 해야 한다. 

@@ -75,47 +75,69 @@
 	    SELECT I_CAUTION FROM INGREDIENT WHERE I_NAME = #{name}
 	</select>
 	
-	<!-- 영양제 가져오기 -->
-	
-	
-	<select id="getProductNameNImgUrlFromFoodtable" parameterType="String" resultType="Map">
-		SELECT ft.PRODUCTNAME, ft.IMGURL
-			FROM FOODTABLE ft
-			WHERE (
-			    ft.NUTRIENT IN (
-			        SELECT ns.N_FINDINGNAME
-			        FROM NUTRIENT ns
-			        WHERE ns.N_FINDINGNAME = (
-			            SELECT N_FINDINGNAME
-			            FROM NUTRIENT
-			            WHERE N_NAME = #{name}
-			        )
-		    )
-		    OR 
-		    	ft.STANDARD LIKE '%' || (
+	<!-- 5대영양소 추천 영양제 가져오기 -->
+	<select id="getProductNameNImgUrlFromFoodtableByN" parameterType="String" resultType="Map">
+		SELECT PRODUCTNAME, IMGURL, F_VIEW
+		FROM (
+		    SELECT ft.PRODUCTNAME, ft.IMGURL, ft.F_VIEW,
+		        ROW_NUMBER() OVER (PARTITION BY ft.F_VIEW ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL) AS RN
+		    FROM FOODTABLE ft
+		    WHERE (
+		        ft.NUTRIENT LIKE '%' || (
 		            SELECT N_FINDINGNAME
 		            FROM NUTRIENT
 		            WHERE N_NAME = #{name}
 		        ) || '%'
-		)
-	 	AND ft.IMGURL IS NOT NULL 
-		AND ROWNUM &lt;= 5
-		<!-- ORDER BY ft.IMGURL DESC -->
+		        OR
+		        ft.STANDARD LIKE '%' || (
+		            SELECT N_FINDINGNAME
+		            FROM NUTRIENT
+		            WHERE N_NAME = #{name}
+		        ) || '%'
+		        OR
+		        ft.CAUTION LIKE '%' || (
+		            SELECT N_FINDINGNAME
+		            FROM NUTRIENT
+		            WHERE N_NAME = #{name}
+		        ) || '%'
+		    )
+		    ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL, ft.F_VIEW DESC
+		) t
+		WHERE ROWNUM &lt;= 5
+		ORDER BY RN, F_VIEW DESC
 	</select>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<!-- 기능성원료 추천 영양제 가져오기 -->
+	<select id="getProductNameNImgUrlFromFoodtableByI" parameterType="String" resultType="Map">
+		SELECT PRODUCTNAME, IMGURL, F_VIEW
+		FROM (
+		    SELECT ft.PRODUCTNAME, ft.IMGURL, ft.F_VIEW,
+		        ROW_NUMBER() OVER (PARTITION BY ft.F_VIEW ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL) AS RN
+		    FROM FOODTABLE ft
+		    WHERE (
+		        ft.NUTRIENT LIKE '%' || (
+		            SELECT I_FINDINGNAME
+	                FROM INGREDIENT
+	                WHERE I_NAME = #{name}
+		        ) || '%'
+		        OR
+		        ft.STANDARD LIKE '%' || (
+		            SELECT I_FINDINGNAME
+	                FROM INGREDIENT
+	                WHERE I_NAME = #{name}
+		        ) || '%'
+		        OR
+		        ft.CAUTION LIKE '%' || (
+		            SELECT I_FINDINGNAME
+	                FROM INGREDIENT
+	                WHERE I_NAME = #{name}
+		        ) || '%'
+		    )
+		    ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL, ft.F_VIEW DESC
+		) t
+		WHERE ROWNUM &lt;= 5
+		ORDER BY RN, F_VIEW DESC
+	</select>
 	
 	
 	<!-- 추천 영양제로 링크 넘어가기 -->
@@ -126,11 +148,69 @@
 	</select>
 	
 	
+	<!-- 조회수 가져오고 증가 -->
+	<!-- 5대 영양소 -->
+	<select id="getN_VIEW" parameterType="String" resultType="int">
+		SELECT N_VIEW FROM NUTRIENT WHERE N_NAME = #{name}
+	</select>
 	
+	<update id="increaseN_VIEW" parameterType="String">
+		UPDATE NUTRIENT SET N_VIEW = N_VIEW + 1 WHERE N_NAME = #{name}
+	</update>
 	
+	<!-- 기능성 원료 -->
+	<select id="getI_VIEW" parameterType="String" resultType="int">
+		SELECT I_VIEW FROM INGREDIENT WHERE I_NAME = #{name}
+	</select>
 	
+	<update id="increaseI_VIEW" parameterType="String">
+		UPDATE INGREDIENT SET I_VIEW = I_VIEW + 1 WHERE I_NAME = #{name}
+	</update>
+
+	<!-- 추천 영양제 -->
+	<select id="getF_VIEW" parameterType="String" resultType="int">
+		SELECT F_VIEW FROM FOODTABLE WHERE PRODUCTNAME = #{name}
+	</select>
 	
-	
+	<update id="increaseF_VIEW" parameterType="String">
+		UPDATE FOODTABLE SET F_VIEW = F_VIEW + 1 WHERE PRODUCTNAME = #{name}
+	</update>
+
+
+
+
+	<!-- 조회수 순서로 Top10 가져오기 -->
+	<select id="getTop10" resultType="String">
+	    SELECT NAME
+	    FROM (
+	        SELECT NAME, N_VIEW, I_VIEW
+	        FROM (
+	            SELECT
+	                CASE
+	                    WHEN N.N_NAME IS NOT NULL AND I.I_NAME IS NOT NULL THEN
+	                        CASE
+	                            WHEN N.N_VIEW &gt;= I.I_VIEW THEN N.N_NAME
+	                            ELSE I.I_NAME
+	                        END
+	                    WHEN N.N_NAME IS NOT NULL THEN N.N_NAME
+	                    ELSE I.I_NAME
+	                END AS NAME,
+	                COALESCE(N.N_VIEW, 0) AS N_VIEW,
+	                COALESCE(I.I_VIEW, 0) AS I_VIEW
+	            FROM NUTRIENT N
+	            FULL OUTER JOIN INGREDIENT I ON N.N_NAME = I.I_NAME
+	            ORDER BY CASE WHEN N_VIEW &gt;= I_VIEW THEN N_VIEW ELSE I_VIEW END DESC
+	        ) subquery
+	        WHERE NAME IS NOT NULL AND ROWNUM &lt;= 10
+	        ORDER BY CASE WHEN N_VIEW &gt;= I_VIEW THEN N_VIEW ELSE I_VIEW END DESC
+	    ) subquery2
+	    ORDER BY CASE WHEN N_VIEW &gt;= I_VIEW THEN N_VIEW ELSE I_VIEW END DESC
+	</select>
+
+
+
+
+
 	
 	
 	

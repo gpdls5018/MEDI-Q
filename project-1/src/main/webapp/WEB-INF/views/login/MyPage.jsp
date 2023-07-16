@@ -7,6 +7,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-messaging.js"></script>
+
 <!-- 로그인 후에만 들어올 수 있도록 -->
 <style>
 	a:hover{
@@ -31,8 +36,8 @@
 
 <!-- datepicker css -->
 <style>
-		.ui-datepicker-trigger { width: 100px; cursor: pointer; }
-		#ui-datepicker-div { left: 200px !important; top: 370px !important; }
+		.ui-datepicker-trigger { width: 70px; cursor: pointer; }
+		#ui-datepicker-div { left: 1120px !important; top: 280px !important; }
         .ui-widget-header { border: 0px solid #dddddd; background: #fff; } 
 
         .ui-datepicker-calendar>thead>tr>th { font-size: 14px !important; } 
@@ -126,8 +131,6 @@
 			</div>
 		</div>
 		
-		<input class="datepicker" placeholder="날짜를 선택해 주세요"/>
-		
 <!-- 건강기록 css -->
 <style>
 .acco img{
@@ -143,31 +146,31 @@
 }
 
 .diaryStart{
-	margin-left: 200px;
+	margin-left: 100px;
 }
 
 .diary{
 	margin-top: 30px;
 	margin-bottom: 50px;
-	padding-top: 50px;
-	box-shadow: 0 10px 0 0 rgba(255, 104, 115, 1) inset;
-  	background-color: rgba(254, 255, 250, 1);
+	padding-top: 30px;
+	padding-bottom: 50px;
+  	background-color: #fff8b6;
+  	box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.1);
+  	border: rgba(48, 69, 92, 0.8) solid 0;
 }
 
 h1, h2 {
-  color: rgba(255, 104, 115, 1);
+  color: rgba(48, 69, 92, 0.8);
 }
 h1 {
   text-transform: uppercase;
-  font-size: 36px;
+  font-size: 30px;
   line-height: 42px;
   letter-spacing: 3px;
-  font-weight: 100;
 }
 h2 {
-  font-size: 26px;
+  font-size: 20px;
   line-height: 34px;
-  font-weight: 300;
   display: block;
   margin: 0;
   cursor: pointer;
@@ -198,7 +201,7 @@ ul li {
   margin: 0;
   padding-bottom: 4px;
   padding-top: 18px;
-  border-top: 1px dotted rgba(220, 231, 235, 1);
+  border-top: 1px solid #01aa72a4;
   animation: flipdown 0.5s ease both;
 }
 ul li:nth-of-type(1) {
@@ -342,12 +345,13 @@ ul li input[type=checkbox]:checked ~ .acco {
 </style>
 
 		<div class="row diaryStart">	        
-	        <div class="col diary" style="max-width: 800px">
+	        <div class="col diary" style="max-width: 600px">
 	        	<form action="#">
-	        		<input type="hidden" name="img" value=""/>
-	        		<!-- 다른 날짜 클릭하면 클릭한 날짜가 보이도록 -->
-					<h1><span class="clickDate">${empty clickDate ? current : clickDate }</span> 건강 기록</h1>
-					
+	        		<div class="row justify-content-between align-items-center pb-2 pl-3 pr-3">		        		
+		        		<!-- 다른 날짜 클릭하면 클릭한 날짜가 보이도록 -->
+						<h1><span class="clickDate">${empty clickDate ? current : clickDate }</span> 건강 기록</h1>
+						<input class="datepicker" placeholder="날짜를 선택해 주세요"/>
+					</div>
 					<ul>
 						<li>
 							<input type="checkbox" checked>
@@ -565,7 +569,6 @@ ul li input[type=checkbox]:checked ~ .acco {
 						
 <style>
    .c-bmi {
-	  
 	  border-radius: .25rem;
 	  box-sizing: border-box;
 	  font-family: ui-sans-serif, system-ui, sans-serif;
@@ -576,7 +579,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 	.c-bmi__groups {
 	  border: 0;
 	  flex-wrap: wrap;
-	  color: white;
+	  color: rgba(48, 69, 92, 0.8);
 	  font-weight: bold;
 	  font-size: medium;
 	  padding: 0;
@@ -587,7 +590,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 	  justify-content: center;
 	}
 	.c-bmi__groups label {
-	  display: block;
+	  display: flex;
 	  padding: .5rem;
 	  position: relative;
 	}
@@ -630,7 +633,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 	
 	/* RWD */
 	@media (min-width: 600px) {
-	  .c-bmi__groups { display: flex; }
+	  .c-bmi__groups { display: block; }
 	  .c-bmi__groups input:checked + label::before {
 	    background-color: inherit;
 	    clip-path: polygon(0% 0%,100% 0%,50% 100%);
@@ -638,9 +641,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 	    top: -1rem;
 	    transform: translateX(-50%);
 	    width: 1.5rem;
-	  }
-	  .c-bmi__groups label { flex: 1; }
-	
+	  }	
 </style>
 						<li>
 							<input type="checkbox" checked>
@@ -658,22 +659,23 @@ ul li input[type=checkbox]:checked ~ .acco {
 						                <a class="btn btn-primary h-100 ml-3" href="javascript:result()">BMI 계산</a>
 									</div>
 									<div class="c-bmi__groups" readonly style="display: none">
-										<span class="d-block">나의 체질량지수</span>
-										
-							            <input type="radio" id="bmi-g0" name="g" />
-							            <label for="bmi-g0" name="l">저체중</label>
-							              
-							            <input type="radio" id="bmi-g1" name="g" checked />
-							            <label for="bmi-g1" name="l">정상</label>
-							              
-							            <input type="radio" id="bmi-g2" name="g" />
-							            <label for="bmi-g2" name="l">과체중</label>
-							              
-							            <input type="radio" id="bmi-g3" name="g" />
-							            <label for="bmi-g3" name="l">경도비만</label>
-							              
-							            <input type="radio" id="bmi-g4" name="g" />
-							            <label for="bmi-g4" name="l">중등도비만</label>
+										<label >나의 체질량지수</label>
+										<div class="d-flex">
+								            <input type="radio" id="bmi-g0" name="g" />
+								            <label for="bmi-g0" name="l">저체중</label>
+								              
+								            <input type="radio" id="bmi-g1" name="g" checked />
+								            <label for="bmi-g1" name="l">정상</label>
+								              
+								            <input type="radio" id="bmi-g2" name="g" />
+								            <label for="bmi-g2" name="l">과체중</label>
+								              
+								            <input type="radio" id="bmi-g3" name="g" />
+								            <label for="bmi-g3" name="l">경도비만</label>
+								              
+								            <input type="radio" id="bmi-g4" name="g" />
+								            <label for="bmi-g4" name="l">중등도비만</label>
+							            </div>
 						            </div>
 						            <div class="c-bmi__group-text font-weight-bold" name="text"></div>
 						        </div>
@@ -748,14 +750,17 @@ ul li input[type=checkbox]:checked ~ .acco {
 							<input type="hidden" name="mode" value="editBtn"/>			
 							<input type="hidden" name="id" value="${info.id }"/>
 							<input type="password" name="password" class="form-control mx-2" placeholder="비밀번호를 입력하세요"/>
-							<div class="custom-file" style="width: 300px; display: none">
+							<div class="custom-file" style="width: 250px; display: none">
 					            <input type="file" class="custom-file-input" name="file" id="customFile" accept=".jpg,.img,.png,.bmp,.gif">
 					            <label class="custom-file-label justify-content-start" for="customFile">${empty profImg ? "파일 선택" : profImg.pi_Filename+='.'+=profImg.pi_Ext }</label>
 					        </div>
-					        <a type="button" name="defaultImg" href="<c:url value="/project/ProfImgEdit.do"/>" class="btn btn-outline-info mx-2" style="display: none">기본이미지로 변경</a>
-							<input type="submit" class="btn btn-info mx-2" value="확인" />
-						</form>			
+					        <a type="button" name="defaultImg" href="<c:url value="/project/ProfImgEdit.do"/>" class="btn btn-outline-info ml-3" style="display: none">기본이미지로 변경</a>
+						</form>
 					</div>
+					<div class="modal-footer justify-content-right">
+					<input type="submit" class="btn btn-info mx-2" value="확인" />
+		          	<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+		        </div>
 				</div>
 			</div>
 		</div>
@@ -932,12 +937,33 @@ ul li input[type=checkbox]:checked ~ .acco {
 			}
 		});
 		var info_nutr = '<c:out value="${nutr}"/>';
-		//console.log('nutr:',info_nutr.split('$'))
-		info_nutr.split('$').forEach(function(item,index){
-			var nutr = item.split('/')[0];
-			var count = item.split('/')[1];
-			$('.add:eq('+index+')').children(':eq(0)').val(nutr).end().children(':eq(1)').val(count);
-		});
+		console.log('info_nutr:',info_nutr.split('$').length)
+		var nutr;
+		var count;
+		if(info_nutr.length && info_nutr.split('$').length!=3){
+			var clone = $('.add:eq(0)').clone();
+			$('.add').remove()
+			var k = info_nutr.split('$').length;
+			var target = $("#add");
+			var appendedList = Array(k).fill(null).map(_ => clone.clone());
+			target.before(appendedList);
+			
+			info_nutr.split('$').forEach(function(item,index){
+				nutr = item.split('/')[0];
+				count = item.split('/')[1];
+				$('.add:eq('+index+')').children(':eq(0)').val(nutr).end().children(':eq(1)').val(count);
+			});
+		}
+		else if(info_nutr.length){ //0개가 아닐 때 일 때
+			info_nutr.split('$').forEach(function(item,index){
+				nutr = item.split('/')[0];
+				count = item.split('/')[1];
+				if(info_nutr.split('$').length==3){
+					$('.add:eq('+index+')').children(':eq(0)').val(nutr).end().children(':eq(1)').val(count);
+				}
+			});
+		}
+		
 		var info_allergy = '<c:out value="${allergy}"/>';
 		info_allergy.split(' ').forEach(function(item){
 			$('.allergy').children('small').each(function(){			
@@ -1242,4 +1268,68 @@ ul li input[type=checkbox]:checked ~ .acco {
 		});
 	}
 	*/
+</script>
+<script>/*
+    const firebaseModule = (function () {
+    async function init() {
+        // Your web app's Firebase configuration
+        //console.log('serviceWorker' in navigator)//localhost로 설정
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+            	//D:\JHI\Workspace\gitHub\project\project-1\src\main\webapp\WEB-INF\views\login
+            	//D:\JHI\Workspace\gitHub\project\project-1\src\main\resources\static
+            	//D:\JHI\Workspace\gitHub\project\project-1\target\classes\static\webpush\firebase-messaging-sw.js
+            	navigator.serviceWorker.register("D:/JHI/Workspace/gitHub/project/project-1/target/classes/static/webpush/firebase-messaging-sw.js")
+                    .then(registration => {
+                        const firebaseConfig = {
+                            apiKey: "AIzaSyBVyjlJuzy9Qd41-v2meIh79Ti7OEm0TSc",
+                            authDomain: "my-project-a3614.firebaseapp.com",
+                            projectId: "my-project-a3614",
+                            storageBucket: "my-project-a3614.appspot.com",
+                            messagingSenderId: "337911613778",
+                            appId: "1:337911613778:web:707752d0cacb5e27eed28b",
+                            measurementId: "G-D28J07Z2PH"
+                        };
+  
+                        // Initialize Firebase
+                        //const app = initializeApp(firebaseConfig);
+                        //const analytics = getAnalytics(app);
+                        firebase.initializeApp(firebaseConfig);
+
+                         // Show Notificaiton Dialog
+                         const messaging = firebase.messaging();
+                        messaging.requestPermission()
+                        .then(function() {
+                        	console.log('두번째 then 안')
+                            return messaging.getToken();  
+                        })
+                        .then(async function(token) {
+                        	console.log('세번째 then 안')
+                        	await fetch('/register', { method: 'post', body: token })
+                            messaging.onMessage(payload => {
+                                const title = payload.notification.title
+                                const options = {
+                                    body : payload.notification.body
+                                }
+                                navigator.serviceWorker.ready.then(registration => {
+                                    registration.showNotification(title, options);
+                                })
+                            })
+                        })
+                        .catch(function(err) {
+                            console.log("Error Occured");
+                        })
+                    })
+            })
+        }
+    }      
+
+    return {
+        init: function () {
+            init()
+        }
+    }
+})()
+
+firebaseModule.init()*/
 </script>

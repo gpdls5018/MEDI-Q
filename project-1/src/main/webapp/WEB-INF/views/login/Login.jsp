@@ -12,7 +12,7 @@
 *,html{
     margin:0px;
     padding:0px;
-    font-size: 10px;
+    font-size: .8rem;
     color: var(--text-color);
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
@@ -123,53 +123,41 @@ p{
     color: rgb(33, 34, 36);
     font-size: 1.4rem;
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1;
     letter-spacing: 0px;
 }
 .css-1dqn28w {
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
-    margin-top: 8px;
+    margin-top: 5px;
 }
+
 .css-18u83hy {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+    width: 150px;
+    height: 60px;
     display: flex;
     -webkit-box-pack: center;
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
-    border: none;
     cursor: pointer;
     text-decoration: none;
+    color:white;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 10px;
 }
 .enu6cyp2 img {
     border-style: none;
 }
-.social a:before{
-	content: '';
-    display: block;
-    position: absolute;
-    top: 12px;
-    left: -5px;
-    width: 5px;
-    height: 5px;
-    background: #b0b2b4;
-    border-radius: 100%;
-}
-.social a {
-	display: inline-block;
-    position: relative;
-    color: black;
-    font-size: 12px;
-    font-weight: 600;
-    text-decoration: none;
-}
+
 .social a strong { 
     color: black;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     text-decoration: none;
 }
@@ -192,10 +180,12 @@ p{
 						</c:forEach>
 						<c:set var="searchPwdFn" value="${fn:substring(searchPwd, 0, 3)}${asterisks}"/>
 					</c:if>
-                  <div class="title  mt-2 p-2 w-100">
-                    <img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
-           			<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
-           			 <h1 class="mt-3 mx-5" style="font-weight: bold; color:#FD9F28">로그인</h1>
+                  <div class="title  mt-2 p-2 w-100 d-flex " style=" justify-content: space-between; align-items: center;">
+                    <div>
+                    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+           				<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+           			</div>	
+           			 <h2 class="mt-3 mr-3" style="font-weight: bold; color:#FD9F28">로그인</h2>
                   </div>
 
                   <!--title-->
@@ -228,21 +218,23 @@ p{
 	                   <div class="css-1dqn28w enu6cyp1 mt-5" style="justify-content: space-around;">
 	                       <a href="https://nid.naver.com/oauth2.0/authorize?client_id=m0_NavLMe3aWfFRsood6&response_type=code&redirect_uri=http://localhost:9090/project/naverLogin.do&state=" class="css-18u83hy enu6cyp2" style="background-color: rgb(30, 200, 0);">
 	                           <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/naver-logo_v2.png" width="24" height="24" alt="소셜 로고">
+	                           네이버 로그인
 	                       </a>
 	                       <a href="https://kauth.kakao.com/oauth/authorize?client_id=16c1121d0de60f9066904fb3ffc57c36&redirect_uri=http://localhost:9090/project/kakaoLogin.do&response_type=code" class="css-18u83hy enu6cyp2" style="background-color: rgb(249, 224, 0);">
 	                           <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/kakao-logo_v2.png" width="24" height="24" alt="소셜 로고">
+	                           카카오 로그인
 	                       </a>
 	                   </div>
 	               </div>
 	               <div class="social d-flex" style="justify-content: space-evenly">
-	                   <a href="#" id="searchId" class="mx-3 px-2 py-2 mr-md-1 search" data-toggle="modal" data-target="#modalSearchIdNPwd" data-backdrop="static">
+	                   <a href="#" id="searchId" class=" py-2 mr-md-1 search" data-toggle="modal" data-target="#modalSearchIdNPwd" data-backdrop="static">
 	                       <strong>아이디찾기</strong>
 	                   </a> 
-	                   <a href="#" id="searchPwd" class="mx-3 px-2 py-2 ml-md-1 search" data-target="#modalSearchIdNPwd" data-backdrop="static">
+	                   <a href="#" id="searchPwd" class=" py-2 ml-md-1 search" style="margin-left: 10px;" data-target="#modalSearchIdNPwd" data-backdrop="static">
 	                       <strong>비밀번호찾기</strong>
 	                   </a>
-	                   <a href="<c:url value="/project/Join.do" />" class="mx-3 px-2 py-2 mr-md-1">
-	                       회원가입
+	                   <a href="<c:url value="/project/Join.do" />" class=" py-2 mr-md-1">
+	                      <strong  style="border:0px;">회원가입</strong>
 	                   </a> 
 	               </div>
                 </div> <!--accounts_forms-->

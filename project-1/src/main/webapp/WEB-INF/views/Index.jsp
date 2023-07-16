@@ -2,9 +2,52 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 
+<style>
+	
+	/*인기 영양소 Top10*/
+	.box-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
 
+        .box {
+            width: 110px;
+            height: 110px;
+			box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.4);
+        	transition: box-shadow 0.3s ease;
+            border: 1px solid #ddd;
+            border-radius: 10px 10px 10px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            margin: 17.8px; /*배치되는 div 크기 맞추기*/
+        }
+
+        .box a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .box:hover {
+            font-weight: bold;
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .box.active {
+            background-color: #bbb;
+        }
+    
+
+
+</style>
 <!-- 슬라이더를 위한 CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" rel="stylesheet" />
@@ -24,11 +67,11 @@
 	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
 			    <div class="videologo">
-			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
-	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="100" height="50">
+	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="200" height="50">
 			    </div>
 			    <div id="video-controls">
-			      <button class="btn btn-warning" onclick="closeVideo()">Home</button>
+			      <button class="btn" onclick="closeVideo()">Home</button>
 			    </div>
 			    <div id="video-label">
 		    	  <label for="stop-video-checkbox">
@@ -51,12 +94,11 @@
             <div id="top-banner-1" class="banner">
 	            <a href="#">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper1" >
-	
 	              </div>
 	            </a>
             </div>
             <div id="top-banner-2" class="banner" id="tsbaimg2">
-	            <a href="#">
+	            <a href="<c:url value="/analyzeMyFood.do"/>">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper2"  >
 	               	 <p style="color:gray;">과도하거나 부족하지 않을까?</p>
 	                 <h1>💊 영양제를 분석 받으세요!</h1>
@@ -66,13 +108,13 @@
             <div id="top-banner-3" class="banner" id="tsbaimg3">
 	            <a href="#">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper3" >
-	              	 <p style="color:gray;">내가 먹고 있는 약 괜찮을까?</p>
-	                 <h1>📷 사진으로 약을 검색해보세요!</h1>       
+	              	 <p style="color:gray;">내가 먹고 있는 영양제 괜찮을까?</p>
+	                 <h1>📷 사진으로 영양제를 검색해보세요!</h1>       
 	              </div>
 	            </a>
             </div>
             <div id="top-banner-4" class="banner" id="tsbaimg4">
-	            <a href="#">
+	            <a href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper4" >
 	              	 <p style="color:gray;">내 위암 발병률은 몇 퍼센트일까?</p>
 	                 <h1>😥 주요 질환의 발병<br/> 위험도를 예측해드려요!</h1>
@@ -99,9 +141,9 @@
 	    </div>
 	
 		<!-- 검색창 밑 검색 태그용 버튼  -->
-		<div class="row justify-content-center mt-5 pt-5">
+		<div class="row justify-content-center pt-5" style="margin: 60px 0px 0px 0px">
 	        <div class="col-lg-10 text-center">
-	            <h1 class="my-5" style="font-weight:bold; color:black;"><span style="color: #EF605D;">제품명,영양성분</span>을 검색해보세요.</h1>
+	            <h1 class="my-5" style="font-weight:bold; color:black;"><span style="color: #EF605D;">👋 제품명 또는 영양성분</span>을 검색해보세요.</h1>
 	            <form class="position-relative w-75 mx-auto animated slideInDown d-flex input-wrapper" action="/hashtag.do" method="post" style="box-shadow: 0px 0px 5px gray; border-radius: 20px;">
 	                <input class="border-0 rounded-pill w-100 px-5 py-3 ps-4 pe-5 flex-grow-1" type="text" name="postTag" 
 	                placeholder="제품명 및 영양성분을 입력하세요" value="${not empty searchTags ? fn:replace(searchTags,'#',',#') : ''}">
@@ -112,24 +154,26 @@
 	            </form>
 	        </div>
 	        <div id="hashtaglink" class="ml-1 py-5 row" >
-                <a href="#" style="font-style:italic;font-weight: bold;color:green">#피부건강</a>&nbsp;
-	        	<a href="#" style="font-style:italic;font-weight: bold;color:palevioletred">#면역력 증진</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:mediumpurple ">#전립선 건강</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:sandybrown">#체지방 감소</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:salmon ">#비타민</a>&nbsp;
-		        <a href="#" style="font-style:italic;font-weight: bold;color:lightskyblue ">#혈당</a>&nbsp;
+       	        <span class="s-txt1">인기 검색어</span>
+                <a href="#" style="font-weight: bold;color:green">#피부건강</a>&nbsp;
+	        	<a href="#" style="font-weight: bold;color:palevioletred">#면역력 증진</a>&nbsp;
+		        <a href="#" style="font-weight: bold;color:mediumpurple ">#전립선 건강</a>&nbsp;
+		        <a href="#" style="font-weight: bold;color:sandybrown">#체지방 감소</a>&nbsp;
+		        <a href="#" style="font-weight: bold;color:salmon ">#비타민</a>&nbsp;
+		        <a href="#" style="font-weight: bold;color:lightskyblue ">#혈당</a>&nbsp;
+		        <span class="s-txt2">(07/15&nbsp;기준)</span>
 		    </div >
 	    </div>
 	    
 <!-- 검색창 밑부분! 사이드바와 몸통 부분 -->
-<section class="tscontainer mt-5" style="width:90%;  border-radius: 5px;">
+<section class="tscontainer" style="width:100%;  border-radius: 5px;">
 	<!-- 왼쪽 몸통부분 -->
      <article class="maints justify-content-center px-3">
      <!-- 1번째 다이브 목록 -->
      	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
-	        <h1>$이태성$님의 최근 분석 리포트</h1>
-	        <div class="DefaultReportItem__ReportBook-sc-rysw89-0 ibNwmg">
-	            <a data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="/analyzeMyFood.do" style="text-decoration: none;">
+	        <h1 class="text-center mb-3" style="font-size: 30px; color: black;">$사용자$님의 최근 분석 리포트</h1>
+	        <div class="DefaultReportItem__ReportBook-sc-rysw89-0 ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
+	            <a data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none;">
 	                <div class="DefaultReportItem__Springs-sc-rysw89-8 jZuajW">
 	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
 	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
@@ -152,109 +196,113 @@
 	          </div>
 	     </div>
 	     
-	  <!-- 2번째 다이브 목록 -->
-	  <div class="section section1-2b py-4 my-2">
-	        <div class="content">
-	            <span class="txt1"><span>인기 성분</span>이에요</span>
-	            <div class="ingredient-wrap">
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">포스트<br/>바이오틱스</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">오메가3</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">프로바이오틱스<br/>(유산균)</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">비타민C</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">가르시니아<br/>캄보지아</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">레시틴</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">코엔자임Q10</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">비타민B1</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">비타민A</div></a>
-	                        <a tabindex="0" class="ingredient-one" href="#"><div class="txt-fix">칼슘</div></a>
-	            </div>
-	            <div class="clearfix">
-	                <a tabindex="0" class="more-pop-ingredient pt-4 mr-5" href="#">인기성분 더보기</a>
-	            </div>
-	        </div>
-	    </div>
-	    
-	  <!--  3번째 다이브 목록 -->
+	     <!--  2번째 다이브 목록 -->
 		<div class="section section1-2c">
-	       <a href="#" style="text-decoration: none;">
+	       <a href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>" style="text-decoration: none;">
 	           <div class="content">
-	               <span class="txt1"><div id="lottie" class="lottie1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);"><defs><clipPath id="__lottie_element_2"><rect width="512" height="512" x="0" y="0"></rect></clipPath><linearGradient id="__lottie_element_6" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="-90.30999755859375" y1="-143.55599975585938" x2="83.70600128173828" y2="98.05699920654297"><stop offset="0%" stop-color="rgb(255,224,3)"></stop><stop offset="42%" stop-color="rgb(255,194,20)"></stop><stop offset="100%" stop-color="rgb(255,165,37)"></stop></linearGradient><linearGradient id="__lottie_element_10" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="-74.84400177001953" y1="83.3030014038086" x2="0.8429999947547913" y2="13.440999984741211"><stop offset="0%" stop-color="rgb(255,224,3)"></stop><stop offset="42%" stop-color="rgb(255,197,27)"></stop><stop offset="100%" stop-color="rgb(255,170,50)"></stop></linearGradient><mask id="__lottie_element_11" mask-type="alpha"><g transform="matrix(1,0,0,1,0,0)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,256.04998779296875,256)"><path fill="url(#__lottie_element_14)" fill-opacity="1" d=" M-155.59231567382812,-250.01922607421875 C-171.59231567382812,-250.01922607421875 -183.59231567382812,-236.01922607421875 -183.59231567382812,-220.01922607421875 C-183.59231567382812,-220.01922607421875 -184.0931396484375,-4.029144287109375 -184.0931396484375,-4.029144287109375 C-184.0931396484375,-4.029144287109375 -184.61026000976562,218.775634765625 -184.61026000976562,218.775634765625 C-184.61026000976562,234.775634765625 -175.61026000976562,246.275634765625 -159.61026000976562,246.275634765625 C-159.61026000976562,246.275634765625 -112.62041473388672,240.7335205078125 -45.100677490234375,245.04156494140625 C94.62254333496094,253.97262573242188 153.75,254 153.75,254 C169.85000610351562,254 184.85000610351562,236.5 184.85000610351562,220.5 C184.85000610351562,220.5 186.26100158691406,32.999000549316406 186.26100158691406,32.999000549316406 C186.26100158691406,32.999000549316406 187.35000610351562,-111.5999984741211 187.35000610351562,-111.5999984741211 C187.35000610351562,-111.5999984741211 49.5,-245.75 49.5,-245.75 C49.5,-245.75 -7.127154350280762,-239.82662963867188 -53.55015563964844,-242.65863037109375 C-100.54615783691406,-245.525634765625 -155.59231567382812,-250.01922607421875 -155.59231567382812,-250.01922607421875z"></path></g></g></mask><linearGradient id="__lottie_element_14" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="-45.07500076293945" y1="-55.81100082397461" x2="167.75799560546875" y2="245.73699951171875"><stop offset="0%" stop-color="rgb(255,224,3)"></stop><stop offset="42%" stop-color="rgb(255,197,27)"></stop><stop offset="100%" stop-color="rgb(255,170,50)"></stop></linearGradient><filter id="__lottie_element_17" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="36 36" edgeMode="wrap"></feGaussianBlur></filter><linearGradient id="__lottie_element_24" spreadMethod="pad" gradientUnits="userSpaceOnUse" x1="-45.07500076293945" y1="-55.81100082397461" x2="167.75799560546875" y2="245.73699951171875"><stop offset="0%" stop-color="rgb(255,224,3)"></stop><stop offset="42%" stop-color="rgb(255,197,27)"></stop><stop offset="100%" stop-color="rgb(255,170,50)"></stop></linearGradient></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(1,0,0,1,0,0)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,256.04998779296875,256)"><path fill="url(#__lottie_element_24)" fill-opacity="1" d=" M-155.59231567382812,-250.01922607421875 C-171.59231567382812,-250.01922607421875 -183.59231567382812,-236.01922607421875 -183.59231567382812,-220.01922607421875 C-183.59231567382812,-220.01922607421875 -184.0931396484375,-4.029144287109375 -184.0931396484375,-4.029144287109375 C-184.0931396484375,-4.029144287109375 -184.61026000976562,218.775634765625 -184.61026000976562,218.775634765625 C-184.61026000976562,234.775634765625 -175.61026000976562,246.275634765625 -159.61026000976562,246.275634765625 C-159.61026000976562,246.275634765625 -112.62041473388672,240.7335205078125 -45.100677490234375,245.04156494140625 C94.62254333496094,253.97262573242188 153.75,254 153.75,254 C169.85000610351562,254 184.85000610351562,236.5 184.85000610351562,220.5 C184.85000610351562,220.5 186.26100158691406,32.999000549316406 186.26100158691406,32.999000549316406 C186.26100158691406,32.999000549316406 187.35000610351562,-111.5999984741211 187.35000610351562,-111.5999984741211 C187.35000610351562,-111.5999984741211 49.5,-245.75 49.5,-245.75 C49.5,-245.75 -7.127154350280762,-239.82662963867188 -53.55015563964844,-242.65863037109375 C-100.54615783691406,-245.525634765625 -155.59231567382812,-250.01922607421875 -155.59231567382812,-250.01922607421875z"></path></g></g><g transform="matrix(1,0,0,1,256,256)" opacity="1" style="display: block;"></g><g mask="url(#__lottie_element_11)" style="display: block;"><g filter="url(#__lottie_element_17)" transform="matrix(1.0543633699417114,-0.7382732033729553,0.7370228171348572,1.0525776147842407,262.1727294921875,285.4595642089844)" opacity="1"><g opacity="1" transform="matrix(1,0,0,1,-2.2880001068115234,-117.94599914550781)"><path fill="rgb(255,245,136)" fill-opacity="1" d=" M259.4909973144531,-54.839500427246094 C259.4909973144531,-54.839500427246094 259.4909973144531,54.839500427246094 259.4909973144531,54.839500427246094 C259.4909973144531,54.839500427246094 -259.4909973144531,54.839500427246094 -259.4909973144531,54.839500427246094 C-259.4909973144531,54.839500427246094 -259.4909973144531,-54.839500427246094 -259.4909973144531,-54.839500427246094 C-259.4909973144531,-54.839500427246094 259.4909973144531,-54.839500427246094 259.4909973144531,-54.839500427246094z"></path></g></g></g><g transform="matrix(1,0,0,1,0,0)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,373.79998779296875,77.8499984741211)"><path fill="url(#__lottie_element_10)" fill-opacity="1" d=" M-67.67926788330078,37.35064697265625 C-67.67926788330078,53.25064468383789 -55.06709671020508,66.61580657958984 -39.16709518432617,66.61580657958984 C-39.16709518432617,66.61580657958984 69.76773834228516,67.79359436035156 69.76773834228516,67.79359436035156 C69.76773834228516,67.79359436035156 31.86774253845215,26.28290367126465 10.608914375305176,4.395442485809326 C-4.720612525939941,-11.299712181091309 -67.26302337646484,-67.34209442138672 -67.26302337646484,-67.34209442138672 C-67.26302337646484,-67.34209442138672 -67.67926788330078,37.35064697265625 -67.67926788330078,37.35064697265625z"></path></g></g><g transform="matrix(1,0,0,1,0,0)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,256,280.79998779296875)"><path fill="url(#__lottie_element_6)" fill-opacity="1" d=" M98.00357055664062,-34.64583969116211 C98.00357055664062,-34.64583969116211 31.892309188842773,-33.636539459228516 31.892309188842773,-33.636539459228516 C31.892309188842773,-33.636539459228516 30.036678314208984,-95.96062469482422 30.036678314208984,-95.96062469482422 C30.036678314208984,-95.96062469482422 -31.763320922851562,-95.96062469482422 -31.763320922851562,-95.96062469482422 C-31.763320922851562,-95.96062469482422 -30.413145065307617,-30.774173736572266 -30.413145065307617,-30.774173736572266 C-30.413145065307617,-30.774173736572266 -98.3067398071289,-27.283145904541016 -98.3067398071289,-27.283145904541016 C-98.3067398071289,-27.283145904541016 -95.81314849853516,31.02582550048828 -95.81314849853516,31.02582550048828 C-95.81314849853516,31.02582550048828 -29.914426803588867,28.03351593017578 -29.914426803588867,28.03351593017578 C-29.914426803588867,28.03351593017578 -28.058795928955078,92.11274719238281 -28.058795928955078,92.11274719238281 C-28.058795928955078,92.11274719238281 33.55043411254883,89.0580062866211 33.55043411254883,89.0580062866211 C33.55043411254883,89.0580062866211 33.393592834472656,24.915382385253906 33.393592834472656,24.915382385253906 C33.393592834472656,24.915382385253906 99.25421142578125,27.143905639648438 99.25421142578125,27.143905639648438 C99.25421142578125,27.143905639648438 98.00357055664062,-34.64583969116211 98.00357055664062,-34.64583969116211z"></path></g></g></g></svg></div><span>건강검진으로 영양제 &amp; 식단 추천받기</span></span>
+	               <span class="txt1"><span style="display: block; text-align: center; width: 100%;">👨‍⚕️ 주요 질환의 발병 위험도를 예측해드려요</span></span>
 	               <br/>
-	               <span class="txt2">10년치 국가 건강검진 데이터를 바탕으로 영양제를 추천해드려요!</span>
+	               <span class="text-center txt2" style="margin-top: 40px; margin-bottom: 40px;">MEDI-Q의 인공지능 기술로 분석하는 건강검진!</span>
 	               <div class="banner-wrap">
-	                   <div class="banner-txt1">내 건강검진 불러오고</div>
-	                   <div class="banner-txt2"><span>영양제 &amp; 식단 추천</span> 받으세요</div>
+	                   <div class="banner-txt1 mb-1">내 건강검진 결과를 입력하고</div>
+	                   <div class="banner-txt2"><span>맞춤형 영양제를 추천</span> 받으세요</div>
 	                   <img src="https://cdn.pillyze.io/web/img/s12c-bg.webp" class="banner-bg" alt="두 손으로 알약을 떠 받드는 그림">
 	               </div>
 	           </div>
 	       </a>
 	   </div>
+	     
+	  <!-- 3번째 다이브 목록 -->
+	  <!-- 인기 영양소 Top10 -->
+	  <div class="section section1-2b my-1" style="align-content: center;">
+	        <div class="content" style="margin: 0px 0px 0px 0px;">
+	            <span class="txt1"><span style="color:black;">🌿 인기 영양소</span> <span>Top10</span>
+	            <div class="ingredient-wrap" style="margin-top: 40px;">
+                    <div class="box-container">
+		                <c:forEach var="name" items="${top10}">
+						    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
+						        <b style="font-size: 14px;">${name}</b>
+						    </div>
+						</c:forEach>
+                	</div>
+	            </div>
+	            <div class="clearfix">
+	                <a tabindex="0" class="more-pop-ingredient pt-4 mr-3" href="/NutrientSelect.do">영양성분 더보기</a>
+	            </div>
+	        </div>
+	    </div>
 	    
-	    
-  	  <!--  4번째 다이브 목록 -->
-      <div class="mainInner">
-            <h3 class="my-4" style="text-align: center; margin-top:20px; font-weight: bold;">우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
-            <div class="container-xxl py-4">
-                <div class="container">
-                    <div class="mainMap" id="map" >
-                        <button type="button" class="btn" id="tsBtn">
-                        	<span>🩺병원 & 💊약국찾기</span>
-                        </button>
-                        <div class="mapLayer">
-                            <div class="closeLayerButton" onclick="closeMapLayer()">&times;</div>
-                            	<h2>주소</h2>
-      	                     	<p style="font-size:15px; color:gray;">가산디지털단지역<br/>(서울특별시 금천구 벚꽃로 309)</p>
-                           		<a href="https://naver.me/GEAidP59" target="_blank">
-                           		<img src="<c:url value="/resources/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
-                           		<a href="https://map.kakao.com/?urlX=473869&urlY=1105992&urlLevel=3&itemId=18761502&q=%EB%B2%84%EA%B1%B0%ED%82%B9%20%EA%B0%80%EC%82%B0%EB%94%94%EC%A7%80%ED%84%B8%EC%A0%90&srcid=18761502&map_type=TYPE_MAP#none" target="_blank"> 
-                           		<img src="<c:url value="/resources/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
-                        </div>          
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--  병원찾기 지도 모달 누르면 나오는 부분 -->
-	       <div class="modal fade align-items-center" id="tsModal" role="dialog" style="background-color: rgba(0, 0, 0, 0.5);">
-			 <div class="modal-dialog modal-dialog-centered" style="align-content :center; width: 100%; height: 60%; max-width: 1400px;">
-			   <!-- Modal content-->
-			   <div class="modal-content" style="width: 100%; height: 100%;">
-			     <div class="modal-header" >
-			       <h4 class="modal-title">우리동네 병원&약국 찾기</h4>
-			       <button type="button" class="close" data-dismiss="modal">&times;</button>
-			     </div>
-			     <div class="modal-body">
-			       <h3 style="text-align: center;">🩺병원 & 💊약국정보</h3>
-			       <div class="container-xxl py-5">
-			         <div class="map_wrap">
-			           <div id="modalmap" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-			           <div id="menu_wrap" class="bg_white">
-			             <div class="option">
-			               <div>
-			                 <form onsubmit="searchPlaces(); return false;">
-			                    키워드 : <input type="text" value="가산동 병원" placeholder="ㅇㅇ동 병원을 입력" id="keyword" size="15">
-			                    <button type="submit">검색하기</button>
-			                  </form>
-			                </div>
-			              </div>
-			              <hr>
-			              <ul id="placesList"></ul>
-			              <div id="pagination"></div>
-			            </div>
-			          </div>
-			        </div>
-			      </div>
-			    </div>
-			  </div>
-			</div>
+	   <!-- 4번째 다이브 목록 -->
+	   <!-- 인기 영양제 Top10 -->
+	   <div class="section section1-2s ranking-190">
+	        <div class="content" style="margin-top:60px;">
+	            <div class="txt2" style="margin-bottom: 20px;"><span style="color:black; font-size: 30px;">💊 인기 영양제</span> <span style="font-size: 30px;">Top 10</span></div>
+	            <div class="tab-contents" style="display: block;">
+	                <div class="tab-content tab-content-001 new-wide-main-060 new-wide-main-090 active width-flt1" style="padding-top: 20px;">
+	                    <div class="filter-btns slt-sex">
+	                    <!-- 
+	                        <div class="filter-btns-in">
+	                            <a tabindex="0" class="filter-btn active" href="#">전체 성별</a>
+	                            <a tabindex="0" class="filter-btn" href="#">여성</a>
+	                            <a tabindex="0" class="filter-btn" href="#">남성</a>
+	                        </div>
+	                    -->
+	                    </div>
+	                    <!--
+	                    <div class="filter-btns2">
+	                        <div class="filter-btns-in">
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b001 active"><div class="icon"><span style="font-size: 15px">ALL</span></div><div class="txt1">전체</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b002 "><div class="icon"><span>20</span></div><div class="txt1">20대 이하</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b003"><div class="icon"><span>30</span></div><div class="txt1">30대</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b004"><div class="icon"><span>40</span></div><div class="txt1">40대</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b005"><div class="icon"><span>50</span></div><div class="txt1">50대</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b006"><div class="icon"><span>60</span></div><div class="txt1">60대 이상</div></a>
+	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b007"><div class="icon"><span span="" style="font-size: 15px">Kids</span></div><div class="txt1">키즈</div></a>
+	                        </div>
+	                    </div>
+	 					 -->
+	                    <div class="box-container ranking-card-wrap item-cards u510x">
+                            <c:forEach items="${listData}" var="item" varStatus="status">
+                            <c:if test="${status.index < 10}">
+								<a style="text-decoration: none;" id="${item.no}" href="/detail.do?no=${item.no}" tabindex="0" class="box item-card" title="${item.productName} 자세히 보기">
+								<c:if test="${not empty item.imgURL}">
+									<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
+								</c:if>
+		          				<c:if test="${empty item.imgURL}">	
+									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+								</c:if>
+									<span id="item.company" class="txt1">${item.company}</span>
+									<span id="item.productName" class="txt2">${item.productName}</span>
+									<div class="review d-flex" style="width:inherit;">
+										<span class="star-point"><fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }</span>
+										<span class="txt3">(${item.REVIEW_Count }개)</span>
+									</div>
+									<!--<div class="card-tags">
+									<c:set var="materialList" value="${fn:split(item.material, '$')}" />
+										<c:forEach items="${materialList}" var="mater">
+											<div class="card-tag">${mater }</div>
+										</c:forEach>
+									</div>  -->
+								</a>
+							</c:if>
+							</c:forEach>
+	                    </div><!-- card-wrap의 끝 -->
+
+	                    <div class="clearfix">
+	                        <a tabindex="0" class="more-pop-health mt-5" href="/ranking/selectfood.do"><b>건강기능식품 더보기</b></a>
+	                    </div>
+	                </div><!-- tab-content-001의 끝 -->
+	            </div>
+	        </div>
+	    </div>
        
       
       <!--  5번째 다이브 목록 -->
       <div class="section section20-2 section20-2-home">
 	        <div class="content">
-	            <div class="qna-mark-home">Q&amp;A</div>
-	            <span class="ge-title get-20-2">지금 인기있는 질문</span>
-	            <div class="get-20-2-home-txt2">전문가가 직접 답해드려요!</div>
-	
+	            <!-- <div class="qna-mark-home" style="display: block; text-align: center; width: 100%;">Q&amp;A</div> -->
+	            <span class="ge-title get-20-2" style="display: block; text-align: center; width: 100%; font-size: 30px;">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
+	            <div class="get-20-2-home-txt2" style="display: block; text-align: center; width: 100%; margin-top: 35px; margin-bottom: 35px; font-size: 18px;">전문가가 직접 답해드려요!</div>
 	            <div class="qna-list-wrap">
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
@@ -337,234 +385,89 @@
 	                        </a>
 	                    </div><!-- qna-card의 끝 -->
 	            </div>
-	            <div class="clearfix mr-3">
-	                <a tabindex="0" class="more-qna" href="<c:url value="/board/List.do" />">Q&amp;A 더보기</a>
-	            </div>
-	        </div>
-	    </div>
-	   <!--  6번째 다이브 목록 -->
-	   <div class="section section1-2s ranking-190">
-	        <div class="content">
-	            <div class="txt2">인기 영양제 <span>Top 10</span></div>
-	            <div class="tab-contents" style="display: block;">
-	                <div class="tab-content tab-content-001 new-wide-main-060 new-wide-main-090 active width-flt1">
-	                    <div class="filter-btns slt-sex">
-	                        <div class="filter-btns-in">
-	                            <a tabindex="0" class="filter-btn active" href="#">전체 성별</a>
-	                            <a tabindex="0" class="filter-btn" href="#">여성</a>
-	                            <a tabindex="0" class="filter-btn" href="#">남성</a>
-	                        </div>
-	                    </div>
-	                    <div class="filter-btns2">
-	                        <div class="filter-btns-in">
-	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b001 active"><div class="icon"><span style="font-size: 15px">ALL</span></div><div class="txt1">전체</div></a>
-	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b002 "><div class="icon"><span>20</span></div><div class="txt1">20대 이하</div></a>
-	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b003"><div class="icon"><span>30</span></div><div class="txt1">30대</div></a>
-	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b004"><div class="icon"><span>40</span></div><div class="txt1">40대</div></a>
-	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b005"><div class="icon"><span>50</span></div><div class="txt1">50대</div></a>
-	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b006"><div class="icon"><span>60</span></div><div class="txt1">60대 이상</div></a>
-	                            <a tabindex="0" href="#" class="filter-btn filter-btn-b007"><div class="icon"><span span="" style="font-size: 15px">Kids</span></div><div class="txt1">키즈</div></a>
-	                        </div>
-	                    </div>
-	
-	                    <div class="ranking-card-wrap item-cards u510x">
-	                            <a id="a1730" href="#" tabindex="0" class="item-card" title="SAT 자세히 보기" data-href="#" data-product-id="1730">
-	                                <div class="ranking-no">
-	                                        <img src="https://cdn.pillyze.io/web/img/ranking1.webp" alt="1위">
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/jWzfMp7Q4CluzuT1IKNirIa8EZg50ohtPdduFKu9E9E/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8xay85MzYzOGUyZS0xNzMwLzUwMA" class="item-img" alt="SAT">
-	                                <span class="txt1">쏜리서치</span>
-	                                <span class="txt2">SAT</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.77</span>
-	                                            <span class="txt3">(786개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-                                             <div class="card-tag">피로 개선 <span>75%</span></div>
-                                             <div class="card-tag">숙취 감소 <span>47%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a9360" href="#" tabindex="0" class="item-card" title="트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 950mg) 자세히 보기" data-href="#" data-product-id="9360">
-	
-	                                <div class="ranking-no">
-	                                        <img src="https://cdn.pillyze.io/web/img/ranking2.webp" alt="2위">
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/PyQgu5-vNzgGdCRA0ySJresMwcYaGS8OZtw7AucDVzI/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS85ay85MTRmMjgxOS05MzYwLzEwMDA" class="item-img" alt="트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 950mg)">
-	                                <span class="txt1">스포츠리서치</span>
-	                                <span class="txt2">트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 950mg)</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.73</span>
-	                                            <span class="txt3">(1,200개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">피로 개선 <span>53%</span></div>
-	                                                    <div class="card-tag">콜레스테롤 수치 개선 <span>28%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a11070" href="/products/11070/칼슘-마그네슘-말레이트" tabindex="0" class="item-card" title="칼슘 마그네슘 말레이트 자세히 보기" data-href="/products/11070/칼슘-마그네슘-말레이트" data-product-id="11070">
-	
-	                                <div class="ranking-no">
-	                                        <img src="https://cdn.pillyze.io/web/img/ranking3.webp" alt="3위">
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/qepgDD7uGSV96ukXRK4Q0HRX0bVjFn8XjMws4CGL7kQ/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8xMWsvMzVjZTM5MWItMTEwNzAvNTAw" class="item-img" alt="칼슘 마그네슘 말레이트">
-	                                <span class="txt1">쏜리서치</span>
-	                                <span class="txt2">칼슘 마그네슘 말레이트</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.71</span>
-	                                            <span class="txt3">(620개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">눈 떨림 개선 <span>49%</span></div>
-	                                                    <div class="card-tag">근육통 완화 <span>26%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a270" href="/products/270/우먼스-펨-도필러스-10억(해외)" tabindex="0" class="item-card" title="우먼스 펨 도필러스 10억(해외) 자세히 보기" data-href="/products/270/우먼스-펨-도필러스-10억(해외)" data-product-id="270">
-	
-	                                <div class="ranking-no">
-	                                        <div class="txt">4위</div>
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/iv-IzX3mAF8tYvM_fLtjL1xJlag4r90gjG5dxDKm7gI/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8way9lOWJmOWY5ZC0yNzAvMTAwMA" class="item-img" alt="우먼스 펨 도필러스 10억(해외)">
-	                                <span class="txt1">자로우포뮬라</span>
-	                                <span class="txt2">우먼스 펨 도필러스 10억(해외)</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.71</span>
-	                                            <span class="txt3">(942개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">질염 발생 빈도 감소 <span>77%</span></div>
-	                                                    <div class="card-tag">변비 개선 <span>26%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a186" href="/products/186/엽산-400" tabindex="0" class="item-card" title="엽산 400 자세히 보기" data-href="/products/186/엽산-400" data-product-id="186">
-	
-	                                <div class="ranking-no">
-	                                        <div class="txt">5위</div>
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/qcja-Q1JmYV7IAdOaQPjGRbAZE-w8bExs7BJcLt0gNw/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8way9hYzA3YjI1OC0xODYvNTAw" class="item-img" alt="엽산 400">
-	                                <span class="txt1">솔가</span>
-	                                <span class="txt2">엽산 400</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.75</span>
-	                                            <span class="txt3">(404개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">피로 개선 <span>32%</span></div>
-	                                                    <div class="card-tag">스트레스 감소 <span>9%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a9359" href="/products/9359/락토비프-프로바이오틱스-300억" tabindex="0" class="item-card" title="락토비프 프로바이오틱스 300억 자세히 보기" data-href="/products/9359/락토비프-프로바이오틱스-300억" data-product-id="9359">
-	
-	                                <div class="ranking-no">
-	                                        <div class="txt">6위</div>
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/AmAYwp34igO1R7G46P110Wocvpu87IHE9CFpx_NNL4M/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS85ay8yNDI3M2Y2NC05MzU5LzEwMDA" class="item-img" alt="락토비프 프로바이오틱스 300억">
-	                                <span class="txt1">캘리포니아골드뉴트리션</span>
-	                                <span class="txt2">락토비프 프로바이오틱스 300억</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.7</span>
-	                                            <span class="txt3">(941개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">변비 개선 <span>62%</span></div>
-	                                                    <div class="card-tag">복부 가스 덜 참 <span>38%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a1" href="/products/1/비타민C-1000" tabindex="0" class="item-card" title="비타민C 1000 자세히 보기" data-href="/products/1/비타민C-1000" data-product-id="1">
-	
-	                                <div class="ranking-no">
-	                                        <div class="txt">7위</div>
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/uhKCT4-An7gCM8xNkZyB8pxCA_bTzwBadeUKUIGdBEk/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8way8zYWFkMzU2Yy0xLzEwMDA" class="item-img" alt="비타민C 1000">
-	                                <span class="txt1">고려은단</span>
-	                                <span class="txt2">비타민C 1000</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.67</span>
-	                                            <span class="txt3">(4,689개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">감기 덜 걸림 <span>53%</span></div>
-	                                                    <div class="card-tag">얼굴색 좋아짐 <span>26%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a473" href="/products/473/비타민C-1000-이지-+-비타민D" tabindex="0" class="item-card" title="비타민C 1000 이지 + 비타민D 자세히 보기" data-href="/products/473/비타민C-1000-이지-+-비타민D" data-product-id="473">
-	
-	                                <div class="ranking-no">
-	                                        <div class="txt">8위</div>
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/Mh_SZxAZTQ7s05t0MAEp3IWB5uJDNblD8ZLUxPsWbHI/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8way84ZDllZjBkNy00NzMvNTAw" class="item-img" alt="비타민C 1000 이지 + 비타민D">
-	                                <span class="txt1">고려은단</span>
-	                                <span class="txt2">비타민C 1000 이지 + 비타민D</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.69</span>
-	                                            <span class="txt3">(753개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">감기 덜 걸림 <span>47%</span></div>
-	                                                    <div class="card-tag">수면질 개선 <span>20%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                            <a id="a12940" href="/products/12940/트리플-스트렝스-오메가3-피쉬오일-(EPA+DHA-1000mg)" tabindex="0" class="item-card" title="트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 1000mg) 자세히 보기" data-href="/products/12940/트리플-스트렝스-오메가3-피쉬오일-(EPA+DHA-1000mg)" data-product-id="12940">
-	
-	                                <div class="ranking-no">
-	                                        <div class="txt">9위</div>
-	                                </div>
-	                                <div class="ranging-title"></div>
-	                                <img src="http://imgproxy.pillyze.io/Yg3c8dx-UnX3f3QKFof8CPvG6v-VGp8rt_nddgrzzx8/rs:fill:300:300/czM6Ly9waWxseXplLXByZC1pbWFnZS9wcm9kdWN0cy92MS8xMmsvMzA1MmJhMjQtMTI5NDAvMTAwMA" class="item-img" alt="트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 1000mg)">
-	                                <span class="txt1">스포츠리서치</span>
-	                                <span class="txt2">트리플 스트렝스 오메가3 피쉬오일 (EPA+DHA 1000mg)</span>
-	                                    <div class="review">
-	                                            <span class="star-point">4.69</span>
-	                                            <span class="txt3">(747개)</span>
-	                                    </div>
-	                                    <br/>
-	                                    <div class="card-tags tag-type3">
-	                                                    <div class="card-tag">피로 개선 <span>47%</span></div>
-	                                                    <div class="card-tag">콜레스테롤 수치 개선 <span>29%</span></div>
-	                                    </div>
-	                            </a><!-- item-card의 끝 -->
-	                    </div><!-- card-wrap의 끝 -->
 
-	                    <div class="clearfix">
-	                        <a tabindex="0" class="more-pop-health mt-5" href="/ranking/selectfood.do">성별&nbsp;·&nbsp;연령별 인기 영양제 더보기</a>
-	                    </div>
-	                </div><!-- tab-content-001의 끝 -->
+	            <div class="clearfix mt-5 my-2 mr-5">
+	                <a tabindex="0" class="more-qna" href="<c:url value="/board/List.do" />"><b>Q&amp;A 더보기</b></a>
 	            </div>
 	        </div>
 	    </div>
+	  
 	    
 	    
-	   <!--  *번째 다이브 목록 -->
-		<div class="m-5 " style="display:flex; justify-content: center;">
-	        <div class="slider1 ">
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:400px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:100%; height:400px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>" style="width:100%; height:400px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>" style="width:100%; height:400px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:400px" ></a></div>
+	   <!--  6번째 다이브 목록 -->
+		<div class="section6 pt-5" style="display:flex; align-items:center; max-width: 1050px; flex-direction: column;">
+			<span style="font-size:30px; display:block; font-weight: bold; text-align: center; margin-bottom: 20px;">영양성분과 건강에 대한 모든 것,<br/> 📖<strong style="color:#EF605D"> MEDI-Q</strong>에서 확인하세요!</span>
+	        <div class="slider1">
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:340px" ></a></div>
 	        </div>
 	    </div>
+	    
+	    <!--  7번째 다이브 목록 -->
+      <div class="mainInner" style="margin: 50px 0px;">
+            <h3 class="my-4" style="text-align: center; margin-top:20px; font-weight: bold;">우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
+            <div class="container-xxl py-4">
+                <div class="container">
+                    <div class="mainMap" id="map" style="border-radius: 10px;">
+                        <button type="button" class="btn" id="tsBtn">
+                        	<span>🩺병원 & 💊약국찾기</span>
+                        </button>
+                        <div class="mapLayer">
+                            <div class="closeLayerButton" onclick="closeMapLayer()">&times;</div>
+                            	<h2>주소</h2>
+      	                     	<p style="font-size:17px; color:gray; font-weight: bold; margin-bottom: 0px;">서울시 금천구 가산동 426-5<br/> 월드메르디앙 2차 413호(MEDI-Q팀)</p>
+      	                     	<p style="font-size:15px; color:gray;">(주)한국소프트웨어아이엔씨 (153-759)</p>
+                           		<a href="https://naver.me/Fcacgzd6" target="_blank">
+                           		<img src="<c:url value="/resources/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
+                           		<a href="https://place.map.kakao.com/1784287516" target="_blank"> 
+                           		<img src="<c:url value="/resources/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
+                        </div>          
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  병원찾기 지도 모달 누르면 나오는 부분 -->
+	       <div class="modal fade align-items-center" id="tsModal" role="dialog" style="background-color: rgba(0, 0, 0, 0.5);">
+			 <div class="modal-dialog modal-dialog-centered" style="align-content :center; width: 100%; height: 60%; max-width: 1400px;">
+			   <!-- Modal content-->
+			   <div class="modal-content" style="width: 100%; height: 100%;">
+			     <div class="modal-header" >
+			       <h4 class="modal-title">우리동네 병원&약국 찾기</h4>
+			       <button type="button" class="close" data-dismiss="modal">&times;</button>
+			     </div>
+			     <div class="modal-body">
+			       <h3 style="text-align: center;">🩺병원 & 💊약국정보</h3>
+			       <div class="container-xxl py-5">
+			         <div class="map_wrap">
+			           <div id="modalmap" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+			           <div id="menu_wrap" class="bg_white">
+			             <div class="option">
+			               <div>
+			                 <form onsubmit="searchPlaces(); return false;">
+			                    키워드 : <input type="text" value="가산동 병원" placeholder="ㅇㅇ동 병원을 입력" id="keyword" size="15">
+			                    <button type="submit">검색하기</button>
+			                  </form>
+			                </div>
+			              </div>
+			              <hr>
+			              <ul id="placesList"></ul>
+			              <div id="pagination"></div>
+			            </div>
+			          </div>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 	</article>
 		<!-- 오른쪽 슬라이드-->
 		<aside class="tsidebar fixedsticky pr-3 mt-5"> 
 			<!--  로그인 목록 창
 			<div class="login-section justify-content-center">
-		        <p style="text-align: center; font-weight:bold; font-size:13px;"><span style="color:#EF605D">Madi-Q</span>를 더 안전하고<br/> 편리하게 이용하세요</p>
+		        <p style="text-align: center; font-weight:bold; font-size:13px;"><span style="color:#EF605D">MEDI-Q</span>를 더 안전하고<br/> 편리하게 이용하세요</p>
 		        <a href="<c:url value="/project/Login.do"/>" style="text-decoration:none;">
 		        	<button class="btn btn-outline-success" type="button" style="display: flex; flex-wrap: wrap; align-content: center; text-align: center; justify-content: center; font-size:13px; border-radius: 12px; width:90%; height:50px; font-weight:bold; color:#EF605D;">
 		        		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="60" height="30"> 로그인
@@ -575,60 +478,43 @@
 		        </div>
 		    </div>
 			 -->
-            <div class="sidebar-item pt-5 mt-5">
-            	<img src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
-            	<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+            <div class="sidebar-item pt-4 mt-5">
+            	<img src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="45" height="30">
+            	<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="30">
             	<br/>
-            	<p class="my-3" style="margin-bottom:20px; color:gray; font-size:12px; font-weight:500;">
+            	<p class="my-4" style="margin-bottom:20px; color:gray; font-size:12px; font-weight:500;">
             		<span class="py-3">
-            		40만 건의 분석 결과를 <br/>토대로 선정된
-					믿을 수<br/> 있는 진짜 랭킹을<br/>  확인해 보세요.</span></p>
+            		AI모델의 분석 결과를 바탕으로<br/>
+            		선정된 랭킹을 직접 확인해 보세요.</span></p>
                 <ul class="unlist" style="padding-inline-start: 0px;">
+				<c:forEach items="${listData}" var="item" varStatus="status">
+	            	<c:if test="${status.index < 3}">
                     <li>
-                        <div class="image">
-                            <img src="<c:url value="/resources/images/tsimages/destination-1.jpg"/>" alt="*">
+                        <div class="image" >
+	            			<a href="/detail.do?no=${item.no}" style="text-decoration:none;">
+	                            <c:if test="${not empty item.imgURL}">
+									<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
+								</c:if>
+		          				<c:if test="${empty item.imgURL}">	
+									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+								</c:if>
+                    		</a>
                         </div>
-                        <div style="align-items: center; margin-top:20px; margin-left:10px; justify-content: center; text-align: start; line-height: 3px; font-weight:400;">
-                        	<p style="color:gray; font-size:10px; font-weight:bold;">종근당 건강</p>
-                        	<br/>
-                        	<p style="flex-wrap:wrap; color:black; font-size:13px; font-weight:bold;  text-align: center;">락토핏</p>
-                        	<br/>
-                        	<p style="color:gray; font-size:10px; font-weight:bold;">
-                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
-                        	4.64(814)
-                        	</p>
+                        <div style="align-items: center; margin-top:25px; margin-left:10px; justify-content: center; text-align: start; line-height: 1px; font-weight:400;">
+	            			<a href="/detail.do?no=${item.no}" style="text-decoration:none;">
+	                        	<p style="line-height: 10px; color:gray; font-size:9px; font-weight:bold;">${item.company}</p>
+	                        	<br/>
+	                        	<p style="line-height: 11px; color:black; font-size:11px; font-weight:bold;">${item.productName}</p>
+	                        	<br/>
+	                        	<p style="color:gray; font-size:10px; font-weight:bold;">
+	                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
+	                        	&nbsp;${item.AVG_Score }&nbsp;(${item.REVIEW_Count})
+	                        	</p>
+                    		</a>
                         </div>
                     </li>
-                    <li>
-                        <div class="image">
-                            <img src="<c:url value="/resources/images/tsimages/destination-2.jpg"/>" alt="*">
-                        </div>
-                         <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
-                        	<p style="color:gray; font-size:10px; font-weight:bold;">고려은단</p>
-                        	<br/>
-                        	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">비타민C 1000</p>
-                        	<br/>
-                        	<p style="color:gray; font-size:10px; font-weight:bold;">
-                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
-                        	4.66(178)
-                        	</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="image">
-                            <img src="<c:url value="/resources/images/tsimages/destination-3.jpg"/>" alt="*">
-                        </div>
-                         <div style="margin-top:20px; margin-left:10px; text-align: start; line-height: 3px; font-weight:400;">
-                        	<p style="color:gray; font-size:10px; font-weight:bold;">종근당</p>
-                        	<br/>
-                        	<p style="color:black; font-size:13px; font-weight:bold; text-align: center;">칼슘앤마그네슘</p>
-                        	<br/>
-                        	<p style="color:gray; font-size:10px; font-weight:bold;">
-                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
-                        	4.67(115)
-                        	</p>
-                        </div>
-                    </li>
+                    </c:if>
+				</c:forEach>
                 </ul>
             </div>
 		</aside>
@@ -639,15 +525,15 @@
        <div class="content">
            <span class="txt1">건강한 영양제 &amp; 식단 관리를 위한 모든 것</span>
            <span class="txt2">걱정 없이, 쉽고 간편하게</span>
-           <span class="txt3"><span>Medi-Q</span>로 시작하세요.</span>
+           <span class="txt3"><span>MEDI-Q</span>로 시작하세요.</span>
        </div>
    </div>
     
 	<div class="section section1-5">
         <div class="content">
 
-            <span class="txt1"><span style="color: #EF605D"> Medi-Q</span>는 신뢰가 가득하여 믿을 수 있어요.</span>
-            <span class="txt2" style="font-weight: bold;"><span style="color: #EF605D"> Medi-Q</span>는 국내외 검증된 기관과<br>신뢰도 높은 연구 결과를 바탕으로 개인 맞춤형 분석 결과를 제공합니다.</span>
+            <span class="txt1"><span style="color: #EF605D"> MEDI-Q</span>는 신뢰가 가득하여 믿을 수 있어요.</span>
+            <span class="txt2" style="font-weight: bold;"><span style="color: #EF605D"> MEDI-Q</span>는 국내외 검증된 기관과<br>신뢰도 높은 연구 결과를 바탕으로 개인 맞춤형 분석 결과를 제공합니다.</span>
 
             <div class="rl-companies">
                 <div class="rl-company rl-company1">식품의약품안전처</div>

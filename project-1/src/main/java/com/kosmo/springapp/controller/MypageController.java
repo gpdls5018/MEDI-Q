@@ -1,5 +1,7 @@
 package com.kosmo.springapp.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -12,6 +14,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,9 +26,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
 import com.kosmo.springapp.model.HealthMemoDTO;
 import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.model.ProfileImageDTO;
+import com.kosmo.springapp.service.FCMInitializer;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.HealthMemoIServicempl;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
@@ -47,7 +55,43 @@ public class MypageController {
 
 	//마이페이지 클릭 시
 	@GetMapping("/MyPage.do")
-	public String mypage(HttpServletRequest req, HttpServletResponse resp, Model model) {
+	public String mypage(HttpServletRequest req, HttpServletResponse resp, Model model) throws IOException {
+		String filePath = "json";
+        
+		Resource resource = new ClassPathResource(filePath);
+		String directoryPath = resource.getFile().getAbsolutePath()+File.separator+FCMInitializer.FIREBASE_CONFIG_PATH;
+		/*
+        // ClassPathResource객체 생성.
+        ClassPathResource resource = new ClassPathResource(filePath);
+        
+        //물리적 경로 얻기
+        File file = resource.getFile();
+        String directoryPath = file.getAbsolutePath();
+        */
+		System.out.println("directoryPath: "+directoryPath);
+		//"path/to/serviceAccountKey.json"
+		FileInputStream serviceAccount = new FileInputStream(directoryPath);
+		
+		FirebaseApp firebaseApp = null;
+		List<FirebaseApp> firebaseApps = FirebaseApp.getApps();
+		if(firebaseApps != null && !firebaseApps.isEmpty()) {
+			System.out.println("if문 안");
+			for(FirebaseApp app : firebaseApps) {
+				System.out.println("app: "+app);
+				if(app.getName().equals(FirebaseApp.DEFAULT_APP_NAME))
+					firebaseApp = app;
+			}
+		}
+		else {
+			System.out.println("else문 안");
+			FirebaseOptions options = new FirebaseOptions.Builder()
+					   .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+					   .build();
+	
+			firebaseApp = FirebaseApp.initializeApp(options);
+		}
+		System.out.println("firebaseApp: "+firebaseApp);
+		
 		LocalDate current = LocalDate.now(); //현재날짜 구하기
 		Map map = new HashMap<>();
 		//System.out.println("date: "+date);
@@ -105,15 +149,15 @@ public class MypageController {
 		if (!flag) {
 			return "<script>alert('비밀번호가 일치하지 않아요');history.back();</script>";
 		}
-		String queryString = "/project/JoinEdit.do?id="+map.get("id");
 		// 비밀번호가 일치하는 경우
-		return "<script>location.href='"+queryString+"'</script>";
+		return "<script>location.href='/project/JoinEdit.do'</script>";
 	}
 	
 	//회원수정 클릭 후 비밀번호 일치 시
 	@GetMapping("/JoinEdit.do")
-	public String joinEdit(@RequestParam String id, Map map) {
-		map.put("id", id);
+	public String joinEdit(HttpServletRequest req, HttpServletResponse resp, Map map) {
+		MemberDTO member = loginService.selectOne(req,resp);
+		map.put("id", member.getId());
 		map.put("member",loginService.selectOne(map));
 		
 		return "login/JoinEdit";
@@ -181,7 +225,9 @@ public class MypageController {
 	}
 	//정신건강테스트3
 	@GetMapping("/MentalTest3.do")
-	public String mentalTest3() {
+	public String mentalTest3(HttpServletRequest req, HttpServletResponse resp, Model model) {
+		MemberDTO member = loginService.selectOne(req,resp);
+		model.addAttribute("info", member);
 		return "mentaltest/MentalTest3";
 	}
 	//정신건강테스트4

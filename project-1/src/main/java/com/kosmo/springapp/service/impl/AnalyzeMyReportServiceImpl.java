@@ -37,11 +37,14 @@ public class AnalyzeMyReportServiceImpl {
 		for(String takePurpose : takePurposes) {//복용 목적을 하나씩 비교
 			AnalyzeResultDTO analyzeResultDTO = new AnalyzeResultDTO();
 			List<String> foodList = analyzeMyReportMapper.selectFoodListForMyTakePurpose(takePurpose);//사용자의 복용 목적을 위해 필요한 영양소
+			System.out.println("사용자의 복용 목적["+takePurpose+"]을 위해 필요한 영양소 : " + foodList);
 			List<String> ingredient_list_no_report = new ArrayList<String>(foodList);
 			List<String> takeFoods = ((List)map.get("takeFood"));//사용자가 복용중인 건기식
+			System.out.println("사용자가 복용중인 건기식 : "+ takeFoods);
 			Map<String,List> foodForHelpPurpose = new HashMap<>();
 			for(String takeFood : takeFoods) {//사용자가 복용중인 건기식들을 하나씩 비교
 				List<String> myfoodList = analyzeMyReportMapper.selectMyFoodList(takeFood);//사용자가 복용중인 건기식에 들어있는 것들
+				System.out.println("사용자가 복용중인 건기식("+ takeFood +") 에 들어있는 것들 : "+myfoodList);
 				List<String> ingredient_list = new ArrayList<String>(foodList);//사용자가 복용중인 건기식의 기능성 영양소를 담을 리스트(복용 목적을 위해 필요한 모든 기능성 영양소, 사용자가 복용중인 건기식의 기능성 영양소, 사용자가 먹지 않고 있는 기능성 영양소)
 				List<String> ingredient_list_report = new ArrayList<String>();
 				
@@ -50,7 +53,7 @@ public class AnalyzeMyReportServiceImpl {
 					for(String item : food) {//들어있는 성분 하나를 들고옴-> 공백 제거
 						item = item.replaceAll("\\s","");
 						for(String ingredient : ingredient_list) {//기능성 영양소에서 하나 가져옴
-							if(ingredient.contains(item)) {//복용목적을 위한 올바른 기능영 영양소라면
+							if(item.contains(ingredient)) {//복용목적을 위한 올바른 기능영 영양소라면
 								ingredient_list_no_report.remove(ingredient);
 								ingredient_list_report.add(ingredient);	
 							}
@@ -87,7 +90,7 @@ public class AnalyzeMyReportServiceImpl {
 		analyzeResultListDTO.setNutrient_list_report(nutrient_list_report);
 		analyzeResultListDTO.setNutrient_list_no_report(nutrient_list_no_report);
 		//최종 점수 구하기
-		nutrient_score = nutrient_list_report.size() *3;
+		nutrient_score = nutrient_list_report.size() *3 / takePurposes.size();
 		int resultScore = ingredient_score*30 + nutrient_score;
 		analyzeResultListDTO.setResultScore(resultScore);
 		analyzeResultListDTO.setIngredientCount(((List)map.get("takeFood")).size());

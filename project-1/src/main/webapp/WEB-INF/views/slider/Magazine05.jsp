@@ -12,19 +12,78 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 <style>
+  .custom-top {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 25px;
+    margin-bottom : 150px;
+    padding-top : 145px;
+  }
+  .contentTop{
+  	padding-top: 50px;
+  }
+  .paragraph{
+  	margin-top: 125px;
+  	font-size: 23px;
+  }
+  .paragraph-title{
+  	margin-top: 100px;
+  	margin-bottom: 150px;
+  }
+	
+
   .custom-text{
     font-family: 'Noto Sans KR', sans-serif;
+    font-size: 30px;
+  }
+  .custom-img{
+  	margin-top: 40px;
+  	margin-left: 40px;
+  }
+  .contents{
+  	margin-top: 17px;
+  	margin-left: 23px;
+  }
+  
+  .custom-modal{
+    width: 120px;
+    background: #FF7F50;
+    padding: 10px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    text-align: center;
     font-size: 20px;
   }
+  .modal-content{
+  	background-color: #FFFAF0;
+  	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 835px;
+  	height: 710px;
+  }
+  .modalB{
+    margin-top : 20px;
+  	margin-bottom: 50px;
+  }
+  .modalC{
+  margin-left: 64px;
+  }
+  .subtitle{
+  	font-size: 26px;
+  	color: #191970;
+  	margin-left: 18px;
+  	font-weight: bold;
+  }
+  
   .highLight {
-    background-color : #fff3d6;
+    background-color : #FFE4BF;
   }
   .underLine {
     text-decoration : underline;
   }
   .para_title {
     color : #ee4949;
-    font-size: 23px;
+    font-size: 35px;
     font-weight: bold;
   }
   .my-hr {
@@ -40,7 +99,7 @@
     background: white;
     /* 가로 스크롤 */
     white-space: nowrap;
-    height: 300px;
+    height: 400px;
   }
   .card {
     display: inline-flex;
@@ -55,37 +114,98 @@
     text-overflow: ellipsis;
   }
   .card-title {
-    font-size: 12px;
+    font-size: 15px;
     color:#a7a4a4;
   }
   .card-content {
-
+	font-size: 22px;
     width: 100px;
   }
   .product-img {
     border-radius: 20%;
     border: #ccc solid 1px;
   }
+   .custom-footer{
+  	margin-bottom: 180px;
+  }
+   body {
+    zoom: 0.70;
+  }
+  .modal-backdrop {
+  	background-color: transparent !important;
+  }
+  .modal-dialog {
+   margin-top: 300px;
+   margin-right: 1300px;
+  }
+  .wrap-vertical {
+    overflow: hidden;
+  }
 </style>
-<div class="container mt-5 custom-text">
+<div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #fff3d6;">
-    떠먹여 주는 영양제 레시피<br>
-    <h4><strong style="color:#FFCD4A">운동 전후 보충제로 멸치 탈출! 운동 영양제 레시피</strong></h4>
+    <div class="container">
+    	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">떠먹여 주는 영양제 레시피</span>
+    <h4><strong style="color:#FFB726; font-size:35px;">운동 전후 보충제로 멸치 탈출! 운동 영양제 레시피</strong></h4>
   </div>
+</div>
 
-  <div>
-    ‘건강’에 대한 관심이 증가하면서 자연스럽게 운동과 관련된 보충제에 대한 관심도 높아지고 있죠. 즐겁게 건강 관리를 하는 헬시 플레저가 확산되고 있지만, 그럼에도 꾸준히 운동한다는 것은 여전히 어려운 일인데요. 힘들게 한 만큼 확실한 효과를 볼 수 있게 도와줄 운동 영양제 레시피를 준비했어요!
+  <div style="font-size:27px;" class="contentTop d-flex">
+	  <img src="<c:url value="/resources/images/magazine_images/basic/running.png"/>" class="img-fluid mr-3 mt-4" style="width:150px; height:150px;"> 
+    <div class="contents">
+      ‘건강’에 대한 관심이 증가하면서 자연스럽게 운동과 관련된 보충제에 대한 관심도 높아지고 있죠.<br/> 
+      즐겁게 건강 관리를 하는 헬시 플레저가 확산되고 있지만, 그럼에도 꾸준히 운동한다는 것은 여전히 어려운 일인데요. 힘들게 한 만큼 확실한 효과를 볼 수 있게 도와줄 운동 영양제 레시피를 준비했어요!
+    </div>
   </div>
-  <hr>
+  
+  
+  <div class="paragraph-title">
+	<img src="<c:url value="/resources/images/magazine_images/basic/time.png"/>" class="img-fluid mr-4" style="width:100px">
+	<span style="font-size: xx-large; color: #2E8B57"><strong>MEDI-Q의 1분 요약</strong></span>
+	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
+   		 Click
+  		</button>
+	  <div class="modal" id="myModal">
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
+	          MEDI-Q의 1분 요약
+	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          </h4>
+	        </div>
+	        <div class="modal-body">
+	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	         운동러를 위한 <strong style="color: #696969;">영양제 4종</strong> 레시피<img src="<c:url value="/resources/images/magazine_images/basic/fitness.png"/>" class="img-fluid ml-3 mb-4" style="width:40px"><br/> 
+	         <span class="modalC">: 단백질 + 아르기닌/BCAA + L-카르니틴 + 크레아틴<br/></span></p>
+	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			 운동 전후 외에도 항상 단백질이 풍부한 음식을 먹되, 많은 양을<br/> 
+			 <span class="modalC">한 번에 먹기보다는 하루 동안 나눠서 먹도록 해주세요.<br/></span></p>
+			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+		   	 근육 성장이나 운동 능력에 도움을 줄 아르기닌, BCAA, 크레아틴이나<br/> 
+		   	  <span class="modalC">체지방 감소에도 도움을 주는 L-카르니틴 등을 같이 조합해 보세요!</span></p>
+	        </div>	       
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width: 100px; height: 50px; font-size: 20px;">Close</button>
+	        </div>
+	 	 </div>
+	   </div>
+	  </div>
+  </div>
+  
+  
+  
   <div class="paragraph">
     <div class="mt-5">
-      1️⃣ 단백질 보충제
+      <img src="<c:url value="/resources/images/magazine_images/basic/1.png"/>" class="img-fluid mb-2 mr-1" style="width:50px">
+      <span class="subtitle">단백질 보충제</span>
     </div>
     <br>
     <div>
-      <img src="resources/images/magazine_images/05/01_IMG.png" class="img-fluid">
+      <img src="<c:url value="/resources/images/magazine_images/05/01_IMG.png"/>" class="img-fluid">
     </div>
-    <div class="mt-3">
+    <div class="mt-5">
       <p>
         일반적으로 운동 전이나 후에 단백질 보충제를 드시는데, <span class="highLight">단백질은 운동하지 않는 시간에도 일정하게 보충하는 것이 필요해요!</span>
         단백질을 잘 먹지 않으면 우리 몸에서 근육의 단백질을 사용하게 되고,
@@ -100,20 +220,27 @@
         특히 신장 기능이 떨어진 상태에서 많은 단백질을 먹으면 더 많은 손상이 발생할 수 있으니, 주의가 필요합니다.
       </p>
     </div>
+    <div class="mt-5">
+      <p>
+        일반적으로 단백질은 체중 1kg당 단백질 0.8~1g 정도를 권장하며, <span class="underLine">운동을 하고 근육을 키우는 목적으로 드실 경우 체중 1kg당 최대 2g 정도까지는 섭취가 가능</span>해요. 
+        다만 일반 식품으로도 단백질을 섭취하기 때문에 운동 전후 보충제로 <span class="highLight">이 양을 모두 먹는 것은 피하고, 이 양을 하루 동안 나눠서 먹는 것이 좋습니다.</span>
+      </p>
+    </div>
   </div>
-  <hr class="mt-5">
+  
   <div class="paragraph">
     <div class="mt-5">
-      2️⃣ 근육 키우기
+      <img src="<c:url value="/resources/images/magazine_images/basic/2.png"/>" class="img-fluid mb-2 mr-1" style="width:50px">
+      <span class="subtitle">근육 키우기</span>
     </div>
     <br>
     <div>
-      <img src="resources/images/magazine_images/05/02_IMG.png" class="img-fluid">
+      <img src="<c:url value="/resources/images/magazine_images/05/02_IMG.png"/>" class="img-fluid">
     </div>
-    <div class="mt-3">
+    <div class="mt-5">
       <p>
         운동 시에 섭취하면 좋은 영양제에는 대표적으로 <span class="highLight">아르기닌</span>이 있어요.
-        아르기닌은 <span class="underLine">근육으로 가는 혈액의 순환을 도와 근육을 키우는 데에 도움을 주고, 근육을 덜 지치게 해서 운동을 지속할 수 있도록 하는 효과</span>가 있습니다.
+        아르기닌은 근육으로 가는 혈액의 순환을 도와 <span class="underLine">근육을 키우는 데에 도움을 주고, 근육을 덜 지치게 해서 운동을 지속할 수 있도록 하는 효과</span>가 있습니다.
       </p>
     </div>
     <div class="mt-5">
@@ -130,16 +257,17 @@
       </p>
     </div>
   </div>
-  <hr class="mt-5">
+  
   <div class="paragraph">
     <div class="mt-5">
-      3️⃣ 체지방 감소도 함께
+      <img src="<c:url value="/resources/images/magazine_images/basic/3.png"/>" class="img-fluid mb-2 mr-1" style="width:50px">
+      <span class="subtitle">체지방 감소도 함께</span>
     </div>
     <br>
     <div>
-      <img src="resources/images/magazine_images/05/03_IMG.png" class="img-fluid">
+      <img src="<c:url value="/resources/images/magazine_images/05/03_IMG.png"/>" class="img-fluid">
     </div>
-    <div class="mt-3">
+    <div class="mt-5">
       <p>
         <span class="highLight">L-카르니틴</span>은 <span class="underLine">근육의 구성 성분이면서 운동으로 인한 피로 개선과 체지방 감소에도 도움을 주는 영양제</span>예요.
         L-카르니틴은 지방을 에너지로 전환하는 역할을 하여 체중 감량에 도움을 줄 수 있습니다.
@@ -156,16 +284,17 @@
       </p>
     </div>
   </div>
-  <hr class="mt-5">
+  
   <div class="paragraph">
     <div class="mt-5">
-      4️⃣ 지구력 및 운동 수행능력 향상
+      <img src="<c:url value="/resources/images/magazine_images/basic/4.png"/>" class="img-fluid mb-2 mr-1" style="width:50px">
+      <span class="subtitle">지구력 및 운동 수행능력 향상</span>
     </div>
     <br>
     <div>
-      <img src="resources/images/magazine_images/05/04_IMG.png" class="img-fluid">
+      <img src="<c:url value="/resources/images/magazine_images/05/04_IMG.png"/>" class="img-fluid">
     </div>
-    <div class="mt-3">
+    <div class="mt-5">
       <p>
         운동을 했을 때 운동의 효과를 잘 보기 위해 근육을 키우거나 체지방 감소에 도움이 되는 보충제를 먹는 것도 좋지만,
         운동을 꾸준히 하기 위한 능력 향상에 도움이 되는 보충제를 먹을 수도 있어요. <span class="highLight">옥타코사놀은 지구력 증진에 도움을 줄 수 있고,
@@ -180,23 +309,28 @@
       </p>
     </div>
   </div>
-  <hr class="mt-5">
 </div>
-<div class="container">
-  <span class="custom-text">&#x1F601; 관련 영양제 인기 TOP 10 <i class="bi bi-chat-quote"></i></span>
+
+<div class="container custom-footer">
+  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-1" style="width:65px">
+   &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
       등록된 제품이 없습니다
     </c:if>
     <c:if test="${not listIsEmpty}">
-      <c:forEach var="record" begin="0" end="10" items="${listData}" >
-        <div class="card" style="width:150px;height:400px;">
-          <c:if test="${not empty record.imgURL}">
-            <a href='/detail.do?no=${record.no}'><img src="${record.imgURL}" style="width:150px;height:150px;" class="img-fluid product-img"></a>
-          </c:if>
-          <c:if test="${empty record.imgURL}">
-            <a href='/detail.do?no=${record.no}'><img src="resources/images/thumbnail_img/No_IMG.jpeg" style="object-fit:fill" class="img-fluid product-img"></a>
-          </c:if>
+      <c:forEach var="record" begin="0" end="4" items="${listData}" >
+        <div class="card" style="width:190px;height:400px;">
+           <a href='/detail.do?no=${record.no}'>
+  			<c:choose>
+    		  <c:when test="${not empty record.imgURL}">
+     			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
+   			  </c:when>
+    		  <c:otherwise>
+      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+    		  </c:otherwise>
+  			</c:choose>
+		  </a>
           <div class="card-footer" style="white-space:normal">
             <span class="card-title">${record.company}</span><br>
             <span class="card-content">

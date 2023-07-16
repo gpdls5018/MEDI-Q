@@ -78,7 +78,7 @@
 <body>
 	<div class="container mt-5 effect-custom-font">
 		<div class="my-title d-flex justify-content-between m-auto" style="width:80%;">
-			<div class="mt-5" style="font-size:40px;"><span style="background-color:#ffdcdc;">홍성민</span>님의 분석 리포트</div>
+			<div class="mt-5" style="font-size:40px;"><span style="background-color:#ffdcdc;">${UserName}</span>님의 분석 리포트</div>
 		</div>
 		<div class="m-5" style="height:3px;background-color:#ccc"></div>
     <!--Q1#-->
@@ -256,37 +256,37 @@
         <div class="ml-5" style="color:#545454">중복 선택이 가능합니다. (최대 3개)</div>
         <div class="modal-body d-flex flex-wrap p-4 justify-content-around" style="height:200px;">
           <div class="card" style="width: 8rem;height:10rem;">
-            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/1.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/간 건강.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
             <div class="card-body m-auto">
               <h5 class="card-title">간 건강</h5>
             </div>
           </div>
           <div class="card" style="width: 8rem;height:10rem;">
-            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/2.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/뼈 건강.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
             <div class="card-body m-auto">
-              <h5 class="card-title">구강 건강</h5>
+              <h5 class="card-title">뼈 건강</h5>
             </div>
           </div>
           <div class="card" style="width: 8rem;height:10rem;">
-            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/3.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/두뇌활동.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
             <div class="card-body m-auto">
-              <h5 class="card-title">기억력 개선</h5>
+              <h5 class="card-title">두뇌활동</h5>
             </div>
           </div>
           <div class="card" style="width: 8rem;height:10rem;">
-            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/4.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/피부 건강.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
             <div class="card-body m-auto">
               <h5 class="card-title">피부 건강</h5>
             </div>
           </div>
           <div class="card" style="width: 8rem;height:10rem;">
-            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/5.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/혈중 콜레스테롤.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
             <div class="card-body m-auto">
-              <h5 class="card-title">혈압 조절</h5>
+              <h5 class="card-title">혈중 콜레스테롤</h5>
             </div>
           </div>
           <div class="card" style="width: 8rem;height:10rem;">
-            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/6.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/장 건강.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
             <div class="card-body m-auto">
               <h5 class="card-title">장 건강</h5>
             </div>
@@ -295,39 +295,39 @@
 
         <div class="modal-body d-flex flex-wrap p-4 justify-content-around" style="height:200px;">
           <div class="card" style="width: 8rem;height:10rem;">
-            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/7.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/눈 건강.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
             <div class="card-body m-auto">
               <h5 class="card-title">눈 건강</h5>
             </div>
           </div>
           <div class="card" style="width: 8rem;height:10rem;">
-            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/8.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/면역 기능.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
             <div class="card-body m-auto">
               <h5 class="card-title">면역 기능</h5>
             </div>
           </div>
           <div class="card" style="width: 8rem;height:10rem;">
-            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/9.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/수면.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
             <div class="card-body m-auto">
-              <h5 class="card-title">피로개선</h5>
+              <h5 class="card-title">수면</h5>
             </div>
           </div>
           <div class="card" style="width: 8rem;height:10rem;">
-            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/10.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/혈액 순환.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
             <div class="card-body m-auto">
               <h5 class="card-title">혈액 순환</h5>
             </div>
           </div>
           <div class="card" style="width: 8rem;height:10rem;">
-            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/11.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/운동 능력.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
             <div class="card-body m-auto">
-              <h5 class="card-title">운동수행 능력</h5>
+              <h5 class="card-title">운동 능력</h5>
             </div>
           </div>
           <div class="card" style="width: 8rem;height:10rem;">
-            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/12.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <img class="card-img-overlay m-auto" src="<c:url value="resources/images/health_img/체지방.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
             <div class="card-body m-auto">
-              <h5 class="card-title">체지방 감소</h5>
+              <h5 class="card-title">체지방</h5>
             </div>
           </div>
         </div>
@@ -359,7 +359,7 @@
 		          <ul class="list-unstyled d-flex" id="searchFoodList" style="flex-wrap: wrap;">
 		            <li class="food-li m-2" style="text-align: center;flex-basis: 100px;">
 		              <img src="<c:url value="resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
-		              <div style="font-size: 15px;color: #939393;width:150px;">루테인오메가플러스D&E</div>
+		              <div style="font-size: 15px;color: #939393;width:150px;">비피도박테리움브레브비피더스균A</div>
 		            </li>
 		            <li class="food-li m-2" style="text-align: center;flex-basis: 100px;">
 		              <img src="<c:url value="resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">

@@ -60,13 +60,13 @@
 	                </tr>
 	                <tr class="border-bottom tr-content">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q01" id="dep_q01_01" value="0"/>
+	                        <input type="radio" name="dep_q1" id="dep_q01_01" value="0"/>
 	                        <label for="dep_q01_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q01" id="dep_q01_02" value="1"/>
+	                        <input type="radio" name="dep_q1" id="dep_q01_02" value="1"/>
 	                        <label for="dep_q01_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q01" id="dep_q01_03" value="2"/>
+	                        <input type="radio" name="dep_q1" id="dep_q01_03" value="2"/>
 	                        <label for="dep_q01_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q01" id="dep_q01_04" value="3"/>
+	                        <input type="radio" name="dep_q1" id="dep_q01_04" value="3"/>
 	                        <label for="dep_q01_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -76,13 +76,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q02" id="dep_q02_01" value="0"/>
+	                        <input type="radio" name="dep_q2" id="dep_q02_01" value="0"/>
 	                        <label for="dep_q02_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q02" id="dep_q02_02" value="1"/>
+	                        <input type="radio" name="dep_q2" id="dep_q02_02" value="1"/>
 	                        <label for="dep_q02_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q02" id="dep_q02_03" value="2"/>
+	                        <input type="radio" name="dep_q2" id="dep_q02_03" value="2"/>
 	                        <label for="dep_q02_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q02" id="dep_q02_04" value="3"/>
+	                        <input type="radio" name="dep_q2" id="dep_q02_04" value="3"/>
 	                        <label for="dep_q02_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -92,13 +92,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q03" id="dep_q03_01" value="0"/>
+	                        <input type="radio" name="dep_q3" id="dep_q03_01" value="0"/>
 	                        <label for="dep_q03_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q03" id="dep_q03_02" value="1"/>
+	                        <input type="radio" name="dep_q3" id="dep_q03_02" value="1"/>
 	                        <label for="dep_q03_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q03" id="dep_q03_03" value="2"/>
+	                        <input type="radio" name="dep_q3" id="dep_q03_03" value="2"/>
 	                        <label for="dep_q03_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q03" id="dep_q03_04" value="3"/>
+	                        <input type="radio" name="dep_q3" id="dep_q03_04" value="3"/>
 	                        <label for="dep_q03_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -108,13 +108,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q04" id="dep_q04_01" value="0"/>
+	                        <input type="radio" name="dep_q4" id="dep_q04_01" value="0"/>
 	                        <label for="dep_q04_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q04" id="dep_q04_02" value="1"/>
+	                        <input type="radio" name="dep_q4" id="dep_q04_02" value="1"/>
 	                        <label for="dep_q04_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q04" id="dep_q04_03" value="2"/>
+	                        <input type="radio" name="dep_q4" id="dep_q04_03" value="2"/>
 	                        <label for="dep_q04_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q04" id="dep_q04_04" value="3"/>
+	                        <input type="radio" name="dep_q4" id="dep_q04_04" value="3"/>
 	                        <label for="dep_q04_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -124,13 +124,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q05" id="dep_q05_01" value="3"/>
+	                        <input type="radio" name="dep_q5" id="dep_q05_01" value="3"/>
 	                        <label for="dep_q05_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q05" id="dep_q05_02" value="2"/>
+	                        <input type="radio" name="dep_q5" id="dep_q05_02" value="2"/>
 	                        <label for="dep_q05_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q05" id="dep_q05_03" value="1"/>
+	                        <input type="radio" name="dep_q5" id="dep_q05_03" value="1"/>
 	                        <label for="dep_q05_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q05" id="dep_q05_04" value="0"/>
+	                        <input type="radio" name="dep_q5" id="dep_q05_04" value="0"/>
 	                        <label for="dep_q05_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -140,13 +140,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q06" id="dep_q06_01" value="0"/>
+	                        <input type="radio" name="dep_q6" id="dep_q06_01" value="0"/>
 	                        <label for="dep_q06_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q06" id="dep_q06_02" value="1"/>
+	                        <input type="radio" name="dep_q6" id="dep_q06_02" value="1"/>
 	                        <label for="dep_q06_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q06" id="dep_q06_03" value="2"/>
+	                        <input type="radio" name="dep_q6" id="dep_q06_03" value="2"/>
 	                        <label for="dep_q06_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q06" id="dep_q06_04" value="3"/>
+	                        <input type="radio" name="dep_q6" id="dep_q06_04" value="3"/>
 	                        <label for="dep_q06_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -156,13 +156,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q07" id="dep_q07_01" value="0"/>
+	                        <input type="radio" name="dep_q7" id="dep_q07_01" value="0"/>
 	                        <label for="dep_q07_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q07" id="dep_q07_02" value="1"/>
+	                        <input type="radio" name="dep_q7" id="dep_q07_02" value="1"/>
 	                        <label for="dep_q07_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q07" id="dep_q07_03" value="2"/>
+	                        <input type="radio" name="dep_q7" id="dep_q07_03" value="2"/>
 	                        <label for="dep_q07_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q07" id="dep_q07_04" value="3"/>
+	                        <input type="radio" name="dep_q7" id="dep_q07_04" value="3"/>
 	                        <label for="dep_q07_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -172,13 +172,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q08" id="dep_q08_01" value="0"/>
+	                        <input type="radio" name="dep_q8" id="dep_q08_01" value="0"/>
 	                        <label for="dep_q08_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q08" id="dep_q08_02" value="1"/>
+	                        <input type="radio" name="dep_q8" id="dep_q08_02" value="1"/>
 	                        <label for="dep_q08_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q08" id="dep_q08_03" value="2"/>
+	                        <input type="radio" name="dep_q8" id="dep_q08_03" value="2"/>
 	                        <label for="dep_q08_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q08" id="dep_q08_04" value="3"/>
+	                        <input type="radio" name="dep_q8" id="dep_q08_04" value="3"/>
 	                        <label for="dep_q08_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -188,13 +188,13 @@
 	                </tr>
 	                <tr class="border-bottom">
 	                    <td class="py-4">
-	                        <input type="radio" name="dep_q09" id="dep_q09_01" value="0"/>
+	                        <input type="radio" name="dep_q9" id="dep_q09_01" value="0"/>
 	                        <label for="dep_q09_01">극히 드물다</label>
-	                        <input type="radio" name="dep_q09" id="dep_q09_02" value="1"/>
+	                        <input type="radio" name="dep_q9" id="dep_q09_02" value="1"/>
 	                        <label for="dep_q09_02">가끔 있었다</label>
-	                        <input type="radio" name="dep_q09" id="dep_q09_03" value="2"/>
+	                        <input type="radio" name="dep_q9" id="dep_q09_03" value="2"/>
 	                        <label for="dep_q09_03">종종 있었다</label>
-	                        <input type="radio" name="dep_q09" id="dep_q09_04" value="3"/>
+	                        <input type="radio" name="dep_q9" id="dep_q09_04" value="3"/>
 	                        <label for="dep_q09_04">대부분 그랬다</label>
 	                    </td>
 	                </tr>
@@ -421,14 +421,23 @@
     //우울증 척도 결과 뿌리기
 	$('#resultM').click(function(){
 		if($(':radio:checked').length != 20){
-			alert('모든 항목을 체크해주세요');
 			$(this).attr('data-toggle','');
+			for (i=1;i<=$(':radio').parent().length;i++){
+				//console.log('i:',i)
+				//console.log('checked:',$('[name=str_q1]:checked'))
+			    if (!$('[name=dep_q'+i+']:checked').length){
+			    	var this_ = $('[name=dep_q'+i+']')
+				   	alert(i+"번 질문에 답을 선택하세요.");
+				   	this_.focus();
+				   	return;
+			    }
+			}
 		}
 		else{
+			$(this).attr('data-toggle','modal');
 			var sum=0;
 			$('#resultT').removeClass('text-danger text-primary');
 			$(':radio:checked').each(function(){
-
 				sum += parseInt($(this).val());
 				//console.log('sum:',sum,$(this).val())
 				if(sum > 24){//매우 심한 우울감
@@ -444,29 +453,29 @@
 					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>심한 우울감.`);
 					$('#resultC').html(`직업적, 사회적 적응에 일부 영향을 미칠 경우이거나 2주 이상 지속된다면 가까운 전문기관을 방문하기를 권해드립니다.<br/><br>
 							아래는 가벼운 경증의 우울 증상의 경우 효과적이라고 검증된 방법입니다.<br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>아로마테라피<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">아로마테라피</span><br/>
 							식물에서 추출된 농축된 오일의 특정 화학성분이심신의 이완 효과와 우울감, 불안함, 불쾌감의 감소 효과를 나타냅니다.
 							그러나 아로마테라피는 어디까지나 우울증 치료의 보조적인 방법으로써 표준적 치료를 대체해서는 안 됩니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>독서요법<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">독서요법</span><br/>
 							독서요법은 우울감, 지나친 죄책감, 비관적 사고 등의 부정적인 정서를 스스로 조절하기 위한 다양한 전략과 이러한 전략을 실생활에 적용하는 방법이 적혀있는 책(매뉴얼)을 읽는 자가 관리법입니다.
 							독서 요법의 궁극적 목적은 독자로 하여금 우울증에 도움이 되지 않는 생각이나 행동들을 자각하고 변화시킬 수 있도록 하고, 나아가 자기관리 기술이나 대처기술을 증진할 수 있도록 가이드를 제공해주고 격려해주는 것입니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>컴퓨터를 활용한 중재법<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">컴퓨터를 활용한 중재법</span><br/>
 							온라인 프로그램(웹사이트, 모바일 애플리케이션 등)을 이용해 정신 건강을 증진하는 자가 관리법입니다.
 							일반적으로 독서 요법과 유사하게 인지 치료나 행동 치료적 접근, 심신 의학적 접근(명상, 이완훈련 등)을 기반으로 
 							스스로 자신의 감정과 기분, 생각을 체크하고 문제가 되는 생각이나 행동을 수정하거나 조절할 수 있는 대처기술을 증진하는 프로그램으로 구성됩니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>광선요법<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">광선요법</span><br/>
 							겨울철과 같이 일조량이 줄어드는 시기에 생체의 24시간 주기 리듬이 지연되어 우울증이 쉽게 발생할 수 있습니다. 
 							광선요법은 이러한 가설을 기반으로 사용되고 있는 방법으로 이른 아침에 30분에서 한 시간 정도 밝은 빛을 노출함으로써 우울증 개선에 도움이 될 수 있습니다. 
 							특히 겨울철에 반복되는 계절성 우울증뿐만 아니라 비계절성 우울증에도 효과가 있다는 연구 결과가 있어 항우울제 등의 표준적인 약물치료에 보조적인 요법으로도 권고되고 있습니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>이완 요법<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">이완 요법</span><br/>
 							이완 요법은 스스로 이완시킬 수 있는 방법을 익혀 육체적인 혹은 정신적인 긴장을 감소시키는 방법입니다. 
 							대표적으로는 복식호흡, 요가, 점진적 근육 이완법, 마사지, 명상 등이 포함되며, 
 							특히 복식호흡과 점진적 근육 이완은 훈련을 통해 익힌 후에는 언제 어디서나 이완이 필요한 순간에 적용할 수 있는 장점이 있습니다. 
 							이완 요법은 우울증, 공황장애 등의 불안장애, 불면증 등 다양한 정신질환의 치료에도 효과적으로 이용되고 있습니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>운동<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">운동</span><br/>
 							운동은 우울증의 위험도를 낮추고, 우울증 환자에서 증상을 경감시켜 줄 수 있습니다. 
 							최근 캐나다의 가이드라인에서는 매주 3회 이상 중등도의 강도로 최소 9주 동안 운동을 지속하는 것이 우울감 감소에 효과적이라고 말합니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>기타<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">기타</span><br/>
 							기타 방법으로는 스트레스 피하기, 식이, 절주, 적정 체중 유지 방법이 있습니다
 							`);
 				}
@@ -474,29 +483,29 @@
 					$('#resultT').addClass('text-danger');
 					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>약간의/보통의 우울감.`);
 					$('#resultC').html(`가벼운 경증의 우울감이 느껴질 때 다음의 방법들이 도움이 될 수 있습니다.<br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>아로마테라피<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">아로마테라피</span><br/>
 							식물에서 추출된 농축된 오일의 특정 화학성분이심신의 이완 효과와 우울감, 불안함, 불쾌감의 감소 효과를 나타냅니다.
 							그러나 아로마테라피는 어디까지나 우울증 치료의 보조적인 방법으로써 표준적 치료를 대체해서는 안 됩니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>독서요법<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">독서요법</span><br/>
 							독서요법은 우울감, 지나친 죄책감, 비관적 사고 등의 부정적인 정서를 스스로 조절하기 위한 다양한 전략과 이러한 전략을 실생활에 적용하는 방법이 적혀있는 책(매뉴얼)을 읽는 자가 관리법입니다.
 							독서 요법의 궁극적 목적은 독자로 하여금 우울증에 도움이 되지 않는 생각이나 행동들을 자각하고 변화시킬 수 있도록 하고, 나아가 자기관리 기술이나 대처기술을 증진할 수 있도록 가이드를 제공해주고 격려해주는 것입니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>컴퓨터를 활용한 중재법<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">컴퓨터를 활용한 중재법</span><br/>
 							온라인 프로그램(웹사이트, 모바일 애플리케이션 등)을 이용해 정신 건강을 증진하는 자가 관리법입니다.
 							일반적으로 독서 요법과 유사하게 인지 치료나 행동 치료적 접근, 심신 의학적 접근(명상, 이완훈련 등)을 기반으로 
 							스스로 자신의 감정과 기분, 생각을 체크하고 문제가 되는 생각이나 행동을 수정하거나 조절할 수 있는 대처기술을 증진하는 프로그램으로 구성됩니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>광선요법<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">광선요법</span><br/>
 							겨울철과 같이 일조량이 줄어드는 시기에 생체의 24시간 주기 리듬이 지연되어 우울증이 쉽게 발생할 수 있습니다. 
 							광선요법은 이러한 가설을 기반으로 사용되고 있는 방법으로 이른 아침에 30분에서 한 시간 정도 밝은 빛을 노출함으로써 우울증 개선에 도움이 될 수 있습니다. 
 							특히 겨울철에 반복되는 계절성 우울증뿐만 아니라 비계절성 우울증에도 효과가 있다는 연구 결과가 있어 항우울제 등의 표준적인 약물치료에 보조적인 요법으로도 권고되고 있습니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>이완 요법<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">이완 요법</span><br/>
 							이완 요법은 스스로 이완시킬 수 있는 방법을 익혀 육체적인 혹은 정신적인 긴장을 감소시키는 방법입니다. 
 							대표적으로는 복식호흡, 요가, 점진적 근육 이완법, 마사지, 명상 등이 포함되며, 
 							특히 복식호흡과 점진적 근육 이완은 훈련을 통해 익힌 후에는 언제 어디서나 이완이 필요한 순간에 적용할 수 있는 장점이 있습니다. 
 							이완 요법은 우울증, 공황장애 등의 불안장애, 불면증 등 다양한 정신질환의 치료에도 효과적으로 이용되고 있습니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>운동<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">운동</span><br/>
 							운동은 우울증의 위험도를 낮추고, 우울증 환자에서 증상을 경감시켜 줄 수 있습니다. 
 							최근 캐나다의 가이드라인에서는 매주 3회 이상 중등도의 강도로 최소 9주 동안 운동을 지속하는 것이 우울감 감소에 효과적이라고 말합니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/>기타<br/>
+							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">기타</span><br/>
 							기타 방법으로는 스트레스 피하기, 식이, 절주, 적정 체중 유지 방법이 있습니다
 							`);
 				}
