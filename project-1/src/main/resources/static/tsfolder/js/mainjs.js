@@ -70,15 +70,15 @@ document.addEventListener("DOMContentLoaded", function() {
   
   ////////////////////슬라이드 로직///////////////////////////////////
   $(document).ready(function(){
+   
       $('.slider1').bxSlider({
-          slideWidth: 900,
-          minSlides: 2,
-          maxSlides: 2,
-          slideMargin: 10,
-          auto : true,
-          stopAutoOnClick : true,
-          pager : true,
-      });
+		  minSlides: 2,
+		  maxSlides: 2,
+		  slideWidth: 1050,
+		  slideMargin: 10,
+		  ticker: true,
+		  speed: 40000
+		});
       
       /* 처음 배너할 때 코드
       $('.ba1').bxSlider({
