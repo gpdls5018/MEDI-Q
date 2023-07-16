@@ -191,41 +191,53 @@ left: 146px;
 	                    <th scope="row">형태</th>
 	                    <td>
 	                        <c:choose>
-	                            <c:when test="${listOne.shape eq '정제' or listOne.shape eq '정'}">
+	                            <c:when test="${listOne.shape eq '정'}">
 	                                <img src="<c:url value="resources/images/shape/정제.png"/>" style="width:100px;height:100px;"/><br>
-	                                정제
+	                                <span style="font-weight: bold; padding-left: 35px;">정</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '과립'}">
 	                                <img src="<c:url value="resources/images/shape/과립.png"/>" style="width:100px;height:100px;"/><br>
-	                                과립
+	                                <span style="font-weight: bold; padding-left: 35px;">과립</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '바'}">
 	                                <img src="<c:url value="resources/images/shape/바.png"/>" style="width:100px;height:100px;"/><br>
-	                                바
+	                                <span style="font-weight: bold; padding-left: 35px;">바</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '분말'}">
 	                                <img src="<c:url value="resources/images/shape/분말.png"/>" style="width:100px;height:100px;"/><br>
-	                                분말
+	                                <span style="font-weight: bold; padding-left: 35px;">분말</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '시럽'}">
 	                                <img src="<c:url value="resources/images/shape/시럽.png"/>" style="width:100px;height:100px;"/><br>
-	                                시럽
+	                                <span style="font-weight: bold; padding-left: 35px;">시럽</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '캡슐'}">
 	                                <img src="<c:url value="resources/images/shape/캡슐.png"/>" style="width:100px;height:100px;"/><br>
-	                                캡슐
+	                                <span style="font-weight: bold; padding-left: 35px;">캡슐</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '환'}">
 	                                <img src="<c:url value="resources/images/shape/환.png"/>" style="width:100px;height:100px;"/><br>
-	                                환
+	                                <span style="font-weight: bold; padding-left: 35px;">환</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '젤리'}">
 	                                <img src="<c:url value="resources/images/shape/젤리.png"/>" style="width:100px;height:100px;"/><br>
-	                                <span style="font-weight: bold;">젤리</span>
+	                                <span style="font-weight: bold; padding-left: 35px;">젤리</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '액상'}">
 	                                <img src="<c:url value="resources/images/shape/액상.png"/>" style="width:100px;height:100px;"/><br>
-	                                액상
+	                                <span style="font-weight: bold; padding-left: 35px;">액상</span>
+	                            </c:when>
+	                            <c:when test="${listOne.shape eq '겔'}">
+	                                <img src="<c:url value="resources/images/shape/겔.png"/>" style="width:100px;height:100px;"/><br>
+	                                <span style="font-weight: bold; padding-left: 35px;">겔</span>
+	                            </c:when>
+	                            <c:when test="${listOne.shape eq '페이스트상'}">
+	                                <img src="<c:url value="resources/images/shape/페이스트.png"/>" style="width:100px;height:100px;"/><br>
+	                                <span style="font-weight: bold; padding-left: 20px;">페이스트</span>
+	                            </c:when>
+	                            <c:when test="${listOne.shape eq '편상' or listOne.shape eq '기타'}">
+	                                <img src="<c:url value="resources/images/shape/기타.png"/>" style="width:100px;height:100px;"/><br>
+	                                <span style="font-weight: bold; padding-left: 35px;">기타</span>
 	                            </c:when>
 	                        </c:choose>
 	                    </td>
@@ -237,11 +249,18 @@ left: 146px;
 	                    <td>${fn:replace(listOne.intake,'$',',')}</td>
 	                </tr>
 	                </c:if>
+	                
+	                
 	                <c:if test="${not empty listOne.standard }">
 	                <tr>
 	                    <th scope="row">규격</th>
 	                    <td>
-	                    ${fn:replace(listOne.standard,'$',',')}<br/>
+	                    <c:forEach items="${Sgroups}" var="group">
+	                    ${fn:replace(group,'$',',')}<br/>
+	                    </c:forEach>
+	                    <c:if test="${empty Sgroups }">
+	                    	${fn:replace(listOne.standard,'$',',')}
+	                    </c:if>
 	                    </td>
 	                </tr>
 	                </c:if>
@@ -250,7 +269,14 @@ left: 146px;
 	                <tr>
 	                    <th scope="row">주의사항</th>
 	                    <td>
+	                    <c:if test="${not empty Cgroups }">
+		                    <c:forEach items="${Cgroups}" var="group">
+		                    	${fn:replace(group,'$',',')}<br/>
+		                    </c:forEach>
+	                    </c:if>
+	                    <c:if test="${empty Cgroups }">
 	                    	${fn:replace(listOne.caution,'$',',')}
+	                    </c:if>
 	                    </td>
 	                </tr>
 	                </c:if>
@@ -261,7 +287,7 @@ left: 146px;
 	                    <td>
 	                        <c:forEach items="${nutrientList}" var="item">
 	                    	<c:set var="item" value="${fn:replace(item, ' ', '')}" />
-		                        <a href="/NutrientDetail.do?name=${item}">
+		                        <a href="/NutrientDetail.do?name=${item}" style="text-decoration:none;">
 		                            <span class="badge badge-warning" style="font-size: 15px;">${item}</span>&nbsp;&nbsp;
 		                        </a>
 	                        </c:forEach>
@@ -282,9 +308,9 @@ left: 146px;
                 </tbody>
             </table>
        	</div><!-- 탭 1 끝 -->
-		<button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; margin-top: 15px;">구매하러 가기</button>
+		<button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; margin-top: 20px;">구매하러 가기</button>
 		<button onclick="window.location.href = '/ranking/selectfood.do'" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">다른 제품검색하러 가기</button>
-	 	<div class="empty-space" style="height:100px;"></div>
+	 	<div class="empty-space" style="height:50px;"></div>
 	  	<div class="effect-custom-font" style="font-size:40px;">구매전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
 	  	<div class="bubble p-4 effect-custom-font" style="font-size:17px;">
 		  	아래는 구매자들의 리뷰를 분석한 키워드 입니다.^^
