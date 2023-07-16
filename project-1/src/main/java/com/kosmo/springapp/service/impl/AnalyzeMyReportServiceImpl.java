@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.kosmo.springapp.analyze.model.AnalyzeResultDTO;
 import com.kosmo.springapp.analyze.model.AnalyzeResultListDTO;
+import com.kosmo.springapp.model.AnalyzeReportDTO;
 import com.kosmo.springapp.service.AnalyzeMyReportMapper;
 
 @Service
@@ -95,5 +96,18 @@ public class AnalyzeMyReportServiceImpl {
 		analyzeResultListDTO.setResultScore(resultScore);
 		analyzeResultListDTO.setIngredientCount(((List)map.get("takeFood")).size());
 		return analyzeResultListDTO;
+	}
+
+	public int saveAnalyzeReport(String id, List<String> takeList, List<String> foodList,int score) {
+		AnalyzeReportDTO analyzeReportDTO = new AnalyzeReportDTO();
+		analyzeReportDTO.setUserId(id);
+		analyzeReportDTO.setTakePurposes(takeList.toString());
+		analyzeReportDTO.setTakeFoods(foodList.toString());
+		analyzeReportDTO.setScore(score);
+		return analyzeMyReportMapper.saveAnalyzeReport(analyzeReportDTO);
+	}
+
+	public AnalyzeReportDTO selectAnalyzeReport(String id) {
+		return analyzeMyReportMapper.selectAnalyzeReport(id);
 	}
 }
