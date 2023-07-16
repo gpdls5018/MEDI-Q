@@ -128,7 +128,7 @@
 		    position: relative;
 		    margin-left: 17px;
 		    color:black;
-		    border-bottom: 3px dashed rgb(101, 101, 101, 0.3);
+		    /*border-bottom: 3px dashed rgb(101, 101, 101, 0.3);*/
 		}
 		.sidemenu a:hover {
 			cursor: pointer;
@@ -145,6 +145,80 @@
 			cursor: pointer;
 			text-decoration:none;
 		}
+		/* 사이드 버튼 아코디언 형태 */
+.accordion {
+    background: #eee;
+
+    width: 100%;
+}
+
+
+.accordion .section {
+    border-bottom: 2px dashed #ccc;
+    padding: 10px 20px;
+    background: #fff;
+}
+
+.section div a {
+	font-size: 17px;
+	color:gray;
+	line-height:10px;
+	margin: 0px 0px 10px 20px;
+}
+
+.section h3 a {
+    display: flex;
+    font-weight: normal;
+	padding: 0.7em 0px;
+    text-decoration: none;
+    color:black;
+    font-size:22px;
+    font-weight: bold;
+}
+
+.accordion h3 a:hover {
+    text-decoration: none;
+}
+
+.accordion h3 + div {
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: height 0.3s ease-in;
+    -moz-transition: height 0.3s ease-in;
+    -o-transition: height 0.3s ease-in;
+    -ms-transition: height 0.3s ease-in;
+    transition: height 0.3s ease-in;
+}
+
+.accordion :target h3 a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.accordion :target h3 + div {
+    height: 120px;
+}
+
+.accordion .section.large:target h3 + div {
+    overflow: auto;
+}
+.arrow-down {
+			width: 0;
+	    	height: 0;
+			border-left: 7px solid transparent;
+			border-right: 7px solid transparent;
+			border-top: 7px solid black;
+		}
+.ditem {
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.ditem a {
+	align-items:center;
+	margin: 10px;
+	padding: 3.5px;
+}
     </style>
 </head>
 <script>
@@ -227,17 +301,29 @@
             }
         });
     });
-	
+	/*
 	document.addEventListener("DOMContentLoaded", function() {
-	    var dropdownItems = document.querySelectorAll(".dropdown-item");
+	    var dropdownItems = document.querySelectorAll(".dropdown-item2");
 	    dropdownItems.forEach(function(item) {
-	      var url = item.getAttribute("data-url");
+	      var url = item.getAttribute("data-url2");
 	      item.addEventListener("click", function(event) {
 	        event.preventDefault();
 	        window.location.href = url;
 	      });
 	    });
 	  });
+	
+	document.addEventListener("DOMContentLoaded", function() {
+	    var dropdownItems = document.querySelectorAll(".dropdown-item1");
+	    dropdownItems.forEach(function(item) {
+	      var url = item.getAttribute("data-url1");
+	      item.addEventListener("click", function(event) {
+	        event.preventDefault();
+	        window.location.href = url;
+	      });
+	    });
+	  });*/
+
 </script>
 <body>
 <div class="container-fluid position-relative p-0" style="width:100%;">
@@ -267,7 +353,7 @@
         </ul>
     </nav>
     <!-- navbar left side -->
-    <div class="bs-canvas bs-canvas-left position-fixed h-100 justify-content-start" style="background: linear-gradient(to bottom, #ffffff, #FFFAFA);">
+    <div class="bs-canvas bs-canvas-left position-fixed h-100 justify-content-start" style="z-index:99999; background: linear-gradient(to bottom, #ffffff, #FFFAFA);">
         <header class="bs-canvas-header p-4 bg-gra1 justify-content-center align-items-center">
         	<h4 class="d-inline-block mb-0 text1">
         		<img src="<c:url value='/resources/images/mainicon.png' />" width="30" height="35">
@@ -279,53 +365,78 @@
         </header>
 
         <div class="bs-canvas-content px-3 pb-5 ">
-            <div class="sidemenu m-1 d-flex" style="align-items: center;">
-                <a class="text-decoration-none font-weight-bold" style="font-size:20px;" href="<c:url value="/NutrientSelect.do"/>">
-                	<img src="<c:url value="/resources/images/tsimages/free-icon-vitamins-525955.png"/>" width="25" height="25">
-                	영양소
-                </a>
-            </div>
-        
-            <div class="sidemenu m-1 d-flex">
-                <a class="text-decoration-none font-weight-bold" style="font-size:20px;" href="<c:url value="/magazineindex.do"/>">
-                	<img src="<c:url value="/resources/images/tsimages/free-icon-whats-new-5511348.png"/>" width="25" height="25">
-                	메디큐 칼럼
-                </a>
-            </div>
-          
-            <div class="sidemenu m-1 d-flex">
-                <a class="text-decoration-none font-weight-bold" style="font-size:20px;" href="#">
-                	<img src="<c:url value="/resources/images/tsimages/free-icon-data-analysis-3449317.png"/>" width="25" height="25">
-                	분석 및 결과
-                </a>
-            </div>
-      
-            <div class="sidemenu m-1 d-flex">
-                <a class="text-decoration-none font-weight-bold" style="font-size:20px;" href="#">
-                	<img src="<c:url value="/resources/images/tsimages/free-icon-chat-724715.png"/>" width="25" height="25">
-                	커뮤니티
-                </a>
-            </div>
-
-            <div class="sidemenu m-1 d-flex">
-                <a class="text-decoration-none font-weight-bold" style="font-size:20px;" href="#">
-                	<img src="<c:url value="/resources/images/tsimages/free-icon-lifestyle-4807765.png"/>" width="25" height="25">
-                	건강예측
-                </a>
-            </div>
-       
-            <div class="dropdown sidemenu m-1 d-flex py-2" data-toggle="dropdown">
-                <button type="button" class="btn dropdown-toggle" style="font-size:20px;" data-toggle="dropdown">
-                	<img src="<c:url value="/resources/images/tsimages/free-icon-pharmacy-1404402.png"/>" width="25" height="25">
-                	정신건강 테스트
-                </button>
-                <div class="dropdown-menu w-100" style="border: none; background-color: transparent;">
-                  <a class="dropdown-item" href="#" data-url="<c:url value="/project/MentalTest1.do"/>">심리적 스트레스</a>
-				  <a class="dropdown-item" href="#" data-url="<c:url value="/project/MentalTest2.do"/>">흡연 유형 평가</a>
-				  <a class="dropdown-item" href="#" data-url="<c:url value="/project/MentalTest3.do"/>">알코올 의존(AUDIT-K)</a>
-				  <a class="dropdown-item" href="#" data-url="<c:url value="/project/MentalTest4.do"/>">우울증(CES-D)</a>
-                </div>
-            </div>
+            <div class="accordion">
+             <div class="section" active>
+		          <h3>
+		            <a class="text-decoration-none font-weight-bold" href="<c:url value="/"/>">
+		                	홈으로 가기
+		            </a>
+		          </h3>
+	        </div>
+	        
+	        <div id="one" class="section">
+	          <h3 class="d-flex">
+	            <a href="#one" style="align-items: center;">
+	                <img src="<c:url value="/resources/images/tsimages/free-icon-vitamins-525955.png"/>" width="25" height="25">
+	                영양성분 검색
+	                <span class="arrow-down" style="margin-left: 70px;" ></span>
+	            </a>
+	          </h3>
+	          <div>
+	            <a class="dropdown-item1" href="<c:url value="/project/MentalTest1.do"/>">인기 영양소</a><br/>
+	            <a class="dropdown-item1" href="<c:url value="/project/MentalTest2.do"/>">비타민</a><br/>
+	            <a class="dropdown-item1" href="<c:url value="/project/MentalTest3.do"/>">미네랄 및 기타영양소</a><br/>
+	            <a class="dropdown-item1" href="<c:url value="/project/MentalTest4.do"/>">기능성 원료</a><br/>
+	             
+	          </div>
+	        </div>
+	        <div class="section">
+	          <h3>
+	            <a class="text-decoration-none"  href="<c:url value="/NutrientSelect.do"/>">
+	                <img src="<c:url value="/resources/images/tsimages/free-icon-pharmacy-1404402.png"/>" width="25" height="25">
+	                	영양소
+	            </a>
+	          </h3>
+	        </div>
+	        <div id="three" class="section">
+	          <h3>
+	            <a class="text-decoration-none" href="<c:url value="/magazineindex.do"/>">
+	                <img src="<c:url value="/resources/images/tsimages/free-icon-whats-new-5511348.png"/>" width="25" height="25">
+	                메디큐 칼럼
+	            </a>
+	        </div>
+	        <div id="four" class="section large">
+	          <h3>
+	            <a class="text-decoration-none" href="#">
+	                <img src="<c:url value="/resources/images/tsimages/free-icon-data-analysis-3449317.png"/>" width="25" height="25">
+	                분석 및 결과
+	            </a>
+	          </h3>
+	        </div>
+	        <div id="five" class="section">
+	          <h3>
+	            <a class="text-decoration-none" href="#">
+	                <img src="<c:url value="/resources/images/tsimages/free-icon-chat-724715.png"/>" width="25" height="25">
+	                커뮤니티
+	            </a>
+	          </h3>
+	        </div>
+	        <div id="six" class="section">
+	          <h3 class="d-flex">
+	            <a href="#six" style="align-items: center;">
+	                <img src="<c:url value="/resources/images/tsimages/free-icon-lifestyle-4807765.png"/>" width="25" height="25">
+	                	건강예측
+	                <span class="arrow-down" style="margin-left: 120px;"></span>
+	            </a>
+	          </h3>
+	          <div class="ditem" style="border: none;">
+	              <a href="<c:url value="/project/MentalTest1.do"/>">심리적 스트레스</a>
+				  <a href="<c:url value="/project/MentalTest2.do"/>">흡연 유형 평가</a>
+				  <a href="<c:url value="/project/MentalTest3.do"/>">알코올 의존(AUDIT-K)</a>
+				  <a href="<c:url value="/project/MentalTest4.do"/>">우울증(CES-D)</a>
+	          </div>
+	        </div>
+	      </div>
         </div>
     </div>
     <!-- navbar left side end-->
