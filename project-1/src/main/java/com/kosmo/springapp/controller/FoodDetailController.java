@@ -31,6 +31,7 @@ import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.model.ProfileImageDTO;
 import com.kosmo.springapp.model.ReviewDTO;
 import com.kosmo.springapp.model.TotalReviewDTO;
+import com.kosmo.springapp.nutrient.service.impl.NutrientSelectMapper;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.AnalyzeMyReportServiceImpl;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
@@ -48,6 +49,8 @@ public class FoodDetailController {
 	 @Autowired
 	 ReviewServiceImpl reviewServiceImpl;
 	 
+	 @Autowired
+	 private NutrientSelectMapper nutrietnSelectMapper;
 	 
 	 @Autowired
 	 private JWTokensService jwTokensService;
@@ -60,6 +63,10 @@ public class FoodDetailController {
 	 public String detailPage(Model model, Map map, @RequestParam String no) {
 		   map.put("no",Integer.parseInt(no));
 		   FunctionalFoodListDTO listOne = mainPageServiceImpl.selectFoodOneByNo(map);
+		   	// 영양제의 조회수 가져오기
+		   nutrietnSelectMapper.increaseF_VIEW(listOne.getProductName());
+		   int f_view = nutrietnSelectMapper.getF_VIEW(listOne.getProductName());
+		   model.addAttribute("fview", f_view);
 		   String nutrient_before = listOne.getNutrient();
 		   String nutrient_after = change_nutrientName(nutrient_before);
 		   TotalReviewDTO totalReviewDto = reviewServiceImpl.selectTotalReviewInfo(Integer.parseInt(no));
@@ -116,7 +123,7 @@ public class FoodDetailController {
 			        model.addAttribute("Sgroups", Sgroups);
 			   }
 			   
-			   if(listOne.getStandard().contains("2. ")) {
+			   if(listOne.getStandard().contains("1. ")) {
 				   System.out.println("들어옴.");
 				   String input = listOne.getStandard();
 				   String pattern = "\\d+\\.\\s.*?(?=\\d+\\.|$)";
@@ -133,6 +140,7 @@ public class FoodDetailController {
 			   }
 			   
 		   }
+		   
 		   if(listOne.getCaution() != null) {
 			   if(listOne.getStandard().contains("1)")) {  
 				   if(listOne.getCaution().contains("(1)")) {
