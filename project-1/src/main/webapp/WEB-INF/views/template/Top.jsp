@@ -214,7 +214,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	line-height: 30px;
-	margin: 20px 0px;
+	margin: 0px;
 }
 .ditem a {
 	align-items:center;
@@ -327,6 +327,7 @@
 	    });
 	  });*/
 
+
 </script>
 <body>
 <div class="container-fluid position-relative p-0" style="width:100%;">
@@ -369,7 +370,7 @@
 
         <div class="bs-canvas-content px-3 pb-5 ">
             <div class="accordion">
-             <div class="section" active>
+             <div class="section" >
 		          <h3>
 		            <a class="text-decoration-none font-weight-bold" href="<c:url value="/"/>">
 		                	홈으로 가기
@@ -377,7 +378,7 @@
 		          </h3>
 	        </div>
 	        
-	        <div id="one" class="section">
+	        <div id="one" class="section" active:false>
 	          <h3 class="d-flex">
 	            <a href="#one" style="align-items: center;">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-vitamins-525955.png"/>" width="25" height="25">
@@ -388,12 +389,11 @@
 	          <div class="ditem">
 	            <a href="<c:url value="/NutrientSelect.do"/>">인기 영양소</a>
 	 
-	            <a href="<c:url value="/project/MentalTest2.do"/>">비타민</a>
+	            <a href="<c:url value="/NutrientSelectVitamin.do"/>">비타민</a>
 	   
-	            <a href="<c:url value="/project/MentalTest3.do"/>">미네랄 및 기타영양소</a>
+	            <a href="<c:url value="/NutrientSelectMineral.do"/>">미네랄 및 기타영양소</a>
 	         
-	            <a href="<c:url value="/project/MentalTest4.do"/>">기능성 원료</a>
-	             
+	            <a href="<c:url value="/NutrientSelectFunctional.do"/>">기능성 원료</a>
 	          </div>
 	        </div>
 	        <div class="section">
@@ -427,7 +427,7 @@
 	            </a>
 	          </h3>
 	        </div>
-	        <div id="six" class="section">
+	        <div id="six" class="section" active:false>
 	          <h3 class="d-flex">
 	            <a href="#six" style="align-items: center;">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-lifestyle-4807765.png"/>" width="25" height="25">
