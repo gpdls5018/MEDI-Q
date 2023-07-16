@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.kosmo.springapp.model.HealthInfoDTO;
 import com.kosmo.springapp.service.HealthInfoMapper;
 
-@Service()
+@Service
 public class HealthInfoServiceImpl {
 	
 	@Autowired
@@ -14,5 +14,17 @@ public class HealthInfoServiceImpl {
 	
 	public int saveHealthInfo(HealthInfoDTO healthInfoDto) {
 		return healthInfoMapper.saveHealthInfo(healthInfoDto);
+	}
+	
+	public int updateHealthInfo(HealthInfoDTO healthInfoDto) {
+		return healthInfoMapper.updateHealthInfo(healthInfoDto);
 	};
+	
+
+	public HealthInfoDTO selectHealthInfoByUserId(String userId) {
+		return healthInfoMapper.selectHealthInfoByUserId(userId);
+	}
+
+
+
 }

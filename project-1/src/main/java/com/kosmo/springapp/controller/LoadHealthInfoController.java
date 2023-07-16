@@ -2,11 +2,13 @@ package com.kosmo.springapp.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosmo.springapp.model.HealthInfoDTO;
+import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.HealthInfoServiceImpl;
 
 @Controller
@@ -41,13 +44,34 @@ public class LoadHealthInfoController {
 		}
 		*/
 		model.addAttribute("userId",userId);
+		HealthInfoDTO loadHealthInfo = healthInfoServiceImpl.selectHealthInfoByUserId(userId);
+		model.addAttribute("loadHealthInfo",loadHealthInfo);
 		return "LoadHealthInfo";		
 	}
 	
+	@Autowired
+	JWTokensService jwTokensService;
+	 @Value("${token-name}")
+	 private String tokenName;
+	 @Value("${secret-key}")
+	 private String secretKey;
+	
 	@PostMapping("/saveHealthData.do")
-	public String saveHealthData(HealthInfoDTO healthInfoDto) {
-		System.out.println("healthInfoDto.getBloodPressure_high() :" + healthInfoDto.getBloodPressure_high());
+	public String saveHealthData(HealthInfoDTO healthInfoDto,HttpServletRequest req, HttpServletResponse resp) {
+		String token = jwTokensService.getToken(req, tokenName);
+		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
+		String id = payloads.get("sub").toString();
 		healthInfoServiceImpl.saveHealthInfo(healthInfoDto);
-		return "LoadHealthInfo";
+		return "MachineLearning";
+	}
+	@PostMapping("/updateHealthData.do")
+	public String updateHealthData(HealthInfoDTO healthInfoDto,HttpServletRequest req, HttpServletResponse resp) {
+		healthInfoServiceImpl.updateHealthInfo(healthInfoDto);
+		return "MachineLearning";
+	}
+	
+	@GetMapping("/DiabetesPredict.do")
+	public String diabetesPredict(@RequestParam(required = false) String userId) {
+		return "DiabetesPredict";
 	}
 }
