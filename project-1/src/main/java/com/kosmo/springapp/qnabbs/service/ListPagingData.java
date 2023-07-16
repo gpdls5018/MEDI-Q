@@ -15,9 +15,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 //제너릭 클래스:페이징관련 데이타를 저장하는 클래스
-public class ListPagingData<Map> {
+public class ListPagingData<T> {
 	//레코드 목록 데이타 저장
-	private List<Map> records;
+	private List<T> records;
 	//페이징 관련 데이타 저장
 	private Map map;
 	//페이징 표시용 문자열 저장

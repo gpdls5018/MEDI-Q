@@ -14,7 +14,7 @@
 	<!-- 상세보기 -->
 	<select id="selectOne" parameterType="map" resultType="map">
 		SELECT b.no,b.title,b.content,TO_CHAR(b.postdate, 'YYYY.MM.DD') AS postdate,
-			CASE 
+		   CASE 
 		   	   WHEN LENGTH(m.name) >= 2 THEN SUBSTR(m.name, 1, 1) || '*' || SUBSTR(m.name, 3)
 		       ELSE m.name
 		   END AS name,

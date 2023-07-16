@@ -171,23 +171,30 @@
 									Spring Framework <small>한줄 댓글-전체 목록 페이지(${listPagingData.map.nowPage }/${listPagingData.map.totalPage })</small>
 								</h1>
 							</div>
-                        	<c:if test="${empty listPagingData.records }" var="isEmpty">
-								<div>등록된 자료가 없습니다.</div>
-							</c:if>
-                            <!-- 여기부터 리스트 나올 것: 1제목,2내용,3나이,4성별,5작성자 -->
-                            <c:if test="${not isEmpty }">
-                            	<c:forEach var="record" items="${listPagingData.records }">
-	                                <div class="card col-12 m-2 p-0">
-		                                <a class="card-body text-dark text-decoration-none p-2" href="/board/View.do?no=${record.NO }">
-		                                    
-		                                    <p class="card-title text1 font-weight-bold"><h4>${record.TITLE }</h4></p>
-		                                    <p class="card-text"><h6>${record.CONTENT }</h6></p>
-		                                    <p class="card-text text2 font-weight-bold pt-1"><h5>답글:영양제 유통기한이 지났다면 아깝지만 건강을 위해서 버리는게 나아요.</h5></p><!-- A는 admin(관리자) --> 
-		                                    <p class="card-text"><h6 class="font-weight-bold">${record.NAME } ${record.AGE_GROUP} / ${record.GENDER} <%-- 작성일:${record.POSTDATE } --%></h6></p>
-		                                </a>
-	                                </div>
-                                </c:forEach>
-                            </c:if>
+                        	<table>
+                        		<tbody class="table-sm down-file-body">
+		                        	<c:if test="${empty listPagingData.records }" var="isEmpty">
+									<tr>
+										<td colspan="4">등록된 글이 없습니다.</td>
+									</tr>
+									</c:if>
+		                            <!-- 여기부터 리스트 나올 것: 1제목,2내용,3나이,4성별,5작성자 -->
+		                            <c:if test="${not isEmpty }">
+		                            	<c:forEach var="record" items="${listPagingData.records }">
+			                                <div class="card col-12 m-2 p-0">
+				                                <a class="card-body text-dark text-decoration-none p-2" href="<c:url value="/board/View.do?NO=${record.NO }"/>">
+				                                    
+				                                    <p class="card-title text1 font-weight-bold"><h4>${record.TITLE }</h4></p>
+				                                    <p class="card-text"><h6>${record.CONTENT }</h6></p>
+				                                    <p class="card-text text2 font-weight-bold pt-1"><h5>답글:A.권장섭취량과 충분섭취량,상한섭취량을 구분해서 영양소를 복용해주세요</h5></p><!-- A는 admin(관리자) --> 
+				                                    <p class="card-text"><h6 class="font-weight-bold">${record.NAME } ${record.AGE_GROUP} / ${record.GENDER} <%-- 작성일:${record.POSTDATE } --%></h6></p>
+				                                </a>
+			                                </div>
+		                                </c:forEach>
+		                            </c:if>
+		                            
+                            	</tbody>
+                            </table>
                         </div>
                         <hr>
                     </div>

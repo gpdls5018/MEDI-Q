@@ -42,7 +42,11 @@ public class BoardController {
 		//System.out.println("페이징 처리 확인용");
 		//서비스 호출
 		ListPagingData<Map> listPagingData= board.selectList(map, req, nowPage);
-		//System.out.println("페이징 처리 확인용1");
+		System.out.println(listPagingData);
+		System.out.println(map);
+		System.out.println(req);
+		System.out.println(nowPage);
+		System.out.println("페이징 처리 확인용1");
 		//System.out.println(listPagingData);
 		//데이타 저장
 		model.addAttribute("listPagingData", listPagingData);
@@ -56,7 +60,7 @@ public class BoardController {
 	}
 	@PostMapping("/WriteProcess.do")
 	public String writeProcess(@RequestParam Map map,Model model) {
-		map.put("id", "xogus3308");
+		map.put("id", "sem50000");
 		int affected = board.insert(map);
 		System.out.println(affected);
 		System.out.println("SELECT 전"+map);
@@ -67,7 +71,7 @@ public class BoardController {
 		return  "board/View";
 	}
 	
-	@RequestMapping("/View.do")
+	@RequestMapping(value="/View.do" ,method = {RequestMethod.GET,RequestMethod.POST})
 	public String view(@RequestParam Map map,Model model) { 
 		map=board.selectOne(map);
 		model.addAttribute("record", map);
