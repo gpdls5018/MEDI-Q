@@ -200,9 +200,9 @@
 		<div class="section section1-2c">
 	       <a href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>" style="text-decoration: none;">
 	           <div class="content">
-	               <span class="txt1"><span style="display: block; text-align: center; width: 100%;">👨‍⚕️ 주요 질환의 발병 위험도를 예측해드려요</span></span>
+	               <span class="txt1" style="text-align: center; width: 100%;">👨‍⚕️ 주요 질환의 발병 위험도를 예측해드려요 </span>
 	               <br/>
-	               <span class="text-center txt2" style="margin-top: 40px; margin-bottom: 40px;">MEDI-Q의 인공지능 기술로 분석하는 건강검진!</span>
+	               <span class="text-center txt2" style="margin-top: 0px; margin-bottom: 40px;">MEDI-Q의 인공지능 기술로 분석하는 건강검진!</span>
 	               <div class="banner-wrap">
 	                   <div class="banner-txt1 mb-1">내 건강검진 결과를 입력하고</div>
 	                   <div class="banner-txt2"><span>맞춤형 영양제를 추천</span> 받으세요</div>
@@ -386,7 +386,7 @@
 	                    </div><!-- qna-card의 끝 -->
 	            </div>
 
-	            <div class="clearfix mt-5 my-2 mr-5">
+	            <div class="clearfix my-5" style="margin-right: 80px;">
 	                <a tabindex="0" class="more-qna" href="<c:url value="/board/List.do" />"><b>Q&amp;A 더보기</b></a>
 	            </div>
 	        </div>
@@ -396,7 +396,7 @@
 	    
 	   <!--  6번째 다이브 목록 -->
 		<div class="section6 pt-5" style="display:flex; align-items:center; max-width: 1050px; flex-direction: column;">
-			<span style="font-size:30px; display:block; font-weight: bold; text-align: center; margin-bottom: 20px;">영양성분과 건강에 대한 모든 것,<br/> 📖<strong style="color:#EF605D"> MEDI-Q</strong>에서 확인하세요!</span>
+			<span style="font-size:30px; display:block; font-weight: bold; text-align: center; margin-bottom: 40px;">영양성분과 건강에 대한 모든 것<br/> 📖<strong style="color:#EF605D"> MEDI-Q</strong>에서 확인하세요!</span>
 	        <div class="slider1">
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:340px" ></a></div>
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:100%; height:340px" ></a></div>

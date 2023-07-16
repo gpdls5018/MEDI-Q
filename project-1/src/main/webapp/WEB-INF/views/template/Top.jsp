@@ -196,7 +196,7 @@
 }
 
 .accordion :target h3 + div {
-    height: 120px;
+    height: 140px;
 }
 
 .accordion .section.large:target h3 + div {
@@ -212,12 +212,15 @@
 .ditem {
 	display:flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
+	line-height: 30px;
+	margin: 20px 0px;
 }
 .ditem a {
 	align-items:center;
 	margin: 10px;
 	padding: 3.5px;
+	
 }
     </style>
 </head>
@@ -382,11 +385,14 @@
 	                <span class="arrow-down" style="margin-left: 70px;" ></span>
 	            </a>
 	          </h3>
-	          <div>
-	            <a class="dropdown-item1" href="<c:url value="/project/MentalTest1.do"/>">인기 영양소</a><br/>
-	            <a class="dropdown-item1" href="<c:url value="/project/MentalTest2.do"/>">비타민</a><br/>
-	            <a class="dropdown-item1" href="<c:url value="/project/MentalTest3.do"/>">미네랄 및 기타영양소</a><br/>
-	            <a class="dropdown-item1" href="<c:url value="/project/MentalTest4.do"/>">기능성 원료</a><br/>
+	          <div class="ditem">
+	            <a href="<c:url value="/NutrientSelect.do"/>">인기 영양소</a>
+	 
+	            <a href="<c:url value="/project/MentalTest2.do"/>">비타민</a>
+	   
+	            <a href="<c:url value="/project/MentalTest3.do"/>">미네랄 및 기타영양소</a>
+	         
+	            <a href="<c:url value="/project/MentalTest4.do"/>">기능성 원료</a>
 	             
 	          </div>
 	        </div>
@@ -431,8 +437,11 @@
 	          </h3>
 	          <div class="ditem" style="border: none;">
 	              <a href="<c:url value="/project/MentalTest1.do"/>">심리적 스트레스</a>
+	      
 				  <a href="<c:url value="/project/MentalTest2.do"/>">흡연 유형 평가</a>
+			
 				  <a href="<c:url value="/project/MentalTest3.do"/>">알코올 의존(AUDIT-K)</a>
+				
 				  <a href="<c:url value="/project/MentalTest4.do"/>">우울증(CES-D)</a>
 	          </div>
 	        </div>

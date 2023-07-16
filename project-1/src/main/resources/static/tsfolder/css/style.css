@@ -1288,11 +1288,7 @@ a {
     position: relative;
     display: block;
 }
-.section1-2c .txt1 {
-    display: block;
-    width: 100%;
-    margin-top: 20px;
-}
+
 .section1-2c .txt1 .lottie1 {
     width: 36px;
     height: 36px;
@@ -1303,14 +1299,14 @@ a {
     text-align: center;
     opacity: 1;
 }
-.section1-2c .txt1 span {
+.section1-2c .content .txt1 {
     display: block;
-    color: #000;
-    text-align: left;
+    width: 100%;
+    margin-top: 20px;
+    color: black;
     font-weight: 700;
-    font-size: 26px;
+    font-size: 30px;
     line-height: 1;
-    float: left;
     padding: 7px 0px 0px 5px;
 }
 .section1-2c .txt2 {
@@ -1319,7 +1315,6 @@ a {
     font-weight: 500;
     font-size: 18px;
     line-height: 1;
-    margin-top: 30px;
     text-align: left;
 }
 .section1-2c .banner-wrap {
@@ -1481,8 +1476,8 @@ a {
     font-size: 26px;
 }
 .get-20-2 {
+	color:black;
     font-weight: 700;
-    color: rgba(39, 39, 39, 0.952);
     line-height: 1;
     font-size: 20px;
     margin: 30px 0px 0px;
