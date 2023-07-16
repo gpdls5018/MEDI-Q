@@ -158,8 +158,6 @@ left: 146px;
 
 	<!-- 탭 -->
 	<div class="tab-content mt-5 mb-5">
-		<button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')">구매하러 가기</button>
-		<button onclick="window.location.href = '/ranking/selectfood.do'">검색하러 가기</button>
 	  	<div class="effect-custom-font mt-5" style="font-size:40px;">제품의 상세정보 내용이에요! </div>
 	  	<div class="" id="detailTable"><!-- 탭 1 시작 -->
            	<table class="type09 mt-3">
@@ -284,8 +282,10 @@ left: 146px;
                 </tbody>
             </table>
        	</div><!-- 탭 1 끝 -->
+		<button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; margin-top: 15px;">구매하러 가기</button>
+		<button onclick="window.location.href = '/ranking/selectfood.do'" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">다른 제품검색하러 가기</button>
 	 	<div class="empty-space" style="height:100px;"></div>
-	  	<div class="effect-custom-font mt-5" style="font-size:40px;">구매전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
+	  	<div class="effect-custom-font" style="font-size:40px;">구매전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
 	  	<div class="bubble p-4 effect-custom-font" style="font-size:17px;">
 		  	아래는 구매자들의 리뷰를 분석한 키워드 입니다.^^
 		  	<br>가운데 <span style="background-color:#ffdcdc;color:#ff4b4b">제품명</span>을 바탕으로
