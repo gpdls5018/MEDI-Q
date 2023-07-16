@@ -301,9 +301,8 @@
       <div class="section section20-2 section20-2-home">
 	        <div class="content">
 	            <!-- <div class="qna-mark-home" style="display: block; text-align: center; width: 100%;">Q&amp;A</div> -->
-	            <span class="ge-title get-20-2" style="display: block; text-align: center; width: 100%; font-size: 30px;">💡 지금 인기있는 질문</span>
+	            <span class="ge-title get-20-2" style="display: block; text-align: center; width: 100%; font-size: 30px;">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
 	            <div class="get-20-2-home-txt2" style="display: block; text-align: center; width: 100%; margin-top: 35px; margin-bottom: 35px; font-size: 18px;">전문가가 직접 답해드려요!</div>
-	
 	            <div class="qna-list-wrap">
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
@@ -387,7 +386,7 @@
 	                    </div><!-- qna-card의 끝 -->
 	            </div>
 
-	            <div class="clearfix my-2 mr-3">
+	            <div class="clearfix mt-5 my-2 mr-5">
 	                <a tabindex="0" class="more-qna" href="<c:url value="/board/List.do" />"><b>Q&amp;A 더보기</b></a>
 	            </div>
 	        </div>
@@ -396,13 +395,14 @@
 	    
 	    
 	   <!--  6번째 다이브 목록 -->
-		<div class="section6 pt-5" style="display:flex; justify-content: center;">
-	        <div class="slider1 ">
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:400px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:100%; height:400px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>" style="width:100%; height:400px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>" style="width:100%; height:400px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:400px" ></a></div>
+		<div class="section6 pt-5" style="display:flex; align-items:center; max-width: 1050px; flex-direction: column;">
+			<span style="font-weight: bold;">영양제와 건강에 대한 모든 것,<br/> <p stlye="#EF605D">MEDI-Q</p>에서 확인하세요</span>
+	        <div class="slider1">
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:340px" ></a></div>
 	        </div>
 	    </div>
 	    
