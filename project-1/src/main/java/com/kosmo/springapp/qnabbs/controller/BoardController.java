@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kosmo.springapp.qnabbs.service.DaoService;
 import com.kosmo.springapp.qnabbs.service.ListPagingData;
 import com.kosmo.springapp.qnabbs.service.PagingUtil;
-import com.kosmo.springapp.qnabbs.service.impl.board.BoardServiceImpl;
 
 
 
@@ -27,7 +27,8 @@ import com.kosmo.springapp.qnabbs.service.impl.board.BoardServiceImpl;
 public class BoardController {
 	
 	@Autowired
-	private BoardServiceImpl board;
+	private DaoService board;
+	
 	//@GetMapping("/List.do")
 	@RequestMapping(value="/List.do",method = {RequestMethod.GET,RequestMethod.POST})
 	public String list(
@@ -39,11 +40,18 @@ public class BoardController {
 		//List<Map> records = board.selectList(map);
 		//System.out.println("페이징적용 후");
 		//System.out.println("페이징 처리 확인용");
+		//서비스 호출
 		ListPagingData<Map> listPagingData= board.selectList(map, req, nowPage);
-		//System.out.println("페이징 처리 확인용1");
+		System.out.println(listPagingData);
+		System.out.println(map);
+		System.out.println(req);
+		System.out.println(nowPage);
+		System.out.println("페이징 처리 확인용1");
 		//System.out.println(listPagingData);
+		//데이타 저장
 		model.addAttribute("listPagingData", listPagingData);
 		//System.out.println("페이징 처리 확인용2");
+		//뷰정보 반환
 		return "board/List";
 	}
 	@GetMapping("/Write.do")
@@ -52,21 +60,20 @@ public class BoardController {
 	}
 	@PostMapping("/WriteProcess.do")
 	public String writeProcess(@RequestParam Map map,Model model) {
-		map.put("id", "xogus3308");
+		map.put("id", "sem50000");
 		int affected = board.insert(map);
 		System.out.println(affected);
-		//System.out.println("SELECT 전"+map);
+		System.out.println("SELECT 전"+map);
 		map = board.selectOne(map);
-		//System.out.println("SELECT 후"+map);
+		System.out.println("SELECT 후"+map);
 		model.addAttribute("record", map);
 		
 		return  "board/View";
 	}
 	
-	@RequestMapping("/View.do")
+	@RequestMapping(value="/View.do" ,method = {RequestMethod.GET,RequestMethod.POST})
 	public String view(@RequestParam Map map,Model model) { 
-		
-		map = board.selectOne(map);
+		map=board.selectOne(map);
 		model.addAttribute("record", map);
 		//System.out.println(model);//콘솔 체크용
 		return "board/View";
@@ -75,7 +82,7 @@ public class BoardController {
 	public String edit(@RequestParam Map map,Model model) {
 		System.out.println(123);
 		map.put("id", "KIM");
-		map=board.selectOne(map);
+		map= board.selectOne(map);
 		System.out.println(map);
 		model.addAttribute("record", map);
 		System.out.println("record값확인"+model);
