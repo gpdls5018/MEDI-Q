@@ -9,94 +9,52 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
     <title>MEDI Q</title>
     <style>
-        figure{
-            width: 100%;
-            height: 400px;
-            background: #FDCDBC;
-            position: relative;
-            overflow: hidden;
-            padding-top: 250px;
-            border-bottom-right-radius: 30px;
-            border-bottom-left-radius: 30px;            
+    	.qna_banner{
+        	width:75%;
+        	height:280px;
+        	background-color:#FDCDBC;
+            border-radius: 30px;
+		}
+		.qna_title{
+			position:relative;
+        	top:calc(100vh - 96vh);
+        	left:10%;
+        	color:white;
+        	margin:0px;
         }
-
-        figure img {
-            position: absolute;
-            top: 0px;
-            right: 200px;
-            width: 20%;
+        .qna_img{
+            position:absolute;
+            width: 200px;
+            top:calc(100vh - 85vh);
+            right:20%;
         }
-
-        figure .inner {
-            width: 100%;
-            top: -220px;
-            left: 200px;
-            position: relative;
-        }
-
-        figure .inner h1 {
-            font-size: 150px;
-            color: #fff;
-        }
-        figure .inner h3 {
-            font-size: 50px;
-            color: #fff;
-        }
-        .card{
-            box-shadow: 2px 2px 10px rgb(165, 165, 165) ;
-        }
-        .text1{
-            font-size: 20px;
-        }
-        .text2{
-            font-size: 17px;
-        }
-        .text3{
-            font-size: 30px;
-        }
-        h1 {
-            font-family:'Dongle',sans-serif;
-            font-size: 5rem;
-        }
-        h2 {
-            font-family:'Dongle',sans-serif;
-            font-size: 4.5rem;
-        }
-        h3 {
-            font-family:'Dongle',sans-serif;
-            font-size: 4rem;
-        }
-        h4 {
-            font-family:'Dongle',sans-serif;
-            font-size: 3rem;
-        }
-        h5 {
-            font-family:'Dongle',sans-serif;
-            font-size: 2.25rem;
-        }
-        h6 {
-            font-family:'Dongle',sans-serif;
-            font-size: 2rem;
-        }
+		.text_1{
+			font-size:70px;
+			font-weight:bold;
+		}
+		.text_2{
+			font-size:30px;
+			font-weight:bold;
+		}
+		.btn_deco{
+			background: linear-gradient(180deg,#fd9068,#fbc1ab);
+		}
     </style>
 </head>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <body>
     <main>
-        <div class="container-fluid">
-            <figure>
-                <img src="<c:url value="/resources/images/qna/pharm.png"/>">
-                <div class="inner">
-                    <h1>Q & A</h1>
-                    <h3>답답했던 영양제의 모든 것!</h3>
-                    <h3>전문가에게 물어보세요</h3>
-                </div>
-            </figure>
+		<div class="d-flex justify-content-center" style="padding-top:120px;">
+	        <div class="qna_banner">
+	            <div class="qna_title">
+	                <p class="text_1 m-0">Q &amp; A</p>
+	                <span class="text_2 m-0">답답했던 영양제의 모든 것!</span>
+	            	<p class="text_2">전문가에게 물어보세요</p>
+	            </div>
+	            <img src="<c:url value="/resources/images/qna/pharm.png"/>" class="qna_img">
+			</div>
         </div>
         <div class="container-fluid pt-3 mt-3">
             <div class="row d-flex flex-wrap align-content-stretch">
@@ -113,15 +71,15 @@
                         <form method="post" action="/board/EditProcess.do">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             <div class="form-group">
-                                <label><kbd class="lead bg-success text3" style="background:linear-gradient(0deg,#ffa585,#fedacd);">제목</kbd></label>
+                                <label><kbd class="lead text_2 btn_deco">제목</kbd></label>
                                 <input type="hidden" name="no" value="${empty record.NO ? param.NO :record.NO}" />
                                 <input type="text"  value='${record.TITLE}${param.TITLE}' class="form-control" placeholder="제목을 입력하세요" name="title">
                             </div>
                             <div class="form-group">
-                                <label><kbd class="lead bg-success text3" style="background:linear-gradient(0deg,#ffa585,#fedacd);">내용</kbd></label>
+                                <label><kbd class="lead text_2 btn_deco">내용</kbd></label>
                                 <textarea class="form-control" rows="15" name="content">${record.CONTENT}${param.CONTENT }</textarea>
                             </div>
-                            <button type="submit" class="btn btn-light text-light text1"style="background:linear-gradient(0deg,#ffa585,#fedacd);">수정</button>
+                            <button type="submit" class="btn btn-light text-light text_2 btn_deco">수정</button>
                         </form>
                     </div>
                 </div>

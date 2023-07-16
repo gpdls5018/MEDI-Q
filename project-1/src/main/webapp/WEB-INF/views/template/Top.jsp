@@ -421,7 +421,7 @@
 	        </div>
 	        <div id="five" class="section">
 	          <h3>
-	            <a class="text-decoration-none" href="#">
+	            <a class="text-decoration-none" href="<c:url value="/board/List.do" />">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-chat-724715.png"/>" width="25" height="25">
 	                커뮤니티
 	            </a>

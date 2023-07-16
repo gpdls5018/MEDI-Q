@@ -16,8 +16,8 @@ import com.kosmo.springapp.qnabbs.service.PagingUtil;
 
 
 
-@Service
-public class BoardServiceImpl implements DaoService {
+@Service("board")
+public class BoardServiceImpl implements DaoService<Map> {
 
 	@Autowired
 	private BoardMapper mapper;
@@ -53,7 +53,7 @@ public class BoardServiceImpl implements DaoService {
 		//글 전체 목록 얻기
 		List records= mapper.selectList(map);
 		//페이징 문자열 얻기
-		String pagingString=PagingUtil.pagingBootStrapStyle(totalCount, pageSize, blockPage, nowPage,req.getContextPath()+ "board/List.do?");
+		String pagingString=PagingUtil.pagingBootStrapStyle(totalCount, pageSize, blockPage, nowPage,req.getContextPath()+ "/board/List.do?");
 		//페이징과 관련된 정보 및 모든 목록을 담는 ListPagingData객체 생성		
 		ListPagingData<Map> listPagingData = ListPagingData.builder()
 													.records(records)//글 전체 목록 설정
@@ -72,12 +72,26 @@ public class BoardServiceImpl implements DaoService {
 
 	@Override
 	public int insert(Map map) {
-		return mapper.insert(map);
+		int affected=0;
+		try {
+			affected=mapper.insert(map);
+		}
+		catch(Exception e) {
+			e.printStackTrace();			
+		}
+		return affected;
 	}
 
 	@Override
 	public int update(Map map) {
-		return mapper.update(map);
+		int affected=0;
+		try {
+			affected=mapper.update(map);
+		}
+		catch(Exception e) {
+			e.printStackTrace();			
+		}
+		return affected;
 	}
 
 	@Override
