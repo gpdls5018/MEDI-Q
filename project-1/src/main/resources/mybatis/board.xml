@@ -43,7 +43,7 @@
 	<select id="selectList" parameterType="map" resultType="map" >
 	    SELECT b.no, b.title, b.content, b.postdate, 
 		    CASE 
-		        WHEN LENGTH(m.name) >= 2 THEN SUBSTR(m.name, 1, 1) || '*' || SUBSTR(m.name, 2)
+		        WHEN LENGTH(m.name) >= 2 THEN SUBSTR(m.name, 1, 1) || '*' || SUBSTR(m.name, 3)
 		        ELSE m.name
 		    END AS name,
 		    CASE
