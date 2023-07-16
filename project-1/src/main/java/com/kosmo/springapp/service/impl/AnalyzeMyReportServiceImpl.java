@@ -90,7 +90,7 @@ public class AnalyzeMyReportServiceImpl {
 		analyzeResultListDTO.setNutrient_list_report(nutrient_list_report);
 		analyzeResultListDTO.setNutrient_list_no_report(nutrient_list_no_report);
 		//최종 점수 구하기
-		nutrient_score = nutrient_list_report.size() *3;
+		nutrient_score = nutrient_list_report.size() *3 / takePurposes.size();
 		int resultScore = ingredient_score*30 + nutrient_score;
 		analyzeResultListDTO.setResultScore(resultScore);
 		analyzeResultListDTO.setIngredientCount(((List)map.get("takeFood")).size());

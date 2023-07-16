@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -14,9 +15,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosmo.springapp.model.HealthInfoDTO;
+import com.kosmo.springapp.service.impl.HealthInfoServiceImpl;
 
 @Controller
 public class LoadHealthInfoController {
+	
+	@Autowired
+	HealthInfoServiceImpl healthInfoServiceImpl;
+	
 	
 	@GetMapping("/loadHealthInfo.do")
 	public String loadHealthInfoByOCR(HttpServletRequest req, HttpServletResponse resp, @RequestParam String userId,Model model) throws IOException {
@@ -39,8 +45,9 @@ public class LoadHealthInfoController {
 	}
 	
 	@PostMapping("/saveHealthData.do")
-	public String saveHealthData(@RequestParam HealthInfoDTO dto) {
-		//System.out.println(dto.getBloodPressure_high());
-		return null;
+	public String saveHealthData(HealthInfoDTO healthInfoDto) {
+		System.out.println("healthInfoDto.getBloodPressure_high() :" + healthInfoDto.getBloodPressure_high());
+		healthInfoServiceImpl.saveHealthInfo(healthInfoDto);
+		return "LoadHealthInfo";
 	}
 }

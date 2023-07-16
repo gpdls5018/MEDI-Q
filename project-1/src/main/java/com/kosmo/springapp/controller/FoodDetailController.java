@@ -57,13 +57,22 @@ public class FoodDetailController {
 	 public String detailPage(Model model, Map map, @RequestParam String no) {
 		   map.put("no",Integer.parseInt(no));
 		   FunctionalFoodListDTO listOne = mainPageServiceImpl.selectFoodOneByNo(map);
+		   String nutrient_before = listOne.getNutrient();
+		   String nutrient_after = change_nutrientName(nutrient_before);
 		   TotalReviewDTO totalReviewDto = reviewServiceImpl.selectTotalReviewInfo(Integer.parseInt(no));
 		   model.addAttribute("listOne",listOne);
 		   model.addAttribute("totalReviewDto",totalReviewDto);
 		   return "Detail";
 	 }
 	 
-	 @GetMapping("/Review.do")
+	 private String change_nutrientName(String nutrient_before) {
+		List<String> nutrientList = Arrays.asList(nutrient_before.split("$"));
+		List<String> havetochangeList;
+		
+		return null;
+	}
+
+	@GetMapping("/Review.do")
 	 public String reviewPage(HttpServletRequest req,@RequestParam String no) {
 		String token = jwTokensService.getToken(req, tokenName);
 		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
@@ -145,5 +154,7 @@ public class FoodDetailController {
 		 List<Map> nameList = mainPageServiceImpl.selectFoodNameList(searchWord);
 		 return nameList;
 	 }
+	 
+	 
 	 
 }

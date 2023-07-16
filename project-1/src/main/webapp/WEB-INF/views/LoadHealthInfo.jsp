@@ -34,7 +34,7 @@
 		<div>&#x1F601; 올바르게 불러왔는지 값을 확인한 후 저장을 눌러주세요!</div>
 		<div class="health-info-table effect-custom-font row">
 			<table class="table table-bordered col-8">
-				<form action="<c:url value="/saveHealthData.do"/>" method="post" onsubmit="preventSubmit(event)" id="sendHealthData">
+				<form action="<c:url value="/saveHealthData.do"/>" method="POST" onsubmit="preventSubmit(event)" id="sendHealthData">
 					<input type="hidden" name="userId" value="${userId}"/>
 			        <colgroup>
 			            <col width=10%>
