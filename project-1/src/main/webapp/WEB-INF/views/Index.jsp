@@ -396,7 +396,7 @@
 	    
 	   <!--  6번째 다이브 목록 -->
 		<div class="section6 pt-5" style="display:flex; align-items:center; max-width: 1050px; flex-direction: column;">
-			<span style="font-weight: bold;">영양제와 건강에 대한 모든 것,<br/> <p stlye="#EF605D">MEDI-Q</p>에서 확인하세요</span>
+			<span style="font-size:30px; display:block; font-weight: bold; text-align: center; margin-bottom: 20px;">영양성분과 건강에 대한 모든 것,<br/> 📖<strong style="color:#EF605D"> MEDI-Q</strong>에서 확인하세요!</span>
 	        <div class="slider1">
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:340px" ></a></div>
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:100%; height:340px" ></a></div>
@@ -418,7 +418,7 @@
                         <div class="mapLayer">
                             <div class="closeLayerButton" onclick="closeMapLayer()">&times;</div>
                             	<h2>주소</h2>
-      	                     	<p style="font-size:17px; color:gray; font-weight: bold; margin-bottom: 0px;">서울시 금천구 가산동 426-5<br/> 월드메르디앙 2차 413호(Madi-Q팀)</p>
+      	                     	<p style="font-size:17px; color:gray; font-weight: bold; margin-bottom: 0px;">서울시 금천구 가산동 426-5<br/> 월드메르디앙 2차 413호(MEDI-Q팀)</p>
       	                     	<p style="font-size:15px; color:gray;">(주)한국소프트웨어아이엔씨 (153-759)</p>
                            		<a href="https://naver.me/Fcacgzd6" target="_blank">
                            		<img src="<c:url value="/resources/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
@@ -467,7 +467,7 @@
 		<aside class="tsidebar fixedsticky pr-3 mt-5"> 
 			<!--  로그인 목록 창
 			<div class="login-section justify-content-center">
-		        <p style="text-align: center; font-weight:bold; font-size:13px;"><span style="color:#EF605D">Madi-Q</span>를 더 안전하고<br/> 편리하게 이용하세요</p>
+		        <p style="text-align: center; font-weight:bold; font-size:13px;"><span style="color:#EF605D">MEDI-Q</span>를 더 안전하고<br/> 편리하게 이용하세요</p>
 		        <a href="<c:url value="/project/Login.do"/>" style="text-decoration:none;">
 		        	<button class="btn btn-outline-success" type="button" style="display: flex; flex-wrap: wrap; align-content: center; text-align: center; justify-content: center; font-size:13px; border-radius: 12px; width:90%; height:50px; font-weight:bold; color:#EF605D;">
 		        		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="60" height="30"> 로그인
@@ -478,11 +478,11 @@
 		        </div>
 		    </div>
 			 -->
-            <div class="sidebar-item pt-5 mt-5">
-            	<img src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
-            	<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+            <div class="sidebar-item pt-4 mt-5">
+            	<img src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="45" height="30">
+            	<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="30">
             	<br/>
-            	<p class="my-3" style="margin-bottom:20px; color:gray; font-size:12px; font-weight:500;">
+            	<p class="my-4" style="margin-bottom:20px; color:gray; font-size:12px; font-weight:500;">
             		<span class="py-3">
             		AI모델의 분석 결과를 바탕으로<br/>
             		선정된 랭킹을 직접 확인해 보세요.</span></p>
@@ -491,7 +491,7 @@
 	            	<c:if test="${status.index < 3}">
                     <li>
                         <div class="image" >
-	            			<a href="/detail.do?no=${item.no}">
+	            			<a href="/detail.do?no=${item.no}" style="text-decoration:none;">
 	                            <c:if test="${not empty item.imgURL}">
 									<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
 								</c:if>
@@ -501,7 +501,7 @@
                     		</a>
                         </div>
                         <div style="align-items: center; margin-top:25px; margin-left:10px; justify-content: center; text-align: start; line-height: 1px; font-weight:400;">
-	            			<a href="/detail.do?no=${item.no}">
+	            			<a href="/detail.do?no=${item.no}" style="text-decoration:none;">
 	                        	<p style="line-height: 10px; color:gray; font-size:9px; font-weight:bold;">${item.company}</p>
 	                        	<br/>
 	                        	<p style="line-height: 11px; color:black; font-size:11px; font-weight:bold;">${item.productName}</p>
