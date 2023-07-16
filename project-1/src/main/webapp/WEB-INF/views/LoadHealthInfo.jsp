@@ -33,7 +33,8 @@
 		<div class="hr-class mt-5 mb-5"></div>
 		<div>&#x1F601; 올바르게 불러왔는지 값을 확인한 후 저장을 눌러주세요!</div>
 		<div class="health-info-table effect-custom-font row">
-			<table class="table table-bordered col-8">
+					<c:if test="${empty loadHealthInfo}" var="emptyInfo">
+					<table class="table table-bordered col-8">
 				<form action="<c:url value="/saveHealthData.do"/>" method="POST" onsubmit="preventSubmit(event)" id="sendHealthData">
 					<input type="hidden" name="userId" value="${userId}"/>
 			        <colgroup>
@@ -116,26 +117,133 @@
 			        <tr>
 			        	<th>만성신장질환</th>
 			            <td>혈청크레아타닌</td>
-			            <td><input class="inputValue" type="text" value="1" name="serum_creatinine">mg/dL</td>
+			            <td><input class="inputValue" type="text" value="0" name="serum_creatinine">mg/dL</td>
 			        </tr>	
 			        <tr>
 			        	<th rowspan="3">간장질환</th>
 			        	<td>AST(SGOT)</td>
-			        	<td><input class="inputValue" type="text" value="20" name="ast">U/L</td>
+			        	<td><input class="inputValue" type="text" value="0" name="ast">U/L</td>
 			        </tr>	     
 			        <tr>
 			        	<td>ALT(SGPT)</td>
-			        	<td><input class="inputValue" type="text" value="20" name="alt">U/L</td>
+			        	<td><input class="inputValue" type="text" value="0" name="alt">U/L</td>
 			        </tr>  
 			        <tr>
 			        	<td>감마지피티(a - GPT)</td>
-			        	<td><input class="inputValue" type="text" value="40" name="gpt">U/L</td>
+			        	<td><input class="inputValue" type="text" value="0" name="gpt">U/L</td>
 			        </tr> 
-		        </form>
+			        		        </form>
 		    </table>
 		    <div class="col-4"><canvas id="canvas"></canvas></div>
 		</div>
 		<button class="btn btn-warning mb-5" style="width:100%;" id="sendHealthDataBtn">저장하기</button>
+			        </c:if>
+			        <c:if test="${not emptyInfo}">
+			        					<table class="table table-bordered col-8">
+				<form action="<c:url value="/updateHealthData.do"/>" method="POST" onsubmit="preventSubmit(event)" id="sendHealthData">
+					<input type="hidden" name="userId" value="${userId}"/>
+			        <colgroup>
+			            <col width=10%>
+			            <col width=20%>
+			            <col width=40%>
+			        </colgroup>
+			        <tr class="table-primary">
+			            <th>목표 질환</th>
+			            <th>검사항목</th>
+			            <th>결과</th>
+			        </tr>
+			        <tr>
+			            <th rowspan="4">비만</th>
+			            <td>신장</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.height}" name="height">cm</td>
+			     
+			        </tr>
+			        <tr>
+			            <td>체중</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.weight}" name="weight">kg</td>
+			     
+			        </tr>
+			        <tr>
+			            <td>허리둘레</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.waistline}" name="waistline">cm</td>
+			         
+			        </tr>
+			        <tr>
+			            <td>체질량지수</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.bmi}" name="bmi">kg/m2</td>
+			        </tr>
+			        <tr>
+			    		<th>시각 이상</th>
+			            <td>시력(좌/우)</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.vision}" name="vision"></td>
+			        </tr>
+			        <tr>
+			    		<th>청각 이상</th>
+			            <td>청력(좌/우)</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.listen}" name="listen"></td>
+			        </tr>
+	      		    <tr>
+			    		<th>고혈압</th>
+			            <td>혈압(최고/최저)</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.bloodPressure_high}" name="bloodPressure_high"> / <input class="inputValue" type="text" value="${loadHealthInfo.bloodPressure_low}" name="bloodPressure_low">mmHg</td>
+			        </tr>
+	           		<tr>
+			    		<th>신장질환</th>
+			            <td>요단백</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.proteinuria}" name="proteinuria"></td>
+			        </tr>
+			   		<tr>
+			    		<th>빈혈 등</th>
+			            <td>혈색소</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.hemoglobin}" name="hemoglobin">g/dL</td>
+			        </tr>
+			        <tr>
+			    		<th>당뇨병</th>
+			            <td>식전혈당</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.bloodSugar}" name="bloodSugar">mg/dL</td>
+			        </tr>
+			        <tr>
+			    		<th rowspan="4">고혈압</th>
+			            <td>총 콜레스테롤</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.total_cholesterol}" name="total_cholesterol">mg/dL</td>
+			        </tr>
+			        <tr>
+			            <td>HDL - 콜레스테롤</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.HDL_cholesterol}" name="HDL_cholesterol">mg/dL</td>
+			        </tr>
+			        <tr>
+			            <td>트리글리세라이드</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.triglyceride}" name="triglyceride">mg/dL</td>
+			        </tr>
+			        <tr>
+			            <td>(LDL - 콜레스테롤)</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.LDL_cholesterol}" name="LDL_cholesterol">mg/dL</td>
+			        </tr>
+			        <tr>
+			        	<th>만성신장질환</th>
+			            <td>혈청크레아타닌</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.serum_creatinine}" name="serum_creatinine">mg/dL</td>
+			        </tr>	
+			        <tr>
+			        	<th rowspan="3">간장질환</th>
+			        	<td>AST(SGOT)</td>
+			        	<td><input class="inputValue" type="text" value="${loadHealthInfo.ast}" name="ast">U/L</td>
+			        </tr>	     
+			        <tr>
+			        	<td>ALT(SGPT)</td>
+			        	<td><input class="inputValue" type="text" value="${loadHealthInfo.alt}" name="alt">U/L</td>
+			        </tr>  
+			        <tr>
+			        	<td>감마지피티(a - GPT)</td>
+			        	<td><input class="inputValue" type="text" value="${loadHealthInfo.gpt}" name="gpt">U/L</td>
+			        </tr> 
+			        </form>
+		    </table>
+		    <div class="col-4"><canvas id="canvas"></canvas></div>
+		</div>
+		<button class="btn btn-warning mb-5" style="width:100%;" id="updateHealthDataBtn">수정하기</button>
+			        </c:if>
+
 	</div>
 </body>
 <script>
@@ -228,6 +336,16 @@
 	  Swal.fire({
 		  icon: 'success',
 		  title: '저장되었습니다!',
+		  showConfirmButton: false,
+		  timer: 1500
+	    }).then((result) => {
+	        document.querySelector("#sendHealthData").submit();
+	    })
+  });
+  $("#updateHealthDataBtn").click(function() {
+	  Swal.fire({
+		  icon: 'success',
+		  title: '수정되었습니다!',
 		  showConfirmButton: false,
 		  timer: 1500
 	    }).then((result) => {

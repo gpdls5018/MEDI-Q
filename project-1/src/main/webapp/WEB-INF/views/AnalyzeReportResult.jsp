@@ -147,7 +147,6 @@
 				</div>
 			</div>
 		</div>
-		
 	</div>
 	<script>
 	console.log('${resultListDto.nutrient_list_report}');
