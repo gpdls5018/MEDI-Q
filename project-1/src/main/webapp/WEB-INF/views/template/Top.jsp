@@ -128,7 +128,7 @@
 		    position: relative;
 		    margin-left: 17px;
 		    color:black;
-		    border-bottom: 3px dashed rgb(101, 101, 101, 0.3);
+		    /*border-bottom: 3px dashed rgb(101, 101, 101, 0.3);*/
 		}
 		.sidemenu a:hover {
 			cursor: pointer;
