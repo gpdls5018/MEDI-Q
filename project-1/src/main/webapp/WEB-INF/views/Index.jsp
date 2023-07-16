@@ -171,7 +171,7 @@
      <article class="maints justify-content-center px-3">
      <!-- 1번째 다이브 목록 -->
      	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
-	        <h1 class="text-center mb-3" style="font-size: 30px; color: black;">$사용자$님의 최근 분석 리포트</h1>
+	        <h1 class="text-center mb-3" style="font-size: 30px; color: black;">${id}님의 최근 분석 리포트</h1>
 	        <div class="DefaultReportItem__ReportBook-sc-rysw89-0 ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
 	            <a data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none;">
 	                <div class="DefaultReportItem__Springs-sc-rysw89-8 jZuajW">
@@ -183,13 +183,25 @@
 	                </div>
 	                <article class="DefaultReportItem__InnerContents-sc-rysw89-2 hBxOSS" style="display: block;">
 	                    <div class="DefaultReportItem__BackgroundWrapper-sc-rysw89-3 iJGurJ">
+	                    <c:if test="${not empty analyzeReport}">
 	                        <div>
-	                            <div class="DefaultReportItem__ScoreDate-sc-rysw89-5 enbDhJ">분석한 기록이 없습니다.</div>
+	                            <div class="DefaultReportItem__ScoreDate-sc-rysw89-5 enbDhJ">최근 분석 리포트입니다</div>
+	                            <p class="DefaultReportItem__Score-sc-rysw89-6 jeiOCr" style="">${analyzeReport.score}<span>점</span></p>
+	                        </div>
+	                        <div class="DefaultReportItem__Purpose-sc-rysw89-7 ZyIFk d-block">
+	                            <div>섭취 목적 : ${analyzeReport.takePurposes}</div>
+	                            <div>섭취중인 영양제 : ${analyzeReport.takeFoods}</div>
+	                        </div>
+                        </c:if>
+                        <c:if test="${empty analyzeReport}">
+                        	<div>
+	                            <div class="DefaultReportItem__ScoreDate-sc-rysw89-5 enbDhJ ">분석 정보가 없습니다</div>
 	                            <p class="DefaultReportItem__Score-sc-rysw89-6 jeiOCr">??<span>점</span></p>
 	                        </div>
 	                        <div class="DefaultReportItem__Purpose-sc-rysw89-7 ZyIFk">
 	                            <p>먹고 있는 영양제를 분석해 보세요!</p>
 	                        </div>
+                        </c:if>
 	                    </div>
 	                </article>
 	             </a>
