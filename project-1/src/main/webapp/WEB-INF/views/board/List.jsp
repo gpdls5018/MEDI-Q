@@ -20,7 +20,7 @@
         }
         .qna_title{
         	position:relative;
-        	top:calc(100vh - 850px);
+        	top:calc(100vh - 96vh);
         	left:10%;
         	color:white;
         	margin:0px;
@@ -28,7 +28,7 @@
         .qna_img{
             position:absolute;
             width: 200px;
-            top:calc(100vh - 700px);
+            top:calc(100vh - 85vh);
             right:20%;
         }
         .text_1{
