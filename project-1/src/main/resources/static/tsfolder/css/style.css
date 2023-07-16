@@ -1467,12 +1467,13 @@ a {
     flex-direction: column;
 }
 .qna-mark-home {
-    display: block;
-    font-size: 0;
-    background: url(https://cdn.pillyze.io/web/img/qna-txt2.webp) left no-repeat;
+	font-size:35px;
+	display:inline;
+    color:#EF605D;
     width: 50px;
     height: 20px;
-    background-size: 50px 20px;
+    text-align: center;
+    text-shadow: 1px 1px 2px black;
 }
 .section20-2-home .get-20-2 {
     text-align: left;

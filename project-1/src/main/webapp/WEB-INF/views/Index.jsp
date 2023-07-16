@@ -301,9 +301,8 @@
       <div class="section section20-2 section20-2-home">
 	        <div class="content">
 	            <!-- <div class="qna-mark-home" style="display: block; text-align: center; width: 100%;">Q&amp;A</div> -->
-	            <span class="ge-title get-20-2" style="display: block; text-align: center; width: 100%; font-size: 30px;">💡 지금 인기있는 질문</span>
+	            <span class="ge-title get-20-2" style="display: block; text-align: center; width: 100%; font-size: 30px;">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
 	            <div class="get-20-2-home-txt2" style="display: block; text-align: center; width: 100%; margin-top: 35px; margin-bottom: 35px; font-size: 18px;">전문가가 직접 답해드려요!</div>
-	
 	            <div class="qna-list-wrap">
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
