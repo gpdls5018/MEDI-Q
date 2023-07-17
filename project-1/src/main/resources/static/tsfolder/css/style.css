@@ -36,21 +36,24 @@
          }
            	#banner-inner-wrapper1 {
 				height: 100%;
-				background-image: url("https://www.foodsafetykorea.go.kr/common/ecmFileView.do?ecm_file_no=1OXM3CE3PMT");
+				background-image: url("https://newsroom-prd-data.s3.ap-northeast-2.amazonaws.com/wp-content/uploads/2021/01/digital_health_care_Main.jpg");
 				box-sizing: border-box;
 				background-size: cover;
+				background-position: center top 30%;
                }
             #banner-inner-wrapper2 {
 				height: 100%;
 				background-image: url("http://cdn.hitnews.co.kr/news/photo/202303/44381_56651_1017.jpg");
 				box-sizing: border-box;
 				background-size: cover;
+				background-position: center top 20%;
                }
            	#banner-inner-wrapper3 {
 				height: 100%;
-				background-image: url("https://cdn.pharmnews.com/news/photo/202307/226775_99331_76.jpg")  ;
+				background-image: url("https://cdn.pharmnews.com/news/photo/202208/208563_78717_2239.jpg")  ;
 				box-sizing: border-box;
 				background-size: cover;
+				background-position: center top 50%;
                }
 			#banner-inner-wrapper4 {
 				height: 100%;
@@ -1011,7 +1014,7 @@ a {
         position: relative;
         height: 100%;
         border-bottom: none;
-        background-color: white;
+        background-color: #fff8f5;
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
         width: 86%;
@@ -1020,7 +1023,15 @@ a {
         flex-direction: column;
         gap: 8px;
     }
-    .enbDhJ {
+    .qwdfe{
+    	position: absolute;
+    	top:0px;
+    	right: 5px;
+    	width: 200px;
+    	height: 180px;
+    }
+    .enbDhJ1{
+    	font-size: 25px;
         font-weight: bold;
         height: 22px;
         display: flex;
@@ -1031,9 +1042,46 @@ a {
         border-radius: 10px;
         color: black;
     }
-    .ZyIFk {
+    .enbDhJ {
+    	font-size: 18px;
+        font-weight: bold;
+        height: 22px;
         display: flex;
-        gap: 8px;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: start;
+        justify-content: flex-start;
+        border-radius: 10px;
+        color: black;
+    }
+    .jeiOCr1{
+    	position: absolute;
+    	top:20px;
+    	right: 30px;
+    	font-size: 80px;
+    	font-weight:bold;
+    	color: #EF605D;
+    	margin-bottom: 20px;
+    }
+    .jeiOCr{
+    	text-align:center;
+    	font-size: 25px;
+    	font-weight:bold;
+    	color: black;
+    	margin-bottom: 20px;
+    }
+    .ZyIFk1{
+    	 text-align:left;
+        font-weight:bold;
+        color: #7b7b7b;
+        margin-right: 200px;
+    }
+    .ZyIFk {
+        text-align:right;
+        font-weight:bold;
+        color: black;
+        margin-right: 20px;
+        z-index: 300;
     }
     .maints > div{
     	justify-content: center;
@@ -1288,11 +1336,7 @@ a {
     position: relative;
     display: block;
 }
-.section1-2c .txt1 {
-    display: block;
-    width: 100%;
-    margin-top: 20px;
-}
+
 .section1-2c .txt1 .lottie1 {
     width: 36px;
     height: 36px;
@@ -1303,14 +1347,14 @@ a {
     text-align: center;
     opacity: 1;
 }
-.section1-2c .txt1 span {
+.section1-2c .content .txt1 {
     display: block;
-    color: #000;
-    text-align: left;
+    width: 100%;
+    margin-top: 20px;
+    color: black;
     font-weight: 700;
-    font-size: 26px;
+    font-size: 30px;
     line-height: 1;
-    float: left;
     padding: 7px 0px 0px 5px;
 }
 .section1-2c .txt2 {
@@ -1319,7 +1363,6 @@ a {
     font-weight: 500;
     font-size: 18px;
     line-height: 1;
-    margin-top: 30px;
     text-align: left;
 }
 .section1-2c .banner-wrap {
@@ -1481,8 +1524,8 @@ a {
     font-size: 26px;
 }
 .get-20-2 {
+	color:black;
     font-weight: 700;
-    color: rgba(39, 39, 39, 0.952);
     line-height: 1;
     font-size: 20px;
     margin: 30px 0px 0px;

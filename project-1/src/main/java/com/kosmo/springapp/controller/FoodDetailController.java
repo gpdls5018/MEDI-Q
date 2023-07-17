@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.springapp.analyze.model.AnalyzeResultListDTO;
+import com.kosmo.springapp.model.AnalyzeReportDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
 import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.model.ProfileImageDTO;
@@ -67,8 +68,6 @@ public class FoodDetailController {
 		   nutrietnSelectMapper.increaseF_VIEW(listOne.getProductName());
 		   int f_view = nutrietnSelectMapper.getF_VIEW(listOne.getProductName());
 		   model.addAttribute("fview", f_view);
-		   String nutrient_before = listOne.getNutrient();
-		   String nutrient_after = change_nutrientName(nutrient_before);
 		   TotalReviewDTO totalReviewDto = reviewServiceImpl.selectTotalReviewInfo(Integer.parseInt(no));
 		   if(listOne.getStandard() != null) {
 			   if(listOne.getStandard().contains("1)")) {
@@ -210,14 +209,8 @@ public class FoodDetailController {
 		   return "Detail";
 	 }
 	 
-	 private String change_nutrientName(String nutrient_before) {
-		List<String> nutrientList = Arrays.asList(nutrient_before.split("$"));
-		List<String> havetochangeList;
-		
-		return null;
-	}
-
-	@GetMapping("/Review.do")
+	 
+	 @GetMapping("/Review.do")
 	 public String reviewPage(HttpServletRequest req,@RequestParam String no) {
 		String token = jwTokensService.getToken(req, tokenName);
 		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
@@ -288,6 +281,7 @@ public class FoodDetailController {
 		 userMap.put("takeFood", foodList);
 		 AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReport(userMap);
 		 MemberDTO memberDto = loginService.selectOne(req,resp);
+		 analyzeMyReportServiceImpl.saveAnalyzeReport(memberDto.getId(),takeList,foodList,resultListDto.getResultScore());
 		 model.addAttribute("memberDto",memberDto);
 		 model.addAttribute("resultListDto",resultListDto);
 		 return "AnalyzeReportResult";

@@ -163,23 +163,20 @@
     </style>
 </head>
 <body>
-	
-	
 
 	<!-- 검색창 -->
-	<div class="search d-flex justify-content-center" style="padding-top: 120px;">
+	<div class="search d-flex justify-content-center" style="margin-top: 120px;">
 	    <input id="searchInput" style="font-size:17px;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
 	    <button type="submit" class="searchButton">
         <i class="fa fa-search"></i>
    	    </button>
     </div>
-
-	
+    
     <div class="container pb-5" style="margin-top: 50px;">
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link active" href="#" onclick="openTab(event, 'popular')">인기 영양소</a>
+                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'popular')">인기 영양소</a>
                 </li>
                 <li class="nav-item col-3">
                     <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'vitamin')">비타민</a>
@@ -188,12 +185,12 @@
                     <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'mineral')">미네랄 및 기타영양소</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'functional')">기능성 원료</a>
+                    <a style="font-size: 18px;" class="nav-link active" href="#" onclick="openTab(event, 'functional')">기능성 원료</a>
                 </li>
             </ul>
         </div>
         <div class="pt-2">
-            <div id="popular" class="tab active border-0">
+            <div id="popular" class="tab">
                 <!-- 인기성분에 해당하는 상자 내용 -->
                 <!-- 이미지 -->
    				<div class="image mt-4">
@@ -249,7 +246,7 @@
                 </div>
             </div>
                 
-            <div id="functional" class="tab">
+            <div id="functional" class="tab active border-0">
                 <!-- 기능성 원료에 해당하는 상자 내용 -->
                 <div class="image mt-4">
 	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>

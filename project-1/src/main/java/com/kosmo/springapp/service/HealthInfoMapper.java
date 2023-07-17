@@ -8,5 +8,9 @@ import com.kosmo.springapp.model.HealthInfoDTO;
 public interface HealthInfoMapper {
 
 	int saveHealthInfo(HealthInfoDTO healthInfoDto);
+	int updateHealthInfo(HealthInfoDTO healthInfoDto);
+
+	HealthInfoDTO selectHealthInfoByUserId(String userId);
+
 
 }

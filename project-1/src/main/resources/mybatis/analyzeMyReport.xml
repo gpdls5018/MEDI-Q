@@ -16,4 +16,12 @@
  	<select id="selectNutrient_list" resultType="String">
  		SELECT n_name FROM nutrient
  	</select>
+ 	<insert id="saveAnalyzeReport" parameterType="analyzeReportDto">
+ 		INSERT INTO ANALYZETABLE VALUES (#{userId},#{takePurposes},#{takeFoods},#{score},SYSDATE)
+ 	</insert>
+ 	<select id="selectAnalyzeReport" parameterType="String" resultType="analyzeReportDto">
+ 		SELECT *
+		FROM (SELECT * FROM ANALYZETABLE WHERE userId= #{id} ORDER BY ANALYDATE DESC )
+		WHERE ROWNUM = 1
+ 	</select>
 </mapper>

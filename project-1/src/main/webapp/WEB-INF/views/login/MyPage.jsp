@@ -71,12 +71,14 @@
         .ui-datepicker-calendar { width: 100%; } 
 
         .ui-datepicker-calendar>thead>tr>th { padding: 5px; font-size: 20px; font-weight: 400; } 
+        
+        .ui-datepicker-calendar>tbody>tr { height: 48px;}
 
         .ui-datepicker-calendar>tbody>tr>td>a { color: #000; font-size: 12px !important; font-weight: bold !important; text-decoration: none;}
 
         .ui-datepicker-calendar>tbody>tr>.ui-state-disabled:hover { cursor: auto; background-color: #fff; } 
 
-        .ui-datepicker-calendar>tbody>tr>td { border-radius: 100%; width: 44px; height: 30px; cursor: pointer; padding: 5px; font-weight: 100; text-align: center; font-size: 12px; } 
+        .ui-datepicker-calendar>tbody>tr>td { border-radius: 100%; width: 36px; height: 36px; cursor: pointer; padding: 5px; font-weight: 100; text-align: center; font-size: 12px; } 
 
         .ui-datepicker-calendar>tbody>tr>td:hover { background-color: transparent; opacity: 0.6; } 
 
@@ -106,6 +108,7 @@
         .ui-state-highlight,
         .ui-widget-content .ui-state-highlight,
         .ui-widget-header .ui-state-highlight { border: 0px; background: #f1f1f1; border-radius: 50%; padding-top: 10px; padding-bottom: 10px; } 
+		.full-highlight { border: 0px; background: #fa264af8; border-radius: 100%; width: 10px; height: 10px;} 
 
         .inp { padding: 10px 10px; background-color: #f1f1f1; border-radius: 4px; border: 0px; } 
 
@@ -816,7 +819,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 	    			//return [true, isFull ? "full" : ""];
 	    		}
 	    	})
-	    	return [true, isFull ? "full" : ""]; // 다른 날짜는 기본값 반환
+	    	return [true, isFull ? "full-highlight ui-datepicker-days-cell-over" : ""]; // 다른 날짜는 기본값 반환
 	    },//날짜 선택 전 이벤트 주기
 	    yearSuffix: '년',
 	    maxDate: new Date(), //오늘 날짜 이 후만 선택가능

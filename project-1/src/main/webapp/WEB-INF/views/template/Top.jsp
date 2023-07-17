@@ -155,7 +155,7 @@
 
 .accordion .section {
     border-bottom: 2px dashed #ccc;
-    padding: 10px 20px;
+    padding: 10px 10px;
     background: #fff;
 }
 
@@ -196,7 +196,7 @@
 }
 
 .accordion :target h3 + div {
-    height: 120px;
+    height: 140px;
 }
 
 .accordion .section.large:target h3 + div {
@@ -212,12 +212,15 @@
 .ditem {
 	display:flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
+	line-height: 30px;
+	margin: 0px;
 }
 .ditem a {
 	align-items:center;
 	margin: 10px;
 	padding: 3.5px;
+	text-decoration: none;
 }
     </style>
 </head>
@@ -324,6 +327,7 @@
 	    });
 	  });*/
 
+
 </script>
 <body>
 <div class="container-fluid position-relative p-0" style="width:100%;">
@@ -366,35 +370,40 @@
 
         <div class="bs-canvas-content px-3 pb-5 ">
             <div class="accordion">
-             <div class="section" active>
+             <div class="section" >
 		          <h3>
 		            <a class="text-decoration-none font-weight-bold" href="<c:url value="/"/>">
-		                	홈으로 가기
+		            <img src="<c:url value="/resources/images/tsimages/free-icon-home-3771140.png"/>" style="opacity: 0.7;" width="25" height="25">
+		         
+		             &nbsp; 홈으로 가기
+		            
 		            </a>
 		          </h3>
 	        </div>
 	        
-	        <div id="one" class="section">
+	        <div id="one" class="section" active:false>
 	          <h3 class="d-flex">
 	            <a href="#one" style="align-items: center;">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-vitamins-525955.png"/>" width="25" height="25">
-	                영양성분 검색
+	                &nbsp; 영양성분 검색
 	                <span class="arrow-down" style="margin-left: 70px;" ></span>
 	            </a>
 	          </h3>
-	          <div>
-	            <a class="dropdown-item1" href="<c:url value="/project/MentalTest1.do"/>">인기 영양소</a><br/>
-	            <a class="dropdown-item1" href="<c:url value="/project/MentalTest2.do"/>">비타민</a><br/>
-	            <a class="dropdown-item1" href="<c:url value="/project/MentalTest3.do"/>">미네랄 및 기타영양소</a><br/>
-	            <a class="dropdown-item1" href="<c:url value="/project/MentalTest4.do"/>">기능성 원료</a><br/>
-	             
+	          <div class="ditem">
+	            <a href="<c:url value="/NutrientSelect.do"/>">인기 영양소</a>
+	 
+	            <a href="<c:url value="/NutrientSelectVitamin.do"/>">비타민</a>
+	   
+	            <a href="<c:url value="/NutrientSelectMineral.do"/>">미네랄 및 기타영양소</a>
+	         
+	            <a href="<c:url value="/NutrientSelectFunctional.do"/>">기능성 원료</a>
 	          </div>
 	        </div>
 	        <div class="section">
 	          <h3>
-	            <a class="text-decoration-none"  href="<c:url value="/NutrientSelect.do"/>">
-	                <img src="<c:url value="/resources/images/tsimages/free-icon-pharmacy-1404402.png"/>" width="25" height="25">
-	                	영양소
+	            <a class="text-decoration-none"  href="<c:url value="/ranking/selectfood.do"/>">
+	                <img src="<c:url value="/resources/images/shape/캡슐.png"/>" style="opacity: 0.8;" width="25" height="25">
+	                &nbsp; 영양제 검색
 	            </a>
 	          </h3>
 	        </div>
@@ -402,14 +411,14 @@
 	          <h3>
 	            <a class="text-decoration-none" href="<c:url value="/magazineindex.do"/>">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-whats-new-5511348.png"/>" width="25" height="25">
-	                메디큐 칼럼
+	                &nbsp; 메디큐 칼럼
 	            </a>
 	        </div>
 	        <div id="four" class="section large">
 	          <h3>
 	            <a class="text-decoration-none" href="#">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-data-analysis-3449317.png"/>" width="25" height="25">
-	                분석 및 결과
+	                &nbsp; 분석 및 결과
 	            </a>
 	          </h3>
 	        </div>
@@ -417,22 +426,25 @@
 	          <h3>
 	            <a class="text-decoration-none" href="<c:url value="/board/List.do" />">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-chat-724715.png"/>" width="25" height="25">
-	                커뮤니티
+	                &nbsp; 커뮤니티
 	            </a>
 	          </h3>
 	        </div>
-	        <div id="six" class="section">
+	        <div id="six" class="section" active:false>
 	          <h3 class="d-flex">
 	            <a href="#six" style="align-items: center;">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-lifestyle-4807765.png"/>" width="25" height="25">
-	                	건강예측
+	                &nbsp; 건강예측
 	                <span class="arrow-down" style="margin-left: 120px;"></span>
 	            </a>
 	          </h3>
 	          <div class="ditem" style="border: none;">
 	              <a href="<c:url value="/project/MentalTest1.do"/>">심리적 스트레스</a>
+	      
 				  <a href="<c:url value="/project/MentalTest2.do"/>">흡연 유형 평가</a>
+			
 				  <a href="<c:url value="/project/MentalTest3.do"/>">알코올 의존(AUDIT-K)</a>
+				
 				  <a href="<c:url value="/project/MentalTest4.do"/>">우울증(CES-D)</a>
 	          </div>
 	        </div>

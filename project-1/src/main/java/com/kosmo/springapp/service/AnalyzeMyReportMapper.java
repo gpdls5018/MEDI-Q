@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.kosmo.springapp.model.AnalyzeReportDTO;
+
 @Mapper
 public interface AnalyzeMyReportMapper {
 	
@@ -14,4 +16,9 @@ public interface AnalyzeMyReportMapper {
 	List<String> selectIngredient_list();
 
 	List<String> selectNutrient_list();
+
+	int saveAnalyzeReport(AnalyzeReportDTO analyzeReportDTO);
+
+	AnalyzeReportDTO selectAnalyzeReport(String id);
+
 }

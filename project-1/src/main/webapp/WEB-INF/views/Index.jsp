@@ -38,14 +38,19 @@
 
         .box:hover {
             font-weight: bold;
-            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.8);
         }
 
         .box.active {
             background-color: #bbb;
         }
     
-
+		.videologo {
+		    font-family: Arial, sans-serif;
+		    font-size: 24px;
+		    color: #FFFFFF;
+		    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+		}
 
 </style>
 <!-- 슬라이더를 위한 CDN -->
@@ -66,19 +71,31 @@
 			    <video id="video" autoplay muted loop>
 	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
-			    <div class="videologo">
-			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="100" height="50">
-	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="200" height="50">
+			    <div class="videologo" style=" font-size:27px; color:white; margin-top: 190px; margin-bottom: 220px; margin-left: 520px; margin-right: 520px;">
+	           		<!-- 동영상 화면 문구 -->
+		        	<div class="text-center" style="display: flex; align-items: center; justify-content: center; font-size: 65px; font-weight:bold;">건강고민은&nbsp;  
+						<img class="pr-3 pl-1" src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="120" height="75">
+	           			<img class="pr-2" src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="300" height="75">
+					</div>
+		        	<br/>
+		        	<div class="text-center" style="margin-top: 50px;">영양제 분석, 건강예측 AI 등 저희만의 특별한 서비스를 이용해보세요.</div>
+		        	<div class="text-center" style="margin-top: 30px;">스마트 헬스케어 솔루션, MEDI-Q가 여러분을 위해 준비되어 있습니다!</div>
+		        	<!-- 홈버튼 -->
+		        	<div style="display: flex; align-items: center; justify-content: center;">
+			        	<div id="video-controls" style="margin-top:390px; margin-right: 250px;">
+					        <button class="btn" onclick="closeVideo()" style="width:120px; background-color: rgb(248,182,43);">홈으로 이동</button>
+					    </div>
+					    <!-- 그만보기 -->
+					    <div id="video-label" style=" margin-top:390px; margin-right: 300px; display: flex; align-items: center; justify-content: center;">
+				    	    <label for="stop-video-checkbox" style="font-size:18px; color:white; margin-bottom:30px; font-weight: normal; cursor: pointer;">
+					        오늘 하루 그만 보기
+					        <input type="checkbox" id="stop-video-checkbox" style="width:20px;">
+					        </label>
+					    </div>
+					</div>
 			    </div>
-			    <div id="video-controls">
-			      <button class="btn" onclick="closeVideo()">Home</button>
-			    </div>
-			    <div id="video-label">
-		    	  <label for="stop-video-checkbox">
-			        동영상 오늘 하루 그만 보기
-			        <input type="checkbox" id="stop-video-checkbox">
-			      </label>
-			    </div>
+			    
+			    
 			</div>
 
 <!-- 메인 바디 부분 -->
@@ -161,7 +178,7 @@
 		        <a href="#" style="font-weight: bold;color:sandybrown">#체지방 감소</a>&nbsp;
 		        <a href="#" style="font-weight: bold;color:salmon ">#비타민</a>&nbsp;
 		        <a href="#" style="font-weight: bold;color:lightskyblue ">#혈당</a>&nbsp;
-		        <span class="s-txt2">(07/15&nbsp;기준)</span>
+		        <span class="s-txt2">(07/18&nbsp;기준)</span>
 		    </div >
 	    </div>
 	    
@@ -171,25 +188,39 @@
      <article class="maints justify-content-center px-3">
      <!-- 1번째 다이브 목록 -->
      	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
-	        <h1 class="text-center mb-3" style="font-size: 30px; color: black;">$사용자$님의 최근 분석 리포트</h1>
-	        <div class="DefaultReportItem__ReportBook-sc-rysw89-0 ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
-	            <a data-gtm-id="report-home-recent-blank" class="DefaultReportItem__ItemWrapper-sc-rysw89-1 ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none;">
-	                <div class="DefaultReportItem__Springs-sc-rysw89-8 jZuajW">
-	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
-	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
-	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
-	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
-	                    <div class="DefaultReportItem__Spring-sc-rysw89-9 inPQJp"></div>
-	                </div>
-	                <article class="DefaultReportItem__InnerContents-sc-rysw89-2 hBxOSS" style="display: block;">
-	                    <div class="DefaultReportItem__BackgroundWrapper-sc-rysw89-3 iJGurJ">
-	                        <div>
-	                            <div class="DefaultReportItem__ScoreDate-sc-rysw89-5 enbDhJ">분석한 기록이 없습니다.</div>
-	                            <p class="DefaultReportItem__Score-sc-rysw89-6 jeiOCr">??<span>점</span></p>
+     	<c:if test="${not empty analyzeReport}">
+	        <h1 class="text-center mb-3" style="font-size: 30px; color: black;">📋 <span style="color:#EF605D; font-size: 34px;">${id}</span>님의 최근 분석 리포트</h1>
+	        <div class="ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
+	            <a data-gtm-id="report-home-recent-blank" class="ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none;">
+	                <article class="hBxOSS" style="display: block;">
+	                    <div class="iJGurJ">
+	                        <div style="margin: 10px 0px 0px 20px;">
+	                            <div class="enbDhJ1">👀 최근 분석 리포트입니다</div>
+	                            <p class="jeiOCr1" style="">${analyzeReport.score}<span class="ml-3" style="color:black; font-size: 20px;">점</span></p>
 	                        </div>
-	                        <div class="DefaultReportItem__Purpose-sc-rysw89-7 ZyIFk">
-	                            <p>먹고 있는 영양제를 분석해 보세요!</p>
+	                        <div class="ZyIFk1 d-block mt-3" style="margin-left: 20px;">
+	                            <div><span style="color:#545454; font-weight: bold;">섭취 목적</span> : &nbsp; ${analyzeReport.takePurposes}</div>
+	                            <div><span style="color:#545454; font-weight: bold;">섭취중인 영양제</span> :<br/> ${analyzeReport.takeFoods}</div>
+	                        </div>	                   
+         </c:if>
+            <c:if test="${empty analyzeReport}">
+                <h1 class="text-center mb-3" style="font-size: 30px; color: black;">📋 나와 잘 맞는 영양제일까?</h1>
+                <p style="text-align: center; color:gray; font-weight: bold;">적절하게 영양제를 먹고 있는지 MEDI-Q가 분석해 드릴게요</p>
+		        <div class="ibNwmg ml-1 d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
+		            <a data-gtm-id="report-home-recent-blank" class=" ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none;">
+		                <article class=" hBxOSS" style="display: block;">
+		                    <div class=" iJGurJ">
+	                        	<div>
+		                        	<img src="https://cdn.pillyze.io/web/img/qna_anna_2x.webp" class="qwdfe" alt="전문가 그림">
+			                            <div class=" enbDhJ ">나의 영양제 분석하고 추천받기</div>
+			                            <p class="jeiOCr">답답했던 <span style="color:#EF605D;">영양제의 모든 것!</span> <br/>전문가와 함께해요 </p>
+		                        </div>
+	                        <!-- 
+	                        <div class="ZyIFk">
+	                            <p>내 영양제 분석하기</p>
 	                        </div>
+	                         -->
+                        </c:if>
 	                    </div>
 	                </article>
 	             </a>
@@ -200,9 +231,9 @@
 		<div class="section section1-2c">
 	       <a href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>" style="text-decoration: none;">
 	           <div class="content">
-	               <span class="txt1"><span style="display: block; text-align: center; width: 100%;">👨‍⚕️ 주요 질환의 발병 위험도를 예측해드려요</span></span>
+	               <span class="txt1" style="text-align: center; width: 100%;">👨‍⚕️ 주요 질환의 발병 위험도를 예측해드려요 </span>
 	               <br/>
-	               <span class="text-center txt2" style="margin-top: 40px; margin-bottom: 40px;">MEDI-Q의 인공지능 기술로 분석하는 건강검진!</span>
+	               <span class="text-center txt2" style="margin-top: 0px; margin-bottom: 20px;">MEDI-Q의 인공지능 기술로 분석하는 건강검진!</span>
 	               <div class="banner-wrap">
 	                   <div class="banner-txt1 mb-1">내 건강검진 결과를 입력하고</div>
 	                   <div class="banner-txt2"><span>맞춤형 영양제를 추천</span> 받으세요</div>
@@ -289,7 +320,7 @@
 	                    </div><!-- card-wrap의 끝 -->
 
 	                    <div class="clearfix">
-	                        <a tabindex="0" class="more-pop-health mt-5" href="/ranking/selectfood.do"><b>건강기능식품 더보기</b></a>
+	                        <a tabindex="0" class="more-pop-health mt-5" href='<c:url value="/ranking/selectfood.do"/>' > <b>건강기능식품 더보기</b></a>
 	                    </div>
 	                </div><!-- tab-content-001의 끝 -->
 	            </div>
@@ -386,7 +417,7 @@
 	                    </div><!-- qna-card의 끝 -->
 	            </div>
 
-	            <div class="clearfix mt-5 my-2 mr-5">
+	            <div class="clearfix my-5" style="margin-right: 80px;">
 	                <a tabindex="0" class="more-qna" href="<c:url value="/board/List.do" />"><b>Q&amp;A 더보기</b></a>
 	            </div>
 	        </div>
@@ -396,7 +427,7 @@
 	    
 	   <!--  6번째 다이브 목록 -->
 		<div class="section6 pt-5" style="display:flex; align-items:center; max-width: 1050px; flex-direction: column;">
-			<span style="font-size:30px; display:block; font-weight: bold; text-align: center; margin-bottom: 20px;">영양성분과 건강에 대한 모든 것,<br/> 📖<strong style="color:#EF605D"> MEDI-Q</strong>에서 확인하세요!</span>
+			<span style="font-size:30px; display:block; font-weight: bold; text-align: center; margin-bottom: 40px;">영양성분과 건강에 대한 모든 것<br/> 📖<strong style="color:#EF605D"> MEDI-Q</strong>에서 확인하세요!</span>
 	        <div class="slider1">
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:340px" ></a></div>
 	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:100%; height:340px" ></a></div>
@@ -489,14 +520,25 @@
                 <ul class="unlist" style="padding-inline-start: 0px;">
 				<c:forEach items="${listData}" var="item" varStatus="status">
 	            	<c:if test="${status.index < 3}">
+	            		<c:choose>
+				          <c:when test="${status.index == 0}">
+				            <img src="<c:url value='/resources/images/tsimages/rank_crown_gold_48.svg'/>" style="top:10px; left:20px; width:50px; height:40px;" alt="*">
+				          </c:when>
+				          <c:when test="${status.index == 1}">
+				            <img src="<c:url value='/resources/images/tsimages/rank_crown_silver_48.svg'/>" style="left:20px; width:50px; height:40px;" alt="*">
+				          </c:when>
+				          <c:when test="${status.index == 2}">
+				            <img src="<c:url value='/resources/images/tsimages/rank_crown_bronze_48.svg'/>" style="left:20px; width:50px; height:40px;" alt="*">
+				          </c:when>
+						</c:choose>
                     <li>
                         <div class="image" >
 	            			<a href="/detail.do?no=${item.no}" style="text-decoration:none;">
 	                            <c:if test="${not empty item.imgURL}">
-									<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
+									<img src="${item.imgURL }" class="item-img" alt="${item.productName}" style="height: 70px">
 								</c:if>
 		          				<c:if test="${empty item.imgURL}">	
-									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" style="height: 70px" alt="${item.productName}">
 								</c:if>
                     		</a>
                         </div>

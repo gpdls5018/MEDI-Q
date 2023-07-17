@@ -163,26 +163,23 @@
     </style>
 </head>
 <body>
-	
-	
 
 	<!-- 검색창 -->
-	<div class="search d-flex justify-content-center" style="padding-top: 120px;">
+	<div class="search d-flex justify-content-center" style="margin-top: 120px;">
 	    <input id="searchInput" style="font-size:17px;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
 	    <button type="submit" class="searchButton">
         <i class="fa fa-search"></i>
    	    </button>
     </div>
-
-	
+    
     <div class="container pb-5" style="margin-top: 50px;">
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link active" href="#" onclick="openTab(event, 'popular')">인기 영양소</a>
+                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'popular')">인기 영양소</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'vitamin')">비타민</a>
+                    <a style="font-size: 18px;" class="nav-link active" href="#" onclick="openTab(event, 'vitamin')">비타민</a>
                 </li>
                 <li class="nav-item col-3">
                     <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'mineral')">미네랄 및 기타영양소</a>
@@ -193,7 +190,7 @@
             </ul>
         </div>
         <div class="pt-2">
-            <div id="popular" class="tab active border-0">
+            <div id="popular" class="tab">
                 <!-- 인기성분에 해당하는 상자 내용 -->
                 <!-- 이미지 -->
    				<div class="image mt-4">
@@ -212,7 +209,7 @@
                 </div>
             </div>
                 
-            <div id="vitamin" class="tab">
+            <div id="vitamin" class="tab active border-0">
                 <!-- 비타민에 해당하는 상자 내용 -->
                 <!-- 이미지 -->
    				<div class="image mt-4">
