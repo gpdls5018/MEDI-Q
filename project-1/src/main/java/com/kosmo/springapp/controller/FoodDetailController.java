@@ -231,8 +231,8 @@ public class FoodDetailController {
 		 ProfileImageDTO profImg;
 		 try {
 			 MemberDTO member = loginService.selectOne(req,resp);
-			 System.out.println("member.getId() :"+member.getId());
-			 profImg = loginService.selectProfImg(member.getId());
+			 //System.out.println("member.getId() :"+member.getId());
+			 profImg = loginService.selectProfImg(member.getId()==null ? member.getEmail() : member.getId());
 			 userName = member.getName();
 		 }
 		 catch(NullPointerException e) {
