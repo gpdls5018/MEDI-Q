@@ -67,7 +67,10 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
 		String key = payloads.get("sub").toString();
 		payloads.put("id", key);
-		payloads.put("email", key);
+		System.out.println("flag: "+"@".contains(key));
+		if("@".contains(key)) {
+			payloads.put("email", key);
+		}
 		System.out.println("key: "+key);
 
 		return mapper.findMember(payloads);

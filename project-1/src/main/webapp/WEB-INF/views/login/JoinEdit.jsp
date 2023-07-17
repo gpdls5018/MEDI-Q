@@ -28,33 +28,38 @@
 					<div class="row"><!-- 소셜 멤버일 경우 아이디랑 이메일 막아야함!!!!!! -->
 						<div class="col-md-12 form-group">
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-							<div class="d-flex">
-								<input style="max-width: 300px;" type="text" class="form-control" placeholder="아이디" id="id" name="id" value="${member.id }" readonly/> 
-							</div>
-							<input style="max-width: 300px;" type="password" class="form-control my-1" id="password" placeholder="비밀번호" name="password" required/>
-							<input style="max-width: 300px;" type="password" class="form-control" id="pwd" placeholder="확인용 비밀번호" name="pwd" required/>							
-							<input style="max-width: 300px;" type="text" class="form-control my-1" id="email" placeholder="이메일" name="email" value="${member.email }" readonly/>
 							
+								<div class="d-flex">
+									<input style="width: 300px;" type="text" class="form-control" placeholder="아이디" id="id" name="id" value='${empty info.id ? "kim1234" : info.id }' ${empty info.id ? "hidden" : "readonly"}/> 
+								</div>
+								<input style="-width: 300px;" type="password" class="form-control my-1" id="password" placeholder="비밀번호" name="password" value='${empty info.id ? "kim1234!@" : ""}' ${empty info.id ? "hidden" : "required"}/>
+								<input style="width: 300px;" type="password" class="form-control" id="pwd" placeholder="확인용 비밀번호" name="pwd" value='${empty info.id ? "kim1234!@" : ""}' ${empty info.id ? "hidden" : "required"}/>							
+							
+							
+							<input style="width: 300px;" type="text" class="form-control my-1" id="email" placeholder="이메일" name="email" value="${info.email }" readonly/>
+								
 							<!-- 글자색 빨간색, bold 주기 -->
-							<div id="idOK" style="display:none">아이디 6~12자의 영문(소문자),숫자만 입력하세요</div>
-							<div id="passwordOK" style="display:none">비밀번호 8~16자의 영문(대/소문자),숫자,특수문자를 입력하세요</div>
-							<div id="pwdOK" style="display:none">동일한 비밀번호가 아닙니다</div>
+							<c:if test="${not empty info.id }">
+								<div id="passwordOK" style="display:none">비밀번호 8~16자의 영문(대/소문자),숫자,특수문자를 입력하세요</div>
+								<div id="pwdOK" style="display:none">동일한 비밀번호가 아닙니다</div>
+							</c:if>	
 							<div id="emailOK" style="display:none">잘못된 이메일 형식입니다</div>
+							
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 form-group"> 
-							<input style="max-width: 300px;" type="text" class="form-control" id="name" placeholder="이름" name="name" value="${member.name }" required/>
+							<input style="width: 300px;" type="text" class="form-control" id="name" placeholder="이름" name="name" value="${info.name }" required/>
 							<!-- 정규표현식에 맞게 문구변경 -->
 							<c:set var="userBirth" value="${fn:split(member.birth,' ')[0] }"/>
-							<input style="max-width: 300px;" type="date" class="form-control my-1" id="birth" name="birth" value="${userBirth }" data-placeholder="${userBirth }" required aria-required="true"/>
+							<input style="width: 300px;" type="date" class="form-control my-1" id="birth" name="birth" value="${userBirth }" data-placeholder='${empty userBirth ? "생년월일" : userBirth}' required aria-required="true"/>
 							<div class="d-flex align-items-center">
 								<div class="custom-control custom-radio"><!-- radio box도 무조건 required??? -->
-									<input type="radio" class="custom-control-input" name="gender" id="male" value="M" ${member.gender eq "M" ? "checked" :"" } required/>
+									<input type="radio" class="custom-control-input" name="gender" id="male" value="M" ${info.gender eq "M" ? "checked" :"" } required/>
 									<label class="custom-control-label mr-3" for="male">남자</label>
 								</div>
 								<div class="custom-control custom-radio">
-									<input type="radio" class="custom-control-input" name="gender" id="female" value="F" ${member.gender eq "F" ? "checked" :"" }/> 
+									<input type="radio" class="custom-control-input" name="gender" id="female" value="F" ${info.gender eq "F" ? "checked" :"" }/> 
 									<label class="custom-control-label" for="female">여자</label>
 								</div>
 							</div>
@@ -70,8 +75,11 @@
 		</div>
 	</div>
 </div>
+<c:set var="id" value="${info.id }"/>
 </body>
 <script>
+	var id = '<c:out value="${id}"/>'
+
 	//캘린더 값이 변경될 때 바로 변하도록(data-placeholder 때문)
 	var birth = document.querySelector('input[type=date]');
 	birth.onchange = function(){
@@ -139,20 +147,20 @@
 		}
 		else{
 			nameFlag = true;
-			$('#nameOK').html('사용가능한 이름입니다').css({'display':'','color':'blue','font-size':'small','font-weight':'bold'});
+			$('#nameOK').html('');
 		}
 	})/////////////
 	
 	//자바스크립트 유효성 검사
 	document.forms[0].onsubmit = function(e){
-		
+
 		var isValidate = false;
 		if(!this.checkValidity()){
             this.classList.add('was-validated'); //div에 지정한 valid/invalid 메시지 뿌리기 위해
             
             if(!$('#password').val()){
             	$('#passwordOK').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
-            	isValidate = false;
+            	isValidate = !id.length ? true : false;
             }
             else{
             	$('#passwordOK').css('display','none');
@@ -160,7 +168,7 @@
             }
             if(!$('#pwd').val()){
             	$('#pwdOK').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
-            	isValidate = false;
+            	isValidate = !id.length ? true : false;
             }
             else{
             	$('#pwdOK').css('display','none');
@@ -202,12 +210,9 @@
             	isValidate = true;
             }
         	
-            
+            console.log('isValidate:',isValidate)
             if(!isValidate){
             	return false; //submit 이벤트 취소
-            }
-            else{
-            	return false;
             }
             return true;
         }        

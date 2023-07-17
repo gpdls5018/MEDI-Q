@@ -50,8 +50,16 @@ public class MemberDTO {
 	@Pattern(regexp = REGEX_EMAIL,message = "잘못된 이메일 형식입니다")
 	private String email;
 	
-	private Date reg_Date;
+	private Date regDate;//회원가입일
 	
-	private String prof_Img_Fl;
+	private String active;//활동여부
 	
+	private Date inactive_date;//탈퇴일
+	
+	private String prof_Img_Fl;//프로필 이미지 여부
+	
+	//SOCIAL 테이블 용
+	private String site; //소셜 로그인 사이트
+	private String update_Info;//정부 추가 여부
+
 }

@@ -22,7 +22,7 @@
 	</select>
 	
 	<insert id="save" parameterType="memberDto">
-		INSERT INTO MEMBER VALUES(#{id},#{name},#{password},#{birth},#{gender},#{email},SYSDATE,'Y','N',DEFAULT,'N')
+		INSERT INTO MEMBER VALUES(#{id},#{name},#{password},#{birth},#{gender},#{email},SYSDATE,'Y',DEFAULT,'N')
 	</insert>
 	
 	<select id="searchIdNPwd" parameterType="Map" resultType="memberDto">
@@ -52,7 +52,12 @@
 	</select>
 	
 	<update id="update" parameterType="Map">
-		UPDATE MEMBER SET NAME=#{name},PASSWORD=#{password},BIRTH=#{birth},GENDER=#{gender},EMAIL=#{email} WHERE ID=#{id}
+		<if test="id != 'kim1234'">
+			UPDATE MEMBER SET NAME=#{name},PASSWORD=#{password},BIRTH=#{birth},GENDER=#{gender},EMAIL=#{email} WHERE ID=#{id}
+		</if>
+		<if test="id == 'kim1234'">
+			UPDATE SOCIAL SET NAME=#{name},BIRTH=#{birth},GENDER=#{gender},UPDATE_INFO='Y' WHERE EMAIL=#{email}
+		</if>
 	</update>
 	
 	<!-- member / social if문 구분해야함 -->

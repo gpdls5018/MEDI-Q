@@ -36,7 +36,7 @@ public class SocialDTO {
 	
 	private Date reg_Date;
 	
-	private String update_Info;
+	private String update_Info;//정부 추가 여부
 	
 	@Pattern(regexp = REGEX_NAME, message = "한글 2자 이상 입력하세요")
 	private String name;

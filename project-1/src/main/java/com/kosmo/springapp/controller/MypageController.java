@@ -173,7 +173,9 @@ public class MypageController {
 	@PostMapping("/JoinEditOk.do")
 	@ResponseBody
 	public String joinEditOk(@Valid MemberDTO member, Errors errors) {
+		System.out.println("컨트롤러");
 		if (errors.hasErrors()) {
+			System.out.println("에러: "+errors);
 			return "<script>history.back();</script>";
 		}
 		int affected = loginService.update(member);
