@@ -357,21 +357,9 @@
         	<div class="modal-body">
 		        <div class="ml-5">
 		          <ul class="list-unstyled d-flex" id="searchFoodList" style="flex-wrap: wrap;">
-		            <li class="food-li m-2" style="text-align: center;flex-basis: 100px;">
+		            <li class="food-li m-2" style="text-align: center;flex-basis: 100px;display:None">
 		              <img src="<c:url value="resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
-		              <div style="font-size: 15px;color: #939393;width:150px;">비피도박테리움브레브비피더스균A</div>
-		            </li>
-		            <li class="food-li m-2" style="text-align: center;flex-basis: 100px;">
-		              <img src="<c:url value="resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
-		              <div style="font-size: 15px;color: #939393;width:150px;">노바락토 알파 포스트바이오틱스</div>
-		            </li>
-		            <li class="food-li m-2" style="text-align: center;flex-basis: 100px;">
-		              <img src="<c:url value="resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
-		              <div style="font-size: 15px;color: #939393;width:150px;">포텐티</div>
-		            </li>
-		            <li class="food-li m-2" style="text-align: center;flex-basis: 100px;">
-		              <img src="<c:url value="resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
-		              <div style="font-size: 15px;color: #939393;width:150px;">이뮨젤리</div>
+		              <div style="font-size: 15px;color: #939393;width:150px;"></div>
 		            </li>
 		          </ul>
 	          </div>
@@ -422,6 +410,7 @@
 			   	}
 			   	searchFood.forEach(function(item) {
 			   		var li = document.querySelector('.food-li').cloneNode(true);
+			   		li.style.display = '';
 			   		li.classList.replace('food-li-checked','food-li');
 			   		if (item['IMGURL']===undefined) {
 			   			item['IMGURL'] = 'http://localhost:9090/resources/images/thumbnail_img/NO_IMG.jpeg';
