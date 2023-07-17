@@ -503,14 +503,25 @@
                 <ul class="unlist" style="padding-inline-start: 0px;">
 				<c:forEach items="${listData}" var="item" varStatus="status">
 	            	<c:if test="${status.index < 3}">
+	            		<c:choose>
+				          <c:when test="${status.index == 0}">
+				            <img src="<c:url value='/resources/images/tsimages/rank_crown_gold_48.svg'/>" style="top:10px; left:20px; width:50px; height:40px;" alt="*">
+				          </c:when>
+				          <c:when test="${status.index == 1}">
+				            <img src="<c:url value='/resources/images/tsimages/rank_crown_silver_48.svg'/>" style="left:20px; width:50px; height:40px;" alt="*">
+				          </c:when>
+				          <c:when test="${status.index == 2}">
+				            <img src="<c:url value='/resources/images/tsimages/rank_crown_bronze_48.svg'/>" style="left:20px; width:50px; height:40px;" alt="*">
+				          </c:when>
+						</c:choose>
                     <li>
                         <div class="image" >
 	            			<a href="/detail.do?no=${item.no}" style="text-decoration:none;">
 	                            <c:if test="${not empty item.imgURL}">
-									<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
+									<img src="${item.imgURL }" class="item-img" alt="${item.productName}" style="height: 70px">
 								</c:if>
 		          				<c:if test="${empty item.imgURL}">	
-									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" style="height: 70px" alt="${item.productName}">
 								</c:if>
                     		</a>
                         </div>

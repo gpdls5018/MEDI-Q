@@ -36,21 +36,24 @@
          }
            	#banner-inner-wrapper1 {
 				height: 100%;
-				background-image: url("https://www.foodsafetykorea.go.kr/common/ecmFileView.do?ecm_file_no=1OXM3CE3PMT");
+				background-image: url("https://newsroom-prd-data.s3.ap-northeast-2.amazonaws.com/wp-content/uploads/2021/01/digital_health_care_Main.jpg");
 				box-sizing: border-box;
 				background-size: cover;
+				background-position: center top 30%;
                }
             #banner-inner-wrapper2 {
 				height: 100%;
 				background-image: url("http://cdn.hitnews.co.kr/news/photo/202303/44381_56651_1017.jpg");
 				box-sizing: border-box;
 				background-size: cover;
+				background-position: center top 20%;
                }
            	#banner-inner-wrapper3 {
 				height: 100%;
-				background-image: url("https://cdn.pharmnews.com/news/photo/202307/226775_99331_76.jpg")  ;
+				background-image: url("https://cdn.pharmnews.com/news/photo/202208/208563_78717_2239.jpg")  ;
 				box-sizing: border-box;
 				background-size: cover;
+				background-position: center top 50%;
                }
 			#banner-inner-wrapper4 {
 				height: 100%;
