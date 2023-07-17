@@ -66,19 +66,31 @@
 			    <video id="video" autoplay muted loop>
 	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
-			    <div class="videologo">
-			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="100" height="50">
-	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="200" height="50">
+			    <div class="videologo" style=" font-size:30px; color:white; margin-top: 220px; margin-bottom: 220px; margin-left: 480px; margin-right: 480px;">
+	           		<!-- 동영상 화면 문구 -->
+		        	<div class="text-center" style="display: flex; align-items: center; justify-content: center; font-size: 75px; font-weight:bold;">건강고민은&nbsp;  
+						<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="120" height="75">
+	           			<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="300" height="75">
+					</div>
+		        	<br/>영양제 분석, 건강예측 AI 등 저희만의 특별한 서비스를 이용해보세요
+		        	<!-- 홈버튼 -->
+		        	<div style="display: flex; align-items: center; justify-content: center;">
+			        	<div id="video-controls" style="margin-top:250px; margin-right: 280px;">
+					        <button class="btn" onclick="closeVideo()" style="width:160px; background-color: #F7D358;">
+							<img src="/resources/images/tsimages/free-icon-home-3771140.png" style="opacity: 0.7;" width="25" height="25">
+ 							&nbsp;홈으로 이동</button>
+					    </div>
+					    <!-- 그만보기 -->
+					    <div id="video-label" style=" margin-top:250px; margin-right: 370px; display: flex; align-items: center; justify-content: center;">
+				    	    <label for="stop-video-checkbox" style="font-size:20px; color:white; margin-bottom:30px; font-weight: normal;">
+					        오늘 하루 그만 보기
+					        <input type="checkbox" id="stop-video-checkbox" style="width:20px;">
+					        </label>
+					    </div>
+					</div>
 			    </div>
-			    <div id="video-controls">
-			      <button class="btn" onclick="closeVideo()">Home</button>
-			    </div>
-			    <div id="video-label">
-		    	  <label for="stop-video-checkbox">
-			        동영상 오늘 하루 그만 보기
-			        <input type="checkbox" id="stop-video-checkbox">
-			      </label>
-			    </div>
+			    
+			    
 			</div>
 
 <!-- 메인 바디 부분 -->
@@ -503,14 +515,25 @@
                 <ul class="unlist" style="padding-inline-start: 0px;">
 				<c:forEach items="${listData}" var="item" varStatus="status">
 	            	<c:if test="${status.index < 3}">
+	            		<c:choose>
+				          <c:when test="${status.index == 0}">
+				            <img src="<c:url value='/resources/images/tsimages/rank_crown_gold_48.svg'/>" style="top:10px; left:20px; width:50px; height:40px;" alt="*">
+				          </c:when>
+				          <c:when test="${status.index == 1}">
+				            <img src="<c:url value='/resources/images/tsimages/rank_crown_silver_48.svg'/>" style="left:20px; width:50px; height:40px;" alt="*">
+				          </c:when>
+				          <c:when test="${status.index == 2}">
+				            <img src="<c:url value='/resources/images/tsimages/rank_crown_bronze_48.svg'/>" style="left:20px; width:50px; height:40px;" alt="*">
+				          </c:when>
+						</c:choose>
                     <li>
                         <div class="image" >
 	            			<a href="/detail.do?no=${item.no}" style="text-decoration:none;">
 	                            <c:if test="${not empty item.imgURL}">
-									<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
+									<img src="${item.imgURL }" class="item-img" alt="${item.productName}" style="height: 70px">
 								</c:if>
 		          				<c:if test="${empty item.imgURL}">	
-									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" style="height: 70px" alt="${item.productName}">
 								</c:if>
                     		</a>
                         </div>

@@ -12,16 +12,16 @@
 <div class="all-wrap">
 	<div class="all-wrap-in all-wrap-in-070">
 		<div class="ingredient-search-top">
-			<div class="content">
+			<div class="content" style="padding-bottom: 20px;">
 			<!-- 건기식 또는 회사이름을 적었을 경우 -->
 			<c:if test="${not empty foodname}">
 				<div class="top-wrap-070">
-					<h1 class="txt2" style="margin-bottom: 24px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>${foodname}</span>에 대한 <br class="u680">제품 검색 결과 <span>${listData.size() + listData2.size()}</span>건</h1>
+					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>💡 ${foodname}</span>에 대한 <br class="u680">제품 검색 결과 <span>${listData.size() + listData2.size()}</span>건</h1>
 				</div>
 				<div class="ipt-main-wrap">
 				<form action="/functionfood/select.do">
 					<div class="ipt-main-wrap-in">
-						<input id="searchProduct" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1">
+						<input id="searchProduct" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
 						<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct()"></button>
 					</div>
 				</form>
@@ -100,12 +100,12 @@
 				<!-- 화면을 처음들어 갔을 경우 건기식 또는 회사이름을 안적었을 경우 -->
 				<c:if test="${empty foodname}">
 				<div class="top-wrap-070">
-					<h1 class="txt2" style="margin-bottom: 30px; text-align: center; font-size: 2.5em;"><b>💊 현재 인기있는 <span> 건강기능식품</span></b></h1>
+					<h1 class="txt2" style="margin-bottom: 30px; text-align: center; font-size: 30px;"><b>💊 현재 인기있는 <span> 건강기능식품</span></b></h1>
 				</div>
 				<div class="ipt-main-wrap">
 				<form action="/functionfood/select.do">
 					<div class="ipt-main-wrap-in">
-						<input id="searchProduct" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1">
+						<input id="searchProduct" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
 						<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct()"></button>
 					</div>
 				</form>

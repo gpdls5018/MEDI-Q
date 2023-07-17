@@ -167,7 +167,7 @@
 	
 
 	<!-- 검색창 -->
-	<div class="search d-flex justify-content-center" style="margin-top: 120px;">
+	<div class="search d-flex justify-content-center" style="padding-top: 120px;">
 	    <input id="searchInput" style="font-size:17px;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
 	    <button type="submit" class="searchButton">
         <i class="fa fa-search"></i>
