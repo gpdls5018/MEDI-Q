@@ -111,21 +111,23 @@
             <div id="top-banner-1" class="banner">
 	            <a href="#">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper1" >
+	              	 <p style="color: grey;">어떤 건강고민이 있으신가요?</p>
+	                 <h1 style="font-size: 57px;">😀 MEDI-Q와 함께 건강한 삶을 시작해보세요!</h1>
 	              </div>
 	            </a>
             </div>
             <div id="top-banner-2" class="banner" id="tsbaimg2">
 	            <a href="<c:url value="/analyzeMyFood.do"/>">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper2"  >
-	               	 <p style="color:gray;">과도하거나 부족하지 않을까?</p>
-	                 <h1>💊 영양제를 분석 받으세요!</h1>
+	               	 <p style="color: grey;">과도하거나 부족하지 않을까?</p>
+	                 <h1>💊 복용 중인 영양제를 분석받으세요!</h1>
 	              </div>
 	            </a>
             </div>
             <div id="top-banner-3" class="banner" id="tsbaimg3">
 	            <a href="#">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper3" >
-	              	 <p style="color:gray;">내가 먹고 있는 영양제 괜찮을까?</p>
+	              	 <p style="color: grey;">내가 먹고 있는 영양제 괜찮을까?</p>
 	                 <h1>📷 사진으로 영양제를 검색해보세요!</h1>       
 	              </div>
 	            </a>
@@ -133,8 +135,8 @@
             <div id="top-banner-4" class="banner" id="tsbaimg4">
 	            <a href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper4" >
-	              	 <p style="color:gray;">내 위암 발병률은 몇 퍼센트일까?</p>
-	                 <h1>😥 주요 질환의 발병<br/> 위험도를 예측해드려요!</h1>
+	              	 <p style="color: grey;">내 위암 발병률은 몇 퍼센트일까?</p>
+	              	 <h1 style="font-size: 57px;">🧬 주요 질환의 발병 위험도를 예측해드려요!</h1>
 	              </div>
 	            </a>
             </div>
