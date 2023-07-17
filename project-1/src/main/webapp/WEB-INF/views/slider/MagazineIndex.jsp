@@ -81,13 +81,14 @@
 		        <div class="row my-1" id="video-container"></div>
 		        
 		        <div class="magimg d-flex py-3 justify-content-center">
-			        <div class="tsmg"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>"></a></div>
+			        <div class="tsmg"><a href="<c:url value="/magazine.do?no=06"/>"><img src="<c:url value="/resources/images/thumbnail_img/SkyM_Yoo.jpg"/>"></a></div>
 		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>"></a></div>
 		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>"></a></div>
 		        </div>
 		        <div class="magimg d-flex justify-content-center mb-5">
 		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>"></a></div>
 		            <div class="tsmg"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>"></a></div>
+	        		<div class="tsmg"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>"></a></div>
 	        	</div>
 		    </div>    
 	     </article>
