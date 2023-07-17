@@ -121,9 +121,13 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 				message = emailService.sendMessage(email,pwd,mode);
 			}
 		}
+		else {
+			message = "Not-Member";
+		}
 		return message;
 	}
 
+	//소셜 로그인 시
 	public String socialLogin(Map userInfo,String accessToken) {
 		String email = userInfo.get("email").toString();
 		

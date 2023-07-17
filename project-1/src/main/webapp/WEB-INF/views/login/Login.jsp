@@ -244,22 +244,22 @@ p{
         </section> <!--login_section-->
 		<div class="modal fade" id="modalSearchIdNPwd">	
 			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content" style="width: 450px">
+				<div class="modal-content" style="width: 100rem">
 					<!-- Modal Header -->
 					<div class="modal-header">
-						<h5 class="modal-title">타이틀</h5>
+						<h4 class="modal-title">타이틀</h4>
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<!-- Modal body -->
-					<div class="modal-body d-flex" style="height: 190px">
+					<div class="modal-body d-flex" style="height: 15rem">
 						<form class="form-inline" action="" method="POST">
-							<h6 class="ml-2 text">내용</h6>
+							<h5 class="ml-2 text">내용</h5>
 							<input type="hidden" name="mode"/>
-							<input type="text" class="form-control mx-2" name="email" placeholder="이메일 입력해주세요" style="width: 300px"/>
-							<input type="text" class="form-control mx-2" id="user" name="id" placeholder="아이디를 입력해주세요" style="width: 300px; display: none"/>
-							<input type="text" class="form-control mx-2 my-2" name="name" placeholder="이름를 입력해주세요"  style="width: 300px;"/>
+							<input type="text" class="form-control mx-2" name="email" placeholder="이메일 입력해주세요" style="font-size:1.2rem; width: 300px; height: 35px;"/>
+							<input type="text" class="form-control mx-2" id="user" name="id" placeholder="아이디를 입력해주세요" style="font-size:1.2rem; width: 300px; height: 35px; display: none"/>
+							<input type="text" class="form-control mx-2 my-2" name="name" placeholder="이름를 입력해주세요"  style="font-size:1.2rem; width: 300px; height: 35px;"/>
 							<button type="button" class="btn btn-info mx-3 submit">확인</button>
-							<span id="checkOK" class="mx-3" style="display:none"></span>
+							<span id="checkOK" class="mx-3" style="font-size:1.2rem; display:none"></span>
 						</form>			
 					</div>
 				</div>
@@ -351,11 +351,16 @@ p{
 								name:$('input[name=name]').val(),
 								mode:$('input[name=mode]').val()}
 					}).done(function(data){
-						$('#checkOK').css({'display':'','color':'black'});
-						if(data.mode=='ID'){
+						if(data.message=='Not-Member'){
+							$('#checkOK').css({'display':'','color':'red'});
+							$('#checkOK').html("입력하신 정보의 회원이 없습니다<br/>이메일과 이름을 확인해주세요");
+						}
+						else if(data.mode=='ID'){
+							$('#checkOK').css({'display':'','color':'black'});
 							$('#checkOK').html("입력하신 이메일로 아이디 전송을 완료했습니다");
 						}
 						else{//이메일 보냈다고 문자남기기
+							$('#checkOK').css({'display':'','color':'black'});
 							$('#checkOK').html("입력하신 이메일로 비밀번호 전송을 완료했습니다");
 						}
 					}).fail(function(){
