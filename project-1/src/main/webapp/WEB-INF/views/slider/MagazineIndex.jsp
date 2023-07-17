@@ -90,9 +90,10 @@
 		    </div>    
 	     </article>
 	     
-	     <!-- 오른쪽 슬라이드 -->
+	     <!-- 오른쪽 슬라이드
+	     
 		<aside class="tsidebar fixedsticky">
-			<!--  로그인 목록 창 -->
+			-- 로그인 목록 창 --
 			<div class="login-section" style="width: 230px; height: 1045px;">
 			<div class="custom-sidebar">
 				<img src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="25" height="25">
@@ -105,9 +106,9 @@
                 <ul class="sidemgrg mt-3" style=" list-style:none; padding-inline-start: 0px;">
                     <a href="<c:url value="/magazine.do?no=01"/>" >
                         <div class="image d-flex">
-                        <!-- 
+                        
                         	<img src="<c:url value="/resources/images/tsimages/rank_crown_gold_48.svg"/>" style=" position: absolute; left:40px; width:50px; height:40px; z-index:20; " alt="*">
-                       	-->
+                       	
                         	<img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" alt="*" style="width:300px; height:150px;">
                         </div>
                         <div style="align-items: center; margin-top:20px; margin-left:10px; justify-content: center; text-align: start; line-height: 3px; font-weight:400;">
@@ -121,9 +122,9 @@
                     </a>
                      <a href="<c:url value="/magazine.do?no=05"/>" >
                         <div class="image d-flex sidebar-title">
-                        <!-- 
+                        
                              <img src="<c:url value="/resources/images/tsimages/rank_crown_bronze_48.svg"/>" style=" position: absolute; left:40px; width:50px; height:40px; z-index:20; " alt="*">
-                         -->
+                         
                         	 <img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>" alt="*" style="width:300px; height:150px;">
                         </div>
                         <div style="align-items: center; margin-top:20px; margin-left:10px; justify-content: center; text-align: start; line-height: 3px; font-weight:400;">
@@ -138,9 +139,9 @@
                     
                     <a href="<c:url value="/magazine.do?no=02"/>" >
                         <div class="image d-flex sidebar-title">
-                        <!-- 
+                        
 	                        <img src="<c:url value="/resources/images/tsimages/rank_crown_silver_48.svg"/>" style=" position: absolute; left:40px; width:50px; height:40px; z-index:20; " alt="*">
-                       	 -->
+                       	 
                         	<img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" alt="*" style="width:300px; height:150px;">
                         </div>
                         <div style="align-items: center; margin-top:20px; margin-left:10px; justify-content: center; text-align: start; line-height: 3px; font-weight:400;">
@@ -156,6 +157,7 @@
                  </ul>
 			</div>
 		</aside>
+		-->
 	</section>
 
 

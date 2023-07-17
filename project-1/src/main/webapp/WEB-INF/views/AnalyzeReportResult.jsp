@@ -44,7 +44,12 @@
 				여
 			</c:if>
 			<span style="color:#868686;font-size:15px;">나이</span>
-			${memberDto.birth}
+			<fmt:parseDate value="${memberDto.birth}" var="birth" pattern="yyyy-MM-dd HH:mm:ss"/>
+			<fmt:formatDate value="${birth}" var="birth1" pattern="yyyy"/>
+			<fmt:parseNumber value="${birth.time / (1000*60*60*24*365)}" integerOnly="true" var="birthYear"></fmt:parseNumber>
+			<c:set var="today" value="<%=new java.util.Date()%>" />
+			<c:set var="nowDate"><fmt:formatDate value="${today}" pattern="yyyy" /></c:set> 
+			${nowDate - birth1}
 			</div>
 			
 			<div class="jumbotron effect-custom-font" style="border-radius:25px;">
@@ -125,7 +130,7 @@
 			</c:forEach>
 			<div class="effect-custom-font m-1" style="font-size:30px;color:#868686;text-align:center;">5대 영양소</div>
 			<div class="effect-custom-font">
-				<div class="row jumbotron">
+				<div class="row jumbotron m-1"  style="border-radius:25px;">
 					<div class="col-6" style="border-radius:15px;">
 						현재 섭취하고 있는 5대 영양소입니다
 						<ul class="list-unstyled mt-3">
