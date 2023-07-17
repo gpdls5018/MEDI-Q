@@ -10,6 +10,24 @@
 		    FROM REVIEWTABLE
 		    GROUP BY R_PRODUCTNO
 		)R ON F.NO = R.R_PRODUCTNO 
+		where (productname LIKE '%${foodname}%') OR (company LIKE '%${foodname}%') OR (nutrient LIKE '%${foodname}%') ORDER by R.AVG_SCORE DESC, R.REVIEW_COUNT DESC,imgurl ASC
+	</select>
+	
+	<select id="selectFoodListFromNutrientNameScore" parameterType="String" resultType="AvgStarScoreCountDTO">
+	    select * from foodtable F JOIN (
+		    SELECT R_PRODUCTNO, AVG(STARSCORE) AS AVG_SCORE, COUNT(*) AS REVIEW_COUNT
+		    FROM REVIEWTABLE
+		    GROUP BY R_PRODUCTNO
+		)R ON F.NO = R.R_PRODUCTNO 
+		where nutrient LIKE '%${foodname}%' ORDER by R.AVG_SCORE DESC, R.REVIEW_COUNT DESC,imgurl ASC
+	</select>
+	
+	<select id="selectFoodListFromCompanyNameScore" parameterType="String" resultType="AvgStarScoreCountDTO">
+	    select * from foodtable F JOIN (
+		    SELECT R_PRODUCTNO, AVG(STARSCORE) AS AVG_SCORE, COUNT(*) AS REVIEW_COUNT
+		    FROM REVIEWTABLE
+		    GROUP BY R_PRODUCTNO
+		)R ON F.NO = R.R_PRODUCTNO 
 		where (productname LIKE '%${foodname}%') OR (company LIKE '%${foodname}%') ORDER by R.AVG_SCORE DESC, R.REVIEW_COUNT DESC,imgurl ASC
 	</select>
 	

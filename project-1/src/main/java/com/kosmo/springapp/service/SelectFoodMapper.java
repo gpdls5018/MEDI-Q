@@ -11,6 +11,8 @@ import com.kosmo.springapp.model.FunctionalFoodListDTO;
 @Mapper
 public interface SelectFoodMapper {
 	List<AvgStarScoreCountDTO> selectFoodListFromNameScore(String foodname);
+	List<AvgStarScoreCountDTO> selectFoodListFromNutrientNameScore(String foodname);
+	List<AvgStarScoreCountDTO> selectFoodListFromCompanyNameScore(String foodname);
 	List<FunctionalFoodListDTO> selectFoodListFromName(String foodname);
 	List<AvgStarScoreCountDTO> selectFoodListFoodScore();
 	List<String> RankingKeyWord();
