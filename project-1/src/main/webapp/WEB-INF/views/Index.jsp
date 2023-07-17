@@ -66,7 +66,6 @@
 			    <video id="video" autoplay muted loop>
 	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
-			    <div>
 			    <div class="videologo">
 			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="100" height="50">
 	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="200" height="50">
@@ -85,7 +84,6 @@
 			        <input type="checkbox" id="stop-video-checkbox" style="width:20px;">
 			      </label>
 			    </div>
-			    
 			</div>
 
 <!-- 메인 바디 부분 -->
@@ -189,7 +187,7 @@
 	                            <p class="jeiOCr1" style="">${analyzeReport.score}<span class="ml-3" style="color:black; font-size: 20px;">점</span></p>
 	                        </div>
 	                        <div class="ZyIFk1 d-block mt-3" style="margin-left: 20px;">
-	                            <div><span style="color:#545454; font-weight: bold;">섭취 목적</span> : &nbsp; ${analyzeReport.takePurposes}</div>
+	                            <div><span style="color:#545454; font-weight: bold;">섭취 목적</span> :<br/> ${analyzeReport.takePurposes}</div>
 	                            <div><span style="color:#545454; font-weight: bold;">섭취중인 영양제</span> :<br/> ${analyzeReport.takeFoods}</div>
 	                        </div>	                   
          </c:if>
