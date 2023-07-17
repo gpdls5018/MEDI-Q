@@ -141,11 +141,20 @@ z-index: 0;
 bottom: -25px;
 left: 146px;
 }
+.back-img{
+	width: 1300px;
+	height: 230px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size:50px;
+}
 </style>
 
 <div class="container">
 <div class="empty-space" style="height:100px;"></div>
-    <h1 class="display-4 mt-5" style="background-color: lightsteelblue;width:100%">${listOne.productName}</h1>
+    <p class="display-4 mt-5 back-img" style="background-image: url('<c:url value="/resources/images/nutrient_img/bg_bl.png"/>');">${listOne.productName}</p>
     
     <h1 class="display-4 mt-5">
     <c:if test="${empty listOne.imgURL}" var="emptyIMG">

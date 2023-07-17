@@ -64,6 +64,15 @@
 	    transform: translate(-50%, -50%);
 	    opacity: 0;
 	}
+	.register__step__wr .step__wr .on .step__check img {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+	    opacity: 1;
+	    width: 20px;
+	}
+	
 	.register__step__wr .step__wr .step00 .step {
 	    color: #152358;
 	    font-size: 14px;
