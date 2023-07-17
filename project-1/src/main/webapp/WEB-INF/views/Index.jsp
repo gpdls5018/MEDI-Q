@@ -66,19 +66,26 @@
 			    <video id="video" autoplay muted loop>
 	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
+			    <div>
 			    <div class="videologo">
 			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="100" height="50">
 	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="200" height="50">
+	           		<!-- 동영상 화면 문구 -->
+			        <div style=" font-size:20px; color:white;">
+			        	<div class="text-center" style="font-size: 40px; font-weight:bold;">건강고민은 <span style="color: #EF605D;">MEDI-Q</span></div>
+			        	<br/>영양제 분석, 건강예측 AI, 건강관리기록 등 저희만의 특별한 서비스를 이용해보세요!
+		        	</div>
 			    </div>
 			    <div id="video-controls">
 			      <button class="btn" onclick="closeVideo()">Home</button>
 			    </div>
 			    <div id="video-label">
-		    	  <label for="stop-video-checkbox">
+		    	    <label for="stop-video-checkbox" style="color:white;">
 			        동영상 오늘 하루 그만 보기
-			        <input type="checkbox" id="stop-video-checkbox">
+			        <input type="checkbox" id="stop-video-checkbox" style="width:20px;">
 			      </label>
 			    </div>
+			    
 			</div>
 
 <!-- 메인 바디 부분 -->
