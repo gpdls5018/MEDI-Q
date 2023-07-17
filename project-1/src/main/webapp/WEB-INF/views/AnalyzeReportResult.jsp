@@ -130,7 +130,7 @@
 			</c:forEach>
 			<div class="effect-custom-font m-1" style="font-size:30px;color:#868686;text-align:center;">5대 영양소</div>
 			<div class="effect-custom-font">
-				<div class="row jumbotron">
+				<div class="row jumbotron m-1"  style="border-radius:25px;">
 					<div class="col-6" style="border-radius:15px;">
 						현재 섭취하고 있는 5대 영양소입니다
 						<ul class="list-unstyled mt-3">
