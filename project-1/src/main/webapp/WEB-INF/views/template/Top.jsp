@@ -438,9 +438,9 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 	            </a>
 	          </h3>
 	          <div class="ditem tstm3">
-	            <a href="<c:url value="/ranking/selectfood.do"/>">성분 검색</a>
+	            <a href="<c:url value="/ranking/selectfoodnutrient.do"/>">성분 검색</a>
 	 			
-	            <a href="#">제품/브랜드 검색</a>
+	            <a href="<c:url value="/ranking/selectfoodcompany.do"/>">제품/브랜드 검색</a>
 	          </div>
 	        </div>
 	        <div id="three" class="section">

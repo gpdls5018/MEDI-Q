@@ -51,5 +51,15 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	@Override
 	public void newWord(String foodname) {
 		mapper.newWord(foodname);
+	}
+
+	@Override
+	public List<AvgStarScoreCountDTO> selectFoodListFromNutrientNameScore(String foodname) {
+		return mapper.selectFoodListFromNutrientNameScore(foodname);
+	}
+
+	@Override
+	public List<AvgStarScoreCountDTO> selectFoodListFromCompanyNameScore(String foodname) {
+		return mapper.selectFoodListFromCompanyNameScore(foodname);
 	}	
 }

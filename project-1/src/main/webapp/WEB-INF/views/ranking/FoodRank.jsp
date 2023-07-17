@@ -13,29 +13,71 @@
 	<div class="all-wrap-in all-wrap-in-070">
 		<div class="ingredient-search-top">
 			<div class="content" style="padding-bottom: 20px;">
+			${casesel }
 			<!-- 건기식 또는 회사이름을 적었을 경우 -->
 			<c:if test="${not empty foodname}">
 				<div class="top-wrap-070">
 					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>💡 ${foodname}</span>에 대한 <br class="u680">제품 검색 결과 <span>${listData.size() + listData2.size()}</span>건</h1>
 				</div>
 				<div class="ipt-main-wrap">
-				<form action="/functionfood/select.do">
-					<div class="ipt-main-wrap-in">
-						<input id="searchProduct" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
-						<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct()"></button>
+				<c:if test="${casesel == 1 }">
+					<form action="/functionfood/select.do">
+						<div class="ipt-main-wrap-in">
+							<input id="searchProduct1" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
+							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct1()"></button>
+						</div>
+					</form>
+					</div><!-- ipt-main-wrap : 끝 -->
+					<div class="search-etc">
+						<span class="s-txt1">인기 검색어</span>
+						<div class="search-keywords">
+							<c:forEach items="${RankingKeyWord }" var="Keyword" varStatus="status">
+								<c:if test="${status.index < 5}">
+									<a tabindex="0" class="search-keyword" href="/functionfood/select.do?foodname=${Keyword }">${Keyword }</a>
+								</c:if>
+							</c:forEach>
+						</div>
 					</div>
-				</form>
-				</div><!-- ipt-main-wrap : 끝 -->
+				</c:if>
+				<c:if test="${casesel == 2}">
+					<form action="/functionfood/selectnutrient.do">
+						<div class="ipt-main-wrap-in">
+							<input id="searchProduct2" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
+							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct2()"></button>
+						</div>
+					</form>
+					</div><!-- ipt-main-wrap : 끝 -->
+					<div class="search-etc">
+						<span class="s-txt1">인기 검색어</span>
+						<div class="search-keywords">
+							<c:forEach items="${RankingKeyWord }" var="Keyword" varStatus="status">
+								<c:if test="${status.index < 5}">
+									<a tabindex="0" class="search-keyword" href="/functionfood/selectnutrient.do?foodname=${Keyword }">${Keyword }</a>
+								</c:if>
+							</c:forEach>
+						</div>
+					</div>
+				</c:if>
+				<c:if test="${casesel == 3}">
+					<form action="/functionfood/selectcompany.do">
+						<div class="ipt-main-wrap-in">
+							<input id="searchProduct3" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
+							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct3()"></button>
+						</div>
+					</form>
+					</div><!-- ipt-main-wrap : 끝 -->
 				<div class="search-etc">
 					<span class="s-txt1">인기 검색어</span>
 					<div class="search-keywords">
 						<c:forEach items="${RankingKeyWord }" var="Keyword" varStatus="status">
 							<c:if test="${status.index < 5}">
-								<a tabindex="0" class="search-keyword" href="/functionfood/select.do?foodname=${Keyword }">${Keyword }</a>
+								<a tabindex="0" class="search-keyword" href="/functionfood/selectcompany.do?foodname=${Keyword }">${Keyword }</a>
 							</c:if>
 						</c:forEach>
 					</div>
 				</div>
+				</c:if>
+				
 			</div>
 		</div>
 		<div class="new-wide-wrap new-wide-wrap-070">
@@ -98,27 +140,75 @@
 				
 				<!-- 화면을 처음들어 갔을 경우 건기식 또는 회사이름을 안적었을 경우 -->
 				<c:if test="${empty foodname}">
-				<div class="top-wrap-070">
-					<h1 class="txt2" style="margin-bottom: 30px; text-align: center; font-size: 30px;"><b>💊 현재 인기있는 <span> 건강기능식품</span></b></h1>
-				</div>
-				<div class="ipt-main-wrap">
-				<form action="/functionfood/select.do">
-					<div class="ipt-main-wrap-in">
-						<input id="searchProduct" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
-						<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct()"></button>
+				<c:if test="${casesel == 1 }">
+					<div class="top-wrap-070">
+						<h1 class="txt2" style="margin-bottom: 30px; text-align: center; font-size: 30px;"><b>💊 현재 인기있는 <span> 건강기능식품</span></b></h1>
 					</div>
-				</form>
-				</div><!-- ipt-main-wrap : 끝 -->
-				<div class="search-etc">
-					<span class="s-txt1">인기 검색어</span>
-					<div class="search-keywords">
-						<c:forEach items="${RankingKeyWord }" var="Keyword" varStatus="status">
-							<c:if test="${status.index < 5}">
-								<a tabindex="0" class="search-keyword" href="/functionfood/select.do?foodname=${Keyword }">${Keyword }</a>
-							</c:if>
-						</c:forEach>
+					<div class="ipt-main-wrap">
+					<form action="/functionfood/select.do">
+						<div class="ipt-main-wrap-in">
+							<input id="searchProduct1" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
+							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct1()"></button>
+						</div>
+					</form>
+					</div><!-- ipt-main-wrap : 끝 -->
+					<div class="search-etc">
+						<span class="s-txt1">인기 검색어</span>
+						<div class="search-keywords">
+							<c:forEach items="${RankingKeyWord }" var="Keyword" varStatus="status">
+								<c:if test="${status.index < 5}">
+									<a tabindex="0" class="search-keyword" href="/functionfood/select.do?foodname=${Keyword }">${Keyword }</a>
+								</c:if>
+							</c:forEach>
+						</div>
 					</div>
-				</div>
+				</c:if>
+				<c:if test="${casesel == 2 }">
+					<div class="top-wrap-070">
+						<h1 class="txt2" style="margin-bottom: 30px; text-align: center; font-size: 30px;"><b>💊 현재 인기있는 <span> 영양소</span>로 검색해 보세요</b></h1>
+					</div>
+					<div class="ipt-main-wrap">
+					<form action="/functionfood/selectnutrient.do">
+						<div class="ipt-main-wrap-in">
+							<input id="searchProduct2" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
+							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct2()"></button>
+						</div>
+					</form>
+					</div><!-- ipt-main-wrap : 끝 -->
+					<div class="search-etc">
+						<span class="s-txt1">인기 검색어</span>
+						<div class="search-keywords">
+							<c:forEach items="${RankingKeyWord }" var="Keyword" varStatus="status">
+								<c:if test="${status.index < 5}">
+									<a tabindex="0" class="search-keyword" href="/functionfood/selectnutrient.do?foodname=${Keyword }">${Keyword }</a>
+								</c:if>
+							</c:forEach>
+						</div>
+					</div>
+				</c:if>
+				<c:if test="${casesel == 3 }">
+					<div class="top-wrap-070">
+						<h1 class="txt2" style="margin-bottom: 30px; text-align: center; font-size: 30px;"><b><span> 제품명</span>과<span> 회사명</span>으로 검색해 보세요</b></h1>
+					</div>
+					<div class="ipt-main-wrap">
+					<form action="/functionfood/selectcompany.do">
+						<div class="ipt-main-wrap-in">
+							<input id="searchProduct3" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
+							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct3()"></button>
+						</div>
+					</form>
+					</div><!-- ipt-main-wrap : 끝 -->
+					<div class="search-etc">
+						<span class="s-txt1">인기 검색어</span>
+						<div class="search-keywords">
+							<c:forEach items="${RankingKeyWord }" var="Keyword" varStatus="status">
+								<c:if test="${status.index < 5}">
+									<a tabindex="0" class="search-keyword" href="/functionfood/selectcompany.do?foodname=${Keyword }">${Keyword }</a>
+								</c:if>
+							</c:forEach>
+						</div>
+					</div>
+				</c:if>
 			</div>
 		</div>
 		<div class="new-wide-wrap new-wide-wrap-070">
@@ -152,6 +242,7 @@
 						</a>
 					</c:forEach>
 				</div><!-- item-cards의 끝 -->
+				
 				</c:if>
 				<!--<button id="moreBtn" tabindex="0" class="item-more" onclick="searchMore()">30개 더 보기</button>  -->
 			</div>
