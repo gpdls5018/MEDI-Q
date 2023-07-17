@@ -65,8 +65,10 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 	public MemberDTO selectOne(HttpServletRequest req, HttpServletResponse resp) {
 		String token = jwTokensService.getToken(req, tokenName);
 		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
-		String id = payloads.get("sub").toString();
-		payloads.put("id", id);
+		String key = payloads.get("sub").toString();
+		payloads.put("id", key);
+		payloads.put("email", key);
+		System.out.println("key: "+key);
 
 		return mapper.findMember(payloads);
 	}
@@ -146,7 +148,7 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 		long expirationTime = 1000 * 60 * 60 * 24; // 토큰의 만료시간 설정
 
 		String token = jwTokensService.createToken(email, secretKey, payloads, expirationTime);
-		
+		System.out.println("token: "+token);
 		return token;
 	}
 

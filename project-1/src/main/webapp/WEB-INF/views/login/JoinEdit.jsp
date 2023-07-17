@@ -15,7 +15,7 @@
 			<div class="col-md-6 mb-4">
 				<h3 class="heading mb-4">내 정보 수정하기</h3>
 				<p>
-				<span class="text-info" style="font-size: 1.3rem">${member.id }</span>님 안녕하세요!<br/>
+				<span class="text-info" style="font-size: 1.3rem">${empty info.id ? info.email : info.id }</span>님 안녕하세요!<br/>
 				회원정보 수정 양식을 입력해주세요
 				</p>
 				<p>
@@ -33,7 +33,7 @@
 							</div>
 							<input style="max-width: 300px;" type="password" class="form-control my-1" id="password" placeholder="비밀번호" name="password" required/>
 							<input style="max-width: 300px;" type="password" class="form-control" id="pwd" placeholder="확인용 비밀번호" name="pwd" required/>							
-							<input style="max-width: 300px;" type="text" class="form-control my-1" id="email" placeholder="이메일" name="email" value="${member.email }" required/>
+							<input style="max-width: 300px;" type="text" class="form-control my-1" id="email" placeholder="이메일" name="email" value="${member.email }" readonly/>
 							
 							<!-- 글자색 빨간색, bold 주기 -->
 							<div id="idOK" style="display:none">아이디 6~12자의 영문(소문자),숫자만 입력하세요</div>
