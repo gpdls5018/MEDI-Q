@@ -198,6 +198,9 @@
 .accordion :target h3 + div {
     height: 140px;
 }
+.accordion :target h3 + .tstm3 {
+    height: 70px;
+}
 
 .accordion .section.large:target h3 + div {
     overflow: auto;
@@ -426,13 +429,19 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 	            <a href="<c:url value="/NutrientSelectFunctional.do"/>">기능성 원료</a>
 	          </div>
 	        </div>
-	        <div class="section">
+	        <div id="two" class="section">
 	          <h3>
-	            <a class="text-decoration-none"  href="<c:url value="/ranking/selectfood.do"/>">
+	            <a class="text-decoration-none"  href="#two">
 	                <img src="<c:url value="/resources/images/shape/캡슐.png"/>" style="opacity: 0.8;" width="25" height="25">
 	                &nbsp; 영양제 검색
+	                <span class="arrow-down" style="margin-left: 90px;" ></span>
 	            </a>
 	          </h3>
+	          <div class="ditem tstm3">
+	            <a href="<c:url value="/ranking/selectfood.do"/>">성분 검색</a>
+	 			
+	            <a href="#">제품/브랜드 검색</a>
+	          </div>
 	        </div>
 	        <div id="three" class="section">
 	          <h3>
@@ -453,7 +462,7 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 	          <h3>
 	            <a class="text-decoration-none" href="<c:url value="/board/List.do" />">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-chat-724715.png"/>" width="25" height="25">
-	                &nbsp; 커뮤니티
+	                &nbsp; Q&amp;A 게시판
 	            </a>
 	          </h3>
 	        </div>
@@ -461,8 +470,8 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 	          <h3 class="d-flex">
 	            <a href="#six" style="align-items: center;">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-lifestyle-4807765.png"/>" width="25" height="25">
-	                &nbsp; 건강예측
-	                <span class="arrow-down" style="margin-left: 120px;"></span>
+	                &nbsp; 정신건강 테스트
+	                <span class="arrow-down" style="margin-left: 50px;"></span>
 	            </a>
 	          </h3>
 	          <div class="ditem" style="border: none;">
