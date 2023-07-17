@@ -141,8 +141,10 @@
                             	<span class="text-light font-weight-bold text_3 ml-2">메디큐 약사님의 답변</span>
                             </div>
                         </div>
+                        <!--  -->
                         <div class="card-body m-2">
 	                        <span class="card-text"><h5 class="font-weight-bold">답변 소제목 부분</h5></span>
+	                        
 	                        <br>
 	                        <span class="card-text"><h5>답변 내용 부분</h5></span>
 	                        <hr style="border: 1px solid #E6E9ED;"/>

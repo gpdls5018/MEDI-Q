@@ -136,13 +136,6 @@
                         <!-- 질문에 대한 컨테이너 -->
                         <a  href='<c:url value="/board/Write.do"/>'><span class="btn_text">질문 작성</span></a>
                         <div class="row justify-content-center">
-                        	<div class="jumbotron bg-info">
-								<h1>
-									Spring Framework <small>한줄 댓글-전체 목록 페이지(${listPagingData.map.nowPage }/${listPagingData.map.totalPage })</small>
-								</h1>
-							</div>
-
-
                         	<c:if test="${empty listPagingData.records }" var="isEmpty">
 								<div>등록된 자료가 없습니다.</div>
 							</c:if>
@@ -162,8 +155,11 @@
 				                        </a>
 				                        <a tabindex="0" class="qna-user-wrap text-decoration-none" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=${record.NO }"/>">
 				                                <div class="qna-user-icon qna-user-icon-1"></div>
-				                                <div class="qna-user-txt">A.코로나 감염을 예방하기 위해, 또는 코로나 후유증에서 빨리 벗어나기 위해서는 비타민 C, 비타민 D, 아연 등
-		                                        면역에 관련된 영양제가 도움이 됩니다.</div>
+				                                <div class="qna-user-txt">
+				                                	<c:if test="${not empty listPagingData.records }" var="isEmpty">
+														<div>약사님의 답변을 기달리는 중입니다.</div>
+													</c:if>
+				                                </div>
 				                            <div class="user-info-row">
 				                                <span class="user-name">${record.NAME }</span>
 				                                <span class="user-agesex">${record.AGE_GROUP} / ${record.GENDER}</span>
