@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
     videoContainer.style.display = "none";
   }
   
+  /*
   // The DOM element you wish to replace with Tagify
   var input = document.querySelector('input[name=postTag]');
   var whitelist = ["#혈압","#당뇨","#면역력 증진","#전립선 건강","#체지방 감소","#피로개선","#혈당","#비타민","#오메가","#피부건강"];
@@ -67,7 +68,8 @@ document.addEventListener("DOMContentLoaded", function() {
   tagify.on('remove', e=> {
       $('#hiddenInput').attr('value',tagify.value.map(function(e){return e.value}));
   });
-  
+  */
+ 
   ////////////////////슬라이드 로직///////////////////////////////////
   $(document).ready(function(){
    
@@ -113,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
   /////////////////////////지도 모달 버튼 함수////////////////////////////////
       $(document).ready(function() {
         $("#tsBtn").click(function() {
-          $("#tsModal").modal({ backdrop: true});
+          $("#tsModal").modal({ backdrop: false});
           setTimeout(function(){ map.relayout(); }, 0);
           initMap(); // 모달 열릴 때 지도 초기화 호출
         });
