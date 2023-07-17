@@ -41,11 +41,12 @@ public class BoardController {
 		//System.out.println("페이징적용 후");
 		//System.out.println("페이징 처리 확인용");
 		//서비스 호출
-		ListPagingData<Map> listPagingData= board.selectList(map, req, nowPage);
+		ListPagingData listPagingData= board.selectList(map, req, nowPage);
 		System.out.println(listPagingData);
 		System.out.println(map);
 		System.out.println(req);
 		System.out.println(nowPage);
+		System.out.println(listPagingData.getMap());
 		System.out.println("페이징 처리 확인용1");
 		//System.out.println(listPagingData);
 		//데이타 저장
