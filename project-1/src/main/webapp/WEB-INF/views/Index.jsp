@@ -66,25 +66,30 @@
 			    <video id="video" autoplay muted loop>
 	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
-			    <div>
-			    <div class="videologo">
-			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="100" height="50">
-	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="200" height="50">
+			    <div class="videologo" style=" font-size:30px; color:white; margin-top: 220px; margin-bottom: 220px; margin-left: 480px; margin-right: 480px;">
 	           		<!-- 동영상 화면 문구 -->
-			        <div style=" font-size:20px; color:white;">
-			        	<div class="text-center" style="font-size: 40px; font-weight:bold;">건강고민은 <span style="color: #EF605D;">MEDI-Q</span></div>
-			        	<br/>영양제 분석, 건강예측 AI, 건강관리기록 등 저희만의 특별한 서비스를 이용해보세요!
-		        	</div>
+		        	<div class="text-center" style="display: flex; align-items: center; justify-content: center; font-size: 75px; font-weight:bold;">건강고민은&nbsp;  
+						<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="120" height="75">
+	           			<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="300" height="75">
+					</div>
+		        	<br/>영양제 분석, 건강예측 AI 등 저희만의 특별한 서비스를 이용해보세요
+		        	<!-- 홈버튼 -->
+		        	<div style="display: flex; align-items: center; justify-content: center;">
+			        	<div id="video-controls" style="margin-top:250px; margin-right: 280px;">
+					        <button class="btn" onclick="closeVideo()" style="width:160px; background-color: #F7D358;">
+							<img src="/resources/images/tsimages/free-icon-home-3771140.png" style="opacity: 0.7;" width="25" height="25">
+ 							&nbsp;홈으로 이동</button>
+					    </div>
+					    <!-- 그만보기 -->
+					    <div id="video-label" style=" margin-top:250px; margin-right: 370px; display: flex; align-items: center; justify-content: center;">
+				    	    <label for="stop-video-checkbox" style="font-size:20px; color:white; margin-bottom:30px; font-weight: normal;">
+					        오늘 하루 그만 보기
+					        <input type="checkbox" id="stop-video-checkbox" style="width:20px;">
+					        </label>
+					    </div>
+					</div>
 			    </div>
-			    <div id="video-controls">
-			      <button class="btn" onclick="closeVideo()">Home</button>
-			    </div>
-			    <div id="video-label">
-		    	    <label for="stop-video-checkbox" style="color:white;">
-			        동영상 오늘 하루 그만 보기
-			        <input type="checkbox" id="stop-video-checkbox" style="width:20px;">
-			      </label>
-			    </div>
+			    
 			    
 			</div>
 
