@@ -148,7 +148,7 @@ left: 146px;
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    font-size:50px;
+    font-size:44px;
 }
 </style>
 
