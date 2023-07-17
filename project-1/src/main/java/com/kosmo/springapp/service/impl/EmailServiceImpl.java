@@ -37,12 +37,12 @@ public class EmailServiceImpl implements EmailService{
 		MimeMessage message = emailsender.createMimeMessage();
 
 		message.addRecipients(RecipientType.TO, to);// 보내는 대상
-		message.setSubject("[MediQue 회원가입 이메일 인증]");// 제목
+		message.setSubject("[Medi-Q 회원가입 이메일 인증]");// 제목
 
 		String msgg = "";
 		msgg += "<div style='margin:100px;'>";
 		msgg += "<h1> 안녕하세요</h1>";
-		msgg += "<h1> 셀프 메디케이션 MediQue 입니다</h1>";////////////내용 수정
+		msgg += "<h1> 셀프 메디케이션 Medi-Q 입니다</h1>";////////////내용 수정
 		msgg += "<br>";
 		msgg += "<p>아래 코드를 회원가입 창으로 돌아가 입력해주세요<p>";
 		msgg += "<br>";
@@ -56,7 +56,7 @@ public class EmailServiceImpl implements EmailService{
 		msgg += "</div>";
 		message.setText(msgg, "utf-8", "html");// 내용, charset 타입, subtype
 		// 보내는 사람의 이메일 주소, 보내는 사람 이름
-		message.setFrom(new InternetAddress("medique@naver.com", "MediQue_Admin"));// 보내는 사람
+		message.setFrom(new InternetAddress("medi_q@naver.com", "Medi-Q_Admin"));// 보내는 사람
 
 		return message;
 	}
@@ -129,12 +129,12 @@ public class EmailServiceImpl implements EmailService{
 		MimeMessage message = emailsender.createMimeMessage();
 
 		message.addRecipients(RecipientType.TO, to);// 보내는 대상
-		message.setSubject("[MediQue "+mode+"찾기]");// 제목
+		message.setSubject("[Medi-Q "+mode+"찾기]");// 제목
 
 		String msgg = "";
 		msgg += "<div style='margin:100px;'>";
 		msgg += "<h1> 안녕하세요</h1>";
-		msgg += "<h1> 셀프 메디케이션 MediQue 입니다</h1>";////////////내용 수정
+		msgg += "<h1> 셀프 메디케이션 Medi-Q 입니다</h1>";////////////내용 수정
 		msgg += "<br>";
 		msgg += "<p>요청하신 고객님의 아이디 정보입니다<p>";
 		msgg += "<br>";
@@ -148,7 +148,7 @@ public class EmailServiceImpl implements EmailService{
 		msgg += "</div>";
 		message.setText(msgg, "utf-8", "html");// 내용, charset 타입, subtype
 		// 보내는 사람의 이메일 주소, 보내는 사람 이름
-		message.setFrom(new InternetAddress("medique@naver.com", "MediQue_Admin"));// 보내는 사람
+		message.setFrom(new InternetAddress("medi_q@naver.com", "Medi-Q_Admin"));// 보내는 사람
 
 		return message;
 	}

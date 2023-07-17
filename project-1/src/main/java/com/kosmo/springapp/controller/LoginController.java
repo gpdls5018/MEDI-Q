@@ -183,7 +183,7 @@ public class LoginController {
 	// 카카오 로그인
 	@RequestMapping(value = "/kakaoLogin.do", method = RequestMethod.GET)
 	public String kakaoLogin(String code, HttpServletRequest req, HttpServletResponse resp) {
-
+		//카카오에서 정보 얻어오기
 		String accessToken = kakaoLoginServiceImpl.getAccessToken(code);
 		Map<String, Object> userInfo = kakaoLoginServiceImpl.getUserInfo(accessToken);// 이메일,성별,사이트명
 
@@ -191,7 +191,7 @@ public class LoginController {
 		
 		// 쿠키에 굽자
 		Cookie cookie = new Cookie(tokenName, token);
-		cookie.setPath(req.getContextPath());
+		cookie.setPath("/");
 		resp.addCookie(cookie);
 
 		// 쿠키를 response에 담았으니 redirect로 보내야함(메인 페이지로)
@@ -210,10 +210,10 @@ public class LoginController {
 		Map<String, Object> userInfo = naverLoginServiceImpl.getUserInfo(accessToken);// 이메일,성별,이름,생년월일,사이트명
 		//System.out.println("네이버 userInfo: "+userInfo);
 		String token = loginService.socialLogin(userInfo,accessToken);
-		
+		System.out.println("token: "+token);
 		// 쿠키에 굽자
 		Cookie cookie = new Cookie(tokenName, token);
-		cookie.setPath(req.getContextPath());
+		cookie.setPath("/");
 		resp.addCookie(cookie);
 
 		// 쿠키를 response에 담았으니 redirect로 보내야함(메인 페이지로)

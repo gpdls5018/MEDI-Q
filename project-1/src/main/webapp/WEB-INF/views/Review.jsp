@@ -81,7 +81,7 @@
     헤더
     <hr>
     <div class="food jumbotron d-flex" style="border-radius: 20px;height:300px;">
-      <img src="<c:url value="/resources/images/thumbnail_img/NO_IMG.jpeg"/>" style="border-radius: 20px;width:200px;"/>
+      <img src="${listOne.imgURL}" style="border-radius: 20px;width:200px;"/>
       <div class="food-text m-auto effect-custom-font" style="font-size: 25px;">
         <div class="food-company">${listOne.company}</div>
         <div class="food-title">${listOne.productName}</div>

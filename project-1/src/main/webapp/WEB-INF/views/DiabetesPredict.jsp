@@ -35,28 +35,28 @@
             <form id="personInfoForm" class="validation-form" novalidate>
                 <div class="col mb-3">
                     <strong>연령</strong>
-                    <input type="text" class="form-control" id="age" placeholder="연령을 입력해주세요" value="" required>
+                    <input type="text" class="form-control" id="age" name="age" placeholder="연령을 입력해주세요" value="" required>
                     <div class="invalid-feedback">
                         연령을 입력해주세요.
                     </div>
                 </div>
                 <div class="col mb-3">
                     <strong>BMI</strong>
-                    <input type="text" class="form-control" id="bmi" placeholder="체질량 지수를 입력해주세요" value="" required>
+                    <input type="text" class="form-control" id="bmi" name="bmi" placeholder="체질량 지수를 입력해주세요" value="" required>
                     <div class="invalid-feedback">
                         체질량 지수를 입력해주세요
                     </div>
                 </div>
                 <div class="col mb-3">
                     <strong>포도당</strong>
-                    <input type="text" class="form-control" id="glucose" placeholder="포도당 수치를 입력해주세요" value="" required>
+                    <input type="text" class="form-control" id="glucose" name="glucose" placeholder="포도당 수치를 입력해주세요" value="" required>
                     <div class="invalid-feedback">
                         포도당 수치를 입력해주세요
                     </div>
                 </div>
                 <div class="col mb-3">
                     <strong>혈압</strong>
-                    <input type="text" class="form-control" id="bloodpress" placeholder="혈압수치를 입력해주세요" value="" required>
+                    <input type="text" class="form-control" id="bloodpress" name="bloodpress"  placeholder="혈압수치를 입력해주세요" value="" required>
                     <div class="invalid-feedback">
                         혈압수치를 입력해주세요
                     </div>
@@ -69,7 +69,7 @@
 
         <div class="col-6">
             <canvas id="drawing_canvas"></canvas>
-            <img src="<c:url value="/resources/images/basic/AI.jpg"/>" style="width:100%;height:100%;border-radius:50%;"/>
+            <img src="<c:url value="/resources/images/basic/AI.jpg"/>" id="machineImage" style="width:100%;height:100%;border-radius:50%;"/>
         </div>
     </div>
     <hr class="mt-5">
@@ -122,21 +122,24 @@
                         title: '모델이 예측 중입니다'
                     });
                     setTimeout(function () {
+                    	var data = {
+	                            "age": age,
+	                            "bmi": bmi,
+	                            "glucose": glucose,
+	                            "bloodpress": bloodpress,
+	                        }
                         $.ajax({
                             type: 'POST',
-                            url: 'http://127.0.0.1/model',
-                            data: {
-                                "age": age,
-                                "bmi": bmi,
-                                "glucose": glucose,
-                                "bloodpress": bloodpress,
-                            },
+                            url: 'http://127.0.0.1/diabetes',
+                            contentType : "application/json",
+                            dataType: 'json',
+                            data: JSON.stringify(data),
                             success: function (response) {
-                                console.log(response);
-                                console.log(response[1][0][1],typeof response[1][0][1])
-                                initDrawingCanvas((response[1][0][1]*100).toFixed(1));
+                                console.log('%o',response);
+                                console.log(response[0])
+                                initDrawingCanvas((response[0][1]*100).toFixed(1));
                                 requestAnimationFrame(loop);
-
+                                
                             }
                         });
                     }, 1500);
@@ -341,6 +344,7 @@
                 });
                 ctx.font = "bold 40px sans-serif";
                 ctx.fillText('발병 확률은 : '+textValue+'%', viewWidth/4, viewHeight/2);
+                console.log("asd");
                 break;
         }
     }

@@ -91,6 +91,7 @@ public class NutrientSelectServiceImpl implements NutrientSelectService {
 			desc = desc.replace("요.", "요.<br/><br/>");
 			desc = desc.replace("해요!", "해요.<br/><br/>");
 			desc = desc.replace("고용량 섭취했을 때 나타날 수 있는", "· 고용량 섭취했을 때 나타날 수 있는");
+			desc = desc.replace("긴으을", "기능을");
 			desc = desc.replace("이 부위가", "· 이 부위에");
 			desc = desc.replace("운동과", "· 운동과");
 			desc = desc.replace("3.66mg", "3.66(mg)");
@@ -109,7 +110,6 @@ public class NutrientSelectServiceImpl implements NutrientSelectService {
 			desc = desc.replace("4) 면역과민반응에", "<br/><br/> 4) 면역과민반응에");
 			desc = desc.replace("피부 상태 개선: 160~300(mg)", "피부 상태 개선: 160~300(mg)<br/><br/>");
 			desc = desc.replace("의약품의 경우 자세한 복용 방법", "· 의약품의 경우 자세한 복용 방법");
-			desc = desc.replace("목적에 따라 하루 권장 섭취량이 달라져요.", "· 목적에 따라 하루 권장 섭취량이 달라져요.");
 			desc = desc.replace("2) 당뇨신경병증", "<br/><br/>2) 당뇨신경병증");
 			desc = desc.replace("· 의약품으로는 하루 50~300(mg)이", "<br/><br/> · 의약품으로는 하루 50~300(mg)이");
 			desc = desc.replace("건강기능식품으로 인정받은 녹차추출물은 주요 지표물질로 카테킨이 20% 이상 들어있어요.", "· 건강기능식품으로 인정받은 녹차추출물은 주요 지표물질로 카테킨이 20% 이상 들어있어요.");
@@ -133,7 +133,6 @@ public class NutrientSelectServiceImpl implements NutrientSelectService {
 	        desc = desc.replace("1) 긴장 완화: 150(mg) 이상, 알파에스1카제인으로 2.7(mg) 이상", "1) 긴장 완화: 150(mg) 이상, 알파에스1카제인으로 2.7(mg) 이상<br/><br/>");
 	        desc = desc.replace("1) 장 건강: 6.4~20(g)", "1) 장 건강: 6.4~20(g)<br/><br/>");
 	        desc = desc.replace("2) 혈중 콜레스테롤 개선: 7.2~20(g)", "2) 혈중 콜레스테롤 개선: 7.2~20(g)<br/><br/>");
-	        desc = desc.replace("목적에 따라 달라지는 하루 권장 섭취량을 확인해보세요!", "· 목적에 따라 달라지는 하루 권장 섭취량을 확인해보세요!");
 	        desc = desc.replace("1) 면역력 증진, 피로개선: 진세노사이드 Rg1과 Rb1의 합계로서 3~80(mg)", "1) 면역력 증진, 피로개선: 진세노사이드 Rg1과 Rb1의 합계로서 3~80(mg)<br/><br/>");
 	        desc = desc.replace("2) 뼈 건강 : 진세노사이드 Rg1과 Rb1의 합계로서 25(mg)", "2) 뼈 건강 : 진세노사이드 Rg1과 Rb1의 합계로서 25(mg)<br/><br/>");
 	        desc = desc.replace("1) 후코잔틴 2.7(mg) (미역추출물 주성분)", "1) 후코잔틴 2.7(mg) (미역추출물 주성분)<br/><br/>");

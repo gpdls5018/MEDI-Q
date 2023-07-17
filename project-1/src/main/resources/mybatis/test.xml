@@ -13,7 +13,12 @@
 	</select>
 	
 	<select id="findMember" parameterType="Map" resultType="memberDto">
-		SELECT * FROM MEMBER WHERE ID=#{id}
+		<if test="email == null">
+			SELECT * FROM MEMBER WHERE ID=#{id}
+		</if>
+		<if test="email != null">
+			SELECT * FROM SOCIAL WHERE EMAIL=#{email}
+		</if>
 	</select>
 	
 	<insert id="save" parameterType="memberDto">

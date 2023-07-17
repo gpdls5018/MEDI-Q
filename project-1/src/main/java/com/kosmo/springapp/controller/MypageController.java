@@ -56,18 +56,20 @@ public class MypageController {
 	//마이페이지 클릭 시
 	@GetMapping("/MyPage.do")
 	public String mypage(HttpServletRequest req, HttpServletResponse resp, Model model) throws IOException {
+		/*
+		//firebase
 		String filePath = "json";
         
 		Resource resource = new ClassPathResource(filePath);
 		String directoryPath = resource.getFile().getAbsolutePath()+File.separator+FCMInitializer.FIREBASE_CONFIG_PATH;
-		/*
+		
         // ClassPathResource객체 생성.
         ClassPathResource resource = new ClassPathResource(filePath);
         
         //물리적 경로 얻기
         File file = resource.getFile();
         String directoryPath = file.getAbsolutePath();
-        */
+        
 		System.out.println("directoryPath: "+directoryPath);
 		//"path/to/serviceAccountKey.json"
 		FileInputStream serviceAccount = new FileInputStream(directoryPath);
@@ -91,18 +93,21 @@ public class MypageController {
 			firebaseApp = FirebaseApp.initializeApp(options);
 		}
 		System.out.println("firebaseApp: "+firebaseApp);
-		
+		*/
 		LocalDate current = LocalDate.now(); //현재날짜 구하기
 		Map map = new HashMap<>();
 		//System.out.println("date: "+date);
 		MemberDTO member = loginService.selectOne(req,resp);
-		ProfileImageDTO profImg = loginService.selectProfImg(member.getId());
+		
+		String key = member.getId()==null?member.getEmail():member.getId();
+		
+		ProfileImageDTO profImg = loginService.selectProfImg(key);
 		List<HealthMemoDTO> memos = healthMemoIServicempl.selectAll(req);
 		for(HealthMemoDTO m : memos) {
 			m.setMm_Date(m.getMm_Date().split(" ")[0]);
 		}
 		
-		map.put("mm_Id", member.getId());
+		map.put("mm_Id", key);
 		map.put("mm_Date", current);
 		HealthMemoDTO memo = healthMemoIServicempl.selectOne(map);
 		if(memo != null) {
@@ -157,12 +162,14 @@ public class MypageController {
 	@GetMapping("/JoinEdit.do")
 	public String joinEdit(HttpServletRequest req, HttpServletResponse resp, Map map) {
 		MemberDTO member = loginService.selectOne(req,resp);
-		map.put("id", member.getId());
-		map.put("member",loginService.selectOne(map));
+		map.put("id", member.getId()==null ? "" : member.getId());
+		map.put("email", member.getEmail()==null ? "" : member.getEmail());
+		map.put("info",loginService.selectOne(map));
 		
 		return "login/JoinEdit";
 	}
 	
+	//회원정보 수정 완료 클릭 후
 	@PostMapping("/JoinEditOk.do")
 	@ResponseBody
 	public String joinEditOk(@Valid MemberDTO member, Errors errors) {
@@ -227,6 +234,7 @@ public class MypageController {
 	@GetMapping("/MentalTest3.do")
 	public String mentalTest3(HttpServletRequest req, HttpServletResponse resp, Model model) {
 		MemberDTO member = loginService.selectOne(req,resp);
+		System.out.println("member: "+member);
 		model.addAttribute("info", member);
 		return "mentaltest/MentalTest3";
 	}

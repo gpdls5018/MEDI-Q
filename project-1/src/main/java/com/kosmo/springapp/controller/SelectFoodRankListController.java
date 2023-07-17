@@ -20,16 +20,25 @@ public class SelectFoodRankListController {
 	SelectFoodServiceImpl selectfoodservice;
 	
 	@GetMapping("/ranking/selectfood.do")
-	public String foodrank(Model model) {		
+	public String foodrank(Model model) {
+		List<String> RankingKeyWord = selectfoodservice.RankingKeyWord();
 		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFoodScore();
+		model.addAttribute("RankingKeyWord", RankingKeyWord);
 		model.addAttribute("listData", listData);
 		return "ranking/FoodRank";
 	}
 	
 	@GetMapping("/functionfood/select.do")
 	public String selectfood(@RequestParam String foodname,Model model) {
+		if(selectfoodservice.checkWord(foodname).size() == 0) {
+			selectfoodservice.newWord(foodname);
+		}
+		selectfoodservice.selectKeyWord(foodname);
+		List<String> RankingKeyWord = selectfoodservice.RankingKeyWord();
 		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFromNameScore(foodname);
 		List<FunctionalFoodListDTO> listData2 = selectfoodservice.selectFoodListFromName(foodname);
+		
+		model.addAttribute("RankingKeyWord", RankingKeyWord);
 		model.addAttribute("listData", listData);
 		model.addAttribute("listData2", listData2);
 		model.addAttribute("foodname", foodname);

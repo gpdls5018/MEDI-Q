@@ -126,11 +126,16 @@
 				<c:if test="${not isProfImg }">
 					<img class="rounded-circle" alt="기본 프로필" src="<c:url value="/resources/images/basic/friend.png" />" style="width: 80px; height: 80px">
 				</c:if>
-				<span class="align-self-center mr-auto ml-2" id="id" style="font-weight: bold">${info.id }</span>
+				<span class="align-self-center mr-auto ml-2" id="id" style="font-weight: bold">${empty info.id ? info.email : info.id }</span>
 				<a type="button" class="btn btn-outline-info align-self-center mx-2" href='<c:url value="/project/MentalTest1.do"/>'>정신건강 테스트</a>
 				<a type="button" class="btn btn-outline-info align-self-center" href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>">건강검진정보 불러오기</a>
 				<input type="button" id="imgEdit" value="이미지 수정" class="btn btn-outline-info align-self-center mx-2" data-target="#modalView" data-backdrop="static"/>
-				<a type="button" href="" class="btn btn-outline-info align-self-center" data-target="#modalView" data-backdrop="static">회원정보 수정</a>
+				<c:if test="${not empty info.id }" var="isEmpty">
+					<a type="button" href="" id="infoEdit" class="btn btn-outline-info align-self-center" data-target="#modalView" data-backdrop="static">회원정보 수정</a>
+				</c:if>
+				<c:if test="${not isEmpty }">
+					<a type="button" href='<c:url value="/project/JoinEdit.do"/>' class="btn btn-outline-info align-self-center">회원정보 추가</a>
+				</c:if>
 			</div>
 		</div>
 		
@@ -1195,7 +1200,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 	})
 
 	//회원 정보 수정하기
-	$('#imgEdit').next().click(function(){
+	$('#infoEdit').click(function(){
 		$(this).attr('data-toggle','modal');
 		$('form').attr('action','<c:url value="/project/Password.do"/>');
 		$('.modal-title').html('회원정보 수정을 위해 비밀번호를 입력해주세요');
