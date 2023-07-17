@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="/WEB-INF/views/template/SelectFoodListStyleScript.jsp"/>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<body oncontextmenu="return false">
 <div class="all-wrap">
 	<div class="all-wrap-in all-wrap-in-070">
 		<div class="ingredient-search-top">
@@ -29,11 +29,11 @@
 				<div class="search-etc">
 					<span class="s-txt1">인기 검색어</span>
 					<div class="search-keywords">
-							<a tabindex="0" class="search-keyword" data-keyword="홍삼" href="/functionfood/select.do?foodname=홍삼">홍삼</a>
-							<a tabindex="0" class="search-keyword" data-keyword="비타민C" href="/functionfood/select.do?foodname=비타민C">비타민C</a>
-							<a tabindex="0" class="search-keyword" data-keyword="콜라겐" href="/functionfood/select.do?foodname=콜라겐">콜라겐</a>
-							<a tabindex="0" class="search-keyword" data-keyword="오메가3" href="/functionfood/select.do?foodname=오메가3">오메가3</a>
-							<a tabindex="0" class="search-keyword" data-keyword="고려은단" href="/functionfood/select.do?foodname=고려은단">고려은단</a>
+						<c:forEach items="${RankingKeyWord }" var="Keyword" varStatus="status">
+							<c:if test="${status.index < 5}">
+								<a tabindex="0" class="search-keyword" href="/functionfood/select.do?foodname=${Keyword }">${Keyword }</a>
+							</c:if>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
@@ -74,7 +74,7 @@
 					<c:if test="${not empty item.imgURL}">
 						<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
 					</c:if>
-         				<c:if test="${empty item.imgURL}">	
+         			<c:if test="${empty item.imgURL}">	
 						<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
 					</c:if>
 						<span class="txt1">${item.company}</span>
@@ -92,7 +92,6 @@
 					</a>
 				</c:forEach>
 				</div><!-- item-cards의 끝 -->
-				
 			</c:if>
 				
 				
@@ -113,11 +112,11 @@
 				<div class="search-etc">
 					<span class="s-txt1">인기 검색어</span>
 					<div class="search-keywords">
-							<a tabindex="0" class="search-keyword" data-keyword="홍삼" href="/functionfood/select.do?foodname=홍삼">홍삼</a>
-							<a tabindex="0" class="search-keyword" data-keyword="비타민C" href="/functionfood/select.do?foodname=비타민C">비타민C</a>
-							<a tabindex="0" class="search-keyword" data-keyword="콜라겐" href="/functionfood/select.do?foodname=콜라겐">콜라겐</a>
-							<a tabindex="0" class="search-keyword" data-keyword="오메가3" href="/functionfood/select.do?foodname=오메가3">오메가3</a>
-							<a tabindex="0" class="search-keyword" data-keyword="고려은단" href="/functionfood/select.do?foodname=고려은단">고려은단</a>
+						<c:forEach items="${RankingKeyWord }" var="Keyword" varStatus="status">
+							<c:if test="${status.index < 5}">
+								<a tabindex="0" class="search-keyword" href="/functionfood/select.do?foodname=${Keyword }">${Keyword }</a>
+							</c:if>
+						</c:forEach>
 					</div>
 				</div>
 			</div>

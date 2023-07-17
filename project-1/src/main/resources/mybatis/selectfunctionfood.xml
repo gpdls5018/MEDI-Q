@@ -10,11 +10,11 @@
 		    FROM REVIEWTABLE
 		    GROUP BY R_PRODUCTNO
 		)R ON F.NO = R.R_PRODUCTNO 
-		where (productname LIKE '%${foodname}%') OR (company LIKE '%${foodname}%') OR (nutrient LIKE '%${foodname}%') ORDER by R.AVG_SCORE DESC,imgurl ASC
+		where (productname LIKE '%${foodname}%') OR (company LIKE '%${foodname}%') ORDER by R.AVG_SCORE DESC, R.REVIEW_COUNT DESC,imgurl ASC
 	</select>
 	
 	<select id="selectFoodListFromName" parameterType="String" resultType="FunctionalFoodListDTO">
-	    select * from foodtable where (productname LIKE '%${foodname}%') OR (company LIKE '%${foodname}%') OR (nutrient LIKE '%${foodname}%') ORDER by imgurl
+	    select * from foodtable where (productname LIKE '%${foodname}%') OR (company LIKE '%${foodname}%') ORDER by imgurl
 	</select>
 	
 	<select id="selectFoodListFoodScore" resultType="AvgStarScoreCountDTO">
@@ -27,5 +27,16 @@
 		) R ON F.NO = R.R_PRODUCTNO
 		ORDER BY R.AVG_SCORE DESC, R.REVIEW_COUNT DESC
 	</select>
-	
+	<select id="RankingKeyWord" resultType="String">
+		SELECT KEYWORD FROM KEYWORD ORDER BY WORDCOUNT DESC
+	</select>
+	<update id="selectKeyWord" parameterType="String" >
+		UPDATE KEYWORD SET WORDCOUNT = WORDCOUNT + 1 WHERE KEYWORD = '${foodname}'
+	</update>
+	<select id="checkWord" parameterType="String" resultType="CheckWordDTO">
+		select 1 from KEYWORD where KEYWORD='${foodname}'
+	</select>
+	<insert id="newWord" parameterType="String">
+		INSERT INTO KEYWORD (KEYWORD,WORDCOUNT) VALUES('${foodname}',0)
+	</insert>
 </mapper>
