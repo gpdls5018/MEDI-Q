@@ -104,7 +104,7 @@
 		    ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL, ft.F_VIEW DESC
 		) t
 		WHERE ROWNUM &lt;= 5
-		ORDER BY RN, F_VIEW DESC
+		ORDER BY F_VIEW DESC
 	</select>
 	
 	<!-- 기능성원료 추천 영양제 가져오기 -->
@@ -136,7 +136,7 @@
 		    ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL, ft.F_VIEW DESC
 		) t
 		WHERE ROWNUM &lt;= 5
-		ORDER BY RN, F_VIEW DESC
+		ORDER BY F_VIEW DESC
 	</select>
 	
 	

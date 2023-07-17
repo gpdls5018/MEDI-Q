@@ -12,6 +12,7 @@
 	.register__step__wr {
 	    align-items: center;
 	    margin-bottom: 50px;
+	    margin-top: 120px;
 	}
 	
 	.register__step__wr .step__wr {
@@ -38,6 +39,7 @@
 	.register__step__wr .step__wr .line00 {
 	    position: absolute;
 	    top: 16px;
+	    m
 	}
 	.register__step__wr .step__wr .step00 {
 	    text-align: center;
@@ -50,7 +52,7 @@
 	    width: 75px;
 	    height: 75px;
 	    border-radius: 50%;
-	    background-color: #152358;
+	    background-color: #EF605D;
 	    position: relative;
 	    margin-bottom: 18px;
 	    opacity: 0.09;
@@ -62,6 +64,15 @@
 	    transform: translate(-50%, -50%);
 	    opacity: 0;
 	}
+	.register__step__wr .step__wr .on .step__check img {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+	    opacity: 1;
+	    width: 20px;
+	}
+	
 	.register__step__wr .step__wr .step00 .step {
 	    color: #152358;
 	    font-size: 14px;
@@ -76,15 +87,33 @@
 	    font-weight: 700;
 	    color: #BEBED5;
 	}
+	.line00{
+		margin-top: 20px;
+	}
+	.first-line{
+		padding-right: 106px;
+	}
+	.second-line{
+		padding-right: 580px;
+	}
+	.third-line {
+		padding-left: 136px;
+	}
+	.left-center{
+		margin-left: 70px;
+	}
+	.right-center{
+		margin-left: 120px;
+	}
 </style>
 <div class="container" style="margin-top: 40px">
 	<div class="container">
 		<div class="register__step__wr hidden1024" style="width: 100%;">
-	        <div class="step__wr">
-	            <img src="https://www.bundangcheil.com/images/register_step_line.png" alt="라인" class="line00 line01">
-	            <img src="https://www.bundangcheil.com/images/register_step_line.png" alt="라인" class="line00 line02">
-	            <img src="https://www.bundangcheil.com/images/register_step_line.png" alt="라인" class="line00 line03">
-	            <img src="https://www.bundangcheil.com/images/register_step_line.png" alt="라인" class="line00 line04">
+	        <div class="step__wr d-flex">
+	            <img src="https://www.bundangcheil.com/images/register_step_line.png" alt="라인" class="line00 line01 first-line">
+	            <img src="https://www.bundangcheil.com/images/register_step_line.png" alt="라인" class="line00 line02 second-line">
+	            <img src="https://www.bundangcheil.com/images/register_step_line.png" alt="라인" class="line00 line03 first-line">
+	            <img src="https://www.bundangcheil.com/images/register_step_line.png" alt="라인" class="line00 line04 third-line">
 	            <div class="step00 step01 on">
 	                <div class="step__check">
 	                    <img src="https://www.bundangcheil.com/images/register_step_check.svg" alt="">
@@ -110,17 +139,17 @@
 	    </div>
 		<div class="row d-flex justify-content-center align-items-center">
 			<div class="col-md-6 mb-4">
-				<h3 class="heading mb-4">회원가입</h3>
-				<p>
+				<h3 class="heading mb-4 left-center">회원가입</h3>
+				<p class="left-center">
 				반갑습니다!<br/>
 				회원가입을 위한 양식을 입력해주세요
 				</p>
 				<p>
-					<img src="<c:url value="/resources/images/basic/join.jpg"/>" alt="Image" class="img-fluid"/>
+					<img src="<c:url value="/resources/images/basic/join.jpg"/>" alt="Image" class="img-fluid left-center"/>
 				</p>
 			</div>
 			<div class="col-md-6 d-flex align-items-center mt-3">
-				<form class="mb-5 needs-validation" action="<c:url value="/project/Join.do" />" method="post" id="contactForm" novalidate>
+				<form class="mb-5 needs-validation right-center" action="<c:url value="/project/Join.do" />" method="post" id="contactForm" novalidate>
 					<div class="row">
 						<div class="col-md-12 form-group">
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

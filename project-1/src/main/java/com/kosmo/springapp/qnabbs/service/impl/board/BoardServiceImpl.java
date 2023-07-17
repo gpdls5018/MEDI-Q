@@ -17,7 +17,7 @@ import com.kosmo.springapp.qnabbs.service.PagingUtil;
 
 
 @Service("board")
-public class BoardServiceImpl implements DaoService<Map> {
+public class BoardServiceImpl implements DaoService {
 
 	@Autowired
 	private BoardMapper mapper;
@@ -36,7 +36,7 @@ public class BoardServiceImpl implements DaoService<Map> {
 	
 	
 	@Override
-	public ListPagingData<Map> selectList(Map map, HttpServletRequest req, int nowPage) {
+	public ListPagingData selectList(Map map, HttpServletRequest req, int nowPage) {
 		
 		//[페이징 로직 시작]
 		//1.총 레코드 수 : 테이블에서 조회
@@ -55,7 +55,7 @@ public class BoardServiceImpl implements DaoService<Map> {
 		//페이징 문자열 얻기
 		String pagingString=PagingUtil.pagingBootStrapStyle(totalCount, pageSize, blockPage, nowPage,req.getContextPath()+ "/board/List.do?");
 		//페이징과 관련된 정보 및 모든 목록을 담는 ListPagingData객체 생성		
-		ListPagingData<Map> listPagingData = ListPagingData.builder()
+		ListPagingData listPagingData = ListPagingData.builder()
 													.records(records)//글 전체 목록 설정
 													.map(map)//페이징 관련 데이타 설정
 													.pagingString(pagingString)//페이징 문자열 설정

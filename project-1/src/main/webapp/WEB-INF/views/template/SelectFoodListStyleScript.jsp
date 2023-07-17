@@ -1403,10 +1403,12 @@ background-size: 69px 62px;*/ left: 0px; top: -100px; display: block;}
 
 
     /*위로가기*/
-    a#goto_top{position: fixed; width:50px; height: 50px;  right:20px;
+    a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
         bottom:100px; display: none; z-index: 290;
         background:url(https://cdn.pillyze.io/web/img/go_top76.webp) no-repeat;
-        background-size:50px 50px;}
+        box-shadow:2px 2px 2px gray;
+        border-radius:50%;
+        background-size:70px 70px;}
 
 
 

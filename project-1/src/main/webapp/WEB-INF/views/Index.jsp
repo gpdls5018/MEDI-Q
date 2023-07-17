@@ -38,14 +38,19 @@
 
         .box:hover {
             font-weight: bold;
-            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.8);
         }
 
         .box.active {
             background-color: #bbb;
         }
     
-
+		.videologo {
+		    font-family: Arial, sans-serif;
+		    font-size: 24px;
+		    color: #FFFFFF;
+		    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+		}
 
 </style>
 <!-- 슬라이더를 위한 CDN -->
@@ -66,31 +71,29 @@
 			    <video id="video" autoplay muted loop>
 	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
-			    <div class="videologo" style=" font-size:30px; color:white; margin-top: 220px; margin-bottom: 220px; margin-left: 480px; margin-right: 480px;">
+			    <div class="videologo" style=" font-size:27px; color:white; margin-top: 190px; margin-bottom: 220px; margin-left: 520px; margin-right: 520px;">
 	           		<!-- 동영상 화면 문구 -->
-		        	<div class="text-center" style="display: flex; align-items: center; justify-content: center; font-size: 75px; font-weight:bold;">건강고민은&nbsp;  
-						<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="120" height="75">
-	           			<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="300" height="75">
+		        	<div class="text-center" style="display: flex; align-items: center; justify-content: center; font-size: 65px; font-weight:bold;">건강고민은&nbsp;  
+						<img class="pr-3 pl-1" src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="120" height="75">
+	           			<img class="pr-2" src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="300" height="75">
 					</div>
-		        	<br/>영양제 분석, 건강예측 AI 등 저희만의 특별한 서비스를 이용해보세요
+		        	<br/>
+		        	<div class="text-center" style="margin-top: 50px;">영양제 분석, 건강예측 AI 등 저희만의 특별한 서비스를 이용해보세요.</div>
+		        	<div class="text-center" style="margin-top: 30px;">스마트 헬스케어 솔루션, MEDI-Q가 여러분을 위해 준비되어 있습니다!</div>
 		        	<!-- 홈버튼 -->
 		        	<div style="display: flex; align-items: center; justify-content: center;">
-			        	<div id="video-controls" style="margin-top:250px; margin-right: 280px;">
-					        <button class="btn" onclick="closeVideo()" style="width:160px; background-color: #F7D358;">
-							<img src="/resources/images/tsimages/free-icon-home-3771140.png" style="opacity: 0.7;" width="25" height="25">
- 							&nbsp;홈으로 이동</button>
+			        	<div id="video-controls" style="margin-top:390px; margin-right: 250px;">
+					        <button class="btn" onclick="closeVideo()" style="width:120px; background-color: rgb(248,182,43);">홈으로 이동</button>
 					    </div>
 					    <!-- 그만보기 -->
-					    <div id="video-label" style=" margin-top:250px; margin-right: 370px; display: flex; align-items: center; justify-content: center;">
-				    	    <label for="stop-video-checkbox" style="font-size:20px; color:white; margin-bottom:30px; font-weight: normal;">
+					    <div id="video-label" style=" margin-top:390px; margin-right: 300px; display: flex; align-items: center; justify-content: center;">
+				    	    <label for="stop-video-checkbox" style="font-size:18px; color:white; margin-bottom:30px; font-weight: normal; cursor: pointer;">
 					        오늘 하루 그만 보기
 					        <input type="checkbox" id="stop-video-checkbox" style="width:20px;">
 					        </label>
 					    </div>
 					</div>
 			    </div>
-			    
-			    
 			</div>
 
 <!-- 메인 바디 부분 -->
@@ -106,21 +109,23 @@
             <div id="top-banner-1" class="banner">
 	            <a href="#">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper1" >
+	              	 <p style="color: grey;">어떤 건강고민이 있으신가요?</p>
+	                 <h1 style="font-size: 57px;">😀 MEDI-Q와 함께 건강한 삶을 시작해보세요!</h1>
 	              </div>
 	            </a>
             </div>
             <div id="top-banner-2" class="banner" id="tsbaimg2">
 	            <a href="<c:url value="/analyzeMyFood.do"/>">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper2"  >
-	               	 <p style="color:gray;">과도하거나 부족하지 않을까?</p>
-	                 <h1>💊 영양제를 분석 받으세요!</h1>
+	               	 <p style="color: grey;">과도하거나 부족하지 않을까?</p>
+	                 <h1>💊 복용 중인 영양제를 분석받으세요!</h1>
 	              </div>
 	            </a>
             </div>
             <div id="top-banner-3" class="banner" id="tsbaimg3">
 	            <a href="#">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper3" >
-	              	 <p style="color:gray;">내가 먹고 있는 영양제 괜찮을까?</p>
+	              	 <p style="color: grey;">내가 먹고 있는 영양제 괜찮을까?</p>
 	                 <h1>📷 사진으로 영양제를 검색해보세요!</h1>       
 	              </div>
 	            </a>
@@ -128,8 +133,8 @@
             <div id="top-banner-4" class="banner" id="tsbaimg4">
 	            <a href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper4" >
-	              	 <p style="color:gray;">내 위암 발병률은 몇 퍼센트일까?</p>
-	                 <h1>😥 주요 질환의 발병<br/> 위험도를 예측해드려요!</h1>
+	              	 <p style="color: grey;">내 위암 발병률은 몇 퍼센트일까?</p>
+	              	 <h1 style="font-size: 57px;">🧬 주요 질환의 발병 위험도를 예측해드려요!</h1>
 	              </div>
 	            </a>
             </div>
@@ -194,7 +199,7 @@
 	                            <p class="jeiOCr1" style="">${analyzeReport.score}<span class="ml-3" style="color:black; font-size: 20px;">점</span></p>
 	                        </div>
 	                        <div class="ZyIFk1 d-block mt-3" style="margin-left: 20px;">
-	                            <div><span style="color:#545454; font-weight: bold;">섭취 목적</span> : &nbsp; ${analyzeReport.takePurposes}</div>
+	                            <div><span style="color:#545454; font-weight: bold;">섭취 목적</span> :<br/> ${analyzeReport.takePurposes}</div>
 	                            <div><span style="color:#545454; font-weight: bold;">섭취중인 영양제</span> :<br/> ${analyzeReport.takeFoods}</div>
 	                        </div>	                   
          </c:if>
@@ -545,7 +550,7 @@
 	                        	<br/>
 	                        	<p style="color:gray; font-size:10px; font-weight:bold;">
 	                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
-	                        	&nbsp;${item.AVG_Score }&nbsp;(${item.REVIEW_Count})
+	                        	&nbsp;<fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }&nbsp;(${item.REVIEW_Count})
 	                        	</p>
                     		</a>
                         </div>

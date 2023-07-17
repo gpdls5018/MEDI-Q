@@ -147,7 +147,7 @@
 								<div>등록된 자료가 없습니다.</div>
 							</c:if>
 							<!-- 여기부터 리스트 나올 것: 1제목,2내용,3나이,4성별,5작성자 -->
-                            <c:if test="${not isEmpty }">
+                            <c:if test="${not isEmpty}">
                             	<c:forEach var="record" items="${listPagingData.records }">
 									<div class="qna-card">
 				                        <div class="ingredient-tags">
