@@ -51,6 +51,7 @@
 	}
 
 	.medi-img{
+		margin-top :10px;
 		margin-right: 25px;
 		margin-bottom: 20px;
 	}
