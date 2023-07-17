@@ -222,6 +222,14 @@
 	padding: 3.5px;
 	text-decoration: none;
 }
+/*위로가기*/
+a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
+    bottom:100px; display: none; z-index: 290;
+    background:url(https://cdn.pillyze.io/web/img/go_top76.webp) no-repeat;
+    box-shadow:2px 2px 2px gray;
+    border-radius:50%;
+    background-size:70px 70px;
+}
     </style>
 </head>
 <script>
@@ -326,7 +334,26 @@
 	      });
 	    });
 	  });*/
+	  if ($(this).scrollTop() > 20) {
+          $('#goto_top').fadeIn();
+      } else {
+          $('#goto_top').fadeOut();
+      }
+      /*화면 스크롤에 따른 조건부 노출 : 최하단 고정 행, 위로가기 버튼 */
+      $(window).scroll(function() {
+          if ($(this).scrollTop() > 20) {
+              $('#goto_top').fadeIn();
+          } else {
+              $('#goto_top').fadeOut();
+          }
 
+      });
+      $('#goto_top').click(function() {
+          $('html, body').animate({
+              scrollTop : 0
+          }, 300);
+          return false;
+      });
 
 </script>
 <body>
@@ -453,5 +480,5 @@
     </div>
     <!-- navbar left side end-->
 </div>
-
+<a id="goto_top" href="#" title="맨 위로"></a><!-- 위로가기 -->
  
