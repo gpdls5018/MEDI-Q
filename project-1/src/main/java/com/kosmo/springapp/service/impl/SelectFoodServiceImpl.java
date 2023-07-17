@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosmo.springapp.model.AvgStarScoreCountDTO;
+import com.kosmo.springapp.model.CheckWordDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
 import com.kosmo.springapp.service.SelectFoodMapper;
 import com.kosmo.springapp.service.SelectFoodService;
@@ -30,6 +31,25 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	public List<FunctionalFoodListDTO> selectFoodListFromName(String foodname) {
 		return mapper.selectFoodListFromName(foodname);
 	}
-	
-	
+
+	@Override
+	public List<String> RankingKeyWord() {
+		System.out.println(mapper.RankingKeyWord());
+		return mapper.RankingKeyWord();
+	}
+
+	@Override
+	public void selectKeyWord(String foodname) {
+		mapper.selectKeyWord(foodname);
+	}
+
+	@Override
+	public List<CheckWordDTO> checkWord(String foodname) {
+		return mapper.checkWord(foodname);
+	}
+
+	@Override
+	public void newWord(String foodname) {
+		mapper.newWord(foodname);
+	}	
 }

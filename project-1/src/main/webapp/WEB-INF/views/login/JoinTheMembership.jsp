@@ -7,10 +7,108 @@
 	  content: attr(data-placeholder);
 	  width: 100%;
 	}
+	
+	/* 약관동의 */
+	.register__step__wr {
+	    align-items: center;
+	    margin-bottom: 50px;
+	}
+	
+	.register__step__wr .step__wr {
+	    display: flex;
+	    justify-content: space-around;
+	    position: relative;
+	}
+	.register__step__wr .step__wr .line01 {
+	    left: 33.5%;
+	    transform: translateX(-50%);
+	}
+	.register__step__wr .step__wr .line02 {
+	    right: 33.5%;
+	    transform: translateX(50%);
+	}
+	.register__step__wr .step__wr .line03 {
+	    right: 33.5%;
+	    transform: translateX(50%);
+	}
+	.register__step__wr .step__wr .line04 {
+	    right: 33.5%;
+	    transform: translateX(50%);
+	}
+	.register__step__wr .step__wr .line00 {
+	    position: absolute;
+	    top: 16px;
+	}
+	.register__step__wr .step__wr .step00 {
+	    text-align: center;
+	}
+	.register__step__wr .step__wr .step00.on .step__check {
+	    opacity: 1;
+	}
+	.register__step__wr .step__wr .step00 .step__check {
+	    display: inline-block;
+	    width: 75px;
+	    height: 75px;
+	    border-radius: 50%;
+	    background-color: #152358;
+	    position: relative;
+	    margin-bottom: 18px;
+	    opacity: 0.09;
+	}
+	.register__step__wr .step__wr .step00 .step__check img {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+	    opacity: 0;
+	}
+	.register__step__wr .step__wr .step00 .step {
+	    color: #152358;
+	    font-size: 14px;
+	    font-weight: 700;
+	    color: #BEBED5;
+	}
+	.register__step__wr .step__wr .step00.on .step__info {
+	    color: #152358;
+	}
+	.register__step__wr .step__wr .step00 .step__info {
+	    font-size: 20px;
+	    font-weight: 700;
+	    color: #BEBED5;
+	}
 </style>
 <div class="container" style="margin-top: 40px">
 	<div class="container">
-		<div class="row d-flex justify-content-center align-items-center vh-100">
+		<div class="register__step__wr hidden1024" style="width: 100%;">
+	        <div class="step__wr">
+	            <img src="https://www.bundangcheil.com/images/register_step_line.png" alt="라인" class="line00 line01">
+	            <img src="https://www.bundangcheil.com/images/register_step_line.png" alt="라인" class="line00 line02">
+	            <img src="https://www.bundangcheil.com/images/register_step_line.png" alt="라인" class="line00 line03">
+	            <img src="https://www.bundangcheil.com/images/register_step_line.png" alt="라인" class="line00 line04">
+	            <div class="step00 step01 on">
+	                <div class="step__check">
+	                    <img src="https://www.bundangcheil.com/images/register_step_check.svg" alt="">
+	                </div>
+	                <p class="step">Step 01</p>
+	                <p class="step__info">약관동의</p>
+	            </div>
+	            <div class="step00 step02">
+	                <div class="step__check">
+	                    <img src="https://www.bundangcheil.com/images/register_step_check.svg" alt="">
+	                </div>
+	                <p class="step">Step 02</p>
+	                <p class="step__info">정보입력</p>
+	            </div>
+	            <div class="step00 step03">
+	                <div class="step__check">
+	                    <img src="https://www.bundangcheil.com/images/register_step_check.svg" alt="">
+	                </div>
+	                <p class="step">Step 03</p>
+	                <p class="step__info">가입완료</p>
+	            </div>
+	        </div>
+	    </div>
+		<div class="row d-flex justify-content-center align-items-center">
 			<div class="col-md-6 mb-4">
 				<h3 class="heading mb-4">회원가입</h3>
 				<p>

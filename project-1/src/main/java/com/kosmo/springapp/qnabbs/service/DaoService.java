@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface DaoService<T> {
 
-	ListPagingData<Map> selectList(Map map, HttpServletRequest req, int nowPage);
+	ListPagingData selectList(Map map, HttpServletRequest req, int nowPage);
 	Map selectOne(Map map);
 	int insert(Map map);
 	int update(Map map);

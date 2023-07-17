@@ -38,14 +38,19 @@
 
         .box:hover {
             font-weight: bold;
-            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.8);
         }
 
         .box.active {
             background-color: #bbb;
         }
     
-
+		.videologo {
+		    font-family: Arial, sans-serif;
+		    font-size: 24px;
+		    color: #FFFFFF;
+		    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+		}
 
 </style>
 <!-- 슬라이더를 위한 CDN -->
@@ -66,23 +71,28 @@
 			    <video id="video" autoplay muted loop>
 	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
-			    <div class="videologo">
-			    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="100" height="50">
-	           		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="200" height="50">
+			    <div class="videologo" style=" font-size:27px; color:white; margin-top: 190px; margin-bottom: 220px; margin-left: 520px; margin-right: 520px;">
 	           		<!-- 동영상 화면 문구 -->
-			        <div style=" font-size:20px; color:white;">
-			        	<div class="text-center" style="font-size: 40px; font-weight:bold;">건강고민은 <span style="color: #EF605D;">MEDI-Q</span></div>
-			        	<br/>영양제 분석, 건강예측 AI, 건강관리기록 등 저희만의 특별한 서비스를 이용해보세요!
-		        	</div>
-			    </div>
-			    <div id="video-controls">
-			      <button class="btn" onclick="closeVideo()">Home</button>
-			    </div>
-			    <div id="video-label">
-		    	    <label for="stop-video-checkbox" style="color:white;">
-			        동영상 오늘 하루 그만 보기
-			        <input type="checkbox" id="stop-video-checkbox" style="width:20px;">
-			      </label>
+		        	<div class="text-center" style="display: flex; align-items: center; justify-content: center; font-size: 65px; font-weight:bold;">건강고민은&nbsp;  
+						<img class="pr-3 pl-1" src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="120" height="75">
+	           			<img class="pr-2" src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="300" height="75">
+					</div>
+		        	<br/>
+		        	<div class="text-center" style="margin-top: 50px;">영양제 분석, 건강예측 AI 등 저희만의 특별한 서비스를 이용해보세요.</div>
+		        	<div class="text-center" style="margin-top: 30px;">스마트 헬스케어 솔루션, MEDI-Q가 여러분을 위해 준비되어 있습니다!</div>
+		        	<!-- 홈버튼 -->
+		        	<div style="display: flex; align-items: center; justify-content: center;">
+			        	<div id="video-controls" style="margin-top:390px; margin-right: 250px;">
+					        <button class="btn" onclick="closeVideo()" style="width:120px; background-color: rgb(248,182,43);">홈으로 이동</button>
+					    </div>
+					    <!-- 그만보기 -->
+					    <div id="video-label" style=" margin-top:390px; margin-right: 300px; display: flex; align-items: center; justify-content: center;">
+				    	    <label for="stop-video-checkbox" style="font-size:18px; color:white; margin-bottom:30px; font-weight: normal; cursor: pointer;">
+					        오늘 하루 그만 보기
+					        <input type="checkbox" id="stop-video-checkbox" style="width:20px;">
+					        </label>
+					    </div>
+					</div>
 			    </div>
 			</div>
 
@@ -99,21 +109,23 @@
             <div id="top-banner-1" class="banner">
 	            <a href="#">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper1" >
+	              	 <p style="color: grey;">어떤 건강고민이 있으신가요?</p>
+	                 <h1 style="font-size: 57px;">😀 MEDI-Q와 함께 건강한 삶을 시작해보세요!</h1>
 	              </div>
 	            </a>
             </div>
             <div id="top-banner-2" class="banner" id="tsbaimg2">
 	            <a href="<c:url value="/analyzeMyFood.do"/>">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper2"  >
-	               	 <p style="color:gray;">과도하거나 부족하지 않을까?</p>
-	                 <h1>💊 영양제를 분석 받으세요!</h1>
+	               	 <p style="color: grey;">과도하거나 부족하지 않을까?</p>
+	                 <h1>💊 복용 중인 영양제를 분석받으세요!</h1>
 	              </div>
 	            </a>
             </div>
             <div id="top-banner-3" class="banner" id="tsbaimg3">
 	            <a href="#">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper3" >
-	              	 <p style="color:gray;">내가 먹고 있는 영양제 괜찮을까?</p>
+	              	 <p style="color: grey;">내가 먹고 있는 영양제 괜찮을까?</p>
 	                 <h1>📷 사진으로 영양제를 검색해보세요!</h1>       
 	              </div>
 	            </a>
@@ -121,8 +133,8 @@
             <div id="top-banner-4" class="banner" id="tsbaimg4">
 	            <a href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper4" >
-	              	 <p style="color:gray;">내 위암 발병률은 몇 퍼센트일까?</p>
-	                 <h1>😥 주요 질환의 발병<br/> 위험도를 예측해드려요!</h1>
+	              	 <p style="color: grey;">내 위암 발병률은 몇 퍼센트일까?</p>
+	              	 <h1 style="font-size: 57px;">🧬 주요 질환의 발병 위험도를 예측해드려요!</h1>
 	              </div>
 	            </a>
             </div>
