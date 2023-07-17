@@ -21,15 +21,15 @@
 	}
 	.register__step__wr .step__wr .line01 {
 	    left: 33.5%;
-	    transform: translateX(-25%);
+	    transform: translateX(-50%);
 	}
 	.register__step__wr .step__wr .line02 {
 	    right: 33.5%;
-	    transform: translateX(-50%);
+	    transform: translateX(50%);
 	}
 	.register__step__wr .step__wr .line03 {
 	    right: 33.5%;
-	    transform: translateX(25%);
+	    transform: translateX(50%);
 	}
 	.register__step__wr .step__wr .line04 {
 	    right: 33.5%;
