@@ -250,16 +250,16 @@
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
-                    <a class="nav-link active" href="#" onclick="openTab(event, 'popular')">인기 영양소</a>
+                    <a style="font-size: 18px;" class="nav-link active" href="#" onclick="openTab(event, 'popular')">인기 영양소</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a class="nav-link" href="#" onclick="openTab(event, 'vitamin')">비타민</a>
+                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'vitamin')">비타민</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a class="nav-link" href="#" onclick="openTab(event, 'mineral')">미네랄 및 기타영양소</a>
+                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'mineral')">미네랄 및 기타영양소</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a class="nav-link" href="#" onclick="openTab(event, 'functional')">기능성 원료</a>
+                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'functional')">기능성 원료</a>
                 </li>
             </ul>
         </div>
@@ -267,10 +267,8 @@
             <div class="active border-0 text-center" style="padding-top:20px">
             	<!-- 조회수 -->
             	<div class="d-flex justify-content-end">
-            		<span class="badge badge-warning" style="width: 100px;">
-            		
-           				<a style="color:black; text-decoration: none;" href="/NutrientSelect.do">&nbsp;조회수: ${n_view }${i_view }&nbsp;</a>
-           			
+            		<span class="badge badge-warning" style="width: 130px;">
+           				<span style="font-size:16px; color:black; text-decoration: none;">&nbsp;조회수: ${n_view }${i_view }&nbsp;</span>
            			</span>
             	</div>
                 <!-- 이미지 -->
@@ -602,7 +600,7 @@
 	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">👨‍⚕&nbsp;인기 성분 Top 10</b><br/>
-		           		<small>100개 영양성분 중 가장 인기있는 10개 성분의 Best 제품을 만나보세요!</small>
+		           		<small>100가지 영양성분 중 가장 인기있는 10개 성분의 Best 제품을 만나보세요!</small>
                 	</div>
     			</div>
                 <div class="box-container">
@@ -620,7 +618,7 @@
 	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">🍊&nbsp;비타민 찾아보기</b><br/>
-		           		<small>비타민의 중요성과 효과를 자세히 알아보세요!</small>
+		           		<small>14가지 비타민의 중요성과 효과를 자세히 알아보세요!</small>
                 	</div>
     			</div>
     			<div class="box-container">
@@ -638,7 +636,7 @@
 	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">🥗&nbsp;미네랄 및 기타영양소 찾아보기</b><br/>
-		           		<small>미네랄 및 기타영양소의 중요성과 효과를 자세히 알아보세요!</small>
+		           		<small>14가지 미네랄 및 기타영양소의 중요성과 효과를 자세히 알아보세요!</small>
                 	</div>
     			</div>
     			<div class="box-container">
@@ -656,7 +654,7 @@
 	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">🌿&nbsp;기능성 원료 찾아보기</b><br/>
-		           		<small>기능성 원료의 중요성과 효과를 자세히 알아보세요!</small>
+		           		<small>74가지 기능성 원료의 중요성과 효과를 자세히 알아보세요!</small>
                 	</div>
     			</div>
     			<div class="box-container">

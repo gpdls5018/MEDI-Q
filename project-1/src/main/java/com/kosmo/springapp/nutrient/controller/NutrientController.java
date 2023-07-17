@@ -22,6 +22,7 @@ public class NutrientController {
 	@Autowired
 	private NutrientSelectServiceImpl nutrientSelectServiceImpl;
 	
+	// 인기 영양소 페이지로 이동
 	@GetMapping("/NutrientSelect.do")
 	public String nutrientselect(Model model) {
 		
@@ -40,6 +41,67 @@ public class NutrientController {
 		
 		return "nutrient/NutrientSelect";
 	}
+	
+	// 비타민 페이지로 이동
+	@GetMapping("/NutrientSelectVitamin.do")
+	public String nutrientselectvitamin(Model model) {
+		
+		List<String> vitaminNames = nutrietnSelectMapper.getVitaminName();
+		model.addAttribute("vitaminNames",vitaminNames);
+		
+		List<String> etcNames = nutrietnSelectMapper.getETCName();
+		model.addAttribute("etcNames",etcNames);
+		
+		List<String> ingredientNames = nutrietnSelectMapper.getIngredientName();
+		model.addAttribute("ingredientNames",ingredientNames);
+		
+		// 조회수에 따른 Top10 가져오기
+		List<String> top10 = nutrietnSelectMapper.getTop10();
+		model.addAttribute("top10",top10);
+		
+		return "nutrient/NutrientSelectVitamin";
+	}
+	
+	// 미네랄 페이지로 이동
+	@GetMapping("/NutrientSelectMineral.do")
+	public String nutrientselectmineral(Model model) {
+		
+		List<String> vitaminNames = nutrietnSelectMapper.getVitaminName();
+		model.addAttribute("vitaminNames",vitaminNames);
+		
+		List<String> etcNames = nutrietnSelectMapper.getETCName();
+		model.addAttribute("etcNames",etcNames);
+		
+		List<String> ingredientNames = nutrietnSelectMapper.getIngredientName();
+		model.addAttribute("ingredientNames",ingredientNames);
+		
+		// 조회수에 따른 Top10 가져오기
+		List<String> top10 = nutrietnSelectMapper.getTop10();
+		model.addAttribute("top10",top10);
+		
+		return "nutrient/NutrientSelectMineral";
+	}
+	
+	// 기능성 원료 페이지로 이동
+	@GetMapping("/NutrientSelectFunctional.do")
+	public String nutrientselectfunctional(Model model) {
+		
+		List<String> vitaminNames = nutrietnSelectMapper.getVitaminName();
+		model.addAttribute("vitaminNames",vitaminNames);
+		
+		List<String> etcNames = nutrietnSelectMapper.getETCName();
+		model.addAttribute("etcNames",etcNames);
+		
+		List<String> ingredientNames = nutrietnSelectMapper.getIngredientName();
+		model.addAttribute("ingredientNames",ingredientNames);
+		
+		// 조회수에 따른 Top10 가져오기
+		List<String> top10 = nutrietnSelectMapper.getTop10();
+		model.addAttribute("top10",top10);
+		
+		return "nutrient/NutrientSelectFunctional";
+	}
+	
 	
 	@GetMapping("/NutrientDetail.do")
 	public String nutrientdetail(@RequestParam String name, Model model) {

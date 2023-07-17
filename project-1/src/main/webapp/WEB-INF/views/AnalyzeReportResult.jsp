@@ -78,7 +78,7 @@
 				</div>
 			</div>
 			<div class="mt-5 effect-custom-font">
-				<div class="effect-custom-font m-1" style="font-size:30px;color:#868686;text-align:center;">섭취 목적별 영양제 분석</div>
+				<div class="effect-custom-font m-1" style="font-size:30px;color:#868686;text-align:center;">섭취 목적별 기능성 원료 분석</div>
 			</div>
 			<c:forEach items="${resultListDto.listdto}" var="dto" varStatus="loop">
 			<div class="jumbotron" style="border-radius:25px;">
@@ -91,10 +91,10 @@
 					</div>
 					<div class="col-9">
 						<div class="effect-custom-font mb-3" style="font-size:15px;color:#6e6e6e;">
-								${dto.takePurpose}  을(를) 위해 필요한 영양소 <span style="font-size:20px;color:#000000">${fn:length(dto.foodList)} 중 ${fn:length(dto.foodList) - fn:length(dto.ingredient_list_no_report)}개</span> 를 섭취하고 있습니다
+								${dto.takePurpose}  을(를) 위해 필요한 영양소 <span style="font-size:20px;color:#000000">${fn:length(dto.foodList)} 가지 중 ${fn:length(dto.foodList) - fn:length(dto.ingredient_list_no_report)} 개</span> 를 섭취하고 있습니다
 						</div>
 						<c:if test="${fn:length(dto.foodForHelpPurpose) eq 0}" var="noHelp">
-							<div class="effect-custom-font"><span style="font-size:17px;color:red;background-color:#ffdcdc">현재 아무런 영양소도 섭취하지 않아요!</span>  <span style="color:red;font-size:15px;background-color:#ffdcdc">아래의 영양소를 참고해 주세요</span></div>
+							<div class="effect-custom-font"><span style="font-size:17px;color:red;background-color:#ffdcdc">현재 아무런 기능성 원료도 섭취하지 않아요!</span>  <span style="color:red;font-size:15px;background-color:#ffdcdc">아래의 추천 기능성 원료를 참고해 주세요</span></div>
 							<img src="<c:url value="/resources/images/basic/warning.png"/>" style="width:200px;height:200px;"/>
 						</c:if>
 						<c:if test="${not noHelp}">
@@ -110,7 +110,7 @@
 							</c:forEach>
 							</ul>
 						</c:if>
-						<div class="effect-custom-font mt-5" style="font-size:20px;">${dto.takePurpose}에 좋은 다른 영양소</div>
+						<div class="effect-custom-font mt-5" style="font-size:20px;">${dto.takePurpose}에 좋은 추천 기능성 원료</div>
 						<c:forEach items="${dto.ingredient_list_no_report}" var="ingredient" varStatus="index">
 							
 							<span class="effect-custom-font p-0 m-2" style="background-color:#fdb576;border-radius:15px;font-size:15px;">${ingredient}</span>
@@ -123,11 +123,11 @@
 				
 			</div>
 			</c:forEach>
-			<div class="effect-custom-font m-1" style="font-size:30px;color:#868686;text-align:center;">기타 필수 영양소</div>
+			<div class="effect-custom-font m-1" style="font-size:30px;color:#868686;text-align:center;">5대 영양소</div>
 			<div class="effect-custom-font">
 				<div class="row jumbotron">
 					<div class="col-6" style="border-radius:15px;">
-						섭취하고 있는 필수 영양소들 입니다
+						현재 섭취하고 있는 5대 영양소입니다
 						<ul class="list-unstyled mt-3">
 							<c:forEach items="${resultListDto.nutrient_list_report}" var="nutrient">
 							<a href="/NutrientDetail.do?name=${nutrient}"><li>✅ ${nutrient}</li></a>
@@ -135,7 +135,7 @@
 						</ul>
 					</div>
 					<div class="col-6" style="border-radius:15px;">
-						섭취하지 않고 있는 필수 영양소들 입니다
+						현재 섭취하고 있지 않는 5대 영양소입니다
 						<div class="mt-3" style="overflow: auto;height:300px;">
 							<ul class="list-unstyled mt-3">
 							<c:forEach items="${resultListDto.nutrient_list_no_report}" var="no_nutrient">
@@ -147,7 +147,6 @@
 				</div>
 			</div>
 		</div>
-		
 	</div>
 	<script>
 	console.log('${resultListDto.nutrient_list_report}');
