@@ -68,6 +68,16 @@
 		border-radius: 50%;
 		background-size:contain;
 	}
+	.qna_ans{
+		width:400px;
+		height:90px;
+	}
+	.card_font1{
+		font-size:26px;
+	}
+	.card_font2{
+		color: #EF605D;
+	}
 </style>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <!-- 메인 바디 부분 -->
@@ -91,7 +101,7 @@
 	            <!-- 게시판 가운데 부분 -->
 	            <div class="d-flex col-8 flex-wrap flex-direction justify-content-center align-content-stretch">
 	                <div class="col pb-5">
-	                    <h2 class="ml-0 font-weight-bold">답변 게시판</h2>
+	                    <img src="<c:url value="/resources/images/qna/qna_ans.png"/>" class="qna_ans ml-1">
 	                    <div class="row justify-content-center">
 	                    	<!--여기부터 답변출력  -->
 	                    	<c:if test="${! empty FAILURE}">
@@ -103,7 +113,7 @@
 							<!-- 질문 출력 부분 -->
 							<div class="card_deco col-12 p-1 m-2">
 	                            <div class="card-body p-2 m-3">
-	                                <p class="card-title font-weight-bold"><h3>${record.TITLE }</h3></p>
+	                                <span class="card-title font-weight-bold card_font1"><span class="card_font2">Q.&nbsp;</span>${record.TITLE }</span>
 	                                <br>
 	                                <p class="card-text"><h5>${record.CONTENT }</h5></p>
 	                                <hr style="border: 1px solid #E6E9ED;"/>
@@ -143,14 +153,14 @@
                         </div>
                         <!--  -->
                         <div class="card-body m-2">
-	                        <span class="card-text"><h5 class="font-weight-bold">답변 소제목 부분</h5></span>
-	                        
+
 	                        <br>
-	                        <span class="card-text"><h5>답변 내용 부분</h5></span>
+	                        <br>
+	                        <span class="card-text"><h5>${record.CONTENT }</h5></span>
 	                        <hr style="border: 1px solid #E6E9ED;"/>
 	                        <div class="card-text d-flex align-items-center">
-		                       	<button class="btn btn-light text-light btn_deco mr-3">도움이 돼요</button>
-		                       	<span class="font-weight-bold">24명에게 도움이 됐습니다.</span>
+		                       	<button class="btn btn-light text-light btn_deco mr-3" onclick="increaseNum()">도움이 돼요</button>
+		                       	<span class="font-weight-bold"><span id="number">0</span>명에게 도움이 됐습니다.</span>
 		                   	</div>
 	                   	</div>
                         
@@ -176,5 +186,11 @@
 		if(confirm("삭제하시겠습니까?")){
 			location.replace("<c:url value="/board/Delete.do?no=${record.NO}"/>");
 		}
+	}
+		
+	var count = 0;//초기 숫자 값 설정	
+	function increaseNum() {
+	  count++;//숫자 증가
+	  document.getElementById("number").textContent = count;//숫자 표시 업데이트
 	}
 </script>
