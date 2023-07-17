@@ -550,7 +550,7 @@
 	                        	<br/>
 	                        	<p style="color:gray; font-size:10px; font-weight:bold;">
 	                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
-	                        	&nbsp;${item.AVG_Score }&nbsp;(${item.REVIEW_Count})
+	                        	&nbsp;<fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }&nbsp;(${item.REVIEW_Count})
 	                        	</p>
                     		</a>
                         </div>
