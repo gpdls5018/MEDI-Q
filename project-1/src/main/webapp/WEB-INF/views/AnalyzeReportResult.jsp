@@ -96,14 +96,14 @@
 					</div>
 					<div class="col-9">
 						<div class="effect-custom-font mb-3" style="font-size:15px;color:#6e6e6e;">
-								${dto.takePurpose}  을(를) 위해 필요한 영양소 <span style="font-size:20px;color:#000000">${fn:length(dto.foodList)} 가지 중 ${fn:length(dto.foodList) - fn:length(dto.ingredient_list_no_report)} 개</span> 를 섭취하고 있습니다
+								'${dto.takePurpose}' 에 도움이 되는 기능성 원료 <span style="font-size:20px;color:#000000">${fn:length(dto.foodList)} 가지 중 ${fn:length(dto.foodList) - fn:length(dto.ingredient_list_no_report)} 개</span> 를 섭취하고 있습니다
 						</div>
 						<c:if test="${fn:length(dto.foodForHelpPurpose) eq 0}" var="noHelp">
 							<div class="effect-custom-font"><span style="font-size:17px;color:red;background-color:#ffdcdc">현재 아무런 기능성 원료도 섭취하지 않아요!</span>  <span style="color:red;font-size:15px;background-color:#ffdcdc">아래의 추천 기능성 원료를 참고해 주세요</span></div>
 							<img src="<c:url value="/resources/images/basic/warning.png"/>" style="width:200px;height:200px;"/>
 						</c:if>
 						<c:if test="${not noHelp}">
-						<div class="effect-custom-font" style="font-size:20px;">${dto.takePurpose}  에 도움이 되는 건강기능 식품과 해당 성분입니다</div>
+						<div class="effect-custom-font" style="font-size:20px;">아래는 복용 중이신 영양제 중 '${dto.takePurpose}' 에 도움이 되는 기능성 원료입니다</div>
 							<ul class="list-unstyled mt-5">
 							<c:forEach items="${dto.foodForHelpPurpose}" var="helpfood">
 								<li class="effect-custom-font" style="font-size:20px;">- ${helpfood.key}</li>
@@ -115,7 +115,7 @@
 							</c:forEach>
 							</ul>
 						</c:if>
-						<div class="effect-custom-font mt-5" style="font-size:20px;">${dto.takePurpose}에 좋은 추천 기능성 원료</div>
+						<div class="effect-custom-font mt-5" style="font-size:20px;">'${dto.takePurpose}'에 좋은 추천 기능성 원료</div>
 						<c:forEach items="${dto.ingredient_list_no_report}" var="ingredient" varStatus="index">
 							
 							<span class="effect-custom-font p-0 m-2" style="background-color:#fdb576;border-radius:15px;font-size:15px;">${ingredient}</span>
