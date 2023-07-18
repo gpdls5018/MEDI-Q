@@ -150,13 +150,19 @@ left: 146px;
     font-weight: bold;
     font-size:44px;
 }
+.background-top{
+	margin-top: 150px;
+	margin-left: 300px;
+}
 </style>
-
+<div>
+<div class="background-top">
+	<p class="display-4 back-img" style="background-image: url('<c:url value="/resources/images/nutrient_img/bg_bl.png"/>');">${listOne.productName}</p>
+</div>
 <div class="container">
-<div class="empty-space" style="height:100px;"></div>
-    <p class="display-4 mt-5 back-img" style="background-image: url('<c:url value="/resources/images/nutrient_img/bg_bl.png"/>');">${listOne.productName}</p>
+<div class="empty-space" style="height:32px;"></div>
     
-    <h1 class="display-4 mt-5">
+    <h1 class="display-4">
     <c:if test="${empty listOne.imgURL}" var="emptyIMG">
     	<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" width="400px;" height="300px;" style="border-radius:20px;"/>
     </c:if>
@@ -516,6 +522,7 @@ left: 146px;
 	  		</div><!-- 리뷰 페이지 끝 -->
   		</div><!-- 탭 2 끝 -->
    	</div><!-- 탭 끝 -->
+</div>
 </div>
 <input type="hidden" value="${listOne.no}" id="productNo">
 <script>
