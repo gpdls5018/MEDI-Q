@@ -228,28 +228,29 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 	public int editProfImgDefault(ProfileImageDTO dto) throws IOException {
 		int deleteFlag = 0;
 		String id="";
-		String sm_email="";
+		String email="";
 
 		Map map = new HashMap<>();
 		
-		if(dto.getId() != null) {
-			id = dto.getId();
-			map.put("id", dto.getId());
+		if(dto.getId().contains("@")) {
+			email = dto.getId();
+			map.put("email", email);
 		}
 		else {
-			sm_email = dto.getSm_Email();
-			map.put("sm_email", dto.getSm_Email());
+			System.out.println("아이디형식");
+			id = dto.getId();
+			map.put("id", id);
 		}
 
 		if("Y".equals(mapper.findMember(map).getProf_Img_Fl())) {
-			ProfileImageDTO info = mapper.findProfImg(dto.getId()==null ? dto.getSm_Email() : dto.getId());;
+			ProfileImageDTO info = mapper.findProfImg(email.length()==0?id:email);
 			
 			//기존에 파일이 있는 경우
 			Resource resource = new ClassPathResource(SaveDirectory);
 			String phisicalPath = resource.getFile().getAbsolutePath()+"\\profImg";
 			
 			FileUtils.deletes(new StringBuffer(info.getPi_Filename()+"."+info.getPi_Ext()), phisicalPath, ",");
-			deleteFlag = mapper.deleteProfImg(id.length()==0?sm_email:id);
+			deleteFlag = mapper.deleteProfImg(email.length()==0?id:email);
 		}
 		else deleteFlag = -1;
 		
