@@ -118,7 +118,7 @@
 	            <a href="<c:url value="/NutrientSelect.do"/>">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper2"  >
 	               	 <p style="color: grey;">내가 먹고 있는 영양제 괜찮을까?</p>
-	                 <h1>🧫 영양소를 검색해보세요!</h1>
+	                 <h1>💊 영양성분을 검색해보세요!</h1>
 	              </div>
 	            </a>
             </div>
@@ -126,7 +126,7 @@
 	            <a href="<c:url value="/analyzeMyFood.do"/>">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper3" >
 	                 <p style="color: grey;">과도하거나 부족하지 않을까?</p>
-	                 <h1>💊 복용 중인 영양제를 분석받으세요!</h1>       
+	                 <h1>📋 복용 중인 영양제를 분석받으세요!</h1>       
 	              </div>
 	            </a>
             </div>

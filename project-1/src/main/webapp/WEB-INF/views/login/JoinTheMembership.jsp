@@ -105,6 +105,14 @@
 	.right-center{
 		margin-left: 120px;
 	}
+	.bottom-button{
+		margin-bottom: 140px;
+		border-color :#EF605D;
+		background-color: #EF605D; 
+		color: #fff; 
+		width: 120px;
+		height: 45px;
+	}
 </style>
 <div class="container" style="margin-top: 40px">
 	<div class="container">
@@ -205,6 +213,8 @@
 					<button type="submit" class="btn btn-outline-primary">확인</button>
 				</form>
 			</div>
+				<button type="submit" class="btn bottom-button mr-3">이전</button>
+				<button type="submit" class="btn bottom-button ml-3">다음</button>
 		</div>
 	</div>
 </div>
