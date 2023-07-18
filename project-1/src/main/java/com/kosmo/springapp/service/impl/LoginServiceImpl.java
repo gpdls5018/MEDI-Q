@@ -66,12 +66,11 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 		String token = jwTokensService.getToken(req, tokenName);
 		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
 		String key = payloads.get("sub").toString();
-		
-		if("@".contains(key)) {
+		if(key.contains("@")) {
 			payloads.put("email", key);
 		}
 		else {
-		payloads.put("id", key);
+			payloads.put("id", key);
 		}
 		
 		return mapper.findMember(payloads);
@@ -180,17 +179,29 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 			}
 			
 			MultipartFile imgFile = dto.getFile();
+			System.out.println("imgFile: "+imgFile);
+			String id = dto.getId();
+			String email = "";
+
+			Map map = new HashMap<>();
 			
 			if(imgFile != null) {//변경 이미지 선택 시
-				String id = dto.getId();
-				
-				Map map = new HashMap<>();
-				map.put("id", id);
+				if(id.contains("@")) {
+					System.out.println("이메일형식");
+					map.put("email", id);
+					email = id;
+				}
+				else {
+					System.out.println("아이디형식");
+					map.put("id", id);
+				}
+				System.out.println("flag: "+mapper.findMember(map).getProf_Img_Fl());
 				if("Y".equals(mapper.findMember(map).getProf_Img_Fl())) {
+					System.out.println("여기로 안들어옴");
 					//기존 프로필이미지 있는경우(db 삭제 해야함, 업로드 폴더 이미지 삭제)
-					ProfileImageDTO info = mapper.findProfImg(id);
+					ProfileImageDTO info = mapper.findProfImg(email.length()==0?id:email);
 					FileUtils.deletes(new StringBuffer(info.getPi_Filename()+"."+info.getPi_Ext()), phisicalPath, ",");
-					mapper.deleteProfImg(id);
+					mapper.deleteProfImg(email.length()==0?id:email);
 				}
 				
 				newFilename = FileUtils.getNewFileName(phisicalPath, imgFile.getOriginalFilename());
@@ -208,6 +219,7 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 			}
 		}catch (Exception e) {// 문제 시 업로드된 파일 삭제
 			FileUtils.deletes(new StringBuffer(newFilename), phisicalPath, ",");
+			System.out.println("error: "+e.getMessage());
 		}
 		return null;
 	}
@@ -215,18 +227,29 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 	//기본이미지로 수정 시
 	public int editProfImgDefault(ProfileImageDTO dto) throws IOException {
 		int deleteFlag = 0;
-		String id = dto.getId();
+		String id="";
+		String sm_email="";
+
 		Map map = new HashMap<>();
-		map.put("id",id);
-		ProfileImageDTO info = mapper.findProfImg(id);
+		
+		if(dto.getId() != null) {
+			id = dto.getId();
+			map.put("id", dto.getId());
+		}
+		else {
+			sm_email = dto.getSm_Email();
+			map.put("sm_email", dto.getSm_Email());
+		}
 
 		if("Y".equals(mapper.findMember(map).getProf_Img_Fl())) {
+			ProfileImageDTO info = mapper.findProfImg(dto.getId()==null ? dto.getSm_Email() : dto.getId());;
+			
 			//기존에 파일이 있는 경우
 			Resource resource = new ClassPathResource(SaveDirectory);
 			String phisicalPath = resource.getFile().getAbsolutePath()+"\\profImg";
 			
 			FileUtils.deletes(new StringBuffer(info.getPi_Filename()+"."+info.getPi_Ext()), phisicalPath, ",");
-			deleteFlag = mapper.deleteProfImg(id);
+			deleteFlag = mapper.deleteProfImg(id.length()==0?sm_email:id);
 		}
 		else deleteFlag = -1;
 		

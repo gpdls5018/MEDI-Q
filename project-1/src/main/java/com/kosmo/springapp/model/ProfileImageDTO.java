@@ -28,7 +28,7 @@ public class ProfileImageDTO {
 	
 	private String id; //프로필이미지 등록 아이디
 	
-	private String sm_Eail; //프로필이미지 등록 이메일(소셜로그인)
+	private String sm_Email; //프로필이미지 등록 이메일(소셜로그인)
 	
 	@NotNull
 	private String pi_Path; //프로필이미지 저장경로

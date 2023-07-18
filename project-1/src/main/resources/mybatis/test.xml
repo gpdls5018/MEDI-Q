@@ -62,18 +62,38 @@
 	
 	<!-- member / social if문 구분해야함 -->
 	<insert id="saveProfImg" parameterType="profImgDto">
-		INSERT INTO PROFILE_IMAGE VALUES(SEQ_PROFILE_IMAGE.NEXTVAL,#{id},DEFAULT,#{pi_Path},#{pi_Filename},#{pi_Ext})
+		<if test="id != null">
+			INSERT INTO PROFILE_IMAGE VALUES(SEQ_PROFILE_IMAGE.NEXTVAL,#{id},DEFAULT,#{pi_Path},#{pi_Filename},#{pi_Ext})
+		</if>
+		<if test="id == null">
+			INSERT INTO PROFILE_IMAGE VALUES(SEQ_PROFILE_IMAGE.NEXTVAL,DEFAULT,#{sm_email},#{pi_Path},#{pi_Filename},#{pi_Ext})
+		</if>
 	</insert>
 	
 	<update id="updateProfImg" parameterType="memberDto">
-		UPDATE MEMBER SET PROF_IMG_FL=#{prof_Img_Fl} WHERE ID=#{id}
+		<if test="id != null">
+			UPDATE MEMBER SET PROF_IMG_FL=#{prof_Img_Fl} WHERE ID=#{id}
+		</if>
+		<if test="id == null">
+			UPDATE SOCIAL SET PROF_IMG_FL=#{prof_Img_Fl} WHERE EMAIL=#{sm_email}
+		</if>
 	</update>
 	
 	<select id="findProfImg" parameterType="String" resultType="profImgDto">
-		SELECT * FROM PROFILE_IMAGE WHERE ID=#{id}
+		<if test="id != null">
+			SELECT * FROM PROFILE_IMAGE WHERE ID=#{id}
+		</if>
+		<if test="id == null">
+			SELECT * FROM PROFILE_IMAGE WHERE SM_EMAIL=#{sm_email}
+		</if>
 	</select>
 	
 	<delete id="deleteProfImg" parameterType="String">
-		DELETE FROM PROFILE_IMAGE WHERE ID=#{id}
+		<if test="id != null">
+			DELETE FROM PROFILE_IMAGE WHERE ID=#{id}
+		</if>
+		<if test="id == null">
+			ELETE FROM PROFILE_IMAGE WHERE SM_EMAIL=#{sm_email}
+		</if>
 	</delete>
 </mapper>
