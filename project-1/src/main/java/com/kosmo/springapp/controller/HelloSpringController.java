@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.kosmo.springapp.model.AvgStarScoreCountDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
+import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.nutrient.service.impl.NutrientSelectMapper;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.MainPageService;
 import com.kosmo.springapp.service.impl.AnalyzeMyReportServiceImpl;
+import com.kosmo.springapp.service.impl.LoginServiceImpl;
 import com.kosmo.springapp.service.impl.MainPageServiceImpl;
 import com.kosmo.springapp.service.impl.SelectFoodServiceImpl;
 
@@ -40,7 +42,8 @@ public class HelloSpringController {
 	private String tokenName;
 	@Value("${secret-key}")
 	private String secretKey;
-	
+	@Autowired
+	private LoginServiceImpl loginService;
 	
 	@GetMapping("/") 
 	public String index(Model model,HttpServletRequest req, HttpServletResponse resp) {
@@ -51,10 +54,11 @@ public class HelloSpringController {
 		try {
 			String id = payloads.get("sub").toString();
 			model.addAttribute("analyzeReport",analyzeMyReportServiceImpl.selectAnalyzeReport(id));
-			model.addAttribute("id",id);
+			MemberDTO memberDto = loginService.selectOne(req,resp);
+			model.addAttribute("userName",memberDto.getName());
 		}
 		catch(NullPointerException e) {
-			model.addAttribute("id","???");
+			model.addAttribute("userName","???");
 			
 		}
 		model.addAttribute("listData", listData);
