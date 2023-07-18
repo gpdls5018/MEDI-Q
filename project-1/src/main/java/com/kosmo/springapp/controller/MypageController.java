@@ -223,6 +223,10 @@ public class MypageController {
 		ProfileImageDTO info = loginService.editProfImg(dto);
 		System.out.println("member.getId(): "+member.getId());
 		System.out.println("getSm_Email: "+info.getSm_Email());
+		if(dto.getId().contains("@")) {
+			info.setSm_Email(dto.getId());
+			System.out.println("if문 안: "+info.getSm_Email());
+		}
 		int insertFlag = loginService.insertProfImg(info);
 		
 		if(insertFlag==1) {

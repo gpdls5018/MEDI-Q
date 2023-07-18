@@ -179,7 +179,7 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 			}
 			
 			MultipartFile imgFile = dto.getFile();
-			System.out.println("imgFile: "+imgFile);
+			
 			String id = dto.getId();
 			String email = "";
 
@@ -195,9 +195,9 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 					System.out.println("아이디형식");
 					map.put("id", id);
 				}
-				System.out.println("flag: "+mapper.findMember(map).getProf_Img_Fl());
+				
 				if("Y".equals(mapper.findMember(map).getProf_Img_Fl())) {
-					System.out.println("여기로 안들어옴");
+					
 					//기존 프로필이미지 있는경우(db 삭제 해야함, 업로드 폴더 이미지 삭제)
 					ProfileImageDTO info = mapper.findProfImg(email.length()==0?id:email);
 					FileUtils.deletes(new StringBuffer(info.getPi_Filename()+"."+info.getPi_Ext()), phisicalPath, ",");

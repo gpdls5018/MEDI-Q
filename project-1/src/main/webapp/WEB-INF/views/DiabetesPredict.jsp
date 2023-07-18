@@ -25,11 +25,7 @@
 <div class="container effect-custom-font" >
 	<div class="m-5"style="height:50px;"></div>
     <div class="m-5 display-4 effect-custom-font" style="text-align:center;">당뇨병 수치 예측하기</div>
-    <div class="alert alert-danger alert-dismissible m-5" id="myAlert">
-	    <button type="button" class="close">&times;</button>
-	    <div class="model-score">※현재 머신러닝의 예측 정확도는 약 <kbd>70%</kbd> 입니다</div>
-    </div>
-    
+	<div class="model-score m-4" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd>70%</kbd> 입니다</div>
     <div class="row">
         <div class="col-6">
             <form id="personInfoForm" class="validation-form" novalidate>
@@ -42,21 +38,21 @@
                 </div>
                 <div class="col mb-3">
                     <strong>BMI</strong>
-                    <input type="text" class="form-control" id="bmi" name="bmi" placeholder="체질량 지수를 입력해주세요" value="" required>
+                    <input type="text" class="form-control" id="bmi" name="bmi" placeholder="체질량 지수를 입력해주세요" value="${healthInfoDto.bmi}" required>
                     <div class="invalid-feedback">
                         체질량 지수를 입력해주세요
                     </div>
                 </div>
                 <div class="col mb-3">
                     <strong>포도당</strong>
-                    <input type="text" class="form-control" id="glucose" name="glucose" placeholder="포도당 수치를 입력해주세요" value="" required>
+                    <input type="text" class="form-control" id="glucose" name="glucose" placeholder="포도당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required>
                     <div class="invalid-feedback">
                         포도당 수치를 입력해주세요
                     </div>
                 </div>
                 <div class="col mb-3">
                     <strong>혈압</strong>
-                    <input type="text" class="form-control" id="bloodpress" name="bloodpress"  placeholder="혈압수치를 입력해주세요" value="" required>
+                    <input type="text" class="form-control" id="bloodpress" name="bloodpress"  placeholder="혈압수치를 입력해주세요" value="${(healthInfoDto.bloodPressure_high + healthInfoDto.bloodPressure_low) / 2}" required>
                     <div class="invalid-feedback">
                         혈압수치를 입력해주세요
                     </div>
@@ -139,7 +135,7 @@
                                 console.log(response[0])
                                 initDrawingCanvas((response[0][1]*100).toFixed(1));
                                 requestAnimationFrame(loop);
-                                
+                                $('#machineImage').hide();
                             }
                         });
                     }, 1500);

@@ -454,7 +454,7 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 	        </div>
 	        <div id="four" class="section large">
 	          <h3>
-	            <a class="text-decoration-none" href="#">
+	            <a class="text-decoration-none" href="<c:url value="/analyzeMyFood.do"/>">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-data-analysis-3449317.png"/>" width="25" height="25">
 	                &nbsp; 분석 및 결과
 	            </a>
