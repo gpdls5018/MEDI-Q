@@ -247,6 +247,7 @@ public class MypageController {
 		int deleteFlag = loginService.editProfImgDefault(dto);
 		
 		if(deleteFlag==1) {
+			System.out.println("deleteFlag: "+deleteFlag);
 			member.setProf_Img_Fl("N");
 			member.setId(id);
 			loginService.updateProfImg(member);
