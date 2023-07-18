@@ -118,7 +118,7 @@
 	            <a href="<c:url value="/NutrientSelect.do"/>">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper2"  >
 	               	 <p style="color: grey;">내가 먹고 있는 영양제 괜찮을까?</p>
-	                 <h1>🧫 영양소를 검색해보세요!</h1>
+	                 <h1>🌿 영양소를 검색해보세요!</h1>
 	              </div>
 	            </a>
             </div>
