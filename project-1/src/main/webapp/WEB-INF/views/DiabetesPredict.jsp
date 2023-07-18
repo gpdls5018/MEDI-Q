@@ -126,7 +126,7 @@
 	                        }
                         $.ajax({
                             type: 'POST',
-                            url: 'http://127.0.0.1/diabetes',
+                            url: 'http://192.168.0.16/diabetes',
                             contentType : "application/json",
                             dataType: 'json',
                             data: JSON.stringify(data),
