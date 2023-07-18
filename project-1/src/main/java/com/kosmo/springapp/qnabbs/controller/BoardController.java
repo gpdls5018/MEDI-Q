@@ -55,6 +55,7 @@ public class BoardController {
 		//뷰정보 반환
 		return "board/List";
 	}
+	
 	@GetMapping("/Write.do")
 	public String write() {
 		return "board/Write";
