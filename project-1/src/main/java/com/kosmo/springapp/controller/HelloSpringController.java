@@ -15,11 +15,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.kosmo.springapp.model.AvgStarScoreCountDTO;
+import com.kosmo.springapp.model.BoardDTO;
+import com.kosmo.springapp.model.BoardMemberDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
 import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.nutrient.service.impl.NutrientSelectMapper;
+import com.kosmo.springapp.qnabbs.service.impl.board.BoardMapper;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.MainPageService;
+import com.kosmo.springapp.service.QNAMapper;
 import com.kosmo.springapp.service.impl.AnalyzeMyReportServiceImpl;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
 import com.kosmo.springapp.service.impl.MainPageServiceImpl;
@@ -36,6 +40,8 @@ public class HelloSpringController {
 	private NutrientSelectMapper nutrietnSelectMapper;
 	@Autowired
 	private AnalyzeMyReportServiceImpl analyzeMyReportServiceImpl;
+	@Autowired
+	private QNAMapper qnamapper;
 	@Autowired
 	private JWTokensService jwTokensService;
 	@Value("${token-name}")
@@ -61,6 +67,10 @@ public class HelloSpringController {
 			model.addAttribute("userName","???");
 			
 		}
+		List<BoardDTO> boardList = qnamapper.BoardList();
+		List<BoardMemberDTO> boardmemberList = qnamapper.BoardListMember();
+		model.addAttribute("boardList", boardList);
+		model.addAttribute("boardmemberList", boardmemberList);
 		model.addAttribute("listData", listData);
 		model.addAttribute("foodList",foodList);
 		
