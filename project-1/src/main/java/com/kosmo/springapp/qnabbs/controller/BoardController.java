@@ -62,7 +62,7 @@ public class BoardController {
 	}
 	@PostMapping("/WriteProcess.do")
 	public String writeProcess(@RequestParam Map map,Model model) {
-		map.put("id", "sem50000");
+		map.put("id", "petrus11");
 		int affected = board.insert(map);
 		System.out.println(affected);
 		System.out.println("SELECT 전"+map);
@@ -83,7 +83,7 @@ public class BoardController {
 	@GetMapping("/Edit.do")
 	public String edit(@RequestParam Map map,Model model) {
 		System.out.println(123);
-		map.put("id", "KIM");
+		map.put("id", "petrus11");
 		map= board.selectOne(map);
 		System.out.println(map);
 		model.addAttribute("record", map);
@@ -92,14 +92,14 @@ public class BoardController {
 	}
 	@PostMapping("/EditProcess.do")
 	public String editProcess(@RequestParam Map map,Model model) {
-		map.put("id", "KIM");
+		map.put("id", "petrus11");
 		System.out.println("여기부터...");
 		int affected = board.update(map);
 	    if (affected == 0) {
 	        model.addAttribute("inputError", "입력 오류입니다. 다시 입력해주세요");
 	        model.addAttribute("record", map);
 	        return "board/Edit";
-	    }
+	    } 
 	    //redircet로도 가능
 	    //return "redirect:/board/View.do?no=" + map.get("no");
 	    // forward로 이동할 경로에 "/board"를 추가하여 수정
@@ -108,7 +108,7 @@ public class BoardController {
 	
 	@GetMapping("/Delete.do")
 	public String delete(@RequestParam Map map,Model model) {
-		map.put("id", "KIM");
+		map.put("id", "petrus11");
 		System.out.println("여기부터...또");
 		//서비스 호출
 		int affected = board.delete(map);
