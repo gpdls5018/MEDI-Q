@@ -36,10 +36,10 @@
 	
 	<insert id="saveSocial" parameterType="Map">
 		<if test="site eq 'kakao'">
-			INSERT INTO SOCIAL VALUES(#{email},#{gender},#{site},SYSDATE,'N',DEFAULT,DEFAULT)
+			INSERT INTO SOCIAL VALUES(#{email},#{gender},#{site},SYSDATE,'N',DEFAULT,DEFAULT,'N')
 		</if>
 		<if test="site eq 'naver'">
-			INSERT INTO SOCIAL VALUES(#{email},#{gender},#{site},SYSDATE,'N',#{name},#{birth})
+			INSERT INTO SOCIAL VALUES(#{email},#{gender},#{site},SYSDATE,'N',#{name},#{birth},'N')
 		</if>
 	</insert>
 	

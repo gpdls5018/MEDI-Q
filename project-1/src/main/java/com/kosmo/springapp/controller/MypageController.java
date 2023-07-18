@@ -99,15 +99,30 @@ public class MypageController {
 		//System.out.println("date: "+date);
 		MemberDTO member = loginService.selectOne(req,resp);
 		
+		String id="";
+		String sm_email="";
+		ProfileImageDTO profImg=null;
+		
+		if(member.getId() == null) {
+			sm_email = member.getEmail();
+			map.put("sm_email", sm_email);
+			profImg = loginService.selectProfImg(sm_email);
+		}
+		else {
+			id = member.getId();
+			map.put("id", id);
+			profImg = loginService.selectProfImg(id);
+		}
+		
 		String key = member.getId()==null?member.getEmail():member.getId();
 		
-		ProfileImageDTO profImg = loginService.selectProfImg(key);
+		
 		List<HealthMemoDTO> memos = healthMemoIServicempl.selectAll(req);
 		for(HealthMemoDTO m : memos) {
 			m.setMm_Date(m.getMm_Date().split(" ")[0]);
 		}
 		
-		map.put("mm_Id", key);
+		map.put("mm_Id", key);//////////////////////////////////////////
 		map.put("mm_Date", current);
 		HealthMemoDTO memo = healthMemoIServicempl.selectOne(map);
 		if(memo != null) {
@@ -125,15 +140,26 @@ public class MypageController {
 	@GetMapping("/ClickDate.do")
 	public String clickDate(@RequestParam String clickDate, HttpServletRequest req, HttpServletResponse resp, Model model) {
 		MemberDTO member = loginService.selectOne(req,resp);
-		ProfileImageDTO profImg = loginService.selectProfImg(member.getId());
+
+		ProfileImageDTO profImg = loginService.selectProfImg(member.getId()==null?member.getEmail():member.getId());
 		List<HealthMemoDTO> memos = healthMemoIServicempl.selectAll(req);
 		for(HealthMemoDTO m : memos) {
 			m.setMm_Date(m.getMm_Date().split(" ")[0]);
 		}
+		
+		String key = member.getId()==null?member.getEmail():member.getId();
+		
 		Map map = new HashMap<>();
-		map.put("mm_Id", member.getId());
+		
+		if(key.contains("@")) {
+			map.put("mm_email", key);
+		}
+		else {
+			map.put("mm_Id", key);
+		}
 		map.put("mm_Date", clickDate);
 		HealthMemoDTO memo = healthMemoIServicempl.selectOne(map);
+		
 		if(memo != null) {
 			memo.setMm_Date(memo.getMm_Date().split(" ")[0]);
 		}
@@ -162,8 +188,13 @@ public class MypageController {
 	@GetMapping("/JoinEdit.do")
 	public String joinEdit(HttpServletRequest req, HttpServletResponse resp, Map map) {
 		MemberDTO member = loginService.selectOne(req,resp);
-		map.put("id", member.getId()==null ? "" : member.getId());
-		map.put("email", member.getEmail()==null ? "" : member.getEmail());
+		String key = member.getId()==null ? member.getEmail() : member.getId();
+		if(key.contains("@")) {
+			map.put("email", key);
+		}
+		else {
+			map.put("id", key);
+		}
 		map.put("info",loginService.selectOne(map));
 		
 		return "login/JoinEdit";
@@ -173,7 +204,6 @@ public class MypageController {
 	@PostMapping("/JoinEditOk.do")
 	@ResponseBody
 	public String joinEditOk(@Valid MemberDTO member, Errors errors) {
-		System.out.println("컨트롤러");
 		if (errors.hasErrors()) {
 			System.out.println("에러: "+errors);
 			return "<script>history.back();</script>";
@@ -189,8 +219,14 @@ public class MypageController {
 	//이미지 수정 클릭 시(파일선택)
 	@PostMapping(value = "/ProfImgEdit.do", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public String profImgEdit(ProfileImageDTO dto, MemberDTO member, Model model) throws IllegalStateException, IOException {
-		
+
 		ProfileImageDTO info = loginService.editProfImg(dto);
+		System.out.println("member.getId(): "+member.getId());
+		System.out.println("getSm_Email: "+info.getSm_Email());
+		if(dto.getId().contains("@")) {
+			info.setSm_Email(dto.getId());
+			System.out.println("if문 안: "+info.getSm_Email());
+		}
 		int insertFlag = loginService.insertProfImg(info);
 		
 		if(insertFlag==1) {

@@ -191,13 +191,13 @@
      <!-- 1번째 다이브 목록 -->
      	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
      	<c:if test="${not empty analyzeReport}">
-	        <h1 class="text-center mb-3" style="font-size: 30px; color: black;">📋 <span style="color:#EF605D; font-size: 34px;">${id}</span>님의 최근 분석 리포트</h1>
+	        <h1 class="text-center mb-3" style="font-size: 30px; color: black;">📋 <span style="color:#EF605D; font-size: 34px;">${userName}</span>님의 최근 분석 리포트</h1>
 	        <div class="ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
 	            <a data-gtm-id="report-home-recent-blank" class="ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none; background-color: 
-			    ${	analyzeReport.score >= 0 && analyzeReport.score < 25 ? '#EF605D' :
-			        analyzeReport.score >= 25 && analyzeReport.score < 50 ? 'orange' :
-			        analyzeReport.score >= 50 && analyzeReport.score < 75 ? 'green' :
-			        analyzeReport.score >= 75 && analyzeReport.score <= 100 ? 'blue' :
+			    ${	analyzeReport.score >= 0 && analyzeReport.score < 30 ? 'rgba(255, 0, 0, 0.7)' :
+			        analyzeReport.score >= 30 && analyzeReport.score < 60 ? 'rgba(255, 165, 0, 0.7)' :
+			        analyzeReport.score >= 60 && analyzeReport.score < 90 ? 'rgba(0, 128, 0, 0.7)' :
+			        analyzeReport.score >= 90 && analyzeReport.score <= 100 ? 'rgba(0, 0, 255, 0.7)' :
 			        ''
 			    };" >
 	                <article class="hBxOSS" style="display: block;">
@@ -345,7 +345,7 @@
 	            <span class="ge-title get-20-2" style="display: block; text-align: center; width: 100%; font-size: 30px;">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
 	            <div class="get-20-2-home-txt2" style="display: block; text-align: center; width: 100%; margin:35px 0px; font-size: 18px;">전문가가 직접 답해드려요!</div>
 	            <div class="qna-list-wrap">
-	                    <div class="qna-card">
+	                   <!--<div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
 	                                성분 정보
@@ -364,7 +364,7 @@
 	                                <span class="user-agesex">20대 / 여</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
@@ -384,7 +384,7 @@
 	                                <span class="user-agesex">30대 / 남</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
@@ -404,7 +404,7 @@
 	                                <span class="user-agesex">20대 / 남</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
@@ -424,7 +424,32 @@
 	                                <span class="user-agesex">30대 / 여</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
+	                      --> 
+	                <c:forEach items="${boardList}" var="item" varStatus="status">
+                        <c:if test="${status.index < 3}">
+	                    <div class="qna-card">
+	                        <div class="ingredient-tags">
+	                            <div class="ingredient-tag">
+	                                기타
+	                            </div>
+	                        </div>
+	                        <br/>
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="/board/View.do?no=${item.no }">
+	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>${item.title }</span>
+	                            <span class="txt2">${item.content } </span>
+	                        </a>
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="/board/View.do?no=${item.no }">
+	                                <div class="qna-user-icon qna-user-icon-1"></div>
+	                                <div class="qna-user-txt">${item.content } </div>
+	                            <div class="user-info-row">
+	                                <span class="user-name">${boardmemberList.get(status.index).getName() }</span>
+	                                <span class="user-agesex"><fmt:formatDate value="${boardmemberList[status.index].getBirth()}" pattern="yyyy" var="age" />${2023-age }세</span>
+	                            </div>
+	                        </a>
+	                    </div>
+		                </c:if>
+		            </c:forEach>
 	            </div>
 
 	            <div class="clearfix my-5" style="margin-right: 80px;">
@@ -464,7 +489,7 @@
       	                     	<p style="font-size:15px; color:gray;">(주)한국소프트웨어아이엔씨 (153-759)</p>
                            		<a href="https://naver.me/Fcacgzd6" target="_blank">
                            		<img src="<c:url value="/resources/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
-                           		<a href="https://place.map.kakao.com/1784287516" target="_blank"> 
+                           		<a href="https://map.kakao.com/?urlX=473291&urlY=1104884&urlLevel=3&itemId=1784287516&q=%ED%95%9C%EB%9D%BC%EC%9B%90%EC%95%A4%EC%9B%90%ED%83%80%EC%9B%8C&srcid=1784287516&map_type=TYPE_MAP" target="_blank"> 
                            		<img src="<c:url value="/resources/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
                         </div>          
                     </div>

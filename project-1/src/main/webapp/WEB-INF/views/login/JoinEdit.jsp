@@ -51,7 +51,7 @@
 						<div class="col-md-12 form-group"> 
 							<input style="width: 300px;" type="text" class="form-control" id="name" placeholder="이름" name="name" value="${info.name }" required/>
 							<!-- 정규표현식에 맞게 문구변경 -->
-							<c:set var="userBirth" value="${fn:split(member.birth,' ')[0] }"/>
+							<c:set var="userBirth" value="${fn:split(info.birth,' ')[0] }"/>
 							<input style="width: 300px;" type="date" class="form-control my-1" id="birth" name="birth" value="${userBirth }" data-placeholder='${empty userBirth ? "생년월일" : userBirth}' required aria-required="true"/>
 							<div class="d-flex align-items-center">
 								<div class="custom-control custom-radio"><!-- radio box도 무조건 required??? -->
