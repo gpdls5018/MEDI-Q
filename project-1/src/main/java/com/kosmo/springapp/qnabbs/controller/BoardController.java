@@ -99,7 +99,7 @@ public class BoardController {
 	        model.addAttribute("inputError", "입력 오류입니다. 다시 입력해주세요");
 	        model.addAttribute("record", map);
 	        return "board/Edit";
-	    }
+	    } 
 	    //redircet로도 가능
 	    //return "redirect:/board/View.do?no=" + map.get("no");
 	    // forward로 이동할 경로에 "/board"를 추가하여 수정
