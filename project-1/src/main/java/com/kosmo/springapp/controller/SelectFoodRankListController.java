@@ -19,15 +19,37 @@ public class SelectFoodRankListController {
 	@Autowired
 	SelectFoodServiceImpl selectfoodservice;
 	
+	@GetMapping("/ranking/selectfoodcompany.do")
+	public String foodcompany(Model model) {
+		List<String> RankingKeyWord = selectfoodservice.RankingKeyWord();
+		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFoodScore();
+		model.addAttribute("RankingKeyWord", RankingKeyWord);
+		model.addAttribute("listData", listData);
+		model.addAttribute("casesel",3);
+		return "ranking/FoodRank";
+	}
+	
+	@GetMapping("/ranking/selectfoodnutrient.do")
+	public String foodnutrient(Model model) {
+		List<String> RankingKeyWord = selectfoodservice.RankingKeyWord();
+		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFoodScore();
+		model.addAttribute("RankingKeyWord", RankingKeyWord);
+		model.addAttribute("listData", listData);
+		model.addAttribute("casesel",2);
+		return "ranking/FoodRank";
+	}
+	
 	@GetMapping("/ranking/selectfood.do")
 	public String foodrank(Model model) {
 		List<String> RankingKeyWord = selectfoodservice.RankingKeyWord();
 		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFoodScore();
 		model.addAttribute("RankingKeyWord", RankingKeyWord);
 		model.addAttribute("listData", listData);
+		model.addAttribute("casesel",1);
+		
 		return "ranking/FoodRank";
 	}
-	
+	////////////////////////////////////////////////////////////////////////
 	@GetMapping("/functionfood/select.do")
 	public String selectfood(@RequestParam String foodname,Model model) {
 		if(selectfoodservice.checkWord(foodname).size() == 0) {
@@ -35,13 +57,50 @@ public class SelectFoodRankListController {
 		}
 		selectfoodservice.selectKeyWord(foodname);
 		List<String> RankingKeyWord = selectfoodservice.RankingKeyWord();
-		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFromNameScore(foodname);
-		List<FunctionalFoodListDTO> listData2 = selectfoodservice.selectFoodListFromName(foodname);
+		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFromNameScore(foodname,1);
+		List<FunctionalFoodListDTO> listData2 = selectfoodservice.selectFoodListFromName(foodname,1);
 		
 		model.addAttribute("RankingKeyWord", RankingKeyWord);
 		model.addAttribute("listData", listData);
 		model.addAttribute("listData2", listData2);
 		model.addAttribute("foodname", foodname);
+		model.addAttribute("casesel", 1);
+		return "ranking/FoodRank";
+	}
+	
+	@GetMapping("/functionfood/selectnutrient.do")
+	public String selectfoodnutrient(@RequestParam String foodname,Model model) {
+		if(selectfoodservice.checkWord(foodname).size() == 0) {
+			selectfoodservice.newWord(foodname);
+		}
+		selectfoodservice.selectKeyWord(foodname);
+		List<String> RankingKeyWord = selectfoodservice.RankingKeyWord();
+		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFromNameScore(foodname,2);
+		List<FunctionalFoodListDTO> listData2 = selectfoodservice.selectFoodListFromName(foodname,2);
+		
+		model.addAttribute("RankingKeyWord", RankingKeyWord);
+		model.addAttribute("listData", listData);
+		model.addAttribute("listData2", listData2);
+		model.addAttribute("foodname", foodname);
+		model.addAttribute("casesel", 2);
+		return "ranking/FoodRank";
+	}
+	
+	@GetMapping("/functionfood/selectcompany.do")
+	public String selectfoodcompany(@RequestParam String foodname,Model model) {
+		if(selectfoodservice.checkWord(foodname).size() == 0) {
+			selectfoodservice.newWord(foodname);
+		}
+		selectfoodservice.selectKeyWord(foodname);
+		List<String> RankingKeyWord = selectfoodservice.RankingKeyWord();
+		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFromNameScore(foodname,3);
+		List<FunctionalFoodListDTO> listData2 = selectfoodservice.selectFoodListFromName(foodname,3);
+		
+		model.addAttribute("RankingKeyWord", RankingKeyWord);
+		model.addAttribute("listData", listData);
+		model.addAttribute("listData2", listData2);
+		model.addAttribute("foodname", foodname);
+		model.addAttribute("casesel", 3);
 		return "ranking/FoodRank";
 	}
 }

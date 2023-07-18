@@ -199,7 +199,7 @@
     height: 140px;
 }
 .accordion :target h3 + .tstm3 {
-    height: 70px;
+    height: 100px;
 }
 
 .accordion .section.large:target h3 + div {
@@ -438,16 +438,18 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 	            </a>
 	          </h3>
 	          <div class="ditem tstm3">
-	            <a href="<c:url value="/ranking/selectfood.do"/>">성분 검색</a>
+	          	<a href="<c:url value="/ranking/selectfood.do"/>">전체 검색</a>
+	          	
+	            <a href="<c:url value="/ranking/selectfoodnutrient.do"/>">성분 검색</a>
 	 			
-	            <a href="#">제품/브랜드 검색</a>
+	            <a href="<c:url value="/ranking/selectfoodcompany.do"/>">제품명/브랜드 검색</a>
 	          </div>
 	        </div>
 	        <div id="three" class="section">
 	          <h3>
 	            <a class="text-decoration-none" href="<c:url value="/magazineindex.do"/>">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-whats-new-5511348.png"/>" width="25" height="25">
-	                &nbsp; 메디큐 칼럼
+	                &nbsp; 건강 메거진
 	            </a>
 	        </div>
 	        <div id="four" class="section large">

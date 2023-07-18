@@ -115,18 +115,18 @@
 	            </a>
             </div>
             <div id="top-banner-2" class="banner" id="tsbaimg2">
-	            <a href="<c:url value="/analyzeMyFood.do"/>">
+	            <a href="<c:url value="/NutrientSelect.do"/>">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper2"  >
-	               	 <p style="color: grey;">과도하거나 부족하지 않을까?</p>
-	                 <h1>💊 복용 중인 영양제를 분석받으세요!</h1>
+	               	 <p style="color: grey;">내가 먹고 있는 영양제 괜찮을까?</p>
+	                 <h1>💊 영양성분을 검색해보세요!</h1>
 	              </div>
 	            </a>
             </div>
             <div id="top-banner-3" class="banner" id="tsbaimg3">
-	            <a href="#">
+	            <a href="<c:url value="/analyzeMyFood.do"/>">
 	              <div class="banner-inner-wrapper" id="banner-inner-wrapper3" >
-	              	 <p style="color: grey;">내가 먹고 있는 영양제 괜찮을까?</p>
-	                 <h1>📷 사진으로 영양제를 검색해보세요!</h1>       
+	                 <p style="color: grey;">과도하거나 부족하지 않을까?</p>
+	                 <h1>📋 복용 중인 영양제를 분석받으세요!</h1>       
 	              </div>
 	            </a>
             </div>
@@ -142,8 +142,8 @@
           <nav>
             <div class="controls" >
               <label for="banner1"><span class="progressbar"><span class="progressbar-fill"></span></span><p>홈페이지</p></label>
-              <label for="banner2"><span class="progressbar"><span class="progressbar-fill"></span></span><p>건강 및 분석</p></label>
-              <label for="banner3"><span class="progressbar"><span class="progressbar-fill"></span></span><p>사진으로 약 검색하기</p></label>
+              <label for="banner2"><span class="progressbar"><span class="progressbar-fill"></span></span><p>영양소 검색</p></label>
+              <label for="banner3"><span class="progressbar"><span class="progressbar-fill"></span></span><p>건강 및 분석</p></label>
               <label for="banner4"><span class="progressbar"><span class="progressbar-fill"></span></span><p>건강검진</p></label>
             </div>
           </nav>
@@ -158,18 +158,19 @@
 	    </div>
 	
 		<!-- 검색창 밑 검색 태그용 버튼  -->
-		<div class="row justify-content-center pt-5" style="margin: 60px 0px 0px 0px">
+		<div class="row justify-content-center pt-5" style="margin: 60px 0px 60px 0px">
 	        <div class="col-lg-10 text-center">
 	            <h1 class="my-5" style="font-weight:bold; color:black;"><span style="color: #EF605D;">👋 제품명 또는 영양성분</span>을 검색해보세요.</h1>
-	            <form class="position-relative w-75 mx-auto animated slideInDown d-flex input-wrapper" action="/hashtag.do" method="post" style="box-shadow: 0px 0px 5px gray; border-radius: 20px;">
-	                <input class="border-0 rounded-pill w-100 px-5 py-3 ps-4 pe-5 flex-grow-1" type="text" name="postTag" 
-	                placeholder="제품명 및 영양성분을 입력하세요" value="${not empty searchTags ? fn:replace(searchTags,'#',',#') : ''}">
-	                <input name="searchTags" type="hidden" id="hiddenInput" value="">
+	            <form class="position-relative w-75 mx-auto animated slideInDown d-flex input-wrapper" required minlength="1" action="<c:url value="/functionfood/select.do"/>" style="box-shadow: 0px 0px 5px gray; border-radius: 20px;">
+	                <input class="border-0 rounded-pill w-100 px-5 py-3 ps-4 pe-5 flex-grow-1" type="text" name="foodname" placeholder="제품명 및 영양성분을 입력하세요" >
+	               <!-- placeholder="제품명 및 영양성분을 입력하세요" value="${not empty searchTags ? fn:replace(searchTags,'#',',#') : ''}">
+	                <input name="searchTags" type="hidden" id="hiddenInput" value=""> -->
 	                <button type="submit" class="btn rounded-pill py-2 px-4 top-0 end-0 me-2" >
 						<img src="<c:url value="/resources/images/tsimages/free-icon-magnifying-glass-4475396.png"/>" style="width:30px; height:30px">
 					</button>
 	            </form>
 	        </div>
+	        <!-- 
 	        <div id="hashtaglink" class="ml-1 py-5 row" >
        	        <span class="s-txt1">인기 검색어</span>
                 <a href="#" style="font-weight: bold;color:green">#피부건강</a>&nbsp;
@@ -179,7 +180,8 @@
 		        <a href="#" style="font-weight: bold;color:salmon ">#비타민</a>&nbsp;
 		        <a href="#" style="font-weight: bold;color:lightskyblue ">#혈당</a>&nbsp;
 		        <span class="s-txt2">(07/18&nbsp;기준)</span>
-		    </div >
+		    </div>
+		     -->
 	    </div>
 	    
 <!-- 검색창 밑부분! 사이드바와 몸통 부분 -->
@@ -191,11 +193,17 @@
      	<c:if test="${not empty analyzeReport}">
 	        <h1 class="text-center mb-3" style="font-size: 30px; color: black;">📋 <span style="color:#EF605D; font-size: 34px;">${id}</span>님의 최근 분석 리포트</h1>
 	        <div class="ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
-	            <a data-gtm-id="report-home-recent-blank" class="ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none;">
+	            <a data-gtm-id="report-home-recent-blank" class="ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none; background-color: 
+			    ${	analyzeReport.score >= 0 && analyzeReport.score < 25 ? '#EF605D' :
+			        analyzeReport.score >= 25 && analyzeReport.score < 50 ? 'orange' :
+			        analyzeReport.score >= 50 && analyzeReport.score < 75 ? 'green' :
+			        analyzeReport.score >= 75 && analyzeReport.score <= 100 ? 'blue' :
+			        ''
+			    };" >
 	                <article class="hBxOSS" style="display: block;">
 	                    <div class="iJGurJ">
 	                        <div style="margin: 10px 0px 0px 20px;">
-	                            <div class="enbDhJ1">👀 최근 분석 리포트입니다</div>
+	                            <div class="enbDhJ1">👀 최근 분석 결과입니다</div>
 	                            <p class="jeiOCr1" style="">${analyzeReport.score}<span class="ml-3" style="color:black; font-size: 20px;">점</span></p>
 	                        </div>
 	                        <div class="ZyIFk1 d-block mt-3" style="margin-left: 20px;">
@@ -204,9 +212,9 @@
 	                        </div>	                   
          </c:if>
             <c:if test="${empty analyzeReport}">
-                <h1 class="text-center mb-3" style="font-size: 30px; color: black;">📋 나와 잘 맞는 영양제일까?</h1>
-                <p style="text-align: center; color:gray; font-weight: bold;">적절하게 영양제를 먹고 있는지 MEDI-Q가 분석해 드릴게요</p>
-		        <div class="ibNwmg ml-1 d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
+                <h1 class="text-center" style="font-size: 30px; color: black;">📋 나와 잘 맞는 영양제일까?</h1>
+                <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:35px 0px;">적절하게 영양제를 먹고 있는지 MEDI-Q가 분석해 드릴게요</p>
+		        <div class="ibNwmg ml-1 d-flex" style="justify-content:flex-start; margin-bottom: 35px;">
 		            <a data-gtm-id="report-home-recent-blank" class=" ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none;">
 		                <article class=" hBxOSS" style="display: block;">
 		                    <div class=" iJGurJ">
@@ -231,9 +239,9 @@
 		<div class="section section1-2c">
 	       <a href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>" style="text-decoration: none;">
 	           <div class="content">
-	               <span class="txt1" style="text-align: center; width: 100%;">👨‍⚕️ 주요 질환의 발병 위험도를 예측해드려요 </span>
+	               <span class="txt1" style=" text-align: center; width: 100%;">👨‍⚕️ 주요 질환의 발병 위험도를 예측해드려요 </span>
 	               <br/>
-	               <span class="text-center txt2" style="margin-top: 0px; margin-bottom: 20px;">MEDI-Q의 인공지능 기술로 분석하는 건강검진!</span>
+	               <span class="text-center txt2" style="color:gray; margin:20px 0px 35px 0px; font-weight: bold;">MEDI-Q의 인공지능 기술로 분석하는 건강검진!</span>
 	               <div class="banner-wrap">
 	                   <div class="banner-txt1 mb-1">내 건강검진 결과를 입력하고</div>
 	                   <div class="banner-txt2"><span>맞춤형 영양제를 추천</span> 받으세요</div>
@@ -248,8 +256,9 @@
 	  <div class="section section1-2b my-1" style="align-content: center;">
 	        <div class="content" style="margin: 0px 0px 0px 0px;">
 	            <span class="txt1"><span style="color:black;">🌿 인기 영양소</span> <span>Top10</span>
-	            <div class="ingredient-wrap" style="margin-top: 40px;">
-                    <div class="box-container">
+	            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:35px 0px;">현재 조회수가 가장 높은 영양소 Top10을 알려드릴게요</p>
+	            <div class="ingredient-wrap">
+                    <div class="box-container" style="margin: 0px;">
 		                <c:forEach var="name" items="${top10}">
 						    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
 						        <b style="font-size: 14px;">${name}</b>
@@ -258,7 +267,7 @@
                 	</div>
 	            </div>
 	            <div class="clearfix">
-	                <a tabindex="0" class="more-pop-ingredient pt-4 mr-3" href="/NutrientSelect.do">영양성분 더보기</a>
+	                <a tabindex="0" class="more-pop-ingredient pt-4 mr-3" href="<c:url value="/NutrientSelect.do"/>" >영양성분 더보기</a>
 	            </div>
 	        </div>
 	    </div>
@@ -266,10 +275,11 @@
 	   <!-- 4번째 다이브 목록 -->
 	   <!-- 인기 영양제 Top10 -->
 	   <div class="section section1-2s ranking-190">
-	        <div class="content" style="margin-top:60px;">
-	            <div class="txt2" style="margin-bottom: 20px;"><span style="color:black; font-size: 30px;">💊 인기 영양제</span> <span style="font-size: 30px;">Top 10</span></div>
-	            <div class="tab-contents" style="display: block;">
-	                <div class="tab-content tab-content-001 new-wide-main-060 new-wide-main-090 active width-flt1" style="padding-top: 20px;">
+	        <div class="content" style="margin-top:40px;">
+	            <div class="txt2"><span style="color:black; font-size: 30px;">💊 인기 영양제</span> <span style="font-size: 30px;">Top 10</span></div>
+	            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:35px 0px;">현재 리뷰가 가장 좋은 영양제 Top10을 알려드릴게요</p>
+	            <div class="tab-contents" style="display: block; margin-right: 30px;" >
+	                <div class="tab-content tab-content-001 new-wide-main-060 new-wide-main-090 active width-flt1">
 	                    <div class="filter-btns slt-sex">
 	                    <!-- 
 	                        <div class="filter-btns-in">
@@ -333,7 +343,7 @@
 	        <div class="content">
 	            <!-- <div class="qna-mark-home" style="display: block; text-align: center; width: 100%;">Q&amp;A</div> -->
 	            <span class="ge-title get-20-2" style="display: block; text-align: center; width: 100%; font-size: 30px;">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
-	            <div class="get-20-2-home-txt2" style="display: block; text-align: center; width: 100%; margin-top: 35px; margin-bottom: 35px; font-size: 18px;">전문가가 직접 답해드려요!</div>
+	            <div class="get-20-2-home-txt2" style="display: block; text-align: center; width: 100%; margin:35px 0px; font-size: 18px;">전문가가 직접 답해드려요!</div>
 	            <div class="qna-list-wrap">
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
@@ -440,7 +450,8 @@
 	    <!--  7번째 다이브 목록 -->
       <div class="mainInner" style="margin: 50px 0px;">
             <h3 class="my-4" style="text-align: center; margin-top:20px; font-weight: bold;">우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
-            <div class="container-xxl py-4">
+            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:35px 0px;">우리동네에 어떤 병원과 약국이 있을까?</p>
+            <div class="container-xxl pb-4">
                 <div class="container">
                     <div class="mainMap" id="map" style="border-radius: 10px;">
                         <button type="button" class="btn" id="tsBtn">
@@ -449,7 +460,7 @@
                         <div class="mapLayer">
                             <div class="closeLayerButton" onclick="closeMapLayer()">&times;</div>
                             	<h2>주소</h2>
-      	                     	<p style="font-size:17px; color:gray; font-weight: bold; margin-bottom: 0px;">서울시 금천구 가산동 426-5<br/> 월드메르디앙 2차 413호(MEDI-Q팀)</p>
+      	                     	<p style="font-size:17px; color:gray; font-weight: bold; margin-bottom: 0px;">서울특별시 금천구 가산디지털2로 101<br/> B동 B304호(MEDI-Q팀)</p>
       	                     	<p style="font-size:15px; color:gray;">(주)한국소프트웨어아이엔씨 (153-759)</p>
                            		<a href="https://naver.me/Fcacgzd6" target="_blank">
                            		<img src="<c:url value="/resources/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
@@ -494,6 +505,7 @@
 			  </div>
 			</div>
 	</article>
+	
 		<!-- 오른쪽 슬라이드-->
 		<aside class="tsidebar fixedsticky pr-3 mt-5"> 
 			<!--  로그인 목록 창
