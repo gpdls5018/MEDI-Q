@@ -464,7 +464,7 @@
       	                     	<p style="font-size:15px; color:gray;">(주)한국소프트웨어아이엔씨 (153-759)</p>
                            		<a href="https://naver.me/Fcacgzd6" target="_blank">
                            		<img src="<c:url value="/resources/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
-                           		<a href="https://place.map.kakao.com/1784287516" target="_blank"> 
+                           		<a href="https://map.kakao.com/?urlX=473291&urlY=1104884&urlLevel=3&itemId=1784287516&q=%ED%95%9C%EB%9D%BC%EC%9B%90%EC%95%A4%EC%9B%90%ED%83%80%EC%9B%8C&srcid=1784287516&map_type=TYPE_MAP" target="_blank"> 
                            		<img src="<c:url value="/resources/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
                         </div>          
                     </div>
