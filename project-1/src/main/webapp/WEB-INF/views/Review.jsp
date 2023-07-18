@@ -78,7 +78,6 @@
 </style>
 <body>
   <div class="container">
-    헤더
     <hr>
     <div class="food jumbotron d-flex" style="border-radius: 20px;height:300px;">
       <img src="${listOne.imgURL}" style="border-radius: 20px;width:200px;"/>

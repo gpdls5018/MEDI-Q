@@ -29,7 +29,7 @@
 			</div>
 			<div class="m-5">
 				<div class="effect-custom-font ml-5" >총 점수는 <span style="font-size:70px;">${resultListDto.resultScore}</span></div>
-				<button class="btn effect-custom-font ml-5" style="border-radius:15px;background-color:#ff5924;color:white;width:40%;">다시 분석하기</button>
+				<button class="btn effect-custom-font ml-5" onClick="location.href='<c:url value="/AnalyzeNewReport.do"/>'" style="border-radius:15px;background-color:#ff5924;color:white;width:40%;">다시 분석하기</button>
 			</div>
 			<div class="m-5" style="height:3px;background-color:#ccc"></div>
 		</div>

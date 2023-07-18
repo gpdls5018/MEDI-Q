@@ -114,8 +114,9 @@
 		height: 45px;
 	}
 </style>
-<div class="container" style="margin-top: 40px">
+<div class="container" style="margin-top: 200px">
 	<div class="container">
+	<!-- 
 		<div class="register__step__wr hidden1024" style="width: 100%;">
 	        <div class="step__wr d-flex">
 	            <img src="https://www.bundangcheil.com/images/register_step_line.png" alt="라인" class="line00 line01 first-line">
@@ -145,6 +146,7 @@
 	            </div>
 	        </div>
 	    </div>
+	     -->
 		<div class="row d-flex justify-content-center align-items-center">
 			<div class="col-md-6 mb-4">
 				<h3 class="heading mb-4 left-center">회원가입</h3>
@@ -213,8 +215,10 @@
 					<button type="submit" class="btn btn-outline-primary">확인</button>
 				</form>
 			</div>
+			<!-- 
 				<button type="submit" class="btn bottom-button mr-3">이전</button>
 				<button type="submit" class="btn bottom-button ml-3">다음</button>
+				 -->
 		</div>
 	</div>
 </div>
