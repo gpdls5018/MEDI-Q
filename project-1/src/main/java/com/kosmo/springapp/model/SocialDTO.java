@@ -42,4 +42,6 @@ public class SocialDTO {
 	private String name;
 	
 	private String birth;
+	
+	private String prof_Img_Fl;//프로필 이미지 여부
 }

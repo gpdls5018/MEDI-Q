@@ -753,22 +753,24 @@ ul li input[type=checkbox]:checked ~ .acco {
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<!-- Modal body -->
-					<div class="modal-body d-flex justify-content-center" style="height: 130px">
-						<form class="form-inline justify-content-center" action="" method="POST">
-							<input type="hidden" name="mode" value="editBtn"/>			
-							<input type="hidden" name="id" value="${info.id }"/>
-							<input type="password" name="password" class="form-control mx-2" placeholder="비밀번호를 입력하세요"/>
-							<div class="custom-file" style="width: 250px; display: none">
-					            <input type="file" class="custom-file-input" name="file" id="customFile" accept=".jpg,.img,.png,.bmp,.gif">
-					            <label class="custom-file-label justify-content-start" for="customFile">${empty profImg ? "파일 선택" : profImg.pi_Filename+='.'+=profImg.pi_Ext }</label>
-					        </div>
-					        <a type="button" name="defaultImg" href="<c:url value="/project/ProfImgEdit.do"/>" class="btn btn-outline-info ml-3" style="display: none">기본이미지로 변경</a>
-						</form>
-					</div>
-					<div class="modal-footer justify-content-right">
-					<input type="submit" class="btn btn-info mx-2" value="확인" />
-		          	<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
-		        </div>
+					
+						<div class="modal-body d-flex justify-content-center" style="height: 130px">
+							<form class="form-inline justify-content-center" action="" method="POST">
+								<input type="hidden" name="mode" value="editBtn"/>		
+								<input type="hidden" name="id" value="${empty info.id ? info.email :info.id }"/>
+								<input type="password" name="password" class="form-control mx-2" placeholder="비밀번호를 입력하세요"/>
+								<div class="custom-file" style="width: 250px; display: none">
+						            <input type="file" class="custom-file-input" name="file" id="customFile" accept=".jpg,.img,.png,.bmp,.gif">
+						            <label class="custom-file-label justify-content-start" for="customFile">${empty profImg ? "파일 선택" : profImg.pi_Filename+='.'+=profImg.pi_Ext }</label>
+						        </div>
+						        <a type="button" name="defaultImg" href="<c:url value="/project/ProfImgEdit.do"/>" class="btn btn-outline-info ml-3" style="display: none">기본이미지로 변경</a>	
+							</div>
+							<div class="modal-footer justify-content-right">
+								<input type="submit" class="btn btn-info mx-2" value="확인" />
+					          	<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+				          	</form>
+			          	</div>
+		          	
 				</div>
 			</div>
 		</div>
