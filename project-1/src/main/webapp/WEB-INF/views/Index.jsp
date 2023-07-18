@@ -345,18 +345,18 @@
 	            <span class="ge-title get-20-2" style="display: block; text-align: center; width: 100%; font-size: 30px;">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
 	            <div class="get-20-2-home-txt2" style="display: block; text-align: center; width: 100%; margin:35px 0px; font-size: 18px;">전문가가 직접 답해드려요!</div>
 	            <div class="qna-list-wrap">
-	                    <div class="qna-card">
+	                   <!--<div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
 	                                성분 정보
 	                            </div>
 	                        </div>
 	                        <br/>
-	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=16"/>">
 	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>epa높은 오메가3 구미나 츄어블 있을까요?</span>
 	                            <span class="txt2">알약을 아예 못먹어서 여태 키즈 제품을 먹었습니다. 중성지방 콜레스테롤때문에 epa가 높은 제품을 먹고싶은데..<br/> 추천해주시면 너무 감사해요ㅠㅠ</span>
 	                        </a>
-	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=16"/>">
 	                                <div class="qna-user-icon qna-user-icon-1"></div>
 	                                <div class="qna-user-txt">액체형(리퀴드) 오메가3 제품을 선택하거나, 일반 캡슐 제품을 잘라서 내용물만 섭취하시는 것을 추천해요!</div>
 	                            <div class="user-info-row">
@@ -364,7 +364,7 @@
 	                                <span class="user-agesex">20대 / 여</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
@@ -372,19 +372,19 @@
 	                            </div>
 	                        </div>
 	                        <br/>
-	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="#">
-	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>혈압약 처방 받았습니다.</span>
-	                            <span class="txt2">누보로젯 40/2.5/5/10 처방 받았습니다. 현재 영양제와의 점수가 안맞네요. 멀 빼야하고 대신해서 멀 넣어야하는지<br/> 알려주세요. 혈압약을 먹기 전에는 96점이였습니다.</span>
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=13"/>">
+	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>영양제 유통기한 넘은 것은 얼마 후 까지 먹어도 될까요?</span>
+	                            <span class="txt2">대체로 몇 개월 ~ 몇년까지 초과한 것을 억어도 되는지 궁금하고 분말, 연질 캡슐, 경질 캡슐, 타블렛 등 제재에 따라 섭취 기한이 긴 순서를 각각 알고 싶습니다.</span>
 	                        </a>
-	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=13"/>">
 	                                <div class="qna-user-icon qna-user-icon-1"></div>
-	                                <div class="qna-user-txt">혈압약을 드시면서 피해야 하는 것과 계속 섭취해도 괜찮은 영양제를 알려드릴게요.</div>
+	                                <div class="qna-user-txt">영양제 유통기한이 지났다면 아깝지만 건강을 위해서 버리는 게 나아요.</div>
 	                            <div class="user-info-row">
 	                                <span class="user-name">김**</span>
 	                                <span class="user-agesex">30대 / 남</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
@@ -392,19 +392,19 @@
 	                            </div>
 	                        </div>
 	                        <br/>
-	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="#">
-	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>흡연자 영양제 정리 부탁드립니다</span>
-	                            <span class="txt2">흡연자여서 전에 Q&amp;A로 추천을 받은 영양제는 어려울거 같아서요 B6는 20 B12는 55까지 최대로 잡고 알려주시면<br/> 감사하겠습니다 마그네슘도 50정도가 부족해서 같이 부탁드릴게요</span>
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=14"/>">
+	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>과다 복용 관련</span>
+	                            <span class="txt2">인터넷에서 찾아보니깐 섭취권장량이 남성 16mgNE라고 하는데 어플은 50~1000mgNE 까지가 최적적량이라고 나와있는데 뭐가 맞는건가요? 제가 잘못 이해하고 있는건가요?</span>
 	                        </a>
-	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=14"/>">
 	                                <div class="qna-user-icon qna-user-icon-1"></div>
-	                                <div class="qna-user-txt">영양제 선택은 건강에 대해 가장 중요하게 생각하는 가치에 따라 달라질 수 있어요.</div>
+	                                <div class="qna-user-txt">권장섭취량과 충분섭취량, 상한섭취량을 구분해서 영양소를 복용해주세요 :)</div>
 	                            <div class="user-info-row">
 	                                <span class="user-name">루**</span>
 	                                <span class="user-agesex">20대 / 남</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
@@ -412,11 +412,11 @@
 	                            </div>
 	                        </div>
 	                        <br/>
-	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=15"/>">
 	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>코로나 걸렸을 때 영양제</span>
 	                            <span class="txt2">코로나 확진 4일차에요. 혹시 같이 먹으면 좋은 영양제 있을까요? 궁금합니다. </span>
 	                        </a>
-	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=15"/>">
 	                                <div class="qna-user-icon qna-user-icon-1"></div>
 	                                <div class="qna-user-txt">코로나 감염을 예방하기 위해, 또는 코로나 후유증에서 빨리 벗어나기 위해서는 비타민 C, 비타민 D, 아연 등<br/> 면역에 관련된 영양제가 도움이 됩니다. </div>
 	                            <div class="user-info-row">
@@ -424,7 +424,32 @@
 	                                <span class="user-agesex">30대 / 여</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
+	                      --> 
+	                <c:forEach items="${boardList}" var="item" varStatus="status">
+                        <c:if test="${status.index < 3}">
+	                    <div class="qna-card">
+	                        <div class="ingredient-tags">
+	                            <div class="ingredient-tag">
+	                                기타
+	                            </div>
+	                        </div>
+	                        <br/>
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="/board/View.do?no=${item.no }">
+	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>${item.title }</span>
+	                            <span class="txt2">${item.content } </span>
+	                        </a>
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="/board/View.do?no=${item.no }">
+	                                <div class="qna-user-icon qna-user-icon-1"></div>
+	                                <div class="qna-user-txt">${item.content } </div>
+	                            <div class="user-info-row">
+	                                <span class="user-name">${boardmemberList.get(status.index).getName() }</span>
+	                                <span class="user-agesex"><fmt:formatDate value="${boardmemberList[status.index].getBirth()}" pattern="yyyy" var="age" />${2023-age }세</span>
+	                            </div>
+	                        </a>
+	                    </div>
+		                </c:if>
+		            </c:forEach>
 	            </div>
 
 	            <div class="clearfix my-5" style="margin-right: 80px;">
@@ -464,7 +489,7 @@
       	                     	<p style="font-size:15px; color:gray;">(주)한국소프트웨어아이엔씨 (153-759)</p>
                            		<a href="https://naver.me/Fcacgzd6" target="_blank">
                            		<img src="<c:url value="/resources/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
-                           		<a href="https://place.map.kakao.com/1784287516" target="_blank"> 
+                           		<a href="https://map.kakao.com/?urlX=473291&urlY=1104884&urlLevel=3&itemId=1784287516&q=%ED%95%9C%EB%9D%BC%EC%9B%90%EC%95%A4%EC%9B%90%ED%83%80%EC%9B%8C&srcid=1784287516&map_type=TYPE_MAP" target="_blank"> 
                            		<img src="<c:url value="/resources/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
                         </div>          
                     </div>
