@@ -13,7 +13,6 @@
 	<div class="all-wrap-in all-wrap-in-070">
 		<div class="ingredient-search-top">
 			<div class="content" style="padding-bottom: 20px;">
-			${casesel }
 			<!-- 건기식 또는 회사이름을 적었을 경우 -->
 			<c:if test="${not empty foodname}">
 				<div class="top-wrap-070">

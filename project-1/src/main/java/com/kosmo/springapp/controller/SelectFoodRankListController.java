@@ -57,8 +57,8 @@ public class SelectFoodRankListController {
 		}
 		selectfoodservice.selectKeyWord(foodname);
 		List<String> RankingKeyWord = selectfoodservice.RankingKeyWord();
-		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFromNameScore(foodname);
-		List<FunctionalFoodListDTO> listData2 = selectfoodservice.selectFoodListFromName(foodname);
+		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFromNameScore(foodname,1);
+		List<FunctionalFoodListDTO> listData2 = selectfoodservice.selectFoodListFromName(foodname,1);
 		
 		model.addAttribute("RankingKeyWord", RankingKeyWord);
 		model.addAttribute("listData", listData);
@@ -75,8 +75,8 @@ public class SelectFoodRankListController {
 		}
 		selectfoodservice.selectKeyWord(foodname);
 		List<String> RankingKeyWord = selectfoodservice.RankingKeyWord();
-		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFromNutrientNameScore(foodname);
-		List<FunctionalFoodListDTO> listData2 = selectfoodservice.selectFoodListFromName(foodname);
+		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFromNameScore(foodname,2);
+		List<FunctionalFoodListDTO> listData2 = selectfoodservice.selectFoodListFromName(foodname,2);
 		
 		model.addAttribute("RankingKeyWord", RankingKeyWord);
 		model.addAttribute("listData", listData);
@@ -93,8 +93,8 @@ public class SelectFoodRankListController {
 		}
 		selectfoodservice.selectKeyWord(foodname);
 		List<String> RankingKeyWord = selectfoodservice.RankingKeyWord();
-		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFromCompanyNameScore(foodname);
-		List<FunctionalFoodListDTO> listData2 = selectfoodservice.selectFoodListFromName(foodname);
+		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFromNameScore(foodname,3);
+		List<FunctionalFoodListDTO> listData2 = selectfoodservice.selectFoodListFromName(foodname,3);
 		
 		model.addAttribute("RankingKeyWord", RankingKeyWord);
 		model.addAttribute("listData", listData);

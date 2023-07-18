@@ -18,8 +18,8 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	SelectFoodMapper mapper;
 	
 	@Override
-	public List<AvgStarScoreCountDTO> selectFoodListFromNameScore(String foodname) {
-		return mapper.selectFoodListFromNameScore(foodname);
+	public List<AvgStarScoreCountDTO> selectFoodListFromNameScore(String foodname,int casesel) {
+		return mapper.selectFoodListFromNameScore(foodname,casesel);
 	}
 
 	@Override
@@ -28,8 +28,8 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	}
 
 	@Override
-	public List<FunctionalFoodListDTO> selectFoodListFromName(String foodname) {
-		return mapper.selectFoodListFromName(foodname);
+	public List<FunctionalFoodListDTO> selectFoodListFromName(String foodname,int casesel) {
+		return mapper.selectFoodListFromName(foodname,casesel);
 	}
 
 	@Override
@@ -52,14 +52,4 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	public void newWord(String foodname) {
 		mapper.newWord(foodname);
 	}
-
-	@Override
-	public List<AvgStarScoreCountDTO> selectFoodListFromNutrientNameScore(String foodname) {
-		return mapper.selectFoodListFromNutrientNameScore(foodname);
-	}
-
-	@Override
-	public List<AvgStarScoreCountDTO> selectFoodListFromCompanyNameScore(String foodname) {
-		return mapper.selectFoodListFromCompanyNameScore(foodname);
-	}	
 }
