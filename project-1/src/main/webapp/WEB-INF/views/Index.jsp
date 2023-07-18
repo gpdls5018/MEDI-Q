@@ -345,7 +345,7 @@
 	            <span class="ge-title get-20-2" style="display: block; text-align: center; width: 100%; font-size: 30px;">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
 	            <div class="get-20-2-home-txt2" style="display: block; text-align: center; width: 100%; margin:35px 0px; font-size: 18px;">전문가가 직접 답해드려요!</div>
 	            <div class="qna-list-wrap">
-	                    <div class="qna-card">
+	                   <!--<div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
 	                                성분 정보
@@ -364,7 +364,7 @@
 	                                <span class="user-agesex">20대 / 여</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
@@ -384,7 +384,7 @@
 	                                <span class="user-agesex">30대 / 남</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
@@ -404,7 +404,7 @@
 	                                <span class="user-agesex">20대 / 남</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
@@ -424,7 +424,32 @@
 	                                <span class="user-agesex">30대 / 여</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
+	                      --> 
+	                <c:forEach items="${boardList}" var="item" varStatus="status">
+                        <c:if test="${status.index < 3}">
+	                    <div class="qna-card">
+	                        <div class="ingredient-tags">
+	                            <div class="ingredient-tag">
+	                                기타
+	                            </div>
+	                        </div>
+	                        <br/>
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="/board/View.do?no=${item.no }">
+	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>${item.title }</span>
+	                            <span class="txt2">${item.content } </span>
+	                        </a>
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="/board/View.do?no=${item.no }">
+	                                <div class="qna-user-icon qna-user-icon-1"></div>
+	                                <div class="qna-user-txt">${item.content } </div>
+	                            <div class="user-info-row">
+	                                <span class="user-name">${boardmemberList.get(status.index).getName() }</span>
+	                                <span class="user-agesex"><fmt:formatDate value="${boardmemberList[status.index].getBirth()}" pattern="yyyy" var="age" />${2023-age }세</span>
+	                            </div>
+	                        </a>
+	                    </div>
+		                </c:if>
+		            </c:forEach>
 	            </div>
 
 	            <div class="clearfix my-5" style="margin-right: 80px;">
