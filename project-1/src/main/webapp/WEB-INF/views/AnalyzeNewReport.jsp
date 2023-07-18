@@ -556,6 +556,45 @@
       }
     })
   });
+  
+//유효성 검사 코드 값이 없으면 버튼 비활성화
+const analyzeButton = document.getElementById('analyze-myFood');
 
+// take-purpose-span, prefer-shape-span, prefer-type-span 엘리먼트 선택
+const takePurposeSpan = document.querySelector('.take-purpose-span');
+const preferShapeSpan = document.querySelector('.prefer-shape-span');
+const preferTypeSpan = document.querySelector('.prefer-type-span');
+
+// #last-choose-food-data 요소 선택
+const lastChooseFoodData = document.getElementById('last-choose-food-data');
+
+// analyze-myFood 버튼 상태 업데이트 함수
+function updateAnalyzeButtonState() {
+  // take-purpose-span, prefer-shape-span, prefer-type-span의 내용을 가져옴
+  const takePurpose = takePurposeSpan.textContent.trim();
+  const preferShape = preferShapeSpan.textContent.trim();
+  const preferType = preferTypeSpan.textContent.trim();
+
+  // #last-choose-food-data의 자식 요소 개수 확인
+  const foodItemCount = lastChooseFoodData.children.length;
+
+  // take-purpose-span, prefer-shape-span, prefer-type-span, #last-choose-food-data 중 하나라도 빈 값인 경우
+  if (takePurpose === '' || preferShape === '' || preferType === '' || foodItemCount === 0) {
+    // analyze-myFood 버튼 비활성화
+    analyzeButton.disabled = true;
+  } else {
+    // 모든 값이 채워진 경우 analyze-myFood 버튼 활성화
+    analyzeButton.disabled = false;
+  }
+}
+
+// analyze-myFood 버튼 상태 업데이트 함수 호출
+updateAnalyzeButtonState();
+
+// take-purpose-span, prefer-shape-span, prefer-type-span, #last-choose-food-data 내용 변경 감지 이벤트 리스너 추가
+takePurposeSpan.addEventListener('DOMSubtreeModified', updateAnalyzeButtonState);
+preferShapeSpan.addEventListener('DOMSubtreeModified', updateAnalyzeButtonState);
+preferTypeSpan.addEventListener('DOMSubtreeModified', updateAnalyzeButtonState);
+lastChooseFoodData.addEventListener('DOMSubtreeModified', updateAnalyzeButtonState);
 
 </script>
