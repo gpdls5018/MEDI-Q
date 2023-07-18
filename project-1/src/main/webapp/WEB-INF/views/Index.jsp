@@ -191,13 +191,13 @@
      <!-- 1번째 다이브 목록 -->
      	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
      	<c:if test="${not empty analyzeReport}">
-	        <h1 class="text-center mb-3" style="font-size: 30px; color: black;">📋 <span style="color:#EF605D; font-size: 34px;">${id}</span>님의 최근 분석 리포트</h1>
+	        <h1 class="text-center mb-3" style="font-size: 30px; color: black;">📋 <span style="color:#EF605D; font-size: 34px;">${userName}</span>님의 최근 분석 리포트</h1>
 	        <div class="ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
 	            <a data-gtm-id="report-home-recent-blank" class="ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none; background-color: 
-			    ${	analyzeReport.score >= 0 && analyzeReport.score < 25 ? '#EF605D' :
-			        analyzeReport.score >= 25 && analyzeReport.score < 50 ? 'orange' :
-			        analyzeReport.score >= 50 && analyzeReport.score < 75 ? 'green' :
-			        analyzeReport.score >= 75 && analyzeReport.score <= 100 ? 'blue' :
+			    ${	analyzeReport.score >= 0 && analyzeReport.score < 30 ? 'rgba(255, 0, 0, 0.7)' :
+			        analyzeReport.score >= 30 && analyzeReport.score < 60 ? 'rgba(255, 165, 0, 0.7)' :
+			        analyzeReport.score >= 60 && analyzeReport.score < 90 ? 'rgba(0, 128, 0, 0.7)' :
+			        analyzeReport.score >= 90 && analyzeReport.score <= 100 ? 'rgba(0, 0, 255, 0.7)' :
 			        ''
 			    };" >
 	                <article class="hBxOSS" style="display: block;">
