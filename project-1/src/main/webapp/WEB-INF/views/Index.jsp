@@ -441,7 +441,7 @@
 	                        </a>
 	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="/board/View.do?no=${item.no }">
 	                                <div class="qna-user-icon qna-user-icon-1"></div>
-	                                <div class="qna-user-txt">${item.content } </div>
+	                                <div class="qna-user-txt">열심히 답변을 준비하고 있습니다. 조금만 기다려주세요! </div>
 	                            <div class="user-info-row">
 	                                <span class="user-name">${boardmemberList.get(status.index).getName() }</span>
 	                                <span class="user-agesex"><fmt:formatDate value="${boardmemberList[status.index].getBirth()}" pattern="yyyy" var="age" />${2023-age }세</span>
