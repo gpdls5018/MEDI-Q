@@ -39,7 +39,7 @@
     font-size: 30px;
   }
    .custom-img{
-  	margin-top: 100px;
+  	margin-top: 70px;
   	margin-left: 20px;
   }
   .contents{

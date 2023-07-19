@@ -19,10 +19,10 @@
     padding-top : 145px;
   }
   .contentTop{
-  	padding-top: 50px;
+  	padding-top: 35px;
   }
   .paragraph{
-  	margin-top: 125px;
+  	margin-top: 110px;
   	font-size: 23px;
   }
   .paragraph-title{
@@ -154,7 +154,7 @@
   <div style="font-size:24px;" class="contentTop">
    약국에서 허락한 마약이라고 불리는 <span style="background-color: #EBEBFA; font-size:30px;">‘텐텐’</span><br/>
    어린 시절은 물론이고 성인이 되어서도 그 맛을 잊지 못해서 텐텐을 많이 찾는 것 같아요.
- 	<div class="mt-5 mb-2">
+ 	<div class="mt-4 mb-2">
       <img src="<c:url value="/resources/images/magazine_images/07/img_blue1.jpg"/>" class="img-fluid">
   	</div>   
   	그런데 <span class="highLight">최근에 영양제 텐텐을 먹으면 생리가 빨라진다</span>는 말이 온라인상에서 퍼지면서 ‘생리를 앞당기고 싶은데 나도 텐텐을 먹어볼까’하는 경우가 있더라고요?
