@@ -223,7 +223,6 @@ public class MypageController {
 		
 		if (affected == 1) {
 			if(map.get("first")!=null) {
-				System.out.println("첫 방문!!!!!!!!!!!!!");
 				String token = loginService.socialLogin(map,map.get("token").toString());
 
 				// 쿠키에 굽자

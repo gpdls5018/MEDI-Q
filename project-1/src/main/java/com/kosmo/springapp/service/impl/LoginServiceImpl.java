@@ -108,11 +108,12 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 		MemberDTO dto = mapper.searchIdNPwd(map);
 		String mode = map.get("mode").toString();
 		String email = map.get("email").toString();
-		if(dto!=null) {
-			//입력하신 비밀번호로 정보를 전송했습니다
-			if ("ID".equals(map.get("mode"))) {// 아이디찾기 클릭 시
+		if(dto != null) {
+			if("Y".equals(dto.getSocial_Fl())) {//소셜로 로그인한 이메일 입력 시
+				message = "Social-Member";
+			}
+			else if ("ID".equals(map.get("mode"))) {// 아이디찾기 클릭 시
 				String id = dto.getId();
-				//map.put("searchId", id);
 				message = emailService.sendMessage(email,id,mode);
 			} else {// 비밀번호 찾기 클릭 시
 				String pwd = dto.getPassword();

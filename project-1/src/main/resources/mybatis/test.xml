@@ -46,14 +46,10 @@
 		SELECT COUNT(*) FROM MEMBER WHERE ID=#{id} AND PASSWORD=#{password}
 	</select>
 	
-	<!-- social_fl로 변경??? -->
 	<update id="update" parameterType="Map">
-		<if test="id != 'kim1234'">
-			UPDATE MEMBER SET NAME=#{name},PASSWORD=#{password},BIRTH=#{birth},GENDER=#{gender},EMAIL=#{email} WHERE ID=#{id}
-		</if>
+		UPDATE MEMBER SET NAME=#{name},PASSWORD=#{password},BIRTH=#{birth},GENDER=#{gender},EMAIL=#{email} WHERE ID=#{id}
 	</update>
 	
-	<!-- 여기도 수정해야함 -->
 	<insert id="saveProfImg" parameterType="profImgDto">
 		INSERT INTO PROFILE_IMAGE VALUES(SEQ_PROFILE_IMAGE.NEXTVAL,#{id},#{pi_Path},#{pi_Filename},#{pi_Ext})
 	</insert>

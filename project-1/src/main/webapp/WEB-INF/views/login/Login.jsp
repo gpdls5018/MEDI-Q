@@ -355,6 +355,10 @@ p{
 							$('#checkOK').css({'display':'','color':'red'});
 							$('#checkOK').html("입력하신 정보의 회원이 없습니다<br/>이메일과 이름을 확인해주세요");
 						}
+						else if(data.message=='Social-Member'){
+							$('#checkOK').css({'display':'','color':'red'});
+							$('#checkOK').html("소셜 로그인 시 해당 서비스 이용이 불가합니다");
+						}
 						else if(data.mode=='ID'){
 							$('#checkOK').css({'display':'','color':'black'});
 							$('#checkOK').html("입력하신 이메일로 아이디 전송을 완료했습니다");
