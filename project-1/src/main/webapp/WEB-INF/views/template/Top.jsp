@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="m" uri="/WEB-INF/tlds/common.tld" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -226,6 +228,8 @@
 </head>
 <script>
 	//비디오 전체화면
+	
+	/*
 	//쿠키값 가져오는 함수
 	function getCookieValue(cookieName) {
 		//debugger
@@ -275,6 +279,7 @@
 		// 페이지 로딩 시 로그인 상태 확인
 		checkLoginStatus();
 	});
+	*/
 	
 	//햄버거 버튼 클릭시 좌측에 메뉴바 열기/닫기
 	jQuery(document).ready(function ($) {
@@ -344,25 +349,40 @@
         </a>
 
         <ul class="navbar-nav mx-5 " >
-       			 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="<c:url value="/test1.do"/>">1</a>
-                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">2</a>
-                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">3</a>
-                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">4</a>
-                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">5</a>
-                </div>
-            <li class="nav-item text2 mx-2 login" >
-                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Login.do"/>">로그인</a>
-            </li>
-            <li class="nav-item text2 mx-2 login">
-                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Join.do"/>">회원가입</a>
-            </li>
-            <li class="nav-item text2 mx-2 logout">
-                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>
-            </li>
-            <li class="nav-item text2 mx-2 logout">
-                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Logout.do"/>">로그아웃</a>
-            </li>
+       		<div class="d-inline-flex align-items-center" style="height: 45px">
+            	<a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="<c:url value="/test1.do"/>">1</a>
+                <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">2</a>
+                <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">3</a>
+                <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">4</a>
+                <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">5</a>
+            </div>
+            
+            <!-- 유효한 토큰인지 판단하는 함수 -->
+            <c:set var="token" value="${cookie['User-Token'].value }"/>
+            <%--
+            <fmt:bundle basename="config.tokens">
+				<fmt:message key="secret-key" var="key"/>
+            </fmt:bundle>
+            <c:set var="isValid" value='${m:isValid(token,key,pageContext.request,pageContext.response) }' />
+ 				--%>
+            
+            <c:if test="${not empty token }" var="isLogin">
+	            <li class="nav-item text2 mx-2">
+	                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>
+	            </li>
+	            <li class="nav-item text2 mx-2">
+	                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Logout.do"/>">로그아웃</a>
+	            </li>
+            </c:if>
+            
+            <c:if test="${not isLogin }">
+	            <li class="nav-item text2 mx-2" >
+	                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Login.do"/>">로그인</a>
+	            </li>
+	            <li class="nav-item text2 mx-2">
+	                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Join.do"/>">회원가입</a>
+	            </li>
+            </c:if>
         </ul>
     </nav>
     <!-- navbar left side -->
@@ -443,7 +463,7 @@
 	          <h3 class="d-flex">
 	            <a href="#six" style="align-items: center;">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-lifestyle-4807765.png"/>" width="25" height="25">
-	                &nbsp; 건강예측
+	                &nbsp; 정신건강 테스트
 	                <span class="arrow-down" style="margin-left: 120px;"></span>
 	            </a>
 	          </h3>

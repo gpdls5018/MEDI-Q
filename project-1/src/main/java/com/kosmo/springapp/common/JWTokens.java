@@ -24,7 +24,7 @@ public class JWTokens {
 	 	@return		   비밀키 반환
 	*/
 	
-	private static String getSecretKey(String keyPath, String key){
+	static String getSecretKey(String keyPath, String key){
 		ResourceBundle resource = ResourceBundle.getBundle(keyPath);//확장자를 뺀 이름
 		String secretKey = resource.getString(key);
 
@@ -115,8 +115,7 @@ public class JWTokens {
 	*/
 
 	//JWT토큰 검증용 메소드
-	public static boolean verifyToken(String token, String keyPath, String key, HttpServletRequest req, HttpServletResponse resp) {
-		String secretKey = getSecretKey(keyPath, key);//비밀키 가져오기
+	public static boolean verifyToken(String token, String secretKey, HttpServletRequest req, HttpServletResponse resp) {
 		Map<String, Object> claims = new HashMap<>();
 		try {
 			//JWT토큰 파싱 및 검증
