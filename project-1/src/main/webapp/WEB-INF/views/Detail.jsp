@@ -11,6 +11,7 @@
 <script src="https://unpkg.com/three"></script>
 <script src="https://unpkg.com/three-spritetext"></script>
 <script src="https://unpkg.com/3d-force-graph"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <c:set value="${totalReviewDto.starScore.COUNT_1 + totalReviewDto.starScore.COUNT_2 + totalReviewDto.starScore.COUNT_3 + totalReviewDto.starScore.COUNT_4 + totalReviewDto.starScore.COUNT_5}" var="totalStarCount"/>
 <c:set value="${totalReviewDto.effectList[0].COUNT + totalReviewDto.effectList[1].COUNT + totalReviewDto.effectList[2].COUNT + totalReviewDto.effectList[3].COUNT}" var="totalEffectCount"/>
 <c:set value="${totalReviewDto.noEffectList[0].COUNT + totalReviewDto.noEffectList[1].COUNT + totalReviewDto.noEffectList[2].COUNT + totalReviewDto.noEffectList[3].COUNT}" var="totalNoEffectCount"/>
@@ -19,7 +20,8 @@
         border-collapse: collapse;
         text-align: left;
         line-height: 1.5;
-
+        width:100%;
+		
     }
     table.type09 thead th {
         padding: 10px;
@@ -170,7 +172,6 @@ left: 146px;
     	<img src="${listOne.imgURL}" width="400px;" height="300px;" style="border-radius:20px;"/>
    	</c:if>
     </h1>
-
 	<!-- 탭 -->
 	<div class="tab-content mt-5 mb-5">
 	  	<div class="effect-custom-font mt-5" style="font-size:40px;">제품의 상세정보 내용이에요! </div>
@@ -326,7 +327,7 @@ left: 146px;
 		<button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; margin-top: 20px;">구매하러 가기</button>
 		<button onclick="window.location.href = '/ranking/selectfood.do'" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">다른 제품검색하러 가기</button>
 	 	<div class="empty-space" style="height:50px;"></div>
-	  	<div class="effect-custom-font" style="font-size:40px;">구매전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
+	  	<div class="effect-custom-font mt-5" style="font-size:40px;">구매전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
 	  	<div class="bubble p-4 effect-custom-font" style="font-size:17px;">
 		  	아래는 구매자들의 리뷰를 분석한 키워드 입니다.^^
 		  	<br>가운데 <span style="background-color:#ffdcdc;color:#ff4b4b">제품명</span>을 바탕으로
@@ -653,7 +654,27 @@ left: 146px;
 
   window.addEventListener("scroll", handleInfiniteScroll);
 
-
+  new Chart(document.getElementById('line-chart'), {
+      type : 'line',
+      data : {
+          labels : [1,2,3,4,5],
+          datasets : [{
+              data : [10,10,10,10,10],
+              label : "일별 조회수",
+              borderColor : "#3e95cd",
+              fill : true,
+              pointStyle : 'circle',
+              pointRadius : 10,
+              pointHoverRadius : 15,
+          }]},
+      options : {
+          title : {
+              display : true,
+              text : '제품 일별 조회수',
+          }
+      }
+  });
+  
 </script>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
    			
