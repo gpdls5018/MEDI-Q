@@ -64,7 +64,7 @@
 						<div class="mt-5" style="font-size:15px;">
 							<ul style="line-height: 40px;">
 								<li style="color:#6e6e6e;">
-									홍성민님은 현재 <span style="font-size:17px;color:#000000;background-color:#ffdcdc">${fn:length(resultListDto.listdto)}개의 목적</span>
+									${memberDto.name}님은 현재 <span style="font-size:17px;color:#000000;background-color:#ffdcdc">${fn:length(resultListDto.listdto)}개의 목적</span>
 									을 위해 영양제를 섭취 중이시네요!
 								</li>
 								<li style="color:#6e6e6e;">
