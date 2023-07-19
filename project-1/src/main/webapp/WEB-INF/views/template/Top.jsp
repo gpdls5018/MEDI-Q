@@ -375,7 +375,7 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 
         <ul class="navbar-nav mx-5 " >
        			 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">1</a>
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="<c:url value="/test1.do"/>">1</a>
                     <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">2</a>
                     <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">3</a>
                     <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">4</a>
