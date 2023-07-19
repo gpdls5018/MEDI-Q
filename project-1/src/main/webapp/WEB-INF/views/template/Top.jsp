@@ -367,11 +367,20 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
                 <span style="font-weight:bold; font-size:50px; color:#EF605D">&#9776;</span>
             </a>
         </div>
+         
         <a class="navbar-brand" style="position: absolute; margin-left: 44%;" href="<c:url value='/' />">
         	<img src="<c:url value='/resources/images/mainicon.png' />" width="40" height="40">
         	<img src="<c:url value='/resources/images/maintitle.png' />" width="160" height="40">
         </a>
+
         <ul class="navbar-nav mx-5 " >
+       			 <div class="d-inline-flex align-items-center" style="height: 45px;">
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">1</a>
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">2</a>
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">3</a>
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">4</a>
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">5</a>
+                </div>
             <li class="nav-item text2 mx-2 login" >
                 <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Login.do"/>">로그인</a>
             </li>
