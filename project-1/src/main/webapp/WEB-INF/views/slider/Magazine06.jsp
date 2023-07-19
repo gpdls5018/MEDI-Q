@@ -159,7 +159,7 @@
   
   
    <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/work-time.png"/>" class="img-fluid mr-4" style="width:100px">
+	<img src="<c:url value="/resources/images/magazine_images/basic/contract.png"/>" class="img-fluid mr-4" style="width:100px">
 	<span style="font-size: xx-large; color: #F06292"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
