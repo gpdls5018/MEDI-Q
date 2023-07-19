@@ -8,6 +8,23 @@
 	  width: 100%;
 	}
 	
+	.show{
+		display: block;
+		color: red;
+		font-size: small;
+		font-weight: bold;
+	}
+	.blue{
+		color: blue;
+	}
+	.black{
+		color: black;
+	}
+	
+	.hide{
+		display: none;
+	}	
+	
 	/* 약관동의 */
 	.register__step__wr {
 	    align-items: center;
@@ -116,7 +133,7 @@
 </style>
 <div class="container" style="margin-top: 200px">
 	<div class="container">
-	<!-- 
+
 		<div class="register__step__wr hidden1024" style="width: 100%;">
 	        <div class="step__wr d-flex">
 	            <img src="https://www.bundangcheil.com/images/register_step_line.png" alt="라인" class="line00 line01 first-line">
@@ -146,7 +163,7 @@
 	            </div>
 	        </div>
 	    </div>
-	     -->
+
 		<div class="row d-flex justify-content-center align-items-center">
 			<div class="col-md-6 mb-4">
 				<h3 class="heading mb-4 left-center">회원가입</h3>
@@ -171,11 +188,11 @@
 							<input style="max-width: 300px;" type="password" class="form-control" id="pwd" placeholder="확인용 비밀번호" name="pwd" required/>
 							
 							<!-- 글자색 빨간색, bold 주기 -->
-							<div id="idOK" style="display:none">아이디 6~12자의 영문(소문자),숫자만 입력하세요</div>
-							<div id="passwordOK" style="display:none">비밀번호 8~16자의 영문(대/소문자),숫자,특수문자를 입력하세요</div>
-							<div id="pwdOK" style="display:none">입력한 비밀번호와 다릅니다</div>
-							<div id="idCheckOK" style="display:none">사용 가능한 아이디입니다</div>
-							<div id="idCheckFail" style="display:none">중복된 아이디입니다</div>
+							<div id="idOK" class="hide">아이디 6~12자의 영문(소문자),숫자만 입력하세요</div>
+							<div id="passwordOK" class="hide">비밀번호 8~16자의 영문(대/소문자),숫자,특수문자를 입력하세요</div>
+							<div id="pwdOK" class="hide">입력한 비밀번호와 다릅니다</div>
+							<div id="idCheckOK" class="hide">사용 가능한 아이디입니다</div>
+							<div id="idCheckFail" class="hide">중복된 아이디입니다</div>
 						</div>
 					</div>
 					<div class="row">
@@ -186,9 +203,9 @@
 							</div>
 							<input style="max-width: 300px;" type="text" class="form-control my-1" id="mailNum" placeholder="인증번호" name="mailNum" required/>
 						
-							<div id="emailOK" style="display:none">잘못된 이메일 형식입니다</div>
-							<div id="mailNumOK" style="display:none">인증번호를 입력해주세요</div>
-							<div id="mailNumCheckOK" style="display:none">인증번호가 확인되었습니다</div>
+							<div id="emailOK" class="hide">잘못된 이메일 형식입니다</div>
+							<div id="mailNumOK" class="hide">인증번호를 입력해주세요</div>
+							<div id="mailNumCheckOK" class="hide">인증번호가 확인되었습니다</div>
 						</div>
 					</div>
 					<div class="row">
@@ -207,18 +224,19 @@
 								</div>
 							</div>
 							
-							<div id="nameOK" style="display:none">한글이름 2글자 이상 입력해주세요</div>
-							<div id="birthOK" style="display:none">생년월일을 선택해주세요</div>
-							<div id="genderOK" style="display:none">성별을 선택해주세요</div>
+							<div id="nameOK" class="hide">한글이름 2글자 이상 입력해주세요</div>
+							<div id="birthOK" class="hide">생년월일을 선택해주세요</div>
+							<div id="genderOK" class="hide">성별을 선택해주세요</div>
 						</div>
 					</div>
+					<!-- 확인이 아닌 이전 다음으로 추후 변경해야함 -->
 					<button type="submit" class="btn btn-outline-primary">확인</button>
 				</form>
 			</div>
-			<!-- 
+
 				<button type="submit" class="btn bottom-button mr-3">이전</button>
 				<button type="submit" class="btn bottom-button ml-3">다음</button>
-				 -->
+
 		</div>
 	</div>
 </div>
@@ -236,25 +254,29 @@
 	//아이디 중복 체크
 	$('#idCheck').click(function(){
 		//var id = $('#id').val();
-		console.log($('#id').val());
-		$.ajax({
-			url:'<c:url value="/project/IdCheck.do"/>',//요청을 보낼 URL
-			method:'post',//요청에 사용할 HTTP 메서드
-			data:{id:$('#id').val()},//요청과 함께 전송할 데이터 //자스에서는 반드시 문자열로 바꿔서 전송해야함!!
-			dataType:'json' //응답받을 데이터 타입
-			
-		}).done(data=>{
-			console.log('중복체크 성공',data);
-			console.log('isDuplicate',data.isDuplicate);
-			if(data.isDuplicate){//id 중복
-				$('#idOK').html('중복된 아이디입니다').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
-			}
-			else{
-				$('#idOK').html('사용가능한 아이디입니다').css({'display':'','color':'blue','font-size':'small','font-weight':'bold'});
-			}
-		}).fail(error=>{
-			console.log('중복체크 실패');
-		});
+		if(!$('#id').val()){
+			$('#idOK').html('아이디 입력 후 클릭하세요').removeClass('hide').addClass('show');
+		}
+		else{
+			$.ajax({
+				url:'<c:url value="/project/IdCheck.do"/>',//요청을 보낼 URL
+				method:'post',//요청에 사용할 HTTP 메서드
+				data:{id:$('#id').val()},//요청과 함께 전송할 데이터 //자스에서는 반드시 문자열로 바꿔서 전송해야함!!
+				dataType:'json' //응답받을 데이터 타입
+				
+			}).done(data=>{
+				//console.log('중복체크 성공',data);
+				//console.log('isDuplicate',data.isDuplicate);
+				if(data.isDuplicate){//id 중복
+					$('#idOK').html('중복된 아이디입니다').removeClass('hide blue').addClass('show');
+				}
+				else{
+					$('#idOK').html('사용가능한 아이디입니다').removeClass('hide').addClass('show blue');
+				}
+			}).fail(error=>{
+				//console.log('중복체크 실패');
+			});
+		}
 	});
 	
 	//이메일 인증번호 전송
@@ -276,15 +298,15 @@
 	});
 	
 	function mailNumCheck(code){
-		console.log('입장')
+		//console.log('입장')
 		$('#mailNum').on('input',function(){
 			if($('#mailNum').val()==code){//인증코드 입력 시
 				isValidate = true;
-				$('#mailNumCheckOK').html('인증번호가 확인되었습니다').css({'display':'','color':'blue','font-size':'small','font-weight':'bold'});
+				$('#mailNumCheckOK').html('인증번호가 확인되었습니다').removeClass('hide').addClass('show blue');
 			}
 			else{
 				isValidate = false;
-				$('#mailNumCheckOK').html('동일한 인증번호가 아닙니다').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
+				$('#mailNumCheckOK').html('동일한 인증번호가 아닙니다').removeClass('hide blue').addClass('show');
 			}
 		})
 	};
@@ -295,79 +317,51 @@
 	var reg_email = /^(?=.*[A-Za-z])(?=.*\d)[a-z][a-z0-9]{5,11}@[a-z]{3,8}\.(com|net|co\.kr)$/;
 	var reg_name = /[가-힣]{2,}/;
 	
-	var idFlag = false;
 	$('#id').on('input',function(){
-		if($(this).val()==undefined || !$(this).val().length){
-			idFlag = false;
-		}
 		if(!reg_id.test($('#id').val())){
-			idFlag = false;
-			$('#idOK').html('아이디 6~12자의 영문(소문자),숫자만 입력하세요').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
+			$('#idOK').html('아이디 6~12자의 영문(소문자),숫자만 입력하세요').removeClass('hide').addClass('show');
 		}
 		else{
-			idFlag = true;
-			$('#idOK').html('사용가능한 아이디형식입니다').css({'display':'','color':'blue','font-size':'small','font-weight':'bold'});
+			$('#idOK').html('사용가능한 아이디형식입니다').addClass('blue');
 		}
 	})////////////
 	
-	var passwordFlag = false;
 	$('#password').on('input',function(){
-		if($(this).val()==undefined || !$(this).val().length){
-			passwordFlag = false;
-		}
 		if(!reg_pwd.test($(this).val())){
-			passwordFlag = false;
-			$('#passwordOK').html('비밀번호 8~16자의 영문(대/소문자),숫자,특수문자를 입력하세요').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
+			$('#passwordOK').html('비밀번호 8~16자의 영문(대/소문자),숫자,특수문자를 입력하세요').removeClass('hide').addClass('show');
 		}
 		else{
-			passwordFlag = true;
-			$('#passwordOK').html('사용가능한 비밀번호입니다').css({'display':'','color':'blue','font-size':'small','font-weight':'bold'});
+			$('#passwordOK').html('사용가능한 비밀번호입니다').addClass('blue');
 		}
 	})////////////
 	
-	var pwdFlag = false;
 	$('#pwd').on('input',function(){
 		if($('#password').val() !== $(this).val()){
-			pwdFlag = false;
-			$('#pwdOK').html('입력한 비밀번호와 다릅니다').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
+			$('#pwdOK').html('입력한 비밀번호와 다릅니다').removeClass('hide').addClass('show');
 		}
 		else{
-			pwdFlag = true;
-			$('#pwdOK').html('입력한 비밀번호와 동일합니다').css({'display':'','color':'blue','font-size':'small','font-weight':'bold'});
+			$('#pwdOK').html('입력한 비밀번호와 동일합니다').addClass('blue');
 		}
 	})//////////////////
 	
-	var emailFlag = false;
 	$('#email').on('input',function(){
-		if($(this).val()==undefined || !$(this).val().length){
-			emailFlag = false;
-		}
 		if(!reg_email.test($(this).val())){
-			emailFlag = false;
-			$('#emailOK').html('잘못된 이메일 형식입니다').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
+			$('#emailOK').html('잘못된 이메일 형식입니다').removeClass('hide').addClass('show');
 		}
 		else{
-			emailFlag = true;
-			$('#emailOK').html('사용가능한 이메일입니다').css({'display':'','color':'blue','font-size':'small','font-weight':'bold'});
+			$('#emailOK').html('사용가능한 이메일입니다').addClass('blue');
 		}
 	})////////////
 	
-	var nameFlag = false;
 	$('#name').on('input',function(){
-		if($(this).val()==undefined || !$(this).val().length){
-			nameFlag = false;
-		}
 		if(!reg_name.test($(this).val())){
-			nameFlag = false;
-			$('#nameOK').html('한글이름 2글자 이상 입력해주세요').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
+			$('#nameOK').html('한글이름 2글자 이상 입력해주세요').removeClass('hide').addClass('show');
 		}
 		else{
-			nameFlag = true;
 			$('#nameOK').html('');
 		}
 	})/////////////
 	
-	var isValidate = false;//유효성 검사
 	//자바스크립트 유효성 검사
 	document.forms[0].onsubmit = function(e){
 		
@@ -375,80 +369,57 @@
             this.classList.add('was-validated'); //div에 지정한 valid/invalid 메시지 뿌리기 위해
             
             if(!$('#id').val()){
-            	$('#idOK').html('아이디 6~12자의 영문(소문자),숫자만 입력하세요').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
-            	isValidate = false;
+            	$('#idOK').html('아이디 6~12자의 영문(소문자),숫자만 입력하세요').removeClass('hide').addClass('show');
             }
             else{
-            	$('#idOK').css('display','none');
-            	isValidate = true;
+            	$('#idOK').removeClass('show').addClass('hide');
             }
             if(!$('#password').val()){
-            	$('#passwordOK').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
-            	isValidate = false;
+            	$('#passwordOK').removeClass('hide').addClass('show');
             }
             else{
-            	$('#passwordOK').css('display','none');
-            	isValidate = true;
+            	$('#passwordOK').removeClass('show').addClass('hide');
             }
             if(!$('#pwd').val()){
-            	$('#pwdOK').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
-            	isValidate = false;
+            	$('#pwdOK').removeClass('hide').addClass('show');
             }
             else{
-            	$('#pwdOK').css('display','none');
-            	isValidate = true;
+            	$('#pwdOK').removeClass('show').addClass('hide');
             }
             if(!$('#email').val()){
-            	$('#emailOK').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
-            	isValidate = false;
+            	$('#emailOK').removeClass('hide').addClass('show');
             }
             else{
-            	$('#emailOK').css('display','none');
-            	isValidate = true;
+            	$('#emailOK').removeClass('show').addClass('hide');
             }
             if(!$('#mailNum').val()){
-            	$('#mailNumOK').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
-            	isValidate = false;
+            	$('#mailNumOK').removeClass('hide').addClass('show');
             }
             else{
-            	$('#mailNumOK').css('display','none');
-            	isValidate = true;
+            	$('#mailNumOK').removeClass('show').addClass('hide');
             }
             if(!$('#name').val()){
-            	$('#nameOK').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
-            	isValidate = false;
+            	$('#nameOK').removeClass('hide').addClass('show');
             }
             else{
-            	$('#nameOK').css('display','none');
-            	isValidate = true;
+            	$('#nameOK').removeClass('show').addClass('hide');
             }
             if(!$('#birth').val()){
-            	$('#birthOK').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
-            	isValidate = false;
+            	$('#birthOK').removeClass('hide').addClass('show');
             }
             else{
-            	$('#birthOK').css('display','none');
-            	isValidate = true;
+            	$('#birthOK').removeClass('show').addClass('hide');
             }
-            //성별 선택시 오류 내용 뜨지않도록 수정
-            var isGender = false;
+
             //console.log($('input[name=gender]:checked').val())
             if(!$('input[name=gender]:checked').val()){
-            	$('#genderOK').css({'display':'','color':'red','font-size':'small','font-weight':'bold'});
-            	isValidate = false;
+            	$('#genderOK').removeClass('hide').addClass('show');
             }
             else{
-            	$('#genderOK').css('display','none');
-            	isValidate = true;
+            	$('#genderOK').removeClass('show').addClass('hide');
             }
             
-            if(!isValidate){
-            	return false; //submit 이벤트 취소
-            }
-            else{
-            	return false;
-            }
-            return true;
+            e.preventDefault();//이벤트 취소
         }
 	};
 	

@@ -15,7 +15,7 @@ public interface LoginService<T> {
 
 	boolean isLogin(Map map);
 	List<T> selectMember();
-	T selectOne(Map map);
+	T selectOne(String id);
 	int update(T info);
 	int delete(T info);
 	int insert(T info);

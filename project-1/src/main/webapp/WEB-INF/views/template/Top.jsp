@@ -198,9 +198,6 @@
 .accordion :target h3 + div {
     height: 140px;
 }
-.accordion :target h3 + .tstm3 {
-    height: 100px;
-}
 
 .accordion .section.large:target h3 + div {
     overflow: auto;
@@ -225,14 +222,6 @@
 	padding: 3.5px;
 	text-decoration: none;
 }
-/*위로가기*/
-a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
-    bottom:100px; display: none; z-index: 290;
-    background:url(https://cdn.pillyze.io/web/img/go_top76.webp) no-repeat;
-    box-shadow:2px 2px 2px gray;
-    border-radius:50%;
-    background-size:70px 70px;
-}
     </style>
 </head>
 <script>
@@ -256,7 +245,7 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 		//쿠키값 가져와서 로그인 상태 확인 함수
 		function checkLoginStatus() {
 		var token = getCookieValue("User-Token");
-		console.log("token",token);
+		//console.log("token",token);
 		if (token) {
             // 토큰이 존재하면 로그인 상태로 간주
             // 모든 .logout 요소에 스타일 적용
@@ -337,26 +326,7 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 	      });
 	    });
 	  });*/
-	  if ($(this).scrollTop() > 20) {
-          $('#goto_top').fadeIn();
-      } else {
-          $('#goto_top').fadeOut();
-      }
-      /*화면 스크롤에 따른 조건부 노출 : 최하단 고정 행, 위로가기 버튼 */
-      $(window).scroll(function() {
-          if ($(this).scrollTop() > 20) {
-              $('#goto_top').fadeIn();
-          } else {
-              $('#goto_top').fadeOut();
-          }
 
-      });
-      $('#goto_top').click(function() {
-          $('html, body').animate({
-              scrollTop : 0
-          }, 300);
-          return false;
-      });
 
 </script>
 <body>
@@ -429,32 +399,24 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 	            <a href="<c:url value="/NutrientSelectFunctional.do"/>">기능성 원료</a>
 	          </div>
 	        </div>
-	        <div id="two" class="section">
+	        <div class="section">
 	          <h3>
-	            <a class="text-decoration-none"  href="#two">
+	            <a class="text-decoration-none"  href="<c:url value="/ranking/selectfood.do"/>">
 	                <img src="<c:url value="/resources/images/shape/캡슐.png"/>" style="opacity: 0.8;" width="25" height="25">
 	                &nbsp; 영양제 검색
-	                <span class="arrow-down" style="margin-left: 90px;" ></span>
 	            </a>
 	          </h3>
-	          <div class="ditem tstm3">
-	          	<a href="<c:url value="/ranking/selectfood.do"/>">전체 검색</a>
-	          	
-	            <a href="<c:url value="/ranking/selectfoodnutrient.do"/>">성분 검색</a>
-	 			
-	            <a href="<c:url value="/ranking/selectfoodcompany.do"/>">제품명/브랜드 검색</a>
-	          </div>
 	        </div>
 	        <div id="three" class="section">
 	          <h3>
 	            <a class="text-decoration-none" href="<c:url value="/magazineindex.do"/>">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-whats-new-5511348.png"/>" width="25" height="25">
-	                &nbsp; 건강 메거진
+	                &nbsp; 메디큐 칼럼
 	            </a>
 	        </div>
 	        <div id="four" class="section large">
 	          <h3>
-	            <a class="text-decoration-none" href="<c:url value="/analyzeMyFood.do"/>">
+	            <a class="text-decoration-none" href="#">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-data-analysis-3449317.png"/>" width="25" height="25">
 	                &nbsp; 분석 및 결과
 	            </a>
@@ -464,7 +426,7 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 	          <h3>
 	            <a class="text-decoration-none" href="<c:url value="/board/List.do" />">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-chat-724715.png"/>" width="25" height="25">
-	                &nbsp; Q&amp;A 게시판
+	                &nbsp; 커뮤니티
 	            </a>
 	          </h3>
 	        </div>
@@ -472,8 +434,8 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 	          <h3 class="d-flex">
 	            <a href="#six" style="align-items: center;">
 	                <img src="<c:url value="/resources/images/tsimages/free-icon-lifestyle-4807765.png"/>" width="25" height="25">
-	                &nbsp; 정신건강 테스트
-	                <span class="arrow-down" style="margin-left: 50px;"></span>
+	                &nbsp; 건강예측
+	                <span class="arrow-down" style="margin-left: 120px;"></span>
 	            </a>
 	          </h3>
 	          <div class="ditem" style="border: none;">
@@ -491,5 +453,5 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
     </div>
     <!-- navbar left side end-->
 </div>
-<a id="goto_top" href="#" title="맨 위로"></a><!-- 위로가기 -->
+
  

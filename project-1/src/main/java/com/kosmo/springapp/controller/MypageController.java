@@ -7,7 +7,10 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -97,34 +100,21 @@ public class MypageController {
 		LocalDate current = LocalDate.now(); //현재날짜 구하기
 		Map map = new HashMap<>();
 		//System.out.println("date: "+date);
-		MemberDTO member = loginService.selectOne(req,resp);
 		
-		String id="";
-		String sm_email="";
-		ProfileImageDTO profImg=null;
+		MemberDTO member = loginService.selectOne(req,resp);	
+		String id = member.getId();
 		
-		if(member.getId() == null) {
-			sm_email = member.getEmail();
-			map.put("sm_email", sm_email);
-			profImg = loginService.selectProfImg(sm_email);
-		}
-		else {
-			id = member.getId();
-			map.put("id", id);
-			profImg = loginService.selectProfImg(id);
-		}
-		
-		String key = member.getId()==null?member.getEmail():member.getId();
-		
-		
+		ProfileImageDTO profImg = loginService.selectProfImg(id);
+
 		List<HealthMemoDTO> memos = healthMemoIServicempl.selectAll(req);
 		for(HealthMemoDTO m : memos) {
 			m.setMm_Date(m.getMm_Date().split(" ")[0]);
 		}
 		
-		map.put("mm_Id", key);//////////////////////////////////////////
+		map.put("mm_Id", id);
 		map.put("mm_Date", current);
 		HealthMemoDTO memo = healthMemoIServicempl.selectOne(map);
+		
 		if(memo != null) {
 			memo.setMm_Date(memo.getMm_Date().split(" ")[0]);
 		}
@@ -140,24 +130,19 @@ public class MypageController {
 	@GetMapping("/ClickDate.do")
 	public String clickDate(@RequestParam String clickDate, HttpServletRequest req, HttpServletResponse resp, Model model) {
 		MemberDTO member = loginService.selectOne(req,resp);
-
-		ProfileImageDTO profImg = loginService.selectProfImg(member.getId()==null?member.getEmail():member.getId());
+		String id = member.getId();
+		ProfileImageDTO profImg = loginService.selectProfImg(id);
+		
 		List<HealthMemoDTO> memos = healthMemoIServicempl.selectAll(req);
 		for(HealthMemoDTO m : memos) {
 			m.setMm_Date(m.getMm_Date().split(" ")[0]);
 		}
 		
-		String key = member.getId()==null?member.getEmail():member.getId();
-		
 		Map map = new HashMap<>();
 		
-		if(key.contains("@")) {
-			map.put("mm_email", key);
-		}
-		else {
-			map.put("mm_Id", key);
-		}
+		map.put("mm_Id", id);
 		map.put("mm_Date", clickDate);
+		
 		HealthMemoDTO memo = healthMemoIServicempl.selectOne(map);
 		
 		if(memo != null) {
@@ -188,28 +173,67 @@ public class MypageController {
 	@GetMapping("/JoinEdit.do")
 	public String joinEdit(HttpServletRequest req, HttpServletResponse resp, Map map) {
 		MemberDTO member = loginService.selectOne(req,resp);
-		String key = member.getId()==null ? member.getEmail() : member.getId();
-		if(key.contains("@")) {
-			map.put("email", key);
-		}
-		else {
-			map.put("id", key);
-		}
-		map.put("info",loginService.selectOne(map));
+		String id = member.getId();
+		map.put("info",loginService.selectOne(id));
 		
 		return "login/JoinEdit";
 	}
 	
-	//회원정보 수정 완료 클릭 후
+	@GetMapping("/JoinAdd.do")
+	public String joinAdd(@RequestParam String add1, String add2, Map map) {
+		map.put("first", "first");
+		map.put("info", loginService.selectOne(add1));
+		map.put("token", loginService.selectOne(add2));
+		return "login/JoinEdit";
+	}
+	
+	//회원정보 수정 완료 클릭 후(일반 회원)
 	@PostMapping("/JoinEditOk.do")
 	@ResponseBody
-	public String joinEditOk(@Valid MemberDTO member, Errors errors) {
-		if (errors.hasErrors()) {
-			System.out.println("에러: "+errors);
+	public String joinEditOk(@Valid MemberDTO member, Errors errors, HttpServletRequest req) {
+		if(errors.hasErrors()) {
+			System.out.println("error: "+errors);
 			return "<script>history.back();</script>";
 		}
+
 		int affected = loginService.update(member);
 		if (affected == 1) {
+			return "<script>alert('회원정보 수정이 완료되었습니다\\r\\마이페이지 화면으로 이동합니다');location.href=\'/project/MyPage.do\';</script>";
+		} else {
+			return "<script>alert('회원정보 수정에 실패하였습니다');history.back()</script>";
+		}
+	}
+	
+	//회원정보 수정 완료 클릭 후(소셜 로그인)
+	@PostMapping("/JoinEditSocialOk.do")
+	@ResponseBody
+	public String joinEditOk(@RequestParam Map map, HttpServletRequest req, HttpServletResponse resp, MemberDTO member) {
+		Pattern pattern = Pattern.compile(MemberDTO.REGEX_NAME);
+		Matcher matcher = pattern.matcher(map.get("name").toString());
+		if(!matcher.matches()) {
+			return "<script>alert('입력한 정보를 확인해주세요');history.back()</script>";
+		}
+		
+		member.setId(map.get("id").toString());
+		member.setName(map.get("name").toString());
+		member.setBirth(map.get("birth").toString());
+		member.setGender(map.get("gender").toString());
+
+		int affected = loginService.update(member);
+		
+		if (affected == 1) {
+			if(map.get("first")!=null) {
+				System.out.println("첫 방문!!!!!!!!!!!!!");
+				String token = loginService.socialLogin(map,map.get("token").toString());
+
+				// 쿠키에 굽자
+				Cookie cookie = new Cookie(tokenName, token);
+				cookie.setPath("/");
+				resp.addCookie(cookie);
+
+				// 쿠키를 response에 담았으니 redirect로 보내야함(메인 페이지로)
+				return "<script>alert('추가 정보 입력이 완료되었습니다\\r\\메인 화면으로 이동합니다');location.replace(\'/\');</script>";
+			}
 			return "<script>alert('회원정보 수정이 완료되었습니다\\r\\마이페이지 화면으로 이동합니다');location.href=\'/project/MyPage.do\';</script>";
 		} else {
 			return "<script>alert('회원정보 수정에 실패하였습니다');history.back()</script>";
@@ -221,12 +245,7 @@ public class MypageController {
 	public String profImgEdit(ProfileImageDTO dto, MemberDTO member, Model model) throws IllegalStateException, IOException {
 
 		ProfileImageDTO info = loginService.editProfImg(dto);
-		System.out.println("member.getId(): "+member.getId());
-		System.out.println("getSm_Email: "+info.getSm_Email());
-		if(dto.getId().contains("@")) {
-			info.setSm_Email(dto.getId());
-			System.out.println("if문 안: "+info.getSm_Email());
-		}
+		
 		int insertFlag = loginService.insertProfImg(info);
 		
 		if(insertFlag==1) {
@@ -273,7 +292,6 @@ public class MypageController {
 	@GetMapping("/MentalTest3.do")
 	public String mentalTest3(HttpServletRequest req, HttpServletResponse resp, Model model) {
 		MemberDTO member = loginService.selectOne(req,resp);
-		System.out.println("member: "+member);
 		model.addAttribute("info", member);
 		return "mentaltest/MentalTest3";
 	}

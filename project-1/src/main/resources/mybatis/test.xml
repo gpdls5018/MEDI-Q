@@ -12,17 +12,12 @@
 		SELECT COUNT(*) FROM MEMBER WHERE ID=#{id}
 	</select>
 	
-	<select id="findMember" parameterType="Map" resultType="memberDto">
-		<if test="email == null">
-			SELECT * FROM MEMBER WHERE ID=#{id}
-		</if>
-		<if test="email != null">
-			SELECT * FROM SOCIAL WHERE EMAIL=#{email}
-		</if>
+	<select id="findMember" parameterType="String" resultType="memberDto">
+		SELECT * FROM MEMBER WHERE ID=#{id}
 	</select>
 	
 	<insert id="save" parameterType="memberDto">
-		INSERT INTO MEMBER VALUES(#{id},#{name},#{password},#{birth},#{gender},#{email},SYSDATE,'Y',DEFAULT,'N')
+		INSERT INTO MEMBER VALUES(#{id},#{name},#{password},#{birth},#{gender},#{email},SYSDATE,'Y',DEFAULT,'N',DEFAULT,'N')
 	</insert>
 	
 	<select id="searchIdNPwd" parameterType="Map" resultType="memberDto">
@@ -36,42 +31,35 @@
 	
 	<insert id="saveSocial" parameterType="Map">
 		<if test="site eq 'kakao'">
-			INSERT INTO SOCIAL VALUES(#{email},#{gender},#{site},SYSDATE,'N',DEFAULT,DEFAULT,'N')
+			INSERT INTO MEMBER VALUES(#{email},DEFAULT,DEFAULT,DEFAULT,#{gender},#{email},SYSDATE,'Y',DEFAULT,'N',#{site},'Y')
 		</if>
 		<if test="site eq 'naver'">
-			INSERT INTO SOCIAL VALUES(#{email},#{gender},#{site},SYSDATE,'N',#{name},#{birth},'N')
+			INSERT INTO MEMBER VALUES(#{email},#{name},DEFAULT,#{birth},#{gender},#{email},SYSDATE,'Y',DEFAULT,'N',#{site},'Y')
 		</if>
 	</insert>
 	
 	<select id="checkBySocial" parameterType="Map" resultType="int">
-		SELECT COUNT(*) FROM SOCIAL WHERE EMAIL=#{email}
+		SELECT COUNT(*) FROM MEMBER WHERE ID=#{email}
 	</select>
 	
 	<select id="checkByPassword" parameterType="Map" resultType="boolean">
 		SELECT COUNT(*) FROM MEMBER WHERE ID=#{id} AND PASSWORD=#{password}
 	</select>
 	
+	<!-- social_fl로 변경??? -->
 	<update id="update" parameterType="Map">
 		<if test="id != 'kim1234'">
 			UPDATE MEMBER SET NAME=#{name},PASSWORD=#{password},BIRTH=#{birth},GENDER=#{gender},EMAIL=#{email} WHERE ID=#{id}
 		</if>
-		<if test="id == 'kim1234'">
-			UPDATE SOCIAL SET NAME=#{name},BIRTH=#{birth},GENDER=#{gender},UPDATE_INFO='Y' WHERE EMAIL=#{email}
-		</if>
 	</update>
 	
-	<!-- member / social if문 구분해야함 -->
+	<!-- 여기도 수정해야함 -->
 	<insert id="saveProfImg" parameterType="profImgDto">
-		INSERT INTO PROFILE_IMAGE VALUES(SEQ_PROFILE_IMAGE.NEXTVAL,#{id},DEFAULT,#{pi_Path},#{pi_Filename},#{pi_Ext})
+		INSERT INTO PROFILE_IMAGE VALUES(SEQ_PROFILE_IMAGE.NEXTVAL,#{id},#{pi_Path},#{pi_Filename},#{pi_Ext})
 	</insert>
 	
 	<update id="updateProfImg" parameterType="memberDto">
-		<if test='!id.contains("@")'>
-			UPDATE MEMBER SET PROF_IMG_FL=#{prof_Img_Fl} WHERE ID=#{id}
-		</if>
-		<if test='id.contains("@")'>
-			UPDATE SOCIAL SET PROF_IMG_FL=#{prof_Img_Fl} WHERE EMAIL=#{id}
-		</if>
+		UPDATE MEMBER SET PROF_IMG_FL=#{prof_Img_Fl} WHERE ID=#{id}
 	</update>
 	
 	<select id="findProfImg" parameterType="String" resultType="profImgDto">
