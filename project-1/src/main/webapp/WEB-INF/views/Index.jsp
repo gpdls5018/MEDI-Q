@@ -441,7 +441,15 @@
 	                        </a>
 	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="/board/View.do?no=${item.no }">
 	                                <div class="qna-user-icon qna-user-icon-1"></div>
-	                                <div class="qna-user-txt">${item.content } </div>
+	                                <c:if test="${status.index ==0 }"> 
+	                                	<div class="qna-user-txt">액체형(리퀴드) 오메가3 제품을 선택하거나, 일반 캡슐 제품을 잘라서 내용물만 섭취하시는 것을 추천해요! </div>
+	                                </c:if>
+	                                <c:if test="${status.index ==1 }"> 
+	                                	<div class="qna-user-txt">코로나 감염을 예방하기 위해, 또는 코로나 후유증에서 빨리 벗어나기 위해서는 비타민 C, 비타민 D, 아연 등 면역에 관련된 영양제가 도움이 됩니다. </div>
+	                                </c:if>
+	                                <c:if test="${status.index ==2 }"> 
+	                                	<div class="qna-user-txt">과다복용은 부작용을 유발할 수 있어요. 식품의약품안전처 혹은 제품에 명시된 적정량을 섭취하는걸 추천합니다. </div>
+	                                </c:if>
 	                            <div class="user-info-row">
 	                                <span class="user-name">${boardmemberList.get(status.index).getName() }</span>
 	                                <span class="user-agesex"><fmt:formatDate value="${boardmemberList[status.index].getBirth()}" pattern="yyyy" var="age" />${2023-age }세</span>

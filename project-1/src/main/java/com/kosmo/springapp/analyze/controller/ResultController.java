@@ -135,6 +135,6 @@ public class ResultController {
         }//28가지 영양제for문 끝
         
 		System.out.println("당신의 점수는: "+(int)Math.ceil(total_result));
-    	return "index";
+    	return "test1";
     }
 }

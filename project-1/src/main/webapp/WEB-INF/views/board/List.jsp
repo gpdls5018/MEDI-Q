@@ -136,8 +136,11 @@
 				                        </a>
 				                        <a tabindex="0" class="qna-user-wrap text-decoration-none" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=${record.NO }"/>">
 				                                <div class="qna-user-icon qna-user-icon-1"></div>
-				                                <div class="qna-user-txt">A.코로나 감염을 예방하기 위해, 또는 코로나 후유증에서 빨리 벗어나기 위해서는 비타민 C, 비타민 D, 아연 등
-		                                        면역에 관련된 영양제가 도움이 됩니다.</div>
+				                                <div class="qna-user-txt">
+				                                	<c:if test="${not empty listPagingData.records }" var="isEmpty">
+														<div>약사님의 답변을 기달리는 중입니다.</div>
+													</c:if>
+				                                </div>
 				                            <div class="user-info-row">
 				                                <span class="user-name">${record.NAME }</span>
 				                                <span class="user-agesex">${record.AGE_GROUP} / ${record.GENDER}</span>

@@ -151,8 +151,9 @@
                             	<span class="text-light font-weight-bold text_3 ml-2">메디큐 약사님의 답변</span>
                             </div>
                         </div>
+                        <!--  -->
                         <div class="card-body m-2">
-	                        <span class="card-title font-weight-bold card_font1"><span class="card_font2">A.&nbsp;</span>${record.TITLE }</span>
+
 	                        <br>
 	                        <br>
 	                        <span class="card-text"><h5>${record.CONTENT }</h5></span>
