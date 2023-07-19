@@ -92,9 +92,15 @@
 <c:set var="social" value="${info.social_Fl=='Y' }"/>
 </body>
 <script>
-
-	//캘린더 값이 변경될 때 바로 변하도록(data-placeholder 때문)
+	//오늘 이전 날짜만 선택할 수 있도록
 	var birth = document.querySelector('input[type=date]');
+	
+	var now_utc = Date.now() // 지금 날짜를 밀리초로
+	var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
+	var today = new Date(now_utc-timeOff).toISOString().split("T")[0]; //오늘 날짜
+	birth.setAttribute("max", today);
+	
+	//캘린더 값이 변경될 때 바로 변하도록(data-placeholder 때문)
 	birth.onchange = function(){
 		if(birth.value != '생년월일'){
 			//console.log(birth.value)
