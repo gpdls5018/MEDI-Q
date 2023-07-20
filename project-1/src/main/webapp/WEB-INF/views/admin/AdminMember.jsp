@@ -199,7 +199,7 @@
 		<!-- 전체 내용 -->
 	    <div id="admin_content" style="display: flex; justify-content:center; flex-wrap: wrap;">
 			
-			<h4 class="text-center" style="width:95%; padding-bottom: 20px; border-bottom: 1px solid #ccc;"><b>관리자 메인</b></h4>
+			<h4 class="text-center" style="width:95%; padding-bottom: 20px; border-bottom: 1px solid #ccc;"><b>회원 관리</b></h4>
 	    
 	    	<!-- 1번 div -->
 	    	<div class="each-container">
