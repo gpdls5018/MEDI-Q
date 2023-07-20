@@ -21,7 +21,7 @@
  	</insert>
  	<select id="selectAnalyzeReport" parameterType="String" resultType="analyzeReportDto">
  		SELECT *
-		FROM (SELECT * FROM ANALYZETABLE WHERE userId= #{id} ORDER BY ANALYDATE DESC )
+		FROM (SELECT * FROM ANALYZETABLE WHERE userId= #{id} ORDER BY ANALYZEDATE DESC )
 		WHERE ROWNUM = 1
  	</select>
 </mapper>

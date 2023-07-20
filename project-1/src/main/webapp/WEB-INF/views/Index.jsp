@@ -203,7 +203,8 @@
 	                <article class="hBxOSS" style="display: block;">
 	                    <div class="iJGurJ">
 	                        <div style="margin: 10px 0px 0px 20px;">
-	                            <div class="enbDhJ1">👀 최근 분석 결과입니다</div>
+	                        	
+	                            <div class="enbDhJ1"><span class="p-1"style="font-size:15px;color:white;background-color:#EF605D;border-radius:15px;">${analyzeReport.analyzeDate}</span> &nbsp;최근 분석 결과입니다 </div>
 	                            <p class="jeiOCr1" style="">${analyzeReport.score}<span class="ml-3" style="color:black; font-size: 20px;">점</span></p>
 	                        </div>
 	                        <div class="ZyIFk1 d-block mt-3" style="margin-left: 20px;">
