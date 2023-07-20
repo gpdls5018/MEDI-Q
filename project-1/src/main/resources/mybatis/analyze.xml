@@ -10,4 +10,10 @@
  	<select id="findHealthIssueByNo" parameterType="int" resultType="HealthIssueDTO">
  		SELECT * FROM HEALTHISSUE WHERE h_no=#{hno}
 	</select>
+	<select id="nutrientList" resultType="String">
+		SELECT n_subname FROM nutrient
+	</select>
+	<select id="selectFoodOneByName" parameterType="String" resultType="FunctionalFoodListDTO">
+		SELECT * FROM foodtable where PRODUCTNAME = '${str}'
+	</select>
 </mapper>
