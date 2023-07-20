@@ -117,7 +117,7 @@
 		<!-- 관리자 내용 -->
 	    <div id="admin_content" style="display: flex; flex-wrap: wrap;">
 	        <div class="chart-container" style="width: 570px; height: 300px;">
-        	<h4>예시 도표</h4>
+        	<h4>회원 관리</h4>
             <!-- 여기에 도표 생성을 위한 코드를 추가하세요 (예: Chart.js, Datawrapper 등) -->
             <!-- 예시로 막대 그래프를 사용한다고 가정합니다 -->
 	            <canvas id="barChart"></canvas>
