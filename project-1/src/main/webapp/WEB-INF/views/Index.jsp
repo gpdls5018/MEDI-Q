@@ -521,10 +521,8 @@
 			           <div id="menu_wrap" class="bg_white">
 			             <div class="option">
 			               <div>
-			                 <form onsubmit="searchPlaces(); return false;">
 			                    키워드 : <input type="text" value="가산동 병원" placeholder="ㅇㅇ동 병원을 입력" id="keyword" size="15">
-			                    <button type="submit">검색하기</button>
-			                  </form>
+			                    <button type="submit" id="sendSearchData">검색하기</button>
 			                </div>
 			              </div>
 			              <hr>
