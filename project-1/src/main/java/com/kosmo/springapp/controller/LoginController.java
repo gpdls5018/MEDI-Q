@@ -132,6 +132,12 @@ public class LoginController {
 	public String join() {
 		return "login/JoinTheMembership";
 	}
+	
+	// 회원가입 약관 동의 시
+	@GetMapping("/Join2.do")
+	public String join2() {
+		return "login/JoinTheMembership2";
+	}
 
 	// 아이디 중복 체크
 	@PostMapping("/IdCheck.do")
@@ -156,7 +162,7 @@ public class LoginController {
 		return map;
 	}
 
-	// 회원가입 정보 입력 후
+	// 회원가입 완료 후
 	@PostMapping("/Join.do")
 	@ResponseBody
 	public String joinAfter(@Valid MemberDTO member, Errors errors, HttpServletRequest req) {
@@ -165,10 +171,16 @@ public class LoginController {
 		}
 		int affected = loginService.insert(member);
 		if (affected == 1) {
-			return "<script>alert('회원가입이 완료되었습니다\\r\\n로그인 창으로 이동합니다');location.href=\'/project/Login.do\';</script>";
+			return "<script>location.href=\'/project/Join3.do\';</script>";
 		} else {
 			return "<script>alert('회원가입에 실패하였습니다');history.back()</script>";
 		}
+	}
+	
+	// 회원가입 정보 입력 시
+	@GetMapping("/Join3.do")
+	public String join3() {
+		return "login/JoinTheMembership3";
 	}
 
 	//아이디,비밀번호 찾기 클릭 시
