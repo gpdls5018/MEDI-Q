@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.kosmo.springapp.analyze.model.AnalyzeResultDTO;
 import com.kosmo.springapp.analyze.model.AnalyzeResultListDTO;
+import com.kosmo.springapp.analyze.service.impl.AnalyzeServiceImpl;
 import com.kosmo.springapp.model.AnalyzeReportDTO;
 import com.kosmo.springapp.service.AnalyzeMyReportMapper;
 
@@ -22,6 +23,8 @@ public class AnalyzeMyReportServiceImpl {
 
 	@Autowired
 	AnalyzeMyReportMapper analyzeMyReportMapper;
+	@Autowired
+	AnalyzeServiceImpl analyzeService;
 	
 	public AnalyzeResultListDTO analyzeMyReport(Map map) {
 		
@@ -35,7 +38,10 @@ public class AnalyzeMyReportServiceImpl {
 		List<String> takePurposes = ((List)map.get("takePurpose"));
 		int nutrient_score = 0;
 		int ingredient_score = 0;
+		int ingsize = takePurposes.size();
 		for(String takePurpose : takePurposes) {//복용 목적을 하나씩 비교
+			boolean ing = false;
+			ingsize--;
 			AnalyzeResultDTO analyzeResultDTO = new AnalyzeResultDTO();
 			List<String> foodList = analyzeMyReportMapper.selectFoodListForMyTakePurpose(takePurpose);//사용자의 복용 목적을 위해 필요한 영양소
 			System.out.println("사용자의 복용 목적["+takePurpose+"]을 위해 필요한 영양소 : " + foodList);
@@ -56,7 +62,8 @@ public class AnalyzeMyReportServiceImpl {
 						for(String ingredient : ingredient_list) {//기능성 영양소에서 하나 가져옴
 							if(item.contains(ingredient)) {//복용목적을 위한 올바른 기능영 영양소라면
 								ingredient_list_no_report.remove(ingredient);
-								ingredient_list_report.add(ingredient);	
+								ingredient_list_report.add(ingredient);
+								ing = true;
 							}
 						}
 						for(String nutrient : nutrient_list) {//필수 영양소에서 하나를 가져옴 -> 모든 건기식에 대해 수행해야 한다
@@ -84,6 +91,9 @@ public class AnalyzeMyReportServiceImpl {
 			analyzeResultDTO.setFoodList(foodList);//사용자가 복용 목적을 위해 필요한 영양소들
 			analyzeResultDTOs.add(analyzeResultDTO);
 		
+			if(ing) {
+				ingsize +=1;
+			}
 			//1. 
 		}
 		
@@ -92,7 +102,9 @@ public class AnalyzeMyReportServiceImpl {
 		analyzeResultListDTO.setNutrient_list_no_report(nutrient_list_no_report);
 		//최종 점수 구하기
 		nutrient_score = nutrient_list_report.size() *3 / takePurposes.size();
-		int resultScore = ingredient_score*30 + nutrient_score;
+		System.out.println(ingsize);
+		System.out.println(takePurposes.size());
+		int resultScore = (50/takePurposes.size())*ingsize + nutrient_score;
 		if(resultScore >= 100) {
 			resultScore = 100;
 		}
