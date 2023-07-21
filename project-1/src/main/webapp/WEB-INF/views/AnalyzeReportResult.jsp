@@ -133,11 +133,13 @@
 				<div class="row jumbotron m-1"  style="border-radius:25px;">
 					<div class="col-6" style="border-radius:15px;">
 						현재 섭취하고 있는 5대 영양소입니다
-						<ul class="list-unstyled mt-3">
-							<c:forEach items="${resultListDto.nutrient_list_report}" var="nutrient">
-							<a href="/NutrientDetail.do?name=${nutrient}"><li>✅ ${nutrient}</li></a>
-							</c:forEach>
-						</ul>
+						<div class="mt-3" style="overflow: auto;height:300px;">
+							<ul class="list-unstyled mt-3">
+								<c:forEach items="${resultListDto.nutrient_list_report}" var="nutrient">
+								<a href="/NutrientDetail.do?name=${nutrient}"><li>✅ ${nutrient}</li></a>
+								</c:forEach>
+							</ul>
+						</div>
 					</div>
 					<div class="col-6" style="border-radius:15px;">
 						현재 섭취하고 있지 않는 5대 영양소입니다

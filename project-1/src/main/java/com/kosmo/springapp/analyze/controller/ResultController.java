@@ -35,14 +35,14 @@ public class ResultController {
 	@GetMapping("/healthresult.do")
 	public String healthResult(Map map,Model model,@RequestParam String no) {
 		map.put("no",Integer.parseInt(no));//사용자가 선택한 건기식의 고유번호를 가져옴
-		List<String> nuts = analyzeService.nutrientList();
-		FunctionalFoodListDTO listOne = mainPageService.selectFoodOneByNo(map);//map에 no라는 이름으로 no값가져와서 찾기
-		Pattern cappattern = Pattern.compile("[0-9.]{1,}");//뒤의 단위 생략용도 ※상한용량은 null값이 있어서 사용에 조심해야함
-		float total_result=0;//영양제 점수
+		List<String> nuts = analyzeService.nutrientList();//+-*
+		FunctionalFoodListDTO listOne = mainPageService.selectFoodOneByNo(map);//+-*map에 no라는 이름으로 no값가져와서 찾기
+		Pattern cappattern = Pattern.compile("[0-9.]{1,}");//+-*뒤의 단위 생략용도 ※상한용량은 null값이 있어서 사용에 조심해야함
+		float total_result=0;//+-*영양제 점수
 		List<String> resultList = new ArrayList<>();
 		Map nutnummap = new HashMap<>();
 		Map map2 = new HashMap<>();
-		map2.put("나이아신", 149);
+		//map2.put("나이아신", 149);
         for (String nut : nuts){//위에 저장된 28가지 영양소 만큼 for문
             NutrientDTO nutdto = analyzeService.findNutrientByName(nut);//현재 영양소에 해당하는 정보를 가져온다(서브네임과 비교한다)
             String listpattern = nut + "[^0-9.]*([0-9.]+)";//영양소 이름 다음에 나오는 숫자 또는 (.) 까지를 무시하고 숫자와.만 가져온다
@@ -59,7 +59,6 @@ public class ResultController {
                     float map2num = Float.parseFloat(map2.get(nut).toString());
                     float nutnum = Float.parseFloat(nutnummap.get(nut).toString());
                     float resultmap = map2num+nutnum;
-                    System.out.println(map2.get(nut) +":" + Float.parseFloat((String) nutnummap.get(nut)));
             		nutnummap.replace(nut,resultmap);
             		nutNumber = Float.toString(resultmap);
             	}
