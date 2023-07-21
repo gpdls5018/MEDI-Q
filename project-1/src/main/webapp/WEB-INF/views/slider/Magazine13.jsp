@@ -165,8 +165,8 @@
     그렇다면 <span class="highLight">불면증을 스스로 확인해 볼 수 있는 방법</span>은 무엇이 있을까요? 
     대한수면연구학회에서 제공하는 다음과 같은 <span class="underLine">불면증 자가진단 체크리스트</span>를 통해 의료기관 방문 전 먼저 확인해 볼 수 있어요.
   </div>
-   <div class="mt-5  ml-1 d-flex">
-    <img src="<c:url value="/resources/images/magazine_images/13/Diagnosis1.png"/>" class="img-fluid" style="width: 550px;">
+   <div class="mt-5 d-flex">
+    <img src="<c:url value="/resources/images/magazine_images/13/Diagnosis1.png"/>" class="img-fluid mr-1" style="width: 550px;">
     <img src="<c:url value="/resources/images/magazine_images/13/Diagnosis2.png"/>" class="img-fluid" style="width: 550px;">
   </div>
    <div class="mt-5">
