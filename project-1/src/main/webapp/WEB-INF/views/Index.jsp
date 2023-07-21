@@ -61,7 +61,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 <!-- 슬라이드 반응형 jqery -->
-<script src="<c:url value="/resources/tsfolder/js/jquery.sticky-kit.min.js"/>" ></script>
+<script src="<c:url value="/tsfolder/js/jquery.sticky-kit.min.js"/>" ></script>
 
 
 
@@ -69,13 +69,13 @@
  	<!-- 처음 인덱스 킬때 전체화면 비디오 출력 -->
 			<div id="tsvideo-container">
 			    <video id="video" autoplay muted loop>
-	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
+	                <source src="<c:url value="/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
 			    <div class="videologo" style=" font-size:27px; color:white; margin-top: 190px; margin-bottom: 220px; margin-left: 520px; margin-right: 520px;">
 	           		<!-- 동영상 화면 문구 -->
 		        	<div class="text-center" style="display: flex; align-items: center; justify-content: center; font-size: 65px; font-weight:bold;">건강고민은&nbsp;  
-						<img class="pr-3 pl-1" src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="120" height="75">
-	           			<img class="pr-2" src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="300" height="75">
+						<img class="pr-3 pl-1" src="<c:url value="/images/mainicon.png"/>" loading="lazy" width="120" height="75">
+	           			<img class="pr-2" src="<c:url value="/images/maintitle.png"/>" loading="lazy" width="300" height="75">
 					</div>
 		        	<br/>
 		        	<div class="text-center" style="margin-top: 50px;">영양제 분석, 건강예측 AI 등 저희만의 특별한 서비스를 이용해보세요.</div>
@@ -166,7 +166,7 @@
 	               <!-- placeholder="제품명 및 영양성분을 입력하세요" value="${not empty searchTags ? fn:replace(searchTags,'#',',#') : ''}">
 	                <input name="searchTags" type="hidden" id="hiddenInput" value=""> -->
 	                <button type="submit" class="btn rounded-pill py-2 px-4 top-0 end-0 me-2" >
-						<img src="<c:url value="/resources/images/tsimages/free-icon-magnifying-glass-4475396.png"/>" style="width:30px; height:30px">
+						<img src="<c:url value="/images/tsimages/free-icon-magnifying-glass-4475396.png"/>" style="width:30px; height:30px">
 					</button>
 	            </form>
 	        </div>
@@ -311,7 +311,7 @@
 									<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
 								</c:if>
 		          				<c:if test="${empty item.imgURL}">	
-									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+									<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
 								</c:if>
 									<span id="item.company" class="txt1">${item.company}</span>
 									<span id="item.productName" class="txt2">${item.productName}</span>
@@ -473,11 +473,11 @@
 		<div class="section6 pt-5" style="display:flex; align-items:center; max-width: 1050px; flex-direction: column;">
 			<span style="font-size:30px; display:block; font-weight: bold; text-align: center; margin-bottom: 40px;">영양성분과 건강에 대한 모든 것<br/> 📖<strong style="color:#EF605D"> MEDI-Q</strong>에서 확인하세요!</span>
 	        <div class="slider1">
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:340px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:100%; height:340px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>" style="width:100%; height:340px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>" style="width:100%; height:340px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/images/thumbnail_img/RedM_Col.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/images/thumbnail_img/RedM_Hia.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/images/thumbnail_img/RedM_Pro.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:340px" ></a></div>
 	        </div>
 	    </div>
 	    
@@ -497,9 +497,9 @@
       	                     	<p style="font-size:17px; color:gray; font-weight: bold; margin-bottom: 0px;">서울특별시 금천구 가산디지털2로 101<br/> B동 B304호(MEDI-Q팀)</p>
       	                     	<p style="font-size:15px; color:gray;">(주)한국소프트웨어아이엔씨 (153-759)</p>
                            		<a href="https://naver.me/Fcacgzd6" target="_blank">
-                           		<img src="<c:url value="/resources/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
+                           		<img src="<c:url value="/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
                            		<a href="https://map.kakao.com/?urlX=473291&urlY=1104884&urlLevel=3&itemId=1784287516&q=%ED%95%9C%EB%9D%BC%EC%9B%90%EC%95%A4%EC%9B%90%ED%83%80%EC%9B%8C&srcid=1784287516&map_type=TYPE_MAP" target="_blank"> 
-                           		<img src="<c:url value="/resources/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
+                           		<img src="<c:url value="/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
                         </div>          
                     </div>
                 </div>
@@ -545,7 +545,7 @@
 		        <p style="text-align: center; font-weight:bold; font-size:13px;"><span style="color:#EF605D">MEDI-Q</span>를 더 안전하고<br/> 편리하게 이용하세요</p>
 		        <a href="<c:url value="/project/Login.do"/>" style="text-decoration:none;">
 		        	<button class="btn btn-outline-success" type="button" style="display: flex; flex-wrap: wrap; align-content: center; text-align: center; justify-content: center; font-size:13px; border-radius: 12px; width:90%; height:50px; font-weight:bold; color:#EF605D;">
-		        		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="60" height="30"> 로그인
+		        		<img src="<c:url value="/images/maintitle.png"/>" loading="lazy" width="60" height="30"> 로그인
 		        	</button>
 		        </a>	    
 		        <div class="social d-flex justify-content-center">
@@ -554,8 +554,8 @@
 		    </div>
 			 -->
             <div class="sidebar-item pt-4 mt-5">
-            	<img src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="45" height="30">
-            	<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="30">
+            	<img src="<c:url value="/images/mainicon.png"/>" loading="lazy" width="45" height="30">
+            	<img src="<c:url value="/images/maintitle.png"/>" loading="lazy" width="100" height="30">
             	<br/>
             	<p class="my-4" style="margin-bottom:20px; color:gray; font-size:12px; font-weight:500;">
             		<span class="py-3">
@@ -566,13 +566,13 @@
 	            	<c:if test="${status.index < 3}">
 	            		<c:choose>
 				          <c:when test="${status.index == 0}">
-				            <img src="<c:url value='/resources/images/tsimages/rank_crown_gold_48.svg'/>" style="top:10px; left:20px; width:50px; height:40px;" alt="*">
+				            <img src="<c:url value='/images/tsimages/rank_crown_gold_48.svg'/>" style="top:10px; left:20px; width:50px; height:40px;" alt="*">
 				          </c:when>
 				          <c:when test="${status.index == 1}">
-				            <img src="<c:url value='/resources/images/tsimages/rank_crown_silver_48.svg'/>" style="left:20px; width:50px; height:40px;" alt="*">
+				            <img src="<c:url value='/images/tsimages/rank_crown_silver_48.svg'/>" style="left:20px; width:50px; height:40px;" alt="*">
 				          </c:when>
 				          <c:when test="${status.index == 2}">
-				            <img src="<c:url value='/resources/images/tsimages/rank_crown_bronze_48.svg'/>" style="left:20px; width:50px; height:40px;" alt="*">
+				            <img src="<c:url value='/images/tsimages/rank_crown_bronze_48.svg'/>" style="left:20px; width:50px; height:40px;" alt="*">
 				          </c:when>
 						</c:choose>
                     <li>
@@ -582,7 +582,7 @@
 									<img src="${item.imgURL }" class="item-img" alt="${item.productName}" style="height: 70px">
 								</c:if>
 		          				<c:if test="${empty item.imgURL}">	
-									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" style="height: 70px" alt="${item.productName}">
+									<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" style="height: 70px" alt="${item.productName}">
 								</c:if>
                     		</a>
                         </div>
@@ -593,7 +593,7 @@
 	                        	<p style="line-height: 11px; color:black; font-size:11px; font-weight:bold;">${item.productName}</p>
 	                        	<br/>
 	                        	<p style="color:gray; font-size:10px; font-weight:bold;">
-	                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
+	                        	<img src="<c:url value="/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
 	                        	&nbsp;<fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }&nbsp;(${item.REVIEW_Count})
 	                        	</p>
                     		</a>
@@ -638,7 +638,7 @@
 <!-- 지도 스크립트 키 -->
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=536a268ae501933d1ccf30618f1b4258&libraries=services"></script> 
  <!-- 메인 js-->
-<script src="<c:url value="/resources/tsfolder/js/mainjs.js"/>" ></script>
+<script src="<c:url value="/tsfolder/js/mainjs.js"/>" ></script>
 <script>
 
 </script>

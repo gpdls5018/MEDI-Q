@@ -24,19 +24,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="<c:url value="/resources/tsfolder/lib/animate/animate.min.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/tsfolder/lib/owlcarousel/assets/owl.carousel.min.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/tsfolder/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"/>" rel="stylesheet" />
+    <link href="<c:url value="/tsfolder/lib/animate/animate.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/tsfolder/lib/owlcarousel/assets/owl.carousel.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/tsfolder/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"/>" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet  누나꺼랑 겹침
-    <link href="/resources/tsfolder/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/tsfolder/css/bootstrap.min.css" rel="stylesheet">
      -->
 
     <!-- Template Stylesheet -->
-    <link href="<c:url value="/resources/tsfolder/css/style.css"/>" rel="stylesheet">
+    <link href="<c:url value="/tsfolder/css/style.css"/>" rel="stylesheet">
 	
      <!-- Template Javascript -->
-     <script src="<c:url value="/resources/tsfolder/js/main.js"/>" ></script>
+     <script src="<c:url value="/tsfolder/js/main.js"/>" ></script>
      
      <!-- googlefont -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin> 
@@ -344,8 +344,8 @@
         </div>
          
         <a class="navbar-brand" style="position: absolute; margin-left: 44%;" href="<c:url value='/' />">
-        	<img src="<c:url value='/resources/images/mainicon.png' />" width="40" height="40">
-        	<img src="<c:url value='/resources/images/maintitle.png' />" width="160" height="40">
+        	<img src="<c:url value='/images/mainicon.png' />" width="40" height="40">
+        	<img src="<c:url value='/images/maintitle.png' />" width="160" height="40">
         </a>
 
         <ul class="navbar-nav mx-5 " >
@@ -389,8 +389,8 @@
     <div class="bs-canvas bs-canvas-left position-fixed h-100 justify-content-start" style="z-index:99999; background: linear-gradient(to bottom, #ffffff, #FFFAFA);">
         <header class="bs-canvas-header p-4 bg-gra1 justify-content-center align-items-center">
         	<h4 class="d-inline-block mb-0 text1">
-        		<img src="<c:url value='/resources/images/mainicon.png' />" width="30" height="35">
-        		<img src="<c:url value='/resources/images/maintitle.png' />" width="140" height="35">
+        		<img src="<c:url value='/images/mainicon.png' />" width="30" height="35">
+        		<img src="<c:url value='/images/maintitle.png' />" width="140" height="35">
         	</h4>
             <button type="button" class="bs-canvas-close close mt-2" aria-label="Close">
                 <span aria-hidden="true" class="text-dark text1">&times;</span>
@@ -402,7 +402,7 @@
              <div class="section" >
 		          <h3>
 		            <a class="text-decoration-none font-weight-bold" href="<c:url value="/"/>">
-		            <img src="<c:url value="/resources/images/tsimages/free-icon-home-3771140.png"/>" style="opacity: 0.7;" width="25" height="25">
+		            <img src="<c:url value="/images/tsimages/free-icon-home-3771140.png"/>" style="opacity: 0.7;" width="25" height="25">
 		         
 		             &nbsp; 홈으로 가기
 		            
@@ -413,7 +413,7 @@
 	        <div id="one" class="section" active:false>
 	          <h3 class="d-flex">
 	            <a href="#one" style="align-items: center;">
-	                <img src="<c:url value="/resources/images/tsimages/free-icon-vitamins-525955.png"/>" width="25" height="25">
+	                <img src="<c:url value="/images/tsimages/free-icon-vitamins-525955.png"/>" width="25" height="25">
 	                &nbsp; 영양성분 검색
 	                <span class="arrow-down" style="margin-left: 70px;" ></span>
 	            </a>
@@ -431,7 +431,7 @@
 	        <div  id="two" class="section" active:false>
 	          <h3 class="d-flex">
 	            <a href="#two" class="text-decoration-none" style="align-items: center;">
-	                <img src="<c:url value="/resources/images/shape/캡슐.png"/>" style="opacity: 0.8;" width="25" height="25">
+	                <img src="<c:url value="/images/shape/캡슐.png"/>" style="opacity: 0.8;" width="25" height="25">
 	                &nbsp; 영양제 검색
 	                <span class="arrow-down" style="margin-left: 90px;" ></span>
 	            </a>
@@ -447,14 +447,14 @@
 	        <div id="three" class="section">
 	          <h3>
 	            <a class="text-decoration-none" href="<c:url value="/magazineindex.do"/>">
-	                <img src="<c:url value="/resources/images/tsimages/free-icon-whats-new-5511348.png"/>" width="25" height="25">
+	                <img src="<c:url value="/images/tsimages/free-icon-whats-new-5511348.png"/>" width="25" height="25">
 	                &nbsp; 메디큐 칼럼
 	            </a>
 	        </div>
 	        <div id="four" class="section large">
 	          <h3>
 	            <a class="text-decoration-none" href="#">
-	                <img src="<c:url value="/resources/images/tsimages/free-icon-data-analysis-3449317.png"/>" width="25" height="25">
+	                <img src="<c:url value="/images/tsimages/free-icon-data-analysis-3449317.png"/>" width="25" height="25">
 	                &nbsp; 분석 및 결과
 	            </a>
 	          </h3>
@@ -462,7 +462,7 @@
 	        <div id="five" class="section">
 	          <h3>
 	            <a class="text-decoration-none" href="<c:url value="/board/List.do" />">
-	                <img src="<c:url value="/resources/images/tsimages/free-icon-chat-724715.png"/>" width="25" height="25">
+	                <img src="<c:url value="/images/tsimages/free-icon-chat-724715.png"/>" width="25" height="25">
 	                &nbsp; 커뮤니티
 	            </a>
 	          </h3>
@@ -470,7 +470,7 @@
 	        <div id="six" class="section" active:false>
 	          <h3 class="d-flex">
 	            <a href="#six" style="align-items: center;">
-	                <img src="<c:url value="/resources/images/tsimages/free-icon-lifestyle-4807765.png"/>" width="25" height="25">
+	                <img src="<c:url value="/images/tsimages/free-icon-lifestyle-4807765.png"/>" width="25" height="25">
 	                &nbsp; 정신건강 테스트
 	                <span class="arrow-down" style="margin-left: 120px;"></span>
 	            </a>
