@@ -22,11 +22,11 @@
   	padding-top: 35px;
   }
   .paragraph{
-  	margin-top: 125px;
+  	margin-top: 80px;
   	font-size: 23px;
   }
   .paragraph-title{
-  	margin-top: 100px;
+  	margin-top: 70px;
   }
 
   .custom-text{
@@ -45,7 +45,7 @@
   
    .custom-modal{
     width: 120px;
-    background: #FF7F50;
+    background: #FCAF17;
     padding: 10px;
     border-radius: 5px;
     color: #FFFFFF;
@@ -57,8 +57,8 @@
   	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 915px;
-  	height: 700px;
+	width: 630px;
+  	height: 680px;
   }
   .modalB{
     margin-top : 20px;
@@ -75,13 +75,13 @@
   
   
   .highLight {
-    background-color : #FFE4E1;
+    background-color : #E6E6FA;
   }
   .underLine {
     text-decoration : underline;
   }
   .para_title {
-    color : #ee4949;
+    color : #BA55D3;
     font-size: 35px;
     font-weight: bold;
   }
@@ -143,27 +143,21 @@
   }
 </style>
 <div class="container custom-top">
-  <div class="jumbotron rounded-3" style="background-color: #87CEFA;">
+  <div class="jumbotron rounded-3" style="background-color: #E6E6FA;">
      <div class="container">
     	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
-	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">영양소 A to Z</span>
-    	<h4><strong style="color:#191970; font-size:35px;">먹는 히알루론산은 효과가 없다던데, 그러면 주사로 맞아볼까?</strong></h4>
+	    <span class="navbar-text" style="padding-left: 6px; color: #006400">영양제 팩트체크</span>
+    	<h4><strong style="color:#9932CC; font-size:35px;">영양제 섭취 초기의 가려움, 설사... 영양제의 명현현상</strong></h4>
   	</div>
  </div>
   
   <div style="font-size:24px;" class="contentTop">
-    화장품에도 많이 들어 있고 인공 눈물의 성분으로도 쓰이는 데다 관절에도 좋다고 하는 만능 영양소가 있죠.<br/>
-    바로 <span style="background-color: #E1FFFF; font-size:30px;">히알루론산(hyaluronic acid)</span>입니다.
-    영양제로 먹는 것부터 바르는 화장품, 그리고 인공눈물, 주사까지 정말 다양한 형태의 히알루론산이 있죠.
+    간혹 영양제를 먹은 후에 두드러기가 나거나 어지럽거나 해서 업체에 연락했더니 ‘명현현상이니 걱정하지 말고 계속 드시라’고 하는 경우가 있는데, 명현현상은 무엇이고 이런 경우에는 어떻게 해야 할까요?
   </div>
-  <div class="mt-5">
-    <img src="<c:url value="/resources/images/magazine_images/03/01_IMG.png"/>" class="img-fluid">
-  </div>
-  
   
    <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/work-time.png"/>" class="img-fluid mr-4" style="width:100px">
-	<span style="font-size: xx-large; color: #2E8B57"><strong>MEDI-Q의 1분 요약</strong></span>
+	<img src="<c:url value="/resources/images/magazine_images/basic/notes.png"/>" class="img-fluid mr-4 mb-4" style="width:110px">
+	<span style="font-size: xx-large; color: #EE4949"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
   		</button>
@@ -178,14 +172,14 @@
 	        </div>
 	        <div class="modal-body">
 	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
-	         히알루론산은 많은 양의 수분을 머금을 수 있어서 피부 보습, 눈 건조감이나<br/> 
-	         <span class="modalC">연골 통증의 완화 등에 도움이 되는 영양소에요.<br/></span></p>
+	         명현현상이란 치료 과정에서 일시적으로 나타나는<br/> 
+	         <span class="modalC">다른 증상을 일컫는 말이에요.<br/></span></p>
 	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
-			 히알루론산 주사의 경우 주사에 대한 부작용이 나타날 수 있지만, 히알루론산<br/> 
-			 <span class="modalC">자체는 부작용이 거의 없는 안전한 성분이에요.<br/></span></p>
+			 하지만 현대 의학에서는 명현현상이라는 개념을<br/> 
+			 <span class="modalC">인정하지 않아요.<br/></span></p>
 			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
-		   	 다만 영양제를 선택할 때는 반드시 기능성을 인증받은 ‘건강기능식품’  <br/> 
-		   	  <span class="modalC">인증 마크를 확인해 주세요!</span></p>
+		   	 이상 증상이 나타났다면 즉시 섭취를 중단하고<br/> 
+		   	  <span class="modalC">의사와 상담해야 합니다!</span></p>
 	        </div>	       
 	        <div class="modal-footer">
 	          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width: 100px; height: 50px; font-size: 20px;">Close</button>
@@ -198,58 +192,28 @@
   
   
 
-  <div class="paragraph">
-    <div class="mt-5">
-      <span class="para_title">히알루론산이란<img src="<c:url value="/resources/images/magazine_images/basic/info.png"/>" class="img-fluid ml-2 mb-4" style="width:55px"> </span>
-    </div>
+ <div class="paragraph">
+      <span class="para_title">명현현상(瞑眩現象)이란<img src="<c:url value="/resources/images/magazine_images/basic/info.png"/>" class="img-fluid ml-2 mb-4" style="width:55px"> </span>
     <div class="mt-2">
-      히알루론산은 우리 몸에서 자연적으로 생겨나는 물질로 피부, 연골, 눈 등에 많이 분포되어 있어요.
+      <span class="underLine">장기간에 걸쳐 나빠졌던 건강이 치유되면서 일시적으로 예기치 못한 반응이 나타나는 것</span>을 의미합니다. 명현 반응, 호전 반응 등으로 표현하기도 해요. 
+      명현현상이 강할수록 치료 효과가 더 좋다는 말도 있으나 <span class="highLight">명현현상은 의학적으로 인정되지 않은 개념</span>입니다.
     </div>
     <div class="mt-5">
-      <span class="highLight">스스로의 무게의 300~1000배에 이르는 많은 양의 수분을 머금을 수 있어 보습에 도움이 되는 성분</span>입니다.
-      그래서 건조한 피부를 촉촉하게 만들어주는 것은 물론,
-      눈의 건조감이나 관절 통증을 완화, 상처 재생 등 우리 몸에서 다양한 도움이 될 수 있어요.
-    </div>
-    <div class="mt-4">
-      원래 우리 몸을 구성하는 성분이지만 <span class="underLine">나이가 들면서 감소하기 때문에 외부에서 다양한 형태로 공급하는 것이 도움이 될 수 있어요.</span>
+      <img src="<c:url value="/resources/images/magazine_images/09/img_blue5.png"/>" class="img-fluid mb-4">
     </div>
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title">영양제 vs 주사, 어느 게 더 좋을까?</span>
+      <span class="para_title">명현현상이니 계속 먹으라고 한다면?</span>
     </div>
     <div class="mt-4">
-      먹는 히알루론산은 효과가 없다는 말도 있지만
-      실제로 식품의약품안전처(식약처)에서 피부 보습과 피부 건강 유지에 도움을 줄 수 있다는 기능성을 인증받아서 사용되고 있습니다.
-      또한 히알루론산은 몸에서 자연적으로 생성되는 성분인 만큼 <span class="highLight">일반적으로 부작용 없이 안전하게 먹을 수 있어요. </span>
-      하지만 모든 영양제가 그렇듯 <span class="underLine">한 번의 섭취로 효과를 보기는 어려우니 오랫동안 꾸준히 섭취</span>할 수 있도록 해주세요.
-    </div>
-    <div class="mt-5">
-      (단, 임산부와 수유부는 피하는 것이 좋으며, 히알루론산은 특정 암세포의 먹이가 될 수 있다는 연구 결과가 있기 때문에 암 병력이 있는 경우에는 복용을 피해주세요.)
-    </div>
-    <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/03/02_IMG.png"/>" class="img-fluid">
-    </div>
-    <div class="mt-5">
-      히알루론산을 피부나 관절에 <span class="highLight">직접 주사로 주입</span>하면 물론 효과는 더 좋아지겠지만 <span class="highLight">부작용의 위험이 높아져요.</span>
-      하지만 이 부작용은 히알루론산 자체의 부작용이 아니라 가려움, 통증과 같은 주사 행위로 인한 경우가 많습니다.
+      이상 증상이 나타났는데 명현 반응이니 계속 섭취하라고 하거나, 오히려 섭취량을 더 늘려보라고 하는 경우도 있는데요. 
+      <span class="underLine">영양제를 먹었는데 가려움, 식은땀, 변비, 설사 등의 증상이 나타나는 것은 명현현상이 아닌 명백한 부작용입니다.</span> 
+      건강기능식품은 안전성이 확인된 원료를 사용해서 안전하게 만들어진 식품이지만 개인의 체질이나 상황에 따라 이상 반응이 나타날 수 있어요.
     </div>
     <div class="mt-4">
-      따라서 주사를 맞을 경우에는 반드시 경험이 많은 전문가를 통해 맞길 권해드립니다.
+      특히 피부에 두드러기가 올라왔다면 이것은 영양제가 몸에 맞지 않아서 나타나는 알레르기 반응이라고 보셔야 합니다. 이럴 때는 <span class="highLight">영양제의 복용을 즉시 중단하고 의료진과 상담</span>하도록 해주세요.
     </div>
-  </div>
-  <div class="paragraph">
-    <div class="mt-5">
-      <span class="para_title">인증 마크를 확인하세요!</span>
-    </div>
-    <img src="<c:url value="/resources/images/magazine_images/03/03_IMG.png"/>" class="img-fluid mb-2 mt-4" style="width:230px">
-  </div>
-  <div class="mt-1">
-    히알루론산 영양제를 먹으면 대부분은 아미노산으로 분해가 되기 때문에 먹은 양 중 극히 일부만이 우리 몸에서 효과를 나타내게 됩니다.
-    따라서 일반 식품보다는 피부 건강에 도움을 준다는 효과를 인증받아 <span class="highLight">‘건강기능식품’ 인증 마크가 있는 제품</span>을 선택해 주세요.
-  </div>
-  <div class="mt-3">
-    또한 히알루론산이 충분한 수분을 머금을 수 있도록 영양제 섭취와 함께 많은 양의 물을 드시는 것도 잊지 마세요!
   </div>
 </div>
 

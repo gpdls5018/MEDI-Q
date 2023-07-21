@@ -22,11 +22,11 @@
   	padding-top: 35px;
   }
   .paragraph{
-  	margin-top: 125px;
+  	margin-top: 75px;
   	font-size: 23px;
   }
   .paragraph-title{
-  	margin-top: 100px;
+  	margin-top: 90px;
   }
 
   .custom-text{
@@ -45,7 +45,7 @@
   
    .custom-modal{
     width: 120px;
-    background: #673AB7;
+    background: #F8ABA6;
     padding: 10px;
     border-radius: 5px;
     color: #FFFFFF;
@@ -57,8 +57,8 @@
   	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 690px;
-  	height: 680px;
+	width: 805px;
+  	height: 670px;
   }
   .modalB{
     margin-top : 20px;
@@ -75,13 +75,13 @@
   
   
   .highLight {
-    background-color : #d1ecff;
+    background-color : #FFE4E1;
   }
   .underLine {
     text-decoration : underline;
   }
   .para_title {
-    color : #0097FF;
+    color : #ee4949;
     font-size: 35px;
     font-weight: bold;
   }
@@ -143,24 +143,26 @@
   }
 </style>
 <div class="container custom-top">
-  <div class="jumbotron rounded-3" style="background-color: #87CEFA;">
+  <div class="jumbotron rounded-3" style="background-color: #FFF8A6;">
      <div class="container">
     	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">영린이 탈출, 영양제 상식</span>
-    	<h4><strong style="color:#191970; font-size:35px;">질 유산균의 원리부터 자주 묻는 질문까지 한 번에!</strong></h4>
+    	<h4><strong style="color:#F26522; font-size:35px;">멀티비타민과 종합비타민은 무엇이 다를까?</strong></h4>
   	</div>
  </div>
   
   <div style="font-size:24px;" class="contentTop">
-    질염은 ‘여성의 감기’라고 불릴 만큼 여성이 흔하게 겪는 질환인데, 일교차가 큰 환절기가 되면 면역력이 떨어져 자주 발생하게 됩니다.
-    질염이 여성에게 워낙 흔하게 발생하는 만큼 질 건강을 관리하기 위해 <span style="background-color: #E1FFFF; font-size:30px;">‘질 유산균’</span>에 대해 알아보시는 것 같은데요. 
-    질 유산균이 무엇인지부터 질 유산균과 관련해서 궁금해하는 부분까지 다 알려드릴게요!
+    여러 비타민이 함유된 영양제를 이야기할 때 종합비타민(종비), 멀티비타민, 
+    비타민B군, 활성형 비타민 등 다양한 표현으로 부르죠. 그런데 <span class="underLine">종합비타민과 멀티비타민은 차이가 있다</span>는 걸 아시나요?
+  </div>
+  <div class="mt-4">
+    <img src="<c:url value="/resources/images/magazine_images/15/img_sky4.png"/>" class="img-fluid" style="width: 600px;">
   </div>
   
   
    <div class="paragraph-title">
 	<img src="<c:url value="/resources/images/magazine_images/basic/contract.png"/>" class="img-fluid mr-4" style="width:100px">
-	<span style="font-size: xx-large; color: #F06292"><strong>MEDI-Q의 1분 요약</strong></span>
+	<span style="font-size: xx-large; color: #33A3DC"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
   		</button>
@@ -175,14 +177,14 @@
 	        </div>
 	        <div class="modal-body">
 	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
-	         질에 도달하여 질의 건강에 도움을 줄 수 있는 유산균을<br/> 
-	         <span class="modalC">질 유산균이라고 해요.<br/></span></p>
+	         종합비타민은 비타민 A, B군, C, D, E 5가지가 모두 포함된 제품,<br/> 
+	         <span class="modalC">멀티비타민은 이 중 두 가지 이상이 포함된 제품을 의미해요.<br/></span></p>
 	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
-			 먹는 질 유산균은 질에 넣는다고 효과가 더 높지 않고<br/> 
-			 <span class="modalC">안전하지도 않으니 질에 넣는 것은 금물!<br/></span></p>
+			 다만 종합비타민의 조건에 만족하더라도 원할 경우<br/> 
+			 <span class="modalC">멀티비타민이라고 표기가 가능해요.<br/></span></p>
 			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
-		   	 남자는 질 유산균을 먹어도 특별한 이점이 없기 때문에<br/> 
-		   	  <span class="modalC">장 건강에 특화된 유산균을 선택해보세요.</span></p>
+		   	 영양제를 선택하기 전에 내가 원하는 성분이 적절히 들어갔는지<br/> 
+		   	  <span class="modalC">확인해 보세요!</span></p>
 	        </div>	       
 	        <div class="modal-footer">
 	          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width: 100px; height: 50px; font-size: 20px;">Close</button>
@@ -197,59 +199,38 @@
 
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/basic/letter-q.png"/>" class="img-fluid mr-2 mb-3" style="width:55px">
-      질염은 왜 생길까?</span>
+      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/15/lemon.png"/>" class="img-fluid mb-4 mr-1" style="width:55px">
+      종합비타민</span>
     </div>
-    <div class="mt-2">
-       건강한 질에는 ‘락토바실러스(Lactobacillus)’라는 유익균이 균 전체의 90~95% 이상을 차지하고 있어요. 
-       이는 질 내부를 pH 3.8~4.5 정도의 산성 상태로 유지해서 유해균으로 인한 감염을 막는 역할을 합니다. 그런데 면역력이 떨어지거나 
-       질 세정제를 과다하게 사용하는 것과 같은 <span class="underLine">여러 원인에 의해서 질 내부의 산도가 변해 유해균의 증식이 늘고 질염에 걸릴 위험이 커지게 돼요.</span>
-    </div>     
+    <div>
+      비타민 A, B군, C, D, E&nbsp;&nbsp;<strong>5가지가 모두 포함된 영양제</strong>
+    </div>
+    <div class="mt-5">
+      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/15/lemon.png"/>" class="img-fluid mb-4 mr-1" style="width:55px">
+      멀티비타민</span>
+    </div>
+    <div>
+      비타민 A, B군, C, D, E 중&nbsp;&nbsp;<strong>두 가지 이상이 포함된 영양제</strong>
+    </div>
   </div>
   <div class="paragraph">
-    <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/basic/letter-q.png"/>" class="img-fluid mr-2 mb-3" style="width:55px">
-      질 유산균을 먹는 게 효과가 있나요?</span>
-    </div>
     <div class="mt-4">
-      <span class="underLine">여성이 유산균을 먹으면 일부가 항문을 지나 질에 도달하여 질 내에서 효과</span>를 내게 됩니다. 
-      그중 질 건강 쪽으로 효과가 좋다고 알려진 균주로 구성한 유산균이 질 유산균이에요. 질 유산균을 먹고 나면 우리 몸속 여러 소화기관을 거쳐서 질까지 도달해야 해서 질에 도달하기까지는 3~5일 정도의 시간이 걸려요. 
-      시간이 조금 걸리기는 하지만 <span class="highLight">먹는 유산균의 섭취로 질 건강에 도움을 줄 수 있다</span>는 연구 결과들이 많답니다.
-    </div>
-  </div>
-  <div class="paragraph">
-    <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/basic/letter-q.png"/>" class="img-fluid mr-2 mb-3" style="width:55px">
-      질에 직접 넣으면 되지 않을까?</span>
+      종합비타민과 멀티비타민이 법적으로 정확하게 규제된 건 아니기 때문에 조금씩 기준의 차이가 있기는 하나 일반적으로 이러한 기준으로 구분하고 있어요. 
+      단, <span class="underLine">종합비타민의 조건에 만족하더라도 업체에서 굳이 원할 경우에는 멀티비타민이라고 표기가 가능</span>합니다.
     </div>
     <div class="mt-3">
-     결론부터 말씀드리면, <span class="highLight">먹는 질 유산균은 질에 넣으시면 안 됩니다.</span>
-  	</div>
-     <div class="mt-1">
-    <span class="underLine">먹는 질 유산균의 경우에는 유산균 외에도 다양한 첨가제나 부형제들</span>이 들어있어요. 따라서 질에 넣는 것은 안전하지 않습니다.
-  	</div>
-    <img src="<c:url value="/resources/images/magazine_images/06/img_sky1.png"/>" class="img-fluid">
-  <div class="mt-3">
-    질에 넣는 질정 형태의 유산균으로 ‘지노프로질정’이라는 약이 있기는 하지만 이는 질염을 치료하는 ‘약’입니다. 
-    해당 의약품에는 유산균뿐만이 아니라 호르몬이 함께 들어있기 때문에 유산균을 넣는 목적으로 사용하는 것은 적절하지 않아요. 또한 전문의약품이기 때문에 반드시 처방이 필요하답니다.
+      비타민 B군의 경우 티아민(비타민 B1), 판토텐산, 비오틴 등 종류가 다양한데, <span class="highLight">비타민 B군은 개수와 상관없이 무조건 비타민 1개로 계산</span>됩니다. 
+      따라서 비타민 B3, 비타민 B6, 비타민 B12, 비타민 C, 비타민D가 들어있을 경우 비타민 5개가 아닌 비타민 3개를 포함한 것으로 인정되어, 종합비타민이 아닌 멀티비타민으로 보아야 해요.
+    </div>
   </div>
-  <div class="mt-3">
-    앞서 말한 것처럼 유산균을 입으로 먹는 것으로도 질 내부의 환경을 교정할 수 있으며, <span class="underLine">질에 유산균을 직접 넣는다고 해서 특별히 효과가 더 좋지 않다</span>고 보고되어 있으니 먹는 질 유산균은 꼭 정해진 용법에 맞춰 섭취해 주세요! 
-    만약 질에 직접적으로 사용하는 질염 치료제를 사용하고 싶다면, 질 유산균이 아닌 항진균제 성분의 질정이나 질 세정액을 약국에서 상담 후 구입하시길 권해드려요.
-  </div>
-</div>
   <div class="paragraph">
-    <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/basic/letter-q.png"/>" class="img-fluid mr-2 mb-3" style="width:55px">
-      질 유산균을 남자가 먹어도 되나요?</span>
-    </div>
-    <div class="mt-2">
-       질 유산균 속에 있는 균주들이 장에도 효과가 있기 때문에 남성분들이 복용하셔도 문제는 없지만 <span class="highLight">‘굳이 먹을 필요가 없다’</span>고 하는 것이 정확할 것 같아요.
-    </div>
-    <div class="mt-2">
-      ‘질 유산균이 여성의 질 건강에 도움을 준다면, 남자가 먹으면 전립선과 같은 남성 생식기에 효과가 있지 않을까?’ 하는 궁금증도 있을 수 있는데, 여성의 질과 다르게 <span class="underLine">남성 생식기에는 미생물이 살지 않기 때문</span>에 유산균 복용으로는 특별한 효과를 볼 수 없어요. 
-      장 건강에 특화된 유산균을 구입하시길 추천해 드립니다.
-    </div>        
+	  <div class="mt-3">
+	    실제로는 종합비타민의 기준에 부합하더라도 멀티비타민으로 표기되는 경우도 많고, <span class="highLight">이 두 가지를 명확하게 구분 짓지 않고 사용되는 경우가 많습니다.</span>
+	    또한 종합비타민의 경우 다양한 비타민이 들어있기는 하나 함량이 낮은 경우도 있어요.
+	  </div>
+	  <div class="mt-3">
+	    내가 선택한 영양제가 정말로 원하는 성분을 모두 포함하고 있는지 성분과 함량을 확인하여 나에게 필요한 영양제를 선택해 보세요!
+	  </div>
   </div>
 </div>
 

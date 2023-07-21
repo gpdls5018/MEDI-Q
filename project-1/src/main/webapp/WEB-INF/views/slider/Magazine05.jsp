@@ -19,15 +19,15 @@
     padding-top : 145px;
   }
   .contentTop{
-  	padding-top: 50px;
+  	padding-top: 35px;
   }
   .paragraph{
   	margin-top: 125px;
   	font-size: 23px;
   }
   .paragraph-title{
-  	margin-top: 100px;
-  	margin-bottom: 150px;
+  	margin-top: 75px;
+  	margin-bottom: 80px;
   }
 	
 
@@ -213,14 +213,14 @@
       </p>
     </div>
 
-    <div class="mt-5">
+    <div class="mt-4">
       <p>
         하지만 <span class="underLine">단백질을 장기간 과도하게 섭취하게 될 경우 신장에 무리를 줄 수 있어요.</span>
         너무 많은 양의 단백질을 한 번에 먹거나 장기간 먹을 경우 신장 내부의 압력을 높이고 신장에 손상을 일으킬 수 있어요.
         특히 신장 기능이 떨어진 상태에서 많은 단백질을 먹으면 더 많은 손상이 발생할 수 있으니, 주의가 필요합니다.
       </p>
     </div>
-    <div class="mt-5">
+    <div class="mt-4">
       <p>
         일반적으로 단백질은 체중 1kg당 단백질 0.8~1g 정도를 권장하며, <span class="underLine">운동을 하고 근육을 키우는 목적으로 드실 경우 체중 1kg당 최대 2g 정도까지는 섭취가 가능</span>해요. 
         다만 일반 식품으로도 단백질을 섭취하기 때문에 운동 전후 보충제로 <span class="highLight">이 양을 모두 먹는 것은 피하고, 이 양을 하루 동안 나눠서 먹는 것이 좋습니다.</span>
@@ -243,13 +243,13 @@
         아르기닌은 근육으로 가는 혈액의 순환을 도와 <span class="underLine">근육을 키우는 데에 도움을 주고, 근육을 덜 지치게 해서 운동을 지속할 수 있도록 하는 효과</span>가 있습니다.
       </p>
     </div>
-    <div class="mt-5">
+    <div class="mt-4">
       <p>
         또 다른 대표적인 보충제 중 하나인 <span class="highLight">BCAA</span>는 <span class="underLine">단백질 합성을 증가시켜 근육의 성장에 도움을 줍니다. </span>
         또한 운동 시의 근육의 피로도를 감소시켜서 <span class="underLine">운동 능력을 향상</span>시키는 역할도 해요.
       </p>
     </div>
-    <div class="mt-5">
+    <div class="mt-4">
       <p>
         <span class="underLine">우리 몸에서 근육을 만들기 위해서는 성장 호르몬이 중요한 역할</span>을 하는데, <span class="highLight">오메가3</span>가 이
         <span class="underLine">성장 호르몬을 자극</span>하기 때문에 함께 섭취해 주시면 좋습니다.
@@ -276,7 +276,7 @@
         그러니 나이가 들면서 점점 살을 빼기가 어려웠던 분들, 근육을 키우면서 다이어트도 하고 싶은 분들은 L-카르니틴을 챙겨보세요!
       </p>
     </div>
-    <div class="mt-5">
+    <div class="mt-4">
       <p>
         앞서 근육의 성장에 도움이 된다고 언급했던 <span class="highLight">오메가3</span>는
         <span class="underLine">우리 몸의 중성 지질과 나쁜 콜레스테롤인 LDL 수치를 낮추는 데에도 도움</span>이 되기 때문에,
@@ -301,7 +301,7 @@
             크레아틴은 근력 운동 시의 운동 수행 능력 향상에 도움을 줄 수 있는 영양제입니다.</span>
       </p>
     </div>
-    <div class="mt-5">
+    <div class="mt-4">
       <p>
         운동을 하면서 우리 몸의 에너지를 사용하게 되는데, 크레아틴은 이 에너지를 재충전하는 데 도움을 줘요.
         근육으로의 에너지 공급량을 늘려 결과적으로 더 많은 에너지를 발생하도록 도와주고 더 무거운 중량으로 더 많은 횟수의 운동을 할 수 있도록 만들어 줍니다.

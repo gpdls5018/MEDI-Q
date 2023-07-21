@@ -45,7 +45,7 @@
   
    .custom-modal{
     width: 120px;
-    background: #FF7F50;
+    background: #FFB6C1;
     padding: 10px;
     border-radius: 5px;
     color: #FFFFFF;
@@ -57,8 +57,8 @@
   	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 915px;
-  	height: 700px;
+	width: 770px;
+  	height: 720px;
   }
   .modalB{
     margin-top : 20px;
@@ -75,13 +75,13 @@
   
   
   .highLight {
-    background-color : #FFE4E1;
+    background-color : #AFEEEE;
   }
   .underLine {
     text-decoration : underline;
   }
   .para_title {
-    color : #ee4949;
+    color : #EE4949;
     font-size: 35px;
     font-weight: bold;
   }
@@ -143,27 +143,27 @@
   }
 </style>
 <div class="container custom-top">
-  <div class="jumbotron rounded-3" style="background-color: #87CEFA;">
+  <div class="jumbotron rounded-3" style="background-color: #B0E0E6;">
      <div class="container">
     	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
-	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">영양소 A to Z</span>
-    	<h4><strong style="color:#191970; font-size:35px;">먹는 히알루론산은 효과가 없다던데, 그러면 주사로 맞아볼까?</strong></h4>
+	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">영양제 팩트체크</span>
+    	<h4><strong style="color:#191970; font-size:35px;">키 크는 영양제, 우리 아이도 먹여야 할까?</strong></h4>
   	</div>
  </div>
   
   <div style="font-size:24px;" class="contentTop">
-    화장품에도 많이 들어 있고 인공 눈물의 성분으로도 쓰이는 데다 관절에도 좋다고 하는 만능 영양소가 있죠.<br/>
-    바로 <span style="background-color: #E1FFFF; font-size:30px;">히알루론산(hyaluronic acid)</span>입니다.
-    영양제로 먹는 것부터 바르는 화장품, 그리고 인공눈물, 주사까지 정말 다양한 형태의 히알루론산이 있죠.
+     키는 유전적인 영향을 굉장히 많이 받지만 영양, 수면, 운동과 같은 다른 요인도 많은 영향을 줍니다. 그중 영양 측면을 생각해서 영양제를 찾으시는 경우가 많은 것 같아요.
   </div>
-  <div class="mt-5">
-    <img src="<c:url value="/resources/images/magazine_images/03/01_IMG.png"/>" class="img-fluid">
+  <div class="mt-4">
+    그런데 키 크는 영양제라고 해도 대부분 종합 영양제와 크게 다를 바가 없다고 생각하거나 효과가 있을지에 대한 고민이 되곤 하죠. 오늘은 <span class="highLight">어린이 키 성장 영양제에는 어떤 성분이 들어있고 정말 효과가 있는지</span> 집중적으로 알아볼게요!
   </div>
-  
+  <div class="mt-4">
+    <img src="<c:url value="/resources/images/magazine_images/08/img_blue3.png"/>" class="img-fluid">
+  </div>
   
    <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/work-time.png"/>" class="img-fluid mr-4" style="width:100px">
-	<span style="font-size: xx-large; color: #2E8B57"><strong>MEDI-Q의 1분 요약</strong></span>
+	<img src="<c:url value="/resources/images/magazine_images/basic/notes.png"/>" class="img-fluid mr-4 mb-4" style="width:110px">
+	<span style="font-size: xx-large; color: #FF7F50"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
   		</button>
@@ -178,14 +178,15 @@
 	        </div>
 	        <div class="modal-body">
 	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
-	         히알루론산은 많은 양의 수분을 머금을 수 있어서 피부 보습, 눈 건조감이나<br/> 
-	         <span class="modalC">연골 통증의 완화 등에 도움이 되는 영양소에요.<br/></span></p>
+	        키 성장을 위해서는 영양 관리가 중요하기 때문에 아미노산이나<br/> 
+	         <span class="modalC">비타민, 미네랄 등이 골고루 들어간 영양제를 챙겨주세요.<br/></span></p>
 	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
-			 히알루론산 주사의 경우 주사에 대한 부작용이 나타날 수 있지만, 히알루론산<br/> 
-			 <span class="modalC">자체는 부작용이 거의 없는 안전한 성분이에요.<br/></span></p>
+			‘황기추출물 등 복합물(HT042)’이라는 성분은 <br/> 
+			 <span class="modalC">어린이 키 성장에 도움이 된다고 인증을 받은 영양소예요!<br/></span>
+			 <span class="modalC">이 성분이 들어간 제품은 키 성장에 도움이 될 수 있어요.<br/></span></p>
 			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
-		   	 다만 영양제를 선택할 때는 반드시 기능성을 인증받은 ‘건강기능식품’  <br/> 
-		   	  <span class="modalC">인증 마크를 확인해 주세요!</span></p>
+		   	허위·과장 광고되는 키 성장 영양제도 많으니 인증받은 제품인지<br/> 
+		   	  <span class="modalC">확인하고 선택하도록 해주세요.</span></p>
 	        </div>	       
 	        <div class="modal-footer">
 	          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width: 100px; height: 50px; font-size: 20px;">Close</button>
@@ -200,56 +201,49 @@
 
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title">히알루론산이란<img src="<c:url value="/resources/images/magazine_images/basic/info.png"/>" class="img-fluid ml-2 mb-4" style="width:55px"> </span>
-    </div>
-    <div class="mt-2">
-      히알루론산은 우리 몸에서 자연적으로 생겨나는 물질로 피부, 연골, 눈 등에 많이 분포되어 있어요.
-    </div>
-    <div class="mt-5">
-      <span class="highLight">스스로의 무게의 300~1000배에 이르는 많은 양의 수분을 머금을 수 있어 보습에 도움이 되는 성분</span>입니다.
-      그래서 건조한 피부를 촉촉하게 만들어주는 것은 물론,
-      눈의 건조감이나 관절 통증을 완화, 상처 재생 등 우리 몸에서 다양한 도움이 될 수 있어요.
+      <span class="para_title">키 크는 영양제의 기본은 아미노산</span>
     </div>
     <div class="mt-4">
-      원래 우리 몸을 구성하는 성분이지만 <span class="underLine">나이가 들면서 감소하기 때문에 외부에서 다양한 형태로 공급하는 것이 도움이 될 수 있어요.</span>
+      일반적으로 키 성장에 도움이 된다고 하는 영양제는 성장기에 필요한 비타민, 미네랄, 아미노산 등의 성분이 골고루 함유된 영양제예요! 성장호르몬이 생성되기 위해서는 영양 상태가 중요하기 때문인데요.
+    </div>
+    <div class="mt-4">
+       이 중에서도 <span class="highLight">아미노산</span>은 성장호르몬이 잘 분비되도록 도와주고 성장 단백질의 구성 성분이 되는 중요한 요인이에요! 
+       키 성장을 위해서는 뼈 성장에 도움이 되는 비타민 D나 칼슘을 떠올리는 경우가 많지만, 이런 영양소에 집중하기보다는 아미노산을 챙기는 것이 좋습니다. 특히 아미노산 중에는 우리 몸에서 자연적으로 만들어지지 않아 <span class="highLight">반드시 음식을 통해서 섭취해야 하는 ‘필수 아미노산’도 있기 때문에</span> 이런 영양소를 섭취하는 것이 중요해요! 
+       <span class="underLine">라이신, 트립토판, 아르기닌 등의 아미노산은 성장기 아이들에게 꼭 필요합니다.</span>
     </div>
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title">영양제 vs 주사, 어느 게 더 좋을까?</span>
+      <span class="para_title">키 성장을 인증받은 영양제</span>
     </div>
     <div class="mt-4">
-      먹는 히알루론산은 효과가 없다는 말도 있지만
-      실제로 식품의약품안전처(식약처)에서 피부 보습과 피부 건강 유지에 도움을 줄 수 있다는 기능성을 인증받아서 사용되고 있습니다.
-      또한 히알루론산은 몸에서 자연적으로 생성되는 성분인 만큼 <span class="highLight">일반적으로 부작용 없이 안전하게 먹을 수 있어요. </span>
-      하지만 모든 영양제가 그렇듯 <span class="underLine">한 번의 섭취로 효과를 보기는 어려우니 오랫동안 꾸준히 섭취</span>할 수 있도록 해주세요.
-    </div>
-    <div class="mt-5">
-      (단, 임산부와 수유부는 피하는 것이 좋으며, 히알루론산은 특정 암세포의 먹이가 될 수 있다는 연구 결과가 있기 때문에 암 병력이 있는 경우에는 복용을 피해주세요.)
-    </div>
-    <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/03/02_IMG.png"/>" class="img-fluid">
-    </div>
-    <div class="mt-5">
-      히알루론산을 피부나 관절에 <span class="highLight">직접 주사로 주입</span>하면 물론 효과는 더 좋아지겠지만 <span class="highLight">부작용의 위험이 높아져요.</span>
-      하지만 이 부작용은 히알루론산 자체의 부작용이 아니라 가려움, 통증과 같은 주사 행위로 인한 경우가 많습니다.
+      어린이 키 성장과 관련하여 식약처의 인증을 받은 유일한 성분이 있는데, 바로 <span class="highLight">‘황기추출물 등 복합물(HT042)’</span>이에요.
     </div>
     <div class="mt-4">
-      따라서 주사를 맞을 경우에는 반드시 경험이 많은 전문가를 통해 맞길 권해드립니다.
+      황기추출물 등 복합물(HT042)은 황기, 가시오가피, 한속단 등의 성분으로 이루어진 기능성 원료인데 <span class="underLine">식약처에서 ‘어린이 키 성장에 도움을 줄 수 있음’이라는 기능성을 인정했어요.</span> 
+      하지만 이 성분에 대한 연구는 소규모 연구이니, 영양제에만 의존하기보다 수면이나 운동과 같은 요인도 꼭 챙겨주세요!
+    </div>
+    <div class="mt-4">
+     또한 <span class="highLight">성장판이 닫힌 경우</span>에는 <span class="underLine">뼈의 성장이 완전히 멈춘 것이기 때문에 영양제를 먹더라도 키 성장의 효과를 볼 수 없습니다.</span>
     </div>
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title">인증 마크를 확인하세요!</span>
+      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/basic/warning.png"/>" class="img-fluid mb-3 mr-2" style="width: 65px; height: 65px;">
+      키 성장 영양제 허위 광고 주의</span>
     </div>
-    <img src="<c:url value="/resources/images/magazine_images/03/03_IMG.png"/>" class="img-fluid mb-2 mt-4" style="width:230px">
+    <img src="<c:url value="/resources/images/magazine_images/08/img_blue4.png"/>" class="img-fluid mt-4">
   </div>
-  <div class="mt-1">
-    히알루론산 영양제를 먹으면 대부분은 아미노산으로 분해가 되기 때문에 먹은 양 중 극히 일부만이 우리 몸에서 효과를 나타내게 됩니다.
-    따라서 일반 식품보다는 피부 건강에 도움을 준다는 효과를 인증받아 <span class="highLight">‘건강기능식품’ 인증 마크가 있는 제품</span>을 선택해 주세요.
+  <div class="mt-5">
+    <span class="underLine">건강기능식품 인증을 받지 않은 일반 ‘식품’인데 키 성장에 도움을 준다는 문구로 부당 광고</span>를 해서 적발되는 경우가 종종 있습니다.
   </div>
-  <div class="mt-3">
-    또한 히알루론산이 충분한 수분을 머금을 수 있도록 영양제 섭취와 함께 많은 양의 물을 드시는 것도 잊지 마세요!
+  <div class="mt-4">
+    또한 건강기능식품으로 인증을 받아 <span class="underLine">인증 마크가 있지만 내용을 읽어보면 키 성장에 도움이 된다는 기능성이 없는 제품도 있어요.</span> 
+    이런 제품은 키 성장 외의 다른 기능성으로 인증받은 것이기 때문에 키 성장 효과를 기대하기는 어려워요.
+  </div>
+  <div class="mt-4">
+    식약처에서는 일반 식품을 키 성장 영양제로 오인할 수 있는 모호한 광고나 가짜 체험기로 광고하는 경우 등 문제가 되는 광고를 지속적으로 관리하고 있지만 여전히 일부 제품은 허위 광고를 하고 있기도 합니다. 
+    그러니 <span class="highLight">키 크는 영양제를 고를 때는 건강기능식품 인증을 받은 제품인지, 키 성장에 도움이 된다는 기능성 인증을 받은 제품인지 꼭 확인해 보고 구입</span>하시길 바랄게요!
   </div>
 </div>
 

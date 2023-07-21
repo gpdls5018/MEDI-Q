@@ -58,14 +58,54 @@
 		margin-right: 10px;
 		margin-bottom: 20px;
 	}
+	
+	.nav{
+        display: flex;
+        justify-content: space-between; 
+        list-style: none;
+    }
+    .nav-link:hover {
+        color: #FF4400;
+        background-color: #FFFFFF;
+    }       
+    .nav-link{
+        color: gray;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .nav-pills > .nav-item > .active{
+        background-color: #FFFFFF !important;
+        color: #FF4400;
+    }
 </style>
 
 <div id="tsmain">
 	<div class="everybanner1">
         <div class="everybanner1-1 clearfix"></div>
 	</div>
-
-    
+	
+    <div class="container">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="pill" href="#home">전체</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#menu1">영양제 상식</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#menu2">영양소 A to Z</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#home">영양제 레시피</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#menu1">영양제 팩트체크</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#menu2">Health & Life</a>
+            </li>
+        </ul>
+      </div>
     <section class="tscontainer custom-main" style="width:90%;  border-radius: 5px;">
 		<!-- 왼쪽 몸통부분 -->
 	     <article class="maints justify-content-center">

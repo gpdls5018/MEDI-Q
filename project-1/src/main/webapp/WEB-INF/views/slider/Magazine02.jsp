@@ -19,7 +19,7 @@
     padding-top : 145px;
   }
   .contentTop{
-  	padding-top: 50px;
+  	padding-top: 40px;
   }
   .paragraph{
   	margin-top: 100px;
