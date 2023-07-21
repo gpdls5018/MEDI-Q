@@ -72,7 +72,9 @@ public class BoardServiceImpl implements DaoService {
 
 	@Override
 	public int insert(Map map) {
+		
 		int affected=0;
+		
 		try {
 			affected=mapper.insert(map);
 		}

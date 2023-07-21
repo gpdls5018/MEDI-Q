@@ -12,6 +12,7 @@
 		INSERT INTO board VALUES(#{no},#{id},#{title},#{content},DEFAULT)
 	</insert>
 	<!-- 상세보기 -->
+	<!--  -->
 	<select id="selectOne" parameterType="map" resultType="map">
 		SELECT b.no,b.title,b.content,TO_CHAR(b.postdate, 'YYYY.MM.DD') AS postdate,
 		   CASE 

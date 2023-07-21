@@ -7,17 +7,22 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kosmo.springapp.qnabbs.service.DaoService;
 import com.kosmo.springapp.qnabbs.service.ListPagingData;
 import com.kosmo.springapp.qnabbs.service.PagingUtil;
+import com.kosmo.springapp.service.JWTokensService;
+import com.kosmo.springapp.service.impl.LoginServiceImpl;
 
 
 
@@ -25,65 +30,79 @@ import com.kosmo.springapp.qnabbs.service.PagingUtil;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
-	
+	//토큰용 아래 3개 주입
+	@Autowired
+	private JWTokensService jwTokensService;
+	@Value("${secret-key}")
+	private String secretKey;
+	@Value("${token-name}")
+	private String tokenName;
+	//service주입
 	@Autowired
 	private DaoService board;
+	//loginserviceimpl주입
+	@Autowired
+	private LoginServiceImpl loginService;
 	
-	//@GetMapping("/List.do")
+	//post로 write.do를 요청받음, 뷰페이지에서 
 	@RequestMapping(value="/List.do",method = {RequestMethod.GET,RequestMethod.POST})
 	public String list(
 			@RequestParam Map map,
 			@RequestParam(required = false,defaultValue = "1",value = PagingUtil.NOWPAGE) int nowPage,
 			HttpServletRequest req,
 			Model model) {
-		//Map map = new HashMap<>();
-		//List<Map> records = board.selectList(map);
-		//System.out.println("페이징적용 후");
-		//System.out.println("페이징 처리 확인용");
-		//서비스 호출
+		
+		String token= jwTokensService.getToken(req, tokenName);//token을 가져옴
+		Map payload = jwTokensService.getTokenPayloads(token, secretKey);//payload로 만듬
+		if(payload.get("sub") != null) {//payload는 map형태의 많은 데이터(이건 TRUE)하지만 .get("sub")를 통해 아이디가 있는지 판별(있으면 null이 아님)
+			String id=payload.get("sub").toString();//가져온 id를 String id에 저장(현재 로그인한 아이디)
+			model.addAttribute("id", id);//모델에 id란 이름으로 id 저장
+		}
 		ListPagingData listPagingData= board.selectList(map, req, nowPage);
-		System.out.println(listPagingData);
-		System.out.println(map);
-		System.out.println(req);
-		System.out.println(nowPage);
-		System.out.println(listPagingData.getMap());
-		System.out.println("페이징 처리 확인용1");
-		//System.out.println(listPagingData);
 		//데이타 저장
-		model.addAttribute("listPagingData", listPagingData);
-		//System.out.println("페이징 처리 확인용2");
-		//뷰정보 반환
+		model.addAttribute("listPagingData", listPagingData);	
+		//
 		return "board/List";
-	}
 	
+	}
+	//글쓰기 폼으로 이동
 	@GetMapping("/Write.do")
-	public String write() {
+	public String write(HttpServletRequest req) {
 		return "board/Write";
 	}
-	@PostMapping("/WriteProcess.do")
-	public String writeProcess(@RequestParam Map map,Model model) {
-		map.put("id", "petrus11");
+	//글작성후 list.do로 이동(목록으로 이동)
+	@PostMapping("/Write.do")
+	public String writeProcess(HttpServletRequest req,@RequestParam Map map,Model model) {
+		//id란 이름으로 token의 id를 저장
+		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
+		//map타입으로 id란 이름으로 id저장
+		map.put("id", id);
+		//affect에 글작성이 성공하였다면 (int) 1,실패면 0으로 저장
 		int affected = board.insert(map);
-		System.out.println(affected);
-		System.out.println("SELECT 전"+map);
+		//map에 1명의 글 저장 
 		map = board.selectOne(map);
-		System.out.println("SELECT 후"+map);
-		model.addAttribute("record", map);
-		
-		return  "board/View";
+		//글 입력 실패시
+		if(affected==0) {
+			//model.addAttribute("InputError","다시 작성해주세요");//아직안함
+			return "board/View";
+		}
+		//작성하고 난 뒤 목록페이지로 이동
+		return "forward:/board/List.do"; 
 	}
-	
-	@RequestMapping(value="/View.do" ,method = {RequestMethod.GET,RequestMethod.POST})
-	public String view(@RequestParam Map map,Model model) { 
+	//상세보기
+	@RequestMapping(value="/View.do",method = {RequestMethod.GET,RequestMethod.POST})
+	public String view(HttpServletRequest req,@RequestParam Map map,Model model) { 
+		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
+		map.put("id", id);
 		map=board.selectOne(map);
 		model.addAttribute("record", map);
 		//System.out.println(model);//콘솔 체크용
 		return "board/View";
 	}
 	@GetMapping("/Edit.do")
-	public String edit(@RequestParam Map map,Model model) {
-		System.out.println(123);
-		map.put("id", "petrus11");
+	public String edit(HttpServletRequest req,@RequestParam Map map,Model model) {
+		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
+		map.put("id", id);
 		map= board.selectOne(map);
 		System.out.println(map);
 		model.addAttribute("record", map);
@@ -91,8 +110,10 @@ public class BoardController {
 		return "board/Edit";
 	}
 	@PostMapping("/EditProcess.do")
-	public String editProcess(@RequestParam Map map,Model model) {
-		map.put("id", "petrus11");
+	public String editProcess(HttpServletRequest req,@RequestParam Map map,Model model) {
+		//map.put("id", "petrus11");
+		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
+		map.put("id", id);
 		System.out.println("여기부터...");
 		int affected = board.update(map);
 	    if (affected == 0) {
@@ -100,16 +121,14 @@ public class BoardController {
 	        model.addAttribute("record", map);
 	        return "board/Edit";
 	    } 
-	    //redircet로도 가능
-	    //return "redirect:/board/View.do?no=" + map.get("no");
-	    // forward로 이동할 경로에 "/board"를 추가하여 수정
 	    return "forward:/board/View.do";
 	}
 	
 	@GetMapping("/Delete.do")
-	public String delete(@RequestParam Map map,Model model) {
-		map.put("id", "petrus11");
-		System.out.println("여기부터...또");
+	public String delete(HttpServletRequest req,@RequestParam Map map,Model model) {
+		//map.put("id", "petrus11");
+		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
+		map.put("id", id);
 		//서비스 호출
 		int affected = board.delete(map);
 	    System.out.println("여기 delete후 "+affected);
@@ -121,11 +140,5 @@ public class BoardController {
 	    // 뷰정보 반환 - 목록을 처리하는 컨트롤러로 이동
 	    return "forward:/board/List.do"; 
 	}	
-	/*
-	@GetMapping("/Reply.do")
-	public String reply(@RequestParam Map map,Model model) {
-		model.addAttribute("", model);
-		return "";
-	}
-	*/
+	
 }

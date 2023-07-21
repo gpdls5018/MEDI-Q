@@ -128,40 +128,60 @@
 								<a href='<c:url value="/board/Edit.do?no=${record.NO}"/>'class="text-decoration-none p-1">
 									<button class="btn btn-light text-light btn_deco">수정</button>
 								</a> 
-								<!-- <a href="javascript:deleteArticle();" class="btn btn_write"> -->
 								<a href="javascript:isDelete();" class="text-decoration-none p-1">
 									<button class="btn btn-light text-light btn_deco">삭제</button>
 								</a> 
 								<a href='<c:url value="/board/List.do"/>' class="text-decoration-none p-1">
 									<button class="btn btn-light text-light btn_deco">목록</button>
 								</a>
-								<!-- 여기는 관리자만 보이는 버튼 -->
-								<a href='<c:url value="/Reply.do"/>' class="text-decoration-none p-1">
-									<button class="btn btn-light text-light btn_deco">답글</button>
-								</a>
+								<!-- id가 관리자일때만 버튼이 보임 -->
+								<!-- 기능구현이 끝나면 이 주석을 지워주세요 --><!-- 기능구현이 된다면 not을 붙이고 지워주셍 -->
+								<!-- 참이면(not false) -->
+								<%-- <c:if test="${sessionScope.id==comment.id }"> --%>
+								<c:if test="${true}">
+									<a href='<c:url value="/board/AnswerWrite.do"/>' class="text-decoration-none p-1">
+										<button class="btn btn-light text-light btn_deco">답변작성</button>
+									</a> 
+								</c:if>
 							</div>
 	                    </div>
 					</div><!-- 답변게시판 질문부분 끝 -->
 	                <!-- 답변 게시판(관리자) -->
+	                
 	                <!-- 출력 부분 -->
 	                <div class="card_deco col-12 p-1">
+	                	
                         <div class="card-body card_deco_body m-2" style="padding:.5rem;">
                             <div class="card-text d-flex align-items-center">
                             	<img src="<c:url value="/resources/images/qna/pharmacist.png"/>" class="qna_mascot">
-                            	<span class="text-light font-weight-bold text_3 ml-2">메디큐 약사님의 답변</span>
+                            	<span class="text-light font-weight-bold text_3 ml-2">메디큐 약사님의 답변입니다</span>
                             </div>
                         </div>
                         <!--  -->
                         <div class="card-body m-2">
-
-	                        <br>
-	                        <br>
-	                        <span class="card-text"><h5>${record.CONTENT }</h5></span>
-	                        <hr style="border: 1px solid #E6E9ED;"/>
-	                        <div class="card-text d-flex align-items-center">
-		                       	<button class="btn btn-light text-light btn_deco mr-3" onclick="increaseNum()">도움이 돼요</button>
-		                       	<span class="font-weight-bold"><span id="number">0</span>명에게 도움이 됐습니다.</span>
-		                   	</div>
+                        	<br>
+                        	<!-- 답글이 존재하지 않을시 뷰 --
+                        	<!-- 기능 구현 하기위해 not을 붙여둠 -->
+                        	<c:if test="${not empty records}" var="isEmpty">
+								<div id="empty-comment">
+									<div class="font-weight-bold">약사님의 답변을 기달리는 중입니다.</div>
+								</div>
+							</c:if>
+	                        <!-- 답글이 존재시 뷰 -->
+	                        <c:if test="${not isEmpty }">
+		                        <span class="card-text"><h5></h5></span><!-- 답변내용 -->
+		                        <hr style="border: 1px solid #E6E9ED;"/>
+		                        <div class="card-text d-flex align-items-center">
+			                       	<button class="btn btn-light text-light btn_deco mr-3" onclick="increaseNum()">도움이 돼요</button>
+			                       	<span class="font-weight-bold"><span id="number">0</span>명에게 도움이 됐습니다.</span>
+			                   	</div>
+			                   	<!-- 토큰의 id가 관리자일때 삭제버튼 표시 -->
+			                   	<!-- 만약 기능 성공시 이 주석 삭제 -->
+			                   	<c:if test="${sessionScope.id==comment.id }" var="isSame">
+									<button class="btn btn-info btn-sm my-delete ">삭제</button> 
+								</c:if>
+								<c:if test="${not isSame }">삭제불가입니다</c:if>
+							</c:if>
 	                   	</div>
                         
                     </div>
@@ -171,9 +191,9 @@
             </div>
 	        <div class="row d-flex flex-wrap flex-direction mt-2 justify-content-center">
 	        	<div class="col-2"></div>
-                <a class="col text-decoration-none text-dark text-center text_3 p-3">이전 질문</a>
+                <%-- <a class="col text-decoration-none text-dark text-center text_3 p-3" href="<c:url value="/board/View.do?no=${record.no-1}"/>">이전 질문</a> --%>
                 <a class="col text-decoration-none text-dark text-center text_3 p-3" href="<c:url value="/board/List.do"/>">질문 목록</a><!-- 그냥 넘길지 page번호까지 넘길지 고민 중 -->
-                <a class="col text-decoration-none text-dark text-center text_3 p-3" >다음 질문</a>
+                <%-- <a class="col text-decoration-none text-dark text-center text_3 p-3" href="<c:url value="/board/View.do?no=${record.no+1}"/>">다음 질문</a> --%>
                 <div class="col-2"></div>
             </div>
 	    </div>
@@ -187,10 +207,10 @@
 			location.replace("<c:url value="/board/Delete.do?no=${record.NO}"/>");
 		}
 	}
-		
-	var count = 0;//초기 숫자 값 설정	
+	//도움이 되요 증가함수
 	function increaseNum() {
-	  count++;//숫자 증가
-	  document.getElementById("number").textContent = count;//숫자 표시 업데이트
+		var count = 0;//초기 숫자 값 설정  	
+		count++;//숫자 증가
+		document.getElementById("number").textContent = count;//숫자 표시 업데이트
 	}
 </script>
