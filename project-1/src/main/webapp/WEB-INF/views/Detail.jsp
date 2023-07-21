@@ -80,6 +80,7 @@
     
     .effect-custom-font {
      font-family : Noto Sans KR, sans-serif;
+     text-align: center;
     }
     
     .review-panel {
@@ -156,6 +157,29 @@ left: 146px;
 	margin-top: 150px;
 	margin-left: 300px;
 }
+.review-custom{
+	width: 150px;
+    background: #87CEEB;
+    padding: 10px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 17px;
+}
+.write-review{
+	margin-top: 50px;
+	display: flex;
+  	justify-content: flex-end;
+}
+.review-custom:hover {
+	background-color: #006AFF;
+	color: #fff;
+}
+.img-custom{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
 </style>
 <div>
 <div class="background-top">
@@ -163,7 +187,7 @@ left: 146px;
 </div>
 <div class="container">
 <div class="empty-space" style="height:32px;"></div>
-<div style="display: flex; align-items: center;">    
+<div style="display: flex; align-items: center;" class="img-custom">    
     <h1 class="display-4" style="width:450px;">
     <c:if test="${empty listOne.imgURL}" var="emptyIMG">
     	<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" width="400px;" height="300px;" style="border-radius:20px;"/>
@@ -173,8 +197,12 @@ left: 146px;
    	</c:if>
    	</h1>
    	<div style="display: flex; flex-direction: column; margin-left: 20px;">
-        <button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">구매하러 가기</button>
-        <button onclick="window.location.href = '/ranking/selectfood.do'" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; margin-top: 20px;">다른 제품 검색하러 가기</button>
+        <button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
+        <img src="<c:url value="/images/magazine_images/basic/basket.png"/>" class="img-fluid mr-1 mb-1" style="width:20px">
+        구매하러 가기</button>
+        <button onclick="window.location.href = '/ranking/selectfood.do'" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
+        <img src="<c:url value="/images/magazine_images/basic/search_2.png"/>" class="img-fluid mr-1 mb-1" style="width:20px">
+        다른 제품 검색하러 가기</button>
     </div>
 </div>    
 	<!-- 탭 -->
@@ -473,7 +501,7 @@ left: 146px;
 	   				</ul>
 				</div><!-- 부작용 부분 끝-->
    			</div><!-- effected Board 끝 -->
-   			<div class="write-review"><a class="link" href="<c:url value="/Review.do?no=${listOne.no}"/>">리뷰 글쓰기</a></div>
+   			<div class="write-review"><a class="link review-custom" href="<c:url value="/Review.do?no=${listOne.no}"/>" style="text-decoration : none;">리뷰 글쓰기</a></div>
    			<!-- 리뷰 페이지 삽입 위치 -->
    			<div class="container effect-custom-font" >
 			    <ul class="list-unstyled mt-5" id="review-ul">
