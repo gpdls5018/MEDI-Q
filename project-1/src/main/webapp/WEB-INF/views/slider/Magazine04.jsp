@@ -39,7 +39,7 @@
     font-size: 30px;
   }
    .custom-img{
-  	margin-top: 100px;
+  	margin-top: 70px;
   	margin-left: 20px;
   }
   .contents{
@@ -146,14 +146,14 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #A3CF62;">
     <div class="container">
-    	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+    	<img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #D93A49;">영양소 A to Z</span>
     	<h4><strong style="color:#191970; font-size:35px;">🤎브라운 💚그린 ❤️레드 프로폴리스 중 어떤 걸 먹어야 할까?</strong></h4>
   	</div>
   </div>
   
   <div class="custom-img">
-    <img src="<c:url value="/resources/images/magazine_images/04/01_IMG.png"/>" class="img-fluid">
+    <img src="<c:url value="/images/magazine_images/04/01_IMG.png"/>" class="img-fluid">
   </div>
   <div class="contentTop">
     ‘앞’을 의미하는 ‘pro’와 도시를 의미하는 ‘polis’의 합성어로 앞에서 전체를 지킨다는 뜻을 가진 프로폴리스는,
@@ -168,7 +168,7 @@
    -->
    
     <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/work-time.png"/>" class="img-fluid mr-4" style="width:100px">
+	<img src="<c:url value="/images/magazine_images/basic/work-time.png"/>" class="img-fluid mr-4" style="width:100px">
 	<span style="font-size: xx-large; color: #FDB933"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -179,17 +179,17 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 	         프로폴리스는 대표적으로 브라운, 그린, 레드<br/> 
 	         <span class="modalC">3가지 종류가 있어요.<br/></span></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 그린 프로폴리스는 아르테필린-C라는 성분이 들어 있어<br/> 
 			 <span class="modalC">일반 프로폴리스보다 항염, 항암 효과가 뛰어나요.<br/></span></p>
-			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			<p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 		   	 그린 프로폴리스를 고를 땐 이름만 보는 것이 아니라 <br/> 
 		   	  <span class="modalC">원산지가 ‘브라질산’인지 꼭 확인해 주세요!</span></p>
 	        </div>	       
@@ -251,7 +251,7 @@
   <hr class="mt-5 my-hr">
     -->
   <div class="custom-img">
-    <img src="<c:url value="/resources/images/magazine_images/04/02_IMG.png"/>" class="img-fluid">
+    <img src="<c:url value="/images/magazine_images/04/02_IMG.png"/>" class="img-fluid">
   </div>
   <div class="paragraphB">
     <div>
@@ -265,7 +265,7 @@
   </div>
 </div>
 <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-1" style="width:65px">
+  <span class="custom-text"><img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-1" style="width:65px">
    &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -280,7 +280,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>

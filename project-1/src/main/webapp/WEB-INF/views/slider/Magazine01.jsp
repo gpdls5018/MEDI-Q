@@ -124,7 +124,7 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3 " style="background-color: #FEDCBD;">
   	<div class="container">
-	    <img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+	    <img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">영양소 A to Z</span>
 	    <h4><strong style="color:#EE4949; font-size:40px;">운동러들의 필수 보충제, 아르기닌의 부작용</strong></h4>
   	</div>
@@ -135,13 +135,13 @@
    	   어떤 영양제든 과다하게 섭취할 경우 부작용이 있을 수 있으니 부작용을 꼼꼼히 살펴보고 선택하도록 해주세요.
   </div>
   <div class="mt-5">
-    <img src="<c:url value="/resources/images/magazine_images/01/01_IMG.png"/>" class="img-fluid">
+    <img src="<c:url value="/images/magazine_images/01/01_IMG.png"/>" class="img-fluid">
   </div>
   <!--
   <hr class="my-hr mt-5 mb-5">
    -->
   <div class="paragraph">
-	<img src="<c:url value="/resources/images/magazine_images/basic/work-time.png"/>" class="img-fluid mr-4" style="width:100px">
+	<img src="<c:url value="/images/magazine_images/basic/work-time.png"/>" class="img-fluid mr-4" style="width:100px">
 	<span style="font-size: xx-large; color: #FF7C4C"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -152,17 +152,17 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 	         아르기닌은 모근의 혈액 공급을 도와 머리카락의<br/> 
 	         <span class="modalC">성장에 도움을 줄 수 있어요. (탈모 걱정은 No!)<br/></span></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 헤르페스 바이러스의 증식에 관여하기 때문에<br/> 
 			 <span class="modalC">평소 헤르페스가 있던 분들은 주의가 필요해요.<br/></span></p>
-			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			<p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 		   	 그 외에도 저혈압, 소화 문제, 알레르기의 악화 등의<br/> 
 		   	  <span class="modalC">부작용이 있을 수 있으니 본인에게 맞는 섭취량을</span><br/>
 		   	  <span class="modalC">찾아서 먹도록 해주세요.</span></p>
@@ -176,7 +176,7 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-    <img src="<c:url value="/resources/images/magazine_images/basic/QuestionMark.png"/>" class="img-fluid" style="width:60px; margin-bottom: 15px;">
+    <img src="<c:url value="/images/magazine_images/basic/QuestionMark.png"/>" class="img-fluid" style="width:60px; margin-bottom: 15px;">
       <span class="title ml-2" style="font-size:30px"><strong>아르기닌이 탈모를 유발한다?</strong></span>
     </div>
     <div class="mt-3">
@@ -240,7 +240,7 @@
 </div>
 <div class="container custom-footer">
   <span class="custom-text">
-	<img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-1" style="width:65px">
+	<img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-1" style="width:65px">
   	&nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -255,7 +255,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>
