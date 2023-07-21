@@ -32,7 +32,7 @@ public class MagazineController {
 	    return "slider/MagazineIndex";
 	  }
 	*/
-	@Autowired(required=false)
+	@Autowired
 	private MagazineSelectMapper magazineSelectMapper;
 	
 	//전체 카테고리로 이동
