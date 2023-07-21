@@ -6,7 +6,9 @@
 
 <mapper namespace="com.kosmo.springapp.admin.service.AdminMapper">
 
-
+	<select id="getMemberInfo" resultType="memberDto">
+		SELECT * FROM MEMBER
+	</select>
 
 
 

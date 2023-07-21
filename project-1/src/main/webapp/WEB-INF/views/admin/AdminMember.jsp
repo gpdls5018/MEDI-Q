@@ -78,16 +78,16 @@
     /* 4분할 */
     .each-container {
     	padding: 10px;
-    	margin: 30px 50px;
-    
+    	margin: 20px 40px;
+    	
     }
     
     /* 컨텐츠 내 차트 */
     .chart-container {
     	width: 600px; 
-    	height: 270px; 
+    	height: 300px; 
     	margin: 5px;
-    	padding: 30px;
+    	padding: 20px 30px;
     	border: 1px solid #ccc;
         border-radius: 10px;
         background-color: #f7f7f7;
@@ -97,24 +97,70 @@
 
     /* 예시 테이블 스타일 */
     table {
-        width: 100%;
         border-collapse: collapse;
+        width: 100%;
+        font-size: 12px;
+        overflow: auto; /* 스크롤이 가능하도록 하기 위해 추가 */
+        
     }
 
     th, td {
-        padding: 10px;
+        border: 1px solid #dddddd;
         text-align: center;
-        border: 1px solid #ccc;
+        padding: 8px;
     }
 
     th {
-        background-color: #f0f0f0;
+        background-color: rgba(54, 162, 235, 0.6);
     }
 
     tr:nth-child(even) {
         background-color: #f2f2f2;
     }
 
+    tr:hover {
+        background-color: #ddd;
+    }
+
+    /* 버튼 스타일링 */
+    .button-wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .button {
+        border-radius: 4px;
+        background-color: #EF605D;
+        border: none;
+        color: white;
+        text-align: center;
+        cursor: pointer;
+        margin: 2px;
+        font-size: 9px;
+    }
+    
+    .button:hover {
+	    background-color: #d64845; /* 버튼 호버 시 배경색이 더 진한 색으로 변경 */
+    }
+
+    .button span {
+        cursor: pointer;
+        display: inline-block;
+    }
+    
+    /* 스크롤바 색상 설정 */
+	.table-wrapper::-webkit-scrollbar {
+	  width: 10px; /* 스크롤바 너비 조절 */
+	}
+	
+	.table-wrapper::-webkit-scrollbar-thumb {
+	  background-color: #ccc; /* 스크롤바 색상 */
+	  border-radius: 5px; /* 스크롤바 모서리 둥글게 설정 */
+	}
+	
+	.table-wrapper::-webkit-scrollbar-thumb:hover {
+	  background-color: #999; /* 스크롤바 호버시 색상 */
+	}
 
 
 </style>
@@ -195,44 +241,67 @@
 	        	</li>
 	        </ul>
 	    </div><!-- 관리자 사이드바 -->
-	
+	    
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->	
+
 		<!-- 전체 내용 -->
 	    <div id="admin_content" style="display: flex; justify-content:center; flex-wrap: wrap;">
 			
 			<h4 class="text-center" style="width:95%; padding-bottom: 20px; border-bottom: 1px solid #ccc;"><b>회원 관리</b></h4>
 	    
 	    	<!-- 1번 div -->
-	    	<div class="each-container">
-  			    <!-- 도표1: 막대 그래프 -->
+	        <div class="each-container">
+		        <!-- 도표1: 라인 차트 -->
+				<div class="chart-container" style="margin-bottom: 50px;">
+				    <canvas id="lineChart"></canvas>
+				</div>
+				 <!-- 도표2: 막대 그래프 -->
 		        <div class="chart-container">
 		            <canvas id="barChart"></canvas>
 		        </div>
-	        </div>
+			</div>
+	    	
 	        <!-- 2번 div -->
-	        <div class="each-container">
-		        <!-- 도표2: 라인 차트 -->
-				<div class="chart-container">
-				    <canvas id="lineChart"></canvas>
+			<div class="each-container">
+				<!-- 회원테이블 -->
+		        <div class="chart-container table-wrapper" style="height: 650px; overflow: auto;">
+		        	<p class="text-center" style="font-size: 16px;"><b>회원 목록</b></p>
+				    <table>
+				        <tr>
+				            <th>아이디</th>
+				            <th>이름</th>
+				            <th>생년월일</th>
+				            <th>이메일</th>
+				            <th>설정</th>
+				        </tr>
+				        <c:forEach var="member" items="${members }">
+					        <tr>
+					            <td>${member.id }</td>
+					            <td>${member.name }</td>
+					            <td>${member.birth }</td>
+					            <td>${member.email }</td>
+					            <td>
+					            	<div class="button-wrapper">
+					            		<!-- 수정 버튼 -->
+				                        <button class="button" onclick="location.href='/editMember?id=${member.id}'">
+				                            <span>수정</span>
+				                        </button>
+				                        <!-- 삭제 버튼 -->
+				                        <button class="button" onclick="deleteMember(${member.id})">
+				                            <span>삭제</span>
+				                        </button>
+				                    </div>
+					            </td>
+					        </tr>
+				        </c:forEach>
+				        
+				    </table>
 				</div>
 			</div>
 			
-			<!-- 3번 div -->
-			<div class="each-container">
-				<!-- 도표3: 파이 차트 -->
-		        <div class="chart-container">
-				    <canvas id="pieChart"></canvas>
-				</div>
-			</div>
+		
 			
-			<!-- 4번 div -->
-			<div class="each-container">
-		        <!-- 도표4: 레이더 차트 -->
-				<div class="chart-container">
-				    <canvas id="radarChart"></canvas>
-				</div>
-		    </div>
-		    
-		    
+			
 		    
 	    </div><!-- 전체 내용 -->
 	    
@@ -351,6 +420,27 @@
                 }
             }
         });
+	    
+		// 회원 삭제 함수
+        function deleteMember(id) {
+            if (confirm('정말로 이 회원을 삭제하시겠습니까?')) {
+                // 삭제 요청을 서버로 보낼 수 있는 코드 작성
+                // 삭제 후 페이지 새로고침 또는 필요한 동작 수행
+                alert('회원 삭제 처리를 수행합니다. (회원 ID: ' + id + ')');
+            } else {
+                // 삭제 취소 시 동작
+            }
+        }
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
         
         
         
