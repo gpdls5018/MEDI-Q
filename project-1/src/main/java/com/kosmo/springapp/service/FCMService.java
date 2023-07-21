@@ -33,8 +33,10 @@ public class FCMService {
         Message message = Message.builder()
                 .setToken(notificationRequest.getToken())
                 .setWebpushConfig(WebpushConfig.builder().putHeader("ttl", "300")
-                        .setNotification(new WebpushNotification(notificationRequest.getTitle(),
-                                notificationRequest.getMessage()))
+                        .setNotification(new WebpushNotification(
+                        		notificationRequest.getTitle(),
+                                notificationRequest.getMessage(),
+                                notificationRequest.getIcon()))
                         .build())
                 .build();
 
@@ -42,6 +44,7 @@ public class FCMService {
         //response에는 projects/woowa-turkey/messages/0:1568180254610207%cc9b4facf9fd7ecd 과 같은 
         //message의 값을 리턴받는다.
         String response = FirebaseMessaging.getInstance().sendAsync(message).get();
+        System.out.println("response: "+response);
         logger.info("Sent message: " + response);
     }
 

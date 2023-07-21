@@ -29,7 +29,7 @@ public class NotificationService {
  
     //사용자의 Id값을 Key, 토큰 값을 Value로 갖는 Map을 사용해서 토큰 값을 관리한다.
     public void register(final String userId, final String token) {
-            tokenMap.put(userId, token);
+        tokenMap.put(userId, token);
     }
     /*
     private void createReceiveNotification(HttpServletRequest req, String sender, String receiver) {

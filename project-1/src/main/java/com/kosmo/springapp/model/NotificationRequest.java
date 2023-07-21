@@ -19,4 +19,5 @@ public class NotificationRequest {
 	private String title;
 	private String message;
 	private String token;
+	private String icon;
 }

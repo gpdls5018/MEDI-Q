@@ -1296,31 +1296,31 @@ ul li input[type=checkbox]:checked ~ .acco {
 	
 	document.addEventListener('DOMContentLoaded', function() {
 		if ('serviceWorker' in navigator) {
-			const messaging = firebase.messaging();
-	        // Your web app's Firebase configuration
-	        //console.log('serviceWorker' in navigator)//localhost로 설정
-        	
+			const messaging = firebase.messaging();        	
 	        navigator.serviceWorker.register("../firebase-messaging-sw.js")
-                    .then(registration => {  
-                        // Initialize Firebase
-                        //const app = initializeApp(firebaseConfig);
-                        //const analytics = getAnalytics(app);
-                         // Show Notificaiton Dialog
-                         
+                    .then(register => {         
+                    	//console.log('register:',register)
                          messaging.requestPermission()
                         .then(function() {
-                        	console.log('두번째 then 안')
                             return messaging.getToken();  
                         })
                         .then(async function(token) {
-                        	console.log('세번째 then 안')
-                        	await fetch('/register', { method: 'post', body: token })
+                        	//Firebase콘솔에 앱과 웹 두개를 추가하고 그래야 메시지 전송버튼이 보임
+                            //아래 토큰을 복사해서 파이어베이스 콘솔에서 메시지를 보낸다
+                            //혹은 스프링 REST API에서 메시지를 보낸다
+                        	await fetch('/webpush', { method: 'post', body: token})
+                        	console.log('token:',token)
+                        	console.log('messaging:',messaging)
+                        	//포그라운드일 때
                             messaging.onMessage(payload => {
                             	console.log("onMessage event fired",payload);
                                 const title = payload.notification.title
                                 const options = {
-                                    body : payload.notification.body
+                                    body : payload.notification.body,
+                                    icon: payload.notification.icon
                                 }
+                                const notification = new Notification(title,options);
+                                console.log('notification:',notification)
                                 navigator.serviceWorker.ready.then(registration => {
                                     registration.showNotification(title, options);
                                 })
