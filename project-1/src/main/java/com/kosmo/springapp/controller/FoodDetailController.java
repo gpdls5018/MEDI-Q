@@ -275,15 +275,23 @@ public class FoodDetailController {
 	 public String analyzeMyReport(@RequestParam Map<String,String> map,Model model,HttpServletRequest req,HttpServletResponse resp) {
 		 
 		 List<String> takeList = Arrays.asList(map.get("takePurpose").split(","));
-		 List<String> foodList = Arrays.asList(map.get("takeFood").split(","));
+		 List<String> foodList = Arrays.asList(map.get("takeFood").replaceAll("amp;","").split(","));
 		 Map<String,List<String>> userMap = new HashMap<>();
 		 userMap.put("takePurpose", takeList);
 		 userMap.put("takeFood", foodList);
-		 AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReport(userMap);
 		 MemberDTO memberDto = loginService.selectOne(req,resp);
-		 analyzeMyReportServiceImpl.saveAnalyzeReport(memberDto.getId(),takeList,foodList,resultListDto.getResultScore());
-		 model.addAttribute("memberDto",memberDto);
-		 model.addAttribute("resultListDto",resultListDto);
+		 if(memberDto.getGender().equals("M")) {
+			 AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReportM(userMap);
+			 analyzeMyReportServiceImpl.saveAnalyzeReport(memberDto.getId(),takeList,foodList,resultListDto.getResultScore());
+			 model.addAttribute("memberDto",memberDto);
+			 model.addAttribute("resultListDto",resultListDto);
+		 }
+		 else if(memberDto.getGender().equals("F")) {
+			 AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReportF(userMap);
+			 analyzeMyReportServiceImpl.saveAnalyzeReport(memberDto.getId(),takeList,foodList,resultListDto.getResultScore());
+			 model.addAttribute("memberDto",memberDto);
+			 model.addAttribute("resultListDto",resultListDto);
+		 }
 		 return "AnalyzeReportResult";
 	 }
 	 
