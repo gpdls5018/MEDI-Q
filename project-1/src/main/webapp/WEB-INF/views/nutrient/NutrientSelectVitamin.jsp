@@ -194,7 +194,7 @@
                 <!-- 인기성분에 해당하는 상자 내용 -->
                 <!-- 이미지 -->
    				<div class="image mt-4">
-	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
+	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">👨‍⚕&nbsp;인기 성분 Top 10</b><br/>
 		           		<small>100가지 영양성분 중 가장 인기있는 10개 성분의 Best 제품을 만나보세요!</small>
@@ -213,7 +213,7 @@
                 <!-- 비타민에 해당하는 상자 내용 -->
                 <!-- 이미지 -->
    				<div class="image mt-4">
-	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
+	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">🍊&nbsp;비타민 찾아보기</b><br/>
 		           		<small>14가지 비타민의 중요성과 효과를 자세히 알아보세요!</small>
@@ -231,7 +231,7 @@
             <div id="mineral" class="tab">
                 <!-- 미네랄에 해당하는 상자 내용 -->
                 <div class="image mt-4">
-	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
+	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">🥗&nbsp;미네랄 및 기타영양소 찾아보기</b><br/>		           		
 		           		<small>14가지 미네랄 및 기타영양소의 중요성과 효과를 자세히 알아보세요!</small>
@@ -249,7 +249,7 @@
             <div id="functional" class="tab">
                 <!-- 기능성 원료에 해당하는 상자 내용 -->
                 <div class="image mt-4">
-	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
+	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">🌿&nbsp;기능성 원료 찾아보기</b><br/>
 		           		<small>74가지 기능성 원료의 중요성과 효과를 자세히 알아보세요!</small>
