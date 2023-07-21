@@ -145,7 +145,7 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #E6E6FA;">
      <div class="container">
-    	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+    	<img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #006400">영양제 팩트체크</span>
     	<h4><strong style="color:#9932CC; font-size:35px;">영양제 섭취 초기의 가려움, 설사... 영양제의 명현현상</strong></h4>
   	</div>
@@ -156,7 +156,7 @@
   </div>
   
    <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/notes.png"/>" class="img-fluid mr-4 mb-4" style="width:110px">
+	<img src="<c:url value="/images/magazine_images/basic/notes.png"/>" class="img-fluid mr-4 mb-4" style="width:110px">
 	<span style="font-size: xx-large; color: #EE4949"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -167,17 +167,17 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 	         명현현상이란 치료 과정에서 일시적으로 나타나는<br/> 
 	         <span class="modalC">다른 증상을 일컫는 말이에요.<br/></span></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 하지만 현대 의학에서는 명현현상이라는 개념을<br/> 
 			 <span class="modalC">인정하지 않아요.<br/></span></p>
-			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			<p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 		   	 이상 증상이 나타났다면 즉시 섭취를 중단하고<br/> 
 		   	  <span class="modalC">의사와 상담해야 합니다!</span></p>
 	        </div>	       
@@ -193,13 +193,13 @@
   
 
  <div class="paragraph">
-      <span class="para_title">명현현상(瞑眩現象)이란<img src="<c:url value="/resources/images/magazine_images/basic/info.png"/>" class="img-fluid ml-2 mb-4" style="width:55px"> </span>
+      <span class="para_title">명현현상(瞑眩現象)이란<img src="<c:url value="/images/magazine_images/basic/info.png"/>" class="img-fluid ml-2 mb-4" style="width:55px"> </span>
     <div class="mt-2">
       <span class="underLine">장기간에 걸쳐 나빠졌던 건강이 치유되면서 일시적으로 예기치 못한 반응이 나타나는 것</span>을 의미합니다. 명현 반응, 호전 반응 등으로 표현하기도 해요. 
       명현현상이 강할수록 치료 효과가 더 좋다는 말도 있으나 <span class="highLight">명현현상은 의학적으로 인정되지 않은 개념</span>입니다.
     </div>
     <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/09/img_blue5.png"/>" class="img-fluid mb-4">
+      <img src="<c:url value="/images/magazine_images/09/img_blue5.png"/>" class="img-fluid mb-4">
     </div>
   </div>
   <div class="paragraph">
@@ -218,7 +218,7 @@
 </div>
 
 <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
+  <span class="custom-text"><img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
   &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -233,7 +233,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>

@@ -145,7 +145,7 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #87CEFA;">
      <div class="container">
-    	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+    	<img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">영양소 A to Z</span>
     	<h4><strong style="color:#191970; font-size:35px;">먹는 히알루론산은 효과가 없다던데, 그러면 주사로 맞아볼까?</strong></h4>
   	</div>
@@ -157,12 +157,12 @@
     영양제로 먹는 것부터 바르는 화장품, 그리고 인공눈물, 주사까지 정말 다양한 형태의 히알루론산이 있죠.
   </div>
   <div class="mt-5">
-    <img src="<c:url value="/resources/images/magazine_images/03/01_IMG.png"/>" class="img-fluid">
+    <img src="<c:url value="/images/magazine_images/03/01_IMG.png"/>" class="img-fluid">
   </div>
   
   
    <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/work-time.png"/>" class="img-fluid mr-4" style="width:100px">
+	<img src="<c:url value="/images/magazine_images/basic/work-time.png"/>" class="img-fluid mr-4" style="width:100px">
 	<span style="font-size: xx-large; color: #2E8B57"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -173,17 +173,17 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 	         히알루론산은 많은 양의 수분을 머금을 수 있어서 피부 보습, 눈 건조감이나<br/> 
 	         <span class="modalC">연골 통증의 완화 등에 도움이 되는 영양소에요.<br/></span></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 히알루론산 주사의 경우 주사에 대한 부작용이 나타날 수 있지만, 히알루론산<br/> 
 			 <span class="modalC">자체는 부작용이 거의 없는 안전한 성분이에요.<br/></span></p>
-			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			<p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 		   	 다만 영양제를 선택할 때는 반드시 기능성을 인증받은 ‘건강기능식품’  <br/> 
 		   	  <span class="modalC">인증 마크를 확인해 주세요!</span></p>
 	        </div>	       
@@ -200,7 +200,7 @@
 
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title">히알루론산이란<img src="<c:url value="/resources/images/magazine_images/basic/info.png"/>" class="img-fluid ml-2 mb-4" style="width:55px"> </span>
+      <span class="para_title">히알루론산이란<img src="<c:url value="/images/magazine_images/basic/info.png"/>" class="img-fluid ml-2 mb-4" style="width:55px"> </span>
     </div>
     <div class="mt-2">
       히알루론산은 우리 몸에서 자연적으로 생겨나는 물질로 피부, 연골, 눈 등에 많이 분포되어 있어요.
@@ -228,7 +228,7 @@
       (단, 임산부와 수유부는 피하는 것이 좋으며, 히알루론산은 특정 암세포의 먹이가 될 수 있다는 연구 결과가 있기 때문에 암 병력이 있는 경우에는 복용을 피해주세요.)
     </div>
     <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/03/02_IMG.png"/>" class="img-fluid">
+      <img src="<c:url value="/images/magazine_images/03/02_IMG.png"/>" class="img-fluid">
     </div>
     <div class="mt-5">
       히알루론산을 피부나 관절에 <span class="highLight">직접 주사로 주입</span>하면 물론 효과는 더 좋아지겠지만 <span class="highLight">부작용의 위험이 높아져요.</span>
@@ -242,7 +242,7 @@
     <div class="mt-5">
       <span class="para_title">인증 마크를 확인하세요!</span>
     </div>
-    <img src="<c:url value="/resources/images/magazine_images/03/03_IMG.png"/>" class="img-fluid mb-2 mt-4" style="width:230px">
+    <img src="<c:url value="/images/magazine_images/03/03_IMG.png"/>" class="img-fluid mb-2 mt-4" style="width:230px">
   </div>
   <div class="mt-1">
     히알루론산 영양제를 먹으면 대부분은 아미노산으로 분해가 되기 때문에 먹은 양 중 극히 일부만이 우리 몸에서 효과를 나타내게 됩니다.
@@ -254,7 +254,7 @@
 </div>
 
 <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
+  <span class="custom-text"><img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
   &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -269,7 +269,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>

@@ -145,7 +145,7 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #FFF8A6;">
      <div class="container">
-    	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+    	<img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">영린이 탈출, 영양제 상식</span>
     	<h4><strong style="color:#F26522; font-size:35px;">멀티비타민과 종합비타민은 무엇이 다를까?</strong></h4>
   	</div>
@@ -156,12 +156,12 @@
     비타민B군, 활성형 비타민 등 다양한 표현으로 부르죠. 그런데 <span class="underLine">종합비타민과 멀티비타민은 차이가 있다</span>는 걸 아시나요?
   </div>
   <div class="mt-4">
-    <img src="<c:url value="/resources/images/magazine_images/15/img_sky4.png"/>" class="img-fluid" style="width: 600px;">
+    <img src="<c:url value="/images/magazine_images/15/img_sky4.png"/>" class="img-fluid" style="width: 600px;">
   </div>
   
   
    <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/contract.png"/>" class="img-fluid mr-4" style="width:100px">
+	<img src="<c:url value="/images/magazine_images/basic/contract.png"/>" class="img-fluid mr-4" style="width:100px">
 	<span style="font-size: xx-large; color: #33A3DC"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -172,17 +172,17 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 	         종합비타민은 비타민 A, B군, C, D, E 5가지가 모두 포함된 제품,<br/> 
 	         <span class="modalC">멀티비타민은 이 중 두 가지 이상이 포함된 제품을 의미해요.<br/></span></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 다만 종합비타민의 조건에 만족하더라도 원할 경우<br/> 
 			 <span class="modalC">멀티비타민이라고 표기가 가능해요.<br/></span></p>
-			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			<p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 		   	 영양제를 선택하기 전에 내가 원하는 성분이 적절히 들어갔는지<br/> 
 		   	  <span class="modalC">확인해 보세요!</span></p>
 	        </div>	       
@@ -199,14 +199,14 @@
 
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/15/lemon.png"/>" class="img-fluid mb-4 mr-1" style="width:55px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/15/lemon.png"/>" class="img-fluid mb-4 mr-1" style="width:55px">
       종합비타민</span>
     </div>
     <div>
       비타민 A, B군, C, D, E&nbsp;&nbsp;<strong>5가지가 모두 포함된 영양제</strong>
     </div>
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/15/lemon.png"/>" class="img-fluid mb-4 mr-1" style="width:55px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/15/lemon.png"/>" class="img-fluid mb-4 mr-1" style="width:55px">
       멀티비타민</span>
     </div>
     <div>
@@ -235,7 +235,7 @@
 </div>
 
 <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
+  <span class="custom-text"><img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
   &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -250,7 +250,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>

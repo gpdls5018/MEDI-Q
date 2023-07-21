@@ -150,7 +150,7 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #FFDAB9;">
      <div class="container">
-    	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+    	<img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #000080">떠먹여 주는 영양제 레시피</span>
     	<h4><strong style="color:#F15A22; font-size:35px;">근육은 유지하고 지방만 쏙 빼는 다이어트 영양제 레시피</strong></h4>
   	</div>
@@ -162,7 +162,7 @@
   </div>
   
    <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/time.png"/>" class="img-fluid mr-4" style="width:100px">
+	<img src="<c:url value="/images/magazine_images/basic/time.png"/>" class="img-fluid mr-4" style="width:100px">
 	<span style="font-size: xx-large; color: #3964E5"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -173,17 +173,17 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 	         다이어터를 위한 영양제 3종 레시피🥗<br/>
 	         <span class="modalC">: 단백질 + 식이섬유 + 지방 분해 영양제<br/></span></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 단백질 보충제는 아르기닌, 크레아틴, L-카르니틴 등이<br/> 
 			 <span class="modalC">함께 들어간 제품을 선택하면 좋아요.<br/></span></p>
-			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			<p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 		   	 간이 약한 사람은 다이어트 영양제 섭취에 주의가 필요해요.<br/> 
 		   	  <span class="modalC">영양제의 도움을 받는 것도 좋지만 가장 중요한 건 식단 관리와</span><br/>
 		   	  <span class="modalC">꾸준한 운동이라는 점을 꼭 기억해 주세요!</span></p>
@@ -201,11 +201,11 @@
 
   <div class="paragraph">
     <div>
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/one_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/one_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
       근손실을 막는 단백질</span>
     </div>
      <div class="mt-4">
-	    <img src="<c:url value="/resources/images/magazine_images/19/img_yellow14.png"/>" class="img-fluid" style="width: 600px;">
+	    <img src="<c:url value="/images/magazine_images/19/img_yellow14.png"/>" class="img-fluid" style="width: 600px;">
 	 </div>
     <div class="mt-5">
       근육을 유지하면서 체중을 감량하기 위해서는 <span class="underLine">적절한 운동을 하면서 단백질을 보충하는 것이 가장 중요</span>합니다. 
@@ -226,11 +226,11 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/two_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/two_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
       음식이 지방으로 쌓이는 것을 막는 식이섬유</span>
     </div>
     <div class="mt-4">
-	    <img src="<c:url value="/resources/images/magazine_images/19/img_yellow15.png"/>" class="img-fluid" style="width: 600px;">
+	    <img src="<c:url value="/images/magazine_images/19/img_yellow15.png"/>" class="img-fluid" style="width: 600px;">
 	 </div>
     <div class="mt-5">
       살을 빼기 위해서는 적게 먹는 것이 가장 좋지만, 먹는 양을 줄이기가 너무 힘들다면 포만감을 느끼게 해주는 <span class="highLight">차전자피, 글루코만난과 같은 식이섬유</span>를 식사 전에 먹는 것이 도움이 됩니다. 
@@ -239,14 +239,14 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/three_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/three_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
        지방을 분해하는 영양제</span>
     </div>
     <div class="mt-2">
      : 가르시니아, 공액리놀렌산(CLA), 녹차추출물
     </div>
     <div class="mt-4">
-	    <img src="<c:url value="/resources/images/magazine_images/19/img_yellow16.png"/>" class="img-fluid" style="width: 600px;">
+	    <img src="<c:url value="/images/magazine_images/19/img_yellow16.png"/>" class="img-fluid" style="width: 600px;">
 	 </div>
 	 <div class="mt-5">
      다이어트 영양제로 가장 유명한 <span class="highLight">가르시니아</span>는 우리 몸에서 당이 지방으로 변하는 것을 막아주고 우리 몸의 특정 물질을 조절해서 지방을 에너지원으로 사용하도록 도와주는 역할을 합니다.
@@ -262,14 +262,14 @@
     </div>
   </div>
    <div class="paragraphT d-flex">
-   	  <img src="<c:url value="/resources/images/magazine_images/basic/analysis.png"/>" class="img-fluid mb-2 mr-4" style="width:70px; height: 70px;">
+   	  <img src="<c:url value="/images/magazine_images/basic/analysis.png"/>" class="img-fluid mb-2 mr-4" style="width:70px; height: 70px;">
       <div>
       	<b style="font-size: 27px;">빈혈이 있다면?</b><br/>
       	 우리 몸에서 지방을 태우기 위해서는 산소가 필요해요. 그런데 철분이 부족해서 몸 안에서 산소를 제대로 운반하지 못하면 지방을 태우기가 어려워집니다. 따라서 <span class="underLine">철분 부족으로 인한 빈혈이 있는 경우에는 철분을 보충해 주세요!</span>  
       </div>
   </div>
   	<div class="mt-5 ml-3" style="font-size: 23px;">
-     <img src="<c:url value="/resources/images/magazine_images/basic/warning.png"/>" class="img-fluid mb-2 mr-1" style="width: 40px;">
+     <img src="<c:url value="/images/magazine_images/basic/warning.png"/>" class="img-fluid mb-2 mr-1" style="width: 40px;">
      <b style="font-size: 24px;">다이어트 영양제 섭취 시 주의사항</b>
     </div>
     <div class="mt-1 ml-4" style="font-size: 23px;">
@@ -282,7 +282,7 @@
 </div>
 
 <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
+  <span class="custom-text"><img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
   &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -297,7 +297,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>

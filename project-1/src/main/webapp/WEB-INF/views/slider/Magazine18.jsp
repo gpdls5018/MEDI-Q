@@ -145,7 +145,7 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #FFE4E1;">
      <div class="container">
-    	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+    	<img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">떠먹여 주는 영양제 레시피</span>
     	<h4><strong style="color:#EE4949; font-size:35px;">환절기에도 걱정 없는 피부 건강 영양제 레시피</strong></h4>
   	</div>
@@ -156,7 +156,7 @@
     <span class="underLine">유수분의 균형이 깨지고 건조해진 피부를 위한</span> <span class="highLight">수분 폭탄 영양제 레시피</span>를 준비했어요!
   </div>
   <div class="mt-4">
-    <img src="<c:url value="/resources/images/magazine_images/18/img_yellow9.png"/>" class="img-fluid" style="width: 600px;">
+    <img src="<c:url value="/images/magazine_images/18/img_yellow9.png"/>" class="img-fluid" style="width: 600px;">
   </div>
   <div class="mt-5">
     <span class="highLight">피부가 건조해지는 원인은 크기 두 가지</span>가 있어요.<br/>
@@ -166,7 +166,7 @@
   </div>
   
    <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/time.png"/>" class="img-fluid mr-4" style="width:100px">
+	<img src="<c:url value="/images/magazine_images/basic/time.png"/>" class="img-fluid mr-4" style="width:100px">
 	<span style="font-size: xx-large; color: #FF5722"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -177,15 +177,15 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 	         피부 속 염증을 해결해야 근본적인 속 건조를 해결할 수 있어요!<br/></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 피부 장벽을 지키는 영양제까지 추가하면 수분 잠금 완료!<br/></p>
-			 <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			 <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 수분 폭탄 피부를 위한 영양제 4종 레시피💦<br/> 
 			 <span class="modalC">: 오메가3 + 종합비타민 + 맥주 효모 + 피부 보습 인증 영양제<br/></span></p>
 	        </div>	       
@@ -199,11 +199,11 @@
 
   <div class="paragraph-title">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/one_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/one_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
       오메가3</span>
     </div>
     <div class="mt-4">
-      <img src="<c:url value="/resources/images/magazine_images/18/img_yellow10.png"/>" class="img-fluid" style="height: 230px;">
+      <img src="<c:url value="/images/magazine_images/18/img_yellow10.png"/>" class="img-fluid" style="height: 230px;">
     </div>
     <div class="mt-5">
       우리의 피부 표면은 대부분 지방으로 이루어져 있기 때문에 <span class="highLight">오메가3와 같은 지방 성분</span>이 <span class="underLine">피부 장벽을 건강하게 만들어서 피부를 외부 자극으로부터 보호</span>해 주는 데에 도움을 줄 수 있어요. 
@@ -215,11 +215,11 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/two_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/two_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
       종합 비타민 & 미네랄</span>
     </div>
     <div class="mt-4">
-      <img src="<c:url value="/resources/images/magazine_images/18/img_yellow11.png"/>" class="img-fluid" style="height: 270px;">
+      <img src="<c:url value="/images/magazine_images/18/img_yellow11.png"/>" class="img-fluid" style="height: 270px;">
     </div>
     <div class="mt-5">
       다양한 비타민이 피부 건조함을 해결하는 데에 도움을 주기 때문에, 비타민이 골고루 들어간 종합 비타민을 드시는 것이 좋아요.
@@ -240,11 +240,11 @@
   </div>
   <div class="paragraph">
       <div class="mt-5">
-         <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/three_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
+         <span class="para_title"><img src="<c:url value="/images/magazine_images/number/three_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
          맥주 효모, 스피루리나</span>
       </div>
       <div class="mt-4">
-    	 <img src="<c:url value="/resources/images/magazine_images/18/img_yellow12.png"/>" class="img-fluid" style="height: 300px;">
+    	 <img src="<c:url value="/images/magazine_images/18/img_yellow12.png"/>" class="img-fluid" style="height: 300px;">
       </div>
 	  <div class="mt-5">
 	    <span class="underLine">건강한 피부를 위해서는 다양한 아미노산이 필요</span>하기 때문에, <span class="highLight">아미노산이 풍부한 맥주 효모나 스피루리나</span>와 같은 영양제를 먹으면 피부 건강과 탄력에 도움이 됩니다. 
@@ -253,11 +253,11 @@
   </div>
   <div class="paragraph">
       <div class="mt-5">
-         <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/four_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
+         <span class="para_title"><img src="<c:url value="/images/magazine_images/number/four_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
          히알루론산, 콜라겐</span>
       </div>
       <div class="mt-4">
-    	 <img src="<c:url value="/resources/images/magazine_images/18/img_yellow13.png"/>" class="img-fluid" style="height: 300px;">
+    	 <img src="<c:url value="/images/magazine_images/18/img_yellow13.png"/>" class="img-fluid" style="height: 300px;">
       </div>
 	  <div class="mt-5">
 	    피부 영양제 하면 가장 먼저 떠오르는 두 가지가 <span class="highLight">히알루론산과 콜라겐</span>일 것 같아요. 
@@ -274,7 +274,7 @@
 </div>
 
 <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
+  <span class="custom-text"><img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
   &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -289,7 +289,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>

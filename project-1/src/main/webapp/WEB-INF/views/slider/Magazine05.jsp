@@ -145,14 +145,14 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #fff3d6;">
     <div class="container">
-    	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+    	<img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">떠먹여 주는 영양제 레시피</span>
     <h4><strong style="color:#FFB726; font-size:35px;">운동 전후 보충제로 멸치 탈출! 운동 영양제 레시피</strong></h4>
   </div>
 </div>
 
   <div style="font-size:27px;" class="contentTop d-flex">
-	  <img src="<c:url value="/resources/images/magazine_images/basic/running.png"/>" class="img-fluid mr-3 mt-4" style="width:150px; height:150px;"> 
+	  <img src="<c:url value="/images/magazine_images/basic/running.png"/>" class="img-fluid mr-3 mt-4" style="width:150px; height:150px;"> 
     <div class="contents">
       ‘건강’에 대한 관심이 증가하면서 자연스럽게 운동과 관련된 보충제에 대한 관심도 높아지고 있죠.<br/> 
       즐겁게 건강 관리를 하는 헬시 플레저가 확산되고 있지만, 그럼에도 꾸준히 운동한다는 것은 여전히 어려운 일인데요. 힘들게 한 만큼 확실한 효과를 볼 수 있게 도와줄 운동 영양제 레시피를 준비했어요!
@@ -161,7 +161,7 @@
   
   
   <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/time.png"/>" class="img-fluid mr-4" style="width:100px">
+	<img src="<c:url value="/images/magazine_images/basic/time.png"/>" class="img-fluid mr-4" style="width:100px">
 	<span style="font-size: xx-large; color: #2E8B57"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -172,17 +172,17 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
-	         운동러를 위한 <strong style="color: #696969;">영양제 4종</strong> 레시피<img src="<c:url value="/resources/images/magazine_images/basic/fitness.png"/>" class="img-fluid ml-3 mb-4" style="width:40px"><br/> 
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	         운동러를 위한 <strong style="color: #696969;">영양제 4종</strong> 레시피<img src="<c:url value="/images/magazine_images/basic/fitness.png"/>" class="img-fluid ml-3 mb-4" style="width:40px"><br/> 
 	         <span class="modalC">: 단백질 + 아르기닌/BCAA + L-카르니틴 + 크레아틴<br/></span></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 운동 전후 외에도 항상 단백질이 풍부한 음식을 먹되, 많은 양을<br/> 
 			 <span class="modalC">한 번에 먹기보다는 하루 동안 나눠서 먹도록 해주세요.<br/></span></p>
-			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			<p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 		   	 근육 성장이나 운동 능력에 도움을 줄 아르기닌, BCAA, 크레아틴이나<br/> 
 		   	  <span class="modalC">체지방 감소에도 도움을 주는 L-카르니틴 등을 같이 조합해 보세요!</span></p>
 	        </div>	       
@@ -198,12 +198,12 @@
   
   <div class="paragraph">
     <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/basic/1.png"/>" class="img-fluid mb-2 mr-1" style="width:50px">
+      <img src="<c:url value="/images/magazine_images/basic/1.png"/>" class="img-fluid mb-2 mr-1" style="width:50px">
       <span class="subtitle">단백질 보충제</span>
     </div>
     <br>
     <div>
-      <img src="<c:url value="/resources/images/magazine_images/05/01_IMG.png"/>" class="img-fluid">
+      <img src="<c:url value="/images/magazine_images/05/01_IMG.png"/>" class="img-fluid">
     </div>
     <div class="mt-5">
       <p>
@@ -230,12 +230,12 @@
   
   <div class="paragraph">
     <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/basic/2.png"/>" class="img-fluid mb-2 mr-1" style="width:50px">
+      <img src="<c:url value="/images/magazine_images/basic/2.png"/>" class="img-fluid mb-2 mr-1" style="width:50px">
       <span class="subtitle">근육 키우기</span>
     </div>
     <br>
     <div>
-      <img src="<c:url value="/resources/images/magazine_images/05/02_IMG.png"/>" class="img-fluid">
+      <img src="<c:url value="/images/magazine_images/05/02_IMG.png"/>" class="img-fluid">
     </div>
     <div class="mt-5">
       <p>
@@ -260,12 +260,12 @@
   
   <div class="paragraph">
     <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/basic/3.png"/>" class="img-fluid mb-2 mr-1" style="width:50px">
+      <img src="<c:url value="/images/magazine_images/basic/3.png"/>" class="img-fluid mb-2 mr-1" style="width:50px">
       <span class="subtitle">체지방 감소도 함께</span>
     </div>
     <br>
     <div>
-      <img src="<c:url value="/resources/images/magazine_images/05/03_IMG.png"/>" class="img-fluid">
+      <img src="<c:url value="/images/magazine_images/05/03_IMG.png"/>" class="img-fluid">
     </div>
     <div class="mt-5">
       <p>
@@ -287,12 +287,12 @@
   
   <div class="paragraph">
     <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/basic/4.png"/>" class="img-fluid mb-2 mr-1" style="width:50px">
+      <img src="<c:url value="/images/magazine_images/basic/4.png"/>" class="img-fluid mb-2 mr-1" style="width:50px">
       <span class="subtitle">지구력 및 운동 수행능력 향상</span>
     </div>
     <br>
     <div>
-      <img src="<c:url value="/resources/images/magazine_images/05/04_IMG.png"/>" class="img-fluid">
+      <img src="<c:url value="/images/magazine_images/05/04_IMG.png"/>" class="img-fluid">
     </div>
     <div class="mt-5">
       <p>
@@ -312,7 +312,7 @@
 </div>
 
 <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-1" style="width:65px">
+  <span class="custom-text"><img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-1" style="width:65px">
    &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -327,7 +327,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>

@@ -149,7 +149,7 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #D1E897;">
      <div class="container">
-    	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+    	<img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #D93A49">떠먹여 주는 영양제 레시피</span>
     	<h4><strong style="color:#008000; font-size:35px;">뜬 눈으로 밤을 지새는 사람들을 위한 불면증 영양제 레시피</strong></h4>
   	</div>
@@ -163,7 +163,7 @@
      수면제에 대한 의존성이 생길까 봐 두렵거나, 수면제를 먹고 있더라도 추가적인 관리를 하고 싶은 분들을 위해 오늘은 <span class="highLight">꿀잠을 위한 영양제 조합</span>을 추천해 드릴게요!
   </div>
    <div class="mt-4">
-    <img src="<c:url value="/resources/images/magazine_images/16/img_yellow5.png"/>" class="img-fluid" style="width: 600px;">
+    <img src="<c:url value="/images/magazine_images/16/img_yellow5.png"/>" class="img-fluid" style="width: 600px;">
   </div>
    <div class="mt-5">
     불면증의 원인은 다양하지만, 일반적으로 <span class="highLight">환경 변화와 스트레스로 인해 발생하는 경우가 많아요.</span> 
@@ -172,7 +172,7 @@
   </div>
   
    <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/time.png"/>" class="img-fluid mr-4" style="width:100px">
+	<img src="<c:url value="/images/magazine_images/basic/time.png"/>" class="img-fluid mr-4" style="width:100px">
 	<span style="font-size: xx-large; color: #000080"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -183,17 +183,17 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 	         꿀잠을 위한 영양제 3종 레시피🌙<br/>
 	         <span class="modalC">: 마그네슘 + 비타민 B군 + 오메가3<br/></span></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 그 외에 수면에 필요한 물질이나 그 원료, 수면에<br/> 
 			 <span class="modalC">도움이 된다고 인증받은 제품을 추가할 수 있어요.<br/></span></p>
-			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			<p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 		   	 하지만 건강한 수면을 위해서는<br/> 
 		   	  <span class="modalC">반드시 생활 습관부터 관리해 주세요!</span></p>
 	        </div>	       
@@ -210,7 +210,7 @@
 
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/one_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/one_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
       마그네슘</span>
     </div>
     <div class="mt-3">
@@ -228,7 +228,7 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/two_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/two_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
       비타민 B군</span>
     </div>
     <div class="mt-3">
@@ -239,7 +239,7 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/three_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/three_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
        오메가3</span>
     </div>
     <div class="mt-3">
@@ -249,7 +249,7 @@
     </div>
   </div>
    <div class="paragraphT d-flex">
-   	  <img src="<c:url value="/resources/images/magazine_images/basic/analysis.png"/>" class="img-fluid mb-2 mr-4" style="width:70px; height: 70px;">
+   	  <img src="<c:url value="/images/magazine_images/basic/analysis.png"/>" class="img-fluid mb-2 mr-4" style="width:70px; height: 70px;">
       <div>
       	<b style="font-size: 27px;">더 추가하고 싶다면?</b><br/>
       	 앞서 언급했던 <span class="highLight">멜라토닌이나 GABA를 직접 먹거나, 멜라토닌 합성의 원료인 트립토판, 5-HTP 등을 영양제로 먹기도 해요.</span> 
@@ -268,7 +268,7 @@
 </div>
 
 <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
+  <span class="custom-text"><img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
   &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -283,7 +283,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>

@@ -148,7 +148,7 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #FFE4E1;">
     <div class="container">
-    <img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+    <img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">영양소 A to Z</span>
     <h4><strong style="color:#ee4949; font-size:40px;">진짜 효과 있는 콜라겐을 고르는 법</strong></h4>
    </div>
@@ -161,10 +161,10 @@
       그래서 이러한 피부 노화를 되돌리기 위해 콜라겐 성분의 화장품을 바르거나 콜라겐 영양제를 먹고는 하죠.
     </div>
     <div class="custom-img">
-    	<img src="<c:url value="/resources/images/magazine_images/02/01_IMG.png"/>" class="img-fluid">
+    	<img src="<c:url value="/images/magazine_images/02/01_IMG.png"/>" class="img-fluid">
   	</div>
   	<div class="paragraph-title d-flex">
-	    <img src="<c:url value="/resources/images/magazine_images/basic/question.png"/>" class="img-fluid mr-2 mb-5" style="width:90px"> 
+	    <img src="<c:url value="/images/magazine_images/basic/question.png"/>" class="img-fluid mr-2 mb-5" style="width:90px"> 
         <div class="contents">
             그런데 <span style="background-color: #FFE4E1; font-size:24px;">콜라겐은 분자가 커서 절대 흡수가 될 수 없다</span>는 말을 많이 들어보셨을 것 같아요.<br/> 
             과연 콜라겐을 외부에서 공급하는 것이 정말 효과가 있을까요?
@@ -173,7 +173,7 @@
   	
   	
     <div>
-	<img src="<c:url value="/resources/images/magazine_images/basic/work-time.png"/>" class="img-fluid mr-4" style="width:100px">
+	<img src="<c:url value="/images/magazine_images/basic/work-time.png"/>" class="img-fluid mr-4" style="width:100px">
 	<span style="font-size: xx-large; color: #9370DB"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -184,17 +184,17 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 	         피부에 바르는 콜라겐 화장품은 흡수가 되기 어려워요.<br/> 
 	         <span class="modalC">다만 피부 보습 효과는 있어서 피부 건강에 도움이 될 수는 있습니다.<br/></span></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 먹는 콜라겐도 흡수되는 양이 많지는 않지만 요즘은 피부 건강에<br/> 
 			 <span class="modalC">도움을 준다는 기능성을 인증받은 영양제가 출시되고 있어요.<br/></span></p>
-			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			<p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 		   	 영양제를 고를 때는 식약처 인증 여부, 콜라겐 분자량, <br/> 
 		   	  <span class="modalC">제형, 부원료 등을 확인하고 골라주세요!</span></p>
 	        </div>	       
@@ -213,7 +213,7 @@
       <span class="para_title">바르는 콜라겐</span>
     </div>
     <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/02/02_IMG.png"/>" class="img-fluid">
+      <img src="<c:url value="/images/magazine_images/02/02_IMG.png"/>" class="img-fluid">
     </div>
     <div class="mt-3">
       많이 알려진 정보처럼 <span class="underLine">콜라겐 입자는 크기 때문에 피부로 들어가기가 어려워요. </span>
@@ -227,7 +227,7 @@
       <span class="para_title">그렇다면 먹는 콜라겐은 효과가 있을까?</span>
     </div>
     <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/02/03_IMG.png"/>" class="img-fluid">
+      <img src="<c:url value="/images/magazine_images/02/03_IMG.png"/>" class="img-fluid">
     </div>
     <div class="mt-3">
       바르는 콜라겐과 마찬가지로 먹는 콜라겐도 분자가 커서 흡수가 되기 어려워요.
@@ -246,19 +246,19 @@
       <span class="para_title">효과 좋은 콜라겐 영양제 고르는 법</span>
     </div>
     <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/02/04_IMG.png"/>" class="img-fluid">
+      <img src="<c:url value="/images/magazine_images/02/04_IMG.png"/>" class="img-fluid">
     </div>
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/basic/1.png"/>" class="img-fluid mb-2" style="width:50px">
+      <img src="<c:url value="/images/magazine_images/basic/1.png"/>" class="img-fluid mb-2" style="width:50px">
       <span class="subtitle">인증 마크</span>
     </div>
     <div class="mt-3">
       식약처의 인증을 받은 콜라겐 영양제에는 <span class="highLight">‘건강기능식품’ 인증 마크</span>가 있어요. (제품유형에는 건강기능식품이라고 표기되어 있습니다.)
     </div>
     <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/02/05_IMG.png"/>" class="img-fluid">
+      <img src="<c:url value="/images/magazine_images/02/05_IMG.png"/>" class="img-fluid">
     </div>
     <div class="mt-3">
       식약처의 인증을 받은 콜라겐의 기본적인 기능성은 ‘피부 보습에 도움을 줄 수 있음’이에요.
@@ -273,7 +273,7 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/basic/2.png"/>" class="img-fluid mb-2" style="width:50px">
+      <img src="<c:url value="/images/magazine_images/basic/2.png"/>" class="img-fluid mb-2" style="width:50px">
       <span class="subtitle">콜라겐 분자의 크기, 달톤</span>
     </div>
     <div class="mt-3">
@@ -289,7 +289,7 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/basic/3.png"/>" class="img-fluid mb-2" style="width:50px">
+      <img src="<c:url value="/images/magazine_images/basic/3.png"/>" class="img-fluid mb-2" style="width:50px">
       <span class="subtitle">제형</span>
     </div>
     <div class="mt-3">
@@ -300,7 +300,7 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/basic/4.png"/>" class="img-fluid mb-2" style="width:50px">
+      <img src="<c:url value="/images/magazine_images/basic/4.png"/>" class="img-fluid mb-2" style="width:50px">
       <span class="subtitle">부원료</span>
     </div>
     <div class="mt-3">
@@ -314,7 +314,7 @@
   <hr class="my-hr mt-5 mb-5">
    -->
   <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-1" style="width:65px">
+  <span class="custom-text"><img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-1" style="width:65px">
   &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -329,7 +329,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>

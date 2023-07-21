@@ -149,7 +149,7 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #D1E897;">
      <div class="container">
-    	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+    	<img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #D93A49">Health & Life</span>
     	<h4><strong style="color:#008000; font-size:35px;">수면제 없이 불면증 극복하는 법</strong></h4>
   	</div>
@@ -166,8 +166,8 @@
     대한수면연구학회에서 제공하는 다음과 같은 <span class="underLine">불면증 자가진단 체크리스트</span>를 통해 의료기관 방문 전 먼저 확인해 볼 수 있어요.
   </div>
    <div class="mt-5 d-flex">
-    <img src="<c:url value="/resources/images/magazine_images/13/Diagnosis1.png"/>" class="img-fluid mr-1" style="width: 550px;">
-    <img src="<c:url value="/resources/images/magazine_images/13/Diagnosis2.png"/>" class="img-fluid" style="width: 550px;">
+    <img src="<c:url value="/images/magazine_images/13/Diagnosis1.png"/>" class="img-fluid mr-1" style="width: 550px;">
+    <img src="<c:url value="/images/magazine_images/13/Diagnosis2.png"/>" class="img-fluid" style="width: 550px;">
   </div>
    <div class="mt-5">
     불면이 지속되면 일상의 불편함을 넘어 건강에도 좋지 않은 영향을 주기 때문에 적절한 조치가 필요한데요. 
@@ -175,7 +175,7 @@
   </div>
   
    <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/HealthLife.png"/>" class="img-fluid mr-2 mb-3" style="width:110px">
+	<img src="<c:url value="/images/magazine_images/basic/HealthLife.png"/>" class="img-fluid mr-2 mb-3" style="width:110px">
 	<span style="font-size: xx-large; color: #000080"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -186,16 +186,16 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 	         낮 시간엔 긴 낮잠 대신 밖에 나가서 햇빛을 쬐며 운동을 해보세요.<br/></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 잠자기 전 야식과 전자기기는 멀리하고 몸과 마음을<br/> 
 			 <span class="modalC">안정킬 수 있도록 해주세요.<br/></span></p>
-			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			<p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 		   	 건강한 수면을 위해서는 무엇보다 올바른 수면 습관을 가지는 것이<br/> 
 		   	  <span class="modalC">중요하니, 어렵더라도 하나씩 습관을 바꿔나가 보아요!</span></p>
 	        </div>	       
@@ -215,10 +215,10 @@
       그럼, 일상 속에서 쉽게 도전해 볼 만한 <span class="highLight">‘숙면을 위한 성형 습관 TIP’</span> 5가지를 소개해 드릴게요!
     </div>
     <div class="mt-5">
-      <img src="<c:url value="/resources/images/magazine_images/13/img_green9.png"/>" class="img-fluid" style="width: 600px;">
+      <img src="<c:url value="/images/magazine_images/13/img_green9.png"/>" class="img-fluid" style="width: 600px;">
     </div>
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/one_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/one_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
       낮잠은 과유불급</span>
     </div>
     <div class="mt-3">
@@ -229,7 +229,7 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/two_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/two_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
       야식은 멀리하기</span>
     </div>
     <div class="mt-3">
@@ -241,7 +241,7 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/three_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/three_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
       밖에 나가서 햇볕 쬐기</span>
     </div>
     <div class="mt-3">
@@ -251,7 +251,7 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/four_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/four_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
       스마트폰과 잠시 이별하기</span>
     </div>
     <div class="mt-3">
@@ -261,7 +261,7 @@
   </div>
     <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/five_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/five_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
       낮 시간의 꾸준한 운동</span>
     </div>
     <div class="mt-3">
@@ -274,7 +274,7 @@
     </div>
    </div>
    <div class="paragraphT d-flex">
-   	  <img src="<c:url value="/resources/images/magazine_images/basic/analysis.png"/>" class="img-fluid mb-2 mr-4" style="width:70px; height: 70px;">
+   	  <img src="<c:url value="/images/magazine_images/basic/analysis.png"/>" class="img-fluid mb-2 mr-4" style="width:70px; height: 70px;">
       <div>
       이 밖에도 카페인은 오전 중에만 섭취하고, 니코틴 또한 뇌를 각성시키는 것은 물론 새벽에 호흡기 자극을 주기 때문에 취침 전 흡연은 피하는 것이 좋아요. 
       또한 주말에 잠을 몰아서 자는 것은 수면 패턴을 망가뜨릴 수 있으니 항상 일정한 수면 패턴을 유지하는 것이 좋습니다.
@@ -282,12 +282,12 @@
   </div>
   	  <div class="mt-3" style="font-size: 23px;">
       물론 처음에는 쉽지 않겠지만 오늘 말씀드린 습관을 <strong>하나씩 실천해 나가다 보면 불면증도 조금씩 나아질 거예요!</strong>
-      <img src="<c:url value="/resources/images/magazine_images/13/sleep.png"/>" class="img-fluid mb-2 mr-2" style="width:45px">
+      <img src="<c:url value="/images/magazine_images/13/sleep.png"/>" class="img-fluid mb-2 mr-2" style="width:45px">
       </div>
 </div>
 
 <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
+  <span class="custom-text"><img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
   &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -302,7 +302,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>

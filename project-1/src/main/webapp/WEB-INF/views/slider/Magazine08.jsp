@@ -145,7 +145,7 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #B0E0E6;">
      <div class="container">
-    	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+    	<img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">영양제 팩트체크</span>
     	<h4><strong style="color:#191970; font-size:35px;">키 크는 영양제, 우리 아이도 먹여야 할까?</strong></h4>
   	</div>
@@ -158,11 +158,11 @@
     그런데 키 크는 영양제라고 해도 대부분 종합 영양제와 크게 다를 바가 없다고 생각하거나 효과가 있을지에 대한 고민이 되곤 하죠. 오늘은 <span class="highLight">어린이 키 성장 영양제에는 어떤 성분이 들어있고 정말 효과가 있는지</span> 집중적으로 알아볼게요!
   </div>
   <div class="mt-4">
-    <img src="<c:url value="/resources/images/magazine_images/08/img_blue3.png"/>" class="img-fluid">
+    <img src="<c:url value="/images/magazine_images/08/img_blue3.png"/>" class="img-fluid">
   </div>
   
    <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/notes.png"/>" class="img-fluid mr-4 mb-4" style="width:110px">
+	<img src="<c:url value="/images/magazine_images/basic/notes.png"/>" class="img-fluid mr-4 mb-4" style="width:110px">
 	<span style="font-size: xx-large; color: #FF7F50"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -173,18 +173,18 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 	        키 성장을 위해서는 영양 관리가 중요하기 때문에 아미노산이나<br/> 
 	         <span class="modalC">비타민, 미네랄 등이 골고루 들어간 영양제를 챙겨주세요.<br/></span></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			‘황기추출물 등 복합물(HT042)’이라는 성분은 <br/> 
 			 <span class="modalC">어린이 키 성장에 도움이 된다고 인증을 받은 영양소예요!<br/></span>
 			 <span class="modalC">이 성분이 들어간 제품은 키 성장에 도움이 될 수 있어요.<br/></span></p>
-			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			<p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 		   	허위·과장 광고되는 키 성장 영양제도 많으니 인증받은 제품인지<br/> 
 		   	  <span class="modalC">확인하고 선택하도록 해주세요.</span></p>
 	        </div>	       
@@ -229,10 +229,10 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/basic/warning.png"/>" class="img-fluid mb-3 mr-2" style="width: 65px; height: 65px;">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/basic/warning.png"/>" class="img-fluid mb-3 mr-2" style="width: 65px; height: 65px;">
       키 성장 영양제 허위 광고 주의</span>
     </div>
-    <img src="<c:url value="/resources/images/magazine_images/08/img_blue4.png"/>" class="img-fluid mt-4">
+    <img src="<c:url value="/images/magazine_images/08/img_blue4.png"/>" class="img-fluid mt-4">
   </div>
   <div class="mt-5">
     <span class="underLine">건강기능식품 인증을 받지 않은 일반 ‘식품’인데 키 성장에 도움을 준다는 문구로 부당 광고</span>를 해서 적발되는 경우가 종종 있습니다.
@@ -248,7 +248,7 @@
 </div>
 
 <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
+  <span class="custom-text"><img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
   &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -263,7 +263,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>

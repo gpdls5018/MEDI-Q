@@ -145,7 +145,7 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #FFCCBC;">
      <div class="container">
-    	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+    	<img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #E91E63">Health & Life</span>
     	<h4><strong style="color:#FF5722; font-size:35px;">건강을 위한 올바른 수분 섭취법</strong></h4>
   	</div>
@@ -157,12 +157,12 @@
     <span class="highLight">건강한 일상을 지키는 올바르고 현명한 물 섭취 방법 4가지</span>를 알아볼게요.
   </div>
   <div class="mt-5">
-    <img src="<c:url value="/resources/images/magazine_images/12/img_green7.png"/>" class="img-fluid" style="width: 600px;">
+    <img src="<c:url value="/images/magazine_images/12/img_green7.png"/>" class="img-fluid" style="width: 600px;">
   </div>
   
   
    <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/HealthLife.png"/>" class="img-fluid mr-2 mb-3" style="width:110px">
+	<img src="<c:url value="/images/magazine_images/basic/HealthLife.png"/>" class="img-fluid mr-2 mb-3" style="width:110px">
 	<span style="font-size: xx-large; color: #7CB342"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -173,17 +173,17 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 	         너무 과한 물은 오히려 독! 적절한 수분 섭취하기<br/></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 한 번에 많이 마시지 않고 나눠 마시기<br/></p>
-			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			<p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 		   	 커피나 음료수 대신 순수한 물 마시기<br/></p>
-		   	<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-4.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+		   	<p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-4.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 		   	 잠에서 깬 후와 식사 전 물 한 잔,<br/> 
 		   	  <span class="modalC">운동 전후와 중간에도 잊지 말고 물 마시기</span></p>
 	        </div>	       
@@ -200,7 +200,7 @@
 
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/12/water.png"/>" class="img-fluid mb-4" style="width:65px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/12/water.png"/>" class="img-fluid mb-4" style="width:65px">
       적절한 물 섭취량 지키기</span>
     </div>
     <div class="mt-2">
@@ -219,7 +219,7 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/12/water.png"/>" class="img-fluid mb-4" style="width:65px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/12/water.png"/>" class="img-fluid mb-4" style="width:65px">
       한 번에 마시지 않고 나눠서 마시기</span>
     </div>
     <div class="mt-2">
@@ -236,7 +236,7 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/12/water.png"/>" class="img-fluid mb-4" style="width:65px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/12/water.png"/>" class="img-fluid mb-4" style="width:65px">
       수분 섭취는 꼭 ‘물’로 하기</span>
     </div>
 	<div class="mt-2">
@@ -257,11 +257,11 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/12/water.png"/>" class="img-fluid mb-4" style="width:65px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/12/water.png"/>" class="img-fluid mb-4" style="width:65px">
       꼭 물을 마셔야 하는 시간 지키기</span>
     </div>
 	<div class="mt-2">
-		<img src="<c:url value="/resources/images/magazine_images/number/one_W.png"/>" class="img-fluid mb-2 mr-2" style="width:45px">
+		<img src="<c:url value="/images/magazine_images/number/one_W.png"/>" class="img-fluid mb-2 mr-2" style="width:45px">
 	    <span class="underLine" style="font-size: 24px;">아침에 눈 뜨자마자</span>
 	</div>
 	<div class="mt-3">
@@ -274,7 +274,7 @@
 	     <span class="highLight">수면에 방해</span>가 될 수 있으니 잠자기 1시간 전에는 적당한 양의 물을 마시는 것이 좋습니다.
 	</div>
 	<div class="mt-5">
-	    <img src="<c:url value="/resources/images/magazine_images/number/two_W.png"/>" class="img-fluid mb-2 mr-2" style="width:45px">
+	    <img src="<c:url value="/images/magazine_images/number/two_W.png"/>" class="img-fluid mb-2 mr-2" style="width:45px">
 	    <span class="underLine" style="font-size: 24px;">식사 30분 전</span>
 	</div>
 	<div class="mt-3">
@@ -285,7 +285,7 @@
 	     특히 나이가 들면 위액의 양이 줄어 소화 기능이 떨어지는데, 이때 식사 전후로 물을 많이 마시게 되면 위액이 묽어져 소화에 방해가 될 수 있으니 너무 많은 물을 마시지 않도록 해주세요.
 	</div>
 	<div class="mt-5">
-	    <img src="<c:url value="/resources/images/magazine_images/number/three_W.png"/>" class="img-fluid mb-2 mr-2" style="width:45px">
+	    <img src="<c:url value="/images/magazine_images/number/three_W.png"/>" class="img-fluid mb-2 mr-2" style="width:45px">
 	    <span class="underLine" style="font-size: 24px;">운동 전후와 운동 중</span>
 	</div>
 	<div class="mt-3">
@@ -301,7 +301,7 @@
 </div>
 
 <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
+  <span class="custom-text"><img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
   &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -316,7 +316,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>

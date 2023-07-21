@@ -149,7 +149,7 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #AFDFE4;">
      <div class="container">
-    	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+    	<img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #D93A49">떠먹여 주는 영양제 레시피</span>
     	<h4><strong style="color:#009AD6; font-size:35px;">약사가 추천하는 우울증 극복 영양제 레시피</strong></h4>
   	</div>
@@ -160,7 +160,7 @@
     하지만 감기처럼 가볍게 생각하고 넘기기에는, 우울증은 식욕이나 체중의 변화, 이유 없는 피로감 등과 같은 신체적 증상을 동반하는 경우가 많으며 심할 경우 사회생활이 힘들어지거나 자살과 같은 극단적인 결과를 가져올 수 있으니 꼭 관리해야 하는 질환이에요.
   </div>
    <div class="mt-4">
-    <img src="<c:url value="/resources/images/magazine_images/17/img_yellow7.png"/>" class="img-fluid" style="width: 600px;">
+    <img src="<c:url value="/images/magazine_images/17/img_yellow7.png"/>" class="img-fluid" style="width: 600px;">
   </div>
    <div class="mt-5">
     우울증으로 힘들어하는 현대인들이 많아지고 있는 만큼 여러 영양소와 우울증 간의 관계에 대한 다양한 연구들이 진행되고 있습니다. 
@@ -168,7 +168,7 @@
   </div>
   
    <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/time.png"/>" class="img-fluid mr-4" style="width:100px">
+	<img src="<c:url value="/images/magazine_images/basic/time.png"/>" class="img-fluid mr-4" style="width:100px">
 	<span style="font-size: xx-large; color: #9ACD32"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -179,16 +179,16 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 	         우울증을 극복하기 위한 영양제 3종 레시피 💛<br/>
 	         <span class="modalC">: 오메가3 + 종합비타민 + 유산균<br/></span></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 장 건강은 곧 뇌 건강! 건강한 식단으로 건강한 장을 만들어 주세요.<br/></p>
-			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			<p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 		   	 해외 직구 우울증 영양제는 먹기 전에 꼭 전문가와 상담하고,<br/> 
 		   	  <span class="modalC">처방받은 약은 임의로 조절하거나 중단하지 않도록 해주세요.</span></p>
 	        </div>	       
@@ -205,7 +205,7 @@
 
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/one_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/one_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
       오메가3</span>
     </div>
     <div class="mt-3">
@@ -221,7 +221,7 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/two_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/two_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
       종합 비타민 & 미네랄</span>
     </div>
     <div class="mt-3">
@@ -235,7 +235,7 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/three_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/three_W.png"/>" class="img-fluid mb-2 mr-2" style="width:50px">
        유산균</span>
     </div>
     <div class="mt-3">
@@ -248,7 +248,7 @@
     </div>
   </div>
    <div class="paragraphT d-flex">
-   	  <img src="<c:url value="/resources/images/magazine_images/basic/analysis.png"/>" class="img-fluid mb-2 mr-4" style="width:70px; height: 70px;">
+   	  <img src="<c:url value="/images/magazine_images/basic/analysis.png"/>" class="img-fluid mb-2 mr-4" style="width:70px; height: 70px;">
       <div>
       	<b style="font-size: 27px;">더 추가하고 싶다면?</b><br/>
       	 해외에서는 <span class="highLight">SAM-e(S-Adenosyl-L-Methionine)와 St. John’s wort(세인트존스워트, 성요한초)</span> 
@@ -260,7 +260,7 @@
       </div>
   </div>
   	<div class="mt-4">
-     <img src="<c:url value="/resources/images/magazine_images/17/img_yellow8.png"/>" class="img-fluid ml-5" style="width: 600px;">
+     <img src="<c:url value="/images/magazine_images/17/img_yellow8.png"/>" class="img-fluid ml-5" style="width: 600px;">
     </div>
     <div class="mt-4 ml-5" style="font-size: 23px;">
     	<span class="underLine">영양제는 치료 ‘약’이 아닙니다.</span> 만약에 병원에서 처방받은 우울증 약이 있다면 본인의 판단으로 중단하지 말고 꾸준히 드셔야 하고, 
@@ -269,7 +269,7 @@
 </div>
 
 <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
+  <span class="custom-text"><img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
   &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -284,7 +284,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>

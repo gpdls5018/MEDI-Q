@@ -145,7 +145,7 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #DCE775;">
      <div class="container">
-    	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+    	<img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #3373CC">Health & Life</span>
     	<h4><strong style="color:#008200; font-size:35px;">변비, 유산균 말고 다른 방법은 없을까?</strong></h4>
   	</div>
@@ -160,7 +160,7 @@
   </div>
   
    <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/HealthLife.png"/>" class="img-fluid mr-2 mb-3" style="width:110px">
+	<img src="<c:url value="/images/magazine_images/basic/HealthLife.png"/>" class="img-fluid mr-2 mb-3" style="width:110px">
 	<span style="font-size: xx-large; color: #FF5722"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -171,14 +171,14 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 	         변비의 기준은 변을 보지 못하는 것이 아니에요.<br/> 
 	         <span class="modalC">정확한 기준에 따라 본인의 증상을 체크해 보세요.<br/></span></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 충분한 식사와 수분 섭취, 올바른 배변 습관 만들기, 운동하기 등의<br/> 
 			 <span class="modalC">생활습관 개선으로 변비를 관리해 보세요!<br/></span></p>
 	        </div>	       
@@ -194,7 +194,7 @@
   <div class="paragraph-title">
     <div class="mt-5">
       <span class="para_title">
-      <img src="<c:url value="/resources/images/magazine_images/basic/check.png"/>" class="img-fluid mb-4" style="width:60px">
+      <img src="<c:url value="/images/magazine_images/basic/check.png"/>" class="img-fluid mb-4" style="width:60px">
       변비 자가 진단 체크리스트</span>
     </div>  
     <div class="mt-3">
@@ -202,27 +202,27 @@
   	</div>
      	<div class="ml-3 mt-4 mb-2">
 	     	<p>
-	          <img src="<c:url value="/resources/images/magazine_images/number/one_B.png"/>" class="img-fluid mb-2 mr-1" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/number/one_B.png"/>" class="img-fluid mb-2 mr-1" style="width:40px">
 	          배변 횟수가 1주일에 3회 미만
 	        </p>
 	        <p>
-	          <img src="<c:url value="/resources/images/magazine_images/number/two_B.png"/>" class="img-fluid mb-2 mr-1" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/number/two_B.png"/>" class="img-fluid mb-2 mr-1" style="width:40px">
 	          4회 배변 중 1회 이상 잔변감이 있을 때
 	        </p>
 	        <p>
-	          <img src="<c:url value="/resources/images/magazine_images/number/three_B.png"/>" class="img-fluid mb-2 mr-1" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/number/three_B.png"/>" class="img-fluid mb-2 mr-1" style="width:40px">
 	          4회 배변 중 1회 이상 과도하게 힘을 줘야 할 때
 	        </p>
 	        <p>
-	          <img src="<c:url value="/resources/images/magazine_images/number/four_B.png"/>" class="img-fluid mb-2 mr-1" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/number/four_B.png"/>" class="img-fluid mb-2 mr-1" style="width:40px">
 	          4회 배변 중 1회 이상 딱딱한 변을 볼 때
 	        </p>
 	        <p>
-	          <img src="<c:url value="/resources/images/magazine_images/number/five_B.png"/>" class="img-fluid mb-2 mr-1" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/number/five_B.png"/>" class="img-fluid mb-2 mr-1" style="width:40px">
 	          4회 배변 중 1회 이상 항문이 막힌 느낌이 들 때
 	        </p>
 	        <p>
-	          <img src="<c:url value="/resources/images/magazine_images/number/six_B.png"/>" class="img-fluid mb-2 mr-1" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/number/six_B.png"/>" class="img-fluid mb-2 mr-1" style="width:40px">
 	          4회 배변 중 1회 이상 배변 유도를 위한 부가적 처치가 필요할 때
 	        </p>
      	</div>
@@ -234,11 +234,11 @@
 
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/one_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/one_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
       식이섬유가 풍부한 식사하기</span>
     </div>
     <div class="mt-4">
-      <img src="<c:url value="/resources/images/magazine_images/11/img_green3.png"/>" class="img-fluid" style="height: 300px;">
+      <img src="<c:url value="/images/magazine_images/11/img_green3.png"/>" class="img-fluid" style="height: 300px;">
     </div>
     <div class="mt-5">
       <span class="underLine">식사량이 충분해야 대변의 양도 많아져서 배변하기가 쉬워져요.</span> 다이어트를 해서 먹는 양이 줄면 변비가 잘 생기는 이유에요.
@@ -250,11 +250,11 @@
   </div>
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/two_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
+      <span class="para_title"><img src="<c:url value="/images/magazine_images/number/two_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
       충분한 수분 섭취하기</span>
     </div>
     <div class="mt-4">
-      <img src="<c:url value="/resources/images/magazine_images/11/img_green4.png"/>" class="img-fluid" style="height: 300px;">
+      <img src="<c:url value="/images/magazine_images/11/img_green4.png"/>" class="img-fluid" style="height: 300px;">
     </div>
     <div class="mt-5">
       식이섬유는 물을 흡수하여 변을 부드럽게 만들어줍니다. 그런데 <span class="underLine">충분한 물을 먹지 않고 식이섬유만 갑자기 먹으면 오히려 배에 가스가 차고 변비가 악화</span>될 수 있어요. 
@@ -266,11 +266,11 @@
   </div>
   <div class="paragraph">
       <div class="mt-5">
-         <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/three_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
+         <span class="para_title"><img src="<c:url value="/images/magazine_images/number/three_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
          올바른 배변 습관 만들기</span>
       </div>
       <div class="mt-4">
-    	 <img src="<c:url value="/resources/images/magazine_images/11/img_green5.png"/>" class="img-fluid" style="height: 300px;">
+    	 <img src="<c:url value="/images/magazine_images/11/img_green5.png"/>" class="img-fluid" style="height: 300px;">
       </div>
 	  <div class="mt-5">
 	    <span class="highLight">매일 아침 화장실에 가는 습관을 들이는 것</span>이 중요해요. 
@@ -284,11 +284,11 @@
   </div>
   <div class="paragraph">
       <div class="mt-5">
-         <span class="para_title"><img src="<c:url value="/resources/images/magazine_images/number/four_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
+         <span class="para_title"><img src="<c:url value="/images/magazine_images/number/four_W.png"/>" class="img-fluid mb-2 mr-2" style="width:60px">
          운동하기</span>
       </div>
       <div class="mt-4">
-    	 <img src="<c:url value="/resources/images/magazine_images/11/img_green6.png"/>" class="img-fluid" style="height: 300px;">
+    	 <img src="<c:url value="/images/magazine_images/11/img_green6.png"/>" class="img-fluid" style="height: 300px;">
       </div>
 	  <div class="mt-5">
 	    <span class="underLine">활동량이 적으면 장도 잘 움직이지 않아서 변비가 심해질 수 있어요.</span> 특히 복근의 힘이 약하면 변을 배출하는 힘이 약해져 변비의 원인이 될 수 있습니다. 
@@ -301,7 +301,7 @@
 </div>
 
 <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
+  <span class="custom-text"><img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
   &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -316,7 +316,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>

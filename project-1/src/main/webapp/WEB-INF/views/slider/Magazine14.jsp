@@ -145,7 +145,7 @@
 <div class="container custom-top">
   <div class="jumbotron rounded-3" style="background-color: #EDCAED;">
      <div class="container">
-    	<img src="<c:url value="/resources/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
+    	<img src="<c:url value="/images/magazine_images/basic/search.png"/>" class="img-fluid" style="width:40px">
 	    <span class="navbar-text" style="padding-left: 6px; color: #11264F">영린이 탈출, 영양제 상식</span>
     	<h4><strong style="color:#800080; font-size:35px;">변비 해결을 위한, 똑똑하게 유산균 먹는 법</strong></h4>
   	</div>
@@ -162,7 +162,7 @@
   
   
    <div class="paragraph-title">
-	<img src="<c:url value="/resources/images/magazine_images/basic/contract.png"/>" class="img-fluid mr-4" style="width:100px">
+	<img src="<c:url value="/images/magazine_images/basic/contract.png"/>" class="img-fluid mr-4" style="width:100px">
 	<span style="font-size: xx-large; color: #F15A22"><strong>MEDI-Q의 1분 요약</strong></span>
 	 	<button type="button" class="btn custom-modal ml-2 mb-2" data-toggle="modal" data-target="#myModal">
    		 Click
@@ -173,17 +173,17 @@
 	        <div class="modal-header">
 	          <h4 class="modal-title" style="font-size: xx-large; color: #FF7C4C">
 	          MEDI-Q의 1분 요약
-	          <img src="<c:url value="/resources/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
+	          <img src="<c:url value="/images/magazine_images/basic/loupe.png"/>" class="img-fluid ml-2 mb-2" style="width:40px">
 	          </h4>
 	        </div>
 	        <div class="modal-body">
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-1.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 	         공복에 먹는 것과 식후에 먹는 것은 각각의 장점이 있기 때문에<br/> 
 	         <span class="modalC">매일 꾸준히 복용하는 것이 더 중요해요.<br/></span></p>
-	        <p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+	        <p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-2.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 			 충분한 식이섬유를 식사로 챙겨 먹거나 프리바이오틱스를<br/> 
 			 <span class="modalC">함께 섭취해 주세요.<br/></span></p>
-			<p class="modalB"><img src="<c:url value="/resources/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
+			<p class="modalB"><img src="<c:url value="/images/magazine_images/basic/number-3.png"/>" class="img-fluid mt-2 mr-2 ml-2 mb-3" style="width:40px">
 		   	 무조건 많은 수보다는 나에게 맞는 균 수 찾기, 항생제와 동시에<br/> 
 		   	  <span class="modalC">복용하지 않기까지 챙기면 500% 효과 보장 유산균 섭취 완료!</span></p>
 	        </div>	       
@@ -200,10 +200,10 @@
 
   <div class="paragraph">
     <div class="mt-5">
-      <span class="para_title">유산균은 아침 공복에<img src="<c:url value="/resources/images/magazine_images/basic/question2.png"/>" class="img-fluid mb-3" style="width:55px"> </span>
+      <span class="para_title">유산균은 아침 공복에<img src="<c:url value="/images/magazine_images/basic/question2.png"/>" class="img-fluid mb-3" style="width:55px"> </span>
     </div>
     <div class="mt-3">
-      <img src="<c:url value="/resources/images/magazine_images/14/img_sky2.png"/>" class="img-fluid">
+      <img src="<c:url value="/images/magazine_images/14/img_sky2.png"/>" class="img-fluid">
     </div>
     <div class="mt-4">
       흔히 <span class="underLine">유산균은 위산의 영향이 가장 적은 아침 공복에 먹어야한다</span>고 알고 계시는 분들이 많으시죠.
@@ -228,7 +228,7 @@
       <span class="para_title">유산균의 먹이, 프리바이오틱스</span>
     </div>
     <div class="mt-4">
-      <img src="<c:url value="/resources/images/magazine_images/14/img_sky3.png"/>" class="img-fluid" style="width: 600px;">
+      <img src="<c:url value="/images/magazine_images/14/img_sky3.png"/>" class="img-fluid" style="width: 600px;">
     </div>
     <div class="mt-4">
       위에서 유산균의 먹이에 대해 얘기했는데, 유산균이 우리 몸에서 활발하게 활동하려면 유산균에게도 먹이가 필요해요. 대표적인 유산균의 먹이로는 올리고당과 섬유질이 있어요.
@@ -265,7 +265,7 @@
 </div>
 
 <div class="container custom-footer">
-  <span class="custom-text"><img src="<c:url value="/resources/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
+  <span class="custom-text"><img src="<c:url value="/images/magazine_images/basic/happy.png"/>" class="img-fluid mb-2" style="width:65px">
   &nbsp;관련 영양제 인기 TOP 5 <i class="bi bi-chat-quote"></i></span>
   <div class="wrap-vertical">
     <c:if test="${empty listData}" var="listIsEmpty">
@@ -280,7 +280,7 @@
      			 <img src="${record.imgURL}" style="width:250px;height:190px;" class="img-fluid product-img">
    			  </c:when>
     		  <c:otherwise>
-      			 <img src="<c:url value='/resources/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
+      			 <img src="<c:url value='/images/thumbnail_img/No_IMG.jpeg'/>" style="object-fit: fill; width:250px;height:190px;" class="img-fluid product-img">
     		  </c:otherwise>
   			</c:choose>
 		  </a>
