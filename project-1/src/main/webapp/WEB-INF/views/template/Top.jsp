@@ -428,13 +428,21 @@
 	            <a href="<c:url value="/NutrientSelectFunctional.do"/>">기능성 원료</a>
 	          </div>
 	        </div>
-	        <div class="section">
-	          <h3>
-	            <a class="text-decoration-none"  href="<c:url value="/ranking/selectfood.do"/>">
+	        <div  id="two" class="section" active:false>
+	          <h3 class="d-flex">
+	            <a href="#two" class="text-decoration-none" style="align-items: center;">
 	                <img src="<c:url value="/resources/images/shape/캡슐.png"/>" style="opacity: 0.8;" width="25" height="25">
 	                &nbsp; 영양제 검색
+	                <span class="arrow-down" style="margin-left: 90px;" ></span>
 	            </a>
 	          </h3>
+	          <div class="ditem tstm3">
+	          	<a href="<c:url value="/ranking/selectfood.do"/>">전체 검색</a>
+	          	
+	            <a href="<c:url value="/ranking/selectfoodnutrient.do"/>">성분 검색</a>
+	 			
+	            <a href="<c:url value="/ranking/selectfoodcompany.do"/>">제품명/브랜드 검색</a>
+	          </div>
 	        </div>
 	        <div id="three" class="section">
 	          <h3>
