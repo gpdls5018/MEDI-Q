@@ -8,10 +8,12 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
-<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-messaging.js"></script>
 
+<%-- webpuch firebase 
+<script src="../firebase-messaging-sw.js"></script>
+ --%>
 <!-- 로그인 후에만 들어올 수 있도록 -->
 <style>
 	a:hover{
@@ -91,7 +93,7 @@
         .ui-button:hover,
         .ui-button:focus { border: 0px solid #cccccc; background-color: transparent; font-weight: normal; color: #2b2b2b; } 
 
-        .ui-widget-header .ui-icon { background-image: url('<c:url value="/resources/images/basic/btns.png"/>'); } 
+        .ui-widget-header .ui-icon { background-image: url('<c:url value="/images/basic/btns.png"/>'); } 
 
         .ui-icon-circle-triangle-e { background-position: -20px 0px; background-size: 36px; } 
 
@@ -121,10 +123,10 @@
 			<div class="row d-flex px-3 py-3" >
 				<c:if test="${info.prof_Img_Fl eq 'Y' }" var="isProfImg">
 					<c:set var="uploadFolder" value="${fn:split(profImg.pi_Path,'\\\\')[fn:length(fn:split(profImg.pi_Path, '\\\\'))-1] }"/>
-					<img class="rounded-circle" alt="사용자 이미지" src="<c:url value="/resources/images/${uploadFolder }/${profImg.pi_Filename }.${profImg.pi_Ext }" />" style="width: 80px; height: 80px">
+					<img class="rounded-circle" alt="사용자 이미지" src="<c:url value="/images/${uploadFolder }/${profImg.pi_Filename }.${profImg.pi_Ext }" />" style="width: 80px; height: 80px">
 				</c:if>
 				<c:if test="${not isProfImg }">
-					<img class="rounded-circle" alt="기본 프로필" src="<c:url value="/resources/images/basic/friend.png" />" style="width: 80px; height: 80px">
+					<img class="rounded-circle" alt="기본 프로필" src="<c:url value="/images/basic/friend.png" />" style="width: 80px; height: 80px">
 				</c:if>
 				<span class="align-self-center mr-auto ml-2" id="id" style="font-weight: bold">${info.id }</span>
 				<a type="button" class="btn btn-outline-info align-self-center mx-2" href='<c:url value="/project/MentalTest1.do"/>'>정신건강 테스트</a>
@@ -368,13 +370,13 @@ ul li input[type=checkbox]:checked ~ .acco {
 								<i class="fa-solid fa-angle-down"></i>
 							</div>
 							<div class="acco">
-								<img alt="happy" src="/resources/images/condition/happy.png" name="condition"/>
-								<img alt="smile" src="/resources/images/condition/smile.png" name="condition"/>
-								<img alt="good" src="/resources/images/condition/good.png" name="condition"/>
-								<img alt="soso" src="/resources/images/condition/soso.png" name="condition"/>
-								<img alt="sad" src="/resources/images/condition/sad.png" name="condition"/>
-								<img alt="sosad" src="/resources/images/condition/sosad.png" name="condition"/>
-								<img alt="angry" src="/resources/images/condition/angry.png" name="condition"/>
+								<img alt="happy" src="/images/condition/happy.png" name="condition"/>
+								<img alt="smile" src="/images/condition/smile.png" name="condition"/>
+								<img alt="good" src="/images/condition/good.png" name="condition"/>
+								<img alt="soso" src="/images/condition/soso.png" name="condition"/>
+								<img alt="sad" src="/images/condition/sad.png" name="condition"/>
+								<img alt="sosad" src="/images/condition/sosad.png" name="condition"/>
+								<img alt="angry" src="/images/condition/angry.png" name="condition"/>
 							</div>
 						</li>
 						<li>
@@ -498,77 +500,77 @@ ul li input[type=checkbox]:checked ~ .acco {
 							<div class="acco">
 								<div class="row mx-1">
 									<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="알류" src='<c:url value="/resources/images/allergy/egg.png"/>'>
+								    	<img class="d-block mx-auto" alt="알류" src='<c:url value="/images/allergy/egg.png"/>'>
 								    	<small class="d-block text-center">알류</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="우유" src='<c:url value="/resources/images/allergy/milk.png"/>'>
+								    	<img class="d-block mx-auto" alt="우유" src='<c:url value="/images/allergy/milk.png"/>'>
 								    	<small class="d-block text-center">우유</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="메밀" src='<c:url value="/resources/images/allergy/memil.png"/>'>
+								    	<img class="d-block mx-auto" alt="메밀" src='<c:url value="/images/allergy/memil.png"/>'>
 								    	<small class="d-block text-center">메밀</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="땅콩" src='<c:url value="/resources/images/allergy/peanut.png"/>'>
+								    	<img class="d-block mx-auto" alt="땅콩" src='<c:url value="/images/allergy/peanut.png"/>'>
 								    	<small class="d-block text-center">땅콩</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="대두" src='<c:url value="/resources/images/allergy/bean.png"/>'>
+								    	<img class="d-block mx-auto" alt="대두" src='<c:url value="/images/allergy/bean.png"/>'>
 								    	<small class="d-block text-center">대두</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="밀" src='<c:url value="/resources/images/allergy/wheat.png"/>'>
+								    	<img class="d-block mx-auto" alt="밀" src='<c:url value="/images/allergy/wheat.png"/>'>
 								    	<small class="d-block text-center">밀</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="고등어" src='<c:url value="/resources/images/allergy/mackerel.png"/>'>
+								    	<img class="d-block mx-auto" alt="고등어" src='<c:url value="/images/allergy/mackerel.png"/>'>
 								    	<small class="d-block text-center">고등어</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="게" src='<c:url value="/resources/images/allergy/crab.png"/>'>
+								    	<img class="d-block mx-auto" alt="게" src='<c:url value="/images/allergy/crab.png"/>'>
 								    	<small class="d-block text-center">게</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="새우" src='<c:url value="/resources/images/allergy/shrimp.png"/>'>
+								    	<img class="d-block mx-auto" alt="새우" src='<c:url value="/images/allergy/shrimp.png"/>'>
 								    	<small class="d-block text-center">새우</small>	
 							    	</div>
 							    </div>
 							    <div class="row mx-1">
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="토마토" src='<c:url value="/resources/images/allergy/tomato.png"/>'>
+								    	<img class="d-block mx-auto" alt="토마토" src='<c:url value="/images/allergy/tomato.png"/>'>
 								    	<small class="d-block text-center">토마토</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="복숭아" src='<c:url value="/resources/images/allergy/peach.png"/>'>
+								    	<img class="d-block mx-auto" alt="복숭아" src='<c:url value="/images/allergy/peach.png"/>'>
 								    	<small class="d-block text-center">복숭아</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="호두" src='<c:url value="/resources/images/allergy/walnut.png"/>'>
+								    	<img class="d-block mx-auto" alt="호두" src='<c:url value="/images/allergy/walnut.png"/>'>
 								    	<small class="d-block text-center">호두</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="돼지고기" src='<c:url value="/resources/images/allergy/pork.png"/>'>
+								    	<img class="d-block mx-auto" alt="돼지고기" src='<c:url value="/images/allergy/pork.png"/>'>
 								    	<small class="d-block text-center mx-n2">돼지고기</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="닭고기" src='<c:url value="/resources/images/allergy/chicken.png"/>'>
+								    	<img class="d-block mx-auto" alt="닭고기" src='<c:url value="/images/allergy/chicken.png"/>'>
 								    	<small class="d-block text-center">닭고기</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="쇠고기" src='<c:url value="/resources/images/allergy/beef.png"/>'>
+								    	<img class="d-block mx-auto" alt="쇠고기" src='<c:url value="/images/allergy/beef.png"/>'>
 								    	<small class="d-block text-center">쇠고기</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="오징어" src='<c:url value="/resources/images/allergy/squid.png"/>'>
+								    	<img class="d-block mx-auto" alt="오징어" src='<c:url value="/images/allergy/squid.png"/>'>
 								    	<small class="d-block text-center">오징어</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="조개류" src='<c:url value="/resources/images/allergy/clam.png"/>'>
+								    	<img class="d-block mx-auto" alt="조개류" src='<c:url value="/images/allergy/clam.png"/>'>
 								    	<small class="d-block text-center">조개류</small>	
 							    	</div>
 							    	<div class="col allergy">
-								    	<img class="d-block mx-auto" alt="잣" src='<c:url value="/resources/images/allergy/pinenut.png"/>'>
+								    	<img class="d-block mx-auto" alt="잣" src='<c:url value="/images/allergy/pinenut.png"/>'>
 								    	<small class="d-block text-center">잣</small>	
 							    	</div>
 							    </div>
@@ -832,7 +834,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 	    maxDate: new Date(), //오늘 날짜 이 후만 선택가능
 	    showOn : 'button',
         buttonImageOnly: true,
-        buttonImage: '/resources/images/basic/calendar.png',
+        buttonImage: '/images/basic/calendar.png',
 	});
 	
 	$(function(){
@@ -1279,36 +1281,33 @@ ul li input[type=checkbox]:checked ~ .acco {
 	}
 	*/
 </script>
-<script>/*
-    const firebaseModule = (function () {
-    async function init() {
-        // Your web app's Firebase configuration
-        //console.log('serviceWorker' in navigator)//localhost로 설정
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-            	//D:\JHI\Workspace\gitHub\project\project-1\src\main\webapp\WEB-INF\views\login
-            	//D:\JHI\Workspace\gitHub\project\project-1\src\main\resources\static
-            	//D:\JHI\Workspace\gitHub\project\project-1\target\classes\static\webpush\firebase-messaging-sw.js
-            	navigator.serviceWorker.register("D:/JHI/Workspace/gitHub/project/project-1/target/classes/static/webpush/firebase-messaging-sw.js")
-                    .then(registration => {
-                        const firebaseConfig = {
-                            apiKey: "AIzaSyBVyjlJuzy9Qd41-v2meIh79Ti7OEm0TSc",
-                            authDomain: "my-project-a3614.firebaseapp.com",
-                            projectId: "my-project-a3614",
-                            storageBucket: "my-project-a3614.appspot.com",
-                            messagingSenderId: "337911613778",
-                            appId: "1:337911613778:web:707752d0cacb5e27eed28b",
-                            measurementId: "G-D28J07Z2PH"
-                        };
-  
+<script>
+	const firebaseConfig = {
+        apiKey: "AIzaSyBVyjlJuzy9Qd41-v2meIh79Ti7OEm0TSc",
+        authDomain: "my-project-a3614.firebaseapp.com",
+        projectId: "my-project-a3614",
+        storageBucket: "my-project-a3614.appspot.com",
+        messagingSenderId: "337911613778",
+        appId: "1:337911613778:web:707752d0cacb5e27eed28b",
+        measurementId: "G-D28J07Z2PH"
+    };
+	
+	firebase.initializeApp(firebaseConfig);
+	
+	document.addEventListener('DOMContentLoaded', function() {
+		if ('serviceWorker' in navigator) {
+			const messaging = firebase.messaging();
+	        // Your web app's Firebase configuration
+	        //console.log('serviceWorker' in navigator)//localhost로 설정
+        	
+	        navigator.serviceWorker.register("../firebase-messaging-sw.js")
+                    .then(registration => {  
                         // Initialize Firebase
                         //const app = initializeApp(firebaseConfig);
                         //const analytics = getAnalytics(app);
-                        firebase.initializeApp(firebaseConfig);
-
                          // Show Notificaiton Dialog
-                         const messaging = firebase.messaging();
-                        messaging.requestPermission()
+                         
+                         messaging.requestPermission()
                         .then(function() {
                         	console.log('두번째 then 안')
                             return messaging.getToken();  
@@ -1317,6 +1316,7 @@ ul li input[type=checkbox]:checked ~ .acco {
                         	console.log('세번째 then 안')
                         	await fetch('/register', { method: 'post', body: token })
                             messaging.onMessage(payload => {
+                            	console.log("onMessage event fired",payload);
                                 const title = payload.notification.title
                                 const options = {
                                     body : payload.notification.body
@@ -1330,16 +1330,6 @@ ul li input[type=checkbox]:checked ~ .acco {
                             console.log("Error Occured");
                         })
                     })
-            })
-        }
-    }      
-
-    return {
-        init: function () {
-            init()
-        }
-    }
-})()
-
-firebaseModule.init()*/
+		}
+	})
 </script>

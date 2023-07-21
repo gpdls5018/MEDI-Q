@@ -198,7 +198,7 @@ public class MypageController {
 
 		int affected = loginService.update(member);
 		if (affected == 1) {
-			return "<script>alert('회원정보 수정이 완료되었습니다\\r\\마이페이지 화면으로 이동합니다');location.href=\'/project/MyPage.do\';</script>";
+			return "<script>alert('회원정보 수정이 완료되었습니다\\r\\n마이페이지 화면으로 이동합니다');location.href=\'/project/MyPage.do\';</script>";
 		} else {
 			return "<script>alert('회원정보 수정에 실패하였습니다');history.back()</script>";
 		}

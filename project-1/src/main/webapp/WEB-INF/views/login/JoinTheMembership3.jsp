@@ -161,7 +161,7 @@
 		<!-- 회원가입 완료 화면 -->
 		<div class="join-form">
 			<div class="col-md-6">
-				<img src="<c:url value="/resources/images/basic/bg-remove.png"/>" alt="Image" class="img-fluid left-center ml-0"/>
+				<img src="<c:url value="/images/basic/bg-remove.png"/>" alt="Image" class="img-fluid left-center ml-0"/>
 			</div>
 			<div class="col-md-6"><!-- 홈 /  로그인하기 버튼 2종류 -->
 				<h1 class="mb-4"><span style="color: #EF605D">회원가입</span>이 완료되었습니다</h1>

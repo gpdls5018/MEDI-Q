@@ -11,7 +11,8 @@ public class WebConfiguration implements WebMvcConfigurer{
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		//리소스 등록 및 핸들러를 관리하는 객체인 ResourceHandlerRegistry를 통해 
 		//리소스 위치와 이 리소스와 매칭될 url을 등록하는 메소드
-		registry.addResourceHandler("/json/**").addResourceLocations("classpath:/json/");
-		registry.addResourceHandler("/config/**").addResourceLocations("classpath:/config/");
+		//registry.addResourceHandler("/json/**").addResourceLocations("classpath:/json/");
+		//registry.addResourceHandler("/config/**").addResourceLocations("classpath:/config/");
+		//registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
 	}
 }
