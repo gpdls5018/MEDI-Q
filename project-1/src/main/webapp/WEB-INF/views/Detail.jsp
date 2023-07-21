@@ -163,15 +163,20 @@ left: 146px;
 </div>
 <div class="container">
 <div class="empty-space" style="height:32px;"></div>
-    
-    <h1 class="display-4">
+<div style="display: flex; align-items: center;">    
+    <h1 class="display-4" style="width:450px;">
     <c:if test="${empty listOne.imgURL}" var="emptyIMG">
     	<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" width="400px;" height="300px;" style="border-radius:20px;"/>
     </c:if>
     <c:if test="${not emptyIMG}">
     	<img src="${listOne.imgURL}" width="400px;" height="300px;" style="border-radius:20px;"/>
    	</c:if>
-    </h1>
+   	</h1>
+   	<div style="display: flex; flex-direction: column; margin-left: 20px;">
+        <button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">구매하러 가기</button>
+        <button onclick="window.location.href = '/ranking/selectfood.do'" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; margin-top: 20px;">다른 제품 검색하러 가기</button>
+    </div>
+</div>    
 	<!-- 탭 -->
 	<div class="tab-content mt-5 mb-5">
 	  	<div class="effect-custom-font mt-5" style="font-size:40px;">제품의 상세정보 내용이에요! </div>
@@ -324,8 +329,6 @@ left: 146px;
                 </tbody>
             </table>
        	</div><!-- 탭 1 끝 -->
-		<button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; margin-top: 20px;">구매하러 가기</button>
-		<button onclick="window.location.href = '/ranking/selectfood.do'" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">다른 제품검색하러 가기</button>
 	 	<div class="empty-space" style="height:50px;"></div>
 	  	<div class="effect-custom-font mt-5" style="font-size:40px;">구매전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
 	  	<div class="bubble p-4 effect-custom-font" style="font-size:17px;">
