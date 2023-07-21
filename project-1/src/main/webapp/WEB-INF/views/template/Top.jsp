@@ -83,45 +83,6 @@
         	font-size: 1.25rem;
         }
         /* 버튼 애니메이션 */
-        .custom-btn {
-          display:flex;
-          align-items:center;
-          justify-content:center;
-		  width: 130px;
-		  height: 40px;
-		  border-radius: 5px;
-		  font-size: 20px;
-		  font-weight: bold;
-		  background: transparent;
-		  cursor: pointer;
-		  transition: all 0.3s ease;
-		  position: relative;
-		  outline: none;
-		}
-		.btn-14 {
-		  background: rgb(255,151,0);
-		  border: none;
-		  z-index: 1;
-		}
-		.btn-14:after {
-		  position: absolute;
-		  content: "";
-		  width: 100%;
-		  height: 0;
-		  top: 0;
-		  left: 0;
-		  z-index: -1;
-		  border-radius: 5px;
-		  background-color: #ff771c;
-		}
-		.btn-14:hover {
-		  color: black;
-		}
-		.btn-14:hover:after {
-		  top: auto;
-		  bottom: 0;
-		  height: 100%;
-		}
 		.sidemenu a{
 			display: block;
 		    height: 60px;
@@ -147,19 +108,7 @@
 			cursor: pointer;
 			text-decoration:none;
 		}
-		/* 사이드 버튼 아코디언 형태 */
-.accordion {
-    background: #eee;
 
-    width: 100%;
-}
-
-
-.accordion .section {
-    border-bottom: 2px dashed #ccc;
-    padding: 10px 10px;
-    background: #fff;
-}
 
 .section div a {
 	font-size: 17px;
@@ -224,63 +173,78 @@
 	padding: 3.5px;
 	text-decoration: none;
 }
+.tsnavul {
+	text-decoration: none;
+	justify-content: center;
+	align-items: center;
+}
+.tsnavli {
+	margin: 0px 30px;
+	color:black;
+}
+.tsnava1 {
+	color: #FD9F28;
+	font-weight: 600;
+	align-items: center;
+	font-size: 21px;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+.tsnava2 {
+	color: #EF605D;
+	font-weight: bold;
+	font-size: 18px;
+	align-items: flex-end;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    margin-right: 25px;
+}
+.tsnava1:hover {
+	color:black;
+	text-decoration: none;
+}
+.tsnava2:hover {
+	color:black;
+	text-decoration: none;
+}
+ul {
+	list-style: none;
+	margin-bottom: 0px;
+}
+/* 드롭다운 버튼 스타일 */
+        .dropdown-toggle {
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-toggle:hover {
+            background-color: #f7f7f7;
+            border-radius: 10px;
+        }
+
+        /* 드롭다운 메뉴 스타일 */
+        .dropdown-menu {
+            border: none;
+            background-color:#FDCDBC;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .dropdown-menu a {
+       		color: white;
+            font-weight:bold;
+        }
+
+        .dropdown-item {
+            padding: 8px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f7f7f7;
+            color:black;
+            font-weight: bold;
+        }
     </style>
 </head>
-<script>
-	//비디오 전체화면
-	
-	/*
-	//쿠키값 가져오는 함수
-	function getCookieValue(cookieName) {
-		//debugger
-		var cookies = document.cookie.split("; ");
-	  	for (var i = 0; i < cookies.length; i++) {
-	    	var cookie = cookies[i].split("=");
-	    	var name = cookie[0];
-	    	var value = cookie[1];
-	    	if (name === cookieName) {
-	      		return value;
-	    	}
-	  	}
-	  	return "";
-	}
-	
-	document.addEventListener("DOMContentLoaded", function() {
-		//쿠키값 가져와서 로그인 상태 확인 함수
-		function checkLoginStatus() {
-		var token = getCookieValue("User-Token");
-		//console.log("token",token);
-		if (token) {
-            // 토큰이 존재하면 로그인 상태로 간주
-            // 모든 .logout 요소에 스타일 적용
-            var logoutElements = document.querySelectorAll(".logout");
-            for (var i = 0; i < logoutElements.length; i++) {
-                logoutElements[i].style.display = "";
-            }
-            // 모든 .login 요소에 스타일 적용
-            var loginElements = document.querySelectorAll(".login");
-            for (var j = 0; j < loginElements.length; j++) {
-                loginElements[j].style.display = "none";
-            }
-        } else {
-            // 토큰이 존재하지 않으면 로그아웃 상태로 간주
-            // 모든 .logout 요소에 스타일 적용
-            var logoutElements = document.querySelectorAll(".logout");
-            for (var i = 0; i < logoutElements.length; i++) {
-                logoutElements[i].style.display = "none";
-            }
-            // 모든 .login 요소에 스타일 적용
-            var loginElements = document.querySelectorAll(".login");
-            for (var j = 0; j < loginElements.length; j++) {
-                loginElements[j].style.display = "";
-            }
-        }
-    }
-		// 페이지 로딩 시 로그인 상태 확인
-		checkLoginStatus();
-	});
-	*/
-	
+<script>	
 	//햄버거 버튼 클릭시 좌측에 메뉴바 열기/닫기
 	jQuery(document).ready(function ($) {
         $(document).on('click', '.pull-bs-canvas-left', function () {
@@ -309,83 +273,81 @@
             }
         });
     });
-	/*
-	document.addEventListener("DOMContentLoaded", function() {
-	    var dropdownItems = document.querySelectorAll(".dropdown-item2");
-	    dropdownItems.forEach(function(item) {
-	      var url = item.getAttribute("data-url2");
-	      item.addEventListener("click", function(event) {
-	        event.preventDefault();
-	        window.location.href = url;
-	      });
-	    });
-	  });
-	
-	document.addEventListener("DOMContentLoaded", function() {
-	    var dropdownItems = document.querySelectorAll(".dropdown-item1");
-	    dropdownItems.forEach(function(item) {
-	      var url = item.getAttribute("data-url1");
-	      item.addEventListener("click", function(event) {
-	        event.preventDefault();
-	        window.location.href = url;
-	      });
-	    });
-	  });*/
+	//회원 문구
+	$(document).ready(function() {
+        var token = "${cookie['User-Token'].value}";
+
+        if (token) {
+            $(".tsnava2").text("회원님 반갑습니다");
+        } else {
+            $(".tsnava2").text("로그인 후 이용바랍니다");
+        }
+    });
 
 
 </script>
 <body>
 <div class="container-fluid position-relative p-0" style="width:100%;">
-	 <nav class="navbar navbar-expand-sm navbar-dark fixed-top justify-content-between" style="padding:0px 0px;" id="navbar">
+	 <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="justify-content:space-around; padding:10px 0px;" id="navbar">
+	 <!-- 
         <div class="firstdown p-0 mx-4">
             <a class="pull-bs-canvas-left mr-5 d-flex">
                 <span style="font-weight:bold; font-size:50px; color:#EF605D">&#9776;</span>
             </a>
         </div>
-         
-        <a class="navbar-brand" style="position: absolute; margin-left: 44%;" href="<c:url value='/' />">
+      -->
+        <a class="navbar-brand" href="<c:url value='/' />">
         	<img src="<c:url value='/images/mainicon.png' />" width="40" height="40">
         	<img src="<c:url value='/images/maintitle.png' />" width="160" height="40">
         </a>
-
-        <ul class="navbar-nav mx-5 " >
-       		<div class="d-inline-flex align-items-center" style="height: 45px">
-            	<a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="<c:url value="/test1.do"/>">1</a>
-         	    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="<c:url value="/AdminMain.do"/>">관</a>
-                <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">3</a>
-                <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">4</a>
-                <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle mx-2" href="#">5</a>
-            </div>
-            
-            <!-- 유효한 토큰인지 판단하는 함수 -->
-            <c:set var="token" value="${cookie['User-Token'].value }"/>
-            <%--
-            <fmt:bundle basename="config.tokens">
-				<fmt:message key="secret-key" var="key"/>
-            </fmt:bundle>
-            <c:set var="isValid" value='${m:isValid(token,key,pageContext.request,pageContext.response) }' />
- 				--%>
-            
-            <c:if test="${not empty token }" var="isLogin">
-	            <li class="nav-item text2 mx-2">
-	                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>
-	            </li>
-	            <li class="nav-item text2 mx-2">
-	                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Logout.do"/>">로그아웃</a>
-	            </li>
-            </c:if>
-            
-            <c:if test="${not isLogin }">
-	            <li class="nav-item text2 mx-2" >
-	                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Login.do"/>">로그인</a>
-	            </li>
-	            <li class="nav-item text2 mx-2">
-	                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Join.do"/>">회원가입</a>
-	            </li>
-            </c:if>
+        
+        <ul class="tsnavul d-flex" >
+        	<li class="tsnavli">
+	            <a class="tsnava1" href="<c:url value="/NutrientSelect.do"/>">
+	             영양성분 검색
+	            </a>
+	       </li>
+	       <li class="tsnavli">
+	            <a class="tsnava1" href="<c:url value="/ranking/selectfood.do"/>">
+	             영양제 검색
+	            </a>
+	       </li>
+	       <li class="tsnavli" >
+	            <a class="tsnava1" href="<c:url value="/magazineindex.do"/>">
+	             메디큐 칼럼
+	            </a>
+	       </li>
+	       <li class="tsnavli">
+	            <a class="tsnava1" href="<c:url value="/board/List.do" />">
+	             커뮤니티
+	            </a>
+	       </li>
         </ul>
+        
+
+        <ul class="tsnavul2 mx-5 d-flex">
+	        <li class="tsnavli2 text2 mx-2 dropdown">
+	            <a class="tsnava2 dropdown-toggle" role="button" id="navbarDropdown" data-toggle="dropdown">
+	                        회원님 반갑습니다
+	            </a> 
+	            <div class="dropdown-menu dropdown-menu-right" style="text-align: center;" aria-labelledby="navbarDropdown">
+	               	<c:set var="token" value="${cookie['User-Token'].value }"/>
+	                <c:if test="${not empty token}" var="isLogin">       
+	                    <a class="dropdown-item" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>
+	                    <a class="dropdown-item" href="<c:url value="/project/Logout.do"/>">로그아웃</a>
+	                    <a class="dropdown-item" href="<c:url value="/AdminMain.do"/>">관리자</a>
+	                    <a class="dropdown-item" href="<c:url value="/test1.do"/>">태현(테스트)</a>
+	                    <a class="dropdown-item" href="#">테스트용</a>
+	                </c:if>
+	                <c:if test="${not isLogin}">
+	                    <a class="dropdown-item" href="<c:url value="/project/Login.do"/>">로그인</a>        
+	                    <a class="dropdown-item" href="<c:url value="/project/Join.do"/>">회원가입</a>       
+	                </c:if>
+	            </div>
+	        </li>
+	    </ul>
     </nav>
-    <!-- navbar left side -->
+    <!-- navbar left side
     <div class="bs-canvas bs-canvas-left position-fixed h-100 justify-content-start" style="z-index:99999; background: linear-gradient(to bottom, #ffffff, #FFFAFA);">
         <header class="bs-canvas-header p-4 bg-gra1 justify-content-center align-items-center">
         	<h4 class="d-inline-block mb-0 text1">
@@ -488,7 +450,7 @@
 	      </div>
         </div>
     </div>
-    <!-- navbar left side end-->
+	navbar left side end-->
 </div>
 
  
