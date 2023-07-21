@@ -159,14 +159,14 @@ left: 146px;
 </style>
 <div>
 <div class="background-top">
-	<p class="display-4 back-img" style="background-image: url('<c:url value="/resources/images/nutrient_img/bg_bl.png"/>');">${listOne.productName}</p>
+	<p class="display-4 back-img" style="background-image: url('<c:url value="/images/nutrient_img/bg_bl.png"/>');">${listOne.productName}</p>
 </div>
 <div class="container">
 <div class="empty-space" style="height:32px;"></div>
     
     <h1 class="display-4">
     <c:if test="${empty listOne.imgURL}" var="emptyIMG">
-    	<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" width="400px;" height="300px;" style="border-radius:20px;"/>
+    	<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" width="400px;" height="300px;" style="border-radius:20px;"/>
     </c:if>
     <c:if test="${not emptyIMG}">
     	<img src="${listOne.imgURL}" width="400px;" height="300px;" style="border-radius:20px;"/>
@@ -208,51 +208,51 @@ left: 146px;
 	                    <td>
 	                        <c:choose>
 	                            <c:when test="${listOne.shape eq '정'}">
-	                                <img src="<c:url value="resources/images/shape/정제.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/정제.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">정</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '과립'}">
-	                                <img src="<c:url value="resources/images/shape/과립.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/과립.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">과립</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '바'}">
-	                                <img src="<c:url value="resources/images/shape/바.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/바.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">바</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '분말'}">
-	                                <img src="<c:url value="resources/images/shape/분말.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/분말.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">분말</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '시럽'}">
-	                                <img src="<c:url value="resources/images/shape/시럽.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/시럽.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">시럽</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '캡슐'}">
-	                                <img src="<c:url value="resources/images/shape/캡슐.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/캡슐.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">캡슐</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '환'}">
-	                                <img src="<c:url value="resources/images/shape/환.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/환.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">환</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '젤리'}">
-	                                <img src="<c:url value="resources/images/shape/젤리.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/젤리.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">젤리</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '액상'}">
-	                                <img src="<c:url value="resources/images/shape/액상.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/액상.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">액상</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '겔'}">
-	                                <img src="<c:url value="resources/images/shape/겔.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/겔.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">겔</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '페이스트상'}">
-	                                <img src="<c:url value="resources/images/shape/페이스트.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/페이스트.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 20px;">페이스트</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '편상' or listOne.shape eq '기타'}">
-	                                <img src="<c:url value="resources/images/shape/기타.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/기타.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">기타</span>
 	                            </c:when>
 	                        </c:choose>
@@ -341,7 +341,7 @@ left: 146px;
    				    <script>
 				      let Graph = ForceGraph3D()
 				        (document.getElementById('3d-graph'))
-				          .jsonUrl('<c:url value="/resources/3dData/data.json"/>')
+				          .jsonUrl('<c:url value="/3dData/data.json"/>')
 				          .nodeAutoColorBy('group')
 				          .width("600")
 				          .height("380")

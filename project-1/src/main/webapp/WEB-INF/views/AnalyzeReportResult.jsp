@@ -23,7 +23,7 @@
 </style>
 <body>
 	<div class="container mt-5">
-		<div style="background-image:url(<c:url value="/resources/images/basic/result.png"/>);background-repeat : no-repeat;background-size : contain;background-position:right,center;">
+		<div style="background-image:url(<c:url value="/images/basic/result.png"/>);background-repeat : no-repeat;background-size : contain;background-position:right,center;">
 			<div class="my-title d-flex effect-custom-font justify-content-right m-auto" style="width:80%;">
 				<div class="mt-5 float-right" style="font-size:40px;"><span style="background-color:#ffdcdc;">${memberDto.name}</span>님의 분석 결과</div>
 			</div>
@@ -91,7 +91,7 @@
 					<div class="col-3">
 						<div class="effect-custom-font" style="font-size:30px;">
 							<div>#${loop.count} ${dto.takePurpose}</div>
-							<div><img src="<c:url value="/resources/images/health_img/${dto.takePurpose}"/>.png" style="width:150px;height:150px;"/></div>
+							<div><img src="<c:url value="/images/health_img/${dto.takePurpose}"/>.png" style="width:150px;height:150px;"/></div>
 						</div>
 					</div>
 					<div class="col-9">
@@ -100,7 +100,7 @@
 						</div>
 						<c:if test="${fn:length(dto.foodForHelpPurpose) eq 0}" var="noHelp">
 							<div class="effect-custom-font"><span style="font-size:17px;color:red;background-color:#ffdcdc">현재 아무런 기능성 원료도 섭취하지 않아요!</span>  <span style="color:red;font-size:15px;background-color:#ffdcdc">아래의 추천 기능성 원료를 참고해 주세요</span></div>
-							<img src="<c:url value="/resources/images/basic/warning.png"/>" style="width:200px;height:200px;"/>
+							<img src="<c:url value="/images/basic/warning.png"/>" style="width:200px;height:200px;"/>
 						</c:if>
 						<c:if test="${not noHelp}">
 						<div class="effect-custom-font" style="font-size:20px;">아래는 복용 중이신 영양제 중 '${dto.takePurpose}' 에 도움이 되는 기능성 원료입니다</div>
