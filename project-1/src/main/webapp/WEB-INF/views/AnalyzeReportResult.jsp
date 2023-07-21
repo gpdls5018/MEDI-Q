@@ -23,13 +23,13 @@
 </style>
 <body>
 	<div class="container mt-5">
-		<div style="background-image:url(<c:url value="/resources/images/basic/result.png"/>);background-repeat : no-repeat;background-size : contain;background-position:right,center;">
+		<div style="background-image:url(<c:url value="/images/basic/result.png"/>);background-repeat : no-repeat;background-size : contain;background-position:right,center;">
 			<div class="my-title d-flex effect-custom-font justify-content-right m-auto" style="width:80%;">
 				<div class="mt-5 float-right" style="font-size:40px;"><span style="background-color:#ffdcdc;">${memberDto.name}</span>님의 분석 결과</div>
 			</div>
 			<div class="m-5">
 				<div class="effect-custom-font ml-5" >총 점수는 <span style="font-size:70px;">${resultListDto.resultScore}</span></div>
-				<button class="btn effect-custom-font ml-5" style="border-radius:15px;background-color:#ff5924;color:white;width:40%;">다시 분석하기</button>
+				<button class="btn effect-custom-font ml-5" onClick="location.href='<c:url value="/AnalyzeNewReport.do"/>'" style="border-radius:15px;background-color:#ff5924;color:white;width:40%;">다시 분석하기</button>
 			</div>
 			<div class="m-5" style="height:3px;background-color:#ccc"></div>
 		</div>
@@ -64,7 +64,7 @@
 						<div class="mt-5" style="font-size:15px;">
 							<ul style="line-height: 40px;">
 								<li style="color:#6e6e6e;">
-									홍성민님은 현재 <span style="font-size:17px;color:#000000;background-color:#ffdcdc">${fn:length(resultListDto.listdto)}개의 목적</span>
+									${memberDto.name}님은 현재 <span style="font-size:17px;color:#000000;background-color:#ffdcdc">${fn:length(resultListDto.listdto)}개의 목적</span>
 									을 위해 영양제를 섭취 중이시네요!
 								</li>
 								<li style="color:#6e6e6e;">
@@ -91,19 +91,19 @@
 					<div class="col-3">
 						<div class="effect-custom-font" style="font-size:30px;">
 							<div>#${loop.count} ${dto.takePurpose}</div>
-							<div><img src="<c:url value="/resources/images/health_img/${dto.takePurpose}"/>.png" style="width:150px;height:150px;"/></div>
+							<div><img src="<c:url value="/images/health_img/${dto.takePurpose}"/>.png" style="width:150px;height:150px;"/></div>
 						</div>
 					</div>
 					<div class="col-9">
 						<div class="effect-custom-font mb-3" style="font-size:15px;color:#6e6e6e;">
-								${dto.takePurpose}  을(를) 위해 필요한 영양소 <span style="font-size:20px;color:#000000">${fn:length(dto.foodList)} 가지 중 ${fn:length(dto.foodList) - fn:length(dto.ingredient_list_no_report)} 개</span> 를 섭취하고 있습니다
+								'${dto.takePurpose}' 에 도움이 되는 기능성 원료 <span style="font-size:20px;color:#000000">${fn:length(dto.foodList)} 가지 중 ${fn:length(dto.foodList) - fn:length(dto.ingredient_list_no_report)} 개</span> 를 섭취하고 있습니다
 						</div>
 						<c:if test="${fn:length(dto.foodForHelpPurpose) eq 0}" var="noHelp">
 							<div class="effect-custom-font"><span style="font-size:17px;color:red;background-color:#ffdcdc">현재 아무런 기능성 원료도 섭취하지 않아요!</span>  <span style="color:red;font-size:15px;background-color:#ffdcdc">아래의 추천 기능성 원료를 참고해 주세요</span></div>
-							<img src="<c:url value="/resources/images/basic/warning.png"/>" style="width:200px;height:200px;"/>
+							<img src="<c:url value="/images/basic/warning.png"/>" style="width:200px;height:200px;"/>
 						</c:if>
 						<c:if test="${not noHelp}">
-						<div class="effect-custom-font" style="font-size:20px;">${dto.takePurpose}  에 도움이 되는 건강기능 식품과 해당 성분입니다</div>
+						<div class="effect-custom-font" style="font-size:20px;">아래는 복용 중이신 영양제 중 '${dto.takePurpose}' 에 도움이 되는 기능성 원료입니다</div>
 							<ul class="list-unstyled mt-5">
 							<c:forEach items="${dto.foodForHelpPurpose}" var="helpfood">
 								<li class="effect-custom-font" style="font-size:20px;">- ${helpfood.key}</li>
@@ -115,7 +115,7 @@
 							</c:forEach>
 							</ul>
 						</c:if>
-						<div class="effect-custom-font mt-5" style="font-size:20px;">${dto.takePurpose}에 좋은 추천 기능성 원료</div>
+						<div class="effect-custom-font mt-5" style="font-size:20px;">'${dto.takePurpose}'에 좋은 추천 기능성 원료</div>
 						<c:forEach items="${dto.ingredient_list_no_report}" var="ingredient" varStatus="index">
 							
 							<span class="effect-custom-font p-0 m-2" style="background-color:#fdb576;border-radius:15px;font-size:15px;">${ingredient}</span>
@@ -133,11 +133,13 @@
 				<div class="row jumbotron m-1"  style="border-radius:25px;">
 					<div class="col-6" style="border-radius:15px;">
 						현재 섭취하고 있는 5대 영양소입니다
-						<ul class="list-unstyled mt-3">
-							<c:forEach items="${resultListDto.nutrient_list_report}" var="nutrient">
-							<a href="/NutrientDetail.do?name=${nutrient}"><li>✅ ${nutrient}</li></a>
-							</c:forEach>
-						</ul>
+						<div class="mt-3" style="overflow: auto;height:300px;">
+							<ul class="list-unstyled mt-3">
+								<c:forEach items="${resultListDto.nutrient_list_report}" var="nutrient">
+								<a href="/NutrientDetail.do?name=${nutrient}"><li>✅ ${nutrient}</li></a>
+								</c:forEach>
+							</ul>
+						</div>
 					</div>
 					<div class="col-6" style="border-radius:15px;">
 						현재 섭취하고 있지 않는 5대 영양소입니다

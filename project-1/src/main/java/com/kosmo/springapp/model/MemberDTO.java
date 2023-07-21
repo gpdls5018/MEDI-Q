@@ -26,7 +26,7 @@ public class MemberDTO {
 	public static final String REGEX_ID = "^[a-z][a-z0-9]{5,11}";
 	public static final String REGEX_PASSWORD = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[~!@#\\$%\\^&\\*\\(\\)\\+\\|\\=\\-])[A-Za-z\\d~!@#\\$%\\^&\\*\\(\\)\\+\\|\\=\\-]{8,16}$";
 	public static final String REGEX_EMAIL = "^[a-z][a-z0-9]{5,11}@[a-z]{3,8}\\.(com|net|co\\.kr)$";
-	public static final String REGEX_NAME = "[가-힣]{2,}";
+	public static final String REGEX_NAME = "^[가-힣]{2,}$";
 	
 	@NotBlank(message = "아이디를 입력하세요")
 	@Pattern(regexp = REGEX_ID, message = "아이디 6~12자의 영문(소문자),숫자만 입력하세요")
@@ -52,14 +52,14 @@ public class MemberDTO {
 	
 	private Date regDate;//회원가입일
 	
-	private String active;//활동여부
+	private String active;//활동여부(admin-A)
 	
 	private Date inactive_date;//탈퇴일
 	
 	private String prof_Img_Fl;//프로필 이미지 여부
 	
-	//SOCIAL 테이블 용
 	private String site; //소셜 로그인 사이트
-	private String update_Info;//정부 추가 여부
+	
+	private String social_Fl;//소셜 로그인 여부
 
 }

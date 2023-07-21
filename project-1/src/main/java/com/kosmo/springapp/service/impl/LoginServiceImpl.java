@@ -58,22 +58,16 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 	}
 
 	@Override
-	public MemberDTO selectOne(Map map) {
-		return mapper.findMember(map);
+	public MemberDTO selectOne(String id) {
+		return mapper.findMember(id);
 	}
 	
 	public MemberDTO selectOne(HttpServletRequest req, HttpServletResponse resp) {
 		String token = jwTokensService.getToken(req, tokenName);
 		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
-		String key = payloads.get("sub").toString();
-		if(key.contains("@")) {
-			payloads.put("email", key);
-		}
-		else {
-			payloads.put("id", key);
-		}
+		String id = payloads.get("sub").toString();
 		
-		return mapper.findMember(payloads);
+		return mapper.findMember(id);
 	}
 
 	@Override
@@ -114,15 +108,15 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 		MemberDTO dto = mapper.searchIdNPwd(map);
 		String mode = map.get("mode").toString();
 		String email = map.get("email").toString();
-		if(dto!=null) {
-			//입력하신 비밀번호로 정보를 전송했습니다
-			if ("ID".equals(map.get("mode"))) {// 아이디찾기 클릭 시
+		if(dto != null) {
+			if("Y".equals(dto.getSocial_Fl())) {//소셜로 로그인한 이메일 입력 시
+				message = "Social-Member";
+			}
+			else if ("ID".equals(map.get("mode"))) {// 아이디찾기 클릭 시
 				String id = dto.getId();
-				//map.put("searchId", id);
 				message = emailService.sendMessage(email,id,mode);
 			} else {// 비밀번호 찾기 클릭 시
 				String pwd = dto.getPassword();
-				
 				message = emailService.sendMessage(email,pwd,mode);
 			}
 		}
@@ -135,23 +129,15 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 	//소셜 로그인 시
 	public String socialLogin(Map userInfo,String accessToken) {
 		String email = userInfo.get("email").toString();
-		
-		// 기존에 소셜로그인으로 로그인한 기록이 있는지 확인(SOCIAL 테이블)
-		int visit = mapper.checkBySocial(userInfo);
-
-		if (visit == 0) {// 첫방문O (SOCIAL 테이블에 등록)
-			mapper.saveSocial(userInfo);
-		}
-		// 첫방문x
 
 		// 토큰 생성한 뒤 쿠키에 저장
 		Map<String, Object> payloads = new HashMap<>();// 사용자 임의 데이타
-		payloads.put("socialInfo", accessToken);
+		payloads.put("socialInfo", accessToken);///////////////////////////
 
 		long expirationTime = 1000 * 60 * 60 * 24; // 토큰의 만료시간 설정
 
 		String token = jwTokensService.createToken(email, secretKey, payloads, expirationTime);
-		System.out.println("token: "+token);
+		//System.out.println("token: "+token);
 		return token;
 	}
 
@@ -179,29 +165,17 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 			}
 			
 			MultipartFile imgFile = dto.getFile();
-			System.out.println("imgFile: "+imgFile);
+			
 			String id = dto.getId();
-			String email = "";
-
-			Map map = new HashMap<>();
 			
 			if(imgFile != null) {//변경 이미지 선택 시
-				if(id.contains("@")) {
-					System.out.println("이메일형식");
-					map.put("email", id);
-					email = id;
-				}
-				else {
-					System.out.println("아이디형식");
-					map.put("id", id);
-				}
-				System.out.println("flag: "+mapper.findMember(map).getProf_Img_Fl());
-				if("Y".equals(mapper.findMember(map).getProf_Img_Fl())) {
-					System.out.println("여기로 안들어옴");
+				////////////////////////////////////////////////////////////////
+				if("Y".equals(mapper.findMember(id).getProf_Img_Fl())) {
+					
 					//기존 프로필이미지 있는경우(db 삭제 해야함, 업로드 폴더 이미지 삭제)
-					ProfileImageDTO info = mapper.findProfImg(email.length()==0?id:email);
+					ProfileImageDTO info = mapper.findProfImg(id);
 					FileUtils.deletes(new StringBuffer(info.getPi_Filename()+"."+info.getPi_Ext()), phisicalPath, ",");
-					mapper.deleteProfImg(email.length()==0?id:email);
+					mapper.deleteProfImg(id);
 				}
 				
 				newFilename = FileUtils.getNewFileName(phisicalPath, imgFile.getOriginalFilename());
@@ -227,29 +201,17 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 	//기본이미지로 수정 시
 	public int editProfImgDefault(ProfileImageDTO dto) throws IOException {
 		int deleteFlag = 0;
-		String id="";
-		String sm_email="";
+		String id = dto.getId();
 
-		Map map = new HashMap<>();
-		
-		if(dto.getId() != null) {
-			id = dto.getId();
-			map.put("id", dto.getId());
-		}
-		else {
-			sm_email = dto.getSm_Email();
-			map.put("sm_email", dto.getSm_Email());
-		}
-
-		if("Y".equals(mapper.findMember(map).getProf_Img_Fl())) {
-			ProfileImageDTO info = mapper.findProfImg(dto.getId()==null ? dto.getSm_Email() : dto.getId());;
+		if("Y".equals(mapper.findMember(id).getProf_Img_Fl())) {
+			ProfileImageDTO info = mapper.findProfImg(id);
 			
 			//기존에 파일이 있는 경우
 			Resource resource = new ClassPathResource(SaveDirectory);
 			String phisicalPath = resource.getFile().getAbsolutePath()+"\\profImg";
 			
 			FileUtils.deletes(new StringBuffer(info.getPi_Filename()+"."+info.getPi_Ext()), phisicalPath, ",");
-			deleteFlag = mapper.deleteProfImg(id.length()==0?sm_email:id);
+			deleteFlag = mapper.deleteProfImg(id);
 		}
 		else deleteFlag = -1;
 		

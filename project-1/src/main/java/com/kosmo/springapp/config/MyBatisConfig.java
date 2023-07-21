@@ -18,7 +18,8 @@ import org.springframework.context.annotation.Configuration;
 					"com.kosmo.springapp.nutrient.service",
 					"com.kosmo.springapp.analyze.service",
 					"com.kosmo.springapp.qnabbs.service",
-					"com.kosmo.springapp.magazine.service"}, sqlSessionFactoryRef = "sqlSessionFactory")
+					"com.kosmo.springapp.magazine.service",
+          "com.kosmo.springapp.admin.service"}, sqlSessionFactoryRef = "sqlSessionFactory")
 public class MyBatisConfig {
 
 	private final ApplicationContext applicationContext; //생성자 생성하므로 초기화 x

@@ -61,7 +61,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 <!-- 슬라이드 반응형 jqery -->
-<script src="<c:url value="/resources/tsfolder/js/jquery.sticky-kit.min.js"/>" ></script>
+<script src="<c:url value="/tsfolder/js/jquery.sticky-kit.min.js"/>" ></script>
 
 
 
@@ -69,13 +69,13 @@
  	<!-- 처음 인덱스 킬때 전체화면 비디오 출력 -->
 			<div id="tsvideo-container">
 			    <video id="video" autoplay muted loop>
-	                <source src="<c:url value="/resources/video/intro1_.mp4"/>" type="video/mp4">
+	                <source src="<c:url value="/video/intro1_.mp4"/>" type="video/mp4">
 			    </video>
 			    <div class="videologo" style=" font-size:27px; color:white; margin-top: 190px; margin-bottom: 220px; margin-left: 520px; margin-right: 520px;">
 	           		<!-- 동영상 화면 문구 -->
 		        	<div class="text-center" style="display: flex; align-items: center; justify-content: center; font-size: 65px; font-weight:bold;">건강고민은&nbsp;  
-						<img class="pr-3 pl-1" src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="120" height="75">
-	           			<img class="pr-2" src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="300" height="75">
+						<img class="pr-3 pl-1" src="<c:url value="/images/mainicon.png"/>" loading="lazy" width="120" height="75">
+	           			<img class="pr-2" src="<c:url value="/images/maintitle.png"/>" loading="lazy" width="300" height="75">
 					</div>
 		        	<br/>
 		        	<div class="text-center" style="margin-top: 50px;">영양제 분석, 건강예측 AI 등 저희만의 특별한 서비스를 이용해보세요.</div>
@@ -166,7 +166,7 @@
 	               <!-- placeholder="제품명 및 영양성분을 입력하세요" value="${not empty searchTags ? fn:replace(searchTags,'#',',#') : ''}">
 	                <input name="searchTags" type="hidden" id="hiddenInput" value=""> -->
 	                <button type="submit" class="btn rounded-pill py-2 px-4 top-0 end-0 me-2" >
-						<img src="<c:url value="/resources/images/tsimages/free-icon-magnifying-glass-4475396.png"/>" style="width:30px; height:30px">
+						<img src="<c:url value="/images/tsimages/free-icon-magnifying-glass-4475396.png"/>" style="width:30px; height:30px">
 					</button>
 	            </form>
 	        </div>
@@ -191,19 +191,20 @@
      <!-- 1번째 다이브 목록 -->
      	<div class="template__Wrapper-sc-5bsqyv-0 gCSEJp">
      	<c:if test="${not empty analyzeReport}">
-	        <h1 class="text-center mb-3" style="font-size: 30px; color: black;">📋 <span style="color:#EF605D; font-size: 34px;">${id}</span>님의 최근 분석 리포트</h1>
+	        <h1 class="text-center mb-3" style="font-size: 30px; color: black;">📋 <span style="color:#EF605D; font-size: 34px;">${userName}</span>님의 최근 분석 리포트</h1>
 	        <div class="ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
 	            <a data-gtm-id="report-home-recent-blank" class="ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none; background-color: 
-			    ${	analyzeReport.score >= 0 && analyzeReport.score < 25 ? '#EF605D' :
-			        analyzeReport.score >= 25 && analyzeReport.score < 50 ? 'orange' :
-			        analyzeReport.score >= 50 && analyzeReport.score < 75 ? 'green' :
-			        analyzeReport.score >= 75 && analyzeReport.score <= 100 ? 'blue' :
+			    ${	analyzeReport.score >= 0 && analyzeReport.score < 30 ? 'rgba(255, 0, 0, 0.7)' :
+			        analyzeReport.score >= 30 && analyzeReport.score < 60 ? 'rgba(255, 165, 0, 0.7)' :
+			        analyzeReport.score >= 60 && analyzeReport.score < 90 ? 'rgba(0, 128, 0, 0.7)' :
+			        analyzeReport.score >= 90 && analyzeReport.score <= 100 ? 'rgba(0, 0, 255, 0.7)' :
 			        ''
 			    };" >
 	                <article class="hBxOSS" style="display: block;">
 	                    <div class="iJGurJ">
 	                        <div style="margin: 10px 0px 0px 20px;">
-	                            <div class="enbDhJ1">👀 최근 분석 결과입니다</div>
+	                        	
+	                            <div class="enbDhJ1"><span class="p-1"style="font-size:15px;color:white;background-color:#EF605D;border-radius:15px;">${analyzeReport.analyzeDate}</span> &nbsp;최근 분석 결과입니다 </div>
 	                            <p class="jeiOCr1" style="">${analyzeReport.score}<span class="ml-3" style="color:black; font-size: 20px;">점</span></p>
 	                        </div>
 	                        <div class="ZyIFk1 d-block mt-3" style="margin-left: 20px;">
@@ -310,7 +311,7 @@
 									<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
 								</c:if>
 		          				<c:if test="${empty item.imgURL}">	
-									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+									<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
 								</c:if>
 									<span id="item.company" class="txt1">${item.company}</span>
 									<span id="item.productName" class="txt2">${item.productName}</span>
@@ -345,18 +346,18 @@
 	            <span class="ge-title get-20-2" style="display: block; text-align: center; width: 100%; font-size: 30px;">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
 	            <div class="get-20-2-home-txt2" style="display: block; text-align: center; width: 100%; margin:35px 0px; font-size: 18px;">전문가가 직접 답해드려요!</div>
 	            <div class="qna-list-wrap">
-	                    <div class="qna-card">
+	                   <!--<div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
 	                                성분 정보
 	                            </div>
 	                        </div>
 	                        <br/>
-	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=16"/>">
 	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>epa높은 오메가3 구미나 츄어블 있을까요?</span>
 	                            <span class="txt2">알약을 아예 못먹어서 여태 키즈 제품을 먹었습니다. 중성지방 콜레스테롤때문에 epa가 높은 제품을 먹고싶은데..<br/> 추천해주시면 너무 감사해요ㅠㅠ</span>
 	                        </a>
-	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=16"/>">
 	                                <div class="qna-user-icon qna-user-icon-1"></div>
 	                                <div class="qna-user-txt">액체형(리퀴드) 오메가3 제품을 선택하거나, 일반 캡슐 제품을 잘라서 내용물만 섭취하시는 것을 추천해요!</div>
 	                            <div class="user-info-row">
@@ -364,7 +365,7 @@
 	                                <span class="user-agesex">20대 / 여</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
@@ -372,19 +373,19 @@
 	                            </div>
 	                        </div>
 	                        <br/>
-	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="#">
-	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>혈압약 처방 받았습니다.</span>
-	                            <span class="txt2">누보로젯 40/2.5/5/10 처방 받았습니다. 현재 영양제와의 점수가 안맞네요. 멀 빼야하고 대신해서 멀 넣어야하는지<br/> 알려주세요. 혈압약을 먹기 전에는 96점이였습니다.</span>
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=13"/>">
+	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>영양제 유통기한 넘은 것은 얼마 후 까지 먹어도 될까요?</span>
+	                            <span class="txt2">대체로 몇 개월 ~ 몇년까지 초과한 것을 억어도 되는지 궁금하고 분말, 연질 캡슐, 경질 캡슐, 타블렛 등 제재에 따라 섭취 기한이 긴 순서를 각각 알고 싶습니다.</span>
 	                        </a>
-	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=13"/>">
 	                                <div class="qna-user-icon qna-user-icon-1"></div>
-	                                <div class="qna-user-txt">혈압약을 드시면서 피해야 하는 것과 계속 섭취해도 괜찮은 영양제를 알려드릴게요.</div>
+	                                <div class="qna-user-txt">영양제 유통기한이 지났다면 아깝지만 건강을 위해서 버리는 게 나아요.</div>
 	                            <div class="user-info-row">
 	                                <span class="user-name">김**</span>
 	                                <span class="user-agesex">30대 / 남</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
@@ -392,19 +393,19 @@
 	                            </div>
 	                        </div>
 	                        <br/>
-	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="#">
-	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>흡연자 영양제 정리 부탁드립니다</span>
-	                            <span class="txt2">흡연자여서 전에 Q&amp;A로 추천을 받은 영양제는 어려울거 같아서요 B6는 20 B12는 55까지 최대로 잡고 알려주시면<br/> 감사하겠습니다 마그네슘도 50정도가 부족해서 같이 부탁드릴게요</span>
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=14"/>">
+	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>과다 복용 관련</span>
+	                            <span class="txt2">인터넷에서 찾아보니깐 섭취권장량이 남성 16mgNE라고 하는데 어플은 50~1000mgNE 까지가 최적적량이라고 나와있는데 뭐가 맞는건가요? 제가 잘못 이해하고 있는건가요?</span>
 	                        </a>
-	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=14"/>">
 	                                <div class="qna-user-icon qna-user-icon-1"></div>
-	                                <div class="qna-user-txt">영양제 선택은 건강에 대해 가장 중요하게 생각하는 가치에 따라 달라질 수 있어요.</div>
+	                                <div class="qna-user-txt">권장섭취량과 충분섭취량, 상한섭취량을 구분해서 영양소를 복용해주세요 :)</div>
 	                            <div class="user-info-row">
 	                                <span class="user-name">루**</span>
 	                                <span class="user-agesex">20대 / 남</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
 	                    <div class="qna-card">
 	                        <div class="ingredient-tags">
 	                            <div class="ingredient-tag">
@@ -412,11 +413,11 @@
 	                            </div>
 	                        </div>
 	                        <br/>
-	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=15"/>">
 	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>코로나 걸렸을 때 영양제</span>
 	                            <span class="txt2">코로나 확진 4일차에요. 혹시 같이 먹으면 좋은 영양제 있을까요? 궁금합니다. </span>
 	                        </a>
-	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="#">
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=15"/>">
 	                                <div class="qna-user-icon qna-user-icon-1"></div>
 	                                <div class="qna-user-txt">코로나 감염을 예방하기 위해, 또는 코로나 후유증에서 빨리 벗어나기 위해서는 비타민 C, 비타민 D, 아연 등<br/> 면역에 관련된 영양제가 도움이 됩니다. </div>
 	                            <div class="user-info-row">
@@ -424,7 +425,40 @@
 	                                <span class="user-agesex">30대 / 여</span>
 	                            </div>
 	                        </a>
-	                    </div><!-- qna-card의 끝 -->
+	                    </div><!-- qna-card의 끝
+	                      --> 
+	                <c:forEach items="${boardList}" var="item" varStatus="status">
+                        <c:if test="${status.index < 3}">
+	                    <div class="qna-card">
+	                        <div class="ingredient-tags">
+	                            <div class="ingredient-tag">
+	                                기타
+	                            </div>
+	                        </div>
+	                        <br/>
+	                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="/board/View.do?no=${item.no }">
+	                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>${item.title }</span>
+	                            <span class="txt2">${item.content } </span>
+	                        </a>
+	                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="/board/View.do?no=${item.no }">
+	                                <div class="qna-user-icon qna-user-icon-1"></div>
+	                                <c:if test="${status.index ==0 }"> 
+	                                	<div class="qna-user-txt">액체형(리퀴드) 오메가3 제품을 선택하거나, 일반 캡슐 제품을 잘라서 내용물만 섭취하시는 것을 추천해요! </div>
+	                                </c:if>
+	                                <c:if test="${status.index ==1 }"> 
+	                                	<div class="qna-user-txt">코로나 감염을 예방하기 위해, 또는 코로나 후유증에서 빨리 벗어나기 위해서는 비타민 C, 비타민 D, 아연 등 면역에 관련된 영양제가 도움이 됩니다. </div>
+	                                </c:if>
+	                                <c:if test="${status.index ==2 }"> 
+	                                	<div class="qna-user-txt">과다복용은 부작용을 유발할 수 있어요. 식품의약품안전처 혹은 제품에 명시된 적정량을 섭취하는걸 추천합니다. </div>
+	                                </c:if>
+	                            <div class="user-info-row">
+	                                <span class="user-name">${boardmemberList.get(status.index).getName() }</span>
+	                                <span class="user-agesex"><fmt:formatDate value="${boardmemberList[status.index].getBirth()}" pattern="yyyy" var="age" />${2023-age }세</span>
+	                            </div>
+	                        </a>
+	                    </div>
+		                </c:if>
+		            </c:forEach>
 	            </div>
 
 	            <div class="clearfix my-5" style="margin-right: 80px;">
@@ -439,11 +473,11 @@
 		<div class="section6 pt-5" style="display:flex; align-items:center; max-width: 1050px; flex-direction: column;">
 			<span style="font-size:30px; display:block; font-weight: bold; text-align: center; margin-bottom: 40px;">영양성분과 건강에 대한 모든 것<br/> 📖<strong style="color:#EF605D"> MEDI-Q</strong>에서 확인하세요!</span>
 	        <div class="slider1">
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:340px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Col.jpg"/>" style="width:100%; height:340px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Hia.jpg"/>" style="width:100%; height:340px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/resources/images/thumbnail_img/RedM_Pro.jpg"/>" style="width:100%; height:340px" ></a></div>
-	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/resources/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=02"/>"><img src="<c:url value="/images/thumbnail_img/RedM_Col.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/images/thumbnail_img/RedM_Hia.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/images/thumbnail_img/RedM_Pro.jpg"/>" style="width:100%; height:340px" ></a></div>
+	            <div class="slide"><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:340px" ></a></div>
 	        </div>
 	    </div>
 	    
@@ -463,9 +497,9 @@
       	                     	<p style="font-size:17px; color:gray; font-weight: bold; margin-bottom: 0px;">서울특별시 금천구 가산디지털2로 101<br/> B동 B304호(MEDI-Q팀)</p>
       	                     	<p style="font-size:15px; color:gray;">(주)한국소프트웨어아이엔씨 (153-759)</p>
                            		<a href="https://naver.me/Fcacgzd6" target="_blank">
-                           		<img src="<c:url value="/resources/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
-                           		<a href="https://place.map.kakao.com/1784287516" target="_blank"> 
-                           		<img src="<c:url value="/resources/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
+                           		<img src="<c:url value="/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
+                           		<a href="https://map.kakao.com/?urlX=473291&urlY=1104884&urlLevel=3&itemId=1784287516&q=%ED%95%9C%EB%9D%BC%EC%9B%90%EC%95%A4%EC%9B%90%ED%83%80%EC%9B%8C&srcid=1784287516&map_type=TYPE_MAP" target="_blank"> 
+                           		<img src="<c:url value="/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
                         </div>          
                     </div>
                 </div>
@@ -488,10 +522,8 @@
 			           <div id="menu_wrap" class="bg_white">
 			             <div class="option">
 			               <div>
-			                 <form onsubmit="searchPlaces(); return false;">
 			                    키워드 : <input type="text" value="가산동 병원" placeholder="ㅇㅇ동 병원을 입력" id="keyword" size="15">
-			                    <button type="submit">검색하기</button>
-			                  </form>
+			                    <button type="submit" id="sendSearchData">검색하기</button>
 			                </div>
 			              </div>
 			              <hr>
@@ -513,7 +545,7 @@
 		        <p style="text-align: center; font-weight:bold; font-size:13px;"><span style="color:#EF605D">MEDI-Q</span>를 더 안전하고<br/> 편리하게 이용하세요</p>
 		        <a href="<c:url value="/project/Login.do"/>" style="text-decoration:none;">
 		        	<button class="btn btn-outline-success" type="button" style="display: flex; flex-wrap: wrap; align-content: center; text-align: center; justify-content: center; font-size:13px; border-radius: 12px; width:90%; height:50px; font-weight:bold; color:#EF605D;">
-		        		<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="60" height="30"> 로그인
+		        		<img src="<c:url value="/images/maintitle.png"/>" loading="lazy" width="60" height="30"> 로그인
 		        	</button>
 		        </a>	    
 		        <div class="social d-flex justify-content-center">
@@ -522,8 +554,8 @@
 		    </div>
 			 -->
             <div class="sidebar-item pt-4 mt-5">
-            	<img src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="45" height="30">
-            	<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="30">
+            	<img src="<c:url value="/images/mainicon.png"/>" loading="lazy" width="45" height="30">
+            	<img src="<c:url value="/images/maintitle.png"/>" loading="lazy" width="100" height="30">
             	<br/>
             	<p class="my-4" style="margin-bottom:20px; color:gray; font-size:12px; font-weight:500;">
             		<span class="py-3">
@@ -534,13 +566,13 @@
 	            	<c:if test="${status.index < 3}">
 	            		<c:choose>
 				          <c:when test="${status.index == 0}">
-				            <img src="<c:url value='/resources/images/tsimages/rank_crown_gold_48.svg'/>" style="top:10px; left:20px; width:50px; height:40px;" alt="*">
+				            <img src="<c:url value='/images/tsimages/rank_crown_gold_48.svg'/>" style="top:10px; left:20px; width:50px; height:40px;" alt="*">
 				          </c:when>
 				          <c:when test="${status.index == 1}">
-				            <img src="<c:url value='/resources/images/tsimages/rank_crown_silver_48.svg'/>" style="left:20px; width:50px; height:40px;" alt="*">
+				            <img src="<c:url value='/images/tsimages/rank_crown_silver_48.svg'/>" style="left:20px; width:50px; height:40px;" alt="*">
 				          </c:when>
 				          <c:when test="${status.index == 2}">
-				            <img src="<c:url value='/resources/images/tsimages/rank_crown_bronze_48.svg'/>" style="left:20px; width:50px; height:40px;" alt="*">
+				            <img src="<c:url value='/images/tsimages/rank_crown_bronze_48.svg'/>" style="left:20px; width:50px; height:40px;" alt="*">
 				          </c:when>
 						</c:choose>
                     <li>
@@ -550,7 +582,7 @@
 									<img src="${item.imgURL }" class="item-img" alt="${item.productName}" style="height: 70px">
 								</c:if>
 		          				<c:if test="${empty item.imgURL}">	
-									<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" style="height: 70px" alt="${item.productName}">
+									<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" style="height: 70px" alt="${item.productName}">
 								</c:if>
                     		</a>
                         </div>
@@ -561,7 +593,7 @@
 	                        	<p style="line-height: 11px; color:black; font-size:11px; font-weight:bold;">${item.productName}</p>
 	                        	<br/>
 	                        	<p style="color:gray; font-size:10px; font-weight:bold;">
-	                        	<img src="<c:url value="/resources/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
+	                        	<img src="<c:url value="/images/tsimages/star_yellow_16.svg"/>" style="width:13px; height:13px;" alt="*">
 	                        	&nbsp;<fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }&nbsp;(${item.REVIEW_Count})
 	                        	</p>
                     		</a>
@@ -606,7 +638,7 @@
 <!-- 지도 스크립트 키 -->
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=536a268ae501933d1ccf30618f1b4258&libraries=services"></script> 
  <!-- 메인 js-->
-<script src="<c:url value="/resources/tsfolder/js/mainjs.js"/>" ></script>
+<script src="<c:url value="/tsfolder/js/mainjs.js"/>" ></script>
 <script>
 
 </script>

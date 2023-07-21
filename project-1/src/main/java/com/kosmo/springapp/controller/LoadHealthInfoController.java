@@ -71,7 +71,14 @@ public class LoadHealthInfoController {
 	}
 	
 	@GetMapping("/DiabetesPredict.do")
-	public String diabetesPredict(@RequestParam(required = false) String userId) {
+	public String diabetesPredict(HttpServletRequest req, HttpServletResponse resp,Model model) {
+		String token = jwTokensService.getToken(req, tokenName);
+		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
+		String id = payloads.get("sub").toString();
+		HealthInfoDTO healthInfoDto = healthInfoServiceImpl.selectHealthInfoByUserId(id);
+		if(healthInfoDto != null) {
+			model.addAttribute("healthInfoDto",healthInfoDto);
+		}
 		return "DiabetesPredict";
 	}
 }

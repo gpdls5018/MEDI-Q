@@ -12,7 +12,7 @@ public interface LoginMapper {
 	
 	///////////////////MEMBER 테이블
 
-	MemberDTO findMember(Map map); //아이디로 회원정보 가져오기
+	MemberDTO findMember(String id); //아이디로 회원정보 가져오기
 
 	boolean findByIdAndPwd(Map map);//회원여부 체크
 

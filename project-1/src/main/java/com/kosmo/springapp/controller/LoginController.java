@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.service.JWTokensService;
+import com.kosmo.springapp.service.LoginMapper;
 import com.kosmo.springapp.service.impl.EmailServiceImpl;
 import com.kosmo.springapp.service.impl.KakaoLoginServiceImpl;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
@@ -43,6 +44,8 @@ public class LoginController {
 	private String secretKey;
 	@Value("${token-name}")
 	private String tokenName;
+	@Value("${save-name}")
+	private String saveName;
 
 	// 로그인 클릭 시 이동
 	@GetMapping("/Login.do")
@@ -53,7 +56,7 @@ public class LoginController {
 
 		if (cookies != null) {
 			for (Cookie cookie : cookies) {
-				if ("SAVE-USER".equals(cookie.getName())) {
+				if (saveName.equals(cookie.getName())) {
 					username = cookie.getValue();
 				}
 			}
@@ -95,13 +98,13 @@ public class LoginController {
 
 			// 아이디 저장 체크 여부 판단
 			if (map.get("saveId") != null) {// value=Y
-				Cookie save = new Cookie("SAVE-USER", id.trim());
-				save.setPath(req.getContextPath());
+				Cookie save = new Cookie(saveName, id.trim());
+				save.setPath("/");
 				save.setMaxAge(-1);
 				resp.addCookie(save);
 			} else {// 체크하지 않은 경우
-				Cookie save = new Cookie("SAVE-USER", "");
-				save.setPath(req.getContextPath());
+				Cookie save = new Cookie(saveName, "");
+				save.setPath("/");
 				save.setMaxAge(-1);
 				resp.addCookie(save);
 			}
@@ -129,6 +132,12 @@ public class LoginController {
 	public String join() {
 		return "login/JoinTheMembership";
 	}
+	
+	// 회원가입 약관 동의 시
+	@GetMapping("/Join2.do")
+	public String join2() {
+		return "login/JoinTheMembership2";
+	}
 
 	// 아이디 중복 체크
 	@PostMapping("/IdCheck.do")
@@ -147,13 +156,13 @@ public class LoginController {
 	@ResponseBody
 	public Map mailConfirm(@RequestParam("email") String email) throws Exception {
 		String code = emailServiceImpl.sendRandomNumberMessage(email);
-		System.out.println("인증코드 : " + code);
+		//System.out.println("인증코드 : " + code);
 		Map map = new HashMap<>();
 		map.put("code",code);
 		return map;
 	}
 
-	// 회원가입 정보 입력 후
+	// 회원가입 완료 후
 	@PostMapping("/Join.do")
 	@ResponseBody
 	public String joinAfter(@Valid MemberDTO member, Errors errors, HttpServletRequest req) {
@@ -162,10 +171,16 @@ public class LoginController {
 		}
 		int affected = loginService.insert(member);
 		if (affected == 1) {
-			return "<script>alert('회원가입이 완료되었습니다\\r\\n로그인 창으로 이동합니다');location.href=\'/project/Login.do\';</script>";
+			return "<script>location.href=\'/project/Join3.do\';</script>";
 		} else {
 			return "<script>alert('회원가입에 실패하였습니다');history.back()</script>";
 		}
+	}
+	
+	// 회원가입 정보 입력 시
+	@GetMapping("/Join3.do")
+	public String join3() {
+		return "login/JoinTheMembership3";
 	}
 
 	//아이디,비밀번호 찾기 클릭 시
@@ -176,6 +191,9 @@ public class LoginController {
 		map.put("message",loginService.selectOneIdNPwd(map));
 		return map;
 	}
+	
+	@Autowired
+	private LoginMapper mapper;
 
 	@Autowired
 	private KakaoLoginServiceImpl kakaoLoginServiceImpl;
@@ -187,6 +205,15 @@ public class LoginController {
 		String accessToken = kakaoLoginServiceImpl.getAccessToken(code);
 		Map<String, Object> userInfo = kakaoLoginServiceImpl.getUserInfo(accessToken);// 이메일,성별,사이트명
 
+		// 기존에 소셜로그인으로 로그인한 기록이 있는지 확인
+		int visit = mapper.checkBySocial(userInfo);
+
+		if (visit == 0) {// 첫방문O
+			mapper.saveSocial(userInfo);
+			return "redirect:/project/JoinAdd.do?add1="+userInfo.get("email").toString()+"&add2="+accessToken; //추가 정보 입력
+		}
+				
+		// 첫방문x
 		String token = loginService.socialLogin(userInfo,accessToken);
 		
 		// 쿠키에 굽자
@@ -208,9 +235,18 @@ public class LoginController {
 		String accessToken = naverLoginServiceImpl.getAccessToken(code);
 		
 		Map<String, Object> userInfo = naverLoginServiceImpl.getUserInfo(accessToken);// 이메일,성별,이름,생년월일,사이트명
-		//System.out.println("네이버 userInfo: "+userInfo);
+		
+		// 기존에 소셜로그인으로 로그인한 기록이 있는지 확인
+		int visit = mapper.checkBySocial(userInfo);
+
+		if (visit == 0) {// 첫방문O
+			mapper.saveSocial(userInfo);
+			return "redirect:/project/JoinAdd.do?add1="+userInfo.get("email").toString()+"&add2="+accessToken; //추가 정보 입력
+		}
+						
+		// 첫방문x
 		String token = loginService.socialLogin(userInfo,accessToken);
-		System.out.println("token: "+token);
+
 		// 쿠키에 굽자
 		Cookie cookie = new Cookie(tokenName, token);
 		cookie.setPath("/");

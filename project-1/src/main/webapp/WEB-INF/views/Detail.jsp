@@ -11,6 +11,7 @@
 <script src="https://unpkg.com/three"></script>
 <script src="https://unpkg.com/three-spritetext"></script>
 <script src="https://unpkg.com/3d-force-graph"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <c:set value="${totalReviewDto.starScore.COUNT_1 + totalReviewDto.starScore.COUNT_2 + totalReviewDto.starScore.COUNT_3 + totalReviewDto.starScore.COUNT_4 + totalReviewDto.starScore.COUNT_5}" var="totalStarCount"/>
 <c:set value="${totalReviewDto.effectList[0].COUNT + totalReviewDto.effectList[1].COUNT + totalReviewDto.effectList[2].COUNT + totalReviewDto.effectList[3].COUNT}" var="totalEffectCount"/>
 <c:set value="${totalReviewDto.noEffectList[0].COUNT + totalReviewDto.noEffectList[1].COUNT + totalReviewDto.noEffectList[2].COUNT + totalReviewDto.noEffectList[3].COUNT}" var="totalNoEffectCount"/>
@@ -19,7 +20,8 @@
         border-collapse: collapse;
         text-align: left;
         line-height: 1.5;
-
+        width:100%;
+		
     }
     table.type09 thead th {
         padding: 10px;
@@ -157,20 +159,24 @@ left: 146px;
 </style>
 <div>
 <div class="background-top">
-	<p class="display-4 back-img" style="background-image: url('<c:url value="/resources/images/nutrient_img/bg_bl.png"/>');">${listOne.productName}</p>
+	<p class="display-4 back-img" style="background-image: url('<c:url value="/images/nutrient_img/bg_bl.png"/>');">${listOne.productName}</p>
 </div>
 <div class="container">
 <div class="empty-space" style="height:32px;"></div>
-    
-    <h1 class="display-4">
+<div style="display: flex; align-items: center;">    
+    <h1 class="display-4" style="width:450px;">
     <c:if test="${empty listOne.imgURL}" var="emptyIMG">
-    	<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" width="400px;" height="300px;" style="border-radius:20px;"/>
+    	<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" width="400px;" height="300px;" style="border-radius:20px;"/>
     </c:if>
     <c:if test="${not emptyIMG}">
     	<img src="${listOne.imgURL}" width="400px;" height="300px;" style="border-radius:20px;"/>
    	</c:if>
-    </h1>
-
+   	</h1>
+   	<div style="display: flex; flex-direction: column; margin-left: 20px;">
+        <button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">구매하러 가기</button>
+        <button onclick="window.location.href = '/ranking/selectfood.do'" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; margin-top: 20px;">다른 제품 검색하러 가기</button>
+    </div>
+</div>    
 	<!-- 탭 -->
 	<div class="tab-content mt-5 mb-5">
 	  	<div class="effect-custom-font mt-5" style="font-size:40px;">제품의 상세정보 내용이에요! </div>
@@ -207,51 +213,51 @@ left: 146px;
 	                    <td>
 	                        <c:choose>
 	                            <c:when test="${listOne.shape eq '정'}">
-	                                <img src="<c:url value="resources/images/shape/정제.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/정제.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">정</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '과립'}">
-	                                <img src="<c:url value="resources/images/shape/과립.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/과립.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">과립</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '바'}">
-	                                <img src="<c:url value="resources/images/shape/바.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/바.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">바</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '분말'}">
-	                                <img src="<c:url value="resources/images/shape/분말.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/분말.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">분말</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '시럽'}">
-	                                <img src="<c:url value="resources/images/shape/시럽.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/시럽.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">시럽</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '캡슐'}">
-	                                <img src="<c:url value="resources/images/shape/캡슐.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/캡슐.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">캡슐</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '환'}">
-	                                <img src="<c:url value="resources/images/shape/환.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/환.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">환</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '젤리'}">
-	                                <img src="<c:url value="resources/images/shape/젤리.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/젤리.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">젤리</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '액상'}">
-	                                <img src="<c:url value="resources/images/shape/액상.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/액상.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">액상</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '겔'}">
-	                                <img src="<c:url value="resources/images/shape/겔.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/겔.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">겔</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '페이스트상'}">
-	                                <img src="<c:url value="resources/images/shape/페이스트.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/페이스트.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 20px;">페이스트</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '편상' or listOne.shape eq '기타'}">
-	                                <img src="<c:url value="resources/images/shape/기타.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/기타.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">기타</span>
 	                            </c:when>
 	                        </c:choose>
@@ -323,10 +329,8 @@ left: 146px;
                 </tbody>
             </table>
        	</div><!-- 탭 1 끝 -->
-		<button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; margin-top: 20px;">구매하러 가기</button>
-		<button onclick="window.location.href = '/ranking/selectfood.do'" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">다른 제품검색하러 가기</button>
 	 	<div class="empty-space" style="height:50px;"></div>
-	  	<div class="effect-custom-font" style="font-size:40px;">구매전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
+	  	<div class="effect-custom-font mt-5" style="font-size:40px;">구매전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
 	  	<div class="bubble p-4 effect-custom-font" style="font-size:17px;">
 		  	아래는 구매자들의 리뷰를 분석한 키워드 입니다.^^
 		  	<br>가운데 <span style="background-color:#ffdcdc;color:#ff4b4b">제품명</span>을 바탕으로
@@ -340,7 +344,7 @@ left: 146px;
    				    <script>
 				      let Graph = ForceGraph3D()
 				        (document.getElementById('3d-graph'))
-				          .jsonUrl('<c:url value="/resources/3dData/data.json"/>')
+				          .jsonUrl('<c:url value="/3dData/data.json"/>')
 				          .nodeAutoColorBy('group')
 				          .width("600")
 				          .height("380")
@@ -653,7 +657,27 @@ left: 146px;
 
   window.addEventListener("scroll", handleInfiniteScroll);
 
-
+  new Chart(document.getElementById('line-chart'), {
+      type : 'line',
+      data : {
+          labels : [1,2,3,4,5],
+          datasets : [{
+              data : [10,10,10,10,10],
+              label : "일별 조회수",
+              borderColor : "#3e95cd",
+              fill : true,
+              pointStyle : 'circle',
+              pointRadius : 10,
+              pointHoverRadius : 15,
+          }]},
+      options : {
+          title : {
+              display : true,
+              text : '제품 일별 조회수',
+          }
+      }
+  });
+  
 </script>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
    			

@@ -33,7 +33,8 @@ public class FCMInitializer {
         try {
             FirebaseOptions options = new FirebaseOptions.Builder()
             		//다운받은 비밀키로 증명
-                    .setCredentials(GoogleCredentials.fromStream(new ClassPathResource("json"+File.separator+FIREBASE_CONFIG_PATH).getInputStream())).build();
+                    .setCredentials(GoogleCredentials.fromStream(new ClassPathResource("/json"+File.separator+FIREBASE_CONFIG_PATH).getInputStream())).build();
+            System.out.println("//////////////////////////////options: "+options.getProjectId());
             if (FirebaseApp.getApps().isEmpty()) {
                 FirebaseApp.initializeApp(options);
                 logger.info("Firebase application has been initialized");

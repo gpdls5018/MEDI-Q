@@ -182,8 +182,8 @@ p{
 					</c:if>
                   <div class="title  mt-2 p-2 w-100 d-flex " style=" justify-content: space-between; align-items: center;">
                     <div>
-                    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
-           				<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+                    	<img class="px-2"src="<c:url value="/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+           				<img src="<c:url value="/images/maintitle.png"/>" loading="lazy" width="100" height="25">
            			</div>	
            			 <h2 class="mt-3 mr-3" style="font-weight: bold; color:#FD9F28">로그인</h2>
                   </div>
@@ -354,6 +354,10 @@ p{
 						if(data.message=='Not-Member'){
 							$('#checkOK').css({'display':'','color':'red'});
 							$('#checkOK').html("입력하신 정보의 회원이 없습니다<br/>이메일과 이름을 확인해주세요");
+						}
+						else if(data.message=='Social-Member'){
+							$('#checkOK').css({'display':'','color':'red'});
+							$('#checkOK').html("소셜 로그인 시 해당 서비스 이용이 불가합니다");
 						}
 						else if(data.mode=='ID'){
 							$('#checkOK').css({'display':'','color':'black'});

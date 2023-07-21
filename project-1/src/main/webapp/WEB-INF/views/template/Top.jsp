@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="m" uri="/WEB-INF/tlds/common.tld" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -22,19 +24,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="<c:url value="/resources/tsfolder/lib/animate/animate.min.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/tsfolder/lib/owlcarousel/assets/owl.carousel.min.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/tsfolder/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"/>" rel="stylesheet" />
+    <link href="<c:url value="/tsfolder/lib/animate/animate.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/tsfolder/lib/owlcarousel/assets/owl.carousel.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/tsfolder/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"/>" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet  누나꺼랑 겹침
-    <link href="/resources/tsfolder/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/tsfolder/css/bootstrap.min.css" rel="stylesheet">
      -->
 
     <!-- Template Stylesheet -->
-    <link href="<c:url value="/resources/tsfolder/css/style.css"/>" rel="stylesheet">
+    <link href="<c:url value="/tsfolder/css/style.css"/>" rel="stylesheet">
 	
      <!-- Template Javascript -->
-     <script src="<c:url value="/resources/tsfolder/js/main.js"/>" ></script>
+     <script src="<c:url value="/tsfolder/js/main.js"/>" ></script>
      
      <!-- googlefont -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin> 
@@ -81,45 +83,6 @@
         	font-size: 1.25rem;
         }
         /* 버튼 애니메이션 */
-        .custom-btn {
-          display:flex;
-          align-items:center;
-          justify-content:center;
-		  width: 130px;
-		  height: 40px;
-		  border-radius: 5px;
-		  font-size: 20px;
-		  font-weight: bold;
-		  background: transparent;
-		  cursor: pointer;
-		  transition: all 0.3s ease;
-		  position: relative;
-		  outline: none;
-		}
-		.btn-14 {
-		  background: rgb(255,151,0);
-		  border: none;
-		  z-index: 1;
-		}
-		.btn-14:after {
-		  position: absolute;
-		  content: "";
-		  width: 100%;
-		  height: 0;
-		  top: 0;
-		  left: 0;
-		  z-index: -1;
-		  border-radius: 5px;
-		  background-color: #ff771c;
-		}
-		.btn-14:hover {
-		  color: black;
-		}
-		.btn-14:hover:after {
-		  top: auto;
-		  bottom: 0;
-		  height: 100%;
-		}
 		.sidemenu a{
 			display: block;
 		    height: 60px;
@@ -145,19 +108,7 @@
 			cursor: pointer;
 			text-decoration:none;
 		}
-		/* 사이드 버튼 아코디언 형태 */
-.accordion {
-    background: #eee;
 
-    width: 100%;
-}
-
-
-.accordion .section {
-    border-bottom: 2px dashed #ccc;
-    padding: 10px 10px;
-    background: #fff;
-}
 
 .section div a {
 	font-size: 17px;
@@ -198,9 +149,6 @@
 .accordion :target h3 + div {
     height: 140px;
 }
-.accordion :target h3 + .tstm3 {
-    height: 100px;
-}
 
 .accordion .section.large:target h3 + div {
     overflow: auto;
@@ -225,68 +173,78 @@
 	padding: 3.5px;
 	text-decoration: none;
 }
-/*위로가기*/
-a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
-    bottom:100px; display: none; z-index: 290;
-    background:url(https://cdn.pillyze.io/web/img/go_top76.webp) no-repeat;
-    box-shadow:2px 2px 2px gray;
-    border-radius:50%;
-    background-size:70px 70px;
+.tsnavul {
+	text-decoration: none;
+	justify-content: center;
+	align-items: center;
 }
+.tsnavli {
+	margin: 0px 30px;
+	color:black;
+}
+.tsnava1 {
+	color: #FD9F28;
+	font-weight: 600;
+	align-items: center;
+	font-size: 21px;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+.tsnava2 {
+	color: #EF605D;
+	font-weight: bold;
+	font-size: 18px;
+	align-items: flex-end;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    margin-right: 25px;
+}
+.tsnava1:hover {
+	color:black;
+	text-decoration: none;
+}
+.tsnava2:hover {
+	color:black;
+	text-decoration: none;
+}
+ul {
+	list-style: none;
+	margin-bottom: 0px;
+}
+/* 드롭다운 버튼 스타일 */
+        .dropdown-toggle {
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-toggle:hover {
+            background-color: #f7f7f7;
+            border-radius: 10px;
+        }
+
+        /* 드롭다운 메뉴 스타일 */
+        .dropdown-menu {
+            border: none;
+            background-color:#FDCDBC;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .dropdown-menu a {
+       		color: white;
+            font-weight:bold;
+        }
+
+        .dropdown-item {
+            padding: 8px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f7f7f7;
+            color:black;
+            font-weight: bold;
+        }
     </style>
 </head>
-<script>
-	//비디오 전체화면
-	//쿠키값 가져오는 함수
-	function getCookieValue(cookieName) {
-		//debugger
-		var cookies = document.cookie.split("; ");
-	  	for (var i = 0; i < cookies.length; i++) {
-	    	var cookie = cookies[i].split("=");
-	    	var name = cookie[0];
-	    	var value = cookie[1];
-	    	if (name === cookieName) {
-	      		return value;
-	    	}
-	  	}
-	  	return "";
-	}
-	
-	document.addEventListener("DOMContentLoaded", function() {
-		//쿠키값 가져와서 로그인 상태 확인 함수
-		function checkLoginStatus() {
-		var token = getCookieValue("User-Token");
-		console.log("token",token);
-		if (token) {
-            // 토큰이 존재하면 로그인 상태로 간주
-            // 모든 .logout 요소에 스타일 적용
-            var logoutElements = document.querySelectorAll(".logout");
-            for (var i = 0; i < logoutElements.length; i++) {
-                logoutElements[i].style.display = "";
-            }
-            // 모든 .login 요소에 스타일 적용
-            var loginElements = document.querySelectorAll(".login");
-            for (var j = 0; j < loginElements.length; j++) {
-                loginElements[j].style.display = "none";
-            }
-        } else {
-            // 토큰이 존재하지 않으면 로그아웃 상태로 간주
-            // 모든 .logout 요소에 스타일 적용
-            var logoutElements = document.querySelectorAll(".logout");
-            for (var i = 0; i < logoutElements.length; i++) {
-                logoutElements[i].style.display = "none";
-            }
-            // 모든 .login 요소에 스타일 적용
-            var loginElements = document.querySelectorAll(".login");
-            for (var j = 0; j < loginElements.length; j++) {
-                loginElements[j].style.display = "";
-            }
-        }
-    }
-		// 페이지 로딩 시 로그인 상태 확인
-		checkLoginStatus();
-	});
-	
+<script>	
 	//햄버거 버튼 클릭시 좌측에 메뉴바 열기/닫기
 	jQuery(document).ready(function ($) {
         $(document).on('click', '.pull-bs-canvas-left', function () {
@@ -315,83 +273,86 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
             }
         });
     });
-	/*
-	document.addEventListener("DOMContentLoaded", function() {
-	    var dropdownItems = document.querySelectorAll(".dropdown-item2");
-	    dropdownItems.forEach(function(item) {
-	      var url = item.getAttribute("data-url2");
-	      item.addEventListener("click", function(event) {
-	        event.preventDefault();
-	        window.location.href = url;
-	      });
-	    });
-	  });
-	
-	document.addEventListener("DOMContentLoaded", function() {
-	    var dropdownItems = document.querySelectorAll(".dropdown-item1");
-	    dropdownItems.forEach(function(item) {
-	      var url = item.getAttribute("data-url1");
-	      item.addEventListener("click", function(event) {
-	        event.preventDefault();
-	        window.location.href = url;
-	      });
-	    });
-	  });*/
-	  if ($(this).scrollTop() > 20) {
-          $('#goto_top').fadeIn();
-      } else {
-          $('#goto_top').fadeOut();
-      }
-      /*화면 스크롤에 따른 조건부 노출 : 최하단 고정 행, 위로가기 버튼 */
-      $(window).scroll(function() {
-          if ($(this).scrollTop() > 20) {
-              $('#goto_top').fadeIn();
-          } else {
-              $('#goto_top').fadeOut();
-          }
+	//회원 문구
+	$(document).ready(function() {
+        var token = "${cookie['User-Token'].value}";
 
-      });
-      $('#goto_top').click(function() {
-          $('html, body').animate({
-              scrollTop : 0
-          }, 300);
-          return false;
-      });
+        if (token) {
+            $(".tsnava2").text("회원님 반갑습니다");
+        } else {
+            $(".tsnava2").text("로그인 후 이용바랍니다");
+        }
+    });
+
 
 </script>
 <body>
 <div class="container-fluid position-relative p-0" style="width:100%;">
-	 <nav class="navbar navbar-expand-sm navbar-dark fixed-top justify-content-between" style="padding:0px 0px;" id="navbar">
+	 <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="justify-content:space-around; padding:10px 0px;" id="navbar">
+	 <!-- 
         <div class="firstdown p-0 mx-4">
             <a class="pull-bs-canvas-left mr-5 d-flex">
                 <span style="font-weight:bold; font-size:50px; color:#EF605D">&#9776;</span>
             </a>
         </div>
-        <a class="navbar-brand" style="position: absolute; margin-left: 44%;" href="<c:url value='/' />">
-        	<img src="<c:url value='/resources/images/mainicon.png' />" width="40" height="40">
-        	<img src="<c:url value='/resources/images/maintitle.png' />" width="160" height="40">
+      -->
+        <a class="navbar-brand" href="<c:url value='/' />">
+        	<img src="<c:url value='/images/mainicon.png' />" width="40" height="40">
+        	<img src="<c:url value='/images/maintitle.png' />" width="160" height="40">
         </a>
-        <ul class="navbar-nav mx-5 " >
-            <li class="nav-item text2 mx-2 login" >
-                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Login.do"/>">로그인</a>
-            </li>
-            <li class="nav-item text2 mx-2 login">
-                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Join.do"/>">회원가입</a>
-            </li>
-            <li class="nav-item text2 mx-2 logout">
-                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>
-            </li>
-            <li class="nav-item text2 mx-2 logout">
-                <a class="nav-link custom-btn btn-14 text-center text-light" href="<c:url value="/project/Logout.do"/>">로그아웃</a>
-            </li>
+        
+        <ul class="tsnavul d-flex" >
+        	<li class="tsnavli">
+	            <a class="tsnava1" href="<c:url value="/NutrientSelect.do"/>">
+	             영양성분 검색
+	            </a>
+	       </li>
+	       <li class="tsnavli">
+	            <a class="tsnava1" href="<c:url value="/ranking/selectfood.do"/>">
+	             영양제 검색
+	            </a>
+	       </li>
+	       <li class="tsnavli" >
+	            <a class="tsnava1" href="<c:url value="/magazineindex.do"/>">
+	             메디큐 칼럼
+	            </a>
+	       </li>
+	       <li class="tsnavli">
+	            <a class="tsnava1" href="<c:url value="/board/List.do" />">
+	             커뮤니티
+	            </a>
+	       </li>
         </ul>
+        
+
+        <ul class="tsnavul2 mx-5 d-flex">
+	        <li class="tsnavli2 text2 mx-2 dropdown">
+	            <a class="tsnava2 dropdown-toggle" role="button" id="navbarDropdown" data-toggle="dropdown">
+	                        회원님 반갑습니다
+	            </a> 
+	            <div class="dropdown-menu dropdown-menu-right" style="text-align: center;" aria-labelledby="navbarDropdown">
+	               	<c:set var="token" value="${cookie['User-Token'].value }"/>
+	                <c:if test="${not empty token}" var="isLogin">       
+	                    <a class="dropdown-item" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>
+	                    <a class="dropdown-item" href="<c:url value="/project/Logout.do"/>">로그아웃</a>
+	                    <a class="dropdown-item" href="<c:url value="/AdminMain.do"/>">관리자</a>
+	                    <a class="dropdown-item" href="<c:url value="/test1.do"/>">태현(테스트)</a>
+	                    <a class="dropdown-item" href="#">테스트용</a>
+	                </c:if>
+	                <c:if test="${not isLogin}">
+	                    <a class="dropdown-item" href="<c:url value="/project/Login.do"/>">로그인</a>        
+	                    <a class="dropdown-item" href="<c:url value="/project/Join.do"/>">회원가입</a>       
+	                </c:if>
+	            </div>
+	        </li>
+	    </ul>
     </nav>
-    <!-- navbar left side -->
+    <!-- navbar left side
     <div class="bs-canvas bs-canvas-left position-fixed h-100 justify-content-start" style="z-index:99999; background: linear-gradient(to bottom, #ffffff, #FFFAFA);">
         <header class="bs-canvas-header p-4 bg-gra1 justify-content-center align-items-center">
         	<h4 class="d-inline-block mb-0 text1">
-        		<img src="<c:url value='/resources/images/mainicon.png' />" width="30" height="35">
-        		<img src="<c:url value='/resources/images/maintitle.png' />" width="140" height="35">
+        		<img src="<c:url value='/images/mainicon.png' />" width="30" height="35">
+        		<img src="<c:url value='/images/maintitle.png' />" width="140" height="35">
         	</h4>
             <button type="button" class="bs-canvas-close close mt-2" aria-label="Close">
                 <span aria-hidden="true" class="text-dark text1">&times;</span>
@@ -403,7 +364,7 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
              <div class="section" >
 		          <h3>
 		            <a class="text-decoration-none font-weight-bold" href="<c:url value="/"/>">
-		            <img src="<c:url value="/resources/images/tsimages/free-icon-home-3771140.png"/>" style="opacity: 0.7;" width="25" height="25">
+		            <img src="<c:url value="/images/tsimages/free-icon-home-3771140.png"/>" style="opacity: 0.7;" width="25" height="25">
 		         
 		             &nbsp; 홈으로 가기
 		            
@@ -414,7 +375,7 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 	        <div id="one" class="section" active:false>
 	          <h3 class="d-flex">
 	            <a href="#one" style="align-items: center;">
-	                <img src="<c:url value="/resources/images/tsimages/free-icon-vitamins-525955.png"/>" width="25" height="25">
+	                <img src="<c:url value="/images/tsimages/free-icon-vitamins-525955.png"/>" width="25" height="25">
 	                &nbsp; 영양성분 검색
 	                <span class="arrow-down" style="margin-left: 70px;" ></span>
 	            </a>
@@ -429,10 +390,10 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 	            <a href="<c:url value="/NutrientSelectFunctional.do"/>">기능성 원료</a>
 	          </div>
 	        </div>
-	        <div id="two" class="section">
-	          <h3>
-	            <a class="text-decoration-none"  href="#two">
-	                <img src="<c:url value="/resources/images/shape/캡슐.png"/>" style="opacity: 0.8;" width="25" height="25">
+	        <div  id="two" class="section" active:false>
+	          <h3 class="d-flex">
+	            <a href="#two" class="text-decoration-none" style="align-items: center;">
+	                <img src="<c:url value="/images/shape/캡슐.png"/>" style="opacity: 0.8;" width="25" height="25">
 	                &nbsp; 영양제 검색
 	                <span class="arrow-down" style="margin-left: 90px;" ></span>
 	            </a>
@@ -448,14 +409,14 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 	        <div id="three" class="section">
 	          <h3>
 	            <a class="text-decoration-none" href="<c:url value="/magazineindex.do"/>">
-	                <img src="<c:url value="/resources/images/tsimages/free-icon-whats-new-5511348.png"/>" width="25" height="25">
-	                &nbsp; 건강 메거진
+	                <img src="<c:url value="/images/tsimages/free-icon-whats-new-5511348.png"/>" width="25" height="25">
+	                &nbsp; 메디큐 칼럼
 	            </a>
 	        </div>
 	        <div id="four" class="section large">
 	          <h3>
 	            <a class="text-decoration-none" href="#">
-	                <img src="<c:url value="/resources/images/tsimages/free-icon-data-analysis-3449317.png"/>" width="25" height="25">
+	                <img src="<c:url value="/images/tsimages/free-icon-data-analysis-3449317.png"/>" width="25" height="25">
 	                &nbsp; 분석 및 결과
 	            </a>
 	          </h3>
@@ -463,17 +424,17 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 	        <div id="five" class="section">
 	          <h3>
 	            <a class="text-decoration-none" href="<c:url value="/board/List.do" />">
-	                <img src="<c:url value="/resources/images/tsimages/free-icon-chat-724715.png"/>" width="25" height="25">
-	                &nbsp; Q&amp;A 게시판
+	                <img src="<c:url value="/images/tsimages/free-icon-chat-724715.png"/>" width="25" height="25">
+	                &nbsp; 커뮤니티
 	            </a>
 	          </h3>
 	        </div>
 	        <div id="six" class="section" active:false>
 	          <h3 class="d-flex">
 	            <a href="#six" style="align-items: center;">
-	                <img src="<c:url value="/resources/images/tsimages/free-icon-lifestyle-4807765.png"/>" width="25" height="25">
+	                <img src="<c:url value="/images/tsimages/free-icon-lifestyle-4807765.png"/>" width="25" height="25">
 	                &nbsp; 정신건강 테스트
-	                <span class="arrow-down" style="margin-left: 50px;"></span>
+	                <span class="arrow-down" style="margin-left: 120px;"></span>
 	            </a>
 	          </h3>
 	          <div class="ditem" style="border: none;">
@@ -489,7 +450,7 @@ a#goto_top{position: fixed; width:70px; height: 70px;  right:100px;
 	      </div>
         </div>
     </div>
-    <!-- navbar left side end-->
+	navbar left side end-->
 </div>
-<a id="goto_top" href="#" title="맨 위로"></a><!-- 위로가기 -->
+
  

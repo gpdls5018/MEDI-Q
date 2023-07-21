@@ -19,8 +19,8 @@
       font-family : Noto Sans KR, sans-serif;
     }
 </style>
-<body>
-	<div class="container mt-5">
+
+	<div class="container mt-5" style="min-height: 860px;">
 		<div class="my-title d-flex effect-custom-font justify-content-between m-auto" style="width:80%;height:200px;">
 			<div class="mt-5" style="font-size:40px;"><span style="background-color:#ffdcdc;">${UserName}</span>님의 <br>영양제 분석 리포트</div>
 			<div class="mt-3">
@@ -39,5 +39,5 @@
 		</div>
 		
 	</div>
-</body>
+
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>

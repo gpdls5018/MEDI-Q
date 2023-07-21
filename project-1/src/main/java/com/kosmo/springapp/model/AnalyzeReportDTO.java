@@ -1,5 +1,6 @@
 package com.kosmo.springapp.model;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.apache.ibatis.type.Alias;
@@ -20,5 +21,6 @@ public class AnalyzeReportDTO {
 	private String userId;
 	private String takePurposes;
 	private String takeFoods;
+	private Date analyzeDate;
 	private int score;
 }

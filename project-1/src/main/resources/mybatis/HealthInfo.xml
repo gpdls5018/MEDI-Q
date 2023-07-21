@@ -55,6 +55,8 @@
 	
 	
 	<select id="selectHealthInfoByUserId" parameterType="String" resultType="healthInfoDto">
-		SELECT * FROM HEALTHINFO WHERE userId = #{userId}
+		SELECT *
+		FROM (SELECT * FROM HEALTHINFO WHERE userId = #{userId})
+		WHERE ROWNUM = 1
 	</select>
 </mapper>
