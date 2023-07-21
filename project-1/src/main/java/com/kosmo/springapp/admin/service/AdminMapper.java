@@ -1,18 +1,28 @@
 package com.kosmo.springapp.admin.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
 import com.kosmo.springapp.model.MemberDTO;
-import com.kosmo.springapp.model.ProfileImageDTO;
 
 @Mapper
 public interface AdminMapper {
 
 	// 전체 회원 목록 가져오기
 	List<MemberDTO> getMemberInfo();
+	
+	// 회원 정보 삭제
+	int deleteMemberInfoByAdmin(String memberId);
+
+	// 회원 정보 수정 전 조회
+	MemberDTO getMemberInfoById(String memberId);
+	
+	// 회원 정보 수정 후 처리
+	boolean updateMemberInfoByAdmin(MemberDTO memberdto);
+
+	
+	
 	
 	
 	

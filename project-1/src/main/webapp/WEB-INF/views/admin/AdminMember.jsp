@@ -6,6 +6,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script><!-- jquery.slim.min에서 slim뺌 -->
 
 
 
@@ -78,13 +79,13 @@
     /* 4분할 */
     .each-container {
     	padding: 10px;
-    	margin: 20px 40px;
+    	margin: 20px 20px;
     	
     }
     
     /* 컨텐츠 내 차트 */
     .chart-container {
-    	width: 600px; 
+    	width: 670px; 
     	height: 300px; 
     	margin: 5px;
     	padding: 20px 30px;
@@ -111,26 +112,33 @@
     }
 
     th {
-        background-color: rgba(54, 162, 235, 0.6);
+        background-color: rgba(255, 99, 132, 0.6); 
     }
 
-    tr:nth-child(even) {
+    tr:nth-child(odd) {
         background-color: #f2f2f2;
     }
 
-    tr:hover {
+    tbody tr:hover {
         background-color: #ddd;
     }
+    
+    /* 테이블 헤더 고정 */
+	thead {
+	    position: sticky;
+	    top: 0;
+	    background-color: #EF605D;
+	}
 
     /* 버튼 스타일링 */
     .button-wrapper {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .button {
         border-radius: 4px;
-        background-color: #EF605D;
+        background-color: rgba(255, 206, 86, 1);
         border: none;
         color: white;
         text-align: center;
@@ -140,7 +148,7 @@
     }
     
     .button:hover {
-	    background-color: #d64845; /* 버튼 호버 시 배경색이 더 진한 색으로 변경 */
+	    background-color: rgb(255,151,0); /* 버튼 호버 시 배경색이 더 진한 색으로 변경 */
     }
 
     .button span {
@@ -148,7 +156,10 @@
         display: inline-block;
     }
     
-    /* 스크롤바 색상 설정 */
+    /* 스크롤바 색상, 위치 설정 */
+    .table-wrapper {
+    }
+    
 	.table-wrapper::-webkit-scrollbar {
 	  width: 10px; /* 스크롤바 너비 조절 */
 	}
@@ -264,46 +275,101 @@
 	        <!-- 2번 div -->
 			<div class="each-container">
 				<!-- 회원테이블 -->
-		        <div class="chart-container table-wrapper" style="height: 650px; overflow: auto;">
+		        <div class="chart-container table-wrapper" style="height: 650px;">
 		        	<p class="text-center" style="font-size: 16px;"><b>회원 목록</b></p>
-				    <table>
-				        <tr>
-				            <th>아이디</th>
-				            <th>이름</th>
-				            <th>생년월일</th>
-				            <th>이메일</th>
-				            <th>설정</th>
-				        </tr>
-				        <c:forEach var="member" items="${members }">
-					        <tr>
-					            <td>${member.id }</td>
-					            <td>${member.name }</td>
-					            <td>${member.birth }</td>
-					            <td>${member.email }</td>
-					            <td>
-					            	<div class="button-wrapper">
-					            		<!-- 수정 버튼 -->
-				                        <button class="button" onclick="location.href='/editMember?id=${member.id}'">
-				                            <span>수정</span>
-				                        </button>
-				                        <!-- 삭제 버튼 -->
-				                        <button class="button" onclick="deleteMember(${member.id})">
-				                            <span>삭제</span>
-				                        </button>
-				                    </div>
-					            </td>
-					        </tr>
-				        </c:forEach>
-				        
-				    </table>
+		        	<div class="table-wrapper" style="height: 531px; overflow-y: auto; padding-right: 5px;">
+					    <table>
+					        <thead>
+				                <tr>
+				                    <th>아이디</th>
+				                    <th>이름</th>
+				                    <th>생년월일</th>
+				                    <th>이메일</th>
+				                    <th>설정</th>
+				                </tr>
+				            </thead>
+				            <tbody>
+						        <c:forEach var="member" items="${members }">
+							        <tr>
+							            <td>${member.id }</td>
+							            <td>${member.name }</td>
+							            <td>${member.birth }</td>
+							            <td>${member.email }</td>
+							            <td>
+							            	<div class="button-wrapper">
+							            		<!-- 수정 버튼 -->
+               									<button class="button" onclick="editMember('${member.id}')">
+						                            <span>수정</span>
+						                        </button>
+						                        <!-- 삭제 버튼 -->
+												<button class="button" onclick="deleteMember('${member.id}')">
+						                            <span>삭제</span>
+						                        </button>
+						                    </div>
+							            </td>
+							        </tr>
+						        </c:forEach>
+					        </tbody>
+					    </table>
+			    	</div>
 				</div>
 			</div>
-			
-		
-			
-			
-		    
 	    </div><!-- 전체 내용 -->
+	    
+	    <!-- 모달 -->
+		<div class="modal" id="editMemberModal">
+		    <div class="modal-content">
+		        <span class="close" onclick="closeModal()">&times;</span>
+		        <h2>회원 정보 수정</h2>
+		        <form id="editMemberForm">
+		            <!-- 수정할 회원 정보 입력 폼 -->
+		            <input type="hidden" name="id" id="memberId">
+		            <div>
+		                <label for="name">이름:</label>
+		                <input type="text" name="name" id="name" required>
+		            </div>
+		            <div>
+		                <label for="birth">생년월일:</label>
+		                <input type="date" name="birth" id="birth" required>
+		            </div>
+		            <div>
+		                <label for="gender">성별:</label>
+		                <select name="gender" id="gender" required>
+		                    <option value="MALE">남성</option>
+		                    <option value="FEMALE">여성</option>
+		                </select>
+		            </div>
+		            <div>
+		                <label for="email">이메일:</label>
+		                <input type="email" name="email" id="email" required>
+		            </div>
+		            <div>
+		                <label for="active">활성화:</label>
+		                <input type="checkbox" name="active" id="active">
+		            </div>
+		            <div>
+		                <label for="inactiveDate">비활성화일자:</label>
+		                <input type="date" name="inactiveDate" id="inactiveDate">
+		            </div>
+		            <div>
+		                <label for="site">사이트:</label>
+		                <input type="text" name="site" id="site">
+		            </div>
+		            <div>
+		                <label for="socialFl">소셜:</label>
+		                <input type="text" name="socialFl" id="socialFl">
+		            </div>
+		
+		            <div>
+		                <button type="button" onclick="saveMember()">저장</button>
+		                <button type="button" onclick="closeModal()">취소</button>
+		            </div>
+		        </form>
+		    </div>
+		</div>
+			    
+	    
+	    
 	    
 	</div><!-- 컨테이너 -->
 	
@@ -422,18 +488,99 @@
         });
 	    
 		// 회원 삭제 함수
-        function deleteMember(id) {
-            if (confirm('정말로 이 회원을 삭제하시겠습니까?')) {
-                // 삭제 요청을 서버로 보낼 수 있는 코드 작성
-                // 삭제 후 페이지 새로고침 또는 필요한 동작 수행
-                alert('회원 삭제 처리를 수행합니다. (회원 ID: ' + id + ')');
-            } else {
-                // 삭제 취소 시 동작
-            }
+        function deleteMember(memberId) {
+			
+			console.log(memberId)
+	        if (confirm("삭제하려는 회원 ID는 '" + memberId + "'입니다. 정말 삭제하시겠습니까?")) {
+	            // 삭제 요청을 서버로 보내는 AJAX 요청
+	        	$.ajax({
+	                type: 'POST', // 또는 'GET'
+	                url: '/deleteMember.do', // 삭제 요청을 처리할 서버의 URL
+	                data: JSON.stringify({ memberId: memberId }), // memberId를 JSON 형식으로 변환하여 전달
+	                contentType: 'application/json', // 데이터 타입 설정
+	                dataType: 'json', // JSON 형태의 응답을 처리하기 위해 설정
+	                success: function (data) {
+	                    // 서버에서 삭제 성공 여부를 응답한 후에 수행할 동작
+	                    if (data.success) {
+	                        alert(memberId + data.message); // 회원 삭제 성공 메시지 출력
+	                        location.reload(); // 페이지 새로고침
+	                    } 
+	                    else {
+	                        alert(memberId + data.message); // 회원 삭제 실패 메시지 출력
+	                    }
+	                },
+	                error: function (xhr, status, error) {
+	                    // 서버 요청이 실패했을 때 수행할 동작
+	                    alert(memberId + data.message); // 회원 삭제 실패 메시지 출력
+	                }
+	            });
+	        }
+    	}	
+	    
+     	// 회원 정보 수정 모달 열기
+        function editMember(memberId) {
+     		
+        	console.log(memberId)
+            // memberId를 기반으로 서버에서 회원 정보를 가져온 후 모달에 세팅
+            $.ajax({
+                type: 'GET', // POST로 하기
+                url: `/getMemberById/${memberId}`,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.success) {
+                        const member = data.member;
+                        // 회원 정보를 모달에 세팅
+                        $('#memberId').val(member.id);
+                        $('#name').val(member.name);
+                        $('#birth').val(member.birth);
+                        $('#gender').val(member.gender);
+                        $('#email').val(member.email);
+                        $('#active').prop('checked', member.active); // 활성화
+                        $('#inactiveDate').val(member.inactiveDate); // 비활성화일자
+                        $('#site').val(member.site); // 사이트
+                        $('#socialFl').val(member.socialFl); // 소셜
+
+                        // 모달 열기
+                        $('#editMemberModal').show();
+                    } 
+                    else {
+                        alert('회원 정보를 불러오는데 실패하였습니다.');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert('회원 정보를 불러오는데 실패하였습니다.');
+                }
+            });
         }
-	    
-	    
-	    
+
+        // 모달 닫기
+        function closeModal() {
+            $('#editMemberModal').hide();
+        }
+
+        // 회원 정보 저장
+        function saveMember() {
+            const formData = $('#editMemberForm').serialize();
+            $.ajax({
+                type: 'POST',
+                url: '/editMember',
+                data: formData,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.success) {
+                        alert(data.message);
+                        closeModal();
+                        // 페이지 새로고침 또는 필요한 동작 수행
+                    } else {
+                        alert(data.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert('회원 정보를 저장하는데 실패하였습니다.');
+                }
+            });
+        }
+
 	    
 	    
 	    
