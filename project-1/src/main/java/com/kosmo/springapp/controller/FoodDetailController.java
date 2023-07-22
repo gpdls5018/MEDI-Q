@@ -232,7 +232,8 @@ public class FoodDetailController {
 		 try {
 			 MemberDTO member = loginService.selectOne(req,resp);
 			 //System.out.println("member.getId() :"+member.getId());
-			 profImg = loginService.selectProfImg(member.getId()==null ? member.getEmail() : member.getId());
+			 profImg = loginService.selectProfImg(member.getId());
+			 model.addAttribute("analyzeReport",analyzeMyReportServiceImpl.selectAnalyzeReport(member.getId()));
 			 userName = member.getName();
 		 }
 		 catch(NullPointerException e) {
