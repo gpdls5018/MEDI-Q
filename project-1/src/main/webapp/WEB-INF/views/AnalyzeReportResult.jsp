@@ -161,7 +161,7 @@
 	var reg_ex = /[\[\]\\\/ ]/gim;
 	listVitamin = listVitamin.replace(reg_ex,'').split(',');
 	var graph_data = [1,1,1,1,1,1];
-	var check_list = ['비타민A','비타민B','비타민C','비타민D','칼슘','마그네슘']
+	var check_list = ['비타민A','비타민B','비타민C','비타민D','비타민E','칼슘','마그네슘','아연','망간','단백질']
 	check_list.forEach(function(checkitem,index){
 	    listVitamin.forEach(function(listitem){
 	        if(listitem.includes(checkitem)) {
@@ -175,8 +175,12 @@
 			    '비타민 B',
 			    '비타민 C',
 			    '비타민 D',
+			    '비타민 E',
 			    '칼슘',
 			    '마그네슘',
+			    '아연',
+			    '망간',
+			    '단백질'
 			  ],
 			  datasets: [{
 			    label: '영양소',
