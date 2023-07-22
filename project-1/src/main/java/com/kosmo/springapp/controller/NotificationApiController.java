@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kosmo.springapp.model.MemberDTO;
+import com.kosmo.springapp.model.NotificationRequest;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.NotificationService;
 
@@ -40,7 +41,15 @@ public class NotificationApiController {
     	
     	String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName),secretKey).get("sub").toString();
         notificationService.register(id,token);
-        
+        if (token != null) {//토큰 유무로 로그인 판단하자
+            NotificationRequest notificationRequest = NotificationRequest.builder()
+                .title("MEDI-Q")
+                .token(token)
+                .message("고려비타민 정 복용시간입니다")
+                .icon("../images/mainicon.png")
+                .build();
+            notificationService.sendNotification(notificationRequest);
+        }
         return ResponseEntity.ok().build();
     }
  

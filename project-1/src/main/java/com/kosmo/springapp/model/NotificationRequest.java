@@ -20,4 +20,5 @@ public class NotificationRequest {
 	private String message;
 	private String token;
 	private String icon;
+	private String click_action;
 }

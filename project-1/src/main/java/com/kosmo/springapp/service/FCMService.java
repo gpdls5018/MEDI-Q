@@ -6,9 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.google.firebase.messaging.WebpushFcmOptions.Builder;
+import com.google.api.client.util.Key;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.Message;
 import com.google.firebase.messaging.WebpushConfig;
+import com.google.firebase.messaging.WebpushFcmOptions;
 import com.google.firebase.messaging.WebpushNotification;
 import com.kosmo.springapp.model.NotificationRequest;
 
@@ -28,6 +31,8 @@ public class FCMService {
 	*/
 
     private static final Logger logger = LoggerFactory.getLogger(FCMService.class);
+    @Key
+    private String link;
 
     public void send(final NotificationRequest notificationRequest) throws InterruptedException, ExecutionException {
         Message message = Message.builder()
@@ -37,15 +42,19 @@ public class FCMService {
                         		notificationRequest.getTitle(),
                                 notificationRequest.getMessage(),
                                 notificationRequest.getIcon()))
+                        //.setFcmOptions(new WebpushFcmOptions(Builder.))
                         .build())
+                //.setFcmOptions(WebpushConfig.builder().putHeader("ttl", "300")
+                		//.setNotification(new WebpushNotification(notificationRequest.getLink())))
                 .build();
 
         //Message Builder를 통해 만들어진 메세지를 정상적으로 보낸다면 
         //response에는 projects/woowa-turkey/messages/0:1568180254610207%cc9b4facf9fd7ecd 과 같은 
         //message의 값을 리턴받는다.
-        String response = FirebaseMessaging.getInstance().sendAsync(message).get();
-        System.out.println("response: "+response);
-        logger.info("Sent message: " + response);
+        FirebaseMessaging.getInstance().sendAsync(message);
+        //String response = FirebaseMessaging.getInstance().sendAsync(message).get();
+        //System.out.println("response: "+response);
+        //logger.info("Send message: " + response);
     }
 
 }

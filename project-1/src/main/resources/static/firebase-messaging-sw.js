@@ -16,25 +16,33 @@ const messaging = firebase.messaging();
 
 //백그라우드로 수신(브라우저를 닫거나 다른 사이트로 이동시)
 //테스트시 크롬 닫고 다시 열어야 알림창이 뜬다
-
-const payload = {
-	notification : {
-		title : "MEDI-Q",
-		body : "영양제 복용 시간입니다"
-	}
-}
-
 messaging.onBackgroundMessage((payload) => 
 {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
   const notificationTitle = payload.notification.title;
-  const notificationOptions = {body: payload.notification.body,icon: payload.notification.icon };
+  const notificationOptions = {
+		  body: payload.notification.body,
+		  icon: payload.notification.icon 
+	  };
   return self.registration.showNotification(notificationTitle,notificationOptions);
 });
 
 //알림창 클릭시
 self.addEventListener('notificationclick', event => {   
-  console.log(event);
-  //event.notification.close();     
-
+  const url = "http://localhost:9090/";
+  event.notification.close();
+  event.waitUntil(clients.openWindow(url))
 });
+/*
+//webpush 예약 시간 설정
+var dts = new Date('July 22, 2023, 19:40:00'); //Math.floor(Date.now());
+
+var options = {
+  body: '7시 40분',
+  timestamp: dts
+}
+
+var n = new Notification('예약 알림',options);
+
+console.log(n.timestamp) // 원래 타임 스탬프를 기록해야합니다.
+*/

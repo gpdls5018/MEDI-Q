@@ -36,9 +36,7 @@ public class FCMInitializer {
         	InputStream serviceAccount = resource.getInputStream();
         	FirebaseOptions options = FirebaseOptions.builder()
         			.setCredentials(GoogleCredentials.fromStream(serviceAccount)).build();
-        	System.out.println("resource: "+resource.getFile().getAbsolutePath());
-            System.out.println("serviceAccount: "+serviceAccount);
-            System.out.println("/////////////////////////option: "+options.getProjectId());
+
             if (FirebaseApp.getApps().isEmpty()) {
                 FirebaseApp.initializeApp(options);
                 logger.info("Firebase application has been initialized");

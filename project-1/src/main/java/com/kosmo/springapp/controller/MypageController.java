@@ -59,44 +59,6 @@ public class MypageController {
 	//마이페이지 클릭 시
 	@GetMapping("/MyPage.do")
 	public String mypage(HttpServletRequest req, HttpServletResponse resp, Model model) throws IOException {
-		/*
-		//firebase
-		String filePath = "json";
-        
-		Resource resource = new ClassPathResource(filePath);
-		String directoryPath = resource.getFile().getAbsolutePath()+File.separator+FCMInitializer.FIREBASE_CONFIG_PATH;
-		
-        // ClassPathResource객체 생성.
-        ClassPathResource resource = new ClassPathResource(filePath);
-        
-        //물리적 경로 얻기
-        File file = resource.getFile();
-        String directoryPath = file.getAbsolutePath();
-        
-		System.out.println("directoryPath: "+directoryPath);
-		//"path/to/serviceAccountKey.json"
-		FileInputStream serviceAccount = new FileInputStream(directoryPath);
-		
-		FirebaseApp firebaseApp = null;
-		List<FirebaseApp> firebaseApps = FirebaseApp.getApps();
-		if(firebaseApps != null && !firebaseApps.isEmpty()) {
-			System.out.println("if문 안");
-			for(FirebaseApp app : firebaseApps) {
-				System.out.println("app: "+app);
-				if(app.getName().equals(FirebaseApp.DEFAULT_APP_NAME))
-					firebaseApp = app;
-			}
-		}
-		else {
-			System.out.println("else문 안");
-			FirebaseOptions options = new FirebaseOptions.Builder()
-					   .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-					   .build();
-	
-			firebaseApp = FirebaseApp.initializeApp(options);
-		}
-		System.out.println("firebaseApp: "+firebaseApp);
-		*/
 		LocalDate current = LocalDate.now(); //현재날짜 구하기
 		Map map = new HashMap<>();
 		//System.out.println("date: "+date);

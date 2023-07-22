@@ -887,7 +887,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 	//컨드롤러에서 가져온 정보 꾸리기(기본값=오늘날짜)
 	var current_ = '<c:out value="${current}"/>';
 	var current = current_.length==0 ? '<c:out value="${clickDate}"/>' : current_;
-	console.log('click:',$('.clickDate').html())
+	//console.log('click:',$('.clickDate').html())
 	//console.log('dates:',dates.length)
 	if(dates.length && $('.clickDate').html()==current){//기본값=오늘날짜
 		var info_con = '<c:out value="${condition}"/>';
@@ -1309,21 +1309,23 @@ ul li input[type=checkbox]:checked ~ .acco {
                             //아래 토큰을 복사해서 파이어베이스 콘솔에서 메시지를 보낸다
                             //혹은 스프링 REST API에서 메시지를 보낸다
                         	await fetch('/webpush', { method: 'post', body: token})
-                        	console.log('token:',token)
-                        	console.log('messaging:',messaging)
+                        	
                         	//포그라운드일 때
                             messaging.onMessage(payload => {
-                            	console.log("onMessage event fired",payload);
+                            	var dts = new Date(2023, 6, 22, 19, 51, 0, 0);
                                 const title = payload.notification.title
                                 const options = {
                                     body : payload.notification.body,
-                                    icon: payload.notification.icon
+                                    icon: payload.notification.icon,
+                                    timestamp: dts
                                 }
-                                const notification = new Notification(title,options);
-                                console.log('notification:',notification)
+                                //const notification = new Notification(title,options);
+								
                                 navigator.serviceWorker.ready.then(registration => {
                                     registration.showNotification(title, options);
+                                    console.log('time:',options.timestamp)
                                 })
+                                
                             })
                         })
                         .catch(function(err) {
