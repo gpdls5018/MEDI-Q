@@ -24,4 +24,7 @@
 		FROM (SELECT * FROM ANALYZETABLE WHERE userId= #{id} ORDER BY ANALYZEDATE DESC )
 		WHERE ROWNUM = 1
  	</select>
+	<select id="selectAnalyzeReportAll" parameterType="String" resultType="analyzeReportDto">
+		SELECT * FROM ANALYZETABLE WHERE userId= #{id} ORDER BY ANALYZEDATE DESC 
+ 	</select>
 </mapper>

@@ -361,4 +361,8 @@ public class AnalyzeMyReportServiceImpl {
 	public AnalyzeReportDTO selectAnalyzeReport(String id) {
 		return analyzeMyReportMapper.selectAnalyzeReport(id);
 	}
+
+	public List<AnalyzeReportDTO> selectAnalyzeReportAll(String id) {
+		return analyzeMyReportMapper.selectAnalyzeReportAll(id);
+	}
 }
