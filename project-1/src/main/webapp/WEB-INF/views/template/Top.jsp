@@ -273,6 +273,7 @@ ul {
             }
         });
     });
+	/*
 	//회원 문구
 	$(document).ready(function() {
         var token = "${cookie['User-Token'].value}";
@@ -283,7 +284,7 @@ ul {
             $(".tsnava2").text("로그인 후 이용바랍니다");
         }
     });
-
+*/
 
 </script>
 <body>
@@ -324,14 +325,17 @@ ul {
 	       </li>
         </ul>
         
-
+        <fmt:bundle basename="config.tokens">
+			<fmt:message key="secret-key" var="key"/>
+        </fmt:bundle>
+        <c:set var="token" value="${cookie['User-Token'].value }"/>
+        <c:set var="payload" value='${m:getTokenPayloads(token,key) }' />
+		
         <ul class="tsnavul2 mx-5 d-flex">
 	        <li class="tsnavli2 text2 mx-2 dropdown">
-	            <a class="tsnava2 dropdown-toggle" role="button" id="navbarDropdown" data-toggle="dropdown">
-	                        회원님 반갑습니다
-	            </a> 
+	            <a class="tsnava2 dropdown-toggle" role="button" id="navbarDropdown" data-toggle="dropdown">${empty token ? "로그인 후 이용해 주세요" : payload.name+="님 반갑습니다" }</a> 
 	            <div class="dropdown-menu dropdown-menu-right" style="text-align: center;" aria-labelledby="navbarDropdown">
-	               	<c:set var="token" value="${cookie['User-Token'].value }"/>
+	               	
 	                <c:if test="${not empty token}" var="isLogin">       
 	                    <a class="dropdown-item" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>
 	                    <a class="dropdown-item" href="<c:url value="/project/Logout.do"/>">로그아웃</a>

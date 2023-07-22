@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.api.client.auth.openidconnect.IdToken.Payload;
 import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.LoginMapper;
@@ -82,10 +83,11 @@ public class LoginController {
 
 		if (flag) {// 회원일 때
 			String id = map.get("id").toString();
+			String name = loginService.selectOne(id).getName();
 
 			// 토큰 생성한 뒤 쿠키에 저장
 			Map<String, Object> payloads = new HashMap<>();// 사용자 임의 데이타
-			payloads.put("id", id);
+			payloads.put("name", name);
 
 			long expirationTime = 1000 * 60 * 60 *24; // 토큰의 만료시간 설정
 

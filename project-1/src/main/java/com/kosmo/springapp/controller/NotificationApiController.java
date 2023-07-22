@@ -40,7 +40,7 @@ public class NotificationApiController {
     	
     	String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName),secretKey).get("sub").toString();
         notificationService.register(id,token);
-        System.out.println("///////////"+ResponseEntity.ok().build());
+        
         return ResponseEntity.ok().build();
     }
  

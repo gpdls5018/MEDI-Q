@@ -32,17 +32,6 @@ public class FCMInitializer {
     @PostConstruct
     public void initialize() {
         try {
-        	/*
-            FirebaseOptions options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(new ClassPathResource(FIREBASE_CONFIG_PATH).getInputStream())).build();
-            System.out.println("/////////////////////////option: "+options.getProjectId());
-            System.out.println("/////////////////////////option: "+options.getDatabaseUrl());
-            System.out.println("/////////////////////////option: "+options.getServiceAccountId());
-            if (FirebaseApp.getApps().isEmpty()) {
-                FirebaseApp.initializeApp(options);
-                logger.info("Firebase application has been initialized");
-            } 
-            */
         	ClassPathResource resource = new ClassPathResource(FIREBASE_CONFIG_PATH);
         	InputStream serviceAccount = resource.getInputStream();
         	FirebaseOptions options = FirebaseOptions.builder()
