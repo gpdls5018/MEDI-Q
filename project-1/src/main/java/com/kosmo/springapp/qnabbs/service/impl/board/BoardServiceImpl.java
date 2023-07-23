@@ -62,7 +62,6 @@ public class BoardServiceImpl implements DaoService {
 													.build();
 		
 		return listPagingData;
-		//return mapper.selectList(map);
 	}
 
 	@Override
@@ -72,7 +71,9 @@ public class BoardServiceImpl implements DaoService {
 
 	@Override
 	public int insert(Map map) {
+		
 		int affected=0;
+		
 		try {
 			affected=mapper.insert(map);
 		}

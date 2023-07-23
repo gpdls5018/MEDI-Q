@@ -63,17 +63,20 @@
                 </div>
                 <div class="d-flex col-8 flex-wrap flex-direction justify-content-center align-content-stretch">
                     <div class="col">
-                        <form method="post" action="/board/Write.do">
-                            <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
+                        <form method="post" action="/board/AnswerWrite.do">
                             <div class="form-group">
                                 <label><kbd class="lead text_2 btn_deco">제목</kbd></label>
-                                <input type="text" class="form-control" placeholder="제목을 입력하세요" name="title">
+                                <!-- <input type="text" class="form-control" placeholder="제목을 입력하세요" name="title"> -->
+                                <input type="text" class="form-control" placeholder="제목을 입력하세요" name="title" value="${param.title}" disabled>
                             </div>
                             <div class="form-group">
                                 <label><kbd class="lead bg-light text_2 btn_deco">내용</kbd></label>
                                 <textarea class="form-control" rows="15" name="content"></textarea>
                             </div>
+                            
+                            
                             <button type="submit" class="btn btn-light text-light text_2 btn_deco">등록</button>
+                            <input type="hidden" value="${no}" name="no">
                         </form>
                     </div>
                 </div>
