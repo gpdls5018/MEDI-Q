@@ -62,7 +62,6 @@ public class BoardServiceImpl implements DaoService {
 													.build();
 		
 		return listPagingData;
-		//return mapper.selectList(map);
 	}
 
 	@Override

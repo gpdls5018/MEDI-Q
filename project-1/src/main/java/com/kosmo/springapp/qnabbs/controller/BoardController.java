@@ -18,9 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.fasterxml.jackson.databind.deser.impl.CreatorCandidate.Param;
+import com.kosmo.springapp.qnabbs.service.AnswerBoardDTO;
 import com.kosmo.springapp.qnabbs.service.DaoService;
 import com.kosmo.springapp.qnabbs.service.ListPagingData;
 import com.kosmo.springapp.qnabbs.service.PagingUtil;
+import com.kosmo.springapp.qnabbs.service.impl.board.AnswerServiceImpl;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
 
@@ -43,6 +46,9 @@ public class BoardController {
 	//loginserviceimpl주입
 	@Autowired
 	private LoginServiceImpl loginService;
+	
+	@Autowired
+	private AnswerServiceImpl answerservice;
 	
 	//post로 write.do를 요청받음, 뷰페이지에서 
 	@RequestMapping(value="/List.do",method = {RequestMethod.GET,RequestMethod.POST})
@@ -91,12 +97,34 @@ public class BoardController {
 	}
 	//상세보기
 	@RequestMapping(value="/View.do",method = {RequestMethod.GET,RequestMethod.POST})
-	public String view(HttpServletRequest req,@RequestParam Map map,Model model) { 
-		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
-		map.put("id", id);
+	public String view(@RequestParam Map map,Model model) { 
+
+		System.out.println("체크용1");
+		//게시판의 하나의 글 불러와서 map에 저장
+		System.out.println("map에 무엇이 있나? "+map);
 		map=board.selectOne(map);
+		System.out.println("체크용2");
+		//record란 이름으로 위의 map을 저장
 		model.addAttribute("record", map);
+		System.out.println("체크용3");
 		//System.out.println(model);//콘솔 체크용
+		//게시판의 하나의 답글을 불러와서 map에 저장
+		System.out.println("map의 값 체크"+map);
+		Map paraMap =new HashMap<>();
+		System.out.println("여기서 아래 에러 발생함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		if (map.get("NO") != null) {
+			System.out.println(map.get("NO"));
+			System.out.println("여기로 들어오는가?");
+			System.out.println("성공");
+			paraMap=answerservice.answerselectOne(map);
+		}
+		System.out.println("체크용4");
+		//paramMap이란 이름으로 map을 저장
+		model.addAttribute("paramMap", paraMap);
+		//paramMap을 출력
+		System.out.println("paramMap:"+paraMap);
+		System.out.println("체크용5");
+		System.out.println("여기출력까지 성공함");
 		return "board/View";
 	}
 	@GetMapping("/Edit.do")
@@ -139,6 +167,7 @@ public class BoardController {
 	    System.out.println("삭제된 글 수: " + affected);
 	    // 뷰정보 반환 - 목록을 처리하는 컨트롤러로 이동
 	    return "forward:/board/List.do"; 
-	}	
+	}
+	
 	
 }

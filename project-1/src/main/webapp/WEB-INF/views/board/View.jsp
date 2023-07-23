@@ -139,7 +139,7 @@
 								<!-- 참이면(not false) -->
 								<%-- <c:if test="${sessionScope.id==comment.id }"> --%>
 								<c:if test="${true}">
-									<a href='<c:url value="/board/AnswerWrite.do"/>' class="text-decoration-none p-1">
+									<a href='<c:url value="/board/AnswerWrite.do?no=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
 										<button class="btn btn-light text-light btn_deco">답변작성</button>
 									</a> 
 								</c:if>
@@ -168,8 +168,8 @@
 								</div>
 							</c:if>
 	                        <!-- 답글이 존재시 뷰 -->
-	                        <c:if test="${not isEmpty }">
-		                        <span class="card-text"><h5></h5></span><!-- 답변내용 -->
+	                        <c:if test="${not empty paramMap }">
+		                        <span class="card-text"><h5>${paramMap.CONTENT}</h5></span><!-- 답변내용 -->
 		                        <hr style="border: 1px solid #E6E9ED;"/>
 		                        <div class="card-text d-flex align-items-center">
 			                       	<button class="btn btn-light text-light btn_deco mr-3" onclick="increaseNum()">도움이 돼요</button>
@@ -177,10 +177,12 @@
 			                   	</div>
 			                   	<!-- 토큰의 id가 관리자일때 삭제버튼 표시 -->
 			                   	<!-- 만약 기능 성공시 이 주석 삭제 -->
+			                   	<%-- 
 			                   	<c:if test="${sessionScope.id==comment.id }" var="isSame">
 									<button class="btn btn-info btn-sm my-delete ">삭제</button> 
 								</c:if>
-								<c:if test="${not isSame }">삭제불가입니다</c:if>
+								<c:if test="${not isSame }">삭제불가입니다</c:if> 
+								--%>
 							</c:if>
 	                   	</div>
                         

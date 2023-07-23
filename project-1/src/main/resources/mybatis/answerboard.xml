@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kosmo.springapp.qnabbs.service.impl.board.AnswerMapper">
+	<!-- 입력 -->
+	<insert id="answerinsert" parameterType="map">
+	  <!-- sequence번호생성 -->
+	  <selectKey resultType="int" order="BEFORE" keyProperty="answer_no">
+	    SELECT SEQ_ANSWER_BOARD.NEXTVAL FROM DUAL
+	  </selectKey>
+	  INSERT INTO ANSWER_BOARD VALUES (#{answer_no}, #{no}, #{content},DEFAULT, #{id})
+	</insert>
+	<select id="answerselectOne" parameterType="map" resultType="map">
+		SELECT ab.*, m.name
+	    FROM answer_board ab
+	    JOIN member m ON ab.id = m.id
+	    WHERE board_no = #{NO}
+	    AND ROWNUM = 1
+	</select>
+</mapper>
