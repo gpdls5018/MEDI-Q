@@ -136,20 +136,20 @@ public class AnalyzeMyReportServiceImpl {
         			if(UMmatcher.find()) {
         				if(Float.parseFloat(DMmatcher.group(0)) > Float.parseFloat(nutNumber)) {
             				total_result += 1.5;
-            				String result = nut+" : "+nutNumber + " 최소용량 : " + DMmatcher.group(0);
+            				String result = "<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\">"+nut+"의 권장 섭취량은 : <span style='color:#0033FF;'>"+ DMmatcher.group(0)+"</span> 입니다.<br/>"+nut+"의 상한 섭취량은 : <span style='color:#FF0033;'> "+UMmatcher.group(0)+ "</span>입니다.<br/> 현재 사용자님의 섭취량은 : <span style='color:#0033FF;'>"+nutNumber + "</span>입니다.</div><br/>";
             				System.out.println(result);
             				resultList.add(result);
             			}//권장 섭취량 보다 조금 먹었을 경우 1.5점 추가
             			else if(Float.parseFloat(DMmatcher.group(0)) <= Float.parseFloat(nutNumber) &&
             					Float.parseFloat(UMmatcher.group(0)) > Float.parseFloat(nutNumber)) {
-            				total_result += 2.5;
-            				String result =nut+" : "+nutNumber + " 최소용량 : " + DMmatcher.group(0) + " 최대용량 : " + UMmatcher.group(0);
+            				total_result += 2;
+            				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\">"+nut+"의 권장 섭취량은 : <span style='color:#0033FF;'>"+ DMmatcher.group(0)+"</span> 입니다.<br/>"+nut+"의 상한 섭취량은 : <span style='color:#FF0033;'> "+UMmatcher.group(0)+ "</span>입니다.<br/>현재 사용자님의 섭취량은 : <span style='color:#33CC33;'>"+nutNumber + "</span>입니다.</div><br/>";
             				System.out.println(result);
             				resultList.add(result);
             			}//권장 섭취량과 상한 섭취량 사이로 먹었을 경우 2.5점 추가
             			else {
-            				total_result += 2;
-            				String result =nut+" : "+nutNumber + " 최소용량 : " + DMmatcher.group(0) + " 최대용량 : " + UMmatcher.group(0);
+            				total_result += 1.75;
+            				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\">"+nut+"의 권장 섭취량은 : <span style='color:#0033FF;'>"+ DMmatcher.group(0)+"</span> 입니다.<br/>"+nut+"의 상한 섭취량은 : <span style='color:#FF0033;'> "+UMmatcher.group(0)+ "</span>입니다.<br/>현재 사용자님의 섭취량은 : <span style='color:#FF0033;'>"+nutNumber + "</span>입니다.</div><br/>";
             				System.out.println(result);
             				resultList.add(result);
             			}//상한섭취량보다 많이 먹었을 경우 2점추가
@@ -158,13 +158,13 @@ public class AnalyzeMyReportServiceImpl {
         		else {
         			if(Float.parseFloat(DMmatcher.group(0)) > Float.parseFloat(nutNumber)){
         				total_result += 1.5;
-        				String result =nut+" : "+nutNumber + " 최소용량 : " + DMmatcher.group(0);
+        				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\">"+nut+"의 권장 섭취량은 : <span style='color:#0033FF;'>"+ DMmatcher.group(0)+"</span> 입니다.<br/>"+nut+"의 상한 섭취량은 존재 하지 않습니다.<br/>현재 사용자님의 섭취량은 : <span style='color:#0033FF;'>"+nutNumber + "</span>입니다.</div><br/>";
         				System.out.println(result);
         				resultList.add(result);
         			}//상한 섭취량이 없고 권장서취량보다 적게 먹었을 경우 1.5점 추가
         			else if(Float.parseFloat(DMmatcher.group(0)) <= Float.parseFloat(nutNumber)){
-        				total_result += 2.5;
-        				String result =nut+" : "+nutNumber + " 최소용량 : " + DMmatcher.group(0) + " 최대용량 : 없음";
+        				total_result += 2;
+        				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\">"+nut+"의 권장 섭취량은 : <span style='color:#0033FF;'>"+ DMmatcher.group(0)+"</span> 입니다.<br/>"+nut+"의 상한 섭취량은 존재 하지 않습니다.<br/>현재 사용자님의 섭취량은 : <span style='color:#33CC33;'>"+nutNumber + "</span>입니다.</div><br/>";
         				System.out.println(result);
         				resultList.add(result);
         			}//상한섭취량이 없고 권장섭취량 보다 많이먹었을 경우 2.5점추가
@@ -175,6 +175,7 @@ public class AnalyzeMyReportServiceImpl {
 		analyzeResultListDTO.setListdto(analyzeResultDTOs);
 		analyzeResultListDTO.setNutrient_list_report(nutrient_list_report);
 		analyzeResultListDTO.setNutrient_list_no_report(nutrient_list_no_report);
+		analyzeResultListDTO.setNutnumlist(resultList);
 		//최종 점수 구하기
 		nutrient_score = nutrient_list_report.size() *3 / takePurposes.size();
 		System.out.println(nutnummap);
@@ -191,7 +192,7 @@ public class AnalyzeMyReportServiceImpl {
 	
 	public AnalyzeResultListDTO analyzeMyReportF(Map map) {
 			
-			
+
 			// 필수 영양소(비타민 등)을 담기 위한 리스트(모든 필수 영양소, 현재 섭취중인 필수 영양소, 섭취가 필요한 필수 영양소)
 			List<String> nutrient_list = analyzeMyReportMapper.selectNutrient_list();
 			List<String> nutrient_list_report = new ArrayList<String>();
@@ -209,7 +210,6 @@ public class AnalyzeMyReportServiceImpl {
 			float total_result = 0;
 			int ingsize = takePurposes.size();
 			List<String> takeFoods = ((List)map.get("takeFood"));//사용자가 복용중인 건기식
-			
 			for(String takePurpose : takePurposes) {//복용 목적을 하나씩 비교
 				boolean ing = false;
 				ingsize--;
@@ -295,21 +295,21 @@ public class AnalyzeMyReportServiceImpl {
 	        			Matcher UFmatcher = cappattern.matcher(nutdto.getN_UL_M());
 	        			if(UFmatcher.find()) {
 	        				if(Float.parseFloat(DFmatcher.group(0)) > Float.parseFloat(nutNumber)) {
-	            				total_result += 1.5;
-	            				String result = nut+" : "+nutNumber + " 최소용량 : " + DFmatcher.group(0);
+	        					total_result += 1.5;
+	            				String result = "<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\">"+nut+"의 권장 섭취량은 : <span style='color:#0033FF;'>"+ DFmatcher.group(0)+"</span> 입니다.<br/>"+nut+"의 상한 섭취량은 : <span style='color:#FF0033;'> "+UFmatcher.group(0)+ "</span>입니다.<br/> 현재 사용자님의 섭취량은 : <span style='color:#0033FF;'>"+nutNumber + "</span>입니다.</div><br/>";
 	            				System.out.println(result);
 	            				resultList.add(result);
 	            			}//권장 섭취량 보다 조금 먹었을 경우 1.5점 추가
 	            			else if(Float.parseFloat(DFmatcher.group(0)) <= Float.parseFloat(nutNumber) &&
 	            					Float.parseFloat(UFmatcher.group(0)) > Float.parseFloat(nutNumber)) {
 	            				total_result += 2;
-	            				String result =nut+" : "+nutNumber + " 최소용량 : " + DFmatcher.group(0) + " 최대용량 : " + UFmatcher.group(0);
+	            				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\">"+nut+"의 권장 섭취량은 : <span style='color:#0033FF;'>"+ DFmatcher.group(0)+"</span> 입니다.<br/>"+nut+"의 상한 섭취량은 : <span style='color:#FF0033;'> "+UFmatcher.group(0)+ "</span>입니다.<br/>현재 사용자님의 섭취량은 : <span style='color:#33CC33;'>"+nutNumber + "</span>입니다.</div><br/>";
 	            				System.out.println(result);
 	            				resultList.add(result);
 	            			}//권장 섭취량과 상한 섭취량 사이로 먹었을 경우 2.5점 추가
 	            			else {
-	            				total_result += 1.5;
-	            				String result =nut+" : "+nutNumber + " 최소용량 : " + DFmatcher.group(0) + " 최대용량 : " + UFmatcher.group(0);
+	            				total_result += 1.75;
+	            				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\">"+nut+"의 권장 섭취량은 : <span style='color:#0033FF;'>"+ DFmatcher.group(0)+"</span> 입니다.<br/>"+nut+"의 상한 섭취량은 : <span style='color:#FF0033;'> "+UFmatcher.group(0)+ "</span>입니다.<br/>현재 사용자님의 섭취량은 : <span style='color:#33CC33;'>"+nutNumber + "</span>입니다.</div><br/>";
 	            				System.out.println(result);
 	            				resultList.add(result);
 	            			}//상한섭취량보다 많이 먹었을 경우 2점추가
@@ -318,26 +318,25 @@ public class AnalyzeMyReportServiceImpl {
 	        		else {
 	        			if(Float.parseFloat(DFmatcher.group(0)) > Float.parseFloat(nutNumber)){
 	        				total_result += 1.5;
-	        				String result =nut+" : "+nutNumber + " 최소용량 : " + DFmatcher.group(0);
+	        				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\">"+nut+"의 권장 섭취량은 : <span style='color:#0033FF;'>"+ DFmatcher.group(0)+"</span> 입니다.<br/>"+nut+"의 상한 섭취량은 존재 하지 않습니다.<br/>현재 사용자님의 섭취량은 : <span style='color:#33CC33;'>"+nutNumber + "</span>입니다.</div><br/>";
 	        				System.out.println(result);
 	        				resultList.add(result);
 	        			}//상한 섭취량이 없고 권장서취량보다 적게 먹었을 경우 1.5점 추가
 	        			else if(Float.parseFloat(DFmatcher.group(0)) <= Float.parseFloat(nutNumber)){
 	        				total_result += 2;
-	        				String result =nut+" : "+nutNumber + " 최소용량 : " + DFmatcher.group(0) + " 최대용량 : 없음";
+	        				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\">"+nut+"의 권장 섭취량은 : <span style='color:#0033FF;'>"+ DFmatcher.group(0)+"</span> 입니다.<br/>"+nut+"의 상한 섭취량은 존재 하지 않습니다.<br/>현재 사용자님의 섭취량은 : <span style='color:#33CC33;'>"+nutNumber + "</span>입니다.</div><br/>";
 	        				System.out.println(result);
 	        				resultList.add(result);
 	        			}//상한섭취량이 없고 권장섭취량 보다 많이먹었을 경우 2.5점추가
 	        		}//if(nutdto.getN_UL_M() != null) else문 끝(상한 섭취량이 없는 경우)
 	    		}//DMmatcher확인용
 			}
-			
 			analyzeResultListDTO.setListdto(analyzeResultDTOs);
 			analyzeResultListDTO.setNutrient_list_report(nutrient_list_report);
 			analyzeResultListDTO.setNutrient_list_no_report(nutrient_list_no_report);
+			analyzeResultListDTO.setNutnumlist(resultList);
 			//최종 점수 구하기
 			nutrient_score = nutrient_list_report.size() *3 / takePurposes.size();
-			System.out.println(nutnummap);
 			System.out.println(takePurposes.size());
 			System.out.println(total_result);
 			float resultScore = (50/takePurposes.size())*ingsize + total_result;//nutrient_score;
