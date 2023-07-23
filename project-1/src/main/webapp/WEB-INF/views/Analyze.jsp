@@ -26,10 +26,10 @@
 			<div class="mt-3">
 			<c:if test="${info.prof_Img_Fl eq 'Y' }" var="isProfImg">
 				<c:set var="uploadFolder" value="${fn:split(profImg.pi_Path,'\\\\')[fn:length(fn:split(profImg.pi_Path, '\\\\'))-1] }"/>
-				<img class="rounded-circle" alt="사용자 이미지" src="<c:url value="/resources/images/${uploadFolder }/${profImg.pi_Filename }.${profImg.pi_Ext }" />" style="width: 200px; height: 200px">
+				<img class="rounded-circle" alt="사용자 이미지" src="<c:url value="/images/${uploadFolder }/${profImg.pi_Filename }.${profImg.pi_Ext }" />" style="width: 200px; height: 200px">
 			</c:if>
 			<c:if test="${not isProfImg }">
-				<img class="rounded-circle" alt="기본 프로필" src="<c:url value="/resources/images/basic/friend.png" />" style="width: 200px; height: 200px">
+				<img class="rounded-circle" alt="기본 프로필" src="<c:url value="/images/basic/friend.png" />" style="width: 200px; height: 200px">
 			</c:if>
 			</div>
 		</div>
@@ -37,7 +37,32 @@
 		<div class="m-5">
 			<div class="btn btn-warning effect-custom-font" style="border-radius:15px;width:100%;" onclick="location.href='/AnalyzeNewReport.do'">새로 분석하기</div>
 		</div>
-		
+		<div class="report_recent effect-custom-font m-5" style="font-size:25px;">
+			<div>최근 분석 리포트</div>
+			<div class="jumbotron" style="box-shadow: 5px 5px 5px grey;border-radius:25px;">
+				<div style="margin: 10px 0px 0px 20px;">
+                <div class="enbDhJ1"><span class="p-1"style="font-size:15px;color:white;background-color:#EF605D;border-radius:15px;">${analyzeReport.analyzeDate}</span> &nbsp;최근 분석 결과입니다 </div>
+                	<p style="">${analyzeReport.score}<span class="ml-3" style="color:black; font-size: 20px;">점</span></p>
+            	</div>
+	            <div class="ZyIFk1 d-block mt-3" style="margin-left: 20px;">
+	                <div><span style="color:#545454; font-weight: bold;">섭취 목적</span> :<br/> ${analyzeReport.takePurposes}</div>
+	                <div><span style="color:#545454; font-weight: bold;">섭취중인 영양제</span> :<br/> ${analyzeReport.takeFoods}</div>
+	            </div>	
+			</div>
+		</div>
+		<div class="report_recent effect-custom-font m-5" style="font-size:25px;">
+			<div>저장된 분석 리포트</div>
+			<c:forEach items="${analzeReportAll}" var="analyzeReportOne">
+			<div class="jumbotron p-3" style="box-shadow: 5px 5px 5px grey;border-radius:25px;font-size:15px;height:200px;">
+                <div class="enbDhJ1"><span class="p-1"style="font-size:15px;color:white;background-color:#EF605D;border-radius:15px;">${analyzeReportOne.analyzeDate}</span></div>
+                	<p style="">${analyzeReportOne.score}<span class="ml-3" style="color:black; font-size: 20px;">점</span></p>
+	            <div class="ZyIFk1 d-block mt-3" style="margin-left: 20px;">
+	                <div><span style="color:#545454; font-weight: bold;">섭취 목적</span> :<br/> ${analyzeReportOne.takePurposes}</div>
+	                <div><span style="color:#545454; font-weight: bold;">섭취중인 영양제</span> :<br/> ${analyzeReportOne.takeFoods}</div>
+	            </div>	
+			</div>
+			</c:forEach>
+		</div>
 	</div>
 
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>

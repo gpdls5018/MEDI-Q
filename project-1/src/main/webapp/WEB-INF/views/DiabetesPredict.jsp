@@ -24,7 +24,7 @@
 <jsp:include page="/WEB-INF/views/template/Top.jsp" />
 <div class="container effect-custom-font" >
 	<div class="m-5"style="height:50px;"></div>
-    <div class="m-5 display-4 effect-custom-font" style="text-align:center;">당뇨병 수치 예측하기</div>
+    <div class="m-5 display-4 effect-custom-font" style="text-align:center;">심혈관질환 수치 예측하기</div>
 	<div class="model-score m-4" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd>70%</kbd> 입니다</div>
     <div class="row">
         <div class="col-6">
@@ -126,7 +126,7 @@
 	                        }
                         $.ajax({
                             type: 'POST',
-                            url: 'http://192.168.0.16/diabetes',
+                            url: 'http://192.168.0.16/cardiovascular',
                             contentType : "application/json",
                             dataType: 'json',
                             data: JSON.stringify(data),

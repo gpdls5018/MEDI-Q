@@ -182,8 +182,8 @@ p{
 					</c:if>
                   <div class="title  mt-2 p-2 w-100 d-flex " style=" justify-content: space-between; align-items: center;">
                     <div>
-                    	<img class="px-2"src="<c:url value="/resources/images/mainicon.png"/>" loading="lazy" width="50" height="25">
-           				<img src="<c:url value="/resources/images/maintitle.png"/>" loading="lazy" width="100" height="25">
+                    	<img class="px-2"src="<c:url value="/images/mainicon.png"/>" loading="lazy" width="50" height="25">
+           				<img src="<c:url value="/images/maintitle.png"/>" loading="lazy" width="100" height="25">
            			</div>	
            			 <h2 class="mt-3 mr-3" style="font-weight: bold; color:#FD9F28">로그인</h2>
                   </div>

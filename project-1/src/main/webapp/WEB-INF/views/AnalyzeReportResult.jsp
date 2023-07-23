@@ -23,7 +23,7 @@
 </style>
 <body>
 	<div class="container mt-5">
-		<div style="background-image:url(<c:url value="/resources/images/basic/result.png"/>);background-repeat : no-repeat;background-size : contain;background-position:right,center;">
+		<div style="background-image:url(<c:url value="/images/basic/result.png"/>);background-repeat : no-repeat;background-size : contain;background-position:right,center;">
 			<div class="my-title d-flex effect-custom-font justify-content-right m-auto" style="width:80%;">
 				<div class="mt-5 float-right" style="font-size:40px;"><span style="background-color:#ffdcdc;">${memberDto.name}</span>님의 분석 결과</div>
 			</div>
@@ -91,7 +91,7 @@
 					<div class="col-3">
 						<div class="effect-custom-font" style="font-size:30px;">
 							<div>#${loop.count} ${dto.takePurpose}</div>
-							<div><img src="<c:url value="/resources/images/health_img/${dto.takePurpose}"/>.png" style="width:150px;height:150px;"/></div>
+							<div><img src="<c:url value="/images/health_img/${dto.takePurpose}"/>.png" style="width:150px;height:150px;"/></div>
 						</div>
 					</div>
 					<div class="col-9">
@@ -100,7 +100,7 @@
 						</div>
 						<c:if test="${fn:length(dto.foodForHelpPurpose) eq 0}" var="noHelp">
 							<div class="effect-custom-font"><span style="font-size:17px;color:red;background-color:#ffdcdc">현재 아무런 기능성 원료도 섭취하지 않아요!</span>  <span style="color:red;font-size:15px;background-color:#ffdcdc">아래의 추천 기능성 원료를 참고해 주세요</span></div>
-							<img src="<c:url value="/resources/images/basic/warning.png"/>" style="width:200px;height:200px;"/>
+							<img src="<c:url value="/images/basic/warning.png"/>" style="width:200px;height:200px;"/>
 						</c:if>
 						<c:if test="${not noHelp}">
 						<div class="effect-custom-font" style="font-size:20px;">아래는 복용 중이신 영양제 중 '${dto.takePurpose}' 에 도움이 되는 기능성 원료입니다</div>
@@ -125,7 +125,6 @@
 						</c:forEach>
 					</div>
 				</div>
-				
 			</div>
 			</c:forEach>
 			<div class="effect-custom-font m-1" style="font-size:30px;color:#868686;text-align:center;">5대 영양소</div>
@@ -133,11 +132,13 @@
 				<div class="row jumbotron m-1"  style="border-radius:25px;">
 					<div class="col-6" style="border-radius:15px;">
 						현재 섭취하고 있는 5대 영양소입니다
-						<ul class="list-unstyled mt-3">
-							<c:forEach items="${resultListDto.nutrient_list_report}" var="nutrient">
-							<a href="/NutrientDetail.do?name=${nutrient}"><li>✅ ${nutrient}</li></a>
-							</c:forEach>
-						</ul>
+						<div class="mt-3" style="overflow: auto;height:300px;">
+							<ul class="list-unstyled mt-3">
+								<c:forEach items="${resultListDto.nutrient_list_report}" var="nutrient">
+								<a href="/NutrientDetail.do?name=${nutrient}"><li>✅ ${nutrient}</li></a>
+								</c:forEach>
+							</ul>
+						</div>
 					</div>
 					<div class="col-6" style="border-radius:15px;">
 						현재 섭취하고 있지 않는 5대 영양소입니다
@@ -151,6 +152,20 @@
 					</div>
 				</div>
 			</div>
+			<div class="mt-5 effect-custom-font">
+				<div class="effect-custom-font m-1" style="font-size:30px;color:#868686;text-align:center;">5대 영양소 섭취량 비교</div>
+			</div>
+			<div class="jumbotron" style="border-radius:25px;">
+				<span style="font-size:25px;text-weight:bold;"> 권장 섭취량 : 건강한 생활을 위해 섭취하도록 정하여 장려하는 양. </span><br/>
+				<span style="font-size:25px;text-weight:bold;"> 상한 섭취량 : 인체 건강에 유해한 영향이 나타나지 않는 최대 영양소 섭취 수준. </span><br/><br/>
+				<div class="row">
+					<div class="effect-custom-font" style="font-size:15px;">
+						<c:forEach items="${resultListDto.nutnumlist }" var="item">
+							<span style="display: inline-block; margin-right: 10px;">${item}</span>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script>
@@ -159,7 +174,7 @@
 	var reg_ex = /[\[\]\\\/ ]/gim;
 	listVitamin = listVitamin.replace(reg_ex,'').split(',');
 	var graph_data = [1,1,1,1,1,1];
-	var check_list = ['비타민A','비타민B','비타민C','비타민D','칼슘','마그네슘']
+	var check_list = ['비타민A','비타민B','비타민C','비타민D','비타민E','칼슘','마그네슘','아연','망간','단백질']
 	check_list.forEach(function(checkitem,index){
 	    listVitamin.forEach(function(listitem){
 	        if(listitem.includes(checkitem)) {
@@ -173,8 +188,12 @@
 			    '비타민 B',
 			    '비타민 C',
 			    '비타민 D',
+			    '비타민 E',
 			    '칼슘',
 			    '마그네슘',
+			    '아연',
+			    '망간',
+			    '단백질'
 			  ],
 			  datasets: [{
 			    label: '영양소',

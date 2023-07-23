@@ -273,7 +273,7 @@
             	</div>
                 <!-- 이미지 -->
                 <div class="image mt-2">
-	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
+	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text" style="color: black; margin-top:22px;">
 		           		<b style="font-size: 30px;">💊&nbsp;${title_name}</b><br/>
 		           		<small>궁금했던 모든 것, 바로 확인해보세요!</small>
@@ -479,11 +479,11 @@
 														
 												    	<!-- imgurl 있으면 가져옴 -->
 												    	<c:if test="${productInfo.IMGURL != null }" var="existimg">
-												        	<img src="${productInfo.IMGURL}" alt="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+												        	<img src="${productInfo.IMGURL}" alt="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
 												        </c:if>
 												        <!-- imgurl 없으면 대체이미지 -->
 												        <c:if test="${not existimg }">
- 													        <img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+ 													        <img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
 												        </c:if>
 												        
 												        <b class="text-center" style="font-size: 13px; width: 300px;">&nbsp;${productInfo.PRODUCTNAME}</b>
@@ -511,11 +511,11 @@
 														
 												    	
 												    	<c:if test="${productInfo.IMGURL != null }" var="existimg">
-												        	<img src="${productInfo.IMGURL}" alt="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+												        	<img src="${productInfo.IMGURL}" alt="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
 												        </c:if>
 
 												        <c:if test="${not existimg }">
- 													        <img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+ 													        <img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
 												        </c:if>
 												        
 												        <b class="text-center" style="font-size: 13px; width: 300px;">&nbsp;${productInfo.PRODUCTNAME}</b>
@@ -568,11 +568,11 @@
 														
 												    	<!-- imgurl 있으면 가져옴 -->
 												    	<c:if test="${productInfo.IMGURL != null }" var="existimg">
-												        	<img src="${productInfo.IMGURL}" alt="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+												        	<img src="${productInfo.IMGURL}" alt="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
 												        </c:if>
 												        <!-- imgurl 없으면 대체이미지 -->
 												        <c:if test="${not existimg }">
- 													        <img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
+ 													        <img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
 												        </c:if>
 												        
 												        <b class="text-center" style="font-size: 13px; width: 300px;">&nbsp;${productInfo.PRODUCTNAME}</b>
@@ -597,7 +597,7 @@
 			
                 <!-- 인기성분에 해당하는 상자 내용 -->
    				<div class="image mt-4">
-	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
+	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">👨‍⚕&nbsp;인기 성분 Top 10</b><br/>
 		           		<small>100가지 영양성분 중 가장 인기있는 10개 성분의 Best 제품을 만나보세요!</small>
@@ -615,7 +615,7 @@
 	        <div id="vitamin" class="tab" style="display: none;">
                	<!-- 비타민에 해당하는 상자 내용 -->
    				<div class="image mt-4">
-	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
+	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">🍊&nbsp;비타민 찾아보기</b><br/>
 		           		<small>14가지 비타민의 중요성과 효과를 자세히 알아보세요!</small>
@@ -633,7 +633,7 @@
             <div id="mineral" class="tab">
                 <!-- 미네랄에 해당하는 상자 내용 -->
                 <div class="image mt-4">
-	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
+	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">🥗&nbsp;미네랄 및 기타영양소 찾아보기</b><br/>
 		           		<small>14가지 미네랄 및 기타영양소의 중요성과 효과를 자세히 알아보세요!</small>
@@ -651,7 +651,7 @@
             <div id="functional" class="tab">
                 <!-- 기능성 원료에 해당하는 상자 내용 -->
                 <div class="image mt-4">
-	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/resources/images/nutrient_img/bg_nt.png"/>"/>
+	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text text-color:black text-center" style="margin-top:22px;">
 		           		<b style="font-size: 30px;">🌿&nbsp;기능성 원료 찾아보기</b><br/>
 		           		<small>74가지 기능성 원료의 중요성과 효과를 자세히 알아보세요!</small>

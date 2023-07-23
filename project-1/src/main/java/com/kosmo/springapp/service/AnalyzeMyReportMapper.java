@@ -21,4 +21,6 @@ public interface AnalyzeMyReportMapper {
 
 	AnalyzeReportDTO selectAnalyzeReport(String id);
 
+	List<AnalyzeReportDTO> selectAnalyzeReportAll(String id);
+
 }

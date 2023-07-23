@@ -80,6 +80,7 @@
     
     .effect-custom-font {
      font-family : Noto Sans KR, sans-serif;
+     text-align: center;
     }
     
     .review-panel {
@@ -156,22 +157,54 @@ left: 146px;
 	margin-top: 150px;
 	margin-left: 300px;
 }
+.review-custom{
+	width: 150px;
+    background: #87CEEB;
+    padding: 10px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 17px;
+}
+.write-review{
+	margin-top: 50px;
+	display: flex;
+  	justify-content: flex-end;
+}
+.review-custom:hover {
+	background-color: #006AFF;
+	color: #fff;
+}
+.img-custom{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
 </style>
 <div>
 <div class="background-top">
-	<p class="display-4 back-img" style="background-image: url('<c:url value="/resources/images/nutrient_img/bg_bl.png"/>');">${listOne.productName}</p>
+	<p class="display-4 back-img" style="background-image: url('<c:url value="/images/nutrient_img/bg_bl.png"/>');">${listOne.productName}</p>
 </div>
 <div class="container">
 <div class="empty-space" style="height:32px;"></div>
-    
-    <h1 class="display-4">
+<div style="display: flex; align-items: center;" class="img-custom">    
+    <h1 class="display-4" style="width:450px;">
     <c:if test="${empty listOne.imgURL}" var="emptyIMG">
-    	<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" width="400px;" height="300px;" style="border-radius:20px;"/>
+    	<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" width="400px;" height="300px;" style="border-radius:20px;"/>
     </c:if>
     <c:if test="${not emptyIMG}">
     	<img src="${listOne.imgURL}" width="400px;" height="300px;" style="border-radius:20px;"/>
    	</c:if>
-    </h1>
+   	</h1>
+   	<div style="display: flex; flex-direction: column; margin-left: 20px;">
+        <button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
+        <img src="<c:url value="/images/magazine_images/basic/basket.png"/>" class="img-fluid mr-1 mb-1" style="width:20px">
+        구매하러 가기</button>
+        <button onclick="window.location.href = '/ranking/selectfood.do'" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
+        <img src="<c:url value="/images/magazine_images/basic/search_2.png"/>" class="img-fluid mr-1 mb-1" style="width:20px">
+        다른 제품 검색하러 가기</button>
+    </div>
+</div>    
 	<!-- 탭 -->
 	<div class="tab-content mt-5 mb-5">
 	  	<div class="effect-custom-font mt-5" style="font-size:40px;">제품의 상세정보 내용이에요! </div>
@@ -208,51 +241,51 @@ left: 146px;
 	                    <td>
 	                        <c:choose>
 	                            <c:when test="${listOne.shape eq '정'}">
-	                                <img src="<c:url value="resources/images/shape/정제.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/정제.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">정</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '과립'}">
-	                                <img src="<c:url value="resources/images/shape/과립.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/과립.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">과립</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '바'}">
-	                                <img src="<c:url value="resources/images/shape/바.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/바.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">바</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '분말'}">
-	                                <img src="<c:url value="resources/images/shape/분말.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/분말.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">분말</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '시럽'}">
-	                                <img src="<c:url value="resources/images/shape/시럽.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/시럽.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">시럽</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '캡슐'}">
-	                                <img src="<c:url value="resources/images/shape/캡슐.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/캡슐.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">캡슐</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '환'}">
-	                                <img src="<c:url value="resources/images/shape/환.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/환.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">환</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '젤리'}">
-	                                <img src="<c:url value="resources/images/shape/젤리.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/젤리.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">젤리</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '액상'}">
-	                                <img src="<c:url value="resources/images/shape/액상.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/액상.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">액상</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '겔'}">
-	                                <img src="<c:url value="resources/images/shape/겔.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/겔.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">겔</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '페이스트상'}">
-	                                <img src="<c:url value="resources/images/shape/페이스트.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/페이스트.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 20px;">페이스트</span>
 	                            </c:when>
 	                            <c:when test="${listOne.shape eq '편상' or listOne.shape eq '기타'}">
-	                                <img src="<c:url value="resources/images/shape/기타.png"/>" style="width:100px;height:100px;"/><br>
+	                                <img src="<c:url value="/images/shape/기타.png"/>" style="width:100px;height:100px;"/><br>
 	                                <span style="font-weight: bold; padding-left: 35px;">기타</span>
 	                            </c:when>
 	                        </c:choose>
@@ -324,8 +357,6 @@ left: 146px;
                 </tbody>
             </table>
        	</div><!-- 탭 1 끝 -->
-		<button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; margin-top: 20px;">구매하러 가기</button>
-		<button onclick="window.location.href = '/ranking/selectfood.do'" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">다른 제품검색하러 가기</button>
 	 	<div class="empty-space" style="height:50px;"></div>
 	  	<div class="effect-custom-font mt-5" style="font-size:40px;">구매전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
 	  	<div class="bubble p-4 effect-custom-font" style="font-size:17px;">
@@ -341,29 +372,50 @@ left: 146px;
    				    <script>
 				      let Graph = ForceGraph3D()
 				        (document.getElementById('3d-graph'))
-				          .jsonUrl('<c:url value="/resources/3dData/data.json"/>')
+				          .jsonUrl('http://127.0.0.1/review/${listOne.no}')
 				          .nodeAutoColorBy('group')
 				          .width("600")
 				          .height("380")
-				          .linkWidth(2)
+				          .linkWidth(0.2)
+				          .linkAutoColorBy("value")
 				          .backgroundColor("white")
 				          .nodeThreeObject(node => {
 				            const sprite = new SpriteText(node.id);
 				            sprite.material.depthWrite = false; // make sprite background transparent
-				            sprite.color = node.color;
-				            sprite.textHeight = 20;
-				            if(sprite.text === '고려 비타민 정 1000C') {
-				                sprite.color = "#ee4949";
-				                sprite.textHeight = 30;
+				            if(node.group==3) {
+				              sprite.color = "#2803ff";
+				              if(node.val <=5) {
+				                sprite.textHeight = node.val;
+				              }
+				              else if(node.val <= 10 && node.val > 5) {
+				                sprite.textHeight = node.val/3;
+				              }
+				              else if(node.val > 15) {
+				                sprite.textHeight = node.val/5;
+				              }
+				              
+				            }
+				            else if(node.group==1) {
+				              sprite.color = "#ff3d3d";
+				              if(node.val <=5) {
+				                sprite.textHeight = node.val+5;
+				              }
+				              else if(node.val <= 10 && node.val > 5) {
+				                sprite.textHeight = node.val/2;
+				              }
+				              else if(node.val > 15) {
+				                sprite.textHeight = node.val/3;
+				              }
 				            }
 				            else {
-				              sprite.textHeight = node.val+30
+				              sprite.color = "#335504";
+				              sprite.textHeight = 10;
 				            }
 				            return sprite;
 				          });
 				  
 				      // Spread nodes a little wider
-				      Graph.d3Force('charge').strength(-1500);
+				      Graph.d3Force('charge').strength(-80);
 				    </script>
 	   			<div class="review-board col-5">
 	   				<div class="ml-5 effect-custom-font" style="font-size:35px;">별점을 확인해보세요!</div>
@@ -470,7 +522,7 @@ left: 146px;
 	   				</ul>
 				</div><!-- 부작용 부분 끝-->
    			</div><!-- effected Board 끝 -->
-   			<div class="write-review"><a class="link" href="<c:url value="/Review.do?no=${listOne.no}"/>">리뷰 글쓰기</a></div>
+   			<div class="write-review"><a class="link review-custom" href="<c:url value="/Review.do?no=${listOne.no}"/>" style="text-decoration : none;">리뷰 글쓰기</a></div>
    			<!-- 리뷰 페이지 삽입 위치 -->
    			<div class="container effect-custom-font" >
 			    <ul class="list-unstyled mt-5" id="review-ul">
@@ -654,26 +706,7 @@ left: 146px;
 
   window.addEventListener("scroll", handleInfiniteScroll);
 
-  new Chart(document.getElementById('line-chart'), {
-      type : 'line',
-      data : {
-          labels : [1,2,3,4,5],
-          datasets : [{
-              data : [10,10,10,10,10],
-              label : "일별 조회수",
-              borderColor : "#3e95cd",
-              fill : true,
-              pointStyle : 'circle',
-              pointRadius : 10,
-              pointHoverRadius : 15,
-          }]},
-      options : {
-          title : {
-              display : true,
-              text : '제품 일별 조회수',
-          }
-      }
-  });
+
   
 </script>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>

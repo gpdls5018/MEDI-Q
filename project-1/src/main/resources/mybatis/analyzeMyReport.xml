@@ -8,7 +8,7 @@
  		SELECT I_FINDINGNAME FROM INGREDIENT WHERE I_FUNC LIKE '%' || #{takePurpose} || '%'
  	</select>
  	<select id="selectMyFoodList" parameterType="String" resultType="String">
- 		SELECT nutrient FROM FOODTABLE WHERE productname LIKE '%' || #{takeFood} || '%'
+ 		SELECT nutrient FROM FOODTABLE WHERE productname = #{takeFood}
  	</select>
  	<select id="selectIngredient_list" resultType="String">
  		SELECT i_name FROM INGREDIENT
@@ -23,5 +23,8 @@
  		SELECT *
 		FROM (SELECT * FROM ANALYZETABLE WHERE userId= #{id} ORDER BY ANALYZEDATE DESC )
 		WHERE ROWNUM = 1
+ 	</select>
+	<select id="selectAnalyzeReportAll" parameterType="String" resultType="analyzeReportDto">
+		SELECT * FROM ANALYZETABLE WHERE userId= #{id} ORDER BY ANALYZEDATE DESC 
  	</select>
 </mapper>

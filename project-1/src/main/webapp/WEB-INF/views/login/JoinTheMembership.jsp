@@ -182,7 +182,7 @@
 			<ul class="join_box">
 			    <li class="checkBox check01">
 			    	<ul class="clearfix">
-			        	<li>이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택), 프로모션 안내 메일 수신(선택)에 모두 동의합니다.
+			        	<li>이용약관, 개인정보 수집 및 이용, 위치정보 이용약관, 프로모션 안내 푸쉬 수신에 모두 동의합니다.
 			            </li>
 			            <li class="mainbtn box">
 			            	<input type="checkbox" name="check1" id="chk">  
@@ -405,7 +405,7 @@ MEDI-Q는 개인 정보 보호에 최선을 다하며 회원으로부터 별도 
 		         </li>
 		         <li class="checkBox check04">
 		             <ul class="clearfix">
-		                  <li>이벤트 등 프로모션 알림 메일 수신</li>
+		                  <li>이벤트 등 프로모션 알림 푸쉬 수신</li>
 		                  <li class="box">
 		                       <input type="checkbox" name="check2">  
 		                  </li>

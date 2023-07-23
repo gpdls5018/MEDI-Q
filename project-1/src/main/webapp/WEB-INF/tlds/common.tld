@@ -14,5 +14,13 @@
         	boolean isValid(java.lang.String,java.lang.String,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) <!-- 반환타입 함수명(매개변수 타입) -->
         </function-signature>
 	</function>
+	
+	<function>
+		<name>getTokenPayloads</name> <!-- 함수명 -->
+        <function-class>com.kosmo.springapp.common.Common</function-class> <!-- 패키지명.클래스명 -->
+        <function-signature>
+        	Map getTokenPayloads(java.lang.String,java.lang.String) <!-- 반환타입 함수명(매개변수 타입) -->
+        </function-signature>
+	</function>
 
 </taglib>

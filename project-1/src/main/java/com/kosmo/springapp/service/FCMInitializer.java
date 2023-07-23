@@ -1,7 +1,9 @@
 package com.kosmo.springapp.service;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.annotation.PostConstruct;
 
@@ -25,21 +27,24 @@ public class FCMInitializer {
 	 */
 
     private static final Logger logger = LoggerFactory.getLogger(FCMInitializer.class);
-    public static final String FIREBASE_CONFIG_PATH = "webpush.json";
+    public static final String FIREBASE_CONFIG_PATH = "/static/webpush.json";
 
     @PostConstruct
     public void initialize() {
-
         try {
-            FirebaseOptions options = new FirebaseOptions.Builder()
-            		//다운받은 비밀키로 증명
-                    .setCredentials(GoogleCredentials.fromStream(new ClassPathResource("json"+File.separator+FIREBASE_CONFIG_PATH).getInputStream())).build();
+        	ClassPathResource resource = new ClassPathResource(FIREBASE_CONFIG_PATH);
+        	InputStream serviceAccount = resource.getInputStream();
+        	FirebaseOptions options = FirebaseOptions.builder()
+        			.setCredentials(GoogleCredentials.fromStream(serviceAccount)).build();
+
             if (FirebaseApp.getApps().isEmpty()) {
                 FirebaseApp.initializeApp(options);
                 logger.info("Firebase application has been initialized");
-            } 
+            }
+        } catch (FileNotFoundException e) {
+            logger.error("Firebase ServiceAccountKey FileNotFoundException" + e.getMessage());
         } catch (IOException e) {
-            logger.error(e.getMessage());
+            logger.error("FirebaseOptions IOException" + e.getMessage());
         }
     }
 }

@@ -382,7 +382,7 @@
 	            <!--
 	            <img class="topBtn" src="./img/top-btn.png" alt="top-button"/>
 	            -->
-	            <img class="topBtn" src='<c:url value="/resources/images/basic/top-btn2.png"/>' alt="top-button"/>
+	            <img class="topBtn" src='<c:url value="/images/basic/top-btn2.png"/>' alt="top-button"/>
 	        </div>
         </div>
     </div><!--container-->
@@ -442,7 +442,7 @@
 				//console.log('sum:',sum,$(this).val())
 				if(sum > 24){//매우 심한 우울감
 					$('#resultT').addClass('text-danger');
-					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>매우 심한 우울감`);
+					$('#resultT').html(`<img alt='느낌표' src='/images/basic/warning2.png'/>매우 심한 우울감`);
 					$('#resultC').html(`광범위한 우울 증상을 매우 자주 심한 수준에서 경험하는 것으로 나타납니다.<br/>
 							우울증은 의지로 극복할 순 없습니다.<br/>
 							일상생활의 다양한 영역에서 어려움이 초래될경우 추가적인 평가나 정신건강 전문가의 도움을 받아보시기를 권해 드립니다.<br/>
@@ -450,68 +450,68 @@
 				}
 				else if(sum > 20 && sum <= 24){//심한 우울감
 					$('#resultT').addClass('text-danger');
-					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>심한 우울감.`);
+					$('#resultT').html(`<img alt='느낌표' src='/images/basic/warning2.png'/>심한 우울감.`);
 					$('#resultC').html(`직업적, 사회적 적응에 일부 영향을 미칠 경우이거나 2주 이상 지속된다면 가까운 전문기관을 방문하기를 권해드립니다.<br/><br>
 							아래는 가벼운 경증의 우울 증상의 경우 효과적이라고 검증된 방법입니다.<br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">아로마테라피</span><br/>
+							<img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">아로마테라피</span><br/>
 							식물에서 추출된 농축된 오일의 특정 화학성분이심신의 이완 효과와 우울감, 불안함, 불쾌감의 감소 효과를 나타냅니다.
 							그러나 아로마테라피는 어디까지나 우울증 치료의 보조적인 방법으로써 표준적 치료를 대체해서는 안 됩니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">독서요법</span><br/>
+							<img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">독서요법</span><br/>
 							독서요법은 우울감, 지나친 죄책감, 비관적 사고 등의 부정적인 정서를 스스로 조절하기 위한 다양한 전략과 이러한 전략을 실생활에 적용하는 방법이 적혀있는 책(매뉴얼)을 읽는 자가 관리법입니다.
 							독서 요법의 궁극적 목적은 독자로 하여금 우울증에 도움이 되지 않는 생각이나 행동들을 자각하고 변화시킬 수 있도록 하고, 나아가 자기관리 기술이나 대처기술을 증진할 수 있도록 가이드를 제공해주고 격려해주는 것입니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">컴퓨터를 활용한 중재법</span><br/>
+							<img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">컴퓨터를 활용한 중재법</span><br/>
 							온라인 프로그램(웹사이트, 모바일 애플리케이션 등)을 이용해 정신 건강을 증진하는 자가 관리법입니다.
 							일반적으로 독서 요법과 유사하게 인지 치료나 행동 치료적 접근, 심신 의학적 접근(명상, 이완훈련 등)을 기반으로 
 							스스로 자신의 감정과 기분, 생각을 체크하고 문제가 되는 생각이나 행동을 수정하거나 조절할 수 있는 대처기술을 증진하는 프로그램으로 구성됩니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">광선요법</span><br/>
+							<img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">광선요법</span><br/>
 							겨울철과 같이 일조량이 줄어드는 시기에 생체의 24시간 주기 리듬이 지연되어 우울증이 쉽게 발생할 수 있습니다. 
 							광선요법은 이러한 가설을 기반으로 사용되고 있는 방법으로 이른 아침에 30분에서 한 시간 정도 밝은 빛을 노출함으로써 우울증 개선에 도움이 될 수 있습니다. 
 							특히 겨울철에 반복되는 계절성 우울증뿐만 아니라 비계절성 우울증에도 효과가 있다는 연구 결과가 있어 항우울제 등의 표준적인 약물치료에 보조적인 요법으로도 권고되고 있습니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">이완 요법</span><br/>
+							<img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">이완 요법</span><br/>
 							이완 요법은 스스로 이완시킬 수 있는 방법을 익혀 육체적인 혹은 정신적인 긴장을 감소시키는 방법입니다. 
 							대표적으로는 복식호흡, 요가, 점진적 근육 이완법, 마사지, 명상 등이 포함되며, 
 							특히 복식호흡과 점진적 근육 이완은 훈련을 통해 익힌 후에는 언제 어디서나 이완이 필요한 순간에 적용할 수 있는 장점이 있습니다. 
 							이완 요법은 우울증, 공황장애 등의 불안장애, 불면증 등 다양한 정신질환의 치료에도 효과적으로 이용되고 있습니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">운동</span><br/>
+							<img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">운동</span><br/>
 							운동은 우울증의 위험도를 낮추고, 우울증 환자에서 증상을 경감시켜 줄 수 있습니다. 
 							최근 캐나다의 가이드라인에서는 매주 3회 이상 중등도의 강도로 최소 9주 동안 운동을 지속하는 것이 우울감 감소에 효과적이라고 말합니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">기타</span><br/>
+							<img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">기타</span><br/>
 							기타 방법으로는 스트레스 피하기, 식이, 절주, 적정 체중 유지 방법이 있습니다
 							`);
 				}
 				else if(sum > 15 && sum <= 20){//약간의/보통의 우울감
 					$('#resultT').addClass('text-danger');
-					$('#resultT').html(`<img alt='느낌표' src='/resources/images/basic/warning2.png'/>약간의/보통의 우울감.`);
+					$('#resultT').html(`<img alt='느낌표' src='/images/basic/warning2.png'/>약간의/보통의 우울감.`);
 					$('#resultC').html(`가벼운 경증의 우울감이 느껴질 때 다음의 방법들이 도움이 될 수 있습니다.<br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">아로마테라피</span><br/>
+							<img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">아로마테라피</span><br/>
 							식물에서 추출된 농축된 오일의 특정 화학성분이심신의 이완 효과와 우울감, 불안함, 불쾌감의 감소 효과를 나타냅니다.
 							그러나 아로마테라피는 어디까지나 우울증 치료의 보조적인 방법으로써 표준적 치료를 대체해서는 안 됩니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">독서요법</span><br/>
+							<img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">독서요법</span><br/>
 							독서요법은 우울감, 지나친 죄책감, 비관적 사고 등의 부정적인 정서를 스스로 조절하기 위한 다양한 전략과 이러한 전략을 실생활에 적용하는 방법이 적혀있는 책(매뉴얼)을 읽는 자가 관리법입니다.
 							독서 요법의 궁극적 목적은 독자로 하여금 우울증에 도움이 되지 않는 생각이나 행동들을 자각하고 변화시킬 수 있도록 하고, 나아가 자기관리 기술이나 대처기술을 증진할 수 있도록 가이드를 제공해주고 격려해주는 것입니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">컴퓨터를 활용한 중재법</span><br/>
+							<img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">컴퓨터를 활용한 중재법</span><br/>
 							온라인 프로그램(웹사이트, 모바일 애플리케이션 등)을 이용해 정신 건강을 증진하는 자가 관리법입니다.
 							일반적으로 독서 요법과 유사하게 인지 치료나 행동 치료적 접근, 심신 의학적 접근(명상, 이완훈련 등)을 기반으로 
 							스스로 자신의 감정과 기분, 생각을 체크하고 문제가 되는 생각이나 행동을 수정하거나 조절할 수 있는 대처기술을 증진하는 프로그램으로 구성됩니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">광선요법</span><br/>
+							<img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">광선요법</span><br/>
 							겨울철과 같이 일조량이 줄어드는 시기에 생체의 24시간 주기 리듬이 지연되어 우울증이 쉽게 발생할 수 있습니다. 
 							광선요법은 이러한 가설을 기반으로 사용되고 있는 방법으로 이른 아침에 30분에서 한 시간 정도 밝은 빛을 노출함으로써 우울증 개선에 도움이 될 수 있습니다. 
 							특히 겨울철에 반복되는 계절성 우울증뿐만 아니라 비계절성 우울증에도 효과가 있다는 연구 결과가 있어 항우울제 등의 표준적인 약물치료에 보조적인 요법으로도 권고되고 있습니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">이완 요법</span><br/>
+							<img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">이완 요법</span><br/>
 							이완 요법은 스스로 이완시킬 수 있는 방법을 익혀 육체적인 혹은 정신적인 긴장을 감소시키는 방법입니다. 
 							대표적으로는 복식호흡, 요가, 점진적 근육 이완법, 마사지, 명상 등이 포함되며, 
 							특히 복식호흡과 점진적 근육 이완은 훈련을 통해 익힌 후에는 언제 어디서나 이완이 필요한 순간에 적용할 수 있는 장점이 있습니다. 
 							이완 요법은 우울증, 공황장애 등의 불안장애, 불면증 등 다양한 정신질환의 치료에도 효과적으로 이용되고 있습니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">운동</span><br/>
+							<img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">운동</span><br/>
 							운동은 우울증의 위험도를 낮추고, 우울증 환자에서 증상을 경감시켜 줄 수 있습니다. 
 							최근 캐나다의 가이드라인에서는 매주 3회 이상 중등도의 강도로 최소 9주 동안 운동을 지속하는 것이 우울감 감소에 효과적이라고 말합니다.<br/><br/>
-							<img alt='해결' src='/resources/images/basic/solution.png'/><span class="font-weight-bold">기타</span><br/>
+							<img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">기타</span><br/>
 							기타 방법으로는 스트레스 피하기, 식이, 절주, 적정 체중 유지 방법이 있습니다
 							`);
 				}
 				else{//정상적인 우울감
 					$('#resultT').addClass('text-primary');
-					$('#resultT').html(`<img alt='엄지' src='/resources/images/basic/like.png'/>정상적인 우울감.`);
+					$('#resultT').html(`<img alt='엄지' src='/images/basic/like.png'/>정상적인 우울감.`);
 					$('#resultC').html(`현재 지장을 초래할만한 우울현상을 경험하지 않고 있으며, 심리적으로 건강하게 생활하고 있습니다.<br/>
 						    평소의 마음건강 관리방법을 꾸준히 유지하시기 바랍니다.`);
 				}

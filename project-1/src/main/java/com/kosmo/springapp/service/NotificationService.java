@@ -2,6 +2,7 @@ package com.kosmo.springapp.service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,12 +14,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.kosmo.springapp.model.MemberDTO;
+import com.kosmo.springapp.model.NotificationRequest;
 
 @Service
 public class NotificationService {
 
 	@Autowired
 	private JWTokensService jwTokensService;
+	@Autowired FCMService fcmService;
 	
 	@Value("${secret-key}")
 	private String secretKey;
@@ -29,7 +32,15 @@ public class NotificationService {
  
     //사용자의 Id값을 Key, 토큰 값을 Value로 갖는 Map을 사용해서 토큰 값을 관리한다.
     public void register(final String userId, final String token) {
-            tokenMap.put(userId, token);
+        tokenMap.put(userId, token);
+    }
+    
+    public void sendNotification(final NotificationRequest request) {
+        try {
+            fcmService.send(request);
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println(e.getMessage());
+        }
     }
     /*
     private void createReceiveNotification(HttpServletRequest req, String sender, String receiver) {
