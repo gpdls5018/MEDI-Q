@@ -372,29 +372,50 @@ left: 146px;
    				    <script>
 				      let Graph = ForceGraph3D()
 				        (document.getElementById('3d-graph'))
-				          .jsonUrl('<c:url value="/3dData/data.json"/>')
+				          .jsonUrl('http://127.0.0.1/review/${listOne.no}')
 				          .nodeAutoColorBy('group')
 				          .width("600")
 				          .height("380")
-				          .linkWidth(2)
+				          .linkWidth(0.2)
+				          .linkAutoColorBy("value")
 				          .backgroundColor("white")
 				          .nodeThreeObject(node => {
 				            const sprite = new SpriteText(node.id);
 				            sprite.material.depthWrite = false; // make sprite background transparent
-				            sprite.color = node.color;
-				            sprite.textHeight = 20;
-				            if(sprite.text === '고려 비타민 정 1000C') {
-				                sprite.color = "#ee4949";
-				                sprite.textHeight = 30;
+				            if(node.group==3) {
+				              sprite.color = "#2803ff";
+				              if(node.val <=5) {
+				                sprite.textHeight = node.val;
+				              }
+				              else if(node.val <= 10 && node.val > 5) {
+				                sprite.textHeight = node.val/3;
+				              }
+				              else if(node.val > 15) {
+				                sprite.textHeight = node.val/5;
+				              }
+				              
+				            }
+				            else if(node.group==1) {
+				              sprite.color = "#ff3d3d";
+				              if(node.val <=5) {
+				                sprite.textHeight = node.val+5;
+				              }
+				              else if(node.val <= 10 && node.val > 5) {
+				                sprite.textHeight = node.val/2;
+				              }
+				              else if(node.val > 15) {
+				                sprite.textHeight = node.val/3;
+				              }
 				            }
 				            else {
-				              sprite.textHeight = node.val+30
+				              sprite.color = "#335504";
+				              sprite.textHeight = 10;
 				            }
 				            return sprite;
 				          });
 				  
 				      // Spread nodes a little wider
-				      Graph.d3Force('charge').strength(-1500);
+				      Graph.d3Force('charge').strength(-80);
 				    </script>
 	   			<div class="review-board col-5">
 	   				<div class="ml-5 effect-custom-font" style="font-size:35px;">별점을 확인해보세요!</div>
@@ -685,26 +706,7 @@ left: 146px;
 
   window.addEventListener("scroll", handleInfiniteScroll);
 
-  new Chart(document.getElementById('line-chart'), {
-      type : 'line',
-      data : {
-          labels : [1,2,3,4,5],
-          datasets : [{
-              data : [10,10,10,10,10],
-              label : "일별 조회수",
-              borderColor : "#3e95cd",
-              fill : true,
-              pointStyle : 'circle',
-              pointRadius : 10,
-              pointHoverRadius : 15,
-          }]},
-      options : {
-          title : {
-              display : true,
-              text : '제품 일별 조회수',
-          }
-      }
-  });
+
   
 </script>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
