@@ -173,7 +173,78 @@
 	  background-color: #999; /* 스크롤바 호버시 색상 */
 	}
 
-
+	/* 모달 스타일 */
+	.modal {
+	    display: none; /* 초기에는 모달을 보이지 않도록 설정합니다. */
+	    position: fixed; /* 고정된 위치에 배치하기 위해 position 속성을 fixed로 설정합니다. */
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    background-color: rgba(0, 0, 0, 0.4); /* 반투명한 배경을 위해 rgba 색상 사용 */
+	}
+	
+	/* 모달 컨텐츠 스타일 */
+	.modal-content {
+	    position: absolute;
+	    top: 48%;
+	    left: 50%;
+	    transform: translate(-50%, -50%); /* 가로, 세로 기준 중앙에 배치하기 위해 transform 사용 */
+	    background-color: #fefefe;
+	    padding: 20px;
+	    border-radius: 15px;
+	    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	    width: 40%;
+	}
+	
+	/* 모달 창 닫기 버튼 스타일 */
+	.close {
+	    position: absolute;
+	    top: 20px;
+	    right: 40px;
+	    font-size: 30px;
+	    cursor: pointer;
+	}
+	
+	/* input 태그 스타일 */
+	.modal input {
+	    padding: 8px;
+	    border: 1px solid #ccc;
+	    border-radius: 5px;
+	    width: 40%;
+	    box-sizing: border-box;
+	    margin-top: 20px;
+	    text-align: center;
+	}
+	
+	/* label 태그 스타일 */
+	.modal label {
+	    display: inline-block;
+	    width: 140px; /* 원하는 너비로 설정해주세요 */
+	    font-weight: bold;
+	    margin-right: 25px;
+	    margin-left: 135px;
+	    margin-top: 20px;
+	    
+	}
+	
+	/* button 태그 스타일 */
+	.modal button {
+	    padding: 10px 15px;
+	    border: none;
+	    background-color: #007bff;
+	    color: white;
+	    border-radius: 5px;
+	    cursor: pointer;
+	}
+	
+	/* 두 번째 버튼(Modal 취소 버튼) 스타일 */
+	.modal button:last-child {
+	    background-color: #dc3545; /* 취소 버튼 색상을 빨간색으로 설정합니다. */
+	}
+	 
+	
+	
 </style>
 </head>
 <body>
@@ -320,53 +391,69 @@
 		<div class="modal" id="editMemberModal">
 		    <div class="modal-content">
 		        <span class="close" onclick="closeModal()">&times;</span>
-		        <h2>회원 정보 수정</h2>
-		        <form id="editMemberForm">
-		            <!-- 수정할 회원 정보 입력 폼 -->
-		            <input type="hidden" name="id" id="memberId">
-		            <div>
-		                <label for="name">이름:</label>
-		                <input type="text" name="name" id="name" required>
-		            </div>
-		            <div>
-		                <label for="birth">생년월일:</label>
-		                <input type="date" name="birth" id="birth" required>
-		            </div>
-		            <div>
-		                <label for="gender">성별:</label>
-		                <select name="gender" id="gender" required>
-		                    <option value="MALE">남성</option>
-		                    <option value="FEMALE">여성</option>
-		                </select>
-		            </div>
-		            <div>
-		                <label for="email">이메일:</label>
-		                <input type="email" name="email" id="email" required>
-		            </div>
-		            <div>
-		                <label for="active">활성화:</label>
-		                <input type="checkbox" name="active" id="active">
-		            </div>
-		            <div>
-		                <label for="inactiveDate">비활성화일자:</label>
-		                <input type="date" name="inactiveDate" id="inactiveDate">
-		            </div>
-		            <div>
-		                <label for="site">사이트:</label>
-		                <input type="text" name="site" id="site">
-		            </div>
-		            <div>
-		                <label for="socialFl">소셜:</label>
-		                <input type="text" name="socialFl" id="socialFl">
-		            </div>
-		
-		            <div>
-		                <button type="button" onclick="saveMember()">저장</button>
-		                <button type="button" onclick="closeModal()">취소</button>
-		            </div>
-		        </form>
+		        <h2 class="text-center m-0">회원 정보 수정</h2>
+				<hr style="border: 1px solid black; width: 95%;">
+				<div>
+	 		        <form id="editMemberForm">
+			            <!-- 수정할 회원 정보 입력 폼 -->
+			            <input type="hidden" name="id" id="memberId">
+			            <div>
+			                <label for="name">1. 이름</label>
+			                <input type="text" name="name" id="name" required>
+			            </div>
+			            <div>
+			                <label for="birth">2. 생년월일</label>
+			                <input type="date" name="birth" id="birth" required>
+			            </div>
+			            <div>
+			                <label>3. 성별</label>
+			                <div style="display: inline-flex; align-items: center; margin-left: 60px;">
+					            <input style="width: 20%;" type="radio" name="gender" value="M" id="male" required>
+					            <label style="width: 60px; font-size:14px; margin-left: 3px; padding-top: 5px;" for="male">남성</label>
+					            <input style="width: 20%;" type="radio" name="gender" value="F" id="female">
+					            <label style="width: 60px; font-size:14px; margin-left: 3px; padding-top: 5px;" for="female">여성</label>
+					        </div>
+			            </div>
+			            <div>
+			                <label for="email">4. 이메일</label>
+			                <input type="email" name="email" id="email" required>
+			            </div>
+			            <div>
+			                <label for="active">5. 활성화 여부</label>
+			                <div style="display: inline-flex; align-items: center;">
+					            <input style="margin-left: 10px; width: 10%;" type="radio" name="active" value="Y" id="active" required>
+					            <label style="width: 70px; font-size:13px; margin-left: 5px; margin-right:3px; padding-top: 5px;" for="active">활성화</label>
+					            <input style="width: 10%;" type="radio" name="active" value="N" id="inactive" checked="checked">
+					            <label style="width: 70px; font-size:13px; margin-left: 5px; margin-right:3px; padding-top: 5px;" for="inactive">비활성화</label>
+					            <input style="margin-left: 15px; width: 10%;" type="radio" name="active" value="A" id="admin">
+       							<label style="width: 70px; font-size:13px; margin-left: 5px; margin-right:3px; padding-top: 5px;" for="admin">관리자</label>
+					        </div>
+			            </div>
+			            <div>
+			                <label for="inactiveDate">6. 비활성화일자</label>
+							<input type="date" name="inactiveDate" id="inactiveDate">
+			            </div>
+			            <div>
+			                <label>7. 소셜회원 여부</label>
+			                <div style="display: inline-flex; align-items: center; margin-left: 60px;">
+					            <input style="width: 20%;" type="radio" name="socialFl" value="Y" id="socialY" required>
+					            <label style="width: 60px; font-size:14px; margin-left: 3px; padding-top: 5px;" for="socialY">Y</label>
+					            <input style="width: 20%;" type="radio" name="socialFl" value="N" id="socialN" checked="checked">
+					            <label style="width: 60px; font-size:14px; margin-left: 3px; padding-top: 5px;" for="socialN">N</label>
+					        </div>
+			            </div>
+			            <div>
+						    <label for="site">8. 소셜회원 사이트</label>
+						    <input type="text" name="site" id="site">
+						</div>
+			            <div style="display:flex; justify-content: center; margin-top: 50px;">
+			                <button class="mr-3" type="button" onclick="saveMember()">저장</button>
+			                <button type="button" onclick="closeModal()">취소</button>
+			            </div>
+			        </form>
+		        </div>
 		    </div>
-		</div>
+		</div><!-- 모달 -->
 			    
 	    
 	    
@@ -524,7 +611,7 @@
             // memberId를 기반으로 서버에서 회원 정보를 가져온 후 모달에 세팅
             $.ajax({
                 type: 'GET', // POST로 하기
-                url: `/getMemberById/${memberId}`,
+                url: '/getMemberById/' + memberId, // memberId를 URL에 포함시킴
                 dataType: 'json',
                 success: function (data) {
                     if (data.success) {
@@ -532,14 +619,49 @@
                         // 회원 정보를 모달에 세팅
                         $('#memberId').val(member.id);
                         $('#name').val(member.name);
-                        $('#birth').val(member.birth);
-                        $('#gender').val(member.gender);
-                        $('#email').val(member.email);
-                        $('#active').prop('checked', member.active); // 활성화
-                        $('#inactiveDate').val(member.inactiveDate); // 비활성화일자
-                        $('#site').val(member.site); // 사이트
-                        $('#socialFl').val(member.socialFl); // 소셜
+	
+                        // 생년월일
+                        var formattedBirth = new Date(member.birth).toISOString().split('T')[0];
+                        $('#birth').val(formattedBirth);
 
+                     	// 성별 라디오 버튼 설정
+                        if (member.gender === "M") {
+                            $('#male').prop('checked', true);
+                        } else if (member.gender === "F") {
+                            $('#female').prop('checked', true);
+                        }
+                        
+                        $('#email').val(member.email);
+                     	
+                        // 활성화 여부 설정
+                        $('#active').prop('checked', member.active === "Y");
+                        $('#inactive').prop('checked', member.active === "N");
+                        $('#admin').prop('checked', member.active === "A");
+                        
+                     	// 비활성화일자 설정
+                        if (member.inactiveDate) {
+                            var formattedDate = new Date(member.inactiveDate).toISOString().split('T')[0];
+                            $('#inactiveDate').val(formattedDate);
+                        } 
+                        else {
+                            // If inactiveDate is null, set the current date as default
+                            var currentDate = new Date().toISOString().split('T')[0];
+                            $('#inactiveDate').val(currentDate);
+                        }
+
+                     	// 소셜회원 여부 설정
+                        $('#socialY').prop('checked', member.social_Fl === "Y");
+                        $('#socialN').prop('checked', member.social_Fl !== "Y");
+                        
+                        // 소셜회원 여부가 N인 경우, 소셜회원 사이트 input에 기본적인 텍스트 표시
+                        // 페이지 로드 시 기본값 설정
+					    if ($('input[name="socialFl"]:checked').val() === "N") {
+					        $('#site').val('소셜회원이 아닙니다');
+					    }
+                        else {
+                        	$('#site').val(member.site)
+                        }
+                     	
                         // 모달 열기
                         $('#editMemberModal').show();
                     } 
@@ -560,26 +682,37 @@
 
         // 회원 정보 저장
         function saveMember() {
-            const formData = $('#editMemberForm').serialize();
-            $.ajax({
-                type: 'POST',
-                url: '/editMember',
-                data: formData,
-                dataType: 'json',
-                success: function (data) {
-                    if (data.success) {
-                        alert(data.message);
-                        closeModal();
-                        // 페이지 새로고침 또는 필요한 동작 수행
-                    } else {
-                        alert(data.message);
-                    }
-                },
-                error: function (xhr, status, error) {
-                    alert('회원 정보를 저장하는데 실패하였습니다.');
-                }
-            });
-        }
+		    const formData = $('#editMemberForm').serializeArray();
+		    const jsonData = {};
+		
+		    // 폼 데이터를 JSON 형식으로 변환
+		    $(formData).each(function (index, obj) {
+		        jsonData[obj.name] = obj.value;
+		    });
+		
+		    // JSON 데이터를 문자열로 변환
+		    const jsonString = JSON.stringify(jsonData);
+		
+		    $.ajax({
+		        type: 'POST',
+		        url: '/editMember',
+		        data: jsonString, // JSON 형식으로 데이터를 보냄
+		        contentType: 'application/json',
+		        dataType: 'json',
+		        success: function (data) {
+		            if (data.success) {
+		                alert(data.message);
+		                closeModal();
+		                // 페이지 새로고침 또는 필요한 동작 수행
+		            } else {
+		                alert(data.message); // 서버 측에서 전달한 메시지를 출력하여 확인
+		            }
+		        },
+		        error: function (xhr, status, error) {
+		            alert('회원 정보를 저장하는데 실패하였습니다.');
+		        }
+		    });
+		}
 
 	    
 	    

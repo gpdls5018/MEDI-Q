@@ -19,7 +19,7 @@ public interface AdminMapper {
 	MemberDTO getMemberInfoById(String memberId);
 	
 	// 회원 정보 수정 후 처리
-	boolean updateMemberInfoByAdmin(MemberDTO memberdto);
+	int updateMemberInfoByAdmin(MemberDTO memberdto);
 
 	
 	

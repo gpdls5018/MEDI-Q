@@ -5,17 +5,17 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.kosmo.springapp.admin.service.AdminMapper;
 import com.kosmo.springapp.model.MemberDTO;
@@ -82,7 +82,6 @@ public class AdminController {
 	@ResponseBody
 	public Map<String, Object> getMemberById(@PathVariable String memberId) {
 		
-		System.out.println(memberId);
 	    Map<String, Object> response = new HashMap<>();
 
 	    try {
@@ -108,11 +107,56 @@ public class AdminController {
     @ResponseBody
     public Map<String, Object> editMember(@RequestBody MemberDTO memberdto) {
         
+    	
     	Map<String, Object> response = new HashMap<>();
+    	
+    	// 데이터 변환 - 생년월일
+        if (memberdto.getBirth() != null) {
+            try {
+                SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd");
+                Date birthDate = inputFormat.parse(memberdto.getBirth());
+                String formattedBirth = outputFormat.format(birthDate);
+                memberdto.setBirth(formattedBirth);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        // 데이터 변환 - 비활성화일자
+//        if (memberdto.getInactive_date() != null) {
+//            try {
+//                SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy/MM/dd");
+//                Date inactiveDate = inputFormat.parse(memberdto.getInactive_date());
+//                memberdto.setInactive_date(inactiveDate);
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//                response.put("success", false);
+//                response.put("message", "비활성화일자 형식 변환 중 오류가 발생하였습니다.");
+//                return response;
+//            }
+//        }
+        
+       
+        
+        System.out.println("전달받은 JSON 데이터 - ID: " + memberdto.getId());
+        System.out.println("전달받은 JSON 데이터 - NAME: " + memberdto.getName());
+        System.out.println("전달받은 JSON 데이터 - BIRTH: " + memberdto.getBirth());
+        System.out.println("전달받은 JSON 데이터 - GENDER: " + memberdto.getGender());
+        System.out.println("전달받은 JSON 데이터 - EMAIL: " + memberdto.getEmail());
+        System.out.println("전달받은 JSON 데이터 - ACTIVE: " + memberdto.getActive());
+        System.out.println("전달받은 JSON 데이터 - INACTIVE_DATE: " + memberdto.getInactive_date());
+        System.out.println("전달받은 JSON 데이터 - SITE: " + memberdto.getSite());
+        System.out.println("전달받은 JSON 데이터 - SOCIAL_FL: " + memberdto.getSocial_Fl());
 
-        try {
-            boolean success = adminMapper.updateMemberInfoByAdmin(memberdto);
-            if (success) {
+        
+        
+        
+    	
+
+    	try {
+            int affectedRows = adminMapper.updateMemberInfoByAdmin(memberdto);
+            if (affectedRows > 0) {
                 response.put("success", true);
                 response.put("message", "회원 정보가 성공적으로 수정되었습니다.");
             } else {
@@ -121,7 +165,7 @@ public class AdminController {
             }
         } catch (Exception e) {
             response.put("success", false);
-            response.put("message", "회원 정보 수정에 실패하였습니다. 다시 시도해주세요.");
+            response.put("message", "회원 정보 수정 중 오류가 발생하였습니다. 관리자에게 문의해주세요.");
         }
 
         return response;

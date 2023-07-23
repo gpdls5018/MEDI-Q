@@ -31,7 +31,6 @@
 	        EMAIL = #{email},
 	        ACTIVE = #{active},
 	        INACTIVE_DATE = #{inactiveDate},
-	        SITE = #{site},
 	        SOCIAL_FL = #{socialFl}
 	    WHERE
 	        ID = #{id}
