@@ -23,4 +23,5 @@ public class AnalyzeResultListDTO {
 	List<String> nutrient_list_report; //복용중 비타민
 	List<String> nutrient_list_no_report; // 아직 복용하지 않고 있는 비타민
 	int ingredientCount;
+	List<String> nutnumlist;
 }

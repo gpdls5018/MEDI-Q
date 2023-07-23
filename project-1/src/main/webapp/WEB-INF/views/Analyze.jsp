@@ -26,10 +26,10 @@
 			<div class="mt-3">
 			<c:if test="${info.prof_Img_Fl eq 'Y' }" var="isProfImg">
 				<c:set var="uploadFolder" value="${fn:split(profImg.pi_Path,'\\\\')[fn:length(fn:split(profImg.pi_Path, '\\\\'))-1] }"/>
-				<img class="rounded-circle" alt="사용자 이미지" src="<c:url value="/resources/images/${uploadFolder }/${profImg.pi_Filename }.${profImg.pi_Ext }" />" style="width: 200px; height: 200px">
+				<img class="rounded-circle" alt="사용자 이미지" src="<c:url value="/images/${uploadFolder }/${profImg.pi_Filename }.${profImg.pi_Ext }" />" style="width: 200px; height: 200px">
 			</c:if>
 			<c:if test="${not isProfImg }">
-				<img class="rounded-circle" alt="기본 프로필" src="<c:url value="/resources/images/basic/friend.png" />" style="width: 200px; height: 200px">
+				<img class="rounded-circle" alt="기본 프로필" src="<c:url value="/images/basic/friend.png" />" style="width: 200px; height: 200px">
 			</c:if>
 			</div>
 		</div>

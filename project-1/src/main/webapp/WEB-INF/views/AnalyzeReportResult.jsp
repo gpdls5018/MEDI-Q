@@ -125,7 +125,6 @@
 						</c:forEach>
 					</div>
 				</div>
-				
 			</div>
 			</c:forEach>
 			<div class="effect-custom-font m-1" style="font-size:30px;color:#868686;text-align:center;">5대 영양소</div>
@@ -150,6 +149,20 @@
 							</c:forEach>
 							</ul>
 						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mt-5 effect-custom-font">
+				<div class="effect-custom-font m-1" style="font-size:30px;color:#868686;text-align:center;">5대 영양소 섭취량 비교</div>
+			</div>
+			<div class="jumbotron" style="border-radius:25px;">
+				<span style="font-size:25px;text-weight:bold;"> 권장 섭취량 : 건강한 생활을 위해 섭취하도록 정하여 장려하는 양. </span><br/>
+				<span style="font-size:25px;text-weight:bold;"> 상한 섭취량 : 인체 건강에 유해한 영향이 나타나지 않는 최대 영양소 섭취 수준. </span><br/><br/>
+				<div class="row">
+					<div class="effect-custom-font" style="font-size:15px;">
+						<c:forEach items="${resultListDto.nutnumlist }" var="item">
+							<span style="display: inline-block; margin-right: 10px;">${item}</span>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
