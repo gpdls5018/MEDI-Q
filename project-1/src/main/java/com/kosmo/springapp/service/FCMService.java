@@ -31,21 +31,24 @@ public class FCMService {
 	*/
 
     private static final Logger logger = LoggerFactory.getLogger(FCMService.class);
-    @Key
-    private String link;
 
     public void send(final NotificationRequest notificationRequest) throws InterruptedException, ExecutionException {
-        Message message = Message.builder()
+    	Message message = Message.builder()
                 .setToken(notificationRequest.getToken())
                 .setWebpushConfig(WebpushConfig.builder().putHeader("ttl", "300")
-                        .setNotification(new WebpushNotification(
+                        .setNotification(WebpushNotification.builder()
+                        		.setTimestampMillis(notificationRequest.getTimestamp())
+                        		.setTitle(notificationRequest.getTitle())
+                        		.setBody(notificationRequest.getMessage())
+                        		.setIcon(notificationRequest.getIcon())
+                        		.build())
+                        		/*
+                        		new WebpushNotification(
                         		notificationRequest.getTitle(),
                                 notificationRequest.getMessage(),
                                 notificationRequest.getIcon()))
-                        //.setFcmOptions(new WebpushFcmOptions(Builder.))
+                                */
                         .build())
-                //.setFcmOptions(WebpushConfig.builder().putHeader("ttl", "300")
-                		//.setNotification(new WebpushNotification(notificationRequest.getLink())))
                 .build();
 
         //Message Builder를 통해 만들어진 메세지를 정상적으로 보낸다면 
