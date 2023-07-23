@@ -109,11 +109,14 @@
   							<div class="col">
 	                        	<img src="<c:url value="/resources/images/qna/qna_bbs.png"/>" class="qna_bbs ml-4">
 	                        </div>
-	                        <div class="col">
-	                        	<a class="d-flex justify-content-end mr-5 text-decoration-none" href='<c:url value="/board/Write.do"/>'>
-	                        		<button class="btn btn-light text-light btn_deco text_3" style="font-size:20px;">질문 작성</button>
-	                        	</a>
-	                        </div>
+	                        <!-- 토큰이 존재하는 경우 버튼을 보여줍니다. -->
+	                        <c:if test="${not empty id }" var="isWriter"><!-- True,False를 isWriter에 저장-->
+		                        <div class="col">
+		                        	<a class="d-flex justify-content-end mr-5 text-decoration-none" href='<c:url value="/board/Write.do"/>'>
+		                        		<button class="btn btn-light text-light btn_deco text_3" style="font-size:20px;">질문 작성</button>
+		                        	</a>
+		                        </div>
+	                        </c:if>
                         </div>
                         <!-- 질문에 대한 컨테이너 -->
                         <div class="row justify-content-center">
@@ -135,7 +138,7 @@
 				                            <span class="txt2">${record.CONTENT }</span>
 				                        </a>
 				                        <a tabindex="0" class="qna-user-wrap text-decoration-none" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=${record.NO }"/>">
-				                                <div class="qna-user-icon qna-user-icon-1"></div>
+				                                <div class="qna-user-icon qna-user-icon-1"></div><!-- 그림 아이콘 -->
 				                                <div class="qna-user-txt">
 				                                	<c:if test="${not empty listPagingData.records }" var="isEmpty">
 														<div>약사님의 답변을 기달리는 중입니다.</div>
