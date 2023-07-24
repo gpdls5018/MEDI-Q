@@ -15,18 +15,18 @@ public class AnswerServiceImpl implements AnswerService {
 	private AnswerMapper mapper;
 	
 	@Override
-	public Map answerselectOne(Map paramMap) {
-		return mapper.answerselectOne(paramMap);
+	public Map answerselectOne(Map map) {
+		return mapper.answerselectOne(map);
 	}
 	
 	@Override
-	public int answerinsert(Map paramMap) {
+	public int answerinsert(Map map) {
 		
 		int affected=0;
 		
 		try {
 			System.out.println("매퍼에서 오류발생?");
-			affected=mapper.answerinsert(paramMap);
+			affected=mapper.answerinsert(map);
 			System.out.println(456);
 		}
 		catch (Exception e) {
@@ -38,13 +38,21 @@ public class AnswerServiceImpl implements AnswerService {
 	}
 
 	@Override
-	public int answerupdate(Map paramMap) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int answerupdate(Map map) {
+		int affected=0;
+		try {
+			System.out.println("mapper에서 전체크");
+			affected=mapper.answerupdate(map);
+			System.out.println("mapper에서 후체크");
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return affected;
 	}
 
 	@Override
-	public int answerdelete(Map paramMap) {
+	public int answerdelete(Map map) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
