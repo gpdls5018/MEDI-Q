@@ -419,7 +419,7 @@
 			                <input type="email" name="email" id="email" required>
 			            </div>
 			            <div>
-			                <label for="active">5. 활성화 여부</label>
+			                <label for="active">5. 회원상태</label>
 			                <div style="display: inline-flex; align-items: center;">
 					            <input style="margin-left: 10px; width: 10%;" type="radio" name="active" value="Y" id="active" required>
 					            <label style="width: 70px; font-size:13px; margin-left: 5px; margin-right:3px; padding-top: 5px;" for="active">활성화</label>
@@ -430,8 +430,8 @@
 					        </div>
 			            </div>
 			            <div>
-			                <label for="inactiveDate">6. 비활성화일자</label>
-							<input type="date" name="inactiveDate" id="inactiveDate">
+			                <label for="inactive_Date">6. 회원상태 변경일</label>
+							<input type="date" name="inactive_Date" id="inactive_Date">
 			            </div>
 			            <div>
 			                <label>7. 소셜회원 여부</label>
@@ -607,7 +607,6 @@
      	// 회원 정보 수정 모달 열기
         function editMember(memberId) {
      		
-        	console.log(memberId)
             // memberId를 기반으로 서버에서 회원 정보를 가져온 후 모달에 세팅
             $.ajax({
                 type: 'GET', // POST로 하기
@@ -639,14 +638,14 @@
                         $('#admin').prop('checked', member.active === "A");
                         
                      	// 비활성화일자 설정
-                        if (member.inactiveDate) {
-                            var formattedDate = new Date(member.inactiveDate).toISOString().split('T')[0];
-                            $('#inactiveDate').val(formattedDate);
+                        if (member.inactive_Date) {
+                            var formattedDate = new Date(member.inactive_Date).toISOString().split('T')[0];
+                            $('#inactive_Date').val(formattedDate);
                         } 
                         else {
-                            // If inactiveDate is null, set the current date as default
+                            // 비활성화일자 없으면 오늘 날짜로 기본값 설정
                             var currentDate = new Date().toISOString().split('T')[0];
-                            $('#inactiveDate').val(currentDate);
+                            $('#inactive_Date').val(currentDate);
                         }
 
                      	// 소셜회원 여부 설정
@@ -682,14 +681,32 @@
 
         // 회원 정보 저장
         function saveMember() {
-		    const formData = $('#editMemberForm').serializeArray();
+        	
+        	console.log(memberId)
+        	console.log($('#inactive_Date').val())
+		   
 		    const jsonData = {};
 		
+		 	// 폼 데이터를 JSON 형식으로 변환
+		    const formData = $('#editMemberForm').serializeArray();
+		 	
 		    // 폼 데이터를 JSON 형식으로 변환
 		    $(formData).each(function (index, obj) {
 		        jsonData[obj.name] = obj.value;
 		    });
 		
+		 	// 직접 inactive_Date 필드를 formData에 추가해주기
+		    jsonData["inactive_date"] = new Date($('#inactive_Date').val());
+
+		    // SITE가 "소셜회원이 아닙니다"일 때 null로 처리합니다.
+		    if (jsonData["socialFl"] === "N") {
+		        jsonData["site"] = null;
+		    }
+		 	
+		    console.log(formData)
+		    console.log('------------------------')
+		    console.log(jsonData)
+		 	
 		    // JSON 데이터를 문자열로 변환
 		    const jsonString = JSON.stringify(jsonData);
 		
@@ -714,13 +731,6 @@
 		    });
 		}
 
-	    
-	    
-	    
-	    
-	    
-	    
-	    
         
         
         
