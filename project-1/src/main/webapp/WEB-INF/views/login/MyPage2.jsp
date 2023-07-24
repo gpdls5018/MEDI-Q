@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <style>
 body {
@@ -45,7 +46,7 @@ body {
     }
     .profile_box {
         flex: 1;
-        background-color:  #FDC3A5;
+        background-color: #fc79529f;
         border-radius:10px 0px 0px 10px;
         display: flex;
         flex-direction: column;
@@ -75,12 +76,11 @@ body {
         display: flex;
         flex-direction: column;
         list-style: none;
-        align-items: center;
-        margin: 150px 40px 30px 0px;
+        align-items: end;
+        margin: 120px 40px 30px 0px;
     }
     .profilemenu  li {
         margin: 10px 0px;
-        text-align: center;
     }
 
     .profilemenu a:hover {
@@ -114,7 +114,7 @@ body {
     .update_box {
         display: flex;
         flex-direction: column;
-        width: 400px;
+        width: 420px;
     }
     .update_font {
         font-size: 24px;
@@ -129,21 +129,15 @@ body {
         color: #EF605D;
         font-weight: bold;
         font-size: 38px;
-        text-align: start;
         margin: 5px 30px;
         border-bottom: 2px solid #FDCDBC;
-        max-width: 900px;
-    }
-    .fontinfotap {
-        display:inline;
-        margin: 50px;
+        max-width: 100%;
     }
     .fontinfotap a {
         color: #EF605D;
         text-decoration: none;
         font-weight: bold;
         font-size: 20px;
-        text-align: end;
         vertical-align: bottom;
         margin: 10px 0px 10px 40px;
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
@@ -167,11 +161,15 @@ body {
         display: flex;
         flex-direction: column;
         font-size: 14px;
+        height: 618px;
     }
     .news .board {
         background-color: white;
         border-radius: 10px;
         box-shadow: .1rem .1rem .3rem gray;
+    }
+    .board{
+    	padding: 10px;
     }
     .secnews {
         margin-left: 20px;
@@ -180,7 +178,7 @@ body {
         background-color: white;
         border-radius: 10px;
         box-shadow: .1rem .1rem .3rem gray;
-        width: 530px;
+        width: 550px;
         height: 570px;
     }
     .miniroom_box {
@@ -239,8 +237,6 @@ body {
     .kriRoBreview {
         width: 500px;
         height: 540px;
-        overflow: auto ;
-
     }
     .cqOzav {
         display: flex;
@@ -333,7 +329,6 @@ body {
         flex-direction: row;
         box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
         border-radius: .5rem;
-        margin-top: 5px;
         width: 480px;
         height: 180px;
         margin: 10px 10px;
@@ -353,17 +348,25 @@ body {
             <div class="page"><!--몸통 다이브-->
                 <div class="left-container"><!--왼쪽 다이브-->
                     <div class="profile_box">
-                        <img src="img/team-1.jpg" class="img" width="180" height="180">
-                        <span>$내이름$</span>
+                        <c:if test="${info.prof_Img_Fl eq 'Y' }" var="isProfImg">
+							<c:set var="uploadFolder" value="${fn:split(profImg.pi_Path,'\\\\')[fn:length(fn:split(profImg.pi_Path, '\\\\'))-1] }"/>
+							<img class="img" alt="사용자 이미지" src="<c:url value="/images/${uploadFolder }/${profImg.pi_Filename }.${profImg.pi_Ext }" />" style="width: 180px; height: 180px">
+						</c:if>
+						<c:if test="${not isProfImg }">
+							<img class="img" alt="기본 프로필" src="<c:url value="/images/basic/friend.png" />" style="width: 180px; height: 180px">
+						</c:if>
+                        <span>${info.id }</span>
 
-                        <ul class="profilemenu">
-                            <li><a href="#" class="sidenava1" >
-                                프로필 이미지수정</a></li>
-                            <li><a class="sidenava2" href="#">
-                                회원정보 수정</a></li>
-                            <li><a class="sidenava3" href="#">
-                                회원탈퇴</a></li>
-
+                        <ul class="profilemenu ml-auto">
+                        	<li><a href="" id="imgEdit" class="sidenava1"  data-target="#modalView" data-backdrop="static">나의 건강 정보 등록</a></li>
+                            <li><a href="" id="imgEdit" class="sidenava2"  data-target="#modalView" data-backdrop="static">프로필 이미지수정</a></li>
+                            <c:if test='${info.social_Fl eq "Y"}' var="isSocial"><!-- 소셜용 -->
+								<li><a href='<c:url value="/project/JoinEdit.do"/>' class="sidenava2">회원정보 수정</a></li>
+							</c:if>
+							<c:if test="${not isSocial }"><!-- 일반 회원용 -->
+								<li><a href="" id="infoEdit" class="sidenava3" data-target="#modalView" data-backdrop="static">회원정보 수정</a></li>
+							</c:if>
+                            <li><a class="sidenava4" href="#">회원탈퇴</a></li>
                         </ul>
                         <!--
                         <div>
@@ -385,19 +388,19 @@ body {
                 <!--왼쪽 다이브 끝-->
                 <div class="right-container"><!--오른쪽다이브-->
                     <div class="layout_box">
-                        <span class="fontinfo">My page
-                            <div class="tab-menu fontinfotap">
+                        <div class="fontinfo d-flex justify-content-between">
+                        	<div>My page</div>
+                            <div class="tab-menu fontinfotap mr-3">
                                 <a href="#" class="tab-button">복용알림</a>
-                                <a href="#" class="tab-button">건강 다이어리</a>
-                                <a href="#" class="tab-button">건강분석</a>
-                                <a href="#" class="tab-button">약장&리뷰관리</a>
+                                <a href="<c:url value="/project/MyPage.do"/>" class="tab-button">건강 다이어리</a>
+                                <a href='#' class="tab-button" style="color:#fa7a7ab9">약장&리뷰관리</a>
                             </div>
-                        </span>
+                        </div>
                         <div class="body_box">
                             <div class="update_box">
                                 <div class="news">
                                     <div class="update_font">
-                                        💊 $혜인$님의 약장 
+                                        <img alt="pill" src='<c:url value="/images/basic/pills.png"/>' style="width: 20px"/> ${fn:substring(info.name,1,3) }님의 약장 
                                     </div>
                                     <div class="board recently" style="flex:1;">
                                         <article class="WishListMain__Body-sc-uykdsg-3 lnMHMg">
@@ -463,7 +466,7 @@ body {
                             <div class="secnews">
                                 <div class="miniroom_font">리뷰관리 페이지</div>
                                 <div class="board">
-                                    <ul class="kriRoBreview" style="list-style: none; padding-inline-start: 10px;">
+                                    <ul class="kriRoBreview pr-0" style="list-style: none; padding-inline-start: 10px;">
                                         <li class="review">
                                             <section class="kzDdbXreview">
                                                 <section class="divimg" style="width: 180px;">

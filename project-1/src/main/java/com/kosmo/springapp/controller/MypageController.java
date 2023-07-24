@@ -89,6 +89,19 @@ public class MypageController {
 		return "login/MyPage";
 	}
 	
+	@GetMapping("/MyPage2.do")
+	public String mypage2(HttpServletRequest req, HttpServletResponse resp, Model model) {
+		MemberDTO member = loginService.selectOne(req,resp);	
+		String id = member.getId();
+		
+		ProfileImageDTO profImg = loginService.selectProfImg(id);
+		
+		model.addAttribute("info", member);//추후 더 추가해야함
+		model.addAttribute("profImg", profImg);
+		
+		return "login/MyPage2";
+	}
+	
 	@GetMapping("/ClickDate.do")
 	public String clickDate(@RequestParam String clickDate, HttpServletRequest req, HttpServletResponse resp, Model model) {
 		MemberDTO member = loginService.selectOne(req,resp);
