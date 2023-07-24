@@ -154,6 +154,7 @@ public class MypageController {
 		return "login/JoinEdit";
 	}
 	
+	//소셜 첫 로그인 시
 	@GetMapping("/JoinAdd.do")
 	public String joinAdd(@RequestParam String add1, String add2, Map map) {
 		map.put("first", "first");

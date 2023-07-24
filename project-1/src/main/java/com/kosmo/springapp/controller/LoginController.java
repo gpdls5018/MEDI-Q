@@ -235,7 +235,7 @@ public class LoginController {
 		}
 		catch (Exception e) {
 			req.setAttribute("WHERE", "SOCIAL");
-			req.setAttribute("SUCCFAIL", 0);
+			req.setAttribute("SUCCFAIL", -1);
 			return "login/Message";
 		}
 		
@@ -275,7 +275,7 @@ public class LoginController {
 		}
 		catch (Exception e) {
 			req.setAttribute("WHERE", "SOCIAL");
-			req.setAttribute("SUCCFAIL", 0);
+			req.setAttribute("SUCCFAIL", -1);
 			return "login/Message";
 		}
 
