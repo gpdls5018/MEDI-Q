@@ -27,4 +27,5 @@ public class ReviewDTO {
 	private String noEffect;
 	private String content;
 	private int r_productNo;
+	private Date r_regidate;
 }
