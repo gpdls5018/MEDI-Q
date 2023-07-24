@@ -62,5 +62,9 @@ public class ReviewServiceImpl implements ReviewService {
 		System.out.println("noEffectList : "+noEffectList);
 		return totalReviewDto;
 	}
+	
+	public List<ReviewDTO> selectReviewByUserId(String userId){
+		return reviewMapper.selectReviewByUserId(userId);
+	}
 
 }

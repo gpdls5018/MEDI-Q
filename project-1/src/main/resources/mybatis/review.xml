@@ -61,4 +61,7 @@
 		WHERE ROWNUM &lt;= 4
 		ORDER BY count DESC
 	</select>
+	<select id="selectReviewByUserId" parameterType="String" resultType="reviewDto">
+		SELECT * FROM REVIEWTABLE WHERE R_ID = #{userId}
+	</select>
 </mapper>
