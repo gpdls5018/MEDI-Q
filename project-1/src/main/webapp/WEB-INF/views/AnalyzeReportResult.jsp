@@ -235,6 +235,8 @@
 		      	}
 			  },
 			});
+			
+			
 	</script>
 </body>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
