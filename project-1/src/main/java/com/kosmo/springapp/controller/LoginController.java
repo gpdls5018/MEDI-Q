@@ -235,24 +235,30 @@ public class LoginController {
 	public String naverLogin(String code, HttpServletRequest req, HttpServletResponse resp) {
 
 		String accessToken = naverLoginServiceImpl.getAccessToken(code);
+		try {
+			Map<String, Object> userInfo = naverLoginServiceImpl.getUserInfo(accessToken);// 이메일,성별,이름,생년월일,사이트명
 		
-		Map<String, Object> userInfo = naverLoginServiceImpl.getUserInfo(accessToken);// 이메일,성별,이름,생년월일,사이트명
-		
-		// 기존에 소셜로그인으로 로그인한 기록이 있는지 확인
-		int visit = mapper.checkBySocial(userInfo);
-
-		if (visit == 0) {// 첫방문O
-			mapper.saveSocial(userInfo);
-			return "redirect:/project/JoinAdd.do?add1="+userInfo.get("email").toString()+"&add2="+accessToken; //추가 정보 입력
+			// 기존에 소셜로그인으로 로그인한 기록이 있는지 확인
+			int visit = mapper.checkBySocial(userInfo);
+	
+			if (visit == 0) {// 첫방문O
+				mapper.saveSocial(userInfo);
+				return "redirect:/project/JoinAdd.do?add1="+userInfo.get("email").toString()+"&add2="+accessToken; //추가 정보 입력
+			}
+							
+			// 첫방문x
+			String token = loginService.socialLogin(userInfo,accessToken);
+			
+			// 쿠키에 굽자
+			Cookie cookie = new Cookie(tokenName, token);
+			cookie.setPath("/");
+			resp.addCookie(cookie);
 		}
-						
-		// 첫방문x
-		String token = loginService.socialLogin(userInfo,accessToken);
-
-		// 쿠키에 굽자
-		Cookie cookie = new Cookie(tokenName, token);
-		cookie.setPath("/");
-		resp.addCookie(cookie);
+		catch (Exception e) {
+			req.setAttribute("WHERE", "SOCIAL");
+			req.setAttribute("SUCCFAIL", 0);
+			return "login/Message";
+		}
 
 		// 쿠키를 response에 담았으니 redirect로 보내야함(메인 페이지로)
 		return "redirect:/";

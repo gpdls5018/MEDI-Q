@@ -9,6 +9,9 @@
 		<c:set var="failureMessage" value="입력 실패 했어요"/>
 		<c:set var="successUrl" value="/JoHyeIn/Board.do"/>
 	</c:when>
+	<c:when test="${WHERE == 'SOCIAL' }">
+		<c:set var="failureMessage" value="소셜로그인 실패 했어요"/>
+	</c:when>
 	<c:otherwise><%-- ${WHERE == 'PROF' } --%>
 		<c:set var="successMessage" value="프로필 수정을 성공했습니다"/>
 		<c:set var="failureMessage" value="프로필 수정을 실패했습니다"/>
