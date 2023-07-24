@@ -339,7 +339,7 @@
 				</div>
 				 <!-- 도표2: 막대 그래프 -->
 		        <div class="chart-container">
-		            <canvas id="barChart"></canvas>
+		            <canvas id="pieChart"></canvas>
 		        </div>
 			</div>
 	    	
@@ -462,117 +462,153 @@
 	
     <script>
 	    
-		// 막대 그래프
-	    new Chart(document.getElementById('barChart'), {
-            type: 'bar',
-            data: {
-                labels: ['A', 'B', 'C', 'D'],
-                datasets: [{
-                    label: '막대 그래프',
-                    data: [30, 50, 70, 40],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',
-                        'rgba(255, 206, 86, 0.6)',
-                        'rgba(75, 192, 192, 0.6)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-	
-	    // 라인 차트
-	    new Chart(document.getElementById('lineChart'), {
-	        type: 'line',
-	        data: {
-	            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-	            datasets: [{
-	                label: '라인 차트',
-	                data: [10, 20, 30, 25, 35],
-	                borderColor: 'rgba(54, 162, 235, 1)',
-	                borderWidth: 1,
-	                fill: false
-	            }]
-	        },
-	        options: {
-	            responsive: true,
-	            maintainAspectRatio: false,
-	            scales: {
-	                y: {
-	                    beginAtZero: true
-	                }
-	            }
-	        }
+	 	// 페이지 로드 시 차트 생성
+	    document.addEventListener('DOMContentLoaded', () => {
+	        fetchDataAndUpdateChart();
+	        updateChart();
+	        drawPieChart();
 	    });
+	    
+	    
+	    const days = ['일', '월', '화', '수', '목', '금', '토'];
+
+		 // 최근 일주일 날짜 가져오기
+		 function getLastWeekDates() {
+		     const today = new Date();
+		     const dayOfWeek = today.getDay();
+		     const dates = [];
 	
-	    // 파이 차트
-	    new Chart(document.getElementById('pieChart'), {
-	        type: 'pie',
-	        data: {
-	            labels: ['Red', 'Blue', 'Yellow'],
-	            datasets: [{
-	                data: [30, 40, 20],
-	                backgroundColor: [
-	                    'rgba(255, 99, 132, 0.6)',
-	                    'rgba(54, 162, 235, 0.6)',
-	                    'rgba(255, 206, 86, 0.6)'
-	                ],
-	                borderColor: [
-	                    'rgba(255, 99, 132, 1)',
-	                    'rgba(54, 162, 235, 1)',
-	                    'rgba(255, 206, 86, 1)'
-	                ],
-	                borderWidth: 1
-	            }]
-	        },
-	        options: {
-	            responsive: true,
-	            maintainAspectRatio: false
-	        }
-	    });
+		     // 오늘이 무슨 요일인지에 따라 시작 날짜 설정
+		     let startDay = new Date(today);
+		     startDay.setDate(today.getDate() + (-5 - today.getDay())); // 일주일 전부터 가져옴
 	
-	    // 레이더 차트
-	    new Chart(document.getElementById('radarChart'), {
-            type: 'radar',
-            data: {
-                labels: ['A', 'B', 'C', 'D', 'E'],
-                datasets: [{
-                    label: '레이더 차트',
-                    data: [70, 80, 60, 90, 50],
-                    backgroundColor: 'rgba(75, 192, 192, 0.6)', // 보라색으로 변경
-                    borderColor: 'rgba(75, 192, 192, 1)', // 보라색으로 변경
-                    borderWidth: 1,
-                    pointBackgroundColor: 'rgba(75, 192, 192, 1)', // 보라색으로 변경
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgba(75, 192, 192, 1)' // 보라색으로 변경
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    r: {
-                        beginAtZero: true
-                    }
+		     // 월요일부터 일요일까지의 날짜를 배열에 추가
+		     for (let i = 0; i < 7; i++) {
+		         const day = new Date(startDay);
+		         day.setDate(startDay.getDate() + i);
+		         const month = String(day.getMonth() + 1).padStart(2, '0'); // 월을 두 자리로 만들기
+		         const date = String(day.getDate()).padStart(2, '0'); // 일을 두 자리로 만들기
+		         const dayOfWeek = days[day.getDay()];
+		         const formattedDate = month + '/' + date + '(' + dayOfWeek + ')';
+		         dates.push(formattedDate);
+		     }
+	
+		     return dates;
+		 }
+	
+		 // 라인 차트
+		 let chart; // 변수를 전역으로 선언하여 차트 객체를 재사용
+	
+		 function updateChart(data) {
+		     // 이전 차트가 존재하면 삭제하여 메모리 누수를 방지
+		     if (chart) {
+		         chart.destroy();
+		     }
+	
+		     chart = new Chart(document.getElementById('lineChart'), {
+		         type: 'line',
+		         data: {
+		             labels: getLastWeekDates(),
+		             datasets: [{
+		                     label: '일일 로그인수',
+		                     data: data,
+		                     borderColor: 'rgba(255, 99, 132, 1)',
+		                     borderWidth: 1,
+		                     fill: false
+		                 },
+		                 {
+		                     label: '일일 회원가입수',
+		                     data: [5, 15, 10, 20, 25, 30, 10], // 예시 데이터, 서버에서 가져와야 함
+		                     borderColor: 'rgba(54, 162, 235, 1)',
+		                     borderWidth: 1,
+		                     fill: false
+		                 }
+		             ]
+		         },
+		         options: {
+		             responsive: true,
+		             maintainAspectRatio: false,
+		             scales: {
+		                 y: {
+		                     beginAtZero: true
+		                 }
+		             }
+		         }
+		     });
+		 }
+	
+		 // 매일 자정마다 차트 업데이트
+		 setInterval(() => {
+		     const today = new Date();
+		     const currentHour = today.getHours();
+		     const currentMinute = today.getMinutes();
+		     const currentSecond = today.getSeconds();
+	
+		     // 자정에 차트 업데이트
+		     if (currentHour === 0 && currentMinute === 0 && currentSecond === 0) {
+		         fetchDataAndUpdateChart();
+		     }
+		 }, 1000); // 1초마다 현재 시간을 체크
+
+		// 서버에서 데이터를 가져와 차트 업데이트
+		 function fetchDataAndUpdateChart() {
+		     // AJAX 요청 보내기
+		     $.ajax({
+		         url: '/countLoginMember.do', // 서버의 URL을 입력하세요.
+		         type: 'GET',
+		         dataType: 'json',
+		         success: function (data) {
+		             // 서버에서 가져온 데이터로 차트 업데이트
+		             updateChart(data);
+		         },
+		         error: function (error) {
+		             console.error('Error fetching data from server:', error);
+		         }
+		     });
+		 }
+    
+	
+	 	// 파이 차트
+        function drawPieChart() {
+            new Chart(document.getElementById('pieChart'), {
+                type: 'pie',
+                data: {
+                    labels: ['Red', 'Blue', 'Yellow'],
+                    datasets: [{
+                        data: [30, 40, 20],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.6)',
+                            'rgba(54, 162, 235, 0.6)',
+                            'rgba(255, 206, 86, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
                 }
-            }
-        });
+            });
+        }
+	 	
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	    
 		// 회원 삭제 함수
         function deleteMember(memberId) {
@@ -698,8 +734,11 @@
 		 	// 직접 inactive_Date 필드를 formData에 추가해주기
 		    jsonData["inactive_date"] = new Date($('#inactive_Date').val());
 
-		    // SITE가 "소셜회원이 아닙니다"일 때 null로 처리합니다.
+		 	// SITE가 "소셜회원이 아닙니다"일 때 null로 처리합니다.
 		    if (jsonData["socialFl"] === "N") {
+		        jsonData["site"] = null;
+		    } 
+		    else if (jsonData["site"].trim() === '') { // 빈 문자열인 경우 null로 변환
 		        jsonData["site"] = null;
 		    }
 		 	

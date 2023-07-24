@@ -21,6 +21,17 @@ public interface AdminMapper {
 	// 회원 정보 수정 후 처리
 	int updateMemberInfoByAdmin(MemberDTO memberdto);
 
+	// 달력에 로그인 수 뿌려주기
+	int count_6days_ago();
+	int count_5days_ago();
+	int count_4days_ago();
+	int count_3days_ago();
+	int count_2days_ago();
+	int count_1days_ago();
+	int count_0days_ago();
+
+	
+
 	
 	
 	
