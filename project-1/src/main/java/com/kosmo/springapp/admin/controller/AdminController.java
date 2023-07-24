@@ -1,5 +1,6 @@
 package com.kosmo.springapp.admin.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -110,6 +111,7 @@ public class AdminController {
     	
     	Map<String, Object> response = new HashMap<>();
     	
+    	
     
 
     	try {
@@ -159,10 +161,41 @@ public class AdminController {
         return response;
     }
 	
-	
-	
-	
-	
+	// 회원 정보 수정 전 조회
+    @GetMapping("/countLoginMember.do")
+    @ResponseBody
+    public List<Integer> countLoginMember() {
+        try {
+            // 로그인 로그를 조회하는 로직 (데이터베이스 조회 등)
+            // 여기에서는 예시 데이터로 임의의 결과를 반환합니다.
+        	// 로그인 로그를 조회하는 로직을 LoginLogService에서 처리하여 가져옵니다.
+        	int count_6days_ago = adminMapper.count_6days_ago();
+        	int count_5days_ago = adminMapper.count_5days_ago();
+        	int count_4days_ago = adminMapper.count_4days_ago();
+        	int count_3days_ago = adminMapper.count_3days_ago();
+        	int count_2days_ago = adminMapper.count_2days_ago();
+        	int count_1days_ago = adminMapper.count_1days_ago();
+        	int count_0days_ago = adminMapper.count_0days_ago();
+        	
+        	// 조회된 로그인 수를 List에 담아서 반환합니다.
+            List<Integer> loginCounts = new ArrayList<>();
+            loginCounts.add(count_6days_ago);
+            loginCounts.add(count_5days_ago);
+            loginCounts.add(count_4days_ago);
+            loginCounts.add(count_3days_ago);
+            loginCounts.add(count_2days_ago);
+            loginCounts.add(count_1days_ago);
+            loginCounts.add(count_0days_ago);
+        	
+            
+            return loginCounts;
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+            return null; 
+        }
+    }
+
 	
 	
 	
