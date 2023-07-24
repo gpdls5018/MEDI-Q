@@ -1,5 +1,7 @@
 package com.kosmo.springapp.admin.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 
 import com.kosmo.springapp.admin.service.AdminMapper;
 import com.kosmo.springapp.model.MemberDTO;
@@ -105,57 +107,46 @@ public class AdminController {
 	// 회원 정보 수정 후 처리
     @PostMapping("/editMember")
     @ResponseBody
-    public Map<String, Object> editMember(@RequestBody MemberDTO memberdto) {
+    public Map<String, Object> editMember(@RequestBody Map<String, Object> request) {
         
     	
     	Map<String, Object> response = new HashMap<>();
     	
-    	// 데이터 변환 - 생년월일
-        if (memberdto.getBirth() != null) {
-            try {
-                SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
-                SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd");
-                Date birthDate = inputFormat.parse(memberdto.getBirth());
-                String formattedBirth = outputFormat.format(birthDate);
-                memberdto.setBirth(formattedBirth);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-        
-        // 데이터 변환 - 비활성화일자
-//        if (memberdto.getInactive_date() != null) {
-//            try {
-//                SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy/MM/dd");
-//                Date inactiveDate = inputFormat.parse(memberdto.getInactive_date());
-//                memberdto.setInactive_date(inactiveDate);
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//                response.put("success", false);
-//                response.put("message", "비활성화일자 형식 변환 중 오류가 발생하였습니다.");
-//                return response;
-//            }
-//        }
-        
-       
-        
-        System.out.println("전달받은 JSON 데이터 - ID: " + memberdto.getId());
-        System.out.println("전달받은 JSON 데이터 - NAME: " + memberdto.getName());
-        System.out.println("전달받은 JSON 데이터 - BIRTH: " + memberdto.getBirth());
-        System.out.println("전달받은 JSON 데이터 - GENDER: " + memberdto.getGender());
-        System.out.println("전달받은 JSON 데이터 - EMAIL: " + memberdto.getEmail());
-        System.out.println("전달받은 JSON 데이터 - ACTIVE: " + memberdto.getActive());
-        System.out.println("전달받은 JSON 데이터 - INACTIVE_DATE: " + memberdto.getInactive_date());
-        System.out.println("전달받은 JSON 데이터 - SITE: " + memberdto.getSite());
-        System.out.println("전달받은 JSON 데이터 - SOCIAL_FL: " + memberdto.getSocial_Fl());
-
-        
-        
-        
     	
+    
 
     	try {
-            int affectedRows = adminMapper.updateMemberInfoByAdmin(memberdto);
+            // MemberDTO 객체 생성
+            MemberDTO memberDto = new MemberDTO();
+            
+            // 아이디
+            memberDto.setId((String) request.get("id"));
+            // 이름
+            memberDto.setName((String) request.get("name"));
+            // 생년월일 설정
+            String birthStr = (String) request.get("birth");
+            memberDto.setBirth(birthStr);
+            // 성별
+            memberDto.setGender((String) request.get("gender"));
+            // 이메일
+            memberDto.setEmail((String) request.get("email"));
+            // 활동상태     
+            memberDto.setActive((String) request.get("active"));
+            // 활동변경일자
+            // 받은 JSON 데이터에서 inactive_date를 파싱하여 Date 타입으로 변환
+            String inactiveDateStr = (String) request.get("inactive_Date");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date utilInactiveDate = dateFormat.parse(inactiveDateStr);
+            java.sql.Date sqlInactiveDate = new java.sql.Date(utilInactiveDate.getTime());
+            memberDto.setInactive_date(sqlInactiveDate);                       
+            // 소셜 여부
+            memberDto.setSocial_Fl((String) request.get("socialFl"));
+            // 소셜 사이트
+            memberDto.setSite((String) request.get("site"));
+            
+            // 회원정보 업데이트
+            int affectedRows = adminMapper.updateMemberInfoByAdmin(memberDto);
+            
             if (affectedRows > 0) {
                 response.put("success", true);
                 response.put("message", "회원 정보가 성공적으로 수정되었습니다.");
@@ -171,10 +162,41 @@ public class AdminController {
         return response;
     }
 	
-	
-	
-	
-	
+	// 회원 정보 수정 전 조회
+    @GetMapping("/countLoginMember.do")
+    @ResponseBody
+    public List<Integer> countLoginMember() {
+        try {
+            // 로그인 로그를 조회하는 로직 (데이터베이스 조회 등)
+            // 여기에서는 예시 데이터로 임의의 결과를 반환합니다.
+        	// 로그인 로그를 조회하는 로직을 LoginLogService에서 처리하여 가져옵니다.
+        	int count_6days_ago = adminMapper.count_6days_ago();
+        	int count_5days_ago = adminMapper.count_5days_ago();
+        	int count_4days_ago = adminMapper.count_4days_ago();
+        	int count_3days_ago = adminMapper.count_3days_ago();
+        	int count_2days_ago = adminMapper.count_2days_ago();
+        	int count_1days_ago = adminMapper.count_1days_ago();
+        	int count_0days_ago = adminMapper.count_0days_ago();
+        	
+        	// 조회된 로그인 수를 List에 담아서 반환합니다.
+            List<Integer> loginCounts = new ArrayList<>();
+            loginCounts.add(count_6days_ago);
+            loginCounts.add(count_5days_ago);
+            loginCounts.add(count_4days_ago);
+            loginCounts.add(count_3days_ago);
+            loginCounts.add(count_2days_ago);
+            loginCounts.add(count_1days_ago);
+            loginCounts.add(count_0days_ago);
+        	
+            
+            return loginCounts;
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+            return null; 
+        }
+    }
+
 	
 	
 	

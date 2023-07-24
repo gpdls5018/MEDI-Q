@@ -141,6 +141,12 @@
 								<c:if test="${true}">
 									<a href='<c:url value="/board/AnswerWrite.do?no=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
 										<button class="btn btn-light text-light btn_deco">답변작성</button>
+									</a>
+									<a href='<c:url value="/board/AnswerEdit.do?NO=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
+										<button class="btn btn-light text-light btn_deco">답변수정</button>
+									</a>
+									<a href='<c:url value="/board/AnswerWrite.do?no=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
+										<button class="btn btn-light text-light btn_deco">답변삭제</button>
 									</a> 
 								</c:if>
 							</div>

@@ -197,6 +197,16 @@ left: 146px;
    	</c:if>
    	</h1>
    	<div style="display: flex; flex-direction: column; margin-left: 20px;">
+   		<c:if test="${heartcount eq '0' }">
+	   		<button data-initialtext="🤍 미복용중" id="heartButton" data-foodname="${listOne.productName}" style="margin-bottom:20px; background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
+			   🤍 찜하기
+			</button>
+		</c:if>
+		<c:if test="${heartcount eq '1' }">
+	   		<button data-initialtext="❤ 복용중" id="heartButton" data-foodname="${listOne.productName}" style="margin-bottom:20px; background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
+			   🧡 찜하기 취소
+			</button>
+		</c:if>
         <button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
         <img src="<c:url value="/images/magazine_images/basic/basket.png"/>" class="img-fluid mr-1 mb-1" style="width:20px">
         구매하러 가기</button>
@@ -372,7 +382,7 @@ left: 146px;
    				    <script>
 				      let Graph = ForceGraph3D()
 				        (document.getElementById('3d-graph'))
-				          .jsonUrl('http://127.0.0.1/review/${listOne.no}')
+				          .jsonUrl('http://192.168.0.16/review/${listOne.no}')
 				          .nodeAutoColorBy('group')
 				          .width("600")
 				          .height("380")
@@ -706,6 +716,40 @@ left: 146px;
 
   window.addEventListener("scroll", handleInfiniteScroll);
 
+	//좋아요 버튼 초기 텍스트 설정
+	var heartButton = document.getElementById('heartButton');
+	var initialText = heartButton.getAttribute('data-initialtext');
+	heartButton.innerText = initialText;
+	
+	// 버튼 클릭 이벤트 핸들러 등록
+	heartButton.addEventListener('click', function() {
+	    var foodname = this.getAttribute('data-foodname');
+	    var xhr = new XMLHttpRequest();
+	    
+	    xhr.onreadystatechange = function() {
+	        if (xhr.readyState === XMLHttpRequest.DONE) {
+	            if (xhr.status === 200) {
+	                // AJAX 요청이 성공한 경우
+	                var response = JSON.parse(xhr.responseText);
+	                var heart = response.heart;
+	                
+	                // 버튼 텍스트 변경
+	                if (heart === "1") {
+	                    heartButton.innerText = '🤍 미복용중';
+	                } else {
+	                    heartButton.innerText = '❤ 복용중';
+	                }
+	            } else {
+	                // AJAX 요청이 실패한 경우에 대한 처리
+	                console.error('AJAX 요청 실패:', xhr.status, xhr.statusText);
+	            }
+	        }
+	    };
+	    
+	    // AJAX 요청 설정
+	    xhr.open('GET', '/Heart.do?foodname=' + encodeURIComponent(foodname), true);
+	    xhr.send();
+	});
 
   
 </script>

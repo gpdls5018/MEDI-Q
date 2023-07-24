@@ -60,29 +60,27 @@ public class AnswerBoardController {
 		System.out.println("no : "+no);
 		model.addAttribute("no",no);
 		return "board/AnswerWrite";
-	}
+	}//////////////////////////////////////////////
+
 	//글작성후 list.do로 이동(목록으로 이동)
 	@PostMapping("/AnswerWrite.do")
-	public String answerwriteProcess(HttpServletRequest req,@RequestParam Map paramMap,Model model) {
+	public String answerwriteProcess(HttpServletRequest req,@RequestParam Map map,Model model) {
+		//작성자 id 필요
 		//id란 이름으로 token의 id를 저장
 		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
-		//map타입으로 id란 이름으로 id저장
 		System.out.println(123);
-		paramMap.put("id", id);
+		//map타입으로 id란 이름으로 id저장
+		map.put("id", id);
 		System.out.println("adminid체크:"+id);
 		//affect에 글작성이 성공하였다면 (int)1, 실패면 0으로 저장
 		System.out.println("체크용1");
-		System.out.println(paramMap);
+		System.out.println(map);
 		//입력
-		int affected=answerservice.answerinsert(paramMap);
-		System.out.println("affected:"+affected);
+		int affected=answerservice.answerinsert(map);
+		System.out.println("affected는 0 or 1인 값:"+affected);
 		System.out.println("체크용2");
-		//map에 1명의 글 저장 
-		paramMap=board.selectOne(paramMap);
-		System.out.println("체크용3");
-		//model.addAttribute("paramMap", paramMap);
-		model.addAttribute("paramMap", paramMap);
-		System.out.println("paramMap"+paramMap);
+		model.addAttribute("map", map);
+		System.out.println("map에 들어있는 값 : "+map);
 		//글 입력 실패시
 		if(affected==0) {
 			System.out.println("affected:"+affected);
@@ -91,9 +89,35 @@ public class AnswerBoardController {
 		}
 		//작성하고 난 뒤 목록페이지로 이동
 		System.out.println("답변 answercontroller까지 성공 여기이후는 view에서 에러입니다");
-	    //View.do핸들러 메서드로 감
+	    // /board/View.do핸들러 메서드로 감
 		return "forward:/board/View.do"; 
+	}//////////////////////////////////////////////
+
+	@GetMapping("/AnswerEdit.do")
+	public String answeredit(//HttpServletRequest req,
+			@RequestParam Map map,Model model) {
+		
+		System.out.println("edit체크용1");
+		map=answerservice.answerselectOne(map);
+		System.out.println("map에 있는 값:"+map);
+		System.out.println("edit체크용2");
+		System.out.println("map에 있는 거 체크:"+map);
+		model.addAttribute("record", map);
+		System.out.println("editmodel의 값 확인:"+model);
+		return "board/AnswerEdit";
+	}//////////////////////////////////////////////
+	@PostMapping("/AnswerEdit.do")
+	public String answereditProcess(@RequestParam Map map,Model model) {
+		System.out.println("map에 있는게 무엇인가?"+map);
+		int affected=answerservice.answerupdate(map);
+		if(affected==0) {
+			System.out.println("이게 출력됬다면 edit실패입니다!");
+			model.addAttribute("inputError", "입력 오류입니다. 다시 입력해주세요");
+	        //model.addAttribute("record", map);
+	        return "board/AnswerEdit";
+		}
+		System.out.println("여기 이후로는 view문제입니다");
+		return "forward:/board/View.do";
 	}
-	
 	
 }
