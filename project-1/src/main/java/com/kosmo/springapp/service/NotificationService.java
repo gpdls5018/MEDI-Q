@@ -52,7 +52,7 @@ public class NotificationService {
         }
     }
     
-    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "0 */5 * * * *")
     public void test() {
 		//현재 시간 분단위로 뽑아서 등록된 복용시간이랑,id 일치할 때 알림 띄워야함
 		//토큰도 필요함??????????????????????????
