@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -41,30 +42,10 @@ public class NotificationApiController {
 
     //사용자가 로그인 된후 Firebase에게 전달받은 token 값을 웹서버에게 등록한다.
     @PostMapping("/webpush")
-    public ResponseEntity register(@RequestBody String token, HttpServletRequest req) throws ParseException {//복용 영양제명, 알람 시간 받아야함
+    public ResponseEntity register(@RequestBody String token, HttpServletRequest req, HttpServletResponse resp) throws ParseException {//복용 영양제명, 알람 시간 받아야함
     	String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName),secretKey).get("sub").toString();
-        notificationService.register(id,token);
-        if (token != null) {//fcm토큰 유무로 로그인 판단하자
-        	/*
-        	SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        	Calendar cal = Calendar.getInstance();
-        	cal.set(2023, 7-1, 23, 22, 18); //년,월,일,시,분
-        	long timestamp = cal.getTimeInMillis();
-        	//timestamp = timestamp*1000;
-        	Date date = new Date(timestamp);
-        	String stime = dateformat.format(date);
-        	System.out.println("//////////////////////////timestamp: "+timestamp);
-        	System.out.println("//////////////////////////stime: "+stime);
-        	*/
-            NotificationRequest notificationRequest = NotificationRequest.builder()
-                .title("MEDI-Q")
-                .token(token)
-                .message("고려비타민 정 복용시간입니다")
-                .icon("../images/mainicon.png")
-                //.timestamp(timestamp)
-                .build();
-            notificationService.sendNotification(notificationRequest);
-        }
+        notificationService.register(id,token,req,resp);
+        
         return ResponseEntity.ok().build();
     }
  

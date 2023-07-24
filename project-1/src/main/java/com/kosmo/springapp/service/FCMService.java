@@ -2,8 +2,14 @@ package com.kosmo.springapp.service;
 
 import java.util.concurrent.ExecutionException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.google.firebase.messaging.WebpushFcmOptions.Builder;
@@ -31,6 +37,13 @@ public class FCMService {
 	*/
 
     private static final Logger logger = LoggerFactory.getLogger(FCMService.class);
+    
+    @Autowired
+	private JWTokensService jwTokensService;
+    @Value("${secret-key}")
+	private String secretKey;
+	@Value("${token-name}")
+	private String tokenName;
 
     public void send(final NotificationRequest notificationRequest) throws InterruptedException, ExecutionException {
     	Message message = Message.builder()
@@ -60,4 +73,23 @@ public class FCMService {
         //logger.info("Send message: " + response);
     }
 
+    /*
+    @Scheduled(cron = "0 * * * * *")
+    private void createReceiveNotification(HttpServletRequest req, HttpServletResponse resp) {
+    	String loginToken = jwTokensService.getToken(req, tokenName);
+    	boolean isLogin = jwTokensService.verifyToken(loginToken, tokenName, secretKey, req, resp);
+    	
+        if (isLogin) {
+        	String id = jwTokensService.getTokenPayloads(loginToken,secretKey).toString();
+        	System.out.println("tokenMap: "+tokenMap.get(id));
+        	NotificationRequest notificationRequest = NotificationRequest.builder()
+                    .title("MEDI-Q")
+                    .token(tokenMap.get(id))
+                    .message("고려비타민 정 복용시간입니다")
+                    .icon("../images/mainicon.png")
+                    //.timestamp(timestamp)
+                    .build();
+            notificationService.sendNotification(notificationRequest);
+        }
+    }*/
 }
