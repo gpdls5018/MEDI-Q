@@ -73,7 +73,7 @@ public class BoardController {
 	}
 	//글쓰기 폼으로 이동
 	@GetMapping("/Write.do")
-	public String write(HttpServletRequest req) {
+	public String write() {
 		return "board/Write";
 	}
 	//글작성후 list.do로 이동(목록으로 이동)
@@ -113,7 +113,7 @@ public class BoardController {
 		Map paraMap =new HashMap<>();
 		System.out.println("여기서 아래 에러 발생함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		if (map.get("NO") != null) {
-			System.out.println(map.get("NO"));
+			System.out.println("map의 NO:"+map.get("NO"));
 			System.out.println("여기로 들어오는가?");
 			System.out.println("성공");
 			paraMap=answerservice.answerselectOne(map);
@@ -129,8 +129,8 @@ public class BoardController {
 	}
 	@GetMapping("/Edit.do")
 	public String edit(HttpServletRequest req,@RequestParam Map map,Model model) {
-		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
-		map.put("id", id);
+		//String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
+		//map.put("id", id);
 		map= board.selectOne(map);
 		System.out.println(map);
 		model.addAttribute("record", map);
@@ -140,8 +140,8 @@ public class BoardController {
 	@PostMapping("/EditProcess.do")
 	public String editProcess(HttpServletRequest req,@RequestParam Map map,Model model) {
 		//map.put("id", "petrus11");
-		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
-		map.put("id", id);
+		//String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
+		//map.put("id", id);
 		System.out.println("여기부터...");
 		int affected = board.update(map);
 	    if (affected == 0) {
@@ -154,9 +154,9 @@ public class BoardController {
 	
 	@GetMapping("/Delete.do")
 	public String delete(HttpServletRequest req,@RequestParam Map map,Model model) {
-		//map.put("id", "petrus11");
-		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
-		map.put("id", id);
+		
+		//String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
+		//map.put("id", id);
 		//서비스 호출
 		int affected = board.delete(map);
 	    System.out.println("여기 delete후 "+affected);
