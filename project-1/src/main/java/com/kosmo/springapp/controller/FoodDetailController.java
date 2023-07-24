@@ -24,7 +24,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.google.api.Http;
 import com.kosmo.springapp.analyze.model.AnalyzeResultListDTO;
 import com.kosmo.springapp.model.AnalyzeReportDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
@@ -33,12 +35,14 @@ import com.kosmo.springapp.model.ProfileImageDTO;
 import com.kosmo.springapp.model.ReviewDTO;
 import com.kosmo.springapp.model.TotalReviewDTO;
 import com.kosmo.springapp.nutrient.service.impl.NutrientSelectMapper;
+import com.kosmo.springapp.service.HeartCountMapper;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.AnalyzeMyReportServiceImpl;
+import com.kosmo.springapp.service.impl.HeartCountServiceImpl;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
 import com.kosmo.springapp.service.impl.MainPageServiceImpl;
 import com.kosmo.springapp.service.impl.ReviewServiceImpl;
-
+import org.springframework.http.HttpStatus;
 
 
 @Controller
@@ -54,22 +58,57 @@ public class FoodDetailController {
 	 private NutrientSelectMapper nutrietnSelectMapper;
 	 
 	 @Autowired
+	 HeartCountServiceImpl HeartCountService;
+	 
+	 @Autowired
 	 private JWTokensService jwTokensService;
 	 @Value("${token-name}")
 	 private String tokenName;
 	 @Value("${secret-key}")
 	 private String secretKey;
+	 
+	 @GetMapping("/Heart.do")
+	 @ResponseBody
+	 @ResponseStatus(HttpStatus.OK)
+	 public Map<String, Object> heartCount(HttpServletRequest req, @RequestParam String foodname) {
+	     Map<String, Object> response = new HashMap<>();
+	     
+	     String token = jwTokensService.getToken(req, tokenName);
+	     Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
+	     String id = payloads.get("sub").toString();
+	     foodname = foodname.replace("%20", " ");
+	     String heart = HeartCountService.HeartCount(id, foodname);
+	     
+	     // 서버에서 현재 좋아요 상태를 확인하여 response에 추가
+	     response.put("heart", heart);
+	     
+	     if (heart.equals("0")) {
+	         HeartCountService.insertHeart(id, foodname);
+	     } else {
+	         HeartCountService.deleteHeart(id, foodname);
+	     }
+	     
+	     return response;
+	 }
 	
 	 @GetMapping("/detail.do")
-	 public String detailPage(Model model, Map map, @RequestParam String no) {
-		   map.put("no",Integer.parseInt(no));
-		   FunctionalFoodListDTO listOne = mainPageServiceImpl.selectFoodOneByNo(map);
+	 public String detailPage(HttpServletRequest req,Model model, Map map, @RequestParam String no) {
+			map.put("no",Integer.parseInt(no));
+		    FunctionalFoodListDTO listOne = mainPageServiceImpl.selectFoodOneByNo(map);
+		 	String token = jwTokensService.getToken(req, tokenName);
+			Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
+			if(payloads.get("sub")==null) {}
+			else {
+			String id = payloads.get("sub").toString();
+			System.out.println(HeartCountService.HeartCount(id, listOne.getProductName()));
+			model.addAttribute("heartcount", HeartCountService.HeartCount(id,listOne.getProductName()));
+			}
 		   	// 영양제의 조회수 가져오기
-		   nutrietnSelectMapper.increaseF_VIEW(listOne.getProductName());
-		   int f_view = nutrietnSelectMapper.getF_VIEW(listOne.getProductName());
-		   model.addAttribute("fview", f_view);
-		   TotalReviewDTO totalReviewDto = reviewServiceImpl.selectTotalReviewInfo(Integer.parseInt(no));
-		   if(listOne.getStandard() != null) {
+		    nutrietnSelectMapper.increaseF_VIEW(listOne.getProductName());
+		    int f_view = nutrietnSelectMapper.getF_VIEW(listOne.getProductName());
+		    model.addAttribute("fview", f_view);
+		    TotalReviewDTO totalReviewDto = reviewServiceImpl.selectTotalReviewInfo(Integer.parseInt(no));
+		    if(listOne.getStandard() != null) {
 			   if(listOne.getStandard().contains("1)")) {
 				   if(listOne.getStandard().contains("(1)")) {
 					   String input = listOne.getStandard();
