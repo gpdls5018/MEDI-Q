@@ -6,7 +6,7 @@
 <mapper namespace="com.kosmo.springapp.service.HeartCountMapper">
 
 	<select id="HeartCount" parameterType="String" resultType="String">
-		select count(*) from LIKEFOOD where upper(id)='${id}' AND foodname='${name}'
+		select count(*) from LIKEFOOD where id='${id}' AND foodname='${name}'
 	</select>
 	<insert id="insertHeart" parameterType="String">
 		insert into LIKEFOOD (ID,foodname,LIKEFOOD) values('${id}','${name}','Y')
