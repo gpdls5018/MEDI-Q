@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.api.client.auth.openidconnect.IdToken.Payload;
+import com.kosmo.springapp.admin.service.AdminMapper;
 import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.LoginMapper;
@@ -40,7 +41,9 @@ public class LoginController {
 	private LoginServiceImpl loginService;
 	@Autowired
 	private JWTokensService jwTokensService;
-
+	@Autowired
+	private AdminMapper adminMapper;
+	
 	@Value("${secret-key}")
 	private String secretKey;
 	@Value("${token-name}")
@@ -111,6 +114,9 @@ public class LoginController {
 				resp.addCookie(save);
 			}
 
+			// 로그인시 기록 저장(허재준)
+			adminMapper.insertLoginMember(id);
+			
 			// 쿠키를 response에 담았으니 redirect로 보내야함(메인 페이지로)
 			return "redirect:/";
 		} else {
@@ -223,13 +229,16 @@ public class LoginController {
 			Cookie cookie = new Cookie(tokenName, token);
 			cookie.setPath("/");
 			resp.addCookie(cookie);
+			
+			// 로그인시 기록 저장(허재준)
+			adminMapper.insertLoginMember(userInfo.get("email").toString());
 		}
 		catch (Exception e) {
 			req.setAttribute("WHERE", "SOCIAL");
 			req.setAttribute("SUCCFAIL", 0);
 			return "login/Message";
 		}
-
+		
 		// 쿠키를 response에 담았으니 redirect로 보내야함(메인 페이지로)
 		return "redirect:/";
 	}
@@ -260,6 +269,9 @@ public class LoginController {
 			Cookie cookie = new Cookie(tokenName, token);
 			cookie.setPath("/");
 			resp.addCookie(cookie);
+			
+			// 로그인시 기록 저장(허재준)
+			adminMapper.insertLoginMember(userInfo.get("email").toString());
 		}
 		catch (Exception e) {
 			req.setAttribute("WHERE", "SOCIAL");
