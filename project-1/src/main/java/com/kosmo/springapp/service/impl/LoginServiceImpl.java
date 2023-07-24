@@ -128,15 +128,17 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 
 	//소셜 로그인 시
 	public String socialLogin(Map userInfo,String accessToken) {
-		String email = userInfo.get("email").toString();
+		String id = userInfo.get("email").toString();//이메일
+		MemberDTO member =  mapper.findMember(id);
 
 		// 토큰 생성한 뒤 쿠키에 저장
 		Map<String, Object> payloads = new HashMap<>();// 사용자 임의 데이타
 		payloads.put("socialInfo", accessToken);///////////////////////////
+		payloads.put("name", member.getName());
 
 		long expirationTime = 1000 * 60 * 60 * 24; // 토큰의 만료시간 설정
 
-		String token = jwTokensService.createToken(email, secretKey, payloads, expirationTime);
+		String token = jwTokensService.createToken(id, secretKey, payloads, expirationTime);
 		//System.out.println("token: "+token);
 		return token;
 	}

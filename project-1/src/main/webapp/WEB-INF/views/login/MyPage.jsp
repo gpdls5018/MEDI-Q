@@ -102,7 +102,7 @@ body {
         text-decoration-line: none;
         color: white;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 18px;
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
     }
     .profilemenu {
@@ -593,7 +593,7 @@ ul li input[type=checkbox]:checked ~ .acco {
                         <span>${info.id }</span>
                         
                         <ul class="profilemenu ml-auto">
-                        	<li><a href="" id="imgEdit" class="sidenava1"  data-target="#modalView" data-backdrop="static">나의 건강 정보 등록</a></li>
+                        	<li><a href="" id="" class="sidenava1"  data-target="#modalView" data-backdrop="static">나의 건강 정보 등록</a></li>
                             <li><a href="" id="imgEdit" class="sidenava2"  data-target="#modalView" data-backdrop="static">프로필 이미지수정</a></li>
                             <c:if test='${info.social_Fl eq "Y"}' var="isSocial"><!-- 소셜용 -->
 								<li><a href='<c:url value="/project/JoinEdit.do"/>' class="sidenava2">회원정보 수정</a></li>
@@ -604,7 +604,8 @@ ul li input[type=checkbox]:checked ~ .acco {
                             <li><a class="sidenava4" href="#">회원탈퇴</a></li>
                         </ul>
                         <div>
-                            <span style="position: absolute; top:700px; left: 140px; font-size: 30px;" >로고</span>
+                            <img alt="로고" src='<c:url value="/images/mainicon.png"/>' style="width: 30px"/>
+                            <img alt="로고2" src='<c:url value="/images/maintitle.png"/>' style="width: 80px"/>
                         </div>
                     </div>
                 </div>
@@ -1338,4 +1339,3 @@ ul li input[type=checkbox]:checked ~ .acco {
 		$('input[type=password]').css('display','');
 	});
 </script>
-<jsp:include page="/WEB-INF/views/template/Footer.jsp"/>

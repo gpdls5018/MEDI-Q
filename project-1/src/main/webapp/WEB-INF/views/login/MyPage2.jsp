@@ -69,7 +69,7 @@ body {
         text-decoration-line: none;
         color: white;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 18px;
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
     }
     .profilemenu {
@@ -243,13 +243,14 @@ body {
         position: relative;
         flex-direction: column;
         box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
-        border-radius: .5rem;
+        border-radius: 10px;
         margin-top: 5px;
         width: 170px;
         height: 250px;
     }
     .kzDdbX {
         position: relative;
+        border-radius: 10px 10px 0 0;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -358,7 +359,7 @@ body {
                         <span>${info.id }</span>
 
                         <ul class="profilemenu ml-auto">
-                        	<li><a href="" id="imgEdit" class="sidenava1"  data-target="#modalView" data-backdrop="static">나의 건강 정보 등록</a></li>
+                        	<li><a href="" id="" class="sidenava1"  data-target="#modalView" data-backdrop="static">나의 건강 정보 등록</a></li>
                             <li><a href="" id="imgEdit" class="sidenava2"  data-target="#modalView" data-backdrop="static">프로필 이미지수정</a></li>
                             <c:if test='${info.social_Fl eq "Y"}' var="isSocial"><!-- 소셜용 -->
 								<li><a href='<c:url value="/project/JoinEdit.do"/>' class="sidenava2">회원정보 수정</a></li>
@@ -368,20 +369,10 @@ body {
 							</c:if>
                             <li><a class="sidenava4" href="#">회원탈퇴</a></li>
                         </ul>
-                        <!--
+                        
                         <div>
-                            <div style="display: flex; flex-direction: row;">
-                                <div class="btn btn__primary"><p>Button1</p></div>
-                                <div class="btn btn__primary"><p>Button2</p></div>
-                            </div>
-                            <div style="display: flex; flex-direction: row;">   
-                                <div class="btn btn__primary"><p>Button3</p></div>
-                                <div class="btn btn__primary"><p>Button4</p></div>
-                            </div>
-                        </div>
-                        -->
-                        <div>
-                            <span style="position: absolute; top:700px; left: 140px; font-size: 30px;" >로고</span>
+                            <img alt="로고" src='<c:url value="/images/mainicon.png"/>' style="width: 30px"/>
+                            <img alt="로고2" src='<c:url value="/images/maintitle.png"/>' style="width: 80px"/>
                         </div>
                     </div>
                 </div>
@@ -409,15 +400,15 @@ body {
                                                     <section class="kzDdbX">
                                                         <a class="pointer" data-gtm-id="link-product-detail" href="#">
                                                             <section class="divimg">
-                                                                <img fetchpriority="high" width="150" height="150" src="img/testimonial-1.jpg" style="color: transparent; margin-top: 10px; border-radius: 10px;">
+                                                                <img fetchpriority="high" width="150" height="150" src="/images/tsimages/destination-1.jpg" style="margin-top: 10px; border-radius: 10px;">
                                                             </section>
                                                         </a>
                                                         <label for="wishBtn:rk0:" class="   bPHVOx">
                                                             <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
                                                         </label>
                                                     </section>
-                                                    <p class="kCBLwp">회사명</p>
-                                                    <p class="kWbUNE">약이름</p>
+                                                    <p class="kWbUNE">락토핏 골드</p>
+                                                    <p class="kCBLwp">대웅제약</p>
                                                     <div class="clearfix">
                                                         <a class="detail" href='#' >상세보기</a>
                                                     </div>
@@ -493,4 +484,3 @@ body {
         </div>
     </div>
 </div>
-<jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
