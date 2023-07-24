@@ -907,6 +907,7 @@ a {
 		background-color: #0071fc;
 		padding: .5em
 	}
+	/*
 	.maints {
 		margin: 1em 0em 1em 1em;
 	}
@@ -958,6 +959,7 @@ a {
 			margin-top: 0px;
 		}
 	}
+	*/
 	aside > div {
 	  border: 2px solid #ccc;
 	  border-radius: 10px;
@@ -969,10 +971,11 @@ a {
 	.gCSEJp {
         display: flex;
         flex-direction: column;
-        position: relative;
+        align-content: flex-end;
+        width: 900px;
         padding: 20px 20px;
         justify-content: center;
-        margin: 50px 0px;
+        margin: 80px 50px 50px 1000px;
     }
     .gCSEJp > h1 {
         color: gray;
@@ -982,7 +985,7 @@ a {
         display: inline-block;
         width: calc(100% - 10px);
         transform: translateX(10px);
-        height: 180px;
+        height: 250px;
         background-color: gray;
         border-radius: 20px;
         margin-bottom: 20px;
@@ -1006,7 +1009,7 @@ a {
     .hBxOSS {
         cursor: pointer;
         border-radius: 20px;
-        height: 180px;
+        height: 250px;
         box-shadow: rgba(101, 101, 101, 0.3) 2px 2px 4px 4px;
     }
     .iJGurJ {
@@ -1024,10 +1027,10 @@ a {
     }
     .qwdfe{
     	position: absolute;
-    	top:0px;
+    	top:100px;
     	right: 5px;
-    	width: 200px;
-    	height: 180px;
+    	width: 150px;
+    	height: 150px;
     }
     .enbDhJ1{
     	font-size: 25px;
@@ -1037,7 +1040,7 @@ a {
         -webkit-box-align: center;
         align-items: center;
         -webkit-box-pack: start;
-        justify-content: flex-start;
+        justify-content: space-between;
         border-radius: 10px;
         color: black;
     }
@@ -1055,7 +1058,7 @@ a {
     }
     .jeiOCr1{
     	position: absolute;
-    	top:20px;
+    	top:70px;
     	right: 30px;
     	font-size: 80px;
     	font-weight:bold;
@@ -1084,8 +1087,8 @@ a {
     }
     .maints > div{
     	justify-content: center;
-
     }
+    /*
     section {
 	  background: linear-gradient(to bottom, #ffffff, #FFFAFA);	  
 	}
@@ -1095,10 +1098,11 @@ a {
         margin: 10px;
         text-align: center;
         position: relative;
-    }
+    }*/
     .section1-2b{
-    	margin: 50px 0px;
+    	margin: 60px 0px 50px 100px;
     }
+    
     .section1-2b .txt1 {
         font-weight: 700;
         font-size: 30px;
@@ -1155,7 +1159,7 @@ a {
     	text-align: center;
         text-decoration:none; 
     }
-    /*3번째 div 목록*/
+    /*3번째 div 목록
     .section1-2e {
 		margin: 30px;
         width: 95%;
@@ -1164,7 +1168,7 @@ a {
         margin: 0px auto;
         text-align: center;
         position: relative;
-    }
+    }*/
     .section1-2e .txt1 {
         display: block;
         color: #9BA1AA;
@@ -1201,9 +1205,12 @@ a {
 
      .mainMap {
          position: relative;
+         width:1100px;
          z-index: 10;
-         height: 340px;
+         height: 500px;
          border: 1px solid #ccc;
+         margin-right: 200px;
+
      }
       .mainMap button{
        	   display: block;
@@ -1323,17 +1330,18 @@ a {
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 
-/*여기는 하단 부분 css 적용 부분 */
+/* 페이지 4 */ 
 .section1-2c {
 	margin: 50px 0px;
 }
 .section1-2c .content {
-    padding: 0px 0px 80px;
-    width: 1100px;
-    margin: 0px auto;
+    padding: 10px 10px;
+    width: 900px;
+    margin: 20px 1000px 30px 20px;
     text-align: center;
     position: relative;
     display: block;
+    border-radius: 10px;
 }
 
 .section1-2c .txt1 .lottie1 {
@@ -1350,19 +1358,22 @@ a {
     display: block;
     width: 100%;
     margin-top: 20px;
-    color: black;
+    color: white;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 40px;
     line-height: 1;
     padding: 7px 0px 0px 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 .section1-2c .txt2 {
     display: block;
-    color: #9BA1AA;
+    color:white;
     font-weight: 500;
     font-size: 18px;
     line-height: 1.3;
     text-align: left;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    
 }
 .section1-2c .banner-wrap {
     background: #FDCDBC;
@@ -1501,8 +1512,9 @@ a {
 }
 .section20-2-home .content {
     width: 100% !important;
-    max-width: 1200px !important;
-    margin: 30px 0px 30px 30px;
+    max-width: 1000px !important;
+    height: 500px;
+    margin: 80px 0px 30px 30px;
     text-align: center;
     position: relative;
     justify-content: center;
@@ -1519,7 +1531,7 @@ a {
 }
 .section20-2-home .get-20-2 {
     text-align: left;
-    margin: 10px 0px 0px;
+    margin: 30px 0px 0px;
     font-size: 26px;
 }
 .get-20-2 {
@@ -1529,6 +1541,7 @@ a {
     font-size: 20px;
     margin: 30px 0px 0px;
     display: block;
+    height: auto;
 }
 .get-20-2-home-txt2 {
     font-weight: 600;
@@ -1539,19 +1552,21 @@ a {
     color: #787E8B;
 }
 .qna-list-wrap {
-    width: 100%;
+    width: 90%;
+    height: auto;
     display: block;
+    margin-left: 100px;
 }
 .qna-card {
-    width: 92%;
-    height: 250px;
+    width: 80%;
+    height: 220px;
     display: block;
-    padding: 25px 0px 20px 30px;
+    padding: 20px;
     background: #FFFFFF;
     border: 1px solid #E6E9ED;
     box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
     border-radius: 20px;
-    margin: 30px 0px 0px;
+    margin: 20px 20px 0px;
     text-align: left;
 }
 .qna-card .ingredient-tags {
@@ -1675,17 +1690,16 @@ a {
 	margin: 50px 30px;
 	
 }
-.section20-2-home + .ranking-190 {
-    margin: 20px 0px 0px;
-}
+
 .section1-2s{
-	  margin: 50px 0px;
+	  margin: 0px 0px 50px;
 }
 .section1-2s .content {
-    padding: 0px 20px 40px;
+    padding: 0px 20px 20px;
     width: auto;
-    max-width: inherit;
-    margin: 30px auto;
+    max-width: 1200px;
+    height: 700px;
+    margin: 50px auto;
     text-align: center;
     position: relative;
 }
@@ -1830,7 +1844,7 @@ a {
     box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
     border-radius: 20px;
     background: #fff;
-    height: 320px;
+    height: 280px;
     float: left;
     padding: 0px 20px;
 }
@@ -1942,7 +1956,8 @@ a {
 
 /*메인 배너 스타일*/
 #tsmain{
-	min-height: 1000px;
+	min-height: 800px;
+	max-height: 940px;
 	height: 100%;
 }
 .everybanner1{
@@ -1960,4 +1975,69 @@ a {
     background-image: url("http://www.kbpharma.co.kr/images/pc/facility/img_qaqc1.png");
     background-size: cover;
     border-radius: 10px;
+}
+/*슬라이드쇼*/
+
+.tststs {
+	display: table;
+	margin: 5% auto 0;
+	text-transform: uppercase;
+	font-size: 2em;
+	font-weight: bold;
+	text-shadow: 0 1px 2px gray;
+}
+.tscacontainer{
+	margin: 100px auto 200px;
+	width: 200px;
+	height: 240px;
+	position: relative;
+	perspective: 2000px;
+}
+#carousel{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transform-style: preserve-3d;
+	animation: rotation 30s infinite linear;
+}
+#carousel:hover{
+	animation-play-state: paused;
+}
+#carousel figure{
+	display: block;
+	position: absolute;
+	width: 260px;
+    height: 240px;
+	left: 10px;
+	top: 10px;
+	overflow: hidden;
+	border: solid 2px black;
+}
+#carousel figure:nth-child(1) { transform: rotateY(0deg) translateZ(500px);}
+#carousel figure:nth-child(2) { transform: rotateY(40deg) translateZ(500px);}
+#carousel figure:nth-child(3) { transform: rotateY(80deg) translateZ(500px);}
+#carousel figure:nth-child(4) { transform: rotateY(120deg) translateZ(500px);}
+#carousel figure:nth-child(5) { transform: rotateY(160deg) translateZ(500px);}
+#carousel figure:nth-child(6) { transform: rotateY(200deg) translateZ(500px);}
+#carousel figure:nth-child(7) { transform: rotateY(240deg) translateZ(500px);}
+#carousel figure:nth-child(8) { transform: rotateY(280deg) translateZ(500px);}
+#carousel figure:nth-child(9) { transform: rotateY(320deg) translateZ(500px);}
+
+#carousel img{
+	 cursor: pointer;
+	 transition: all .5s ease;
+ }
+#carousel img:hover{
+	-webkit-filter: grayscale(0);
+  	transform: scale(1.08,1.08);
+}
+
+@keyframes rotation{
+	
+	from {
+		transform: rotateY(0deg);
+	}
+	to {
+		transform: rotateY(360deg);
+	}
 }
