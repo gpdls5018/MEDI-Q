@@ -9,6 +9,8 @@ import javax.validation.constraints.Pattern;
 import org.apache.ibatis.type.Alias;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -54,6 +56,7 @@ public class MemberDTO {
 	
 	private String active;//활동여부(admin-A)
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date inactive_date;//탈퇴일
 	
 	private String prof_Img_Fl;//프로필 이미지 여부

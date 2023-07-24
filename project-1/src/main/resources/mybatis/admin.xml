@@ -30,8 +30,8 @@
 	        GENDER = #{gender},
 	        EMAIL = #{email},
 	        ACTIVE = #{active},
-	        INACTIVE_DATE = #{inactiveDate},
-	        SOCIAL_FL = #{socialFl}
+	        INACTIVE_DATE = #{inactive_date},
+        	SOCIAL_FL = #{social_Fl}
 	    WHERE
 	        ID = #{id}
 	</update>
