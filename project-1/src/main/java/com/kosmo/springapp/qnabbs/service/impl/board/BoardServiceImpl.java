@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.support.TransactionTemplate;
 
 import com.kosmo.springapp.qnabbs.service.DaoService;
 import com.kosmo.springapp.qnabbs.service.ListPagingData;
@@ -62,12 +62,12 @@ public class BoardServiceImpl implements DaoService {
 													.build();
 		
 		return listPagingData;
-	}
+	}////////////////////
 
 	@Override
 	public Map selectOne(Map map) {
 		return mapper.selectOne(map);
-	}
+	}///////////////////
 
 	@Override
 	public int insert(Map map) {
@@ -81,7 +81,7 @@ public class BoardServiceImpl implements DaoService {
 			e.printStackTrace();			
 		}
 		return affected;
-	}
+	}//////////////////////
 
 	@Override
 	public int update(Map map) {
@@ -93,11 +93,35 @@ public class BoardServiceImpl implements DaoService {
 			e.printStackTrace();			
 		}
 		return affected;
-	}
-
+	}///////////////////////
+	//트랜잭션 처리 관련 빈 주입 받기
+	@Autowired
+	private TransactionTemplate template;
+	@Autowired
+	private AnswerMapper answermapper;
+	
 	@Override
 	public int delete(Map map) {
-		return mapper.delete(map);
-	}
+		
+		int affected=0;
+		try {
+			//람다함수
+			affected=template.execute(status -> {
+				//답변삭제 먼저 되면1 안되면0
+				System.out.println("여기 체크");
+				System.out.println("map의 가지고 있는거 :"+map);
+				int answerdelete = answermapper.answerdelete(map);
+				System.out.println("answerdelete:"+answerdelete);
+				//질문 글 삭제
+	            mapper.delete(map);
+	            return answerdelete;
+			});
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+		return 	affected;
+	}///////////////
 
 }
