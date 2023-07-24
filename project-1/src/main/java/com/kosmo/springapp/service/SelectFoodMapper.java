@@ -13,6 +13,7 @@ public interface SelectFoodMapper {
 	List<AvgStarScoreCountDTO> selectFoodListFromNameScore(String foodname,int casesel);
 	List<FunctionalFoodListDTO> selectFoodListFromName(String foodname,int casesel);
 	List<AvgStarScoreCountDTO> selectFoodListFoodScore();
+	List<AvgStarScoreCountDTO> selectFoodListFoodScoreTop10();
 	List<String> RankingKeyWord();
 	List<CheckWordDTO> checkWord(String foodname);
 	void newWord(String foodname);

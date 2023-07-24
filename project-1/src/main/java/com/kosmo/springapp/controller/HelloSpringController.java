@@ -53,7 +53,7 @@ public class HelloSpringController {
 	
 	@GetMapping("/") 
 	public String index(Model model,HttpServletRequest req, HttpServletResponse resp) {
-		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFoodScore();
+		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFoodScoreTop10();
 		String token = jwTokensService.getToken(req, tokenName);
 		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
 		try {

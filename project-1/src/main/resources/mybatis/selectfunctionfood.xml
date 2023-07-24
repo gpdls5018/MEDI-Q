@@ -50,6 +50,20 @@
 		) R ON F.NO = R.R_PRODUCTNO
 		ORDER BY R.AVG_SCORE + ((R.AVG_SCORE * R.REVIEW_COUNT)/1000) DESC
 	</select>
+	<select id="selectFoodListFoodScoreTop10" resultType="AvgStarScoreCountDTO">
+		SELECT *
+		FROM (
+		    SELECT *
+		    FROM FOODTABLE F
+		    JOIN (
+		        SELECT R_PRODUCTNO, AVG(STARSCORE) AS AVG_SCORE, COUNT(*) AS REVIEW_COUNT
+		        FROM REVIEWTABLE
+		        GROUP BY R_PRODUCTNO
+		    ) R ON F.NO = R.R_PRODUCTNO
+		    ORDER BY R.AVG_SCORE + ((R.AVG_SCORE * R.REVIEW_COUNT)/1000) DESC
+		)
+		WHERE ROWNUM &lt;= 10
+	</select>
 	<select id="RankingKeyWord" resultType="String">
 		SELECT KEYWORD FROM KEYWORD ORDER BY WORDCOUNT DESC
 	</select>
