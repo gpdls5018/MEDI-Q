@@ -53,7 +53,6 @@ public class HelloSpringController {
 	
 	@GetMapping("/") 
 	public String index(Model model,HttpServletRequest req, HttpServletResponse resp) {
-		List<FunctionalFoodListDTO> foodList  = mainPageService.selectFoodList();
 		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFoodScore();
 		String token = jwTokensService.getToken(req, tokenName);
 		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
@@ -72,7 +71,6 @@ public class HelloSpringController {
 		model.addAttribute("boardList", boardList);
 		model.addAttribute("boardmemberList", boardmemberList);
 		model.addAttribute("listData", listData);
-		model.addAttribute("foodList",foodList);
 		
 		// 조회수에 따른 인기영양소 Top10 가져오기
 		List<String> top10 = nutrietnSelectMapper.getTop10();
