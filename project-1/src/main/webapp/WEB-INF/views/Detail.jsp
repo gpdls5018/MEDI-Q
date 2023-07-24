@@ -382,7 +382,7 @@ left: 146px;
    				    <script>
 				      let Graph = ForceGraph3D()
 				        (document.getElementById('3d-graph'))
-				          .jsonUrl('http://127.0.0.1/review/${listOne.no}')
+				          .jsonUrl('http://192.168.0.16/review/${listOne.no}')
 				          .nodeAutoColorBy('group')
 				          .width("600")
 				          .height("380")
