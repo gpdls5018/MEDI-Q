@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -14,12 +16,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
+
+import com.kosmo.springapp.model.FunctionalFoodListDTO;
+import com.kosmo.springapp.service.impl.AndroidServiceImpl;
+import com.kosmo.springapp.service.impl.MainPageServiceImpl;
 
 @RestController
 @RestControllerAdvice
@@ -75,5 +83,15 @@ public class RestAPIController {
 	            Map.class //응답 데이터가 {} 일 때
 	    );
 	    return responseEntity.getBody();
+	}
+	
+	
+	
+	
+	@Autowired
+	private AndroidServiceImpl androidServiceImpl;
+	@GetMapping("/androidTest.do/{no}")
+	public List<FunctionalFoodListDTO> androidText(@PathVariable(name = "no") String no) {
+		return androidServiceImpl.selectFoodList();
 	}
 }
