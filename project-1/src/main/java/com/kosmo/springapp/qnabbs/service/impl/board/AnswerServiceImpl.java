@@ -53,7 +53,7 @@ public class AnswerServiceImpl implements AnswerService {
 
 	@Override
 	public int answerdelete(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("answerdelete체크용 전");
+		return mapper.answerdelete(map);
 	}
 }

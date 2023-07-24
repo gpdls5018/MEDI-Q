@@ -22,4 +22,7 @@
 	<update id="answerupdate" parameterType="map">
 		UPDATE answer_board SET content=#{content} WHERE answer_no=#{answer_no}
 	</update>
+	<delete id="answerdelete" parameterType="map">
+		DELETE answer_board WHERE board_no=#{no}
+	</delete>
 </mapper>

@@ -70,12 +70,13 @@ public class BoardController {
 		//
 		return "board/List";
 	
-	}
+	}/////////////////////
 	//글쓰기 폼으로 이동
 	@GetMapping("/Write.do")
 	public String write() {
 		return "board/Write";
-	}
+	}/////////////////
+	
 	//글작성후 list.do로 이동(목록으로 이동)
 	@PostMapping("/Write.do")
 	public String writeProcess(HttpServletRequest req,@RequestParam Map map,Model model) {
@@ -94,11 +95,15 @@ public class BoardController {
 		}
 		//작성하고 난 뒤 목록페이지로 이동
 		return "forward:/board/List.do"; 
-	}
+	}////////////////////
+	
 	//상세보기
 	@RequestMapping(value="/View.do",method = {RequestMethod.GET,RequestMethod.POST})
 	public String view(@RequestParam Map map,Model model) { 
-
+		
+		//Map생성
+		Map paramMap =new HashMap<>();
+		
 		System.out.println("체크용1");
 		//게시판의 하나의 글 불러와서 map에 저장
 		System.out.println("map에 무엇이 있나? "+map);
@@ -110,23 +115,25 @@ public class BoardController {
 		//System.out.println(model);//콘솔 체크용
 		//게시판의 하나의 답글을 불러와서 map에 저장
 		System.out.println("map의 값 체크"+map);
-		Map paraMap =new HashMap<>();
+		
 		System.out.println("여기서 아래 에러 발생함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		if (map.get("NO") != null) {
 			System.out.println("map의 NO:"+map.get("NO"));
 			System.out.println("여기로 들어오는가?");
 			System.out.println("성공");
-			paraMap=answerservice.answerselectOne(map);
+			//새로운 paramMap
+			paramMap=answerservice.answerselectOne(map);
 		}
 		System.out.println("체크용4");
 		//paramMap이란 이름으로 map을 저장
-		model.addAttribute("paramMap", paraMap);
+		model.addAttribute("paramMap", paramMap);
 		//paramMap을 출력
-		System.out.println("paramMap:"+paraMap);
+		System.out.println("paramMap:"+paramMap);
 		System.out.println("체크용5");
 		System.out.println("여기출력까지 성공함");
 		return "board/View";
-	}
+	}///////////////
+	
 	@GetMapping("/Edit.do")
 	public String edit(HttpServletRequest req,@RequestParam Map map,Model model) {
 		//String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
@@ -136,7 +143,8 @@ public class BoardController {
 		model.addAttribute("record", map);
 		System.out.println("record값확인"+model);
 		return "board/Edit";
-	}
+	}/////////////
+	
 	@PostMapping("/EditProcess.do")
 	public String editProcess(HttpServletRequest req,@RequestParam Map map,Model model) {
 		//map.put("id", "petrus11");
@@ -150,7 +158,7 @@ public class BoardController {
 	        return "board/Edit";
 	    } 
 	    return "forward:/board/View.do";
-	}
+	}//////////////////
 	
 	@GetMapping("/Delete.do")
 	public String delete(HttpServletRequest req,@RequestParam Map map,Model model) {
@@ -158,13 +166,13 @@ public class BoardController {
 		//String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
 		//map.put("id", id);
 		//서비스 호출
-		int affected = board.delete(map);
-	    System.out.println("여기 delete후 "+affected);
-		if (affected == 0) {
+		int answerdelete = board.delete(map);
+	    System.out.println("여기 delete후 "+answerdelete);
+		if (answerdelete == 0) {
 	        model.addAttribute("FAILURE", "삭제할 수 없어요");
 	        return "forward:/board/View.do";
 	    }
-	    System.out.println("삭제된 글 수: " + affected);
+	    System.out.println("삭제된 글 수: " + answerdelete);
 	    // 뷰정보 반환 - 목록을 처리하는 컨트롤러로 이동
 	    return "forward:/board/List.do"; 
 	}
