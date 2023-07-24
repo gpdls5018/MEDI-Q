@@ -30,7 +30,7 @@
 	        GENDER = #{gender},
 	        EMAIL = #{email},
 	        ACTIVE = #{active},
-	        INACTIVE_DATE = #{inactive_date},
+	        INACTIVE_DATE = #{inactive_date, jdbcType=NULL},
         	SOCIAL_FL = #{social_Fl},
     	    SITE = #{site, jdbcType=NULL} <!-- null값도 넣으려면 추가해야함 -->
 	    WHERE
