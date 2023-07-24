@@ -49,8 +49,13 @@ public class AdminController {
 		// 생년월일에서 시분초 제거
 		for (MemberDTO member : members) {
 	        // 시분초 제거: "2000-03-18 00:00:00" -> "2000-03-18"
-	        String birthString = member.getBirth().substring(0, 10);
-	        member.setBirth(birthString);
+			if(member.getBirth() != null) {
+		        String birthString = member.getBirth().substring(0, 10);
+		        member.setBirth(birthString);
+	        }
+			else {
+				member.setBirth("2023-07-31");
+			}
 	    }
 		
 		model.addAttribute("members",members);

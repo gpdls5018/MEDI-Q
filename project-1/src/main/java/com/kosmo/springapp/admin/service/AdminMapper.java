@@ -30,7 +30,8 @@ public interface AdminMapper {
 	int count_1days_ago();
 	int count_0days_ago();
 
-	
+	// 로그인 기록 테이블에 추가
+	void insertLoginMember(String id);
 
 	
 	

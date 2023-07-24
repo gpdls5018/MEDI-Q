@@ -74,8 +74,10 @@
 	    WHERE LL_DATE BETWEEN TRUNC(SYSDATE) AND TRUNC(SYSDATE) + INTERVAL '1' DAY
 	</select>
 	
-	
-	
+	<!-- 로그인시 로그인 저장하기 -->
+	<insert id="insertLoginMember" parameterType="String">
+		INSERT INTO LOGIN_LOG (LL_ID, LL_DATE) VALUES (#{id}, SYSDATE)
+	</insert>
 	
 	
 	
