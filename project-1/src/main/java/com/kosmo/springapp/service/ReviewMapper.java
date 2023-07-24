@@ -26,5 +26,5 @@ public interface ReviewMapper {
 
 	List<Map<String, Integer>> selectTotalReviewInfoNoEffectList(int no);
 
-	List<ReviewDTO> selectReviewByUserId(String userId);
+	List<Map> selectReviewByUserId(String userId);
 }

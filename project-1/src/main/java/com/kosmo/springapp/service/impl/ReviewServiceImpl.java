@@ -63,7 +63,7 @@ public class ReviewServiceImpl implements ReviewService {
 		return totalReviewDto;
 	}
 	
-	public List<ReviewDTO> selectReviewByUserId(String userId){
+	public List<Map> selectReviewByUserId(String userId){
 		return reviewMapper.selectReviewByUserId(userId);
 	}
 

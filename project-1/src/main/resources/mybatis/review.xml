@@ -61,7 +61,10 @@
 		WHERE ROWNUM &lt;= 4
 		ORDER BY count DESC
 	</select>
-	<select id="selectReviewByUserId" parameterType="String" resultType="reviewDto">
-		SELECT * FROM REVIEWTABLE WHERE R_ID = #{userId}
+	<select id="selectReviewByUserId" parameterType="String" resultType="Map">
+		SELECT PRODUCTNAME,content,R_REGIDATE,FOODTABLE.IMGURL
+                          FROM REVIEWTABLE RIGHT OUTER JOIN FOODTABLE 
+                          ON REVIEWTABLE.R_PRODUCTNO =FOODTABLE.NO  
+                          WHERE R_ID = #{userId}
 	</select>
 </mapper>
