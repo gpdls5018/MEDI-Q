@@ -135,11 +135,18 @@ public class AdminController {
             memberDto.setActive((String) request.get("active"));
             // 활동변경일자
             // 받은 JSON 데이터에서 inactive_date를 파싱하여 Date 타입으로 변환
-            String inactiveDateStr = (String) request.get("inactive_Date");
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            java.util.Date utilInactiveDate = dateFormat.parse(inactiveDateStr);
-            java.sql.Date sqlInactiveDate = new java.sql.Date(utilInactiveDate.getTime());
-            memberDto.setInactive_date(sqlInactiveDate);                       
+            if(request.get("inactive_Date") != null) {
+	            String inactiveDateStr = (String) request.get("inactive_Date");
+	            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	            java.util.Date utilInactiveDate = dateFormat.parse(inactiveDateStr);
+	            java.sql.Date sqlInactiveDate = new java.sql.Date(utilInactiveDate.getTime());
+	            memberDto.setInactive_date(sqlInactiveDate);
+            }
+            else {
+            	memberDto.setInactive_date(null);
+            }
+	            
+	            
             // 소셜 여부
             memberDto.setSocial_Fl((String) request.get("socialFl"));
             // 소셜 사이트

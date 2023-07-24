@@ -430,7 +430,7 @@
 					        </div>
 			            </div>
 			            <div>
-			                <label for="inactive_Date">6. 회원상태 변경일</label>
+			                <label for="inactive_Date">6. 비활성화 변경일</label>
 							<input type="date" name="inactive_Date" id="inactive_Date">
 			            </div>
 			            <div>
@@ -467,6 +467,23 @@
 	        fetchDataAndUpdateChart();
 	        updateChart();
 	        drawPieChart();
+	        
+	     	// 상태 변경 시 비활성화 변경일 필드 상태를 업데이트하는 함수 호출
+	        $('input[name="active"]').change(function () {
+	            updateInactiveDateFieldStatus();
+	        });
+	        
+	     	// 상태에 따라 비활성화 변경일 필드 상태를 업데이트하는 함수
+	        function updateInactiveDateFieldStatus() {
+			    const inactiveDateField = $('#inactive_Date');
+			    const inactiveRadioValue = $('input[name="active"]:checked').val();
+			
+			    if (inactiveRadioValue === "N") {
+			        inactiveDateField.prop('disabled', false);
+			    } else {
+			        inactiveDateField.prop('disabled', true);
+			    }
+			}
 	    });
 	    
 	    
@@ -596,19 +613,6 @@
             });
         }
 	 	
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
 	    
 		// 회원 삭제 함수
         function deleteMember(memberId) {
@@ -673,15 +677,21 @@
                         $('#inactive').prop('checked', member.active === "N");
                         $('#admin').prop('checked', member.active === "A");
                         
-                     	// 비활성화일자 설정
-                        if (member.inactive_Date) {
+                     	
+                        // 비활성화일자 설정
+                        if (member.active === "N" && member.inactive_Date) {
                             var formattedDate = new Date(member.inactive_Date).toISOString().split('T')[0];
                             $('#inactive_Date').val(formattedDate);
-                        } 
-                        else {
-                            // 비활성화일자 없으면 오늘 날짜로 기본값 설정
-                            var currentDate = new Date().toISOString().split('T')[0];
-                            $('#inactive_Date').val(currentDate);
+                        } else {
+                            // 비활성화 상태가 아니거나 비활성화일자가 없으면 비워둠
+                            $('#inactive_Date').val('');
+                        }
+                     	
+                     	// 비활성화 상태인 경우에만 비활성화 변경일 필드를 보여줌
+                        if (member.active === "N") {
+                            $('#inactive_Date').prop('disabled', false); // 비활성화일자 필드를 활성화
+                        } else {
+                            $('#inactive_Date').prop('disabled', true); // 비활성화일자 필드를 비활성화
                         }
 
                      	// 소셜회원 여부 설정
@@ -731,8 +741,12 @@
 		        jsonData[obj.name] = obj.value;
 		    });
 		
-		 	// 직접 inactive_Date 필드를 formData에 추가해주기
-		    jsonData["inactive_date"] = new Date($('#inactive_Date').val());
+		 	// 비활성화 상태인 경우에만 비활성화일자 값 설정
+		    if ($('input[name="active"]:checked').val() === "N") {
+		        jsonData["inactive_date"] = new Date($('#inactive_Date').val()); // 비활성화일자 필드가 선택된 경우에만 값 설정
+		    } else {
+		        jsonData["inactive_date"] = null; // 비활성화일자 필드가 선택되지 않은 경우 null로 설정
+		    }
 
 		 	// SITE가 "소셜회원이 아닙니다"일 때 null로 처리합니다.
 		    if (jsonData["socialFl"] === "N") {
@@ -770,6 +784,12 @@
 		    });
 		}
 
+     	
+	     	
+        
+        
+        
+        
         
         
         
