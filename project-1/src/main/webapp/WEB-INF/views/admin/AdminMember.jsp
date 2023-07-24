@@ -112,7 +112,7 @@
     }
 
     th {
-        background-color: rgba(255, 99, 132, 0.6); 
+        background-color: rgba(75, 192, 192, 0.6);
     }
 
     tr:nth-child(odd) {
@@ -486,7 +486,7 @@
 		     for (let i = 0; i < 7; i++) {
 		         const day = new Date(startDay);
 		         day.setDate(startDay.getDate() + i);
-		         const month = String(day.getMonth() + 1).padStart(2, '0'); // 월을 두 자리로 만들기
+		         const month = String(day.getMonth() + 1).padStart(1, '0'); // 월을 두 자리로 만들기
 		         const date = String(day.getDate()).padStart(2, '0'); // 일을 두 자리로 만들기
 		         const dayOfWeek = days[day.getDay()];
 		         const formattedDate = month + '/' + date + '(' + dayOfWeek + ')';

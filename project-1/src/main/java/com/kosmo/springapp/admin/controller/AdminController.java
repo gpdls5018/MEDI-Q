@@ -109,11 +109,7 @@ public class AdminController {
     @ResponseBody
     public Map<String, Object> editMember(@RequestBody Map<String, Object> request) {
         
-    	
     	Map<String, Object> response = new HashMap<>();
-    	
-    	
-    
 
     	try {
             // MemberDTO 객체 생성
