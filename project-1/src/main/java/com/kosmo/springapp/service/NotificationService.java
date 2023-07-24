@@ -61,7 +61,7 @@ public class NotificationService {
 		//System.out.println("현재시간: "+current);
 		
 		//사용자 알람시간
-		String alam = LocalDateTime.of(2023,7,24,9,59).toString().split("\\.")[0];
+		String alam = LocalDateTime.of(2023,7,24,19,55).toString().split("\\.")[0];
 		//System.out.println("test: "+alam);
 		if(alam.equals(current)) {
 			createReceiveNotification();

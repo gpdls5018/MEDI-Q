@@ -15,6 +15,10 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>    
     <script src="https://kit.fontawesome.com/dedb6fdace.js" crossorigin="anonymous"></script>
+    
+    <!-- firebase -->
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-messaging.js"></script>
 
     <!-- fontaswem-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>    
@@ -456,5 +460,58 @@ ul {
     </div>
 	navbar left side end-->
 </div>
-
+<script>
+	const firebaseConfig = {
+        apiKey: "AIzaSyBVyjlJuzy9Qd41-v2meIh79Ti7OEm0TSc",
+        authDomain: "my-project-a3614.firebaseapp.com",
+        projectId: "my-project-a3614",
+        storageBucket: "my-project-a3614.appspot.com",
+        messagingSenderId: "337911613778",
+        appId: "1:337911613778:web:707752d0cacb5e27eed28b",
+        measurementId: "G-D28J07Z2PH"
+    };
+	
+	firebase.initializeApp(firebaseConfig);
+	
+	document.addEventListener('DOMContentLoaded', function() {
+		if ('serviceWorker' in navigator) {
+			const messaging = firebase.messaging();        	
+	        navigator.serviceWorker.register("../firebase-messaging-sw.js")
+                    .then(register => {         
+                    	//console.log('register:',register)
+                         messaging.requestPermission()
+                        .then(function() {
+                            return messaging.getToken();  
+                        })
+                        .then(async function(token) {
+                        	//Firebase콘솔에 앱과 웹 두개를 추가하고 그래야 메시지 전송버튼이 보임
+                            //아래 토큰을 복사해서 파이어베이스 콘솔에서 메시지를 보낸다
+                            //혹은 스프링 REST API에서 메시지를 보낸다
+                        	await fetch('/webpush', { method: 'post', body: token})
+                        	
+                        	//포그라운드일 때
+                            messaging.onMessage(payload => {
+                            	var dts = new Date(2023, 6, 22, 19, 51, 0, 0);
+                                const title = payload.notification.title
+                                const options = {
+                                    body : payload.notification.body,
+                                    icon: payload.notification.icon,
+                                    timestamp: dts
+                                }
+                                //const notification = new Notification(title,options);
+								
+                                navigator.serviceWorker.ready.then(registration => {
+                                    registration.showNotification(title, options);
+                                    console.log('time:',options.timestamp)
+                                })
+                                
+                            })
+                        })
+                        .catch(function(err) {
+                            console.log("Error Occured");
+                        })
+                    })
+		}
+	})
+</script>
  
