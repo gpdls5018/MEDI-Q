@@ -72,7 +72,8 @@ document.addEventListener("DOMContentLoaded", function() {
  
   ////////////////////슬라이드 로직///////////////////////////////////
   $(document).ready(function(){
-   
+   		
+   		/*
       $('.slider1').bxSlider({
 		  minSlides: 2,
 		  maxSlides: 2,
@@ -80,18 +81,19 @@ document.addEventListener("DOMContentLoaded", function() {
 		  slideMargin: 10,
 		  ticker: true,
 		  speed: 40000
-		});
+		});*/
+
       
-      /* 처음 배너할 때 코드
-      $('.ba1').bxSlider({
+      /* 처음 배너할 때 코드*/
+      $('.slider1').bxSlider({
            slideWidth: 800,
-           minSlides: 2,
-           maxSlides: 2,
+           minSlides: 1,
+           maxSlides: 1,
            slideMargin: 1,
            auto : true,
            stopAutoOnClick : true,
            pager : true,
-      }); */
+      }); 
   });
   
   
@@ -450,5 +452,33 @@ document.addEventListener("DOMContentLoaded", function() {
       
   });
        */
-  
+  /*메거진 슬라이드 로직 */
+   var angle = 0;
+function galleryspin(sign) { 
+spinner = document.querySelector("#spinner");
+if (!sign) { angle = angle + 45; } else { angle = angle - 45; }
+spinner.setAttribute("style","-webkit-transform: rotateY("+ angle +"deg); -moz-transform: rotateY("+ angle +"deg); transform: rotateY("+ angle +"deg);");
+}
+
+/*스크롤 내릴 때 애니메이션 처리 */
+$(document).ready(function() {
+  // Check if element is scrolled into view
+  function isScrolledIntoView(elem) {
+    var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
+
+    var elemTop = $(elem).offset().top;
+    var elemBottom = elemTop + $(elem).height();
+
+    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+  }
+  // If element is scrolled into view, fade it in
+  $(window).scroll(function() {
+    $('.tssection .animated').each(function() {
+      if (isScrolledIntoView(this) === true) {
+        $(this).addClass('fadeInLeft');
+      }
+    });
+  });
+  });
   

@@ -52,4 +52,9 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	public void newWord(String foodname) {
 		mapper.newWord(foodname);
 	}
+
+	@Override
+	public List<AvgStarScoreCountDTO> selectFoodListFoodScoreTop10() {
+		return mapper.selectFoodListFoodScoreTop10();
+	}
 }
