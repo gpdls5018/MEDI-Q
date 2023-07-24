@@ -396,6 +396,7 @@ body {
                                     <div class="board recently" style="flex:1;">
                                         <article class="WishListMain__Body-sc-uykdsg-3 lnMHMg">
                                             <ul class="kriRoB" style="list-style: none; padding-inline-start: 10px;">
+                                                
                                                 <li class="WishListMain__WishItem-sc-uykdsg-5 cqOzav">
                                                     <section class="kzDdbX">
                                                         <a class="pointer" data-gtm-id="link-product-detail" href="#">
@@ -403,7 +404,7 @@ body {
                                                                 <img fetchpriority="high" width="150" height="150" src="/images/tsimages/destination-1.jpg" style="margin-top: 10px; border-radius: 10px;">
                                                             </section>
                                                         </a>
-                                                        <label for="wishBtn:rk0:" class="   bPHVOx">
+                                                        <label for="wishBtn:rk0:" class="bPHVOx">
                                                             <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
                                                         </label>
                                                     </section>
