@@ -77,7 +77,7 @@ body {
         flex-direction: column;
         list-style: none;
         align-items: end;
-        margin: 120px 40px 30px 0px;
+        margin: 100px 40px 30px 0px;
     }
     .profilemenu  li {
         margin: 10px 0px;
@@ -360,14 +360,15 @@ body {
 
                         <ul class="profilemenu ml-auto">
                         	<li><a href="" id="" class="sidenava1"  data-target="#modalView" data-backdrop="static">나의 건강 정보 등록</a></li>
-                            <li><a href="" id="imgEdit" class="sidenava2"  data-target="#modalView" data-backdrop="static">프로필 이미지수정</a></li>
+                        	<li><a class="sidenava2" href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>">건강검진정보 불러오기</a></li>
+                            <li><a href="" id="imgEdit" class="sidenava3"  data-target="#modalView" data-backdrop="static">프로필 이미지수정</a></li>
                             <c:if test='${info.social_Fl eq "Y"}' var="isSocial"><!-- 소셜용 -->
-								<li><a href='<c:url value="/project/JoinEdit.do"/>' class="sidenava2">회원정보 수정</a></li>
+								<li><a href='<c:url value="/project/JoinEdit.do"/>' class="sidenava4">회원정보 수정</a></li>
 							</c:if>
 							<c:if test="${not isSocial }"><!-- 일반 회원용 -->
-								<li><a href="" id="infoEdit" class="sidenava3" data-target="#modalView" data-backdrop="static">회원정보 수정</a></li>
+								<li><a href="" id="infoEdit" class="sidenava4" data-target="#modalView" data-backdrop="static">회원정보 수정</a></li>
 							</c:if>
-                            <li><a class="sidenava4" href="#">회원탈퇴</a></li>
+                            <li><a class="sidenava5" href="#">회원탈퇴</a></li>
                         </ul>
                         
                         <div>
@@ -395,26 +396,34 @@ body {
                                     </div>
                                     <div class="board recently" style="flex:1;">
                                         <article class="WishListMain__Body-sc-uykdsg-3 lnMHMg">
+                                        	<!-- 정보 없으면 emptypills.jpg 이미지 띄우기 -->
+                                            <c:if test="${empty food }" var="isEmptyFood">
+                                               	<span class="d-block h-50 my-n5"></span>
+                                    			<img alt="empty" src="/images/basic/emptypills.jpg" style="width: 100%"/>
+                                            </c:if>
                                             <ul class="kriRoB" style="list-style: none; padding-inline-start: 10px;">
-                                                
-                                                <li class="WishListMain__WishItem-sc-uykdsg-5 cqOzav">
-                                                    <section class="kzDdbX">
-                                                        <a class="pointer" data-gtm-id="link-product-detail" href="#">
-                                                            <section class="divimg">
-                                                                <img fetchpriority="high" width="150" height="150" src="/images/tsimages/destination-1.jpg" style="margin-top: 10px; border-radius: 10px;">
-                                                            </section>
-                                                        </a>
-                                                        <label for="wishBtn:rk0:" class="bPHVOx">
-                                                            <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
-                                                        </label>
-                                                    </section>
-                                                    <p class="kWbUNE">락토핏 골드</p>
-                                                    <p class="kCBLwp">대웅제약</p>
-                                                    <div class="clearfix">
-                                                        <a class="detail" href='#' >상세보기</a>
-                                                    </div>
-                                                </li>
-    
+                                                <c:if test="${not isEmptyFood }">
+                                                	<c:forEach var="f" items="${food }">
+		                                                <li class="WishListMain__WishItem-sc-uykdsg-5 cqOzav">
+		                                                    <section class="kzDdbX">
+		                                                        <a class="pointer" data-gtm-id="link-product-detail" href="#">
+		                                                            <section class="divimg">
+		                                                                <img fetchpriority="high" width="150" height="150" src="${f.imgurl }" style="margin-top: 10px; border-radius: 10px;">
+		                                                            </section>
+		                                                        </a>
+		                                                        <label for="wishBtn:rk0:" class="bPHVOx">
+		                                                            <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
+		                                                        </label>
+		                                                    </section>
+		                                                    <p class="kWbUNE">${f.foodname }</p>
+		                                                    <p class="kCBLwp">${f.company }</p>
+		                                                    <div class="clearfix">
+		                                                        <a class="detail" href='#' >상세보기</a>
+		                                                    </div>
+		                                                </li>
+	                                                </c:forEach>
+    											</c:if>
+    											<!-- 
                                                 <li class="WishListMain__WishItem-sc-uykdsg-5 cqOzav">
                                                     <section class="   kzDdbX">
                                                         <a class="pointer" data-gtm-id="link-product-detail" href="#">
@@ -450,6 +459,7 @@ body {
                                                         <a class="detail" href='#' >상세보기</a>
                                                     </div>
                                                 </li>
+                                                 -->
                                             </ul>
                                         </article>
                                     </div>
@@ -458,22 +468,30 @@ body {
                             <div class="secnews">
                                 <div class="miniroom_font">리뷰관리 페이지</div>
                                 <div class="board">
-                                    <ul class="kriRoBreview pr-0" style="list-style: none; padding-inline-start: 10px;">
-                                        <li class="review">
-                                            <section class="kzDdbXreview">
-                                                <section class="divimg" style="width: 180px;">
-                                                    <img fetchpriority="high" width="160" height="160" src="img/testimonial-3.jpg" style="color: transparent; margin-top: 10px; border-radius: 10px;">
-                                                </section>
-                                                <label for="wishBtn:rk0:" class="   bPHVOx">
-                                                    <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
-                                                </label>
-                                            </section>
-                                            <div class="reviewinfo">
-                                                <p class="sdp">날짜</p>
-                                                <p class="snp">약이름</p>
-                                                <p class="srp">리뷰내용 :<br/><span>asdasdasdasdaad</span></p>
-                                            </div>
-                                        </li>
+                                    <ul class="kriRoBreview" style="list-style: none;">
+                                    	<c:if test="${empty review }" var="isEmptyReview" >
+                                    		<span class="d-block h-50 my-n4"></span>
+                                    		<img alt="empty" src="/images/basic/empty_review.jpg" style="width: 100%"/>
+                                    	</c:if>
+                                    	<c:if test="${not isEmptyReview }">
+	                                    	<c:forEach var="r" items="${review }">
+		                                        <li class="review">
+		                                            <section class="kzDdbXreview">
+		                                                <section class="divimg" style="width: 180px;">
+		                                                    <img fetchpriority="high" width="160" height="160" src="img/testimonial-3.jpg" style="color: transparent; margin-top: 10px; border-radius: 10px;">
+		                                                </section>
+		                                                <label for="wishBtn:rk0:" class="   bPHVOx">
+		                                                    <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
+		                                                </label>
+		                                            </section>
+		                                            <div class="reviewinfo">
+		                                                <p class="sdp">${r.r_regidate }</p>
+		                                                <p class="snp">${r.productname }</p>
+		                                                <p class="srp">리뷰내용 :<br/><span>${r.content }</span></p>
+		                                            </div>
+		                                        </li>
+	                                        </c:forEach>
+                                        </c:if>
                                     </ul>
                                     
                                 </div>

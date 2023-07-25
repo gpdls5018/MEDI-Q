@@ -35,10 +35,14 @@ import com.google.firebase.FirebaseOptions;
 import com.kosmo.springapp.model.HealthMemoDTO;
 import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.model.ProfileImageDTO;
+import com.kosmo.springapp.model.ReviewDTO;
 import com.kosmo.springapp.service.FCMInitializer;
+import com.kosmo.springapp.service.HeartCountService;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.HealthMemoIServicempl;
+import com.kosmo.springapp.service.impl.HeartCountServiceImpl;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
+import com.kosmo.springapp.service.impl.ReviewServiceImpl;
 
 @RequestMapping("/project")
 @Controller
@@ -50,6 +54,10 @@ public class MypageController {
 	private HealthMemoIServicempl healthMemoIServicempl;
 	@Autowired
 	private JWTokensService jwTokensService;
+	@Autowired
+	private ReviewServiceImpl reviewServiceImpl;
+	@Autowired
+	private HeartCountServiceImpl heartCountServiceImpl;
 
 	@Value("${secret-key}")
 	private String secretKey;
@@ -95,9 +103,13 @@ public class MypageController {
 		String id = member.getId();
 		
 		ProfileImageDTO profImg = loginService.selectProfImg(id);
+		List<Map> review = reviewServiceImpl.selectReviewByUserId(id);
+		List<String> food = heartCountServiceImpl.selectFood(id);
 		
 		model.addAttribute("info", member);//추후 더 추가해야함
 		model.addAttribute("profImg", profImg);
+		model.addAttribute("review", review);
+		model.addAttribute("food", food);//복용 중인 영양제 명만 가져옴
 		
 		return "login/MyPage2";
 	}

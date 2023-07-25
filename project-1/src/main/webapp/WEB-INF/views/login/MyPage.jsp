@@ -110,7 +110,7 @@ body {
         flex-direction: column;
         list-style: none;
         align-items: end;
-        margin: 120px 40px 30px 0px;
+        margin: 100px 40px 30px 0px;
     }
     .profilemenu li {
         margin: 10px 0px;
@@ -594,14 +594,15 @@ ul li input[type=checkbox]:checked ~ .acco {
                         
                         <ul class="profilemenu ml-auto">
                         	<li><a href="" id="" class="sidenava1"  data-target="#modalView" data-backdrop="static">나의 건강 정보 등록</a></li>
-                            <li><a href="" id="imgEdit" class="sidenava2"  data-target="#modalView" data-backdrop="static">프로필 이미지수정</a></li>
+                        	<li><a class="sidenava2" href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>">건강검진정보 불러오기</a></li>
+                            <li><a href="" id="imgEdit" class="sidenava3"  data-target="#modalView" data-backdrop="static">프로필 이미지수정</a></li>
                             <c:if test='${info.social_Fl eq "Y"}' var="isSocial"><!-- 소셜용 -->
-								<li><a href='<c:url value="/project/JoinEdit.do"/>' class="sidenava2">회원정보 수정</a></li>
+								<li><a href='<c:url value="/project/JoinEdit.do"/>' class="sidenava4">회원정보 수정</a></li>
 							</c:if>
 							<c:if test="${not isSocial }"><!-- 일반 회원용 -->
-								<li><a href="" id="infoEdit" class="sidenava3" data-target="#modalView" data-backdrop="static">회원정보 수정</a></li>
+								<li><a href="" id="infoEdit" class="sidenava4" data-target="#modalView" data-backdrop="static">회원정보 수정</a></li>
 							</c:if>
-                            <li><a class="sidenava4" href="#">회원탈퇴</a></li>
+                            <li><a class="sidenava5" href="#">회원탈퇴</a></li>
                         </ul>
                         <div>
                             <img alt="로고" src='<c:url value="/images/mainicon.png"/>' style="width: 30px"/>

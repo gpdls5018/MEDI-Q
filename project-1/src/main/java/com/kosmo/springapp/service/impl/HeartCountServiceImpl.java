@@ -1,5 +1,7 @@
 package com.kosmo.springapp.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,12 @@ public class HeartCountServiceImpl implements HeartCountService{
 	@Override
 	public void deleteHeart(String id, String name) {
 		mapper.deleteHeart(id, name);
+	}
+
+	@Override
+	public List<String> selectFood(String id) {
+		
+		return mapper.selectFood(id);
 	}
 
 }
