@@ -28,9 +28,10 @@ public interface LoginMapper {
 	
 	int updateProfImg(MemberDTO dto); //프로필 이미지 유무 업데이트
 	
+	int delete(String id); //회원 탈퇴(active=N 으로 수정)
 	
 	
-	///////////////////SOCIAL 테이블
+	///////////////////SOCIAL
 	
 	int saveSocial(Map userInfo);//카카오,네이버 로그인 시 회원정보 저장
 
@@ -45,7 +46,5 @@ public interface LoginMapper {
 	ProfileImageDTO findProfImg(String id); //회원의 프로필 이미지 정보 가져오기
 
 	int deleteProfImg(String id); //기본이미지 선택 시 회원의 프로필 이미지 삭제
-
-	
 
 }

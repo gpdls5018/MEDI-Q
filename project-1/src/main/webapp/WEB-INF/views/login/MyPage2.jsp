@@ -383,7 +383,7 @@ body {
                         <div class="fontinfo d-flex justify-content-between">
                         	<div>My page</div>
                             <div class="tab-menu fontinfotap mr-3">
-                                <a href="#" class="tab-button">복용알림</a>
+                                <a href="#" class="tab-button">영양제 알리미</a>
                                 <a href="<c:url value="/project/MyPage.do"/>" class="tab-button">건강 다이어리</a>
                                 <a href='#' class="tab-button" style="color:#fa7a7ab9">약장&리뷰관리</a>
                             </div>

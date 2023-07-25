@@ -269,7 +269,7 @@ public class FoodDetailController {
 		 String userName;
 		 ProfileImageDTO profImg;
 		 try {
-			 MemberDTO member = loginService.selectOne(req,resp);
+			 MemberDTO member = loginService.selectOne(req);
 			 //System.out.println("member.getId() :"+member.getId());
 			 profImg = loginService.selectProfImg(member.getId());
 			 model.addAttribute("analyzeReport",analyzeMyReportServiceImpl.selectAnalyzeReport(member.getId()));
@@ -294,7 +294,7 @@ public class FoodDetailController {
 	 public String analyzeNewReport(HttpServletRequest req, HttpServletResponse resp, Model model) throws IOException {
 		 String userName;
 		 try {
-			 MemberDTO member = loginService.selectOne(req,resp);
+			 MemberDTO member = loginService.selectOne(req);
 			 userName = member.getName();
 		 }
 		 catch(NullPointerException e) {
@@ -321,7 +321,7 @@ public class FoodDetailController {
 		 Map<String,List<String>> userMap = new HashMap<>();
 		 userMap.put("takePurpose", takeList);
 		 userMap.put("takeFood", foodList);
-		 MemberDTO memberDto = loginService.selectOne(req,resp);
+		 MemberDTO memberDto = loginService.selectOne(req);
 		 if(memberDto.getGender().equals("M")) {
 			 AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReportM(userMap);
 			 analyzeMyReportServiceImpl.saveAnalyzeReport(memberDto.getId(),takeList,foodList,resultListDto.getResultScore());

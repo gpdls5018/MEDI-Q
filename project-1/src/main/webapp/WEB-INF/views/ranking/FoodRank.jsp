@@ -93,7 +93,7 @@
 							<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
 						</c:if>
           				<c:if test="${empty item.imgURL}">	
-							<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+							<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
 						</c:if>
 							<span class="txt1">${item.company}</span>
 							<span class="txt2">${item.productName}</span>
@@ -116,7 +116,7 @@
 						<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
 					</c:if>
          			<c:if test="${empty item.imgURL}">	
-						<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+						<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
 					</c:if>
 						<span class="txt1">${item.company}</span>
 						<span class="txt2">${item.productName}</span>
@@ -224,7 +224,7 @@
 							<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
 						</c:if>
           				<c:if test="${empty item.imgURL}">	
-							<img src="<c:url value="/resources/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+							<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
 						</c:if>
 							<span class="txt1">${item.company}</span>
 							<span class="txt2">${item.productName}</span>
