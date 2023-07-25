@@ -4,15 +4,75 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
-    
-<!DOCTYPE html>
-<html>
 <jsp:include page="/WEB-INF/views/template/SelectFoodListStyleScript.jsp"/>
-<body oncontextmenu="return false">
+
+     <style>
+body{
+	background-color: white;
+}
+#contentInfoCon {
+    position: relative;
+    height: 383px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#contentInfoCon .content-sub-tit {
+    font-size: 16px;
+    color: #222;
+    overflow: hidden;
+}
+#contentInfoCon .content-tit {
+    color: #222;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.36;
+    letter-spacing: -0.02em;
+    margin-top: 37px;
+}
+.visual-img-con {
+	position:absolute;
+	width:100%;
+	height:100%;
+    background: url("https://www.hectohealthcare.com/resources/images/layout/sub_visual_brand.jpg") no-repeat;
+    background-color: #fff;
+    z-index: 1;
+    top:70px;
+	border:none;
+}
+.tsarea {
+	position: absolute;
+	width: 700px;
+	height: 250px;
+	top:170px;
+	left:50px;
+	border:none;
+	z-index: 2;
+	text-align: center;
+	box-shadow: 0px 0px 0px white;
+	align-items: center;
+}
+     </style>
+
+
+	<aside id="contentInfoCon" class="area animated">
+        <!-- 각각 대메뉴 마다 이미지 다르게 들어갑니다. -->
+                <!-- 브랜드 스토리 -->
+                <div class="visual-img-con animatedleft"></div>	
+
+        <div class="tsarea">
+            <p class="content-sub-tit">Global Healthcare</p>
+            <h3 class="content-tit" style="text-align:left; margin-left: 50px;">
+                <p style="font-weight: 300;">AI 알고리즘 기반의</p>
+                <span>개인 맞춤형 헬스케어</span>
+            </h3>
+        </div>
+    </aside>
+    
 <div class="all-wrap">
 	<div class="all-wrap-in all-wrap-in-070">
 		<div class="ingredient-search-top">
-			<div class="content" style="padding-bottom: 20px;">
+			<div class="content" style="background-color:#fdfbf6; padding-bottom: 20px;">
 			<!-- 건기식 또는 회사이름을 적었을 경우 -->
 			<c:if test="${not empty foodname}">
 				<div class="top-wrap-070">
