@@ -463,22 +463,28 @@ spinner.setAttribute("style","-webkit-transform: rotateY("+ angle +"deg); -moz-t
 /*스크롤 내릴 때 애니메이션 처리 */
 $(document).ready(function() {
   // Check if element is scrolled into view
-  function isScrolledIntoView(elem) {
+  function isPartiallyVisible(elem) {
     var docViewTop = $(window).scrollTop();
     var docViewBottom = docViewTop + $(window).height();
 
     var elemTop = $(elem).offset().top;
     var elemBottom = elemTop + $(elem).height();
 
-    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+    return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom));
   }
-  // If element is scrolled into view, fade it in
+
+  //페이드 인 아웃 효과
   $(window).scroll(function() {
-    $('.tssection .animated').each(function() {
-      if (isScrolledIntoView(this) === true) {
+    $('.tssection .animatedleft').each(function() {
+      if (isPartiallyVisible(this) === true) {
         $(this).addClass('fadeInLeft');
       }
     });
+ 	$('.tssection .animatedright').each(function() {
+      if (isPartiallyVisible(this) === true) {
+        $(this).addClass('fadeInRight');
+      }
+    });
   });
-  });
+ });
   

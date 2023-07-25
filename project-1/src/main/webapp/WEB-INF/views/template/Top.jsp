@@ -302,7 +302,7 @@ ul {
         </div>
       -->
         <a class="navbar-brand" href="<c:url value='/' />">
-        	<img src="<c:url value='/images/mainicon.png' />" width="40" height="40">
+        	<img src="<c:url value='/images/mainicon.png' />" width="50" height="40">
         	<img src="<c:url value='/images/maintitle.png' />" width="160" height="40">
         </a>
         
