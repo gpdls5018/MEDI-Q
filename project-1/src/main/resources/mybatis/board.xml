@@ -13,7 +13,7 @@
 	</insert>
 	<!-- 상세보기 -->
 	<select id="selectOne" parameterType="map" resultType="map">
-		SELECT b.no,b.title,b.content,TO_CHAR(b.postdate, 'YYYY.MM.DD') AS postdate,
+		SELECT b.no,b.title,b.content,TO_CHAR(b.postdate, 'YYYY.MM.DD') AS postdate,m.active,
 		   CASE 
 		   	   WHEN LENGTH(m.name) >= 2 THEN SUBSTR(m.name, 1, 1) || '*' || SUBSTR(m.name, 3)
 		       ELSE m.name
@@ -89,7 +89,7 @@
 	<update id="update" parameterType="map">
 		UPDATE board SET title=#{title},content=#{content} WHERE no=#{no}
 	</update>
-	<!-- 삭제 -->
+	<!-- 질문 글번호로 삭제 -->
 	<delete id="delete" parameterType="map">
 		DELETE board WHERE no=#{no}
 	</delete>
