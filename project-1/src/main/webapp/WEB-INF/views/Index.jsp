@@ -135,7 +135,7 @@ html, body {
 	flex-direction: column;
 }
 #tssection8 {
-	background: linear-gradient(to bottom, white 60%, #fdfbf6 40%);
+	background-color: #fdfbf6;
 	flex-direction: column;
 }  
 .p2firstimg{
@@ -354,7 +354,7 @@ html, body {
 		            </div>
 		            <div id="top-banner-2" class="banner" id="tsbaimg2">
 			            <a href="<c:url value="/NutrientSelect.do"/>">
-			              <div class="banner-inner-wrapper" id="banner-inner-wrapper2"  >
+			              <div class="banner-inner-wrapper" id="banner-inner-wrapper2">
 			               	 <p style="color: grey;">내가 먹고 있는 영양제 괜찮을까?</p>
 			                 <h1>💊 영양성분을 검색해보세요!</h1>
 			              </div>
@@ -551,7 +551,6 @@ html, body {
 		        <div class="content">
 		            <!-- <div class="qna-mark-home" style="display: block; text-align: center; width: 100%;">Q&amp;A</div> -->
 		            <span class="ge-title get-20-2">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
-		            <div class="get-20-2-home-txt2" style="display: block; text-align: center; width: 100%; font-size: 18px;">전문가가 직접 답해드려요!</div>
 		            <div class="qna-list-wrap">
 		                <c:forEach items="${boardList}" var="item" varStatus="status">
 	                        <c:if test="${status.index < 3}">
@@ -587,7 +586,7 @@ html, body {
 			            </c:forEach>
 		            </div>
 	
-		            <div class="clearfix mb-2" style="position: absolute; right:150px; top:50px;">
+		            <div class="clearfix mb-2" style="position: absolute; right:100px; top:80px;">
 		                <a tabindex="0" class="more-qna" href="<c:url value="/board/List.do" />"><b>Q&amp;A 더보기</b></a>
 		            </div>
 		        </div>
