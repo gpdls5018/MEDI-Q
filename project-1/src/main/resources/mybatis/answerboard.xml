@@ -16,13 +16,24 @@
 		SELECT ab.*, m.name
 	    FROM answer_board ab
 	    JOIN member m ON ab.id = m.id
-	    WHERE board_no = #{NO}
+	    <where>
+        <if test="NO != null">
+            AND board_no = #{NO}
+        </if>
+        <if test="answer_no != null">
+            OR answer_no = #{answer_no}
+        </if>
+    </where>
 	    AND ROWNUM = 1
 	</select>
 	<update id="answerupdate" parameterType="map">
 		UPDATE answer_board SET content=#{content} WHERE answer_no=#{answer_no}
 	</update>
 	<delete id="answerdelete" parameterType="map">
+		DELETE answer_board WHERE answer_no=#{answer_no}
+	</delete>
+	<delete id="boarddelete" parameterType="map">
 		DELETE answer_board WHERE board_no=#{no}
 	</delete>
+	
 </mapper>
