@@ -34,7 +34,7 @@ body{
 	position:absolute;
 	width:100%;
 	height:100%;
-    background: url("https://www.hectohealthcare.com/resources/images/layout/sub_visual_brand.jpg") no-repeat;
+    background: url("https://www.hectohealthcare.com/resources/images/layout/sub_visual_company.jpg") no-repeat;
     background-color: #fff;
     z-index: 1;
     top:70px;
