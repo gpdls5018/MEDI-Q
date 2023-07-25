@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.LinkedHashMap;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
 import java.sql.Date;
 
 import com.kosmo.springapp.admin.service.AdminMapper;
@@ -28,18 +33,15 @@ public class AdminController {
 	@Autowired
 	private AdminMapper adminMapper;
 	
+	// 관리자 메인 화면
 	@GetMapping("/AdminMain.do")
 	public String adminMain() {
-		
-		
-		
-		
-		
 		
 		
 	    return "admin/AdminMain";
 	}
 	
+	// 관리자 회원관리 화면
 	@GetMapping("/AdminMember.do")
 	public String adminMember(Model model) {
 		
@@ -62,6 +64,8 @@ public class AdminController {
 		
 	    return "admin/AdminMember";
 	}
+	
+	/////////////////////////////////관리자 회원관리 화면
 	
 	// 회원 정보 삭제
 	@PostMapping("/deleteMember.do")
@@ -170,7 +174,7 @@ public class AdminController {
         return response;
     }
 	
-	// 회원 정보 수정 전 조회
+	// 일일 로그인수 조회
     @GetMapping("/countLoginMember.do")
     @ResponseBody
     public List<Integer> countLoginMember() {
@@ -205,7 +209,94 @@ public class AdminController {
         }
     }
 
-	
+    // 일일 로그인수 조회
+    @GetMapping("/countSignUpMember.do")
+    @ResponseBody
+    public List<Integer> countSignUpMember() {
+        try {
+            // 로그인 로그를 조회하는 로직 (데이터베이스 조회 등)
+            // 여기에서는 예시 데이터로 임의의 결과를 반환합니다.
+        	// 로그인 로그를 조회하는 로직을 LoginLogService에서 처리하여 가져옵니다.
+        	int count_6days_ago = adminMapper.scount_6days_ago();
+        	int count_5days_ago = adminMapper.scount_5days_ago();
+        	int count_4days_ago = adminMapper.scount_4days_ago();
+        	int count_3days_ago = adminMapper.scount_3days_ago();
+        	int count_2days_ago = adminMapper.scount_2days_ago();
+        	int count_1days_ago = adminMapper.scount_1days_ago();
+        	int count_0days_ago = adminMapper.scount_0days_ago();
+        	
+        	// 조회된 로그인 수를 List에 담아서 반환합니다.
+            List<Integer> loginCounts = new ArrayList<>();
+            loginCounts.add(count_6days_ago);
+            loginCounts.add(count_5days_ago);
+            loginCounts.add(count_4days_ago);
+            loginCounts.add(count_3days_ago);
+            loginCounts.add(count_2days_ago);
+            loginCounts.add(count_1days_ago);
+            loginCounts.add(count_0days_ago);
+        	
+            
+            return loginCounts;
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+            return null; 
+        }
+    }
+    
+    @GetMapping("/getAgeData.do")
+    @ResponseBody
+    public Map<String, Integer> getAgeData() {
+    	
+    	Map<String, Integer> ageDataMap = new LinkedHashMap<>();
+
+        // 현재 년도 구하기
+        int currentYear = LocalDate.now().getYear();
+
+        // 회원 정보 가져오기
+        List<MemberDTO> members = adminMapper.getMemberInfo();
+
+        // 연령대 구분 및 연령대별 회원 수 세기
+        for (MemberDTO member : members) {
+            String birthYearStr = member.getBirth().substring(0, 4);
+            int birthYear = Integer.parseInt(birthYearStr);
+            int age = currentYear - birthYear;
+
+            String ageGroup;
+            
+            if (age < 20) {
+                ageGroup = "20대 미만";
+            } else if (age < 30) {
+                ageGroup = "20대";
+            } else if (age < 40) {
+                ageGroup = "30대";
+            } else if (age < 50) {
+                ageGroup = "40대";
+            } else if (age < 60) {
+                ageGroup = "50대";
+            } else {
+                ageGroup = "60대 이상";
+            }
+
+            ageDataMap.put(ageGroup, ageDataMap.getOrDefault(ageGroup, 0) + 1);
+        }
+       
+
+        return ageDataMap;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /////////////////////////////////관리자 회원관리 화면
+    
 	
 	
 	
