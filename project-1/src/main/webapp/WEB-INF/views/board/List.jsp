@@ -38,6 +38,10 @@
         	font-size:30px;
         	font-weight:bold;
         }
+        .text_3{
+        	font-size:20px;
+        	font-weight:bold;
+        }
         .btn_deco{
         	width:120px;
         	height:50px;
@@ -47,9 +51,45 @@
 			width:550px;
 			height:90px;
 		}
-		.qna_bbs{
-			width:325px;
+		.qna_ans{
+			width:400px;
 			height:90px;
+		}
+		.card_deco{
+			width: 92%;
+		    display: block;
+		    background: #FFFFFF;
+		    border: 1px solid #E6E9ED;
+		    box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
+		    border-radius: 20px;
+		    text-align: left;
+		}
+		.card_deco_body{
+			padding:0.5rem;
+			background-color:#FDCDBC;
+			border-radius: 20px;
+		}
+		.btn_deco{
+			background:linear-gradient(180deg,#ff4b09,#ff956c);
+		}
+		.qna_mascot{
+			width:40px;
+			position:relative;
+			border-radius: 50%;
+			background-size:contain;
+		}
+		.card_font1{
+			font-size:26px;
+		}
+		.card_font2{
+			color: #EF605D;
+		}
+		.a_deco{
+			color:black;
+            cursor: pointer;
+		}
+		.a_deco:hover{
+			color:gray;
 		}
     </style>
 </head>
@@ -64,7 +104,7 @@
 	                <span class="text_2 m-0">답답했던 영양제의 모든 것!</span>
 	            	<p class="text_2">전문가에게 물어보세요</p>
 	            </div>
-	            <img src="<c:url value="/resources/images/qna/pharm.png"/>" class="qna_img">
+	            <img src="<c:url value="/images/qna/pharm.png"/>" class="qna_img">
 			</div>
         </div>
         <div class="container-fluid pt-5 mt-5">
@@ -73,11 +113,21 @@
                 </div>
                 <div class="d-flex col-8 flex-wrap flex-direction justify-content-center align-content-stretch">
                     <div class="col">
-                        <img src="<c:url value="/resources/images/qna/qna_now.png"/>" class="qna_now ml-4">
-                        <div class="row justify-content-center">
+                        <img src="<c:url value="/images/qna/qna_now.png"/>" class="qna_now">
+                        <div class="row justify-content-center pt-4">
 	                        <c:if test="${not isEmpty}">
 	                        	<c:forEach var="record" items="${listPagingData.records }">
-			                        <!-- 게시판 시작 -->
+			                        <a class="card_deco text-decoration-none a_deco col-12 p-1 m-2" href="<c:url value="/board/View.do?no=${record.NO }"/>">
+			                            <div class="card-body p-2 m-3">
+			                                <span class="card-title font-weight-bold card_font1"><span class="card_font2">Q.&nbsp;</span>${record.TITLE }</span>
+			                                <br>
+			                                <p class="card-text"><h5>${record.CONTENT }</h5></p>
+			                                <hr style="border: 1px solid #E6E9ED;"/>
+			                                <span class="card-text"><h6 class="font-weight-bold text-muted">${record.NAME } ${record.AGE_GROUP} / ${record.GENDER}</h6></span>
+			                                <p class="card-text"><h6 class="font-weight-bold text-muted">${record.POSTDATE }</h6></p>
+			                            </div>
+			                        </a>
+			                        <!-- 게시판 시작
 			                        <div class="qna-card">
 				                        <div class="ingredient-tags">
 				                            <div class="ingredient-tag">
@@ -98,32 +148,55 @@
 				                                <span class="user-agesex">${record.AGE_GROUP} / ${record.GENDER}</span>
 				                            </div>
 				                        </a>
-				                    </div><!-- qna-card의 끝 -->
+				                    </div>
+				                     -->
 								</c:forEach>
 							</c:if>
                         </div>
                         <br/>
                         <br/>
                         <br/>
-  						<div class="row align-items-end">
+  						<div class="row align-items-end pb-4">
   							<div class="col">
-	                        	<img src="<c:url value="/resources/images/qna/qna_bbs.png"/>" class="qna_bbs ml-4">
+	                        	<img src="<c:url value="/images/qna/qna_ans.png"/>" class="qna_ans p-0 m-0">
 	                        </div>
 	                        <!-- 토큰이 존재하는 경우 버튼을 보여줍니다. -->
 	                        <c:if test="${not empty id }" var="isWriter"><!-- True,False를 isWriter에 저장-->
 		                        <div class="col">
-		                        	<a class="d-flex justify-content-end mr-5 text-decoration-none" href='<c:url value="/board/Write.do"/>'>
+		                        	<a class="d-flex justify-content-end text-decoration-none mr-1" href='<c:url value="/board/Write.do"/>'>
 		                        		<button class="btn btn-light text-light btn_deco text_3" style="font-size:20px;">질문 작성</button>
 		                        	</a>
 		                        </div>
 	                        </c:if>
                         </div>
                         <!-- 질문에 대한 컨테이너 -->
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center p-0 m-0">
                         	<c:if test="${empty listPagingData.records }" var="isEmpty">
 								<div>등록된 자료가 없습니다.</div>
 							</c:if>
-							<!-- 여기부터 리스트 나올 것: 1제목,2내용,3나이,4성별,5작성자 -->
+							<c:if test="${not isEmpty}">
+                            	<c:forEach var="record" items="${listPagingData.records }">
+                            		<a class="card_deco text-decoration-none a_deco col-12 p-1 m-2" href="<c:url value="/board/View.do?no=${record.NO }"/>">
+			                            <div class="card-body p-2 m-3">
+			                                <span class="card-title font-weight-bold card_font1"><span class="card_font2">Q.&nbsp;</span>${record.TITLE }</span>
+			                                <br>
+			                                <p class="card-text"><h5>${record.CONTENT }</h5></p>
+			                                <hr style="border: 1px solid #E6E9ED;"/>
+			                                <div class="card-text d-flex align-items-center">
+				                            	<img src="<c:url value="/images/qna/pharmacist.png"/>" class="qna_mascot">
+				                            	<c:if test="${not empty listPagingData.records }" var="isEmpty">
+				                            		<div class="text_3 ml-1">약사님의 답변을 기달리는 중입니다.</div>
+												</c:if>
+				                            </div>
+				                            <br/>
+			                                <span class="card-text"><h6 class="font-weight-bold text-muted">${record.NAME } ${record.AGE_GROUP} / ${record.GENDER}</h6></span>
+			                                <p class="card-text"><h6 class="font-weight-bold text-muted">${record.POSTDATE }</h6></p>
+			                            </div>
+			                        </a>
+								</c:forEach>
+                            </c:if>
+														
+							<!-- 여기부터 리스트 나올 것: 1제목,2내용,3나이,4성별,5작성자 
                             <c:if test="${not isEmpty}">
                             	<c:forEach var="record" items="${listPagingData.records }">
 									<div class="qna-card">
@@ -138,7 +211,7 @@
 				                            <span class="txt2">${record.CONTENT }</span>
 				                        </a>
 				                        <a tabindex="0" class="qna-user-wrap text-decoration-none" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=${record.NO }"/>">
-				                                <div class="qna-user-icon qna-user-icon-1"></div><!-- 그림 아이콘 -->
+				                                <div class="qna-user-icon qna-user-icon-1"></div> 그림 아이콘 
 				                                <div class="qna-user-txt">
 				                                	<c:if test="${not empty listPagingData.records }" var="isEmpty">
 														<div>약사님의 답변을 기달리는 중입니다.</div>
@@ -149,11 +222,10 @@
 				                                <span class="user-agesex">${record.AGE_GROUP} / ${record.GENDER}</span>
 				                            </div>
 				                        </a>
-				                    </div><!-- qna-card의 끝 -->
+				                    </div>qna-card의 끝 
 			                    </c:forEach>
-                            </c:if>
+                            </c:if>-->
                         </div>
-                        <hr>
                     </div>
                 </div>
                 <div class="d-flex col-2 flex-wrap align-content-stretch">
@@ -162,7 +234,7 @@
         </div>
     </main>
 	<!-- 페이징 출력 -->
-	<div>${listPagingData.pagingString}</div>
+	<div class="p-3">${listPagingData.pagingString}</div>
 	<!-- css적용 안했음  -->
     <!-- <ul class="pagination pagination-lg  justify-content-center">
         <li class="page-item"><a class="page-link" href="#">Prev</a></li>

@@ -19,17 +19,17 @@
 		}
 		.qna_title{
 			position:relative;
-        	top:calc(100vh - 96vh);
-        	left:10%;
-        	color:white;
-        	margin:0px;
-        }
-        .qna_img{
-            position:absolute;
-            width: 200px;
-            top:calc(100vh - 85vh);
-            right:20%;
-        }
+	     	top:calc(100vh - 96vh);
+	     	left:10%;
+	     	color:white;
+	     	margin:0px;
+	     }
+	     .qna_img{
+	         position:absolute;
+	         width: 200px;
+	         top:calc(100vh - 85vh);
+	         right:20%;
+	     }
 		.text_1{
 			font-size:70px;
 			font-weight:bold;
@@ -38,8 +38,42 @@
 			font-size:30px;
 			font-weight:bold;
 		}
+		.text_3{
+			font-size:20px;
+			font-weight:bold;
+		}
+		.card_deco{
+			width: 92%;
+		    display: block;
+		    background: #FFFFFF;
+		    border: 1px solid #E6E9ED;
+		    box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
+		    border-radius: 20px;
+		    text-align: left;
+		}
+		.card_deco_body{
+			padding:0.5rem;
+			background-color:#FDCDBC;
+			border-radius: 20px;
+		}
 		.btn_deco{
-			background: linear-gradient(180deg,#fd9068,#fbc1ab);
+			background:linear-gradient(180deg,#ff4b09,#ff956c);
+		}
+		.qna_mascot{
+			width:40px;
+			position:relative;
+			border-radius: 50%;
+			background-size:contain;
+		}
+		.qna_bbs{
+			height:90px;
+			padding-left:calc(100vw - 1570px);
+		}
+		.card_font1{
+			font-size:26px;
+		}
+		.card_font2{
+			color: #EF605D;
 		}
     </style>
 </head>
@@ -53,7 +87,7 @@
 	                <span class="text_2 m-0">답답했던 영양제의 모든 것!</span>
 	            	<p class="text_2">전문가에게 물어보세요</p>
 	            </div>
-	            <img src="<c:url value="/resources/images/qna/pharm.png"/>" class="qna_img">
+	            <img src="<c:url value="/images/qna/pharm.png"/>" class="qna_img">
 			</div>
         </div>
         
@@ -64,18 +98,25 @@
                 <div class="d-flex col-8 flex-wrap flex-direction justify-content-center align-content-stretch">
                     <div class="col">
                         <form method="post" action="/board/AnswerEdit.do">
-                            <div class="form-group">
-                                <label><kbd class="lead text_2 btn_deco">제목</kbd></label>
-                                <!-- <input type="text" class="form-control" placeholder="제목을 입력하세요" name="title"> -->
-                                <input type="text" class="form-control" placeholder="제목을 입력하세요" name="title" value="${param.title}" disabled>
+                             <div class="card_deco col-12 p-0 m-0">
+	                            <div class="card-body p-2 m-3">
+	                                <div class="form-group">
+                                		<label for="usr"><h3><kbd class="btn_deco font-weight-bold">제목</kbd></h3></label>
+                                	<!--<input type="text" class="form-control" placeholder="제목을 입력하세요" name="title"> -->
+                                		<input type="text" class="form-control" placeholder="제목을 입력하세요" name="title" value="${param.title}" disabled>
+                            		</div>
+	                            	<br>
+		                            <div class="form-group">
+										<label for="comment"><h3><kbd class="btn_deco font-weight-bold">질문 내용</kbd></h3></label>
+	                                	<textarea class="form-control" rows="15" name="content">${record.CONTENT }</textarea>
+	                            	</div>
+	                            </div>
                             </div>
-                            <div class="form-group">
-                                <label><kbd class="lead bg-light text_2 btn_deco">내용</kbd></label>
-                                <textarea class="form-control" rows="15" name="content">${record.CONTENT }</textarea>
+                            <div class="pt-3 pl-4">
+	                            <button type="submit" class="btn btn-light text-light text_2 btn_deco" style="font-size:22px;">수정</button>
+	                            <input type="hidden" value="${record.ANSWER_NO}" name="answer_no">
+	                            <input type="hidden" value="${record.BOARD_NO}" name="no">
                             </div>
-                            <button type="submit" class="btn btn-light text-light text_2 btn_deco">등록</button>
-                            <input type="hidden" value="${record.ANSWER_NO}" name="answer_no">
-                            <input type="hidden" value="${record.BOARD_NO}" name="no">
                         </form>
                     </div>
                 </div>
