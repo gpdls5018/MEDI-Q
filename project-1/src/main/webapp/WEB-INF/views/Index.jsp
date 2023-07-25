@@ -141,54 +141,100 @@ html, body {
 .p2firstimg{
 	position: absolute; 
 	z-index:2; 
-	top:100px; 
-	left:100px; 
-	width:550px; 
-	height:800px; 
+	top:90%; 
+	left:29%; 
+	width:650px; 
+	height:350px; 
+	transform: translate(-29%, -90%);
+	border-radius: 50%;
+	
+}
+.p2secondimg{
+	position: absolute; 
+	z-index:1; 
+	top:60%; 
+	left:6%; 
+	transform: translate(-6%, -60%);
+	width:600px; 
+	height:700px; 
+	mix-blend-mode: multiply; /* 블렌딩 효과를 주는 속성 */
+	opacity: 0.9; /* 이미지 블렌딩 효과를 위해 약간 투명도 조정 */
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); 
-	transform-origin: bottom; 
-	transform: rotateX(25deg);
-	border-radius: 20px;
 	border: 5px solid white;
+	border-radius: 5px;
 }
 .p3firstimg{
 	position: absolute; 
 	z-index:2; 
-	top:100px; 
-	right:100px; 
-	width:550px; 
-	height:800px; 
+	top:95%; 
+	right:9%; 
+	width:650px; 
+	height:350px; 
+	transform: translate(-9%, -95%);
+	border-radius: 50%;
+}
+.p3secondimg{
+	position: absolute; 
+	z-index:1; 
+	top:60%; 
+	right:3%; 
+	transform: translate(-3%, -60%);
+	width:600px; 
+	height:700px; 
+	mix-blend-mode: multiply; /* 블렌딩 효과를 주는 속성 */
+	opacity: 0.9; /* 이미지 블렌딩 효과를 위해 약간 투명도 조정 */
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); 
-	transform-origin: bottom; 
-	transform: rotateX(25deg);
-	border-radius: 20px;
 	border: 5px solid white;
+	border-radius: 5px;
 }
 .p4firstimg{
 	position: absolute; 
 	z-index:2; 
-	top:100px; 
-	left:120px; 
-	width:700px; 
-	height:800px; 
+	top:85%; 
+	left:26%; 
+	width:650px; 
+	height:350px; 
+	transform: translate(-26%, -85%);
+	border-radius: 50%;
+	
+}
+.p4secondimg{
+	position: absolute; 
+	z-index:1; 
+	top:60%; 
+	left:6%; 
+	transform: translate(-6%, -60%);
+	width:800px; 
+	height:700px; 
+	mix-blend-mode: multiply; /* 블렌딩 효과를 주는 속성 */
+	opacity: 0.9; /* 이미지 블렌딩 효과를 위해 약간 투명도 조정 */
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); 
-	transform-origin: bottom; 
-	transform: rotateX(25deg);
-	border-radius: 20px;
 	border: 5px solid white;
+	border-radius: 5px;
 }
 .p5firstimg{
 	position: absolute; 
 	z-index:2; 
-	top:100px; 
-	right:120px; 
-	width:700px; 
-	height:800px; 
+	top:95%; 
+	right:-5%; 
+	width:650px; 
+	height:350px; 
+	transform: translate(0%, -95%);
+	border-radius: 50%;
+}
+.p5secondimg{
+	position: absolute; 
+	z-index:1; 
+	top:60%; 
+	right:3%; 
+	transform: translate(-3%, -60%);
+	width:800px; 
+	height:700px; 
+	mix-blend-mode: multiply; /* 블렌딩 효과를 주는 속성 */
+	opacity: 0.9; /* 이미지 블렌딩 효과를 위해 약간 투명도 조정 */
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); 
-	transform-origin: bottom; 
-	transform: rotateX(25deg);
-	border-radius: 20px;
 	border: 5px solid white;
+	border-radius: 5px;
 }
 .p2firsta {
 	position: absolute;
@@ -300,9 +346,9 @@ html, body {
 		          <div class="slider">
 		            <div id="top-banner-1" class="banner">
 			            <a href="#">
-			              <div class="banner-inner-wrapper" id="banner-inner-wrapper1" >
+			              <div class="banner-inner-wrapper" id="banner-inner-wrapper1">
 			              	 <p style="color: grey;">어떤 건강고민이 있으신가요?</p>
-			                 <h1 class="animated bounceInDown" style="font-size: 57px;">😀 MEDI-Q와 함께 건강한 삶을 시작해보세요!</h1>
+			                 <h1 style="font-size: 57px;">😀 MEDI-Q와 함께 건강한 삶을 시작해보세요!</h1>
 			              </div>
 			            </a>
 		            </div>
@@ -346,9 +392,10 @@ html, body {
 		<!-- 검색창 밑 검색 태그용 버튼  -->
 		<!-- 페이지 2 -->
 		<div class="tssection" id="tssection2">
-			<img class="p2firstimg" src="https://img.freepik.com/free-vector/medicine-concept-illustration_114360-1644.jpg?t=st=1690198666~exp=1690199266~hmac=ecb22d2cb503c3f55ce977fa53d07a1794ed14e79d4ccd8d00771d3f3bd877fc" >
+			<img class="p2firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
+			<img class="p2secondimg" src="https://img.freepik.com/free-photo/top-view-of-pills-and-container-with-days-of-the-weeks_23-2148533506.jpg?t=st=1690265424~exp=1690266024~hmac=c6915b7b9323aa3481da8da02c23782ad2688e9f310990a27e3a7df424b0d618" >
 			<a type="button" class="p2firsta btn" href='<c:url value="/ranking/selectfood.do"/>' >더 보기 →</a>
-			 <div class="animated" style="margin-right: 200px;">
+			 <div class="animatedright" style="margin-right: 200px;">
 				<div class="row justify-content-center pt-5" style="margin: 300px 0px 50px 0px; width: 800px">
 			        <div class="p2div3 text-center" >
 			            <h1 class="p2h1 px-5 mb-5"><span style="color: #EF605D;">영양제를 </span> 검색해보세요.</h1>
@@ -363,10 +410,10 @@ html, body {
 			 </div>
 		  	
 		  	<div class="section section1-2s ranking-190">
-		        <div class="content" style="margin-top:40px;">
+		        <div class="content" style="margin:40px 80px 0px 0px;">
 		            <div class="txt2"><span style="color:black; font-size: 30px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">💊 인기 영양제</span> <span style="font-size: 30px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Top 5</span></div>
 		            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:0px 0px 35px; ">현재 리뷰가 가장 좋은 영양제 Top5을 알려드릴게요</p>
-		            <div class="tab-contents" style="display: block; margin-right: 30px;" >
+		            <div class="tab-contents" style="display: block; margin-right: 17px;" >
 		                <div class="tab-content tab-content-001 new-wide-main-060 new-wide-main-090 active width-flt1">
 		                    <div class="box-container ranking-card-wrap item-cards u510x">
 	                            <c:forEach items="${listData}" var="item" varStatus="status">
@@ -397,9 +444,10 @@ html, body {
 
      <!-- 페이지 3 -->
 	  <div class="tssection" id="tssection3">
-		<img class="p3firstimg" src="https://img.freepik.com/free-vector/vitamin-food-infographic_23-2148485453.jpg?t=st=1690197637~exp=1690198237~hmac=1eac9dc66288e6a0642dd0b4fc47d3612e5a66ec401fd983a0df4207dfda9e3f" >
+		<img class="p3firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
+		<img class="p3secondimg" src="https://img.freepik.com/free-photo/healthy-lifestyle-of-veggies-and-fruit-slices_23-2148502235.jpg?t=st=1690263535~exp=1690264135~hmac=69f1fdeef82a37792807b85518bb146bceca7503b5c246ce5dc3a2b84c8f0535" >
 		<a type="button" class="p3firsta btn" href='<c:url value="/NutrientSelect.do"/>' >더 보기 →</a>	
-	  	<div class="animated" style="margin-left: 200px;">
+	  	<div class="animatedleft" style="margin-left: 200px;">
 			<div class="row justify-content-center pt-5" style="margin: 10px 0px 50px 0px; width: 800px">
 		        <div class="p2div3 text-center" >
 		            <h1 class="p2h1 px-5 mb-5"><span style="color: #EF605D;">영양소를 </span> 검색해보세요.</h1>
@@ -432,10 +480,11 @@ html, body {
 	 
 		<!--  페이지4 -->
 	  <div class="tssection" id="tssection4">
-		<img class="p4firstimg" src="https://img.freepik.com/free-vector/young-doctor-in-a-lab-coat-with-the-elements-of-a-career_24797-2770.jpg?t=st=1690197564~exp=1690198164~hmac=1c04233adaeae6286577c1194d75449ff7595c25c32d1e4f90bfe6407a86dbea" >
-		  <div class="gCSEJp">
+			<img class="p4firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
+			<img class="p4secondimg" src="https://img.freepik.com/premium-photo/woman-professional-nutritionist-checking-dietary-supplements-in-hand-surrounded-by-a-variety-of-fruits-nuts-vegetables-and-dietary-supplements-on-the-table_126277-2390.jpg" >
+		  <div class="gCSEJp animatedright">
 	     	<c:if test="${not empty analyzeReport}">
-		        <h1 class="mb-3 text-center animated" >📋 <span style="color:#EF605D; font-size: 42px;">${userName}</span>님의 최근 분석 리포트</h1>
+		        <h1 class="mb-3 text-center" >📋 <span style="color:#EF605D; font-size: 42px;">${userName}</span>님의 최근 분석 리포트</h1>
 		        <div class="ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
 		            <a data-gtm-id="report-home-recent-blank" class="ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none; background-color: 
 				    ${	analyzeReport.score >= 0 && analyzeReport.score < 25 ? 'rgba(255, 0, 0, 0.7)' :
@@ -457,7 +506,7 @@ html, body {
 		                        </div>	                   
 	         </c:if>
 	         <c:if test="${empty analyzeReport}">
-	             <h1 class="text-center animated" style="font-size: 30px; color: black;">📋 나와 잘 맞는 영양제일까?</h1>
+	             <h1 class="text-center" style="font-size: 30px; color: black;">📋 나와 잘 맞는 영양제일까?</h1>
 	             <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:35px 0px;">적절하게 영양제를 먹고 있는지 MEDI-Q가 분석해 드릴게요</p>
 			        <div class="ibNwmg ml-1 d-flex" style="justify-content:flex-start; margin-bottom: 35px;">
 			            <a data-gtm-id="report-home-recent-blank" class=" ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none;">
@@ -478,11 +527,12 @@ html, body {
 	  
 	  <!-- 페이지5 -->
 	  <div class="tssection" id="tssection5">
-  		<img class="p5firstimg" src="https://img.freepik.com/free-vector/online-medicine-composition-with-character-of-guy-tracking-orders-with-medication_1284-54427.jpg?t=st=1690196727~exp=1690197327~hmac=6a784908b0b6d9f8020c300d51b5016f6168d4fde98946a1120afeea0931febd" >
-	  	<div class="section section1-2c">
+		<img class="p5firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
+		<img class="p5secondimg" src="https://img.freepik.com/free-photo/medical-banner-with-doctor-and-patient_23-2149611238.jpg?t=st=1690267394~exp=1690267994~hmac=fb7aed3ed65edbd91d766aa10882c0c81a40eb4410eb84b864dbb0d94afffa06" >
+	  	<div class="section section1-2c animatedleft">
 	       <a href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>" style="text-decoration: none;">
 	           <div class="content">
-	               <span class="txt1 animated" style=" text-align: center; width: 100%;">👨‍⚕️ 주요 질환의 발병 위험도를 예측해드려요 </span>
+	               <span class="txt1" style=" text-align: center; width: 100%;">👨‍⚕️ 주요 질환의 <span style="color: #EF605D;">발병 위험도</span>를 예측해드려요 </span>
 	               <br/>
 	               <span class="text-center txt2" style="margin:20px 0px 35px 0px; font-weight: bold;">MEDI-Q의 인공지능 기술로 분석하는 건강검진!</span>
 	               <div class="banner-wrap">
