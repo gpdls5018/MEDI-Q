@@ -100,18 +100,19 @@ html, body {
 		background: linear-gradient(to right, rgb(249, 181, 172, 0.3) 40%, white 40%);
 	
 }*/
+
 #tssection2 {
 	background-color:white;
 	background: linear-gradient(to right,#fdfbf6 40%, white 40%);
 	flex-direction: column;
 	align-items: flex-end;
-	position: relative;
+	position: relative;		
 }
 #tssection3 {
 	background: linear-gradient(to right, white 60%, #fdfbf6 40%);
 	flex-direction: column;
 	align-items: flex-start;
-	position: relative;
+	position: relative;	
 }
 #tssection4 {
 	background-color:white;
@@ -678,46 +679,6 @@ $(window).on("wheel", function(e) {
     var posTop =(page-1) * $(window).height();
     mHtml.animate({scrollTop : posTop});
 });
-
-/*
-var mHtml = $("html");
-var page = 1;
-
-mHtml.animate({scrollTop: 0}, 10);
-
-$(window).on("wheel", function(e) {
-    if (mHtml.is(":animated")) return;
-
-    if (e.originalEvent.deltaY > 0) {
-        if (page % 2 === 0) {
-            // If the current page is even, scroll right
-            if (page === 10) return; // No more pages to the right
-            page++;
-            var posLeft = (page - 1) * $(window).width();
-            mHtml.animate({scrollLeft: posLeft});
-        } else {
-            // If the current page is odd, scroll down
-            if (page === 10) return; // Last page, no more scrolling down
-            page++;
-            var posTop = (page - 1) * $(window).height();
-            mHtml.animate({scrollTop: posTop});
-        }
-    } else if (e.originalEvent.deltaY < 0) {
-        if (page % 2 === 0) {
-            // If the current page is even, scroll left
-            if (page === 1) return; // First page, no more scrolling left
-            page--;
-            var posLeft = (page - 1) * $(window).width();
-            mHtml.animate({scrollLeft: posLeft});
-        } else {
-            // If the current page is odd, scroll up
-            if (page === 1) return; // First page, no more scrolling up
-            page--;
-            var posTop = (page - 1) * $(window).height();
-            mHtml.animate({scrollTop: posTop});
-        }
-    }
-});*/
 
 </script>
 </div><!-- id=main  -->
