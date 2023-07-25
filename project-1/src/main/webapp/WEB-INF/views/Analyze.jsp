@@ -21,6 +21,7 @@
 </style>
 
 	<div class="container mt-5" style="min-height: 860px;">
+		<img src="https://www.hectohealthcare.com/resources/images/layout/sub_visual_brand.jpg" style="width: 100%; height: 300px; border-radius: 20px;" >
 		<div class="my-title d-flex effect-custom-font justify-content-between m-auto" style="width:80%;height:200px;">
 			<div class="mt-5" style="font-size:40px;"><span style="background-color:#ffdcdc;">${UserName}</span>님의 <br>영양제 분석 리포트</div>
 			<div class="mt-3">
