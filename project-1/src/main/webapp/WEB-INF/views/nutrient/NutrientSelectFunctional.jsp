@@ -160,12 +160,68 @@
 		}
 		
 
-    </style>
-</head>
-<body>
+	/*상단 배너 스타일*/
+#contentInfoCon {
+    position: relative;
+    height: 383px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#contentInfoCon .content-sub-tit {
+    font-size: 16px;
+    color: #222;
+    overflow: hidden;
+}
+#contentInfoCon .content-tit {
+    color: #222;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.36;
+    letter-spacing: -0.02em;
+    margin-top: 37px;
+}
+.visual-img-con {
+	position:absolute;
+	width:100%;
+	height:100%;
+    background: url("https://www.hectohealthcare.com/resources/images/layout/sub_visual_rnd.jpg") no-repeat;
+    background-color: #fff;
+    z-index: 1;
+    top:70px;
+	border:none;
+}
+.tsarea {
+	position: absolute;
+	width: 700px;
+	height: 250px;
+	top:170px;
+	left:50px;
+	border:none;
+	z-index: 2;
+	text-align: center;
+	box-shadow: 0px 0px 0px white;
+	align-items: center;
+}
+     </style>
 
+	<!-- 상단배너 div -->
+	<aside id="contentInfoCon" class="area animated">
+        <!-- 각각 대메뉴 마다 이미지 다르게 들어갑니다. -->
+                <!-- 브랜드 스토리 -->
+                <div class="visual-img-con animatedleft"></div>	
+
+        <div class="tsarea">
+            <p class="content-sub-tit">Global Healthcare</p>
+            <h3 class="content-tit" style="text-align:left; margin-left: 50px;">
+                <p style="font-weight: 300;">AI 알고리즘 기반의</p>
+                <span>개인 맞춤형 헬스케어</span>
+            </h3>
+        </div>
+    </aside>
+    
 	<!-- 검색창 -->
-	<div class="search d-flex justify-content-center" style="margin-top: 120px;">
+	<div class="search d-flex justify-content-center" style="padding: 150px 0px 80px; background-color: #fdfbf6;">
 	    <input id="searchInput" style="font-size:17px;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
 	    <button type="submit" class="searchButton">
         <i class="fa fa-search"></i>
