@@ -139,7 +139,7 @@ body {
     .body_box {
         display: flex;
         flex-direction: row;
-        margin: 0px 20px;
+        margin: 0px 30px;
     }
     .topbtn {
         margin: 10px 0px 0px 20px;
