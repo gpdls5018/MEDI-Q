@@ -17,6 +17,6 @@ public interface LoginService<T> {
 	List<T> selectMember();
 	T selectOne(String id);
 	int update(T info);
-	int delete(T info);
+	int delete(HttpServletRequest req);
 	int insert(T info);
 }

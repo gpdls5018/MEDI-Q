@@ -66,12 +66,12 @@ public class MypageController {
 
 	//마이페이지 클릭 시
 	@GetMapping("/MyPage.do")
-	public String mypage(HttpServletRequest req, HttpServletResponse resp, Model model) throws IOException {
+	public String mypage(HttpServletRequest req, Model model) throws IOException {
 		LocalDate current = LocalDate.now(); //현재날짜 구하기
 		Map map = new HashMap<>();
 		//System.out.println("date: "+date);
 		
-		MemberDTO member = loginService.selectOne(req,resp);	
+		MemberDTO member = loginService.selectOne(req);	
 		String id = member.getId();
 		
 		ProfileImageDTO profImg = loginService.selectProfImg(id);
@@ -98,8 +98,8 @@ public class MypageController {
 	}
 	
 	@GetMapping("/MyPage2.do")
-	public String mypage2(HttpServletRequest req, HttpServletResponse resp, Model model) {
-		MemberDTO member = loginService.selectOne(req,resp);	
+	public String mypage2(HttpServletRequest req, Model model) {
+		MemberDTO member = loginService.selectOne(req);	
 		String id = member.getId();
 		
 		ProfileImageDTO profImg = loginService.selectProfImg(id);
@@ -115,8 +115,8 @@ public class MypageController {
 	}
 	
 	@GetMapping("/ClickDate.do")
-	public String clickDate(@RequestParam String clickDate, HttpServletRequest req, HttpServletResponse resp, Model model) {
-		MemberDTO member = loginService.selectOne(req,resp);
+	public String clickDate(@RequestParam String clickDate, HttpServletRequest req, Model model) {
+		MemberDTO member = loginService.selectOne(req);
 		String id = member.getId();
 		ProfileImageDTO profImg = loginService.selectProfImg(id);
 		
@@ -153,17 +153,34 @@ public class MypageController {
 			return "<script>alert('비밀번호가 일치하지 않아요');history.back();</script>";
 		}
 		// 비밀번호가 일치하는 경우
-		return "<script>location.href='/project/JoinEdit.do'</script>";
+		if("editBtn".equals(map.get("mode"))) {
+			return "<script>location.href='/project/JoinEdit.do'</script>";
+		}
+		else {
+			return "<script>location.href='/project/Inacive.do'</script>";
+		}
 	}
 	
 	//회원수정 클릭 후 비밀번호 일치 시
 	@GetMapping("/JoinEdit.do")
-	public String joinEdit(HttpServletRequest req, HttpServletResponse resp, Map map) {
-		MemberDTO member = loginService.selectOne(req,resp);
+	public String joinEdit(HttpServletRequest req, Map map) {
+		MemberDTO member = loginService.selectOne(req);
 		String id = member.getId();
 		map.put("info",loginService.selectOne(id));
 		
 		return "login/JoinEdit";
+	}
+	
+	//회원탈퇴 클릭 후 비밀번호 일치 시
+	@GetMapping("/Inacive.do")
+	@ResponseBody
+	public String inActive(HttpServletRequest req) {
+		int flag = loginService.delete(req);
+		if(flag == 1) {
+			return "<script>alert('그동안 MEDI-Q 서비스를 아끼고 사랑해주셔서 감사합니다.\\r\\n더욱더 노력하고 발전하는 MEDI-Q가 되겠습니다.');location.href=\'/project/Logout.do\';</script>";
+		}
+
+		return "<script>alert('정상적으로 탈퇴처리가 되지 않았습니다.');history.back();</script>";
 	}
 	
 	//소셜 첫 로그인 시
@@ -278,7 +295,7 @@ public class MypageController {
 	//정신건강테스트3
 	@GetMapping("/MentalTest3.do")
 	public String mentalTest3(HttpServletRequest req, HttpServletResponse resp, Model model) {
-		MemberDTO member = loginService.selectOne(req,resp);
+		MemberDTO member = loginService.selectOne(req);
 		model.addAttribute("info", member);
 		return "mentaltest/MentalTest3";
 	}

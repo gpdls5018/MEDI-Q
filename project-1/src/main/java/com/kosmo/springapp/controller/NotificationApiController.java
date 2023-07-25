@@ -43,10 +43,15 @@ public class NotificationApiController {
     //사용자가 로그인 된후 Firebase에게 전달받은 token 값을 웹서버에게 등록한다.
     @PostMapping("/webpush")
     public ResponseEntity register(@RequestBody String token, HttpServletRequest req, HttpServletResponse resp) throws ParseException {//복용 영양제명, 알람 시간 받아야함
-    	String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName),secretKey).get("sub").toString();
-        notificationService.register(id,token,req,resp);
-        
-        return ResponseEntity.ok().build();
+    	try {
+	    	String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName),secretKey).get("sub").toString();
+	        notificationService.register(id,token,req,resp);
+	        
+	        return ResponseEntity.ok().build();
+    	}
+    	catch (Exception e) {}//로그인 하지 않았을 때
+    	
+		return null;
     }
  
 }

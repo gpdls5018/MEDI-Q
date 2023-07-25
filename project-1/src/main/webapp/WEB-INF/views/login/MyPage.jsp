@@ -62,13 +62,13 @@ body {
         left: 350px;
     }*/
     .page {
-    border-radius: 10px;
-    width: 1400px;
-    height: 770px;
-    position: absolute;
-    top: 15px;
-    left: 10px;
-    display: flex;
+	    border-radius: 10px;
+	    width: 1400px;
+	    height: 770px;
+	    position: absolute;
+	    top: 15px;
+	    left: 10px;
+	    display: flex;
     }
     /*왼쪽 다이브 스타일*/
     .left-container {
@@ -299,8 +299,6 @@ body {
 
         .ui-datepicker-calendar>thead>tr>th { padding: 5px; font-size: 20px; font-weight: 400; } 
         
-
-
         .ui-datepicker-calendar>tbody>tr>td>a { color: #000; font-size: 12px !important; font-weight: bold !important; text-decoration: none;}
 
         .ui-datepicker-calendar>tbody>tr>.ui-state-disabled:hover { cursor: auto; background-color: #fff; } 
@@ -335,11 +333,11 @@ body {
         .ui-state-highlight,
         .ui-widget-content .ui-state-highlight,
         .ui-widget-header .ui-state-highlight { border: 0px; background: #f1f1f1; border-radius: 50%; height:40px; padding-top: 17px; } 
-		.full-highlight { border: 0px; background: #fa264af8; border-radius: 100%; width: 10px; height: 10px;} 
-
+		
         .inp { padding: 10px 10px; background-color: #f1f1f1; border-radius: 4px; border: 0px; } 
 
         .inp:focus { outline: none; background-color: #eee; }
+        .full-highlight,.full-highlight a  { background: #fc79529f; clip-path: circle(30% at 50% 50%);}
 
 /* 건강 기록 */
 	.acco img{
@@ -425,6 +423,9 @@ ul li:nth-of-type(5) {
 ul li:nth-of-type(6) {
   animation-delay: 1.5s;
 }
+#btn li:nth-of-type(1) {
+  animation-delay: 1.75s;
+}
 ul li:last-of-type {
   padding-bottom: 0;
 }
@@ -468,7 +469,7 @@ ul li input[type=checkbox]:checked ~ .acco {
   }
 }
 
-.btn{
+.diary .btn{
 	padding: 0.3rem 0.5rem;
 	font-size: .8rem;
 }
@@ -590,7 +591,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 						<c:if test="${not isProfImg }">
 							<img class="img" alt="기본 프로필" src="<c:url value="/images/basic/friend.png" />" style="width: 180px; height: 180px">
 						</c:if>
-                        <span>${info.id }</span>
+                        <span id="id">${info.id }</span>
                         
                         <ul class="profilemenu ml-auto">
                         	<li><a href="" id="" class="sidenava1"  data-target="#modalView" data-backdrop="static">나의 건강 정보 등록</a></li>
@@ -602,7 +603,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 							<c:if test="${not isSocial }"><!-- 일반 회원용 -->
 								<li><a href="" id="infoEdit" class="sidenava4" data-target="#modalView" data-backdrop="static">회원정보 수정</a></li>
 							</c:if>
-                            <li><a class="sidenava5" href="#">회원탈퇴</a></li>
+                            <li><a class="sidenava5" id="inactive" href="#" data-target="#modalView" data-backdrop="static">회원탈퇴</a></li>
                         </ul>
                         <div>
                             <img alt="로고" src='<c:url value="/images/mainicon.png"/>' style="width: 30px"/>
@@ -616,7 +617,7 @@ ul li input[type=checkbox]:checked ~ .acco {
                         <div class="fontinfo d-flex justify-content-between">
                         	<div>My page</div>
                             <div class="tab-menu fontinfotap mr-3">
-                                <a href="#" class="tab-button">복용알림</a>
+                                <a href="#" class="tab-button">영양제 알리미</a>
                                 <a href="#" class="tab-button" style="color:#fa7a7ab9">건강 다이어리</a>
                                 <a href='<c:url value="/project/MyPage2.do"/>' class="tab-button">약장&리뷰관리</a>
                             </div>
@@ -892,9 +893,13 @@ ul li input[type=checkbox]:checked ~ .acco {
 													</div>
 												</li>
 											</ul>
-												<button type="submit" class="memoSend btn btn-outline-primary mt-3">확인</button>
-												<button type="submit" class="memoSend btn btn-outline-primary mt-3">수정</button>
-												<button type="submit" class="memoSend btn btn-outline-primary mt-3">삭제</button>
+											<ul id="btn">
+												<li>
+													<button type="submit" class="memoSend btn btn-outline-primary mt-3">확인</button>
+													<button type="submit" class="memoSend btn btn-outline-primary mt-3">수정</button>
+													<button type="submit" class="memoSend btn btn-outline-primary mt-3">삭제</button>
+												</li>
+											</ul>
 										</form>
 									</div>
 	    
@@ -920,9 +925,13 @@ ul li input[type=checkbox]:checked ~ .acco {
 				<!-- Modal body -->
 				<div class="modal-body d-flex justify-content-center" style="height: 130px">
 					<form class="form-inline justify-content-center" action="" method="POST">
+						<p id="text"></p>
 						<input type="hidden" name="mode" value="editBtn"/>		
-						<input type="hidden" name="id" value="${empty info.id ? info.email :info.id }"/>
-						<input type="password" name="password" class="form-control mx-2" placeholder="비밀번호를 입력하세요"/>
+						<input type="hidden" name="id" value="${info.id }"/>
+						<div class="d-flex justify-content-center align-items-center">
+							<span style="display: none;">비밀번호 :</span>
+							<input type="password" name="password" class="form-control mx-2" placeholder="비밀번호를 입력하세요" style="max-width: 200px"/>
+						</div>
 						<div class="custom-file" style="width: 250px; display: none">
 							<input type="file" class="custom-file-input" name="file" id="customFile" accept=".jpg,.img,.png,.bmp,.gif">
 							<label class="custom-file-label justify-content-start" for="customFile">${empty profImg ? "파일 선택" : profImg.pi_Filename+='.'+=profImg.pi_Ext }</label>
@@ -941,22 +950,30 @@ ul li input[type=checkbox]:checked ~ .acco {
 	<!-- 수정/삭제시 사용할 모달 끝 -->
 		
 </div>
-<!-- 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
- -->
-<script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.2/dist/circle-progress.js"></script>
-<script>
-	//벨류 값이 원테두리에 들어가는 수치 math.round는 안에 들어가는 확률 값
-	 $('.second.circle').circleProgress({
-	    value: 0.9
-	  }).on('circle-animation-progress', function(event, progress) {
-	    $(this).find('strong').html(Math.round(90 * progress) + '<i>%</i>');
-	  });		
-	 
-	$(function(){
-		 $('.datepicker').datepicker();
-	})
+<c:set var="current" value="${current}"/>
 	
+<c:set var="date" value="${memo.mm_Date}"/>
+<c:set var="condition" value="${memo.mm_Condition}"/>
+<c:set var="head" value="${memo.mm_Head}"/>
+<c:set var="resp" value="${memo.mm_Resp}"/>
+<c:set var="stom" value="${memo.mm_Stomach}"/>
+<c:set var="ment" value="${memo.mm_Mental}"/>
+<c:set var="chest" value="${memo.mm_Chest}"/>
+<c:set var="body" value="${memo.mm_Body}"/>
+<c:set var="nutr" value="${memo.mm_Nutrients}"/>
+<c:set var="allergy" value="${memo.mm_Allergy}"/>
+<c:set var="height" value="${memo.mm_Height}"/>
+<c:set var="weight" value="${memo.mm_Weight}"/>
+<c:set var="content" value="${memo.mm_Content}"/>
+	
+<c:set var="date" value=""/>
+<c:forEach var="diary" items="${memos }">
+	<c:set var="date" value="${date } ${diary.mm_Date }"/>
+</c:forEach>
+
+</body>
+
+<script>	
 	var dates_ = '<c:out value="${date}"/>'
 	var dates = dates_.substring(1);
 	//console.log('dates:',dates)/*
@@ -981,7 +998,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 			    	//return [true, isFull ? "full" : ""];
 			    }
 			})
-			return [true, isFull ? "full-highlight ui-datepicker-days-cell-over" : ""]; // 다른 날짜는 기본값 반환
+			return [true, isFull ? "full-highlight" : ""]; // 다른 날짜는 기본값 반환
 		},//날짜 선택 전 이벤트 주기
 		yearSuffix: '년',
 		maxDate: new Date(), //오늘 날짜 이 후만 선택가능
@@ -1080,7 +1097,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 			}
 		});
 		var info_nutr = '<c:out value="${nutr}"/>';
-		console.log('info_nutr:',info_nutr.split('$').length)
+		//console.log('info_nutr:',info_nutr.split('$').length)
 		var nutr;
 		var count;
 		if(info_nutr.length && info_nutr.split('$').length!=3){
@@ -1123,7 +1140,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 		var info_w = '<c:out value="${weight}"/>';
 		$('[name=w]').val(info_w);
 		var info_content = '<c:out value="${content}"/>';
-		console.log('test:',info_content)
+		//console.log('test:',info_content)
 		$('#content').val(info_content);
 	}
 
@@ -1313,14 +1330,52 @@ ul li input[type=checkbox]:checked ~ .acco {
 		$(this).parent().remove()
 	});
 	
+	//bmi 계산
+	 var bmi = document.querySelector('.c-bmi');
+	 var height = bmi.querySelector('input[name=h]');
+	 var weight = bmi.querySelector('input[name=w]');
+	 var gram = bmi.querySelectorAll('input[name=g]');
+	 function result(){
+	 	bmi.querySelector('.c-bmi__groups').style.display='';
+		var e=parseInt(height.value), //키 숫자타입으로 구하기
+			t=parseInt(weight.value),//체중 숫자타입으로 구하기
+			i=parseFloat(t/(e/100)**2).toFixed(2),//bmi계산
+			h=[[0,18.49],[18.5,22.99],[23,24.99],[25,29.99],[30,100]]
+		    	.findIndex(e=>
+		        	e[0]<=i && i<e[1]
+		        );            
+		gram[h].checked=!0
+		
+		/*
+		    [표준체중 계산 방법]
+		    - 남성: 키(m) × 키(m) × 22
+		   - 여성: 키(m) × 키(m) × 21
+		*/
+		m=((e/100)*(e/100)*22).toFixed(2) //남자 표준 체중
+		f=((e/100)*(e/100)*21).toFixed(2) //여자 표준 체중
+
+		//성별 먼저 확인하기**************************
+		if(h!=1){
+		    //console.log('당신의 적정 체중은'+(m-t)+'kg 입니다');
+		    bmi.lastElementChild.innerHTML='당신의 BMI 지수는 <span class="text-info">'+i+'</span>이고<br/>적정 체중은 <span class="text-info">'+((m-t)>=0?"+"+(m-t).toFixed(2):(m-t).toFixed(2))+'kg</span> 입니다';
+		}
+		else{
+		    bmi.lastElementChild.innerHTML='정상입니다'
+		}
+		bmi.addEventListener('submit', result);
+		bmi.dispatchEvent(new Event('input'));   
+	}
+	
 	
 	//이미지 수정하기
 	$('#imgEdit').click(function(){
 		$(this).attr('data-toggle','modal');
 		$('form').attr('action','<c:url value="/project/ProfImgEdit.do"/>');
 		$('form').attr('enctype','multipart/form-data');
-		$('.modal-title').html('수정할 프로필 이미지를 선택해주세요');
-		$('input[type=password]').css('display','none');
+		$('.modal-title').html('수정할 프로필 이미지를 선택해주세요').parent().parent().css('height','');
+		$('#text').html('');
+		$('[name=mode]').val('editBtn');
+		$('input[type=password]').css('display','none').prev().css('display','none');
 		$('.custom-file').css('display','');
 		$('a[name=defaultImg]').css('display','');
 			
@@ -1334,9 +1389,40 @@ ul li input[type=checkbox]:checked ~ .acco {
 	$('#infoEdit').click(function(){
 		$(this).attr('data-toggle','modal');
 		$('form').attr('action','<c:url value="/project/Password.do"/>');
-		$('.modal-title').html('회원정보 수정을 위해 비밀번호를 입력해주세요');
+		$('.modal-title').html('회원정보 수정을 위해 비밀번호를 입력해주세요').parent().parent().css('height','');
+		$('#text').html('');
+		$('[name=mode]').val('editBtn');
 		$('.custom-file').css('display','none');
 		$('a[name=defaultImg]').css('display','none');
-		$('input[type=password]').css('display','');
+		$('input[type=password]').css('display','').prev().css('display','');
 	});
+	
+	//회원 탈퇴 하기
+	$('#inactive').click(function(){
+		$(this).attr('data-toggle','modal');
+		$('.modal-dialog').children(':eq(0)').css('height','330px');
+		$('form:eq(1)').removeClass('form-inline');
+		$('form').attr('action','<c:url value="/project/Password.do"/>');
+		$('.modal-title').html('회원정보 확인을 위해 비밀번호를 입력해주세요');
+		$('#text').html('회원 탈퇴시 모든 데이터가 삭제됩니다.<br/>90일 이내에 사용자 계정과 동일한 이메일로 재가입 할 수 없습니다.<br/><br/> 계속 하시겠습니까?');
+		$('[name=mode]').val('inactive');
+		$('.custom-file').css('display','none');
+		$('a[name=defaultImg]').css('display','none');
+		$('input[type=password]').css('display','').prev().css('display','');
+	});
+	
+</script>
+
+<script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.2/dist/circle-progress.js"></script>
+<script>
+	//벨류 값이 원테두리에 들어가는 수치 math.round는 안에 들어가는 확률 값
+	 $('.second.circle').circleProgress({
+	    value: 0.9
+	  }).on('circle-animation-progress', function(event, progress) {
+	    $(this).find('strong').html(Math.round(90 * progress) + '<i>%</i>');
+	  });		
+	 
+	$(function(){
+		 $('.datepicker').datepicker();
+	})
 </script>

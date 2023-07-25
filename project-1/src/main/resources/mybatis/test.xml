@@ -50,6 +50,10 @@
 		UPDATE MEMBER SET NAME=#{name},PASSWORD=#{password},BIRTH=#{birth},GENDER=#{gender},EMAIL=#{email} WHERE ID=#{id}
 	</update>
 	
+	<update id="delete" parameterType="String">
+		UPDATE MEMBER SET ACTIVE='N',INACTIVE_DATE=SYSDATE WHERE ID=#{id}
+	</update>
+	
 	<insert id="saveProfImg" parameterType="profImgDto">
 		INSERT INTO PROFILE_IMAGE VALUES(SEQ_PROFILE_IMAGE.NEXTVAL,#{id},#{pi_Path},#{pi_Filename},#{pi_Ext})
 	</insert>

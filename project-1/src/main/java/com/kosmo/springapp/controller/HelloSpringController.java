@@ -52,14 +52,14 @@ public class HelloSpringController {
 	private LoginServiceImpl loginService;
 	
 	@GetMapping("/") 
-	public String index(Model model,HttpServletRequest req, HttpServletResponse resp) {
+	public String index(Model model,HttpServletRequest req) {
 		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFoodScoreTop10();
 		String token = jwTokensService.getToken(req, tokenName);
 		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
 		try {
 			String id = payloads.get("sub").toString();
 			model.addAttribute("analyzeReport",analyzeMyReportServiceImpl.selectAnalyzeReport(id));
-			MemberDTO memberDto = loginService.selectOne(req,resp);
+			MemberDTO memberDto = loginService.selectOne(req);
 			model.addAttribute("userName",memberDto.getName());
 		}
 		catch(NullPointerException e) {
