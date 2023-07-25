@@ -141,7 +141,22 @@
         ]]>
     </select>
 	
-	
+	<!-- FOODTABLE에서 정보 가져오기 -->
+	<select id="getInfoFromFoodTable" resultType="Map">
+		SELECT * FROM (
+		    SELECT 
+		        f.NO,
+		        f.PRODUCTNAME,
+		        f.MATERIAL,
+		        f.NUTRIENT,
+		        (SELECT COUNT(*) FROM REVIEWTABLE r WHERE f.NO = r.R_PRODUCTNO) AS REVIEW_COUNT,
+		        ROUND((SELECT AVG(STARSCORE) FROM REVIEWTABLE r WHERE f.NO = r.R_PRODUCTNO), 2) AS AVG_STARSCORE
+		    FROM
+		        FOODTABLE f
+		    ORDER BY
+		        REVIEW_COUNT DESC
+		) WHERE ROWNUM &lt;= 30
+	</select>
 	
 	
 	
