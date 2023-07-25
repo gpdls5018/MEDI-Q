@@ -434,7 +434,7 @@ html, body {
 		<img class="p4firstimg" src="https://img.freepik.com/free-vector/young-doctor-in-a-lab-coat-with-the-elements-of-a-career_24797-2770.jpg?t=st=1690197564~exp=1690198164~hmac=1c04233adaeae6286577c1194d75449ff7595c25c32d1e4f90bfe6407a86dbea" >
 		  <div class="gCSEJp">
 	     	<c:if test="${not empty analyzeReport}">
-		        <h1 class="mb-3 text-center animated" style="font-size: 30px; color: black;">📋 <span style="color:#EF605D; font-size: 34px;">${userName}</span>님의 최근 분석 리포트</h1>
+		        <h1 class="mb-3 text-center animated" >📋 <span style="color:#EF605D; font-size: 42px;">${userName}</span>님의 최근 분석 리포트</h1>
 		        <div class="ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
 		            <a data-gtm-id="report-home-recent-blank" class="ktaGqG" href="<c:url value="/analyzeMyFood.do"/>" style="text-decoration: none; background-color: 
 				    ${	analyzeReport.score >= 0 && analyzeReport.score < 25 ? 'rgba(255, 0, 0, 0.7)' :
@@ -499,7 +499,7 @@ html, body {
 		   <div class="section section20-2 section20-2-home ">
 		        <div class="content">
 		            <!-- <div class="qna-mark-home" style="display: block; text-align: center; width: 100%;">Q&amp;A</div> -->
-		            <span class="ge-title get-20-2" style="display: block; text-align: center; width: 100%; font-size: 30px;">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
+		            <span class="ge-title get-20-2">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
 		            <div class="get-20-2-home-txt2" style="display: block; text-align: center; width: 100%; font-size: 18px;">전문가가 직접 답해드려요!</div>
 		            <div class="qna-list-wrap">
 		                <c:forEach items="${boardList}" var="item" varStatus="status">
@@ -567,7 +567,7 @@ html, body {
 	   <!--  페이지8 -->
 	  <div class="tssection" id="tssection8">
 	      <div class="mainInner" style="margin: 50px 0px;">
-	            <h3 class="my-4 animated" style="text-align: center; margin-top:20px; font-weight: bold;">우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
+	            <h3 class="my-4 animated" >우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
 	            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:35px 0px;">우리동네에 어떤 병원과 약국이 있을까?</p>
 	            <div class="container-xxl pb-4">
 	                <div class="container">
