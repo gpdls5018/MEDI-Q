@@ -978,8 +978,15 @@ a {
         margin: 80px 50px 50px 1000px;
     }
     .gCSEJp > h1 {
-        color: gray;
-        font-weight: 900;
+        display: block;
+	    width: 100%;
+	    margin-top: 20px;
+	    color: white;
+	    font-weight: 700;
+	    font-size: 40px;
+	    line-height: 1;
+	    padding: 7px 0px 0px 5px;
+	    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
     .ktaGqG {
         display: inline-block;
@@ -1529,19 +1536,18 @@ a {
     text-align: center;
     text-shadow: 1px 1px 2px black;
 }
-.section20-2-home .get-20-2 {
-    text-align: left;
-    margin: 30px 0px 0px;
-    font-size: 26px;
-}
+
 .get-20-2 {
-	color:black;
+	display: block;
+    width: 100%;
+    margin-top: 20px;
+    color: white;
     font-weight: 700;
+    font-size: 40px;
     line-height: 1;
-    font-size: 20px;
-    margin: 30px 0px 0px;
-    display: block;
-    height: auto;
+    padding: 7px 0px 0px 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
 .get-20-2-home-txt2 {
     font-weight: 600;
@@ -1953,6 +1959,18 @@ a {
     text-decoration: underline;
     color: #9BA1AA;
 }
+.mainInner h3 {
+	display: block;
+    width: 100%;
+    margin-top: 20px;
+    color: white;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1;
+    padding: 7px 0px 0px 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
 
 /*메인 배너 스타일*/
 #tsmain{
@@ -1979,12 +1997,16 @@ a {
 /*슬라이드쇼*/
 
 .tststs {
-	display: table;
-	margin: 5% auto 0;
-	text-transform: uppercase;
-	font-size: 2em;
-	font-weight: bold;
-	text-shadow: 0 1px 2px gray;
+	display: block;
+    width: 100%;
+    margin-top: 20px;
+    color: white;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.3;
+    padding: 7px 0px 0px 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
 .tscacontainer{
 	margin: 100px auto 200px;
@@ -2041,3 +2063,4 @@ a {
 		transform: rotateY(360deg);
 	}
 }
+
