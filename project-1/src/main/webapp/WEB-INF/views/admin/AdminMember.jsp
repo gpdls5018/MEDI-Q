@@ -80,6 +80,7 @@
     /* 4분할 */
     .each-container {
     	padding: 10px;
+    	margin: 20px 15px;
     	
     }
     
