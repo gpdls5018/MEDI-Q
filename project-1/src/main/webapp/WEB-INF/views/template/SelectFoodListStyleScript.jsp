@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="icon" type="image/png" href="https://cdn.pillyze.io/web/img/browser-icon/icon-xs.png" sizes="16x16">
 <link rel="icon" type="image/png" href="https://cdn.pillyze.io/web/img/browser-icon/icon-s.png" sizes="32x32">
@@ -9,20 +9,6 @@
 <link rel="icon" type="image/png" href="https://cdn.pillyze.io/web/img/browser-icon/icon-xl.png" sizes="196x196">
 
 <style>
-    @charset "UTF-8";
-
-    @font-face {
-        font-family: 'Pretendard';
-        font-weight: 800;
-        font-display: swap;
-        src: local('Pretendard ExtraBold'), url('https://cdn.pillyze.io/web/fonts/Pretendard-ExtraBold.subset.woff2') format('woff2'), url('./woff-subset/Pretendard-ExtraBold.woff') format('woff');
-    }
-    @font-face {
-        font-family: 'Pretendard';
-        font-weight: 500;
-        font-display: swap;
-        src: local('Pretendard Medium'), url('https://cdn.pillyze.io/web/fonts/Pretendard-Medium.subset.woff2') format('woff2'), url('./woff-subset/Pretendard-Medium.woff') format('woff');
-    }
 
     html{-webkit-text-size-adjust:none; /*-ms-user-select:none; -khtml-user-select:none; -webkit-user-select:none; user-select:none;*/-webkit-touch-callout:none; }
     *{-webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box;}
@@ -6075,11 +6061,10 @@ font-size: 14px; text-align: center; padding: 0px 10px; border-radius: 12px; }
         }
 
     }
-</style>
-	<style>
-		html, body {
+    html, body {
 			position:relative;
 			overflow-x:hidden;
 		}
-	</style>
+</style>
+
 </head>

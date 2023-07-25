@@ -84,7 +84,6 @@ public class LoginController {
 
 		boolean flag = loginService.isMember(map);// 쿼리문으로 회원여부 판단
 		String active = loginService.selectOne(map.get("id").toString()).getActive();
-		System.out.println("active: "+active);
 
 		if (flag && "Y".equals(active)) {// 회원일 때
 			String id = map.get("id").toString();

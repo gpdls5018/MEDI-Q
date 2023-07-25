@@ -88,11 +88,11 @@ public class MypageController {
 		if(memo != null) {
 			memo.setMm_Date(memo.getMm_Date().split(" ")[0]);
 		}
-		model.addAttribute("current", current);
-		model.addAttribute("info", member);//추후 더 추가해야함
-		model.addAttribute("profImg", profImg);
-		model.addAttribute("memos", memos);
-		model.addAttribute("memo", memo);
+		model.addAttribute("current", current);//오늘 날짜
+		model.addAttribute("info", member);//회원 정보
+		model.addAttribute("profImg", profImg);//프로필 이미지
+		model.addAttribute("memos", memos);//모든 건강 다이어리
+		model.addAttribute("memo", memo);//오늘 작성한 건강 다이어리
 		
 		return "login/MyPage";
 	}
@@ -106,9 +106,9 @@ public class MypageController {
 		List<Map> review = reviewServiceImpl.selectReviewByUserId(id);
 		List<String> food = heartCountServiceImpl.selectFood(id);
 		
-		model.addAttribute("info", member);//추후 더 추가해야함
-		model.addAttribute("profImg", profImg);
-		model.addAttribute("review", review);
+		model.addAttribute("info", member);//회원 정보
+		model.addAttribute("profImg", profImg);//프로필 이미지
+		model.addAttribute("review", review);//리뷰 작성 글
 		model.addAttribute("food", food);//복용 중인 영양제 명만 가져옴
 		
 		return "login/MyPage2";
