@@ -33,21 +33,22 @@
            }
          .banner a {
          	text-decoration:none;
-         }
+         }	
            	#banner-inner-wrapper1 {
 				height: 100%;
-				background-image: url("https://newsroom-prd-data.s3.ap-northeast-2.amazonaws.com/wp-content/uploads/2021/01/digital_health_care_Main.jpg");
+				background-image: url("https://www.hectohealthcare.com/resources/images/main/main_introductin_img_02.jpg");
 				box-sizing: border-box;
 				background-size: cover;
-				background-position: center top 30%;
+				background-position: center bottom 100%;
                }
             #banner-inner-wrapper2 {
 				height: 100%;
-				background-image: url("https://cdn.pharmnews.com/news/photo/202208/208563_78717_2239.jpg");
+				background-image: url("https://www.samjinpharm.co.kr/front/kr/resources/img/custom/main_creation.png");
 				box-sizing: border-box;
 				background-size: cover;
 				background-position: center top 50%;
                }
+            
            	#banner-inner-wrapper3 {
 				height: 100%;
 				background-image: url("http://cdn.hitnews.co.kr/news/photo/202303/44381_56651_1017.jpg");
@@ -165,7 +166,7 @@
 		#banner4:checked ~ nav label:nth-of-type(4) {
 			cursor: pointer;
 			color: #fff;
-			transition: all .5s;
+			transition: all .7s;
 		}
 		#banner1:checked ~ nav label:nth-of-type(1) .progressbar,
 		#banner2:checked ~ nav label:nth-of-type(2) .progressbar,
@@ -1842,7 +1843,7 @@ a {
     justify-content: center;
 }
 .ranking-190 .item-card {
-    width: 200px;
+    width: 170px;
     margin: 20px 10px 0px 10px;
     display: block;
     position: relative;
@@ -2064,3 +2065,39 @@ a {
 	}
 }
 
+/* fadeInLeft와 fadeInRight 애니메이션 정의 */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 애니메이션 클래스 초기 설정 */
+.tssection .animatedleft,
+.tssection .animatedright {
+  opacity: 0;
+}
+
+/* 애니메이션 클래스 적용 */
+.tssection .animatedleft.fadeInLeft,
+.tssection .animatedright.fadeInRight {
+  opacity: 1;
+  animation-fill-mode: forwards; /* 애니메이션이 종료된 후 마지막 상태를 유지하도록 설정 */
+  animation-duration: 3s; /* 애니메이션 지속 시간 설정 */
+}
