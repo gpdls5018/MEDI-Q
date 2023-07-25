@@ -106,6 +106,7 @@ html, body {
 	background: linear-gradient(to right,#fdfbf6 40%, white 40%);
 	flex-direction: column;
 	align-items: flex-end;
+	justify-content:flex-start;
 	position: relative;		
 }
 #tssection3 {
@@ -395,8 +396,8 @@ html, body {
 			<img class="p2firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
 			<img class="p2secondimg" src="https://img.freepik.com/free-photo/top-view-of-pills-and-container-with-days-of-the-weeks_23-2148533506.jpg?t=st=1690265424~exp=1690266024~hmac=c6915b7b9323aa3481da8da02c23782ad2688e9f310990a27e3a7df424b0d618" >
 			<a type="button" class="p2firsta btn" href='<c:url value="/ranking/selectfood.do"/>' >더 보기 →</a>
-			 <div class="animatedright" style="margin-right: 200px;">
-				<div class="row justify-content-center pt-5" style="margin: 300px 0px 50px 0px; width: 800px">
+			 <div class="animatedright" style="margin-right: 200px; align-items: center;">
+				<div class="row justify-content-center pt-5" style="margin: 50px 0px 50px 0px; width: 800px">
 			        <div class="p2div3 text-center" >
 			            <h1 class="p2h1 px-5 mb-5"><span style="color: #EF605D;">영양제를 </span> 검색해보세요.</h1>
 			            <form class="position-relative w-100 mx-auto animated slideInDown d-flex input-wrapper" required minlength="1" action="<c:url value="/functionfood/select.do"/>" style="box-shadow: 0px 0px 5px gray; border-radius: 20px;">
