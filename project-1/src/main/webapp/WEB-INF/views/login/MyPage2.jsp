@@ -200,6 +200,7 @@ body {
     .miniroom img {
         margin: 20px 0px 0px 20px;
     }
+    
     /*써클로직*/
     .circle {
         width: 150px;
