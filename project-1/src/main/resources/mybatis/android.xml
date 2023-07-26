@@ -9,4 +9,14 @@
 		FROM (SELECT * FROM foodtable ORDER BY NO)
 		WHERE ROWNUM &lt;=10
  	</select>
+ 	<select id="selectFoodListByNutrient" parameterType="String" resultType="functionalFoodListDto">
+ 		SELECT *
+ 		FROM (SELECT * FROM FOODTABLE WHERE NUTRIENT LIKE '%' || #{nutrient} || '%' ORDER BY F_VIEW DESC)
+		WHERE ROWNUM &lt;=10
+ 	</select>
+ 	<select id="selectFoodListByPurpose" parameterType="String" resultType="functionalFoodListDto">
+ 		SELECT *
+ 		FROM (SELECT * FROM FOODTABLE WHERE MATERIAL LIKE '%' || #{purpose} || '%' ORDER BY F_VIEW DESC)
+		WHERE ROWNUM &lt;=10
+ 	</select>
 </mapper>

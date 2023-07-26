@@ -83,9 +83,10 @@ public class LoginController {
 	public String login(@RequestParam Map map, Model model, HttpServletRequest req, HttpServletResponse resp) {
 
 		boolean flag = loginService.isMember(map);// 쿼리문으로 회원여부 판단
-		String active = loginService.selectOne(map.get("id").toString()).getActive();
+		MemberDTO member = loginService.selectOne(map.get("id").toString());
+		String active = member==null ? "" : member.getActive();
 
-		if (flag && "Y".equals(active)) {// 회원일 때
+		if (flag && !"N".equals(active)) {// 회원 or 관리자 일 때
 			String id = map.get("id").toString();
 			String name = loginService.selectOne(id).getName();
 

@@ -282,6 +282,15 @@ public class MypageController {
 		return "login/Message";
 	}
 	
+	@PostMapping("/healthInfo.do")
+	@ResponseBody
+	public Map healthInfo(@RequestParam Map map) {
+		//String page = map.get("page").toString();
+		//DB에 저장
+		
+		return map;
+	}
+	
 	//정신건강테스트1
 	@GetMapping("/MentalTest1.do")
 	public String mentalTest1() {

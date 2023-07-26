@@ -11,4 +11,8 @@ public interface AndroidMapper {
 
 	List<FunctionalFoodListDTO> selectFoodList();
 
+	List<FunctionalFoodListDTO> selectFoodListByNutrient(String nutrient);
+
+	List<FunctionalFoodListDTO> selectFoodListByPurpose(String purpose);
+
 }
