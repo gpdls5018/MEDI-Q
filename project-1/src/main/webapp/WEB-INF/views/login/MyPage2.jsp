@@ -854,7 +854,7 @@ body {
 								          	</ul>
 							          	</div>
 					                </div>
-					                <div class="subMenu">
+					                <div class="subMenu" id="select-div">
 					                	<!-- 여기에 영양제 검색->선택 시 이미지 꾸리기 -->
 					                </div>
 					            </li>
@@ -901,6 +901,43 @@ body {
 		$(this).toggleClass('fullClick');
 		$(this).toggleClass('text-white');
 	});
+	
+	//영양제 검색
+	const ulDiv = document.querySelector('#searchFoodList');
+	$( "#searchText" ).autocomplete({
+	   source : function(request,response) {
+		   $.ajax({
+			   url: "<c:url value='/searchMyFood.do'/>",
+			   data : { "searchWord" : $( "#searchText" ).val()},
+		   }).done(function(searchFood) {
+			   	var nameList = searchFood.map(function(item){return item['PRODUCTNAME'];});
+			   	response(nameList);
+			   	var imgList = searchFood.map(function(item){return item['IMGURL'];});
+			   	while (ulDiv.childElementCount > 1) {
+			   		ulDiv.removeChild(ulDiv.lastChild); // 마지막 자식 요소를 제거
+			   	}
+			   	searchFood.forEach(function(item) {
+			   		var li = document.querySelector('.food-li').cloneNode(true);
+			   		li.style.display = '';
+			   		li.classList.replace('food-li-checked','food-li');
+			   		if (item['IMGURL']===undefined) {
+			   			item['IMGURL'] = 'http://localhost:9090/images/thumbnail_img/NO_IMG.jpeg';
+			   		}
+			   		li.querySelector('img').src = item['IMGURL'];
+			   		li.querySelector('div').innerHTML = item['PRODUCTNAME'];
+			   		ulDiv.appendChild(li);
+			   	});
+			   	
+		   }).fail(function(error) {
+			   	console.log(error);
+		   });
+	   }
+	});
+	$("#take-foodList-modal").on("shown.bs.modal", function() {
+	    // 자동완성 기능 초기화
+	    $("#searchText").autocomplete("option", "appendTo", "#take-foodList-modal");
+  	});
+	
 
 	//이미지 수정하기
 	$('#imgEdit').click(function(){
