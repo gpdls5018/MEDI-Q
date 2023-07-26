@@ -86,7 +86,7 @@ public class LoginController {
 		MemberDTO member = loginService.selectOne(map.get("id").toString());
 		String active = member==null ? "" : member.getActive();
 
-		if (flag && "Y".equals(active)) {// 회원일 때
+		if (flag && !"N".equals(active)) {// 회원 or 관리자 일 때
 			String id = map.get("id").toString();
 			String name = loginService.selectOne(id).getName();
 
