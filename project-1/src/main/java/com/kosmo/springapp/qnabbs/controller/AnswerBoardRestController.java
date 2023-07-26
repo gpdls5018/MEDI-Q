@@ -23,7 +23,7 @@ public class AnswerBoardRestController {
 		System.out.println("answer_no값 출력:"+bodymap);
 		Map map=new HashMap<>();
 		//답변글 검색
-		System.out.println("답변글 상세보기힙니다");
+		System.out.println("답변글 상세보기합니다");
 		//삭제될 정보 map에 저장
 		map=answerservice.answerselectOne(bodymap);
 		System.out.println("map에 들어있는게 뭐야?"+map);
