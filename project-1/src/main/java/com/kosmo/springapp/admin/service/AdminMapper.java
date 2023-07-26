@@ -10,6 +10,8 @@ import com.kosmo.springapp.model.MemberDTO;
 @Mapper
 public interface AdminMapper {
 
+	///////////////////////////////////////////////////회원관련
+	
 	// 전체 회원 목록 가져오기
 	List<MemberDTO> getMemberInfo();
 	
@@ -45,7 +47,19 @@ public interface AdminMapper {
 
 	// 연령대별 회원 가져오기
 	List<Map<String, Object>> getAgeData();
-
+	
+	///////////////////////////////////////////////////DB관련
+	
+	// 영양제 정보 가져오기
+	List<Map<String, Object>> getInfoFromFoodTable();
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

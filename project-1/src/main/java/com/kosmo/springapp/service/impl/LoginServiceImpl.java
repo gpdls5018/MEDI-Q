@@ -62,7 +62,7 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 		return mapper.findMember(id);
 	}
 	
-	public MemberDTO selectOne(HttpServletRequest req, HttpServletResponse resp) {
+	public MemberDTO selectOne(HttpServletRequest req) {
 		String token = jwTokensService.getToken(req, tokenName);
 		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
 		String id = payloads.get("sub").toString();
@@ -83,9 +83,12 @@ public class LoginServiceImpl implements LoginService<MemberDTO> {
 	}
 
 	@Override
-	public int delete(MemberDTO info) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int delete(HttpServletRequest req) {
+		String token = jwTokensService.getToken(req, tokenName);
+		Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
+		String id = payloads.get("sub").toString();
+
+		return mapper.delete(id);
 	}
 
 	// 로그인 시 아이디,비밀번호 일치하는지 확인

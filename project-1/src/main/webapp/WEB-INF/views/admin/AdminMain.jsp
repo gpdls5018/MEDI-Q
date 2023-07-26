@@ -140,15 +140,15 @@
 	        		</a>
 	        	</li>
 	        	<li>
-	        		<a href="<c:url value="/AdminMain.do"/>" style="display: flex; align-items: center;">
+	        		<a href="<c:url value="/AdminDB.do"/>" style="display: flex; align-items: center;">
 	        			<i class="fas fa-table" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
-	        			&nbsp;&nbsp;영양소 테이블 관리
+	        			&nbsp;&nbsp;데이터베이스 관리
 	        		</a>
 	        	</li>
 	        	<li>
 	        		<a href="<c:url value="/AdminMain.do"/>" style="display: flex; align-items: center;">
-						<i class="fas fa-heartbeat" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
-	        			&nbsp;&nbsp;건강고민 및 선호제형 관리
+						<i class="fas fa-medkit" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
+	        			&nbsp;&nbsp;영양제분석 결과 관리
 	        		</a>
 	        	</li>
 	        	<li>
@@ -159,8 +159,8 @@
 	        	</li>
 	        	<li>
 	        		<a href="<c:url value="/AdminMain.do"/>" style="display: flex; align-items: center;">
-	        			<i class="fas fa-search" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
-	        			&nbsp;&nbsp;질병 예측 결과 조회
+	        			<i class="fas fa-heartbeat" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
+	        			&nbsp;&nbsp;질병예측 결과 관리
 	        		</a>
 	        	</li>
 	        	<li>

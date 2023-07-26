@@ -106,6 +106,7 @@ html, body {
 	background: linear-gradient(to right,#fdfbf6 40%, white 40%);
 	flex-direction: column;
 	align-items: flex-end;
+	justify-content:flex-start;
 	position: relative;		
 }
 #tssection3 {
@@ -135,7 +136,7 @@ html, body {
 	flex-direction: column;
 }
 #tssection8 {
-	background: linear-gradient(to bottom, white 60%, #fdfbf6 40%);
+	background-color: #fdfbf6;
 	flex-direction: column;
 }  
 .p2firstimg{
@@ -288,7 +289,20 @@ html, body {
     line-height: 1.5em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-
+ .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+ .wrap * {padding: 0;margin: 0;}
+ .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+ .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+ .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+ .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+ .info .close:hover {cursor: pointer;}
+ .info .body {position: relative;overflow: hidden;}
+ .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+ .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+ .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+ .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+ .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+ .info .link {color: #5085BB;}
 </style>
 <!-- 슬라이더를 위한 CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
@@ -354,7 +368,7 @@ html, body {
 		            </div>
 		            <div id="top-banner-2" class="banner" id="tsbaimg2">
 			            <a href="<c:url value="/NutrientSelect.do"/>">
-			              <div class="banner-inner-wrapper" id="banner-inner-wrapper2"  >
+			              <div class="banner-inner-wrapper" id="banner-inner-wrapper2">
 			               	 <p style="color: grey;">내가 먹고 있는 영양제 괜찮을까?</p>
 			                 <h1>💊 영양성분을 검색해보세요!</h1>
 			              </div>
@@ -395,8 +409,8 @@ html, body {
 			<img class="p2firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
 			<img class="p2secondimg" src="https://img.freepik.com/free-photo/top-view-of-pills-and-container-with-days-of-the-weeks_23-2148533506.jpg?t=st=1690265424~exp=1690266024~hmac=c6915b7b9323aa3481da8da02c23782ad2688e9f310990a27e3a7df424b0d618" >
 			<a type="button" class="p2firsta btn" href='<c:url value="/ranking/selectfood.do"/>' >더 보기 →</a>
-			 <div class="animatedright" style="margin-right: 200px;">
-				<div class="row justify-content-center pt-5" style="margin: 300px 0px 50px 0px; width: 800px">
+			 <div class="animatedright" style="margin-right: 200px; align-items: center;">
+				<div class="row justify-content-center pt-5" style="margin: 50px 0px 50px 0px; width: 800px">
 			        <div class="p2div3 text-center" >
 			            <h1 class="p2h1 px-5 mb-5"><span style="color: #EF605D;">영양제를 </span> 검색해보세요.</h1>
 			            <form class="position-relative w-100 mx-auto animated slideInDown d-flex input-wrapper" required minlength="1" action="<c:url value="/functionfood/select.do"/>" style="box-shadow: 0px 0px 5px gray; border-radius: 20px;">
@@ -551,7 +565,6 @@ html, body {
 		        <div class="content">
 		            <!-- <div class="qna-mark-home" style="display: block; text-align: center; width: 100%;">Q&amp;A</div> -->
 		            <span class="ge-title get-20-2">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
-		            <div class="get-20-2-home-txt2" style="display: block; text-align: center; width: 100%; font-size: 18px;">전문가가 직접 답해드려요!</div>
 		            <div class="qna-list-wrap">
 		                <c:forEach items="${boardList}" var="item" varStatus="status">
 	                        <c:if test="${status.index < 3}">
@@ -587,7 +600,7 @@ html, body {
 			            </c:forEach>
 		            </div>
 	
-		            <div class="clearfix mb-2" style="position: absolute; right:150px; top:50px;">
+		            <div class="clearfix mb-2" style="position: absolute; right:100px; top:80px;">
 		                <a tabindex="0" class="more-qna" href="<c:url value="/board/List.do" />"><b>Q&amp;A 더보기</b></a>
 		            </div>
 		        </div>

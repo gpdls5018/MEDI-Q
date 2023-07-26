@@ -83,8 +83,9 @@ public class LoginController {
 	public String login(@RequestParam Map map, Model model, HttpServletRequest req, HttpServletResponse resp) {
 
 		boolean flag = loginService.isMember(map);// 쿼리문으로 회원여부 판단
+		String active = loginService.selectOne(map.get("id").toString()).getActive();
 
-		if (flag) {// 회원일 때
+		if (flag && "Y".equals(active)) {// 회원일 때
 			String id = map.get("id").toString();
 			String name = loginService.selectOne(id).getName();
 
@@ -119,7 +120,12 @@ public class LoginController {
 			
 			// 쿠키를 response에 담았으니 redirect로 보내야함(메인 페이지로)
 			return "redirect:/";
-		} else {
+		} 
+		else if(flag && "N".equals(active)) {
+			model.addAttribute("NOT_LOGIN", "현재 탈퇴신청한 아이디입니다");//////////////////////////////
+			return "login/Login";
+		}
+		else {
 			model.addAttribute("NOT_LOGIN", "아이디와 비밀번호가 일치하지 않습니다");
 			return "login/Login";
 		}

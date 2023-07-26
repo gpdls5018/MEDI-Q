@@ -52,8 +52,15 @@ public class AnswerServiceImpl implements AnswerService {
 	}
 
 	@Override
+	public int boarddelete(Map map) {
+		System.out.println("boarddelete체크용 전");
+		return mapper.boarddelete(map);
+	}
+
+	@Override
 	public int answerdelete(Map map) {
-		System.out.println("answerdelete체크용 전");
+		System.out.println("AnswerServiceImpl의 answerdelete체크용 전");
 		return mapper.answerdelete(map);
 	}
+	
 }

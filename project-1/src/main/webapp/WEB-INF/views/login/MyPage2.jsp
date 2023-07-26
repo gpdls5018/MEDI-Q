@@ -106,7 +106,7 @@ body {
     .body_box {
         display: flex;
         flex-direction: row;
-        margin: 0px 20px;
+        margin: 0px 30px;
     }
     .topbtn {
         margin: 10px 0px 0px 20px;
@@ -178,7 +178,7 @@ body {
         background-color: white;
         border-radius: 10px;
         box-shadow: .1rem .1rem .3rem gray;
-        width: 550px;
+        width: 540px;
         height: 570px;
     }
     .miniroom_box {
@@ -272,28 +272,27 @@ body {
         -webkit-line-clamp: 1;
     }
     .sdp {
-        margin: 10px;
-        color: white;
+        color: #EF605D;
         font-weight: bold;
-        background-color: #EF605D;
-        border-radius: 10px;
+        margin: 0;
         padding: 5px;
+        margin-left: auto;
+        margin-right: 0;
     }
     .snp {
         margin: 5px;
-        font-weight: 700;
+        font-weight: bold;
         word-break: break-all;
         text-overflow: ellipsis;
         overflow: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
-        font-size: 20px;
+        font-size: 16px;
     }
     .srp {
         margin: 0px 5px;
-        font-weight: bold;
-        font-size: 16px;
+        font-size: 14px;
     }
     .srp span {
         font-size:14px;
@@ -330,8 +329,8 @@ body {
         flex-direction: row;
         box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
         border-radius: .5rem;
-        width: 480px;
-        height: 180px;
+        width: 500px;
+        height: 150px;
         margin: 10px 10px;
     }
     .reviewinfo {
@@ -339,6 +338,7 @@ body {
         flex-direction: column;
         align-items: flex-start;
         text-align: start;
+        padding: 5px;
     }
 }
 </style>
@@ -359,7 +359,7 @@ body {
                         <span>${info.id }</span>
 
                         <ul class="profilemenu ml-auto">
-                        	<li><a href="" id="" class="sidenava1"  data-target="#modalView" data-backdrop="static">나의 건강 정보 등록</a></li>
+                        	<li><a href="" id="" class="sidenava1" data-toggle="modal" data-target="#healthModal" data-backdrop="static">나의 건강 정보 등록</a></li>
                         	<li><a class="sidenava2" href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>">건강검진정보 불러오기</a></li>
                             <li><a href="" id="imgEdit" class="sidenava3"  data-target="#modalView" data-backdrop="static">프로필 이미지수정</a></li>
                             <c:if test='${info.social_Fl eq "Y"}' var="isSocial"><!-- 소셜용 -->
@@ -383,7 +383,7 @@ body {
                         <div class="fontinfo d-flex justify-content-between">
                         	<div>My page</div>
                             <div class="tab-menu fontinfotap mr-3">
-                                <a href="#" class="tab-button">복용알림</a>
+                                <a href="#" class="tab-button">영양제 알리미</a>
                                 <a href="<c:url value="/project/MyPage.do"/>" class="tab-button">건강 다이어리</a>
                                 <a href='#' class="tab-button" style="color:#fa7a7ab9">약장&리뷰관리</a>
                             </div>
@@ -468,7 +468,7 @@ body {
                             <div class="secnews">
                                 <div class="miniroom_font">리뷰관리 페이지</div>
                                 <div class="board">
-                                    <ul class="kriRoBreview" style="list-style: none;">
+                                    <ul class="kriRoBreview" style="list-style: none; padding-left: 0">
                                     	<c:if test="${empty review }" var="isEmptyReview" >
                                     		<span class="d-block h-50 my-n4"></span>
                                     		<img alt="empty" src="/images/basic/empty_review.jpg" style="width: 100%"/>
@@ -477,17 +477,17 @@ body {
 	                                    	<c:forEach var="r" items="${review }">
 		                                        <li class="review">
 		                                            <section class="kzDdbXreview">
-		                                                <section class="divimg" style="width: 180px;">
-		                                                    <img fetchpriority="high" width="160" height="160" src="img/testimonial-3.jpg" style="color: transparent; margin-top: 10px; border-radius: 10px;">
+		                                                <section class="divimg" style="width: 160px;">
+		                                                    <img fetchpriority="high" width=auto height="140" src="${r['IMGURL'] }" style="color: transparent; margin-top: 10px; border-radius: 10px;">
 		                                                </section>
-		                                                <label for="wishBtn:rk0:" class="   bPHVOx">
+		                                                <label for="wishBtn:rk0:" class="bPHVOx">
 		                                                    <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
 		                                                </label>
 		                                            </section>
-		                                            <div class="reviewinfo">
-		                                                <p class="sdp">${r.r_regidate }</p>
-		                                                <p class="snp">${r.productname }</p>
-		                                                <p class="srp">리뷰내용 :<br/><span>${r.content }</span></p>
+		                                            <div class="reviewinfo w-100">
+		                                                <div class="sdp">${fn:split(r['R_REGIDATE']," ")[0]}</div>
+		                                                <div class="snp">${r['PRODUCTNAME'] }</div>
+		                                                <div class="srp">${r['CONTENT'] }</div>
 		                                            </div>
 		                                        </li>
 	                                        </c:forEach>
@@ -502,4 +502,115 @@ body {
             </div>
         </div>
     </div>
+    
+    <!-- 수정/삭제시 사용할 모달 시작 -->
+	<div class="modal fade" id="modalView">	
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h5 class="modal-title">모달 헤더</h5>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				
+				<!-- Modal body -->
+				<div class="modal-body d-flex justify-content-center" style="height: 130px">
+					<form class="form-inline justify-content-center" action="" method="POST">
+						<p id="text"></p>
+						<input type="hidden" name="mode" value="editBtn"/>		
+						<input type="hidden" name="id" value="${info.id }"/>
+						<div class="d-flex justify-content-center align-items-center">
+							<span style="display: none;">비밀번호 :</span>
+							<input type="password" name="password" class="form-control mx-2" placeholder="비밀번호를 입력하세요" style="max-width: 200px"/>
+						</div>
+						<div class="custom-file" style="width: 250px; display: none">
+							<input type="file" class="custom-file-input" name="file" id="customFile" accept=".jpg,.img,.png,.bmp,.gif">
+							<label class="custom-file-label justify-content-start" for="customFile">${empty profImg ? "파일 선택" : profImg.pi_Filename+='.'+=profImg.pi_Ext }</label>
+						</div>
+						<a type="button" name="defaultImg" href="<c:url value="/project/ProfImgEdit.do"/>" class="btn btn-outline-info ml-3" style="display: none">기본이미지로 변경</a>	
+					</div>
+					<div class="modal-footer justify-content-right">
+						<input type="submit" class="btn btn-info mx-2" value="확인" />
+					    <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+				    </form>
+				</div>
+		          	
+			</div>
+		</div>
+	</div>
+	<!-- 수정/삭제시 사용할 모달 끝 -->
+    
+    <!-- 건강정보 등록 모달 시작 -->
+    <div class="modal fade" id="healthModal">	
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h5 class="modal-title">모달 헤더</h5>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				
+				<!-- Modal body -->
+				<div class="modal-body d-flex justify-content-center" style="height: 130px">
+					<form class="form-inline justify-content-center" action="" method="POST">
+						
+				    </form>
+				</div>
+		        
+		        <div class="modal-footer justify-content-right">
+					<input type="submit" class="btn btn-info mx-2" value="확인" />
+					<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!-- 건강정보 등록 모달 끝 -->
+    
 </div>
+</body>
+
+<script>
+	//이미지 수정하기
+	$('#imgEdit').click(function(){
+		$(this).attr('data-toggle','modal');
+		$('form').attr('action','<c:url value="/project/ProfImgEdit.do"/>');
+		$('form').attr('enctype','multipart/form-data');
+		$('.modal-title').html('수정할 프로필 이미지를 선택해주세요').parent().parent().css('height','');
+		$('#text').html('');
+		$('[name=mode]').val('editBtn');
+		$('input[type=password]').css('display','none').prev().css('display','none');
+		$('.custom-file').css('display','');
+		$('a[name=defaultImg]').css('display','');
+			
+		$(".custom-file-input").on("change", function() {
+	        var fileName = $(this).val().split("\\").pop();
+	        $(this).siblings().html(fileName);
+	    });
+	})
+	
+	//회원 정보 수정하기
+	$('#infoEdit').click(function(){
+		$(this).attr('data-toggle','modal');
+		$('form').attr('action','<c:url value="/project/Password.do"/>');
+		$('.modal-title').html('회원정보 수정을 위해 비밀번호를 입력해주세요').parent().parent().css('height','');
+		$('#text').html('');
+		$('[name=mode]').val('editBtn');
+		$('.custom-file').css('display','none');
+		$('a[name=defaultImg]').css('display','none');
+		$('input[type=password]').css('display','').prev().css('display','');
+	});
+
+	//회원 탈퇴 하기
+	$('#inactive').click(function(){
+		$(this).attr('data-toggle','modal');
+		$('.modal-dialog').children(':eq(0)').css('height','330px');
+		$('form:eq(1)').removeClass('form-inline');
+		$('form').attr('action','<c:url value="/project/Password.do"/>');
+		$('.modal-title').html('회원정보 확인을 위해 비밀번호를 입력해주세요');
+		$('#text').html('회원 탈퇴시 모든 데이터가 삭제됩니다.<br/>90일 이내에 사용자 계정과 동일한 이메일로 재가입 할 수 없습니다.<br/><br/> 계속 하시겠습니까?');
+		$('[name=mode]').val('inactive');
+		$('.custom-file').css('display','none');
+		$('a[name=defaultImg]').css('display','none');
+		$('input[type=password]').css('display','').prev().css('display','');
+	});
+</script>

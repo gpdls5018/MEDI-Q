@@ -248,7 +248,8 @@ ul {
         }
     </style>
 </head>
-<script>	
+<script>
+/*
 	//햄버거 버튼 클릭시 좌측에 메뉴바 열기/닫기
 	jQuery(document).ready(function ($) {
         $(document).on('click', '.pull-bs-canvas-left', function () {
@@ -264,19 +265,9 @@ ul {
             $('.bs-canvas-overlay').remove();
             return false;
         });
-        
+        */    
         //페이지의 값이 스크롤을 내리지 않으면 메뉴바 색상부여
-		//스크롤을 내리면 값에 변화에 따라 배경색 주기
-        $(window).scroll(function () {
-            var $this = $(window);
-
-            if ($this.scrollTop() > 800) {
-                $('#navbar').addClass('bg-gra');
-            } else {
-                $('#navbar').removeClass('bg-gra');
-            }
-        });
-    });
+    
 	/*
 	//회원 문구
 	$(document).ready(function() {
@@ -512,6 +503,18 @@ ul {
                         })
                     })
 		}
-	})
+	});
+	//스크롤을 내리면 값에 변화에 따라 배경색 주기
+	jQuery(document).ready(function ($) {
+	    $(window).scroll(function () {
+	        var $this = $(window);
+	
+	        if ($this.scrollTop() > 200) {
+	            $('#navbar').addClass('bg-gra');
+	        } else {
+	            $('#navbar').removeClass('bg-gra');
+	        }
+	    });
+	});
 </script>
  

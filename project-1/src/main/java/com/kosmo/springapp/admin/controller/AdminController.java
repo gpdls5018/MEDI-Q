@@ -2,6 +2,7 @@ package com.kosmo.springapp.admin.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -286,16 +287,60 @@ public class AdminController {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
     /////////////////////////////////관리자 회원관리 화면
+    
+    /////////////////////////////////영양소, 영양제 DB 관리
+    @GetMapping("/AdminDB.do")
+	public String adminDB(Model model) {
+    	
+    	List<Map<String, Object>> foodInfos = adminMapper.getInfoFromFoodTable();
+
+    	// Map 내의 null 값을 빈 문자열로 대체하는 처리
+        for (Map<String, Object> foodInfo : foodInfos) {
+            foodInfo.put("productName", getStringValue(foodInfo.get("PRODUCTNAME")));
+            foodInfo.put("material", getStringValue(foodInfo.get("MATERIAL")));
+            foodInfo.put("nutrient", getStringValue(foodInfo.get("NUTRIENT")));
+            foodInfo.put("reviewCount", getStringValue(foodInfo.get("REVIEW_COUNT")));
+            foodInfo.put("avgStarScore", getStringValue(foodInfo.get("AVG_STARSCORE")));
+        }
+    	
+        model.addAttribute("foodInfos", foodInfos);
+    	
+	    return "admin/AdminDB";
+	}
+    
+    @GetMapping("/getFoodInfo")
+    public List<Map<String, Object>> getFoodInfo() {
+    	
+    	
+    	
+    	return null;
+    }
+    
+    
+    // null 값을 빈 문자열로 변환하는 헬퍼 메서드
+    private String getStringValue(Object value) {
+        return value != null ? value.toString() : "";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 	
 	

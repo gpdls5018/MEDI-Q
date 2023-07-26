@@ -5,8 +5,12 @@ import java.util.Map;
 public interface AnswerService<T> {
 	
 	Map answerselectOne(Map map);
-	//입력/수정/삭제용
+	//답변 입력
 	int answerinsert(Map map);
+	//답변 수정
 	int answerupdate(Map map);
+	//답변만 삭제
 	int answerdelete(Map map);
+	//질문글 삭제시 답변글도 같이 삭제
+	int boarddelete(Map map);
 }
