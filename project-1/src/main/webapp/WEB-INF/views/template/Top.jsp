@@ -97,73 +97,8 @@
 		    color:black;
 		    /*border-bottom: 3px dashed rgb(101, 101, 101, 0.3);*/
 		}
-		.sidemenu a:hover {
-			cursor: pointer;
-			color:blue;
-			font-weight: bold;
-			background-color: transparent;
-
-		}
-		.firstdown a {
-			display:block;
-			text-decoration:none
-		}
-		.firstdown a:hover {
-			cursor: pointer;
-			text-decoration:none;
-		}
 
 
-.section div a {
-	font-size: 17px;
-	color:gray;
-	line-height:10px;
-	margin: 0px 0px 10px 20px;
-}
-
-.section h3 a {
-    display: flex;
-    font-weight: normal;
-	padding: 0.7em 0px;
-    text-decoration: none;
-    color:black;
-    font-size:22px;
-    font-weight: bold;
-}
-
-.accordion h3 a:hover {
-    text-decoration: none;
-}
-
-.accordion h3 + div {
-    height: 0;
-    overflow: hidden;
-    -webkit-transition: height 0.3s ease-in;
-    -moz-transition: height 0.3s ease-in;
-    -o-transition: height 0.3s ease-in;
-    -ms-transition: height 0.3s ease-in;
-    transition: height 0.3s ease-in;
-}
-
-.accordion :target h3 a {
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.accordion :target h3 + div {
-    height: 140px;
-}
-
-.accordion .section.large:target h3 + div {
-    overflow: auto;
-}
-.arrow-down {
-			width: 0;
-	    	height: 0;
-			border-left: 7px solid transparent;
-			border-right: 7px solid transparent;
-			border-top: 7px solid black;
-		}
 .ditem {
 	display:flex;
 	flex-direction: column;
@@ -196,428 +131,144 @@
 .tsnava2 {
 	color: #EF605D;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 32px;
 	align-items: flex-end;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     margin-right: 25px;
+}
+.tsnava3 {
+	color: black;
+	font-weight: bold;
+	font-size: 18px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 .tsnava1:hover {
 	color:black;
 	text-decoration: none;
 }
-.tsnava2:hover {
-	color:black;
-	text-decoration: none;
+
+.tsnava2:after {
+	display: none;
 }
 ul {
 	list-style: none;
 	margin-bottom: 0px;
 }
-/* 드롭다운 버튼 스타일 */
+		/* 드롭다운 버튼 스타일 */
         .dropdown-toggle {
-            padding: 8px 12px;
+            padding: 2px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
         }
 
         .dropdown-toggle:hover {
-            background-color: #f7f7f7;
+            background-color: black;
+            color: white;
             border-radius: 10px;
+            text-decoration: none;
         }
 
         /* 드롭다운 메뉴 스타일 */
         .dropdown-menu {
+        	width:1760px;
             border: none;
-            background-color:#FDCDBC;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(0,0,0,0);
         }
-        .dropdown-menu a {
-       		color: white;
-            font-weight:bold;
-        }
-
-        .dropdown-item {
-            padding: 8px 20px;
-            transition: background-color 0.3s ease;
-        }
-
-        .dropdown-item:hover {
-            background-color: #f7f7f7;
-            color:black;
-            font-weight: bold;
-        }
-        /* 챗봇 */
-        /* 버튼 관련 디자인*/
-       	#btnBot{
-            position: fixed;
-            right: 50px;
-            bottom: 50px;
-            z-index:4000;
-        }
-        #li_bot {
-            list-style: none;
-            position: relative;
-            display: inline-block;
-            width: 80px;
-            height: 80px;
-        }
-
-        @-moz-keyframes rotate {
-            0% {transform: rotate(0deg);}
-            100% {transform: rotate(-360deg);}
-        }
-
-        @-webkit-keyframes rotate {
-            0% {transform: rotate(0deg);}
-            100% {transform: rotate(-360deg);}
-        }
-
-        @-o-keyframes rotate {
-            0% {transform: rotate(0deg);}
-            100% {transform: rotate(-360deg);}
-        }
-
-        @keyframes rotate {
-            0% {transform: rotate(0deg);}
-            100% {transform: rotate(-360deg);}
-        }
-
-        .round {
-            display: block;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            padding-top: 15px;
-            text-decoration: none;
-            text-align: center;
-            font-size: 28px;
-            text-shadow: 0 1px 0 rgba(255,255,255,.7);
-            letter-spacing: -.065em;
-            -webkit-transition: all .25s ease-in-out;
-            -o-transition: all .25s ease-in-out;
-            -moz-transition: all .25s ease-in-out;
-            transition: all .25s ease-in-out;
-            box-shadow: 2px 2px 7px rgba(0,0,0,.2);
-            border-radius: 300px;
-            z-index: 3500;
-            border-width: 4px;
-            border-style: solid;
-        }
-
-        .round:hover {
-            width: 130%;
-            height: 130%;
-            left: -15%;
-            top: -15%;
-            font-size: 30px;
-            padding-top: 30px;
-            -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
-            -o-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
-            -moz-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
-            box-shadow: 5px 5px 10px rgba(0,0,0,.3);
-            z-index: 4000;
-            -webkit-transform: rotate(-360deg);
-            -moz-transform: rotate(-360deg);
-            -o-transform: rotate(-360deg);
-            transform: rotate(-360deg);
-        }
-
-        a.green {
-            background-color: rgba(255,75,9,1);
-            color: white;
-            border-color: rgba(255,149,108,.2);
-        }
-
-        a.green:hover {
-            color: rgba(255,75,9,1);
-        }
-        .round span.round {
-            display: block;
-            opacity: 0;
-            -webkit-transition: all .5s ease-in-out;
-            -moz-transition: all .5s ease-in-out;
-            -o-transition: all .5s ease-in-out;
-            transition: all .5s ease-in-out;
-            font-size: 1px;
-            border: none;
-            padding: 40% 20% 0 20%;
-            color: #fff;
-            animation-name: btn_ani;
-        }
-        .round span:hover {
-            opacity: .85;
-            font-size: 18px;
-            -webkit-text-shadow: 0 1px 1px rgba(0,0,0,.5);
-            -moz-text-shadow: 0 1px 1px rgba(0,0,0,.5);
-            -o-text-shadow: 0 1px 1px rgba(0,0,0,.5);
-            text-shadow: 0 1px 1px rgba(0,0,0,.5);	
-        }
-        .green span {
-            background: rgba(255,75,9,.7);		
-        }
-        @keyframes btn_ani{
-            0%{
-                transform: translate(500px,500px);
-            }
-            100%{
-
-            }
-        }
-        /* 챗창 내부 디자인 */
-        .textdialog{
-            width: 100%;
-            height: 450px;
-            background-color: #ffe4bf;
-            border: 2px solid #ffcd87;
-            overflow:auto;
-        }
-        .skeleton-user{
-            background-color:white;
-            border-radius: 10px;
-        }
-        .skeleton-gpt{
-            background-color:#d6d6d6;
-            border-radius: 10px;
-        }
-        .user_ques_img{
-            width: 35px;
-            height: 35px;
-        }
-        .gtp_ans_img{
-            width: 35px;
-            height: 35px;
-        }
-        .btn_x{
-            width:50px;
-            position: relative;
-            top:15px;
-            left:70px;
-        }
-        .chatbot{
-            width: 500px;
-            height: 600px;
-            position:fixed;
-            background-color: rgba(255, 23, 11, 0.8);
-            border-radius: 5%;
-            top:calc(100vh - 700px);
-            left:calc(100vw - 700px);
-            display: none;
-            z-index: 5000;
-            animation-name: box_ani;
-            animation-duration: 2s;
-        }
-        @keyframes box_ani {
-            0% {
-                transform: scale(0,0);
-            }
-            50% {
-                transform: scale(1,0.005);
-            }
-            100% {
-                transform: scale(1,1);
-            }
-        }
-        /* 검색시 대기시간동안 띄우는 로딩 애니메이션 */
-        .loading{
-            display: none;
-            width: 155px;
-            height: 50px;
-            background: #ffffff;
-            position: relative;
-            border-radius: 10px;
-            top:-280px;
-            left: 160px;
-            z-index: 6000;
-        }
-        .loading span {
-            display: inline-block;
-            vertical-align: middle;
-            width: .6em;
-            height: .6em;
-            margin: .19em;
-            background: #007DB6;
-            border-radius: .6em;
-            animation: loading 1s infinite alternate;
-        }
-        h2 {
-            color: #383838;
-            margin: 0;
-            font-size: .8em;
-        }
-        .loading span:nth-of-type(2) {
-            background: #008FB2;
-            animation-delay: 0.2s;
-        }
-        .loading span:nth-of-type(3) {
-            background: #009B9E;
-            animation-delay: 0.4s;
-        }
-        .loading span:nth-of-type(4) {
-            background: #00A77D;
-            animation-delay: 0.6s;
-        }
-        .loading span:nth-of-type(5) {
-            background: #00B247;
-            animation-delay: 0.8s;
-        }
-        .loading span:nth-of-type(6) {
-            background: #5AB027;
-            animation-delay: 1.0s;
-        }
-        .loading span:nth-of-type(7) {
-            background: #A0B61E;
-            animation-delay: 1.2s;
-        }
-        @keyframes loading {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-        
+/*탑 메뉴 토글바 */
+#ts__menu {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    box-sizing: border-box;
+}
+#ts__menu .ts__menu__bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.22);
+}
+#ts__menu .pc__ts__menu {
+    position: absolute;
+    top: 20px;
+    left: 260px;
+    width: 1400px;
+    background-color: #fff;
+    padding-bottom: 20px;
+    background-image: url(https://www.bundangcheil.com/images/pc_ham_menu_bg.svg);
+    background-repeat: no-repeat;
+    background-position: 95% 100%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 50px 0px 50px 50px;
+    border: 2px solid #EF605D;
+}
+#ts__menu .ts__box {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    border: 1px solid rgba(112,112,112,0.15);
+    border-top: 0;
+    border-bottom: 0;
+    min-height: 390px;
+    height: 100%;
+}
+#ts__menu .ts__box .left__wr {
+    width: calc(100% - 400px);
+    display: flex;
+}
+#ts__menu .ts__box .left__wr li {
+    width: 25%;
+    border-right: 1px solid rgba(112,112,112,0.15);
+    padding: 45px 34px;
+    list-style: none;
+}
+#ts__menu .ts__box .left__wr li .title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #152358;
+    padding-bottom: 30px;
+    line-height: 1;
+}
+#ts__menu .ts__box .left__wr li a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    line-height: 50px;
+    color: black;
+}
+#ts__menu .ts__box .right__wr {
+    width: 400px;
+    padding-top: 45px;
+    text-align: center;
+    position: relative;
+}
+#ts__menu .ts__box .right__wr div a {
+    text-decoration: none;
+    font-weight:bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    color: black;
+}
+#ts__menu .ts__box .right__wr .home__btn {
+    display: inline-block;
+    width: 102px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    border-radius: 50px;
+    background-color: #FDCDBC;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    margin-top: 26px;
+}
     </style>
 </head>
-<script>
-/*
-	//햄버거 버튼 클릭시 좌측에 메뉴바 열기/닫기
-	jQuery(document).ready(function ($) {
-        $(document).on('click', '.pull-bs-canvas-left', function () {
-            $('body').prepend('<div class="bs-canvas-overlay bg-dark position-fixed w-100 h-100"></div>');
-            if ($(this).hasClass('pull-bs-canvas-left'))
-                $('.bs-canvas-left').addClass('ml-0');
-            return false;
-        });
-
-        $(document).on('click', '.bs-canvas-close, .bs-canvas-overlay', function () {
-            var elm = $(this).hasClass('bs-canvas-close') ? $(this).closest('.bs-canvas') : $('.bs-canvas');
-            elm.removeClass('mr-0 ml-0');
-            $('.bs-canvas-overlay').remove();
-            return false;
-        });
-        */    
-        //페이지의 값이 스크롤을 내리지 않으면 메뉴바 색상부여
-    
-	/*
-	//회원 문구
-	$(document).ready(function() {
-        var token = "${cookie['User-Token'].value}";
-
-        if (token) {
-            $(".tsnava2").text("회원님 반갑습니다");
-        } else {
-            $(".tsnava2").text("로그인 후 이용바랍니다");
-        }
-    });
-*/
-	/* 챗봇 */
-	document.addEventListener('DOMContentLoaded', ()=> {
-		//var apiKey = config.apiKey;
-		var chatgpt = document.querySelector('.gptAnswer');
-		var modal = document.querySelector('#lodingModal');
-	
-		function sendToChatGPT(content){
-		    var cloneUserDialog = document.querySelector(".userDialog").cloneNode(true);
-		    cloneUserDialog.querySelector(".usersQuestion").innerHTML = content;//사용자가 입력한 값 받기
-		    cloneUserDialog.style.display='';
-		    document.querySelector(".textdialog").appendChild(cloneUserDialog);//사용자가 입력한 값 출력
-			fetch('https://api.openai.com/v1/chat/completions', {
-			    method: 'POST',
-			    headers: {
-			        'Content-Type': 'application/json',
-			        'Authorization': `Bearer ${apiKey}`
-			    },
-			    body: JSON.stringify({
-			        model: 'gpt-3.5-turbo',
-			        messages: [{ role: 'user', content: content }],
-			        temperature: 0
-			    })
-			})
-			.then(response => response.json())
-			.then(data => {
-			    console.log(data["choices"][0]["message"]["content"]);
-			    //ChatGPT응답받기 완료
-			    var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
-			    cloneGptDialog.querySelector(".gptAnswer").innerHTML = data["choices"][0]["message"]["content"];
-			    cloneGptDialog.style.display='';
-			    document.querySelector(".textdialog").appendChild(cloneGptDialog);//입력값 출력
-			    document.querySelector(".textdialog").scrollTop = document.querySelector(".textdialog").scrollHeight;//스크롤 올라가는 부분
-			    $('.loading').css("display","none");
-			})
-			.catch(error => {
-			    console.error(error);
-			});
-		}
-	   
-		document.querySelector('#userInput').onkeypress = function(e){
-		    if(e.target.value !== "" && e.keyCode === 13){
-		        $('.loading').css("display","block");
-		        sendToChatGPT(e.target.value)
-		        document.querySelector("#userInput").value = "";
-		    }
-		    else if(e.target.value === "" && e.keyCode === 13){
-		        var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
-		        cloneGptDialog.querySelector(".gptAnswer").innerHTML = "질문을 입력해주세요";
-		        cloneGptDialog.style.display='';
-		        document.querySelector(".textdialog").appendChild(cloneGptDialog);//입력값 출력
-		        document.querySelector(".textdialog").scrollTop = document.querySelector(".textdialog").scrollHeight;//스크롤 올라가는 부분
-		        document.querySelector("#userInput").value = "";
-		    }
-		};
-		/*
-	    $(".btn_x").click(function(){
-	        var userDialogElements = document.querySelectorAll(".userDialog");
-	        var gptDialogElements = document.querySelectorAll(".gptDialog");
-	
-	        for (var i = 1; i < userDialogElements.length; i++) {
-	            userDialogElements[i].remove();
-	        }
-	
-	        for (var j = 1; j < gptDialogElements.length; j++) {
-	            gptDialogElements[j].remove();
-	        }
-	        $("#chatbot").css("display","none");
-	        $("#btnBot").css("display","block");
-	        $('.loading').css("display","none");
-	    });
-		*/
-	});
-	
-	function showChatbot() {
-	    document.getElementById('btnBot').style.display = 'none';
-	    document.getElementById('chatbot').style.display = 'block';
-	}
-	
-	function closeChatbot(){
-		var userDialogElements = document.querySelectorAll(".userDialog");
-	    var gptDialogElements = document.querySelectorAll(".gptDialog");
-	
-	    for (var i = 1; i < userDialogElements.length; i++) {
-	        userDialogElements[i].remove();
-	    }
-	
-	    for (var j = 1; j < gptDialogElements.length; j++) {
-	        gptDialogElements[j].remove();
-	    }
-	    $("#chatbot").css("display","none");
-	    $("#btnBot").css("display","block");
-	    $('.loading').css("display","none");
-	}
-
-</script>
 <body>
 <div class="container-fluid position-relative p-0" style="width:100%;">
 	 <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="justify-content:space-around; padding:10px 0px;" id="navbar">
-	 <!-- 
-        <div class="firstdown p-0 mx-4">
-            <a class="pull-bs-canvas-left mr-5 d-flex">
-                <span style="font-weight:bold; font-size:50px; color:#EF605D">&#9776;</span>
-            </a>
-        </div>
-      -->
+
         <a class="navbar-brand" href="<c:url value='/' />">
         	<img src="<c:url value='/images/mainicon.png' />" width="50" height="40">
         	<img src="<c:url value='/images/maintitle.png' />" width="160" height="40">
@@ -651,28 +302,87 @@ ul {
         </fmt:bundle>
         <c:set var="token" value="${cookie['User-Token'].value }"/>
         <c:set var="payload" value='${m:getTokenPayloads(token,key) }' />
-		
-        <ul class="tsnavul2 mx-5 d-flex">
-	        <li class="tsnavli2 text2 mx-2 dropdown">
-	            <a class="tsnava2 dropdown-toggle" role="button" id="navbarDropdown" data-toggle="dropdown">${empty token ? "로그인 후 이용해 주세요" : payload.name+="님 반갑습니다" }</a> 
+        <ul class="d-flex" style="margin-right: 50px;">
+        	<li class="text2 mx-2 dropdown" style="display:flex; align-items: center;">
+        		<span class="tsnava3" >${empty token ? "로그인 후 이용해 주세요" : payload.name+="님 반갑습니다" }</span>
+        	</li>
+	        <li class="text2 mx-2 dropdown">
+	            <!--<a class="tsnava2 dropdown-toggle" role="button" id="navbarDropdown" data-toggle="dropdown">${empty token ? "로그인 후 이용해 주세요" : payload.name+="님 반갑습니다" }</a>-->
+	             <a class="tsnava2 dropdown-toggle" role="button" id="navbarDropdown" data-toggle="dropdown">&#9776;</a>
 	            <div class="dropdown-menu dropdown-menu-right" style="text-align: center;" aria-labelledby="navbarDropdown">
-	               	
-	                <c:if test="${not empty token}" var="isLogin">       
-	                    <a class="dropdown-item" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>
-	                    <a class="dropdown-item" href="<c:url value="/project/Logout.do"/>">로그아웃</a>
-	                    <a class="dropdown-item" href="<c:url value="/AdminMain.do"/>">관리자</a>
-	                    <a class="dropdown-item" href="<c:url value="/test1.do"/>">태현(테스트)</a>
-	                    <a class="dropdown-item" href="#">테스트용</a>
-	                </c:if>
-	                <c:if test="${not isLogin}">
-	                    <a class="dropdown-item" href="<c:url value="/project/Login.do"/>">로그인</a>        
-	                    <a class="dropdown-item" href="<c:url value="/project/Join.do"/>">회원가입</a>       
-	                </c:if>
+	            	<div id="ts__menu" class="on" style="display: block;">
+						<div class="ts__menu__bg"></div>
+						<div class="pc__ts__menu">
+							<div class="ts__box">
+								<ul class="left__wr">
+									<li>
+										<a href="#" class="title">영양소 찾기</a>
+										<a href="<c:url value="/NutrientSelect.do"/>">인기 영양소</a>
+							            <a href="<c:url value="/NutrientSelectVitamin.do"/>">비타민</a>	   
+							            <a href="<c:url value="/NutrientSelectMineral.do"/>">미네랄 및 기타영양소</a>	         
+							            <a href="<c:url value="/NutrientSelectFunctional.do"/>">기능성 원료</a>
+										
+									</li>
+									<li>
+										<a href="#" class="title">영양제 찾기</a>
+										<a href="<c:url value="/ranking/selectfood.do"/>">전체 검색</a>
+							            <a href="<c:url value="/ranking/selectfoodnutrient.do"/>">성분 검색</a>	 			
+							            <a href="<c:url value="/ranking/selectfoodcompany.do"/>">제품명/브랜드 검색</a>										
+									</li>
+									<li>
+										<a href="#" class="title">정신건강 테스트</a>
+										<a href="<c:url value="/project/MentalTest1.do"/>">심리적 스트레스</a>
+										<a href="<c:url value="/project/MentalTest2.do"/>">흡연 유형 평가</a>			
+										<a href="<c:url value="/project/MentalTest3.do"/>">알코올 의존(AUDIT-K)</a>				
+										<a href="<c:url value="/project/MentalTest4.do"/>">우울증(CES-D)</a>									
+									</li>
+									<li>
+										<a href="#" class="title">무엇을 넣지</a>
+										<a class="dropdown-item" href="<c:url value="/AdminMain.do"/>">관리자</a>
+	                    				<a class="dropdown-item" href="<c:url value="/test1.do"/>">태현(테스트)</a>
+										
+									</li>
+								</ul>
+								<div class="right__wr">
+									<img src="<c:url value="/images/tsimages/mascot.png"/>" style="height: 230px; width: 400px;" >
+									<div class="d-flex">
+						                <c:if test="${not empty token}" var="isLogin">       
+						                    <a class="dropdown-item" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>
+						                    <a class="dropdown-item" href="<c:url value="/project/Logout.do"/>">로그아웃</a>
+						                </c:if>
+						                <c:if test="${not isLogin}">
+						                    <a class="dropdown-item" href="<c:url value="/project/Login.do"/>">로그인</a>        
+						                    <a class="dropdown-item" href="<c:url value="/project/Join.do"/>">회원가입</a>       
+						                </c:if>
+					                </div>
+									<a href="<c:url value='/' />" class="home__btn">Home<img src="https://www.bundangcheil.com/images/pcham_menu_arrow.svg" alt="이동"></a>
+								</div>
+							</div>
+						</div>
+					</div>
 	            </div>
 	        </li>
 	    </ul>
     </nav>
     <!-- navbar left side
+    				<div class="d-flex">
+		                <c:if test="${not empty token}" var="isLogin">       
+		                    <a class="dropdown-item" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>
+		                    <a class="dropdown-item" href="<c:url value="/project/Logout.do"/>">로그아웃</a>
+		                    <a class="dropdown-item" href="<c:url value="/AdminMain.do"/>">관리자</a>
+		                    <a class="dropdown-item" href="<c:url value="/test1.do"/>">태현(테스트)</a>
+		                    <a class="dropdown-item" href="#">테스트용</a>
+		                </c:if>
+		                <c:if test="${not isLogin}">
+		                    <a class="dropdown-item" href="<c:url value="/project/Login.do"/>">로그인</a>        
+		                    <a class="dropdown-item" href="<c:url value="/project/Join.do"/>">회원가입</a>       
+		                </c:if>
+	                </div>
+    
+    
+    
+    
+    
     <div class="bs-canvas bs-canvas-left position-fixed h-100 justify-content-start" style="z-index:99999; background: linear-gradient(to bottom, #ffffff, #FFFAFA);">
         <header class="bs-canvas-header p-4 bg-gra1 justify-content-center align-items-center">
         	<h4 class="d-inline-block mb-0 text1">
@@ -776,69 +486,6 @@ ul {
         </div>
     </div>
 	navbar left side end-->
-	<!-- 챗봇 -->
-	<div id="btnBot">
-        <li id="li_bot">
-        	<a href="#" class="round green" onclick="showChatbot()">Q-Bot<span class="round font-weight-bold">무엇이든<br/>물어보세요</span></a>
-        </li>
-    </div>
-
-    <div class="chatbot" id="chatbot">
-        <div class="container">
-            <div class="p-2 m-1">
-                <img src="<c:url value="/images/chatbot/bot_title.png"/>" class="mr-2 w-75"/>
-                <img src="<c:url value="/images/chatbot/bot_x.png"/>" onclick="closeChatbot()" class="btn btn_x"/>
-            </div>
-            
-            <div class="textdialog">
-                <div>
-                    <div class="container mt-2 w-100">
-                        <div class="skeleton-gpt d-flex row bg-light align-content-center p-0 m-0">
-                            <div class="col-2 d-flex justify-content-center align-items-center">
-                                <img src="<c:url value="/images/chatbot/bot_a.png"/>" class="gtp_ans_img"/>
-                            </div>
-                            <h5 class="gptAnswer col-10 d-flex p-3 ">안녕하세요. 무엇이든 물어보세요</h5>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="userDialog p-2"style="display:none;">
-                    <div class="skeleton-user d-flex row p-0 m-0">
-                        <div class="col-2 d-flex justify-content-center p-3">
-                            <img src="<c:url value="/images/chatbot/bot_q.png"/>" class="user_ques_img"/>
-                        </div>
-                        <div class="usersQuestion col-10 d-flex p-3 w-100"></div>
-                    </div>
-                </div>
-                
-                <div class="gptDialog p-2"style="display:none;">
-                    <div class="skeleton-gpt d-flex row p-0 m-0">
-                        <div class="gptAnswer col-10 d-flex p-3"></div>
-                        <div class="col-2 d-flex justify-content-center pt-3">
-                            <img src="<c:url value="/images/chatbot/bot_a.png"/>" class="gtp_ans_img"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="inputDIV p-1 mt-1">
-                <input type="text" class="form-control w-100 rounded bg-light" id="userInput" placeholder="무엇이든 물어보세요">
-            </div>
-        </div>
-        <!-- loading modal -->
-        <div class="loading">
-            <h2 class="pt-2 pl-3 ">답변을 준비중입니다</h2>
-            <div class="pl-2">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </div>
-	
 </div>
 <script>
 	const firebaseConfig = {
@@ -905,6 +552,5 @@ ul {
 	        }
 	    });
 	});
-	
 </script>
  

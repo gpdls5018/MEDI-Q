@@ -104,12 +104,12 @@
 	                            <div class="card-body p-2 m-3">
 	                                <div class="form-group">
 									  <label for="usr"><h3><kbd class="btn_deco font-weight-bold">질문</kbd></h3></label>
-									  <input type="text" class="form-control form-control-lg" placeholder="질문을 입력하세요" id="usr">
+									  <input type="text" id="usr" name="title" class="form-control form-control-lg" placeholder="질문을 입력하세요" >
 									</div>
 	                                <br>
 	                                <div class="form-group">
 									  <label for="comment"><h3><kbd class="btn_deco font-weight-bold">질문 내용</kbd></h3></label>
-									  <textarea class="form-control form-control-lg" rows="5" placeholder="질문 내용을 입력하세요" id="comment"></textarea>
+									  <textarea id="comment" name="content" class="form-control form-control-lg" rows="5" placeholder="질문 내용을 입력하세요" ></textarea>
 									</div>
 	                            </div>
 	                        </div>

@@ -98,30 +98,35 @@ public class BoardController {
 	@RequestMapping(value="/View.do",method = {RequestMethod.GET,RequestMethod.POST})
 	public String view(HttpServletRequest req,@RequestParam Map map,Model model) { 
 		
-		//id란 이름으로 token의 id를 저장
-		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
-		//id로 회원 정보 가져와서 active 정보 가져옴
-		String active=loginService.selectOne(id).getActive();
-		System.out.println("active:"+active);
-		model.addAttribute("active", active);
+		//회원인 경우
+		String token= jwTokensService.getToken(req, tokenName);//token을 가져옴
+		Map payload = jwTokensService.getTokenPayloads(token, secretKey);//payload로 만듬
+		if(payload.get("sub") != null) {//payload는 map형태의 많은 데이터(이건 TRUE)하지만 .get("sub")를 통해 아이디가 있는지 판별(있으면 null이 아님)
+			String id=payload.get("sub").toString();//가져온 id를 String id에 저장(현재 로그인한 아이디)
+			model.addAttribute("id", id);//모델에 id란 이름으로 id 저장
+			
+			//작성자가 관리자인지 아닌지 체크, id로 회원정보 가져와서 active 정보 가져옴
+			String active=loginService.selectOne(id).getActive();
+			System.out.println("active:"+active);//"Y, A, N 중 하나"
+			model.addAttribute("active", active);//model에 active로 저장
+		}
 		
-		//답변글 용 Map생성
+		//답변글 Map생성
 		Map paramMap =new HashMap<>();
 		
-		System.out.println("체크용1");
+		System.out.println("체크용1");//삭제 예정
 		//질문글 하나 불러와서 map에 저장
-		System.out.println("map에 무엇이 있나? "+map);
+		System.out.println("map에 무엇이 있나? "+map);//{no=값,87}
 		map=board.selectOne(map);
-		System.out.println("체크용2");
-		//record란 이름으로 질문글 하나
+		System.out.println("체크용2");//삭제 예정
+		//질문글 하나 record란 이름으로 저장
 		model.addAttribute("record", map);
-		System.out.println("체크용3");
-		//System.out.println(model);//콘솔 체크용
-		System.out.println("map의 값 체크"+map);
-		
-		System.out.println("여기서 아래 에러 발생함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("체크용3");//삭제 예정
+		System.out.println("map의 값 체크"+map);//map의 값 체크{NO=87, POSTDATE=2023.07.25, AGE_GROUP=20대, ACTIVE=Y, GENDER=남자, TITLE=1ㅁ2, CONTENT=111ㅁ2, NAME=최*훈}
+		//
+		System.out.println("여기서 아래 에러 발생함!");
 		if (map.get("NO") != null) {
-			System.out.println("map의 NO:"+map.get("NO"));
+			System.out.println("map의 NO:"+map.get("NO"));//map의 NO:87
 			System.out.println("여기로 들어오는가?");
 			System.out.println("성공");
 			//질문글의 no로 답변글을 불러와서 paramMap에 저장
