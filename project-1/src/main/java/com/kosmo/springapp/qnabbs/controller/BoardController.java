@@ -1,7 +1,6 @@
 package com.kosmo.springapp.qnabbs.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,15 +10,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.fasterxml.jackson.databind.deser.impl.CreatorCandidate.Param;
-import com.kosmo.springapp.qnabbs.service.AnswerBoardDTO;
 import com.kosmo.springapp.qnabbs.service.DaoService;
 import com.kosmo.springapp.qnabbs.service.ListPagingData;
 import com.kosmo.springapp.qnabbs.service.PagingUtil;
@@ -80,10 +75,12 @@ public class BoardController {
 	//글작성후 list.do로 이동(목록으로 이동)
 	@PostMapping("/Write.do")
 	public String writeProcess(HttpServletRequest req,@RequestParam Map map,Model model) {
+		
 		//id란 이름으로 token의 id를 저장
 		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
 		//map타입으로 id란 이름으로 id저장
 		map.put("id", id);
+		
 		//affect에 글작성이 성공하였다면 (int) 1,실패면 0으로 저장
 		int affected = board.insert(map);
 		//map에 1명의 글 저장 
@@ -99,21 +96,27 @@ public class BoardController {
 	
 	//상세보기
 	@RequestMapping(value="/View.do",method = {RequestMethod.GET,RequestMethod.POST})
-	public String view(@RequestParam Map map,Model model) { 
+	public String view(HttpServletRequest req,@RequestParam Map map,Model model) { 
 		
-		//Map생성
+		//id란 이름으로 token의 id를 저장
+		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
+		//id로 회원 정보 가져와서 active 정보 가져옴
+		String active=loginService.selectOne(id).getActive();
+		System.out.println("active:"+active);
+		model.addAttribute("active", active);
+		
+		//답변글 용 Map생성
 		Map paramMap =new HashMap<>();
 		
 		System.out.println("체크용1");
-		//게시판의 하나의 글 불러와서 map에 저장
+		//질문글 하나 불러와서 map에 저장
 		System.out.println("map에 무엇이 있나? "+map);
 		map=board.selectOne(map);
 		System.out.println("체크용2");
-		//record란 이름으로 위의 map을 저장
+		//record란 이름으로 질문글 하나
 		model.addAttribute("record", map);
 		System.out.println("체크용3");
 		//System.out.println(model);//콘솔 체크용
-		//게시판의 하나의 답글을 불러와서 map에 저장
 		System.out.println("map의 값 체크"+map);
 		
 		System.out.println("여기서 아래 에러 발생함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -121,16 +124,18 @@ public class BoardController {
 			System.out.println("map의 NO:"+map.get("NO"));
 			System.out.println("여기로 들어오는가?");
 			System.out.println("성공");
-			//새로운 paramMap
+			//질문글의 no로 답변글을 불러와서 paramMap에 저장
 			paramMap=answerservice.answerselectOne(map);
 		}
 		System.out.println("체크용4");
 		//paramMap이란 이름으로 map을 저장
 		model.addAttribute("paramMap", paramMap);
 		//paramMap을 출력
-		System.out.println("paramMap:"+paramMap);
+		System.out.println("paramMap(답변이 없으면 null):"+paramMap);
 		System.out.println("체크용5");
 		System.out.println("여기출력까지 성공함");
+		
+		
 		return "board/View";
 	}///////////////
 	
@@ -166,13 +171,14 @@ public class BoardController {
 		//String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
 		//map.put("id", id);
 		//서비스 호출
-		int answerdelete = board.delete(map);
-	    System.out.println("여기 delete후 "+answerdelete);
-		if (answerdelete == 0) {
+		int deleteCount = board.delete(map);
+	    System.out.println("여기 delete후 "+deleteCount);
+		if (deleteCount == -1) {
 	        model.addAttribute("FAILURE", "삭제할 수 없어요");
+	        System.out.println("delete에 에러 발생");
 	        return "forward:/board/View.do";
 	    }
-	    System.out.println("삭제된 글 수: " + answerdelete);
+	    System.out.println("삭제된 답글 수: " + deleteCount);
 	    // 뷰정보 반환 - 목록을 처리하는 컨트롤러로 이동
 	    return "forward:/board/List.do"; 
 	}

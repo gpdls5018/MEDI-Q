@@ -18,4 +18,8 @@ public class AndroidServiceImpl {
 		return androidMapper.selectFoodList();
 	}
 
+	public List<FunctionalFoodListDTO> selectFoodListByNutrient(String nutrient) {
+		return androidMapper.selectFoodListByNutrient(nutrient);
+	}
+
 }

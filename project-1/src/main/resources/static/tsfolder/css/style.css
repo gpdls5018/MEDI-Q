@@ -189,9 +189,9 @@
 }
 
 /* Media Queries */
-@media only screen and (min-width: 1700px) {
+@media only screen and (min-width: 1900px) {
 	.main-header .header-wrapper {width: 57%;}
-	#section-119 {height: 51em;}
+	#section-119 {height: 50em;}
 	#section-119 .content-slider .slider .banner .banner-inner-wrapper {padding-top: 20em;}
 }
 

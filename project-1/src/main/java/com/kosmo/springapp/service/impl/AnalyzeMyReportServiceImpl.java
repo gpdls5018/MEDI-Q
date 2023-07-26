@@ -136,20 +136,29 @@ public class AnalyzeMyReportServiceImpl {
         			if(UMmatcher.find()) {
         				if(Float.parseFloat(DMmatcher.group(0)) > Float.parseFloat(nutNumber)) {
             				total_result += 1.5;
-            				String result = "<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\">"+nut+"의 권장 섭취량은 : <span style='color:#0033FF;'>"+ DMmatcher.group(0)+"</span> 입니다.<br/>"+nut+"의 상한 섭취량은 : <span style='color:#FF0033;'> "+UMmatcher.group(0)+ "</span>입니다.<br/> 현재 사용자님의 섭취량은 : <span style='color:#0033FF;'>"+nutNumber + "</span>입니다.</div><br/>";
+            				String result = "<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\"><div style=\"text-align: center;\">"+nut+"의 적정 섭취량</div><div style=\"text-align: center;\">"+nutdto.getN_DRI_M()+" ~ "+nutdto.getN_UL_M()+"</div><div class=\"progress-container\" style=\"white-space: nowrap;\">\r\n"
+            						+ "	  <progress id=\"myProgress\" style=\"border-right:2px dotted black\" value="+nutNumber+" max="+DMmatcher.group(0)+"></progress><progress id=\"myProgress1\" style=\"border-right:2px dotted black\"></progress><progress id=\"myProgress2\" style=\"border-right: 1px solid black;\"></progress>\r\n"
+            						+ "	</div><div style=\"text-align: center;\">"+"<span style='color:#0033FF;'>"+nutNumber+"</span> 만큼 드시고 계십니다</div>"+"</div><br/>";
             				System.out.println(result);
             				resultList.add(result);
             			}//권장 섭취량 보다 조금 먹었을 경우 1.5점 추가
             			else if(Float.parseFloat(DMmatcher.group(0)) <= Float.parseFloat(nutNumber) &&
             					Float.parseFloat(UMmatcher.group(0)) > Float.parseFloat(nutNumber)) {
             				total_result += 2;
-            				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\">"+nut+"의 권장 섭취량은 : <span style='color:#0033FF;'>"+ DMmatcher.group(0)+"</span> 입니다.<br/>"+nut+"의 상한 섭취량은 : <span style='color:#FF0033;'> "+UMmatcher.group(0)+ "</span>입니다.<br/>현재 사용자님의 섭취량은 : <span style='color:#33CC33;'>"+nutNumber + "</span>입니다.</div><br/>";
+            				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\"><div style=\"text-align: center;\">"+nut+"의 적정 섭취량</div><div style=\"text-align: center;\">"+nutdto.getN_DRI_M()+" ~ "+nutdto.getN_UL_M()+"</div><div class=\"progress-container\" style=\"white-space: nowrap;\">\r\n"
+            						+ "	  <progress id=\"myProgress\" style=\"border-right:2px dotted black\" value="+nutNumber+" max="+DMmatcher.group(0)+"></progress><progress id=\"myProgress1\" style=\"border-right:2px dotted black\" value="+nutNumber+" max="+UMmatcher.group(0)+"></progress><progress id=\"myProgress2\" style=\"border-right: 1px solid black;\"></progress>\r\n"
+            						+ "	</div><div style=\"text-align: center;\">"+"<span style='color:#33CC33;'>"+nutNumber+"</span> 만큼 드시고 계십니다</div>"+"</div><br/>";
             				System.out.println(result);
             				resultList.add(result);
             			}//권장 섭취량과 상한 섭취량 사이로 먹었을 경우 2.5점 추가
             			else {
             				total_result += 1.75;
-            				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\">"+nut+"의 권장 섭취량은 : <span style='color:#0033FF;'>"+ DMmatcher.group(0)+"</span> 입니다.<br/>"+nut+"의 상한 섭취량은 : <span style='color:#FF0033;'> "+UMmatcher.group(0)+ "</span>입니다.<br/>현재 사용자님의 섭취량은 : <span style='color:#FF0033;'>"+nutNumber + "</span>입니다.</div><br/>";
+            				float UM2 = Float.parseFloat(UMmatcher.group(0))*2;
+            				float UM = Float.parseFloat(nutNumber)-Float.parseFloat(UMmatcher.group(0));
+            				System.out.println(UM);
+            				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\"><div style=\"text-align: center;\">"+nut+"의 적정 섭취량</div><div style=\"text-align: center;\">"+nutdto.getN_DRI_M()+" ~ "+nutdto.getN_UL_M()+"</div><div class=\"progress-container\" style=\"white-space: nowrap;\">\r\n"
+            						+ "	  <progress id=\"myProgress\" style=\"border-right:2px dotted black\" value="+nutNumber+" max="+DMmatcher.group(0)+"></progress><progress id=\"myProgress1\" style=\"border-right:2px dotted black\" value="+nutNumber+" max="+UMmatcher.group(0)+"></progress><progress id=\"myProgress2\" style=\"border-right: 1px solid black;\" value="+UM+" max="+UM2+"></progress>\r\n"
+            						+ "	</div><div style=\"text-align: center;\">"+"<span style='color:#FF0000;'>"+nutNumber+"</span> 만큼 드시고 계십니다</div>"+"</div><br/>";
             				System.out.println(result);
             				resultList.add(result);
             			}//상한섭취량보다 많이 먹었을 경우 2점추가
@@ -158,13 +167,18 @@ public class AnalyzeMyReportServiceImpl {
         		else {
         			if(Float.parseFloat(DMmatcher.group(0)) > Float.parseFloat(nutNumber)){
         				total_result += 1.5;
-        				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\">"+nut+"의 권장 섭취량은 : <span style='color:#0033FF;'>"+ DMmatcher.group(0)+"</span> 입니다.<br/>"+nut+"의 상한 섭취량은 존재 하지 않습니다.<br/>현재 사용자님의 섭취량은 : <span style='color:#0033FF;'>"+nutNumber + "</span>입니다.</div><br/>";
+        				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\"><div style=\"text-align: center;\">"+nut+"의 적정 섭취량</div><div style=\"text-align: center;\">"+nutdto.getN_DRI_M()+"</div><div class=\"progress-container\" style=\"white-space: nowrap;\">\r\n"
+        						+ "	  <progress id=\"myProgress\" style=\"border-right:2px dotted black\" value="+nutNumber+" max="+DMmatcher.group(0)+"></progress><progress id=\"myProgress1\"></progress><progress id=\"myProgress2\" style=\"border-right: 1px solid black;\"></progress>\r\n"
+        						+ "	</div><div style=\"text-align: center; width: 900px\">"+"<span style='color:#0033FF;'>"+nutNumber+"</span> 만큼 드시고 계십니다</div>"+"</div><br/>";
         				System.out.println(result);
         				resultList.add(result);
         			}//상한 섭취량이 없고 권장서취량보다 적게 먹었을 경우 1.5점 추가
         			else if(Float.parseFloat(DMmatcher.group(0)) <= Float.parseFloat(nutNumber)){
         				total_result += 2;
-        				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\">"+nut+"의 권장 섭취량은 : <span style='color:#0033FF;'>"+ DMmatcher.group(0)+"</span> 입니다.<br/>"+nut+"의 상한 섭취량은 존재 하지 않습니다.<br/>현재 사용자님의 섭취량은 : <span style='color:#33CC33;'>"+nutNumber + "</span>입니다.</div><br/>";
+        				float DM3=Float.parseFloat(DMmatcher.group(0))*10;
+        				String result ="<div style=\"border: 2px solid #000; padding: 10px; border-radius: 10px;\"><div style=\"text-align: center;\">"+nut+"의 적정 섭취량</div><div style=\"text-align: center;\">"+nutdto.getN_DRI_M()+"</div><div class=\"progress-container\" style=\"white-space: nowrap;\">\r\n"
+        						+ "	  <progress id=\"myProgress\" style=\"border-right:2px dotted black\" value="+nutNumber+" max="+DMmatcher.group(0)+"></progress><progress id=\"myProgress1\" style=\"border-right: 1px solid black;width:600px;\" value="+nutNumber+" max="+DM3+">\r\n"
+        						+ "	</div><div style=\"text-align: center; width: 900px\">"+"<span style='color:#33CC33;'>"+nutNumber+"</span> 만큼 드시고 계십니다</div>"+"</div><br/>";
         				System.out.println(result);
         				resultList.add(result);
         			}//상한섭취량이 없고 권장섭취량 보다 많이먹었을 경우 2.5점추가

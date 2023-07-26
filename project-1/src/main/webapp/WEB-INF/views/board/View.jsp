@@ -15,10 +15,10 @@
 </head>
 <style>
 	.qna_banner{
-        	width:75%;
-        	height:280px;
-        	background-color:#FDCDBC;
-            border-radius: 30px;
+       	width:75%;
+       	height:280px;
+       	background-color:#FDCDBC;
+		border-radius: 30px;
 	}
 	.qna_title{
 		position:relative;
@@ -56,11 +56,11 @@
 	}
 	.card_deco_body{
 		padding:0.5rem;
-		background-color:#FDCDBC;
+		background-color:#ff956c;
 		border-radius: 20px;
 	}
 	.btn_deco{
-		background: linear-gradient(180deg,#fd9068,#fbc1ab);
+		background:linear-gradient(180deg,#ff4b09,#ff956c);
 	}
 	.qna_mascot{
 		width:40px;
@@ -69,7 +69,6 @@
 		background-size:contain;
 	}
 	.qna_ans{
-		width:400px;
 		height:90px;
 	}
 	.card_font1{
@@ -90,7 +89,7 @@
 	                <span class="text_2 m-0">답답했던 영양제의 모든 것!</span>
 	            	<p class="text_2">전문가에게 물어보세요</p>
 	            </div>
-	            <img src="<c:url value="/resources/images/qna/pharm.png"/>" class="qna_img">
+	            <img src="<c:url value="/images/qna/pharm.png"/>" class="qna_img">
 			</div>
         </div>
         <!-- 게시판 시작 -->
@@ -101,8 +100,8 @@
 	            <!-- 게시판 가운데 부분 -->
 	            <div class="d-flex col-8 flex-wrap flex-direction justify-content-center align-content-stretch">
 	                <div class="col pb-5">
-	                    <img src="<c:url value="/resources/images/qna/qna_ans.png"/>" class="qna_ans ml-1">
-	                    <div class="row justify-content-center">
+	                    <img src="<c:url value="/images/qna/qna_ans.png"/>" class="qna_ans ml-1">
+	                    <div class="row justify-content-center pt-3">
 	                    	<!--여기부터 답변출력  -->
 	                    	<c:if test="${! empty FAILURE}">
 								<div class="alert alert-success alert-dismissible fade show">
@@ -156,19 +155,17 @@
 	                
 	                <!-- 출력 부분 -->
 	                <c:if test="${not empty paramMap }">
-	                	
 		                <div class="card_deco col-12 p-1">
-		                	
 	                        <div class="card-body card_deco_body m-2" style="padding:.5rem;">
 	                            <div class="card-text d-flex align-items-center">
-	                            	<img src="<c:url value="/resources/images/qna/pharmacist.png"/>" class="qna_mascot">
+	                            	<img src="<c:url value="/images/qna/pharmacist.png"/>" class="qna_mascot">
 	                            	<span class="text-light font-weight-bold text_3 ml-2">메디큐 약사님의 답변입니다</span>
 	                            </div>
 	                        </div>
 	                        <!--  -->
 	                        <div class="card-body m-2">
 	                        	<br>
-	                        	<!-- 답글이 존재하지 않을시 뷰 --
+	                        	<!-- 답글이 존재하지 않을시 뷰 -->
 	                        	<!-- 기능 구현 하기위해 not을 붙여둠 -->
 	                        	<c:if test="${not empty records}" var="isEmpty">
 									<div id="empty-comment">
@@ -202,11 +199,11 @@
             </div>
             <div class="d-flex col-2 flex-wrap align-content-stretch">
             </div>
-	        <div class="row d-flex flex-wrap flex-direction mt-2 justify-content-center">
+	        <div class="row d-flex flex-wrap flex-direction justify-content-center pt-3">
 	        	<div class="col-2"></div>
-                <%-- <a class="col text-decoration-none text-dark text-center text_3 p-3" href="<c:url value="/board/View.do?no=${record.no-1}"/>">이전 질문</a> --%>
-                <a class="col text-decoration-none text-dark text-center text_3 p-3" href="<c:url value="/board/List.do"/>">질문 목록</a><!-- 그냥 넘길지 page번호까지 넘길지 고민 중 -->
-                <%-- <a class="col text-decoration-none text-dark text-center text_3 p-3" href="<c:url value="/board/View.do?no=${record.no+1}"/>">다음 질문</a> --%>
+                <%-- <a class="btn_deco rounded-pill col-1 text-decoration-none text-white text-center text_3 p-2" href="<c:url value="/board/View.do?no=${record.no-1}"/>">이전 질문</a> --%>
+                <a class=" btn_deco rounded-pill col-1 text-decoration-none text-white text-center text_3 p-2" href="<c:url value="/board/List.do"/>">질문 목록</a><!-- 그냥 넘길지 page번호까지 넘길지 고민 중 -->
+                <%-- <a class="btn_deco rounded-pill col-1 text-decoration-none text-white text-center text_3 p-2" href="<c:url value="/board/View.do?no=${record.no+1}"/>">다음 질문</a> --%>
                 <div class="col-2"></div>
             </div>
 	    </div>

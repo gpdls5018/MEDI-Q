@@ -90,8 +90,12 @@ public class RestAPIController {
 	
 	@Autowired
 	private AndroidServiceImpl androidServiceImpl;
-	@GetMapping("/androidTest.do/{no}")
-	public List<FunctionalFoodListDTO> androidText(@PathVariable(name = "no") String no) {
+	@GetMapping("/androidSelectAll.do/{no}")
+	public List<FunctionalFoodListDTO> androidSelectAll(@PathVariable(name = "no") String no) {
 		return androidServiceImpl.selectFoodList();
+	}
+	@GetMapping("/androidSelectByNutrient.do/{nutrient}")
+	public List<FunctionalFoodListDTO> androidSelectByNutrient(@PathVariable(name = "nutrient") String nutrient) {
+		return androidServiceImpl.selectFoodListByNutrient(nutrient);
 	}
 }
