@@ -426,7 +426,9 @@
                 	 yAxisID: 'right-y-axis', // 오른쪽 Y축을 사용
                      type: 'line',
                      label: '평균 별점(right-y)',
-                     borderColor: 'rgba(255, 159, 64, 0.6)',
+                     borderColor: 'rgba(255, 159, 64, 1)',
+                     borderWidth: 1,
+                     fill: false,
                      data: parsedData2
                 }
             ]
@@ -495,8 +497,11 @@
                	 yAxisID: 'right-y-axis', // 오른쪽 Y축을 사용
                     type: 'line',
                     label: '평균 별점(right-y)',
-                    borderColor: 'rgba(75, 192, 192, 0.6)',
-                    data: parsedData2
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    fill: false,
+                    data: parsedData2,
+                    
                }
            	]
         };
