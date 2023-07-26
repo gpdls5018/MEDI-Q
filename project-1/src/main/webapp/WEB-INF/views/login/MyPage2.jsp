@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
 body {
     display: block;
@@ -170,7 +171,11 @@ body {
     }
     .board{
     	padding: 10px;
+    	overflow-y: scroll;
     }
+    .board::-webkit-scrollbar {
+	    display: none; /* 크롬, 사파리, 오페라, 엣지 */
+	}
     .secnews {
         margin-left: 20px;
     }
@@ -330,7 +335,7 @@ body {
         box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
         border-radius: .5rem;
         width: 500px;
-        height: 150px;
+        height: 130px;
         margin: 10px 10px;
     }
     .reviewinfo {
@@ -499,6 +504,27 @@ body {
 	  border-radius: 10px; 
 	}
 
+	/* 영양제 검색 */
+	.food-li {
+	  width: 120px;
+      background-color: white;
+      color: black;
+      border-radius: 15px;
+      flex: 0 0 25%;
+    }
+	.food-li:hover {
+      border: #ff4b4b solid 2px;
+    }
+    .food-li-checked {
+      border: #ff4b4b solid 2px;
+    }
+
+	#food .subMenu{
+		overflow-y: scroll;
+	}
+	#food .subMenu::-webkit-scrollbar {
+	    display: none; /* 크롬, 사파리, 오페라, 엣지 */
+	}
 </style>
 <!-- 메인 바디 부분 -->
 <div id="tsmain">
@@ -633,21 +659,23 @@ body {
                                     	</c:if>
                                     	<c:if test="${not isEmptyReview }">
 	                                    	<c:forEach var="r" items="${review }">
-		                                        <li class="review">
-		                                            <section class="kzDdbXreview">
-		                                                <section class="divimg" style="width: 160px;">
-		                                                    <img fetchpriority="high" width=auto height="140" src="${r['IMGURL'] }" style="color: transparent; margin-top: 10px; border-radius: 10px;">
-		                                                </section>
-		                                                <label for="wishBtn:rk0:" class="bPHVOx">
-		                                                    <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
-		                                                </label>
-		                                            </section>
-		                                            <div class="reviewinfo w-100">
-		                                                <div class="sdp">${fn:split(r['R_REGIDATE']," ")[0]}</div>
-		                                                <div class="snp">${r['PRODUCTNAME'] }</div>
-		                                                <div class="srp">${r['CONTENT'] }</div>
-		                                            </div>
-		                                        </li>
+	                                    		<a href='<c:url value="/detail.do?no=${r['NO'] }"/>'>
+		                                        	<li class="review">
+			                                            <section class="kzDdbXreview">
+			                                                <section class="divimg" style="width: 160px;">
+			                                                    <img fetchpriority="high" src="${r['IMGURL'] }" style="max-width:120px; height:120px; color: transparent; margin-top: 10px; border-radius: 10px;">
+			                                                </section>
+			                                                <label for="wishBtn:rk0:" class="bPHVOx">
+			                                                    <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
+			                                                </label>
+			                                            </section>
+			                                            <div class="reviewinfo w-100">
+			                                                <div class="sdp">${fn:split(r['R_REGIDATE']," ")[0]}</div>
+			                                                <div class="snp">${r['PRODUCTNAME'] }</div>
+			                                                <div class="srp">${r['CONTENT'] }</div>
+			                                            </div>
+		                                        	</li>
+		                                        </a>
 	                                        </c:forEach>
                                         </c:if>
                                     </ul>
@@ -841,23 +869,32 @@ body {
 					            <li class="item" id="food">
 					                <a href="#food" class="button">내가 먹는 영양제</a>
 					                <div class="subMenu d-block">
-					                    <p class="my-2" style=" font-size: 15px; display:flex; align-items: center; justify-content: center; font-weight: bold;">섭취중인 영양제를 등록해주세요</p>
-					                    <div class="" style="text-align: center;">
+					                    <p id="search-myFood" class="my-2" style=" font-size: 15px; display:flex; align-items: center; justify-content: center; font-weight: bold;">섭취중인 영양제를 등록해주세요</p>
+					                    <div class="input-group" style="text-align: center;">
 						      				<input id=searchText class="form-control" type="text" placeholder="브랜드명 혹은 제품명을 입력해주세요" style="border-radius:10px; width:350px;">
 						          		</div>
-						          		<div class="ml-5">
-								          	<ul class="list-unstyled d-flex" id="searchFoodList" style="flex-wrap: wrap;">
-								            	<li class="food-li m-2" style="text-align: center;flex-basis: 100px;display:None">
-								              		<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
-								              		<div style="font-size: 15px;color: #939393;width:150px;"></div>
+						          		<div class="">
+								          	<ul class="list-unstyled d-flex justify-content-center px-2" id="searchFoodList" style="flex-wrap: wrap; padd">
+								            	<li class="food-li m-2 px-2" style="text-align: center;flex-basis: 100px;display:None">
+								              		<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="width:100px;height:100px;border-radius: 15px;">
+								              		<div style="font-size: 15px;color: #939393;"></div>
 								            	</li>
 								          	</ul>
 							          	</div>
 					                </div>
-					                <div class="subMenu" id="select-div">
-					                	<!-- 여기에 영양제 검색->선택 시 이미지 꾸리기 -->
-					                </div>
-					            </li>
+					           	</li>
+					            <li class="item" id="select-food">
+						            <a href="#select-food" class="button">내가 선택한 영양제</a>
+						            <div class="subMenu" id="select-div">
+						              	<div class="d-block">
+							              	<!-- 여기에 영양제 검색->선택 시 이미지 꾸리기 -->
+							               	<ul class="list-unstyled d-flex" style="flex-wrap: wrap;">
+							                		
+							               	</ul>
+						               	</div>
+						            </div>
+						        </li>
+					            
 					            <li class="item" id="special">
 					                <a href="#special" class="button">건강 특수 상태</a>
 					                <div class="subMenu">
@@ -910,24 +947,42 @@ body {
 			   url: "<c:url value='/searchMyFood.do'/>",
 			   data : { "searchWord" : $( "#searchText" ).val()},
 		   }).done(function(searchFood) {
-			   	var nameList = searchFood.map(function(item){return item['PRODUCTNAME'];});
-			   	response(nameList);
-			   	var imgList = searchFood.map(function(item){return item['IMGURL'];});
-			   	while (ulDiv.childElementCount > 1) {
-			   		ulDiv.removeChild(ulDiv.lastChild); // 마지막 자식 요소를 제거
-			   	}
-			   	searchFood.forEach(function(item) {
-			   		var li = document.querySelector('.food-li').cloneNode(true);
-			   		li.style.display = '';
-			   		li.classList.replace('food-li-checked','food-li');
-			   		if (item['IMGURL']===undefined) {
-			   			item['IMGURL'] = 'http://localhost:9090/images/thumbnail_img/NO_IMG.jpeg';
-			   		}
-			   		li.querySelector('img').src = item['IMGURL'];
-			   		li.querySelector('div').innerHTML = item['PRODUCTNAME'];
-			   		ulDiv.appendChild(li);
-			   	});
-			   	
+			   /*
+			    var p = document.createElement('p');
+			    //var empty = document.querySelector('#empty');
+			    p.setAttribute('style','font-size:15px;margin-left: 85px;');
+			    //p.setAttribute('id','empty');
+			    
+			    if(searchFood.length){*/
+				   	var nameList = searchFood.map(function(item){return item['PRODUCTNAME'];});
+				   	response(nameList);
+				   	var imgList = searchFood.map(function(item){return item['IMGURL'];});
+				   	while (ulDiv.childElementCount > 1) {
+				   		ulDiv.removeChild(ulDiv.lastChild); // 마지막 자식 요소를 제거
+				   		//ulDiv.removeChild(empty);
+				   	}
+				   	
+				   	searchFood.forEach(function(item) {
+				   		var li = document.querySelector('.food-li').cloneNode(true);
+				   		li.style.display = '';
+				   		li.classList.replace('food-li-checked','food-li');
+				   		if (item['IMGURL']===undefined) {
+				   			item['IMGURL'] = 'http://localhost:9090/images/thumbnail_img/NO_IMG.jpeg';
+				   		}
+				   		li.querySelector('img').src = item['IMGURL'];
+				   		li.querySelector('div').innerHTML = item['PRODUCTNAME'];
+				   		ulDiv.appendChild(li);
+				   	});
+			   /* }
+			    else{
+			    	while (ulDiv.childElementCount >= 1) {
+				   		ulDiv.removeChild(ulDiv.lastChild);
+				   	}
+			    	
+			    	
+			    	p.textContent='입력한 제품과 동일한 제품이 없습니다';
+			    	ulDiv.appendChild(p);
+			    }*/
 		   }).fail(function(error) {
 			   	console.log(error);
 		   });
@@ -937,6 +992,14 @@ body {
 	    // 자동완성 기능 초기화
 	    $("#searchText").autocomplete("option", "appendTo", "#take-foodList-modal");
   	});
+	
+	
+	$(document).on('click', '.food-li', function() {
+	    var foodContainer = $('#select-div ul');
+	    $(this).clone(true).appendTo(foodContainer);
+	    console.log('uldiv:',ulDiv)
+	    ulDiv.style.display='none';
+	});
 	
 
 	//이미지 수정하기
