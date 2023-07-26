@@ -148,7 +148,7 @@ body {
     .update_box {
         display: flex;
         flex-direction: column;
-        width: 400px;
+        width: 370px;
     }
     /*
     .update_font {
