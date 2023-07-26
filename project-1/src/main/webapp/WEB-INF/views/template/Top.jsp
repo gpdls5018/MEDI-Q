@@ -131,19 +131,26 @@
 .tsnava2 {
 	color: #EF605D;
 	font-weight: bold;
-	font-size: 32px;
+	font-size: 30px;
 	align-items: flex-end;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     margin-right: 25px;
+    padding-top: 0px;
 }
 .tsnava3 {
 	color: black;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 16px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    padding-top: 10px;
 }
 .tsnava1:hover {
 	color:black;
+	text-decoration: none;
+}
+.tslogina span:hover {
+	color:white;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 	text-decoration: none;
 }
 
@@ -240,7 +247,8 @@ ul {
 }
 #ts__menu .ts__box .right__wr {
     width: 400px;
-    padding-top: 45px;
+    padding-top: 20px;
+    margin-bottom: 20px;
     text-align: center;
     position: relative;
 }
@@ -304,7 +312,12 @@ ul {
         <c:set var="payload" value='${m:getTokenPayloads(token,key) }' />
         <ul class="d-flex" style="margin-right: 50px;">
         	<li class="text2 mx-2 dropdown" style="display:flex; align-items: center;">
-        		<span class="tsnava3" >${empty token ? "로그인 후 이용해 주세요" : payload.name+="님 반갑습니다" }</span>
+        		<c:if test="${not empty token}" var="isLogin">       
+                    <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/MyPage.do"/>"><span class="tsnava3" >${payload.name+="님 반갑습니다"}</span></a>
+                </c:if>
+                <c:if test="${not isLogin}">
+                    <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/Login.do"/>"><span class="tsnava3" >로그인 후 이용해 주세요</span></a>        
+                </c:if>
         	</li>
 	        <li class="text2 mx-2 dropdown">
 	            <!--<a class="tsnava2 dropdown-toggle" role="button" id="navbarDropdown" data-toggle="dropdown">${empty token ? "로그인 후 이용해 주세요" : payload.name+="님 반갑습니다" }</a>-->
