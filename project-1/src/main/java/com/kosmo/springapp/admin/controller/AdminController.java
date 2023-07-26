@@ -3,6 +3,7 @@ package com.kosmo.springapp.admin.controller;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
+import java.math.BigDecimal;
+import java.sql.Clob;
 import java.sql.Date;
+import java.sql.SQLException;
 
 import com.kosmo.springapp.admin.service.AdminMapper;
 import com.kosmo.springapp.model.MemberDTO;
@@ -293,21 +297,128 @@ public class AdminController {
     @GetMapping("/AdminDB.do")
 	public String adminDB(Model model) {
     	
+    	// 영양제 DB
     	List<Map<String, Object>> foodInfos = adminMapper.getInfoFromFoodTable();
 
     	// Map 내의 null 값을 빈 문자열로 대체하는 처리
         for (Map<String, Object> foodInfo : foodInfos) {
+        	foodInfo.put("no", getStringValue(foodInfo.get("NO")));
             foodInfo.put("productName", getStringValue(foodInfo.get("PRODUCTNAME")));
             foodInfo.put("material", getStringValue(foodInfo.get("MATERIAL")));
             foodInfo.put("nutrient", getStringValue(foodInfo.get("NUTRIENT")));
             foodInfo.put("reviewCount", getStringValue(foodInfo.get("REVIEW_COUNT")));
             foodInfo.put("avgStarScore", getStringValue(foodInfo.get("AVG_STARSCORE")));
         }
-    	
         model.addAttribute("foodInfos", foodInfos);
     	
+        // 영양소(DB) 정보 조회
+        List<Map<String, Object>> nutInfos = adminMapper.getInfoFromNut();
+        for (Map<String, Object> nutInfo : nutInfos) {
+            // CLOB 객체를 String으로 변환하여 작업
+            Object productNamesObj = nutInfo.get("PRODUCTNAMES");
+            if (productNamesObj != null) {
+                String productNames;
+                if (productNamesObj instanceof Clob) {
+                    Clob clob = (Clob) productNamesObj;
+                    try {
+                        productNames = clob.getSubString(1, (int) clob.length());
+                        productNames = productNames.replaceAll("&quot;", "").replaceAll("&apos;", "");
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        productNames = "";
+                    }
+                } else {
+                    productNames = productNamesObj.toString();
+                }
+                nutInfo.put("productNames", productNames);
+            } else {
+                // Set "-" when productNamesObj is null
+                nutInfo.put("productNames", "-");
+            }
+
+            // NAME, FUNC, VIEW 추가 및 null 값을 빈 문자열로 변환하여 동일한 키로 저장
+            nutInfo.put("name", getStringValue(nutInfo.get("N_NAME")));
+            nutInfo.put("func", getStringValue(nutInfo.get("N_FUNC")));
+
+            // nView 값을 BigDecimal로 변환하여 저장
+            String nViewStr = getStringValue(nutInfo.get("N_VIEW"));
+            BigDecimal nView = new BigDecimal(nViewStr);
+            nutInfo.put("view", nView);
+            
+            // 추가한 키를 제거하여 원래 키와 이름이 충돌하지 않도록 합니다.
+            nutInfo.remove("N_NAME");
+            nutInfo.remove("N_FUNC");
+            nutInfo.remove("N_VIEW");
+        }
+        
+        // 원료(INGREDIENT) 정보 조회
+        List<Map<String, Object>> ingInfos = adminMapper.getInfoFromIng();
+        for (Map<String, Object> ingInfo : ingInfos) {
+            // CLOB 객체를 String으로 변환하여 작업
+            Object productNamesObj = ingInfo.get("PRODUCTNAMES");
+            if (productNamesObj != null) {
+                String productNames;
+                if (productNamesObj instanceof Clob) {
+                    Clob clob = (Clob) productNamesObj;
+                    try {
+                        productNames = clob.getSubString(1, (int) clob.length());
+                        productNames = productNames.replaceAll("&quot;", "").replaceAll("&apos;", "");
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        productNames = "";
+                    }
+                } else {
+                    productNames = productNamesObj.toString();
+                }
+                ingInfo.put("productNames", productNames);
+            } else {
+                // Set "-" when productNamesObj is null
+            	ingInfo.put("productNames", "-");
+            }
+
+            // NAME, FUNC, VIEW 추가 및 null 값을 빈 문자열로 변환하여 동일한 키로 저장
+            ingInfo.put("name", getStringValue(ingInfo.get("I_NAME")));
+            ingInfo.put("func", getStringValue(ingInfo.get("I_FUNC")));
+
+            // iView 값을 BigDecimal로 변환하여 저장
+            String iViewStr = getStringValue(ingInfo.get("I_VIEW"));
+            BigDecimal iView = new BigDecimal(iViewStr);
+            ingInfo.put("view", iView);
+            
+            // 추가한 키를 제거하여 원래 키와 이름이 충돌하지 않도록 합니다.
+            ingInfo.remove("I_NAME");
+            ingInfo.remove("I_FUNC");
+            ingInfo.remove("I_VIEW");
+        }
+        
+        // 영양소(NUTRIENT)와 원료(INGREDIENT) 정보를 하나의 리스트로 합칩니다.
+        List<Map<String, Object>> mergedInfos = new ArrayList<>();
+        mergedInfos.addAll(nutInfos);
+        mergedInfos.addAll(ingInfos);
+
+        
+        // 뷰(View)를 기준으로 내림차순으로 정렬합니다.
+        mergedInfos.sort(Comparator.comparingInt(info -> {
+            BigDecimal view = (BigDecimal) info.get("view");
+            return view != null ? view.intValue() : 0;
+        }));
+        Collections.reverse(mergedInfos);
+
+        // 최종 결과를 모델에 추가합니다.
+        model.addAttribute("mergedInfos", mergedInfos);
+
+        
+        
+        
 	    return "admin/AdminDB";
 	}
+    
+    
+    
+    
+    
+    
+    
     
     @GetMapping("/getFoodInfo")
     public List<Map<String, Object>> getFoodInfo() {
@@ -320,7 +431,7 @@ public class AdminController {
     
     // null 값을 빈 문자열로 변환하는 헬퍼 메서드
     private String getStringValue(Object value) {
-        return value != null ? value.toString() : "";
+        return value != null ? value.toString() : "-";
     }
     
     
