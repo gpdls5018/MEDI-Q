@@ -439,7 +439,7 @@ html, body {
 			          				<c:if test="${empty item.imgURL}">	
 										<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
 									</c:if>
-										<span id="item.company" class="txt1">${item.company}</span>
+										<span id="item.company" class="txt1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${item.company}</span>
 										<span id="item.productName" class="txt2">${item.productName}</span>
 										<div class="review d-flex" style="width:inherit;">
 											<span class="star-point"><fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }</span>

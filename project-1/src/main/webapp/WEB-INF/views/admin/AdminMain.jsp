@@ -142,7 +142,7 @@
 	        	<li>
 	        		<a href="<c:url value="/AdminDB.do"/>" style="display: flex; align-items: center;">
 	        			<i class="fas fa-table" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
-	        			&nbsp;&nbsp;데이터베이스 관리
+	        			&nbsp;&nbsp;데이터베이스 통계
 	        		</a>
 	        	</li>
 	        	<li>

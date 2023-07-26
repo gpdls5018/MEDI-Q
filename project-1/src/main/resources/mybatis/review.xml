@@ -62,7 +62,7 @@
 		ORDER BY count DESC
 	</select>
 	<select id="selectReviewByUserId" parameterType="String" resultType="Map">
-		SELECT PRODUCTNAME,content,R_REGIDATE,FOODTABLE.IMGURL IMGURL
+		SELECT FOODTABLE.NO NO,PRODUCTNAME,content,R_REGIDATE,FOODTABLE.IMGURL IMGURL
                           FROM REVIEWTABLE RIGHT OUTER JOIN FOODTABLE 
                           ON REVIEWTABLE.R_PRODUCTNO =FOODTABLE.NO  
                           WHERE R_ID = #{userId}
