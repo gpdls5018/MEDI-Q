@@ -52,7 +52,11 @@ public interface AdminMapper {
 	
 	// 영양제 정보 가져오기
 	List<Map<String, Object>> getInfoFromFoodTable();
-	
+
+	// 영양소 정보 가져오기
+	List<Map<String, Object>> getInfoFromNut();
+	List<Map<String, Object>> getInfoFromIng();
+
 	
 	
 	

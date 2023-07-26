@@ -158,6 +158,72 @@
 		) WHERE ROWNUM &lt;= 30
 	</select>
 	
+	<select id="getInfoFromNut" resultType="Map">
+		SELECT
+		    N_NAME,
+		    N_FUNC,
+		    N_VIEW,
+		    RTRIM(
+		        XMLAGG(XMLELEMENT(E, '"' || PRODUCTNAME || '", ').EXTRACT('//text()') ORDER BY PRODUCTNAME).GetClobVal(),
+		        ', '
+		    ) AS PRODUCTNAMES
+		FROM (
+		    SELECT
+		        N_NAME,
+		        N_FUNC,
+		        N_VIEW,
+		        PRODUCTNAME,
+		        ROW_NUMBER() OVER (PARTITION BY N_NAME, N_FUNC, N_VIEW ORDER BY PRODUCTNAME) AS RN
+		    FROM
+		        NUTRIENT,
+		        FOODTABLE
+		    WHERE
+		        FOODTABLE.NUTRIENT LIKE '%' || NUTRIENT.N_FINDINGNAME || '%'
+		        OR FOODTABLE.STANDARD LIKE '%' || NUTRIENT.N_FINDINGNAME || '%'
+		) Subquery
+		WHERE Subquery.RN &lt;= 3
+		GROUP BY
+		    N_NAME,
+		    N_FUNC,
+		    N_VIEW
+	</select>
+	
+	<select id="getInfoFromIng" resultType="Map">
+		SELECT
+		    I_NAME,
+		    I_FUNC,
+		    I_VIEW,
+		    RTRIM(
+		        XMLAGG(XMLELEMENT(E, '"' || PRODUCTNAME || '", ').EXTRACT('//text()') ORDER BY PRODUCTNAME).GetClobVal(),
+		        ', '
+		    ) AS PRODUCTNAMES
+		FROM (
+		    SELECT
+		        I_NAME,
+		        I_FUNC,
+		        I_VIEW,
+		        PRODUCTNAME,
+		        ROW_NUMBER() OVER (PARTITION BY I_NAME, I_FUNC, I_VIEW ORDER BY PRODUCTNAME) AS RN
+		    FROM
+		        INGREDIENT,
+		        FOODTABLE
+		    WHERE
+		        FOODTABLE.NUTRIENT LIKE '%' || INGREDIENT.I_FINDINGNAME || '%'
+		        OR FOODTABLE.STANDARD LIKE '%' || INGREDIENT.I_FINDINGNAME || '%'
+		) Subquery
+		WHERE Subquery.RN &lt;= 3
+		GROUP BY
+		    I_NAME,
+		    I_FUNC,
+		    I_VIEW
+	</select>
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

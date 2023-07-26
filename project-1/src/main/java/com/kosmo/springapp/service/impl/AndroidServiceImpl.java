@@ -22,4 +22,8 @@ public class AndroidServiceImpl {
 		return androidMapper.selectFoodListByNutrient(nutrient);
 	}
 
+	public List<FunctionalFoodListDTO> selectFoodListByPurpose(String purpose) {
+		return androidMapper.selectFoodListByPurpose(purpose);
+	}
+
 }
