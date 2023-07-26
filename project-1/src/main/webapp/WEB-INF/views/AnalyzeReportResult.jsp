@@ -21,6 +21,35 @@
       font-family : Noto Sans KR, sans-serif;
     }
 </style>
+<style>
+
+progress::-webkit-progress-bar {
+    background-color: #e0eaf0;
+}
+
+progress::-webkit-progress-value {
+    background-color: #329ad1;
+}
+
+progress {
+    background-color: #FFFFFF;
+    width: 300px;
+    height: 30px; /* 원하는 프로그레스 바 높이로 조정하세요 */
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+    position: relative;
+}
+#myProgress1::-webkit-progress-value {
+	background-color: #00FF2B;
+}
+#myProgress::-webkit-progress-value {
+	background-color: #0040FF;
+	border-left: 1px solid black;
+}
+#myProgress2::-webkit-progress-value {
+	background-color: #E02828;
+}
+</style>
 <body>
 	<div class="container mt-5">
 		<div style="background-image:url(<c:url value="/images/basic/result.png"/>);background-repeat : no-repeat;background-size : contain;background-position:right,center;">
