@@ -202,7 +202,8 @@
 		</aside>
 		-->
 	</section>
-
+</div><!-- id=main  -->
+<jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
 
 <script>
 $(document).ready(function(){
@@ -222,5 +223,3 @@ $(document).ready(function() {
   $('.tsidebar').stick_in_parent();
 });
 </script>
-</div><!-- id=main  -->
-<jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
