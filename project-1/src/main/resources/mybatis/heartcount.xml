@@ -9,7 +9,7 @@
 		select count(*) from LIKEFOOD where id='${id}' AND foodname='${name}'
 	</select>
 	<insert id="insertHeart" parameterType="String">
-		insert into LIKEFOOD (ID,foodname,LIKEFOOD) values('${id}','${name}','Y')
+		insert into LIKEFOOD (ID,foodname) values('${id}','${name}')
 	</insert>
 	<delete id="deleteHeart" parameterType="String">
 		delete from LIKEFOOD where id='${id}' AND foodname='${name}'
