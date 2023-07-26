@@ -134,68 +134,75 @@
 									<button class="btn btn-light text-light btn_deco">목록</button>
 								</a>
 								<!-- id가 관리자일때만 버튼이 보임 -->
-								<!-- 기능구현이 끝나면 이 주석을 지워주세요 --><!-- 기능구현이 된다면 not을 붙이고 지워주셍 -->
+								<!-- 기능구현이 끝나면 이 주석을 지워주세요 -->
 								<!-- 참이면(not false) -->
-								<%-- <c:if test="${sessionScope.id==comment.id }"> --%>
-								<c:if test="${true}">
-									<a href='<c:url value="/board/AnswerWrite.do?no=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
-										<button class="btn btn-light text-light btn_deco">답변작성</button>
-									</a>
-									<a href='<c:url value="/board/AnswerEdit.do?NO=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
-										<button class="btn btn-light text-light btn_deco">답변수정</button>
-									</a>
-									<div class="text-decoration-none p-1">
-										<button class="btn btn-light text-light btn_deco my-delete">답변삭제</button>
-									</div> 
+								<c:if test="${active eq 'Y' }"><!-- member속성 ACTIVE 관리자('A')일때만 -->
+									<c:choose>
+										<c:when test="${empty paramMap.CONTENT}">
+											<a href='<c:url value="/board/AnswerWrite.do?no=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
+												<button class="btn btn-light text-light btn_deco">답변작성</button>
+											</a>
+										</c:when>
+										<c:when test="${not empty paramMap.CONTENT }">
+											<a href='<c:url value="/board/AnswerEdit.do?NO=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
+												<button class="btn btn-light text-light btn_deco">답변수정</button>
+											</a>
+											<div class="text-decoration-none p-1">
+												<button class="btn btn-light text-light btn_deco my-delete" data-answer-no="${paramMap.ANSWER_NO}">답변삭제</button><!-- my-delete속성으로 삭제기능 -->
+											</div> 
+										</c:when>
+									</c:choose>
 								</c:if>
 							</div>
 	                    </div>
 					</div><!-- 답변게시판 질문부분 끝 -->
+					
 	                <!-- 답변 게시판(관리자) -->
-	                
 	                <!-- 출력 부분 -->
-	                <c:if test="${not empty paramMap }">
-		                <div class="card_deco col-12 p-1">
-	                        <div class="card-body card_deco_body m-2" style="padding:.5rem;">
-	                            <div class="card-text d-flex align-items-center">
-	                            	<img src="<c:url value="/images/qna/pharmacist.png"/>" class="qna_mascot">
-	                            	<span class="text-light font-weight-bold text_3 ml-2">메디큐 약사님의 답변입니다</span>
-	                            </div>
-	                        </div>
-	                        <!--  -->
-	                        <div class="card-body m-2">
-	                        	<br>
-	                        	<!-- 답글이 존재하지 않을시 뷰 -->
-	                        	<!-- 기능 구현 하기위해 not을 붙여둠 -->
-	                        	<c:if test="${not empty records}" var="isEmpty">
-									<div id="empty-comment">
-										<div class="font-weight-bold">약사님의 답변을 기달리는 중입니다.</div>
-									</div>
-								</c:if>
-		                        <!-- 답글이 존재시 뷰 -->
-		                        <c:if test="${not empty paramMap }">
-		                        	<div>
-				                        <span class="card-text"><h5>${paramMap.CONTENT}</h5></span><!-- 답변내용 -->
-				                        <hr style="border: 1px solid #E6E9ED;"/>
-				                        <div class="card-text d-flex align-items-center">
-					                       	<button class="btn btn-light text-light btn_deco mr-3" onclick="increaseNum()">도움이 돼요</button>
-					                       	<span class="font-weight-bold"><span id="number">0</span>명에게 도움이 됐습니다.</span>
-					                   	</div>
-					                   	<!-- 토큰의 id가 관리자일때 삭제버튼 표시 -->
-					                   	<!-- 만약 기능 성공시 이 주석 삭제 -->
-					                   	<%-- 
-					                   	<c:if test="${sessionScope.id==comment.id }" var="isSame">
-											<button class="btn btn-info btn-sm my-delete ">삭제</button> 
-										</c:if>
-										<c:if test="${not isSame }">삭제불가입니다</c:if> 
-										--%>
-									</div>
-								</c:if>
-		                   	</div>
-	                        
-	                    </div>
-                    </c:if>
-                </div>
+	                <c:choose>
+	                	<c:when test="${empty paramMap.CONTENT }">
+			                <div class="card_deco col-12 p-1">
+		                        <div class="card-body card_deco_body m-2" style="padding:.5rem;"><!-- 네비 바 -->
+		                            <div class="card-text d-flex align-items-center">
+		                            	<img src="<c:url value="/images/qna/pharmacist.png"/>" class="qna_mascot">
+		                            	<span class="text-light font-weight-bold text_3 ml-2">메디큐 약사님의 답변입니다</span>
+		                            </div>
+		                        </div><!-- 네비 바 -->
+		                        <div class="card-body m-2">
+		                        	<br>
+		                        	<!-- 답글이 존재하지 않을시 뷰 -->
+		                        	<c:if test="${empty paramMap.CONTENT}" var="isEmpty">
+										<div id="empty-comment">
+											<div class="font-weight-bold">약사님의 답변을 기달리는 중입니다.</div>
+										</div>
+									</c:if>
+			                    </div>
+		                    </div>
+                    	</c:when>	
+	                    <c:when test="${not empty paramMap.CONTENT }">                      
+						    <!-- 답글이 존재시 뷰 -->
+							<div class="card_deco col-12 p-1 answer-section"><!-- class 속성 answer-section으로 답변삭제시 태그들 아래 다 삭제 -->
+				               	<!-- 네비 바 -->
+					            <div class="card-body card_deco_body m-2" style="padding:.5rem;">
+					                <div class="card-text d-flex align-items-center">
+					                	<img src="<c:url value="/images/qna/pharmacist.png"/>" class="qna_mascot">
+					                	<span class="text-light font-weight-bold text_3 ml-2">메디큐 약사님의 답변입니다</span>
+					                </div>
+					            </div>
+				                <div class="card-body m-2">  
+									<c:if test="${not empty paramMap }">
+								 		<span class="card-text"><h5>${paramMap.CONTENT}</h5></span><!-- 답변내용 -->
+										<hr style="border: 1px solid #E6E9ED;"/>
+										<div class="card-text d-flex align-items-center">
+											<button class="btn btn-light text-light btn_deco mr-3" onclick="increaseNum()">도움이 돼요</button>
+												<span class="font-weight-bold"><span id="number">0</span>명에게 도움이 됐습니다.</span>
+										</div>
+									</c:if>
+				            	</div>
+				            </div>
+			            </c:when>
+		            </c:choose>
+				</div>
             </div>
             <div class="d-flex col-2 flex-wrap align-content-stretch">
             </div>
@@ -212,7 +219,7 @@
 </body>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
 <script>
-	//질문 글 삭제
+	//질문글 삭제
 	function isDelete(){
 		if(confirm("삭제하시겠습니까?")){
 			location.replace("<c:url value="/board/Delete.do?no=${record.NO}"/>");
@@ -224,84 +231,36 @@
 		count++;//숫자 증가
 		document.getElementById("number").textContent = count;//숫자 표시 업데이트
 	}
-	// '답변 삭제' 버튼의 'click' 이벤트에 deleteAnswer 함수를 바인딩
-	/*
-	$(document).on('click', '.my-delete', deleteAnswer);
-
-	function deleteAnswer() {
-	  if (confirm('정말로 삭제하시겠습니까?')) {
-	    console.log("삭제하려는 답글 param.ANSWER_NO: "${param.ANSWER_NO} );
-	    let answerNo = ${param.ANSWER_NO};
-	    var this_ = $(this);
-
-	    // Ajax 요청 생성
-	    $.ajax({
-	      url: "<c:url value='/board/AnswerDelete.do'/>",
-	      type: 'delete',
-	      data: JSON.stringify({'answerno': answerNo}),
-	      dataType: 'json',
-	      contentType: "application/json",
-	      success: function(data) {
-	        console.log('삭제 성공:', data);
-	        this_.closest('.answer-section').remove();
-	      },
-	      error: function(xhr, status, error) {
-	        console.log('삭제 오류:', error);
-	        alert('삭제 중 오류가 발생했습니다. 나중에 다시 시도해주세요.');
-	        console.error('AJAX 오류:', xhr, status, error);
-	      }
-	    });
-	  }
-	}
-
-	
-	*/
-	/*
-	// '답변 삭제' 버튼의 'click' 이벤트에 deleteAnswer 함수를 바인딩
-	$(document).on('click', '.my-delete', deleteAnswer);
-	
-	//답변 삭제 처리 함수
-	
-	function deleteAnswer(){
-		if (confirm('정말로 삭제하시겠습니까?')) {
-			console.log("삭제하려는 답글 param.ANSWER_NO: " + ${param.ANSWER_NO});
-			let answerNo = ${param.ANSWER_NO};
-			var this_ = $(this);
-			
-			//Ajax요청 생성
-			$.ajax({
-				url:"<c:url value="/board/AnswerDelete.do"/>",
-				type:'delete',
-				data:JSON.stringify({'answerno':'answerNo'}),
-				dataType:'json',
-				contentType:"application/json",
-				console.log('삭제 성공:',data){
-					this_.colsest('.answer-section').remove();
-				},
-				error: function(xhr,status,error){
-					console.log('삭제 오류:',error);
-					alert('삭제 중 오류가 발생했습니다. 나중에 다시 시도해주세요.');
-					console.error('AJAX 오류:', xhr, status, error);
-				}
-			});
-		}
-		     */ 
-		/*
-		if(confirm('정말로 삭제하시겠습니까?')){
-			console.log("삭제하려는 답글 param.ANSWER_NO:" +${param.ANSWER_NO});
-			let answerno=${param.ANSWER_NO};
-			var this_=$(this);
-			$.ajax({
-				url:"<c:url value="board/AnswerDelete.do"/>",
-				type:'delete',
-				data:JSON.stringify({'answerno:'answerno}),
-				dataType:'json',
-				contentType:"application/json"
-			}).done(function(data){
-				console.log('삭제 성공:',data);
-				?????.attr('jsdelete').remove();
-			});
-		}*/
-	//});
-	
+	//답변글 삭제
+	$(document).on('click','.my-delete',function() {
+        if(confirm('답변글을 삭제하시겠습니까?')){
+            var answerNo = $(this).data('answer-no');//data-answer-no="${paramMap.ANSWER_NO}"
+         	// Ajax 요청 생성
+            $.ajax({
+                url: "<c:url value="/board/AnswerDelete.do"/>",
+                type: 'DELETE',
+                data: JSON.stringify({ 'answer_no':answerNo}),
+                dataType: 'json',
+                contentType: "application/json"
+            }).done(function(data){
+                console.log('삭제 성공:', data);
+                alert('답변삭제 완료');
+                $('.answer-section').remove();
+                //페이지 리로드 실행(ajax에 맞지않으나 기능은 성공)
+                window.location.href = "<c:url value="/board/View.do?no=${record.NO}"/>";
+            	/*
+                $.ajax({
+            		
+            	}).done(function(data){
+            		
+            	});*/
+            });
+        }
+    });
+    /*
+    function anDelete(){
+        if(confirm('답변글을 삭제하시겠습니까?')){
+            window.location.href = "<c:url value="/board/View.do?no=${record.NO}"/>";
+        }
+    }*/
 </script>

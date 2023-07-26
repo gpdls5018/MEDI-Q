@@ -111,7 +111,7 @@
 		                                <div class="form-group">
 										  <label for="usr"><h3><kbd class="btn_deco font-weight-bold">질문 수정</kbd></h3></label>
 										   <input type="hidden" name="no" value="${empty record.NO ? param.NO :record.NO}" />
-										  <input type="text" value='${record.TITLE}${param.TITLE}' class="form-control form-control-lg" placeholder="질문을 수정하세요" id="usr">
+										  <input type="text" id="usr" name="title" value='${record.TITLE}${param.TITLE}' class="form-control form-control-lg" placeholder="질문을 수정하세요" >
 										</div>
 		                                <br>
 		                                <div class="form-group">
