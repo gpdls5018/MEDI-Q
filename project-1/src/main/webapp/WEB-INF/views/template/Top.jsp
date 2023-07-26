@@ -131,19 +131,25 @@
 .tsnava2 {
 	color: #EF605D;
 	font-weight: bold;
-	font-size: 32px;
+	font-size: 30px;
 	align-items: flex-end;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     margin-right: 25px;
+    padding-top: 0px;
 }
 .tsnava3 {
 	color: black;
 	font-weight: bold;
-	font-size: 18px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+	font-size: 16px;
+    padding-top: 10px;
 }
 .tsnava1:hover {
 	color:black;
+	text-decoration: none;
+}
+.tslogina span:hover {
+	color:white;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 	text-decoration: none;
 }
 
@@ -225,11 +231,10 @@ ul {
     list-style: none;
 }
 #ts__menu .ts__box .left__wr li .title {
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 23px;
+    font-weight: bold;
     color: #152358;
     padding-bottom: 30px;
-    line-height: 1;
 }
 #ts__menu .ts__box .left__wr li a {
     display: block;
@@ -240,7 +245,8 @@ ul {
 }
 #ts__menu .ts__box .right__wr {
     width: 400px;
-    padding-top: 45px;
+    padding-top: 20px;
+    margin-bottom: 20px;
     text-align: center;
     position: relative;
 }
@@ -304,7 +310,12 @@ ul {
         <c:set var="payload" value='${m:getTokenPayloads(token,key) }' />
         <ul class="d-flex" style="margin-right: 50px;">
         	<li class="text2 mx-2 dropdown" style="display:flex; align-items: center;">
-        		<span class="tsnava3" >${empty token ? "로그인 후 이용해 주세요" : payload.name+="님 반갑습니다" }</span>
+        		<c:if test="${not empty token}" var="isLogin">       
+                    <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/MyPage.do"/>"><span class="tsnava3" >${payload.name+="님 반갑습니다"}</span></a>
+                </c:if>
+                <c:if test="${not isLogin}">
+                    <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/Login.do"/>"><span class="tsnava3" >로그인 후 이용해 주세요</span></a>        
+                </c:if>
         	</li>
 	        <li class="text2 mx-2 dropdown">
 	            <!--<a class="tsnava2 dropdown-toggle" role="button" id="navbarDropdown" data-toggle="dropdown">${empty token ? "로그인 후 이용해 주세요" : payload.name+="님 반갑습니다" }</a>-->
@@ -316,7 +327,7 @@ ul {
 							<div class="ts__box">
 								<ul class="left__wr">
 									<li>
-										<a href="#" class="title">영양소 찾기</a>
+										<p class="title">영양소 찾기</p>
 										<a href="<c:url value="/NutrientSelect.do"/>">인기 영양소</a>
 							            <a href="<c:url value="/NutrientSelectVitamin.do"/>">비타민</a>	   
 							            <a href="<c:url value="/NutrientSelectMineral.do"/>">미네랄 및 기타영양소</a>	         
@@ -324,20 +335,20 @@ ul {
 										
 									</li>
 									<li>
-										<a href="#" class="title">영양제 찾기</a>
+										<p class="title">영양제 찾기</p>
 										<a href="<c:url value="/ranking/selectfood.do"/>">전체 검색</a>
 							            <a href="<c:url value="/ranking/selectfoodnutrient.do"/>">성분 검색</a>	 			
 							            <a href="<c:url value="/ranking/selectfoodcompany.do"/>">제품명/브랜드 검색</a>										
 									</li>
 									<li>
-										<a href="#" class="title">정신건강 테스트</a>
+										<p class="title">정신건강 테스트</p>
 										<a href="<c:url value="/project/MentalTest1.do"/>">심리적 스트레스</a>
 										<a href="<c:url value="/project/MentalTest2.do"/>">흡연 유형 평가</a>			
 										<a href="<c:url value="/project/MentalTest3.do"/>">알코올 의존(AUDIT-K)</a>				
 										<a href="<c:url value="/project/MentalTest4.do"/>">우울증(CES-D)</a>									
 									</li>
 									<li>
-										<a href="#" class="title">무엇을 넣지</a>
+										<p class="title">무엇을 넣지</p>
 										<a class="dropdown-item" href="<c:url value="/AdminMain.do"/>">관리자</a>
 	                    				<a class="dropdown-item" href="<c:url value="/test1.do"/>">태현(테스트)</a>
 										
