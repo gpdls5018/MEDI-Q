@@ -104,7 +104,6 @@
         width: 100%;
         font-size: 12px;
         overflow: auto; /* 스크롤이 가능하도록 하기 위해 추가 */
-        
     }
 
     th, td {
@@ -115,6 +114,7 @@
 
     th {
         background-color: rgba(75, 192, 192, 0.6);
+        height: 40px;
     }
 
     tr:nth-child(odd) {
@@ -213,7 +213,7 @@
 	        	<li>
 	        		<a href="<c:url value="/AdminMain.do"/>" style="display: flex; align-items: center;">
 	        			<i class="fas fa-table" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
-	        			&nbsp;&nbsp;데이터베이스 관리
+	        			&nbsp;&nbsp;데이터베이스 통계
 	        		</a>
 	        	</li>
 	        	<li>
@@ -272,7 +272,7 @@
 		<!-- 전체 내용 -->
 	    <div id="admin_content" style="display: flex; justify-content:center; flex-wrap: wrap;">
 			
-			<h4 class="text-center" style="width:95%; padding-bottom: 20px; border-bottom: 1px solid #ccc;"><b>데이터베이스 관리</b></h4>
+			<h4 class="text-center" style="width:95%; padding-bottom: 20px; border-bottom: 1px solid #ccc;"><b>데이터베이스 통계</b></h4>
 	    
 	    	<!-- 1번 div -->
 	        <div class="each-container">
@@ -308,17 +308,17 @@
 					    <table id="first">
 					        <thead>
 				                <tr>
-				                    <th>번호</th>
+				                    <th style="width:50px;">번호</th>
 				                    <th>이름</th>
 				                    <th>기능</th>
 				                    <th>포함 영양소</th>
-				                    <th>리뷰수</th>
-				                    <th>별점</th>
+				                    <th style="width:60px;">리뷰수</th>
+				                    <th style="width:50px;">별점</th>
 				                </tr>
 				            </thead>
 				            <tbody>
 						        <c:forEach var="foodInfo" items="${foodInfos}" varStatus="loop">
-								    <tr onclick="location.href='/NutrientToFoodDetail.do?name=${foodInfo.productName }'">
+								    <tr onclick="location.href='/detail.do?no=${foodInfo.no}'">
 								        <td>${loop.count}</td>
 								        <td>${foodInfo.productName }</td>
 								        <td>${fn:replace(foodInfo.material, '$', ',') }</td>
@@ -332,21 +332,21 @@
 					    <table id="second" style="display: none;">
 					    	<thead>
 				                <tr>
-				                    <th>번호</th>
+				                    <th style="width:50px;">번호</th>
 				                    <th>이름</th>
 				                    <th>기능</th>
 				                    <th>포함 영양제</th>
-				                    <th>조회수</th>
+				                    <th style="width:60px;">조회수</th>
 				                </tr>
 				            </thead>
 				            <tbody>
-						        <c:forEach var="member" items="${members }">
-							        <tr>
-							            <td></td>
-							            <td></td>
-							            <td></td>
-							            <td></td>
-							            <td></td>
+						        <c:forEach var="mergedInfo" items="${mergedInfos}" varStatus="loop">
+							        <tr onclick="location.href='/NutrientDetail.do?name=${mergedInfo.name}'">
+							            <td>${loop.count }</td>
+							            <td>${mergedInfo.name }</td>
+							            <td>${mergedInfo.func }</td>
+							            <td>${mergedInfo.productNames }</td>
+							            <td>${mergedInfo.view }</td>
 							        </tr>
 						        </c:forEach>
 					        </tbody>
@@ -413,7 +413,7 @@
 
         // 첫 번째 AJAX 요청
         $.ajax({
-            url: '/getFoodInfo',
+            url: '/getFoodTop10Info',
             method: 'GET',
             dataType: 'json',
             success: function(response) {
@@ -449,7 +449,7 @@
 
         // 두 번째 AJAX 요청
         $.ajax({
-            url: '두 번째_ajax_요청_URL_여기에_입력',
+            url: '/getNutTop10Info',
             method: 'GET',
             dataType: 'json',
             success: function(response) {
@@ -459,6 +459,46 @@
             error: function(error) {
                 console.error('두 번째 AJAX 요청 실패:', error);
             }
+        });
+        
+        
+     	// 테이블 선택
+        $(document).ready(function() {
+          // 이벤트 리스너 등록
+          $('#change').on('change', function() {
+            
+       	    // 선택된 옵션 값 가져오기
+            var selectedOption = $(this).val();
+
+            // 선택된 옵션에 따라 다른 Ajax 요청 보내기
+            if (selectedOption === '영양제 테이블 목록') {
+              $.ajax({
+                url: '/getIngInfo',
+                method: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                  // 서버로부터 받은 데이터를 처리하는 로직
+                  console.log('영양제 테이블 목록 AJAX 요청 성공:');
+                },
+                error: function(error) {
+                  console.error('영양제 테이블 목록 AJAX 요청 실패:');
+                }
+              });
+            } else if (selectedOption === '영양소 테이블 목록') {
+              $.ajax({
+                url: '/getNutInfo',
+                method: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                  // 서버로부터 받은 데이터를 처리하는 로직
+                  console.log('영양소 테이블 목록 AJAX 요청 성공:');
+                },
+                error: function(error) {
+                  console.error('영양소 테이블 목록 AJAX 요청 실패:');
+                }
+              });
+            }
+          });
         });
         
         
