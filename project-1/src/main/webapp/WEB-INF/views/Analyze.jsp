@@ -65,12 +65,20 @@
                		🗑</span>
                		<input type="hidden" value="${analyzeReportOne.analyzeno}"/>
                	</div>
+               	<form action='<c:url value="/analyzeMyReportReLoad.do"/>' method="POST">
                 	<p style="">${analyzeReportOne.score}<span class="ml-3" style="color:black; font-size: 20px;">점</span></p>
-	            <div class="ZyIFk1 d-block mt-3" style="margin-left: 20px;">
-	                <div><span style="color:#545454; font-weight: bold;">섭취 목적</span> :<br/> ${analyzeReportOne.takePurposes}</div>
-	                <div><span style="color:#545454; font-weight: bold;">섭취중인 영양제</span> :<br/> ${analyzeReportOne.takeFoods}</div>
-	                
-	            </div>	
+		            <div class="ZyIFk1 d-block mt-3" style="margin-left: 20px;">
+		                <div><span style="color:#545454; font-weight: bold;">섭취 목적</span> :<br/> ${analyzeReportOne.takePurposes}</div>
+		                <div><span style="color:#545454; font-weight: bold;">섭취중인 영양제</span> :<br/> ${analyzeReportOne.takeFoods}</div>
+		                <c:set var="takePurpose" value="${fn:replace(analyzeReportOne.takePurposes, '[', '')}" />
+		                <c:set var="takePurpose" value="${fn:replace(takePurpose, ']', '')}" />
+		                <input type="hidden" value="${takePurpose}" name="takePurpose"/>
+		                <c:set var="takeFood" value="${fn:replace(analyzeReportOne.takeFoods, '[', '')}" />
+		                <c:set var="takeFood" value="${fn:replace(takeFood, ']', '')}" />
+		                <input type="hidden" value="${takeFood}" name="takeFood"/>
+		                <button type="submit" class="btn btn-warning">확인하기</button>
+		            </div>
+	            </form>	
 			</div>
 			</c:forEach>
 		</div>
