@@ -344,6 +344,10 @@ public class FoodDetailController {
 		 return nameList;
 	 }
 	 
-	 
+	 @GetMapping("/deleteAnalyzeReport.do")
+	 @ResponseBody
+	 public int deleteAnalyzeReport(@RequestParam String analyzeno) {
+		 return analyzeMyReportServiceImpl.deleteAnalyzeReport(Integer.parseInt(analyzeno));
+	 }
 	 
 }
