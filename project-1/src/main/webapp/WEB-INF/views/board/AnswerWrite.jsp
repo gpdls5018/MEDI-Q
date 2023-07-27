@@ -102,7 +102,7 @@
 	                            <div class="card-body p-2 m-3">
 	                                <div class="form-group">
 									  <label for="usr"><h3><kbd class="btn_deco font-weight-bold">질문</kbd></h3></label>
-									  <input type="text" id="usr" name="title" class="form-control form-control-lg" placeholder="질문을 입력하세요" value="${param.title }" disabled>
+									  <input type="text" id="usr" name="title" class="form-control form-control-lg" placeholder="질문을 입력하세요"">
 									</div>
 	                                <br>
 	                                <div class="form-group">

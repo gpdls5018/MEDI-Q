@@ -102,8 +102,7 @@
 	                            <div class="card-body p-2 m-3">
 	                                <div class="form-group">
                                 		<label for="usr"><h3><kbd class="btn_deco font-weight-bold">제목</kbd></h3></label>
-                                	<!--<input type="text" class="form-control" placeholder="제목을 입력하세요" name="title"> -->
-                                		<input type="text" class="form-control" placeholder="제목을 입력하세요" name="title" value="${param.title}" disabled>
+                                		<input type="text" name="title" class="form-control" placeholder="제목을 입력하세요">
                             		</div>
 	                            	<br>
 		                            <div class="form-group">

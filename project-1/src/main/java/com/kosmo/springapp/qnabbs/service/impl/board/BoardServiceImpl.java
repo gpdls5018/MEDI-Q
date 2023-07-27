@@ -37,7 +37,6 @@ public class BoardServiceImpl implements DaoService {
 	
 	@Override
 	public ListPagingData selectList(Map map, HttpServletRequest req, int nowPage) {
-		
 		//[페이징 로직 시작]
 		//1.총 레코드 수 : 테이블에서 조회
 		//  페이지 사이즈 수/블록 페이지 수: 속성파일(paging.properties-PlaceHolderConfig.java에 위치 설정해주어야 한다)에서 읽기
@@ -60,7 +59,6 @@ public class BoardServiceImpl implements DaoService {
 													.map(map)//페이징 관련 데이타 설정
 													.pagingString(pagingString)//페이징 문자열 설정
 													.build();
-		
 		return listPagingData;
 	}////////////////////
 
