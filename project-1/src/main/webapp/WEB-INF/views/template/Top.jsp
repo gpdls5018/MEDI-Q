@@ -167,9 +167,7 @@ ul {
         }
 
         .dropdown-toggle:hover {
-            background-color: black;
-            color: white;
-            border-radius: 10px;
+            color: black;
             text-decoration: none;
         }
 

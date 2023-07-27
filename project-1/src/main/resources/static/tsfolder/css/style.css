@@ -1048,7 +1048,7 @@ a {
         -webkit-box-align: center;
         align-items: center;
         -webkit-box-pack: start;
-        justify-content: space-between;
+        justify-content: flex-start;
         border-radius: 10px;
         color: black;
     }
