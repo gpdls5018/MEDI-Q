@@ -350,7 +350,7 @@ ul {
 									<li>
 										<p class="title">무엇을 넣지</p>
 										<a class="dropdown-item" href="<c:url value="/AdminMain.do"/>">관리자</a>
-	                    				<a class="dropdown-item" href="<c:url value="/test1.do"/>">태현(테스트)</a>
+	                    				<a class="dropdown-item" href="<c:url value="/functionfood/selectissue.do"/>">태현(테스트)</a>
 										
 									</li>
 								</ul>

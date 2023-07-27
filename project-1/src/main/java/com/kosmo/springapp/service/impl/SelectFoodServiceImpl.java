@@ -59,7 +59,12 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	}
 
 	@Override
-	public List<FunctionalFoodListDTO> selectFoodListFromHealthissue(String healthissue) {
+	public List<AvgStarScoreCountDTO> selectFoodListFromHealthissue(String healthissue) {
 		return mapper.selectFoodListFromHealthissue(healthissue);
+	}
+
+	@Override
+	public List<AvgStarScoreCountDTO> FoodListFromHealthissue(String healthissue) {
+		return mapper.FoodListFromHealthissue(healthissue);
 	}
 }
