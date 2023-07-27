@@ -61,7 +61,7 @@
     
         .tab {
             display: none;
-            padding: 20px;
+            padding: 0 20px 20px 20px;
             border: 1px solid #ddd;
             border-top: none;
         }
@@ -218,8 +218,8 @@
     </aside>
     
 	<!-- 검색창 -->
-	<div class="d-flex justify-content-center">
-		<div class="search d-flex justify-content-center" style="padding: 150px 0px 80px; background-color: #fdfbf6; position: relative; width: 960px;">
+	<div class="d-flex justify-content-center" style="background-color: #fdfbf6;">
+		<div class="search d-flex justify-content-center" style="padding: 150px 0px 80px; position: relative; width: 960px;">
 		    <input id="searchInput" style="font-size:20px; width: 100%;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
 		    <button type="submit" class="searchButton" style="position: absolute; right: 0;">
 	        <i class="fa fa-search"></i>
@@ -227,7 +227,7 @@
 	    </div>
 	</div>
     
-    <div class="container pb-5" style="margin-top: 0px;">
+    <div class="container pb-5" style="margin-top: 10px;">
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
@@ -244,7 +244,7 @@
                 </li>
             </ul>
         </div>
-        <div class="pt-2">
+        <div>
             <div id="popular" class="tab">
                 <!-- 인기성분에 해당하는 상자 내용 -->
                 <!-- 이미지 -->
@@ -420,10 +420,11 @@
 	                //console.log(event);
 	            },
 	            open: function(event, ui) {
-	                $(this).autocomplete("widget").css("width", "905px");
-	                $(this).autocomplete("widget").css("text-align","center");
-	                $(this).autocomplete("widget").css("margin-left","20px");
-	                $(this).autocomplete("widget").css("margin-right","20px");
+	                var autocompleteWidget = $(this).autocomplete("widget");
+	                autocompleteWidget.css("width", "905px");
+	                autocompleteWidget.css("text-align", "center");
+	                autocompleteWidget.css("left", "50%");  // 왼쪽 위치를 50%로 설정하여 가로 중앙에 배치
+	                autocompleteWidget.css("transform", "translateX(-50%)");  // 반 너비만큼 이동하여 가운데로 정렬
 	            }
 	        });
 
