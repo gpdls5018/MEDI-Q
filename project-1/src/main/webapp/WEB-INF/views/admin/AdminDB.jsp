@@ -480,6 +480,10 @@
      	var data1 = '${nutTop10v}';
      	var parsedData1 = parseMixedLabels(data1);
      	
+     	// 검색수
+     	var data2 = '${nutTop10s}';
+     	var parsedData2 = parseMixedLabels(data2);
+     	
      	// 막대 차트 데이터 (레이블 10개에 맞게 데이터 갯수도 10개로 맞춤)
         var barData = {
             labels: parsedLabels,
@@ -487,7 +491,7 @@
             	{
             		yAxisID: 'left-y-axis', // 왼쪽 Y축을 사용
                     type: 'bar',
-	                label: '조회수(left-y)',
+	                label: '누적 조회수(left-y)',
 	                backgroundColor: 'rgba(54, 162, 235, 0.6)',
 	                borderColor: 'rgba(54, 162, 235, 1)',
 	                borderWidth: 1,
@@ -496,7 +500,7 @@
                 {
                	 yAxisID: 'right-y-axis', // 오른쪽 Y축을 사용
                     type: 'line',
-                    label: '평균 별점(right-y)',
+                    label: '주간 검색량(right-y)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1,
                     fill: false,

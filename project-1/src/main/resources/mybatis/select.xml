@@ -147,7 +147,6 @@
 		WHERE PRODUCTNAME = #{name}
 	</select>
 	
-	
 	<!-- 조회수 가져오고 증가 -->
 	<!-- 5대 영양소 -->
 	<select id="getN_VIEW" parameterType="String" resultType="int">
@@ -175,9 +174,6 @@
 	<update id="increaseF_VIEW" parameterType="String">
 		UPDATE FOODTABLE SET F_VIEW = F_VIEW + 1 WHERE PRODUCTNAME = #{name}
 	</update>
-
-
-
 
 	<!-- 조회수 순서로 Top10 가져오기 -->
 	<select id="getTop10" resultType="String">
@@ -207,7 +203,11 @@
 	    ORDER BY CASE WHEN N_VIEW &gt;= I_VIEW THEN N_VIEW ELSE I_VIEW END DESC
 	</select>
 
-
+	<!-- SEARCH_HISTORY 테이블에 검색어 저장하는 쿼리 -->
+	<insert id="saveSearchHistory" parameterType="String">
+	    INSERT INTO SEARCH_HISTORY (ID, KEYWORD, SEARCH_DATE)
+    	VALUES (SEARCH_HISTORY_SEQ.NEXTVAL, #{keyword}, SYSDATE)
+	</insert>
 
 
 

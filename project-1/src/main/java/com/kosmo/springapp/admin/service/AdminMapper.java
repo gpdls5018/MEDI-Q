@@ -57,6 +57,9 @@ public interface AdminMapper {
 	List<Map<String, Object>> getInfoFromNut();
 	List<Map<String, Object>> getInfoFromIng();
 
+	// 영양소 Top10 검색수 가져오기
+	int getNutTop10s(String name);
+
 	
 	
 	

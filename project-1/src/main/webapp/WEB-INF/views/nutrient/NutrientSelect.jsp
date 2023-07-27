@@ -128,17 +128,15 @@
 		}
 		
 		/* 검색창 스타일 추가 */
-
 		.search {
 		  display: flex;
 		}
 		
 		.searchTerm {
-		  width: 500px;
 		  border-right: none;
 		  padding: 5px;
-		  height: 50px;
-		  border-radius: 10px 0 0 10px;
+		  height: 64px;
+		  border-radius: 32px;
 		  outline: none;
 		  /*border: 3px solid #EF605D;*/
 		}
@@ -148,13 +146,13 @@
 		}
 		
 		.searchButton {
-		  width: 60px;
-		  height: 50px;
+		  width: 124px;
+		  height: 64px;
 		  /*border: #EF605D;*/
 		  background: #EF605D;
 		  text-align: center;
 		  color: #fff;
-		  border-radius: 0 10px 10px 0;
+		  border-radius: 32px;
 		  cursor: pointer;
 		  font-size: 20px;
 		}
@@ -222,15 +220,17 @@
 	
 
 	<!-- 검색창 -->
-	<div class="search d-flex justify-content-center" style="padding: 150px 0px 80px; background-color: #fdfbf6;">
-	    <input id="searchInput" style="font-size:17px;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
-	    <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
-   	    </button>
-    </div>
+	<div class="d-flex justify-content-center">
+		<div class="search d-flex justify-content-center" style="padding: 150px 0px 80px; background-color: #fdfbf6; position: relative; width: 960px;">
+		    <input id="searchInput" style="font-size:20px; width: 100%;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
+		    <button type="submit" class="searchButton" style="position: absolute; right: 0;">
+	        <i class="fa fa-search"></i>
+	   	    </button>
+	    </div>
+	</div>
 
 	
-    <div class="container pb-5" style="margin-top: 50px;">
+    <div class="container pb-5" style="margin-top: 0px;">
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
@@ -390,6 +390,20 @@
 	                var name = ui.item.value.trim();
 	                var url = "/NutrientDetail.do?name="+encodeURIComponent(name);
 	                window.location.href = url; // 페이지를 해당 URL로 이동합니다.
+	                
+	             	// 검색어 서버에 전송
+	                $.ajax({
+	                    url: "/search.do",
+	                    method: "POST",
+	                    contentType: "application/json",
+	                    data: JSON.stringify(name),
+	                    success: function(response) {
+	                        console.log("Search history saved");
+	                    },
+	                    error: function(err) {
+	                        console.error("Error saving search history:", err);
+	                    }
+	                });
 	            },
 	            focus : function(event, ui) {    //포커스 가면
 	                return false;//한글 에러 잡기용도로 사용됨
@@ -409,8 +423,10 @@
 	                //console.log(event);
 	            },
 	            open: function(event, ui) {
-	                $(this).autocomplete("widget").css("width", "494px");
+	                $(this).autocomplete("widget").css("width", "905px");
 	                $(this).autocomplete("widget").css("text-align","center");
+	                $(this).autocomplete("widget").css("margin-left","20px");
+	                $(this).autocomplete("widget").css("margin-right","20px");
 	            }
 	        });
 
