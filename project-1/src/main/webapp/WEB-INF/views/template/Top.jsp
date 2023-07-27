@@ -795,6 +795,7 @@ ul {
         </div>
     </div>
 	navbar left side end-->
+	
 	<!-- 챗봇 파트 -->
 	<div id="btnBot">
         <!-- <button class="btn btn-secondary" id="btnBot">MEDI-Q Bot</button> -->
@@ -912,8 +913,6 @@ ul {
     });
 	
 		
-		
-	});
 	//스크롤을 내리면 값에 변화에 따라 배경색 주기
 	jQuery(document).ready(function ($) {
 	    $(window).scroll(function () {
