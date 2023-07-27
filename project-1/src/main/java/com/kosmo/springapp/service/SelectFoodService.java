@@ -12,6 +12,7 @@ import com.kosmo.springapp.model.FunctionalFoodListDTO;
 public interface SelectFoodService {
 	List<AvgStarScoreCountDTO> selectFoodListFromNameScore(String foodname,int casesel);
 	List<FunctionalFoodListDTO> selectFoodListFromName(String foodname,int casesel);
+	List<FunctionalFoodListDTO> selectFoodListFromHealthissue(String healthissue);
 	List<AvgStarScoreCountDTO> selectFoodListFoodScore();
 	List<AvgStarScoreCountDTO> selectFoodListFoodScoreTop10();
 	List<String> RankingKeyWord();

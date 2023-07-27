@@ -65,7 +65,7 @@
 		WHERE ROWNUM &lt;= 10
 	</select>
 	<select id="RankingKeyWord" resultType="String">
-		SELECT KEYWORD FROM KEYWORD ORDER BY WORDCOUNT DESC
+		SELECT KEYWORD FROM KEYWORD WHERE ROWNUM &lt;= 5 ORDER BY WORDCOUNT DESC
 	</select>
 	<update id="selectKeyWord" parameterType="String" >
 		UPDATE KEYWORD SET WORDCOUNT = WORDCOUNT + 1 WHERE KEYWORD = '${foodname}'
