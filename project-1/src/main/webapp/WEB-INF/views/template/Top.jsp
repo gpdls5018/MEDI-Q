@@ -149,7 +149,7 @@
 }
 .tslogina span:hover {
 	color:white;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 	text-decoration: none;
 }
 
@@ -311,7 +311,7 @@ ul {
         <ul class="d-flex" style="margin-right: 50px;">
         	<li class="text2 mx-2 dropdown" style="display:flex; align-items: center;">
         		<c:if test="${not empty token}" var="isLogin">       
-                    <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/MyPage.do"/>"><span class="tsnava3" >${payload.name+="님 반갑습니다"}</span></a>
+                    <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/MyPage.do"/>"><span class="tsnava3" ><span style="color:#EF605D;">'${payload.name}'</span>님 반갑습니다</span></a>
                 </c:if>
                 <c:if test="${not isLogin}">
                     <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/Login.do"/>"><span class="tsnava3" >로그인 후 이용해 주세요</span></a>        
