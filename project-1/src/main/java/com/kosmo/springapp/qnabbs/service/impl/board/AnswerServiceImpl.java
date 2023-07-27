@@ -5,7 +5,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kosmo.springapp.qnabbs.service.AnswerBoardDTO;
 import com.kosmo.springapp.qnabbs.service.AnswerService;
 
 @Service("answerservice")
@@ -62,5 +61,4 @@ public class AnswerServiceImpl implements AnswerService {
 		System.out.println("AnswerServiceImpl의 answerdelete체크용 전");
 		return mapper.answerdelete(map);
 	}
-	
 }

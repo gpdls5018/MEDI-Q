@@ -9,7 +9,7 @@
 	  <selectKey resultType="int" order="BEFORE" keyProperty="answer_no">
 	    SELECT SEQ_ANSWER_BOARD.NEXTVAL FROM DUAL
 	  </selectKey>
-	  INSERT INTO ANSWER_BOARD VALUES (#{answer_no}, #{no}, #{content},DEFAULT, #{id})
+	  INSERT INTO ANSWER_BOARD VALUES (#{answer_no}, #{no}, #{content},DEFAULT, #{id}, #{title})
 	</insert>
 	<!-- 답변 view -->
 	<select id="answerselectOne" parameterType="map" resultType="map">
@@ -17,15 +17,16 @@
 	    FROM answer_board ab
 	    JOIN member m ON ab.id = m.id
 	    <where>
-        <if test="NO != null">
-            AND board_no = #{NO}
-        </if>
-        <if test="answer_no != null">
-            OR answer_no = #{answer_no}
-        </if>
-    </where>
+	        <if test="NO != null">
+	            AND board_no = #{NO}
+	        </if>
+	        <if test="answer_no != null">
+	            OR answer_no = #{answer_no}
+	        </if>
+	    </where>
 	    AND ROWNUM = 1
 	</select>
+	
 	<update id="answerupdate" parameterType="map">
 		UPDATE answer_board SET content=#{content} WHERE answer_no=#{answer_no}
 	</update>
@@ -35,5 +36,4 @@
 	<delete id="boarddelete" parameterType="map">
 		DELETE answer_board WHERE board_no=#{no}
 	</delete>
-	
 </mapper>
