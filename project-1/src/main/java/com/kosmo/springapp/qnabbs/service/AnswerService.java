@@ -4,6 +4,7 @@ import java.util.Map;
 
 public interface AnswerService<T> {
 	
+	//답변 상세보기
 	Map answerselectOne(Map map);
 	//답변 입력
 	int answerinsert(Map map);

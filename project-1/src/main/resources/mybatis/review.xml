@@ -66,5 +66,6 @@
                           FROM REVIEWTABLE RIGHT OUTER JOIN FOODTABLE 
                           ON REVIEWTABLE.R_PRODUCTNO =FOODTABLE.NO  
                           WHERE R_ID = #{userId}
+                          GROUP BY FOODTABLE.NO,PRODUCTNAME,content,R_REGIDATE,FOODTABLE.IMGURL
 	</select>
 </mapper>

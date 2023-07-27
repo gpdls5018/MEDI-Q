@@ -127,29 +127,6 @@
 			                                <p class="card-text"><h6 class="font-weight-bold text-muted">${record.POSTDATE }</h6></p>
 			                            </div>
 			                        </a>
-			                        <!-- 게시판 시작
-			                        <div class="qna-card">
-				                        <div class="ingredient-tags">
-				                            <div class="ingredient-tag">
-				                                기타
-				                            </div>
-				                        </div>
-				                        <br/>
-				                        <a tabindex="0" class="qna-main text-decoration-none" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=${record.NO }"/>">
-				                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>${record.TITLE }</span>
-				                            <span class="txt2">${record.CONTENT }</span>
-				                        </a>
-				                        <a tabindex="0" class="qna-user-wrap text-decoration-none" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=${record.NO }"/>">
-				                                <div class="qna-user-icon qna-user-icon-1"></div>
-				                                <div class="qna-user-txt">A.코로나 감염을 예방하기 위해, 또는 코로나 후유증에서 빨리 벗어나기 위해서는 비타민 C, 비타민 D, 아연 등
-		                                        면역에 관련된 영양제가 도움이 됩니다.</div>
-				                            <div class="user-info-row">
-				                                <span class="user-name">${record.NAME }</span>
-				                                <span class="user-agesex">${record.AGE_GROUP} / ${record.GENDER}</span>
-				                            </div>
-				                        </a>
-				                    </div>
-				                     -->
 								</c:forEach>
 							</c:if>
                         </div>
@@ -181,13 +158,15 @@
 			                                <span class="card-title font-weight-bold card_font1"><span class="card_font2">Q.&nbsp;</span>${record.TITLE }</span>
 			                                <br>
 			                                <p class="card-text"><h5>${record.CONTENT }</h5></p>
+			                                <!-- 답변의 title을 필라이즈는 보여주지만 뽑기 힘들어서 일단 버림 삭제 예정?
 			                                <hr style="border: 1px solid #E6E9ED;"/>
 			                                <div class="card-text d-flex align-items-center">
 				                            	<img src="<c:url value="/images/qna/pharmacist.png"/>" class="qna_mascot">
-				                            	<c:if test="${not empty listPagingData.records }" var="isEmpty">
-				                            		<div class="text_3 ml-1">약사님의 답변을 기달리는 중입니다.</div>
-												</c:if>
-				                            </div>
+				                            	<%-- 
+				                            	<c:if test="${empty listPagingData.records }" var="isEmpty">
+				                            		<div class="text_3 ml-1">약사님의 답변을 기다리는 중입니다.</div>
+												</c:if> --%>
+				                            </div> -->
 				                            <br/>
 			                                <span class="card-text"><h6 class="font-weight-bold text-muted">${record.NAME } ${record.AGE_GROUP} / ${record.GENDER}</h6></span>
 			                                <p class="card-text"><h6 class="font-weight-bold text-muted">${record.POSTDATE }</h6></p>
@@ -195,36 +174,6 @@
 			                        </a>
 								</c:forEach>
                             </c:if>
-														
-							<!-- 여기부터 리스트 나올 것: 1제목,2내용,3나이,4성별,5작성자 
-                            <c:if test="${not isEmpty}">
-                            	<c:forEach var="record" items="${listPagingData.records }">
-									<div class="qna-card">
-				                        <div class="ingredient-tags">
-				                            <div class="ingredient-tag">
-				                                기타
-				                            </div>
-				                        </div>
-				                        <br/>
-				                        <a tabindex="0" class="qna-main text-decoration-none" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=${record.NO }"/>">
-				                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>${record.TITLE }</span>
-				                            <span class="txt2">${record.CONTENT }</span>
-				                        </a>
-				                        <a tabindex="0" class="qna-user-wrap text-decoration-none" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=${record.NO }"/>">
-				                                <div class="qna-user-icon qna-user-icon-1"></div> 그림 아이콘 
-				                                <div class="qna-user-txt">
-				                                	<c:if test="${not empty listPagingData.records }" var="isEmpty">
-														<div>약사님의 답변을 기달리는 중입니다.</div>
-													</c:if>
-				                                </div>
-				                            <div class="user-info-row">
-				                                <span class="user-name">${record.NAME }</span>
-				                                <span class="user-agesex">${record.AGE_GROUP} / ${record.GENDER}</span>
-				                            </div>
-				                        </a>
-				                    </div>qna-card의 끝 
-			                    </c:forEach>
-                            </c:if>-->
                         </div>
                     </div>
                 </div>

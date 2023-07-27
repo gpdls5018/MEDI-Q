@@ -92,7 +92,7 @@ body{
 						<a tabindex="0" class="search-keyword" href="/functionfood/healthissue.do?healthissue=콜레스테롤">혈중 콜레스테롤 감소</a>
 						<a tabindex="0" class="search-keyword" href="/functionfood/healthissue.do?healthissue=면역기능">면역기능개선</a>
 						<a tabindex="0" class="search-keyword" href="/functionfood/healthissue.do?healthissue=간 건강">간 건강</a>
-						<a tabindex="0" class="search-keyword" href="/functionfood/healthissue.do?healthissue=칼슘">칼슘 흡수 촉진</a>
+						<a tabindex="0" class="search-keyword" href="/functionfood/healthissue.do?healthissue=칼슘 흡수">칼슘 흡수 촉진</a>
 						<a tabindex="0" class="search-keyword" href="/functionfood/healthissue.do?healthissue=피로개선">피로개선</a>
 						<a tabindex="0" class="search-keyword" href="/functionfood/healthissue.do?healthissue=기억력">기억력 개선</a>
 						<a tabindex="0" class="search-keyword" href="/functionfood/healthissue.do?healthissue=혈행">혈행개선</a>
@@ -102,6 +102,160 @@ body{
 						<a tabindex="0" class="search-keyword" href="/functionfood/healthissue.do?healthissue=혈당">혈당 조절</a>
 						<a tabindex="0" class="search-keyword" href="/functionfood/healthissue.do?healthissue=수면">수면질 개선</a>
 					</div>
+					<div class="modal-body d-flex flex-wrap p-4 justify-content-around" style="height:200px;">
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=장 건강">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/장 건강.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">장 건강</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=눈 건강">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/눈 건강.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">눈 건강</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=관절">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/뼈 건강.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">관절/뼈 건강</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=피부">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/피부 건강.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">피부 건강</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=콜레스테롤">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/혈중 콜레스테롤.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">혈중 콜레스트롤 관리</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=혈압"">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/혈압.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">혈압 조절</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=체지방">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/체지방.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">체지방 관리</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=중성지방">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/체지방.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">혈중 중성지방 감소</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=면역기능">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/면역 기능.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">면역기능 개선</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=간 건강">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/간 건강.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">간 건강</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=칼슘 흡수">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/칼슘.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">칼슘 흡수 촉진</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=피로개선">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/피로 개선.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">피로 개선</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=기억력">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/기억력.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">기억력 개선</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=혈행">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/혈액 순환.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">혈행 개선</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=위 건강">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/위 건강.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">위 건강</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=어린이">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/어린이 성장.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">어린이 성장 촉진</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=구강">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/구강 건강.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">구강 건강</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=혈당">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/혈액 순환.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">혈당 조절</h5>
+				            </div>
+			            </a>
+			          </div>
+			          <div class="card" style="width: 8rem;height:10rem;">
+			          	<a href="/functionfood/healthissue.do?healthissue=수면">
+				            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/수면질 개선.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+				            <div class="card-body m-auto">
+				              <h5 class="card-title">수면질 개선</h5>
+				            </div>
+			            </a>
+			          </div>
+			        </div>
 				</div>
 			</div>
 		</div>
@@ -125,61 +279,60 @@ body{
 						<h1 class="txt2" style="margin-bottom: 30px; text-align: center; font-size: 30px;"><b><span> ${healthissue}</span>에 좋은 제품 검색결과 <span><fmt:formatNumber value="${listData.size() + listData2.size()}" pattern="#,###" /></span>건</b></h1>
 					</div>
 					<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
-		<div class="new-wide-wrap new-wide-wrap-070">
-			<div class="left-wing  ">
-			    <ul class="sm-menu-wrap">
-			        
-			    </ul>
-			</div>
-			<div class="new-wide-main new-wide-main-070 product-result">
-				<div id="itemList" class="item-cards">
-					<c:forEach items="${listData}" var="item">
-						<a id="${item.no}" href="/detail.do?no=${item.no}" tabindex="0" class="item-card" title="${item.productName} 자세히 보기" data-href="/products/1/비타민C-1000" data-product-id="1">
-						<c:if test="${not empty item.imgURL}">
-							<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
-						</c:if>
-          				<c:if test="${empty item.imgURL}">	
-							<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
-						</c:if>
-							<span class="txt1">${item.company}</span>
-							<span class="txt2">${item.productName}</span>
-							<div class="review">
-								<span class="star-point">&nbsp;<fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }</span>
-								<span class="txt3">(${item.REVIEW_Count }개)</span>
-							</div>
-							<div class="card-tags">
-								<c:set var="materialList" value="${fn:split(item.material, '$')}" />
-								<c:forEach items="${materialList}" var="mater">
-									<div class="card-tag">${mater }</div>
+					<div class="new-wide-wrap new-wide-wrap-070">
+						<div class="left-wing  ">
+						    <ul class="sm-menu-wrap">
+						    </ul>
+						</div>
+						<div class="new-wide-main new-wide-main-070 product-result">
+							<div id="itemList" class="item-cards">
+								<c:forEach items="${listData}" var="item">
+									<a id="${item.no}" href="/detail.do?no=${item.no}" tabindex="0" class="item-card" title="${item.productName} 자세히 보기" data-href="/products/1/비타민C-1000" data-product-id="1">
+									<c:if test="${not empty item.imgURL}">
+										<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
+									</c:if>
+			          				<c:if test="${empty item.imgURL}">	
+										<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+									</c:if>
+										<span class="txt1">${item.company}</span>
+										<span class="txt2" style="max-width: 260px;">${item.productName}</span>
+										<div class="review">
+											<span class="star-point">&nbsp;<fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }</span>
+											<span class="txt3">(${item.REVIEW_Count }개)</span>
+										</div>
+										<div class="card-tags">
+											<c:set var="materialList" value="${fn:split(item.material, '$')}" />
+											<c:forEach items="${materialList}" var="mater">
+												<div class="card-tag">${mater }</div>
+											</c:forEach>
+										</div>
+									</a>
 								</c:forEach>
-							</div>
-						</a>
-					</c:forEach>
-					<c:forEach items="${listData2}" var="item">
-						<a id="${item.no}" href="/detail.do?no=${item.no}" tabindex="0" class="item-card" title="${item.productName} 자세히 보기" data-href="/products/1/비타민C-1000" data-product-id="1">
-						<c:if test="${not empty item.imgURL}">
-							<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
-						</c:if>
-	         			<c:if test="${empty item.imgURL}">	
-							<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
-						</c:if>
-							<span class="txt1">${item.company}</span>
-							<span class="txt2">${item.productName}</span>
-							<div class="review">
-								<span class="star-point">&nbsp;0</span>
-								<span class="txt3">(0개)</span>
-							</div>
-							<div class="card-tags">
-							<c:set var="materialList" value="${fn:split(item.material, '$')}" />
-								<c:forEach items="${materialList}" var="mater">
-									<div class="card-tag">${mater }</div>
+								<c:forEach items="${listData2}" var="item">
+									<a id="${item.no}" href="/detail.do?no=${item.no}" tabindex="0" class="item-card" title="${item.productName} 자세히 보기" data-href="/products/1/비타민C-1000" data-product-id="1">
+									<c:if test="${not empty item.imgURL}">
+										<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
+									</c:if>
+				         			<c:if test="${empty item.imgURL}">	
+										<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+									</c:if>
+										<span class="txt1">${item.company}</span>
+										<span class="txt2" style="max-width: 260px;">${item.productName}</span>
+										<div class="review">
+											<span class="star-point">&nbsp;0</span>
+											<span class="txt3">(0개)</span>
+										</div>
+										<div class="card-tags">
+										<c:set var="materialList" value="${fn:split(item.material, '$')}" />
+											<c:forEach items="${materialList}" var="mater">
+												<div class="card-tag">${mater }</div>
+											</c:forEach>
+										</div>
+									</a>
 								</c:forEach>
-							</div>
-						</a>
-					</c:forEach>
-				</div><!-- item-cards의 끝 -->
-				</div>
-				</div>
+							</div><!-- item-cards의 끝 -->
+						</div>
+					</div>
 				</c:if>
 				<!--<button id="moreBtn" tabindex="0" class="item-more" onclick="searchMore()">30개 더 보기</button>  -->
 			</div>

@@ -3,7 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
+
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
 <style>
 body {
     display: block;
@@ -150,7 +154,11 @@ body {
         display: flex;
         flex-direction: row;
         min-height: 180px;
+        overflow-y: scroll;
     }
+    .recently::-webkit-scrollbar {
+	    display: none; /* 크롬, 사파리, 오페라, 엣지 */
+	}
     .health {
         display: flex;
         flex-direction: column;
@@ -230,19 +238,26 @@ body {
     }
     .lnMHMg {
         margin: 5px 0px;
+        width: 400px;
         height: 560px;
     }
     .kriRoB {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px 10px;
+        gap: 5px 10px;
         width: 380px;
         height: 540px;
-        overflow: auto ;
     }
     .kriRoBreview {
         width: 500px;
         height: 540px;
+    }
+    .kriRoBreview a{
+    	color: black;
+    }
+    .kriRoBreview a:hover,.kriRoB a:hover{
+    	text-decoration: none;
+    	color: black;
     }
     .cqOzav {
         display: flex;
@@ -251,7 +266,7 @@ body {
         box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
         border-radius: 10px;
         margin-top: 5px;
-        width: 170px;
+        width: 185px;
         height: 250px;
     }
     .kzDdbX {
@@ -267,7 +282,7 @@ body {
         margin-left: 10px;
     }
     .kCBLwp {
-        margin: 10px 20px;
+        margin: 10px 10px;
         color: gray;
         font-weight: 400;
         word-break: break-all;
@@ -276,6 +291,8 @@ body {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
+        display: flex;
+        vertical-align: bottom;
     }
     .sdp {
         color: #EF605D;
@@ -311,6 +328,7 @@ body {
         -webkit-line-clamp: 2;
     }
     .kWbUNE {
+    	height: 40px;
         margin: 5px 10px;
         color: black;
         font-weight: bold;
@@ -356,7 +374,7 @@ body {
             list-style: none;
             text-decoration: none;
         }
-        a:hover{
+        .item a:hover{
             text-decoration: none;
             color: #ffffff;
         }
@@ -513,8 +531,11 @@ body {
       border-radius: 15px;
       flex: 0 0 25%;
     }
-	.food-li:hover {
+	#searchFoodList .food-li:hover {
       border: #ff4b4b solid 2px;
+    }
+    #select-div .food-li:hover{
+    	border: rgb(197, 197, 197) solid 2px;
     }
     .food-li-checked {
       border: #ff4b4b solid 2px;
@@ -526,6 +547,8 @@ body {
 	#food .subMenu::-webkit-scrollbar {
 	    display: none; /* 크롬, 사파리, 오페라, 엣지 */
 	}
+	
+	
 </style>
 <!-- 메인 바디 부분 -->
 <div id="tsmain">
@@ -553,7 +576,7 @@ body {
 							<c:if test="${not isSocial }"><!-- 일반 회원용 -->
 								<li><a href="" id="infoEdit" class="sidenava4" data-target="#modalView" data-backdrop="static">회원정보 수정</a></li>
 							</c:if>
-                            <li><a class="sidenava5" href="#">회원탈퇴</a></li>
+                            <li><a class="sidenava5" id="inactive" href="#" data-target="#modalView" data-backdrop="static">회원탈퇴</a></li>
                         </ul>
                         
                         <div>
@@ -582,69 +605,30 @@ body {
                                     <div class="board recently" style="flex:1;">
                                         <article class="WishListMain__Body-sc-uykdsg-3 lnMHMg">
                                         	<!-- 정보 없으면 emptypills.jpg 이미지 띄우기 -->
-                                            <c:if test="${empty food }" var="isEmptyFood">
+                                            <c:if test="${empty foodlike }" var="isEmptyFood">
                                                	<span class="d-block h-50 my-n5"></span>
                                     			<img alt="empty" src="/images/basic/emptypills.jpg" style="width: 100%"/>
                                             </c:if>
                                             <ul class="kriRoB" style="list-style: none; padding-inline-start: 10px;">
                                                 <c:if test="${not isEmptyFood }">
-                                                	<c:forEach var="f" items="${food }">
-		                                                <li class="WishListMain__WishItem-sc-uykdsg-5 cqOzav">
-		                                                    <section class="kzDdbX">
-		                                                        <a class="pointer" data-gtm-id="link-product-detail" href="#">
-		                                                            <section class="divimg">
-		                                                                <img fetchpriority="high" width="150" height="150" src="${f.imgurl }" style="margin-top: 10px; border-radius: 10px;">
-		                                                            </section>
-		                                                        </a>
-		                                                        <label for="wishBtn:rk0:" class="bPHVOx">
-		                                                            <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
-		                                                        </label>
-		                                                    </section>
-		                                                    <p class="kWbUNE">${f.foodname }</p>
-		                                                    <p class="kCBLwp">${f.company }</p>
-		                                                    <div class="clearfix">
-		                                                        <a class="detail" href='#' >상세보기</a>
-		                                                    </div>
-		                                                </li>
+                                                	<c:forEach var="f" items="${foodlike }">
+                                                		<a href='<c:url value="/detail.do?no=${f.NO }"/>'>
+			                                                <li class="WishListMain__WishItem-sc-uykdsg-5 cqOzav">
+			                                                    <section class="kzDdbX">
+			                                                        <section class="divimg">
+			                                                            <img fetchpriority="high" src="${f.IMGURL }" style="width:150px; height:150px; margin-top: 10px; border-radius: 10px;">
+			                                                        </section>
+			                                                        <label for="wishBtn:rk0:" class="bPHVOx">
+			                                                            <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
+			                                                        </label>
+			                                                    </section>
+			                                                    <p class="kWbUNE">${f.FOODNAME }</p>
+			                                                    <p class="kCBLwp">${f.COMPANY }</p>
+			                                                </li>
+			                                        	</a>
 	                                                </c:forEach>
     											</c:if>
-    											<!-- 
-                                                <li class="WishListMain__WishItem-sc-uykdsg-5 cqOzav">
-                                                    <section class="   kzDdbX">
-                                                        <a class="pointer" data-gtm-id="link-product-detail" href="#">
-                                                            <section class="divimg">
-                                                                <img fetchpriority="high" width="150" height="150" src="img/testimonial-2.jpg" style="color: transparent; margin-top: 10px; border-radius: 10px;">
-                                                            </section>
-                                                        </a>
-                                                        <label for="wishBtn:rk0:" class="   bPHVOx">
-                                                            <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
-                                                        </label>
-                                                    </section>
-                                                    <p class="kCBLwp">회사명</p>
-                                                    <p class="kWbUNE">약이름</p>
-                                                    <div class="clearfix">
-                                                        <a class="detail" href='#' >상세보기</a>
-                                                    </div>
-                                                </li>
-    
-                                                <li class="WishListMain__WishItem-sc-uykdsg-5 cqOzav">
-                                                    <section class="kzDdbX">
-                                                        <a class="pointer" data-gtm-id="link-product-detail" href="#">
-                                                            <section class="divimg">
-                                                                <img fetchpriority="high" width="150" height="150" src="img/testimonial-3.jpg" style="color: transparent; margin-top: 10px; border-radius: 10px;">
-                                                            </section>
-                                                        </a>
-                                                        <label for="wishBtn:rk0:" class="bPHVOx">
-                                                            <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
-                                                        </label>
-                                                    </section>
-                                                    <p class="kCBLwp">회사명</p>
-                                                    <p class="kWbUNE">약이름</p>
-                                                    <div class="clearfix">
-                                                        <a class="detail" href='#' >상세보기</a>
-                                                    </div>
-                                                </li>
-                                                 -->
+    											
                                             </ul>
                                         </article>
                                     </div>
@@ -734,7 +718,7 @@ body {
 				
 				<!-- Modal body -->
 				<div class="modal-body d-flex justify-content-center">
-					<form class="form-inline justify-content-center" action='<c:url value="/project/healthInfo.do"/>' method="POST">
+					<form id="healthRegi" class="form-inline justify-content-center" action='<c:url value="/project/healthInfo.do"/>' method="POST">
 						<div class="wrapper">
 					        <ui class="mainMenu">
 					        
@@ -868,14 +852,14 @@ body {
 					                </div>
 					            </li>
 					            <li class="item" id="food">
-					                <a href="#food" class="button">내가 먹는 영양제</a>
+					                <a href="#food" class="button">영양제 선택하기</a>
 					                <div class="subMenu d-block">
 					                    <p id="search-myFood" class="my-2" style=" font-size: 15px; display:flex; align-items: center; justify-content: center; font-weight: bold;">섭취중인 영양제를 등록해주세요</p>
 					                    <div class="input-group" style="text-align: center;">
 						      				<input id=searchText class="form-control" type="text" placeholder="브랜드명 혹은 제품명을 입력해주세요" style="border-radius:10px; width:350px;">
 						          		</div>
-						          		<div class="">
-								          	<ul class="list-unstyled d-flex justify-content-center px-2" id="searchFoodList" style="flex-wrap: wrap; padd">
+						          		<div class="h">
+								          	<ul class="list-unstyled d-flex justify-content-center px-2" id="searchFoodList" style="flex-wrap: wrap;">
 								            	<li class="food-li m-2 px-2" style="text-align: center;flex-basis: 100px;display:None">
 								              		<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="width:100px;height:100px;border-radius: 15px;">
 								              		<div style="font-size: 15px;color: #939393;"></div>
@@ -883,13 +867,12 @@ body {
 								          	</ul>
 							          	</div>
 					                </div>
-					           	</li>
-					            <li class="item" id="select-food">
-						            <a href="#select-food" class="button">내가 선택한 영양제</a>
+					           	
+						            <a href="#select-food" class="button">내가 먹는 영양제</a>
 						            <div class="subMenu" id="select-div">
 						              	<div class="d-block">
 							              	<!-- 여기에 영양제 검색->선택 시 이미지 꾸리기 -->
-							               	<ul class="list-unstyled d-flex" style="flex-wrap: wrap;">
+							               	<ul class="list-unstyled d-flex justify-content-center px-2" style="flex-wrap: wrap;">
 							                		
 							               	</ul>
 						               	</div>
@@ -915,20 +898,102 @@ body {
 					    </div>
 				    </form>
 				</div>
-		        
-		        <div class="modal-footer justify-content-right">
-					<input type="submit" class="btn btn-info mx-2" value="확인" />
-					<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
-				</div>
 			</div>
 		</div>
 	</div>
     <!-- 건강정보 등록 모달 끝 -->
     
 </div>
+
+<c:set var="worry" value="${my.worry}"/>
+<c:set var="disease" value="${my.disease}"/>
+<c:set var="allergy" value="${my.allergy}"/>
+<c:set var="food" value="${food}"/>
+<c:set var="special" value="${my.special}"/>
+
 </body>
 
 <script>
+	var worry = '<c:out value="${worry}"/>';
+	var disease = '<c:out value="${disease}"/>';
+	var allergy = '<c:out value="${allergy}"/>';
+	var food = '<c:out value="${food}"/>';
+	var special = '<c:out value="${special}"/>';
+	
+	//건강정보 불러오기
+	$('#worry').find('span').each(function(){
+		if(worry.includes($(this).html())){
+			$(this).addClass('fullClick');
+		}
+	});
+	$('#disease,#special,.allergy').find('span,small').each(function(){
+		if(disease.includes($(this).html())){
+			$(this).addClass('fullClick');
+		}
+		if(special.includes($(this).html())){
+			$(this).addClass('fullClick');
+		}
+		if(allergy.includes($(this).html())){
+			$(this).parent().addClass('full');
+		}
+	});
+	var foodli = document.querySelector('#select-div ul');
+	var foodList = food.split('},');
+	for(var i=0;i<foodList.length;i++){
+		var foodname = foodList[i].split(',')[0].split('=')[1];
+		var foodimg = i==foodList.length-1 ? foodList[i].split(',')[1].split('=')[1].split('}')[0] : foodList[i].split(',')[1].split('=')[1];
+		var li = document.querySelector('.food-li').cloneNode(true);
+		li.style.display='';
+		console.log('check:',foodimg)
+		if (!foodimg.length) {
+			foodimg = 'http://localhost:9090/images/thumbnail_img/NO_IMG.jpeg';
+		}
+		li.querySelector('img').src = foodimg;
+		li.querySelector('div').innerHTML = foodname;
+		foodli.appendChild(li);
+	}
+	//내가 선택한 영양제 클릭 시 삭제
+	$('#select-div .food-li').click(function(){
+		$(this).remove();
+	});
+	/*
+	[{PRODUCTNAME=영롱 비건 쌀마그네슘, IMGURL=https://health-functional-food.s3.ap-northeast-2.amazonaws.com/saved/2020001201619/D35haRYto_L-8rbtpZ_pa}, {PRODUCTNAME=영양가득 한끼 쉐이크, IMGURL=https://health-functional-food.s3.ap-northeast-2.amazonaws.com/saved/200400200082123/iRgh5eZXMvtR2sQdqCStU}]
+*/
+	//건강정보 저장
+	$('#healthRegi').submit(function(e){
+		e.preventDefault();
+		
+		var healthRegi = new Array(5);
+
+		for(var i=0;i<healthRegi.length;i++){
+			healthRegi[i] = new Array();
+		}
+		$('.fullClick,.full,#select-div .food-li').each(function(){
+			var id = $(this).parent().parent().prop('id');
+			switch(id){
+				case 'worry': healthRegi[0].push($(this).html()); break;
+				case 'disease' : healthRegi[1].push($(this).html()); break;
+				case 'allergy' : healthRegi[2].push($(this).find('small').html()); break;
+				case 'special' : healthRegi[4].push($(this).html()); break;
+				default : healthRegi[3].push($(this).find('div').html());
+			}
+		});
+		console.log('healthRegi:',healthRegi)
+		
+		$.ajax({
+			data:{'healthRegi':healthRegi},
+			method:'post',
+			url:'<c:url value="/project/healthInfo.do"/>',
+			traditional : true,
+			dataType:'json'
+		}).done(function(data){
+			alert('건강 정보가 저장되었습니다.');
+			location.href = window.location.href.split('#')[0];
+		}).fail(function(){
+			console.log('fail');
+		});		
+	});
+
 	//알레르기 아이콘 클릭 이벤트
 	$('.allergy').click(function(){
 		$(this).toggleClass('full');
@@ -966,6 +1031,7 @@ body {
 				   	searchFood.forEach(function(item) {
 				   		var li = document.querySelector('.food-li').cloneNode(true);
 				   		li.style.display = '';
+				   		document.querySelector('.h').style.height='322px';
 				   		li.classList.replace('food-li-checked','food-li');
 				   		if (item['IMGURL']===undefined) {
 				   			item['IMGURL'] = 'http://localhost:9090/images/thumbnail_img/NO_IMG.jpeg';
@@ -979,8 +1045,6 @@ body {
 			    	while (ulDiv.childElementCount >= 1) {
 				   		ulDiv.removeChild(ulDiv.lastChild);
 				   	}
-			    	
-			    	
 			    	p.textContent='입력한 제품과 동일한 제품이 없습니다';
 			    	ulDiv.appendChild(p);
 			    }*/
@@ -989,17 +1053,34 @@ body {
 		   });
 	   }
 	});
-	$("#take-foodList-modal").on("shown.bs.modal", function() {
+	$("#healthModal").on("shown.bs.modal", function() {
 	    // 자동완성 기능 초기화
-	    $("#searchText").autocomplete("option", "appendTo", "#take-foodList-modal");
+	    $("#searchText").autocomplete("option", "appendTo", "#healthModal");
   	});
-	
-	
-	$(document).on('click', '.food-li', function() {
+
+	//내가 선택한 영양제 등록
+	$(document).on('click', '#searchFoodList .food-li', function() {
 	    var foodContainer = $('#select-div ul');
-	    $(this).clone(true).appendTo(foodContainer);
-	    console.log('uldiv:',ulDiv)
-	    ulDiv.style.display='none';
+	    var selectFood = foodContainer.find('.food-li');
+	    var click = $(this).find('div').html();
+	    var target = $(this);
+	    var equalFlag = false;
+
+	    selectFood.each(function(){
+	    	if(click === $(this).find('div').html()){
+	    		alert('이미 등록된 영양제입니다');
+	    		equalFlag = true;
+		    	return false;
+	    	}
+	    });
+	    if(!selectFood.length || !equalFlag){
+	    	target.clone(true).appendTo(foodContainer);
+	    }
+	    
+	  	//내가 선택한 영양제 클릭 시 삭제
+		$('#select-div .food-li').click(function(){
+			$(this).remove();
+		});
 	});
 	
 

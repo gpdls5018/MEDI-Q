@@ -37,7 +37,6 @@ public class SelectFoodRankListController {
 	public String hissue(@RequestParam String healthissue,Model model) {
 		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFromHealthissue(healthissue);
 		List<AvgStarScoreCountDTO> listData2 = selectfoodservice.FoodListFromHealthissue(healthissue);
-		System.out.println(listData2.size());
 		model.addAttribute("healthissue", healthissue);
 		model.addAttribute("listData", listData);
 		model.addAttribute("listData2", listData2);

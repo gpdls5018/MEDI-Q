@@ -34,11 +34,13 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.kosmo.springapp.model.HealthMemoDTO;
 import com.kosmo.springapp.model.MemberDTO;
+import com.kosmo.springapp.model.MyHealthDTO;
 import com.kosmo.springapp.model.ProfileImageDTO;
 import com.kosmo.springapp.model.ReviewDTO;
 import com.kosmo.springapp.service.FCMInitializer;
 import com.kosmo.springapp.service.HeartCountService;
 import com.kosmo.springapp.service.JWTokensService;
+import com.kosmo.springapp.service.MyHealthServiceImpl;
 import com.kosmo.springapp.service.impl.HealthMemoIServicempl;
 import com.kosmo.springapp.service.impl.HeartCountServiceImpl;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
@@ -58,6 +60,8 @@ public class MypageController {
 	private ReviewServiceImpl reviewServiceImpl;
 	@Autowired
 	private HeartCountServiceImpl heartCountServiceImpl;
+	@Autowired
+	private MyHealthServiceImpl myHealthServiceImpl;
 
 	@Value("${secret-key}")
 	private String secretKey;
@@ -75,7 +79,6 @@ public class MypageController {
 		String id = member.getId();
 		
 		ProfileImageDTO profImg = loginService.selectProfImg(id);
-
 		List<HealthMemoDTO> memos = healthMemoIServicempl.selectAll(req);
 		for(HealthMemoDTO m : memos) {
 			m.setMm_Date(m.getMm_Date().split(" ")[0]);
@@ -83,7 +86,10 @@ public class MypageController {
 		
 		map.put("mm_Id", id);
 		map.put("mm_Date", current);
+		
 		HealthMemoDTO memo = healthMemoIServicempl.selectOne(map);
+		MyHealthDTO my = myHealthServiceImpl.select(id);
+		List food = myHealthServiceImpl.selectFood(id);
 		
 		if(memo != null) {
 			memo.setMm_Date(memo.getMm_Date().split(" ")[0]);
@@ -93,6 +99,8 @@ public class MypageController {
 		model.addAttribute("profImg", profImg);//프로필 이미지
 		model.addAttribute("memos", memos);//모든 건강 다이어리
 		model.addAttribute("memo", memo);//오늘 작성한 건강 다이어리
+		model.addAttribute("my", my);//등록한 건강정보
+		model.addAttribute("food", food);//등록한 영양제 정보
 		
 		return "login/MyPage";
 	}
@@ -104,12 +112,16 @@ public class MypageController {
 		
 		ProfileImageDTO profImg = loginService.selectProfImg(id);
 		List<Map> review = reviewServiceImpl.selectReviewByUserId(id);
-		List<String> food = heartCountServiceImpl.selectFood(id);
+		List<String> foodlike = heartCountServiceImpl.selectFood(id);
+		MyHealthDTO my = myHealthServiceImpl.select(id);
+		List food = myHealthServiceImpl.selectFood(id);
 		
 		model.addAttribute("info", member);//회원 정보
 		model.addAttribute("profImg", profImg);//프로필 이미지
 		model.addAttribute("review", review);//리뷰 작성 글
-		model.addAttribute("food", food);//복용 중인 영양제 명만 가져옴
+		model.addAttribute("foodlike", foodlike);//찜 영양제 명만 가져옴
+		model.addAttribute("my", my);//등록한 건강정보
+		model.addAttribute("food", food);//등록한 영양제 정보
 		
 		return "login/MyPage2";
 	}
@@ -282,13 +294,14 @@ public class MypageController {
 		return "login/Message";
 	}
 	
+	//건강정보 등록
 	@PostMapping("/healthInfo.do")
 	@ResponseBody
-	public Map healthInfo(@RequestParam Map map) {
-		//String page = map.get("page").toString();
-		//DB에 저장
+	public String[] healthInfo(String[] healthRegi, HttpServletRequest req) {
 		
-		return map;
+		myHealthServiceImpl.insert(healthRegi,req);
+		
+		return healthRegi;
 	}
 	
 	//정신건강테스트1
