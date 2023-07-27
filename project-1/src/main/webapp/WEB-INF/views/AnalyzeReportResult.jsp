@@ -84,13 +84,16 @@ progress {
 			<div class="jumbotron effect-custom-font" style="border-radius:25px;">
 				<div class="row">
 					<div class="col-6">
-						<c:if test="${resultListDto.resultScore < 50}" var="score">
+						<c:if test="${resultListDto.resultScore < 30}">
+							<span style="font-size:25px;text-weight:bold;">💥 이대로는 안돼요! 분발해봐요! 💥</span>
+						</c:if>
+						<c:if test="${resultListDto.resultScore >=30 and resultListDto.resultScore < 60}">
 							<span style="font-size:25px;text-weight:bold;">🔥 MEDI-Q 와 조금 더 노력해봐요! 🔥</span>
 						</c:if>
-						<c:if test="${not score}">
+						<c:if test="${resultListDto.resultScore >=60 and resultListDto.resultScore <= 100}">
 							<span style="font-size:25px;text-weight:bold;">🎉 와우! 정말 잘하고 있어요 🎉</span>
 						</c:if>
-						<div class="mt-5" style="font-size:15px;">
+						<div class="mt-3" style="font-size:15px;">
 							<ul style="line-height: 40px;">
 								<li style="color:#6e6e6e;">
 									${memberDto.name}님은 현재 <span style="font-size:17px;color:#000000;background-color:#ffdcdc">${fn:length(resultListDto.listdto)}개의 목적</span>
@@ -101,7 +104,31 @@ progress {
 									${resultListDto.ingredientCount}개의 영양제</span>
 									를 통해 <span style="font-size:17px;color:#000000;background-color:#ffdcdc">${fn:length(resultListDto.nutrient_list_report)+resultListDto.ingredientCount}개의 영양소</span>를 섭취하고 있어요.
 								</li>
+								<li style="color:#6e6e6e;">
+									섭취하고 있는 
+									<span style="font-size:17px;color:#000000;background-color:#ffdcdc;">5대영양소는 현재 총 ${fn:length(resultListDto.nutrient_list_report)} 개</span>
+									 이므로
+								</li>
+								<li>
+									점수는 <span style="font-size:23px;color:#000000;">${resultListDto.resultScore}</span> 점 입니다
+								</li>
 							</ul>
+							<div style="margin-top:15px;font-size:25px;">
+								<c:forEach items="${resultListDto.listdto}" var="dto" varStatus="loop" >
+									<c:if test="${fn:length(dto.foodForHelpPurpose) eq 0}" var="item_1">
+										<span>${dto.takePurpose}</span>을(를) 위한 영양제,&nbsp;
+									</c:if>
+								</c:forEach>
+								<c:if test="${fn:length(resultListDto.nutrient_list_report) <= 5}" var="bad">
+									5대영양소의 섭취가 많이 필요해 보여요
+								</c:if>
+								<c:if test="${fn:length(resultListDto.nutrient_list_report) > 5 and fn:length(resultListDto.nutrient_list_no_report)<=10}" var="soso">
+									5대영양소의 섭취가 조금 필요해 보여요
+								</c:if>
+								<c:if test="${!bad and !soso and !item_1}" var="good">
+									5대영양소의 섭취는 충분해요!
+								</c:if>
+							</div>
 						</div>
 					</div>
 					<div class="col-6">
@@ -119,7 +146,7 @@ progress {
 				<div class="row">
 					<div class="col-3">
 						<div class="effect-custom-font" style="font-size:30px;">
-							<div>#${loop.count} ${dto.takePurpose}</div>
+							<div>${loop.count}. ${dto.takePurpose}</div>
 							<div><img src="<c:url value="/images/health_img/${dto.takePurpose}"/>.png" style="width:150px;height:150px;"/></div>
 						</div>
 					</div>
@@ -129,7 +156,7 @@ progress {
 						</div>
 						<c:if test="${fn:length(dto.foodForHelpPurpose) eq 0}" var="noHelp">
 							<div class="effect-custom-font"><span style="font-size:17px;color:red;background-color:#ffdcdc">현재 아무런 기능성 원료도 섭취하지 않아요!</span>  <span style="color:red;font-size:15px;background-color:#ffdcdc">아래의 추천 기능성 원료를 참고해 주세요</span></div>
-							<img src="<c:url value="/images/basic/warning.png"/>" style="width:200px;height:200px;"/>
+							<img src="<c:url value="/images/basic/warning.png"/>" style="width:200px;height:200px;margin-left:100px;"/>
 						</c:if>
 						<c:if test="${not noHelp}">
 						<div class="effect-custom-font" style="font-size:20px;">아래는 복용 중이신 영양제 중 '${dto.takePurpose}' 에 도움이 되는 기능성 원료입니다</div>
@@ -202,7 +229,7 @@ progress {
 	var listVitamin = '${resultListDto.nutrient_list_report}';
 	var reg_ex = /[\[\]\\\/ ]/gim;
 	listVitamin = listVitamin.replace(reg_ex,'').split(',');
-	var graph_data = [1,1,1,1,1,1];
+	var graph_data = [1,1,1,1,1,1,1,1,1,1];
 	var check_list = ['비타민A','비타민B','비타민C','비타민D','비타민E','칼슘','마그네슘','아연','망간','단백질']
 	check_list.forEach(function(checkitem,index){
 	    listVitamin.forEach(function(listitem){
@@ -236,7 +263,11 @@ progress {
 			    pointHoverBorderColor: 'rgb(255, 99, 132)'
 			  },
 			  {
-			    data: [0, 0, 0, 0, 0, 0, 0],
+			    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			    fill: false,
+			  },
+			  {
+			    data: [6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
 			    fill: false,
 			  }]
 			};

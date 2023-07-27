@@ -104,7 +104,6 @@
         width: 100%;
         font-size: 12px;
         overflow: auto; /* 스크롤이 가능하도록 하기 위해 추가 */
-        
     }
 
     th, td {
@@ -115,6 +114,7 @@
 
     th {
         background-color: rgba(75, 192, 192, 0.6);
+        height: 40px;
     }
 
     tr:nth-child(odd) {
@@ -213,7 +213,7 @@
 	        	<li>
 	        		<a href="<c:url value="/AdminMain.do"/>" style="display: flex; align-items: center;">
 	        			<i class="fas fa-table" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
-	        			&nbsp;&nbsp;데이터베이스 관리
+	        			&nbsp;&nbsp;데이터베이스 통계
 	        		</a>
 	        	</li>
 	        	<li>
@@ -272,24 +272,24 @@
 		<!-- 전체 내용 -->
 	    <div id="admin_content" style="display: flex; justify-content:center; flex-wrap: wrap;">
 			
-			<h4 class="text-center" style="width:95%; padding-bottom: 20px; border-bottom: 1px solid #ccc;"><b>데이터베이스 관리</b></h4>
+			<h4 class="text-center" style="width:95%; padding-bottom: 20px; border-bottom: 1px solid #ccc;"><b>데이터베이스 통계</b></h4>
 	    
 	    	<!-- 1번 div -->
 	        <div class="each-container">
 		        <!-- 도표1: 라인 차트 -->
 				<div class="chart-container" style="margin-bottom: 50px;">
 					<p class="text-center" style="font-size: 16px;"><b>Top10 영양제 테이블 통계</b></p>
-					<div style="height: 200px; width: 550px; margin-left: 30px;">
+					<div style="height: 200px; width: 608px;">
 				    	<!-- 혼합 차트를 그릴 캔버스 -->
-    					<canvas id="mixedChart" style="width: 570px; height: 200px;"></canvas>
+    					<canvas id="mixedChart" style="width: 608px; height: 200px;"></canvas>
 				    </div>
 				</div>
 				 <!-- 도표2: 막대 그래프 -->
 		        <div class="chart-container">
 		        	<p class="text-center" style="font-size: 16px;"><b>Top10 영양소 테이블 통계</b></p>
-		        	<div style="height: 200px; width: 570px; margin-left: 20px;">
+		        	<div style="height: 200px; width: 608px;">
 		            	<!-- 막대 차트를 그릴 캔버스 -->
-    					<canvas id="barChart" style="width: 570px; height: 200px;"></canvas>
+    					<canvas id="barChart" style="width: 608px; height: 200px;"></canvas>
 		            </div>
 		        </div>
 			</div>
@@ -308,23 +308,32 @@
 					    <table id="first">
 					        <thead>
 				                <tr>
-				                    <th>번호</th>
+				                    <th style="width:45px;">번호</th>
 				                    <th>이름</th>
 				                    <th>기능</th>
-				                    <th>포함 영양소</th>
-				                    <th>리뷰수</th>
-				                    <th>별점</th>
+				                    <th style="width:120px;">포함 영양소</th>
+				                    <th style="width:45px;">별점</th>
+				                    <th style="width:55px;">리뷰수</th>
+				                    <th style="width: 75px;">리뷰 갱신</th>
 				                </tr>
 				            </thead>
 				            <tbody>
 						        <c:forEach var="foodInfo" items="${foodInfos}" varStatus="loop">
-								    <tr onclick="location.href='/NutrientToFoodDetail.do?name=${foodInfo.productName }'">
-								        <td>${loop.count}</td>
-								        <td>${foodInfo.productName }</td>
-								        <td>${fn:replace(foodInfo.material, '$', ',') }</td>
-								        <td>${fn:replace(foodInfo.nutrient, '$', ',') }</td>
-								        <td>${foodInfo.reviewCount }</td>
-								        <td>${foodInfo.avgStarScore }</td>
+								    <tr>
+								        <td onclick="location.href='/detail.do?no=${foodInfo.no}'">${loop.count}</td>
+								        <td onclick="location.href='/detail.do?no=${foodInfo.no}'">${foodInfo.productName }</td>
+								        <td onclick="location.href='/detail.do?no=${foodInfo.no}'">${fn:replace(foodInfo.material, '$', ',') }</td>
+								        <td onclick="location.href='/detail.do?no=${foodInfo.no}'">${fn:replace(foodInfo.nutrient, '$', ',') }</td>
+								        <td onclick="location.href='/detail.do?no=${foodInfo.no}'">${foodInfo.avgStarScore }</td>
+								        <td onclick="location.href='/detail.do?no=${foodInfo.no}'">${foodInfo.reviewCount }</td>
+								        <td>
+								        	<div class="button-wrapper">
+							            		<!-- 갱신 버튼 -->
+               									<button class="button" onclick="/detail.do?no=111">
+						                            <span>업데이트</span>
+						                        </button>
+					                        </div>
+				                        </td>
 								    </tr>
 								</c:forEach>
 					        </tbody>
@@ -332,21 +341,21 @@
 					    <table id="second" style="display: none;">
 					    	<thead>
 				                <tr>
-				                    <th>번호</th>
+				                    <th style="width:50px;">번호</th>
 				                    <th>이름</th>
 				                    <th>기능</th>
 				                    <th>포함 영양제</th>
-				                    <th>조회수</th>
+				                    <th style="width:60px;">조회수</th>
 				                </tr>
 				            </thead>
 				            <tbody>
-						        <c:forEach var="member" items="${members }">
-							        <tr>
-							            <td></td>
-							            <td></td>
-							            <td></td>
-							            <td></td>
-							            <td></td>
+						        <c:forEach var="mergedInfo" items="${mergedInfos}" varStatus="loop">
+							        <tr onclick="location.href='/NutrientDetail.do?name=${mergedInfo.name}'">
+							            <td>${loop.count }</td>
+							            <td>${mergedInfo.name }</td>
+							            <td>${mergedInfo.func }</td>
+							            <td>${mergedInfo.productNames }</td>
+							            <td>${mergedInfo.view }</td>
 							        </tr>
 						        </c:forEach>
 					        </tbody>
@@ -376,30 +385,51 @@
 	                $("#second").hide(); // second 테이블을 숨김
 	            }
 	        });
-	        
-	        
 	    });
 	    
+	 	// 주어진 mixedLabels 변수의 값을 파싱하여 List로 변환하는 함수
+        function parseMixedLabels(mixedLabels) {
+          // 양끝의 대괄호 '['와 ']'를 제거한 후, 쉼표(,)로 구분하여 배열로 분리
+          var labelsArray = mixedLabels.slice(1, -1).split(', ');
+          
+          // 각 라벨에 대한 공백을 제거하고 다시 List로 변환하여 리턴
+          return labelsArray.map(label => label.trim());
+        }
+	 	
 	 	// 혼합 차트 레이블
-        var mixedLabels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-
+        var mixedLabels = '${foodTop10}';
+     	// mixedLabels 값을 파싱하여 List로 변환
+        var parsedLabels = parseMixedLabels(mixedLabels);
+        
+     	// 리뷰 개수
+     	var data1 = '${foodTop10RC}';
+     	var parsedData1 = parseMixedLabels(data1);
+     	 
+     	// 평균 별점
+     	var data2 = '${foodTop10AS}';
+     	var parsedData2 = parseMixedLabels(data2);
+     	
         // 혼합 차트 데이터 (레이블 10개에 맞게 데이터 갯수도 10개로 맞춤)
         var mixedData = {
-            labels: mixedLabels,
+            labels: parsedLabels,
             datasets: [
                 {
-                    type: 'line',
-                    label: 'Line Dataset',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    data: [12, 19, 3, 5, 2, 10, 6, 8, 4, 15]
-                },
-                {
+                	yAxisID: 'left-y-axis', // 왼쪽 Y축을 사용
                     type: 'bar',
-                    label: 'Bar Dataset',
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    label: '리뷰 개수(left-y)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1,
-                    data: [7, 11, 5, 8, 3, 12, 9, 5, 3, 6]
+                    data: parsedData1
+                },
+                {
+                	 yAxisID: 'right-y-axis', // 오른쪽 Y축을 사용
+                     type: 'line',
+                     label: '평균 별점(right-y)',
+                     borderColor: 'rgba(255, 159, 64, 1)',
+                     borderWidth: 1,
+                     fill: false,
+                     data: parsedData2
                 }
             ]
         };
@@ -407,61 +437,114 @@
         // 혼합 차트 그리기
         var mixedChartCtx = document.getElementById('mixedChart').getContext('2d');
         var mixedChart = new Chart(mixedChartCtx, {
-            type: 'bar',
-            data: mixedData
-        });
-
-        // 첫 번째 AJAX 요청
-        $.ajax({
-            url: '/getFoodInfo',
-            method: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                // 서버로부터 받은 데이터를 처리하는 로직
-                console.log('첫 번째 AJAX 요청 성공:', response);
-            },
-            error: function(error) {
-                console.error('첫 번째 AJAX 요청 실패:', error);
+        	type: 'bar',
+            data: mixedData,
+            options: {
+                scales: {
+                	'left-y-axis' : { 
+                		type: 'linear',
+                        position: 'left',
+                        title: {
+                            display: true
+                        },
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                	},
+                	'right-y-axis' : {
+                		type: 'linear',
+                        position: 'right',
+                        title: {
+                            display: true
+                        },
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                	}
+                }
             }
-        });     	
+        });
 	     	
      	// 막대 차트 레이블
-        var barLabels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Pink', 'Cyan', 'Lime', 'Brown'];
-
+        var barLabels = '${nutTop10}';
+     	// mixedLabels 값을 파싱하여 List로 변환
+        var parsedLabels = parseMixedLabels(barLabels);
+     	
+     	// 조회수
+     	var data1 = '${nutTop10v}';
+     	var parsedData1 = parseMixedLabels(data1);
+     	
      	// 막대 차트 데이터 (레이블 10개에 맞게 데이터 갯수도 10개로 맞춤)
         var barData = {
-            labels: barLabels,
-            datasets: [{
-                label: 'Bar Dataset',
-                backgroundColor: ['red', 'blue', 'yellow', 'green', 'purple', 'orange', 'pink', 'cyan', 'lime', 'brown'],
-                borderColor: 'black',
-                borderWidth: 1,
-                data: [12, 19, 3, 5, 2, 10, 6, 8, 4, 15]
-            }]
+            labels: parsedLabels,
+            datasets: [
+            	{
+            		yAxisID: 'left-y-axis', // 왼쪽 Y축을 사용
+                    type: 'bar',
+	                label: '조회수(left-y)',
+	                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+	                borderColor: 'rgba(54, 162, 235, 1)',
+	                borderWidth: 1,
+	                data: parsedData1
+            	},
+                {
+               	 yAxisID: 'right-y-axis', // 오른쪽 Y축을 사용
+                    type: 'line',
+                    label: '평균 별점(right-y)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    fill: false,
+                    data: parsedData2,
+                    
+               }
+           	]
         };
 
         // 막대 차트 그리기
         var barChartCtx = document.getElementById('barChart').getContext('2d');
         var barChart = new Chart(barChartCtx, {
             type: 'bar',
-            data: barData
-        });
-
-        // 두 번째 AJAX 요청
-        $.ajax({
-            url: '두 번째_ajax_요청_URL_여기에_입력',
-            method: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                // 서버로부터 받은 데이터를 처리하는 로직
-                console.log('두 번째 AJAX 요청 성공:', response);
-            },
-            error: function(error) {
-                console.error('두 번째 AJAX 요청 실패:', error);
+            data: barData,
+            options: {
+                scales: {
+                	'left-y-axis' : { 
+                		type: 'linear',
+                        position: 'left',
+                        title: {
+                            display: true
+                        },
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                	},
+                	'right-y-axis' : {
+                		type: 'linear',
+                        position: 'right',
+                        title: {
+                            display: true
+                        },
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                	}
+                }
             }
         });
+
         
-        
+   
         
         
         

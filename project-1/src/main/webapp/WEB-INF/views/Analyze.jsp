@@ -18,6 +18,11 @@
    	.effect-custom-font {
       font-family : Noto Sans KR, sans-serif;
     }
+    .delete_report:hover {
+   		border-radius:20px;
+   		padding:5px;
+    	background-color:#f06060;
+    }
 </style>
 
 	<div class="container mt-5" style="min-height: 860px;">
@@ -42,7 +47,7 @@
 			<div>최근 분석 리포트</div>
 			<div class="jumbotron" style="box-shadow: 5px 5px 5px grey;border-radius:25px;">
 				<div style="margin: 10px 0px 0px 20px;">
-                <div class="enbDhJ1"><span class="p-1"style="font-size:15px;color:white;background-color:#EF605D;border-radius:15px;">${analyzeReport.analyzeDate}</span> &nbsp;최근 분석 결과입니다 </div>
+                <div class="enbDhJ1"><span class="p-1"style="font-size:15px;color:white;background-color:#EF605D;border-radius:15px;">${analyzeReport.analyzeDate}</span><span style=" float: right;"></span></div>
                 	<p style="">${analyzeReport.score}<span class="ml-3" style="color:black; font-size: 20px;">점</span></p>
             	</div>
 	            <div class="ZyIFk1 d-block mt-3" style="margin-left: 20px;">
@@ -55,15 +60,65 @@
 			<div>저장된 분석 리포트</div>
 			<c:forEach items="${analzeReportAll}" var="analyzeReportOne">
 			<div class="jumbotron p-3" style="box-shadow: 5px 5px 5px grey;border-radius:25px;font-size:15px;height:200px;">
-                <div class="enbDhJ1"><span class="p-1"style="font-size:15px;color:white;background-color:#EF605D;border-radius:15px;">${analyzeReportOne.analyzeDate}</span></div>
+                <div class="enbDhJ1"><span class="p-1"style="font-size:15px;color:white;background-color:#EF605D;border-radius:15px;">${analyzeReportOne.analyzeDate}</span>
+                	<span style=" float: right;"class="delete_report" data-value="${analyzeReportOne.analyzeno}">
+               		🗑</span>
+               		<input type="hidden" value="${analyzeReportOne.analyzeno}"/>
+               	</div>
+               	<form action='<c:url value="/analyzeMyReportReLoad.do"/>' method="POST">
                 	<p style="">${analyzeReportOne.score}<span class="ml-3" style="color:black; font-size: 20px;">점</span></p>
-	            <div class="ZyIFk1 d-block mt-3" style="margin-left: 20px;">
-	                <div><span style="color:#545454; font-weight: bold;">섭취 목적</span> :<br/> ${analyzeReportOne.takePurposes}</div>
-	                <div><span style="color:#545454; font-weight: bold;">섭취중인 영양제</span> :<br/> ${analyzeReportOne.takeFoods}</div>
-	            </div>	
+		            <div class="ZyIFk1 d-block mt-3" style="margin-left: 20px;">
+		                <div><span style="color:#545454; font-weight: bold;">섭취 목적</span> :<br/> ${analyzeReportOne.takePurposes}</div>
+		                <div><span style="color:#545454; font-weight: bold;">섭취중인 영양제</span> :<br/> ${analyzeReportOne.takeFoods}</div>
+		                <c:set var="takePurpose" value="${fn:replace(analyzeReportOne.takePurposes, '[', '')}" />
+		                <c:set var="takePurpose" value="${fn:replace(takePurpose, ']', '')}" />
+		                <input type="hidden" value="${takePurpose}" name="takePurpose"/>
+		                <c:set var="takeFood" value="${fn:replace(analyzeReportOne.takeFoods, '[', '')}" />
+		                <c:set var="takeFood" value="${fn:replace(takeFood, ']', '')}" />
+		                <input type="hidden" value="${takeFood}" name="takeFood"/>
+		                <button type="submit" class="btn btn-warning">확인하기</button>
+		            </div>
+	            </form>	
 			</div>
 			</c:forEach>
 		</div>
 	</div>
+<script>
+// jQuery를 사용하여 이벤트 핸들러 추가
+const deleteButtons = document.querySelectorAll(".delete_report");
+
+deleteButtons.forEach(button => {
+  button.addEventListener('click', function(e) {
+    var itemNo = e.target.dataset.value;
+    Swal.fire({
+    	  title: '삭제하시겠어요??',
+    	  text: "저장된 리포트를 삭제합니다",
+    	  icon: 'warning',
+    	  
+    	  showCancelButton: true,
+    	  confirmButtonColor: '#3085d6',
+    	  cancelButtonColor: '#d33',
+    	  confirmButtonText: '삭제'
+    	}).then((result) => {
+    	  if (result.isConfirmed) {
+    	    Swal.fire(
+    	    		'Deleted!',
+    	      '삭제되었습니다!',
+    	      'success',
+    	    )
+    	    setTimeout(function() {$.ajax({
+    			   url: "<c:url value='/deleteAnalyzeReport.do'/>?analyzeno="+itemNo,
+    		   }).done(function() {
+    			   location.reload();
+    		   }).fail(function(error) {
+    			   console.log(error);
+    		   });
+    	    },1500);
+    	  }
+    	})
+    
+  });
+});
+</script>
 
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>

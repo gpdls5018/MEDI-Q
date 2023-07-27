@@ -378,4 +378,8 @@ public class AnalyzeMyReportServiceImpl {
 	public List<AnalyzeReportDTO> selectAnalyzeReportAll(String id) {
 		return analyzeMyReportMapper.selectAnalyzeReportAll(id);
 	}
+
+	public int deleteAnalyzeReport(int analyzeno) {
+		return analyzeMyReportMapper.deleteAnalyzeReport(analyzeno);
+	}
 }
