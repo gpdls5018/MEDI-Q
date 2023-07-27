@@ -1,34 +1,20 @@
 package com.kosmo.springapp.qnabbs.controller;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.kosmo.springapp.qnabbs.service.AnswerBoardDTO;
-import com.kosmo.springapp.qnabbs.service.AnswerService;
-import com.kosmo.springapp.qnabbs.service.DaoService;
-import com.kosmo.springapp.qnabbs.service.ListPagingData;
-import com.kosmo.springapp.qnabbs.service.PagingUtil;
 import com.kosmo.springapp.qnabbs.service.impl.board.AnswerServiceImpl;
+import com.kosmo.springapp.qnabbs.service.impl.board.BoardServiceImpl;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
 
@@ -46,16 +32,12 @@ public class AnswerBoardController {
 	@Value("${token-name}")
 	private String tokenName;
 	
-	//AnswerServiceImpl주입
 	@Autowired
 	private AnswerServiceImpl answerservice;
-	
-	//loginserviceimpl주입
 	@Autowired
 	private LoginServiceImpl loginService;
-	//DaoService주입
 	@Autowired
-	private DaoService board;
+	private BoardServiceImpl board;
 	
 	//board/View.jsp에서 요청받아 관리자(특정인)가 쓰는 글
 	@GetMapping("/AnswerWrite.do")
@@ -99,8 +81,7 @@ public class AnswerBoardController {
 	}//////////////////////////////////////////////
 
 	@GetMapping("/AnswerEdit.do")
-	public String answeredit(//HttpServletRequest req,
-			@RequestParam Map map,Model model) {
+	public String answeredit(@RequestParam Map map,Model model) {
 		
 		System.out.println("edit체크용1");
 		map=answerservice.answerselectOne(map);
@@ -111,6 +92,7 @@ public class AnswerBoardController {
 		System.out.println("editmodel의 값 확인:"+model);
 		return "board/AnswerEdit";
 	}//////////////////////////////////////////////
+	
 	@PostMapping("/AnswerEdit.do")
 	public String answereditProcess(@RequestParam Map map,Model model) {
 		System.out.println("map에 있는게 무엇인가?"+map);
@@ -124,6 +106,5 @@ public class AnswerBoardController {
 		System.out.println("여기 이후로는 view문제입니다");
 		return "forward:/board/View.do";
 	}////////////////////////////////////////////////
-	
 }
 

@@ -131,19 +131,25 @@
 .tsnava2 {
 	color: #EF605D;
 	font-weight: bold;
-	font-size: 32px;
+	font-size: 30px;
 	align-items: flex-end;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     margin-right: 25px;
+    padding-top: 0px;
 }
 .tsnava3 {
 	color: black;
 	font-weight: bold;
-	font-size: 18px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+	font-size: 16px;
+    padding-top: 10px;
 }
 .tsnava1:hover {
 	color:black;
+	text-decoration: none;
+}
+.tslogina span:hover {
+	color:white;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 	text-decoration: none;
 }
 
@@ -161,9 +167,7 @@ ul {
         }
 
         .dropdown-toggle:hover {
-            background-color: black;
-            color: white;
-            border-radius: 10px;
+            color: black;
             text-decoration: none;
         }
 
@@ -225,11 +229,10 @@ ul {
     list-style: none;
 }
 #ts__menu .ts__box .left__wr li .title {
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 23px;
+    font-weight: bold;
     color: #152358;
     padding-bottom: 30px;
-    line-height: 1;
 }
 #ts__menu .ts__box .left__wr li a {
     display: block;
@@ -240,7 +243,8 @@ ul {
 }
 #ts__menu .ts__box .right__wr {
     width: 400px;
-    padding-top: 45px;
+    padding-top: 20px;
+    margin-bottom: 20px;
     text-align: center;
     position: relative;
 }
@@ -263,7 +267,307 @@ ul {
     color: #fff;
     margin-top: 26px;
 }
+	/* 챗봇 관련 CSS */
+	/* 버튼 관련 디자인*/
+       #btnBot{
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+            z-index:3000;
+        }
+        .clickBtn{
+            list-style: none;
+            position: relative;
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+        }
+        @-moz-keyframes rotate {
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(-360deg);}
+        }
+        @-webkit-keyframes rotate {
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(-360deg);}
+        }
+        @-o-keyframes rotate {
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(-360deg);}
+        }
+        @keyframes rotate {
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(-360deg);}
+        }
+        .round {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            padding-top: 15px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 26px;
+            text-shadow: 0 1px 0 rgba(255,255,255,.7);
+            letter-spacing: -.065em;
+            -webkit-transition: all .25s ease-in-out;
+            -o-transition: all .25s ease-in-out;
+            -moz-transition: all .25s ease-in-out;
+            transition: all .25s ease-in-out;
+            box-shadow: 2px 2px 7px rgba(0,0,0,.2);
+            border-radius: 300px;
+            z-index: 3500;
+            border-width: 4px;
+            border-style: solid;
+        }
+        .round:hover {
+            width: 130%;
+            height: 130%;
+            left: -15%;
+            top: -15%;
+            font-size: 14px;
+            padding-top: 40px;
+            -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+            -o-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+            -moz-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+            box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+            z-index: 4000;
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -o-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+        }
+        .colorBtn {
+            background-color: rgba(255, 92, 33,1);
+            color: white;
+            border-color: rgba(0,63,71,.2);
+        }
+        .colorBtn:hover {
+            color: rgba(255, 92, 33,1);
+        }
+        .round span.round {
+            display: block;
+            opacity: 0;
+            -webkit-transition: all .5s ease-in-out;
+            -moz-transition: all .5s ease-in-out;
+            -o-transition: all .5s ease-in-out;
+            transition: all .5s ease-in-out;
+            font-size: 1px;
+            border: none;
+            padding: 40% 20% 0 20%;
+            color: #fff;
+            animation-name: btn_ani;
+        }
+        .round span:hover {
+            opacity: .85;
+            font-size: 18px;
+            -webkit-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+            -moz-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+            -o-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+            text-shadow: 0 1px 1px rgba(0,0,0,.5);	
+        }
+        .colorBtn span {
+            background: rgba(255, 92, 33,.7);		
+        }
+        @keyframes btn_ani{
+            0%{
+                transform: translate(500px,500px);
+            }
+            100%{
+
+            }
+        }
+        /* 챗창 내부 디자인 */
+        .textdialog{
+            width: 100%;
+            height: 450px;
+            background-color: #ffe4bf;
+            border: 2px solid #ffcd87;
+            overflow:auto;
+        }
+        .skeleton-user{
+            background-color:white;
+            border-radius: 10px;
+        }
+        .skeleton-gpt{
+            background-color:#d6d6d6;
+            border-radius: 10px;
+        }
+        .user_ques_img{
+            width: 35px;
+            height: 35px;
+        }
+        .gtp_ans_img{
+            width: 35px;
+            height: 35px;
+        }
+        .btn_x{
+            width:50px;
+            position: relative;
+            top:12px;
+            left:180px;
+        }
+        .chatbot{
+            width: 500px;
+            height: 600px;
+            position:fixed;
+            background-color: rgba(255, 23, 11, 0.8);
+            border: 5px solid rgba(218, 12, 1, 0.8);
+            border-radius: 5%;
+            top:calc(100vh - 700px);
+            left:calc(100vw - 700px);
+            display: none;
+            z-index: 5000;
+            animation-name: box_ani;
+            animation-duration: 1.5s;
+        }
+        @keyframes box_ani {
+            0% {
+                transform: scale(0,0);
+            }
+            50% {
+                transform: scale(1,0.002);
+            }
+            100% {
+                transform: scale(1,1);
+            }
+        }
+        /* 검색시 대기시간동안 띄우는 로딩 애니메이션 */
+        .loading_dot{
+            display: none;
+            width: 155px;
+            height: 50px;
+            background: #ffffff;
+            position: relative;
+            border-radius: 10px;
+            top:-280px;
+            left: 160px;
+            z-index: 6000;
+        }
+        .loading_dot span {
+            display: inline-block;
+            vertical-align: middle;
+            width: .6em;
+            height: .6em;
+            margin: .19em;
+            background: #007DB6;
+            border-radius: .6em;
+            animation: loading 1s infinite alternate;
+        }
+        .loadbar{
+            color: #383838;
+            margin: 0;
+            font-size: .8em;
+        }
+
+        .loading_dot span:nth-of-type(2) {
+            background: #008FB2;
+            animation-delay: 0.2s;
+        }
+        .loading_dot span:nth-of-type(3) {
+            background: #009B9E;
+            animation-delay: 0.4s;
+        }
+        .loading_dot span:nth-of-type(4) {
+            background: #00A77D;
+            animation-delay: 0.6s;
+        }
+        .loading_dot span:nth-of-type(5) {
+            background: #00B247;
+            animation-delay: 0.8s;
+        }
+        .loading_dot span:nth-of-type(6) {
+            background: #5AB027;
+            animation-delay: 1.0s;
+        }
+        .loading_dot span:nth-of-type(7) {
+            background: #A0B61E;
+            animation-delay: 1.2s;
+        }
+        @keyframes loading {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
     </style>
+    <script>
+	    window.addEventListener('DOMContentLoaded', ()=>{
+	        var chatgpt = document.querySelector('.gptAnswer');
+	        var modal = document.querySelector('#lodingModal');
+	
+	        function sendToChatGPT(content){
+	            var cloneUserDialog = document.querySelector(".userDialog").cloneNode(true);
+	            cloneUserDialog.querySelector(".usersQuestion").innerHTML = content;//사용자가 입력한 값 받기
+	            cloneUserDialog.style.display='';
+	            document.querySelector(".textdialog").appendChild(cloneUserDialog);//사용자가 입력한 값 출력
+	            fetch('https://api.openai.com/v1/chat/completions', {
+	                method: 'POST',
+	                headers: {
+	                    'Content-Type': 'application/json',
+	                    'Authorization': `Bearer apiKey`
+	                },
+	                body: JSON.stringify({
+	                    model: 'gpt-3.5-turbo',
+	                    messages: [{ role: 'user', content: content }],
+	                    temperature: 0
+	                })
+	            })
+	            .then(response => response.json())
+	            .then(data => {
+	                var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
+	                cloneGptDialog.querySelector(".gptAnswer").innerHTML = data["choices"][0]["message"]["content"];
+	                cloneGptDialog.style.display='';
+	                document.querySelector(".textdialog").appendChild(cloneGptDialog);//입력값 출력
+	                document.querySelector(".textdialog").scrollTop = document.querySelector(".textdialog").scrollHeight;//스크롤 올라가는 부분
+	                $('.loading_dot').css("display","none");
+	            })
+	            .catch(error => {
+	                console.error(error);
+	            });
+	        }
+	        
+	        document.querySelector('#userInput').onkeypress = function(e){
+	            if(e.target.value !== '' && e.keyCode === 13){
+	                $('.loading_dot').css("display","block");
+	                sendToChatGPT(e.target.value);
+	                document.querySelector("#userInput").value = "";
+	            }
+	            else if(e.target.value === '' && e.keyCode === 13){
+	                var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
+	                cloneGptDialog.querySelector(".gptAnswer").innerHTML = "질문을 입력해주세요";
+	                cloneGptDialog.style.display='';
+	                document.querySelector(".textdialog").appendChild(cloneGptDialog);//입력값 출력
+	                document.querySelector(".textdialog").scrollTop = document.querySelector(".textdialog").scrollHeight;//스크롤 올라가는 부분
+	                document.querySelector("#userInput").value = "";
+	            }
+	        };
+	        $(".btn_x").click(function(){
+                var userDialogElements = document.querySelectorAll(".userDialog");
+                var gptDialogElements = document.querySelectorAll(".gptDialog");
+    
+                for (var i = 1; i < userDialogElements.length; i++) {
+                    userDialogElements[i].remove();
+                }
+    
+                for (var j = 1; j < gptDialogElements.length; j++) {
+                    gptDialogElements[j].remove();
+                }
+                $("#chatbot").css("display","none");
+                $("#btnBot").css("display","block");
+                $('.loading_dot').css("display","none");
+            });
+	    });
+	    function showChatbot() {
+	        document.getElementById('btnBot').style.display = 'none';
+	        document.getElementById('chatbot').style.display = 'block';
+	        document.querySelector("#userInput").focus();
+	    }
+	    
+    </script>
 </head>
 <body>
 <div class="container-fluid position-relative p-0" style="width:100%;">
@@ -304,7 +608,12 @@ ul {
         <c:set var="payload" value='${m:getTokenPayloads(token,key) }' />
         <ul class="d-flex" style="margin-right: 50px;">
         	<li class="text2 mx-2 dropdown" style="display:flex; align-items: center;">
-        		<span class="tsnava3" >${empty token ? "로그인 후 이용해 주세요" : payload.name+="님 반갑습니다" }</span>
+        		<c:if test="${not empty token}" var="isLogin">       
+                    <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/MyPage.do"/>"><span class="tsnava3" ><span style="color:#EF605D;">'${payload.name}'</span>님 반갑습니다</span></a>
+                </c:if>
+                <c:if test="${not isLogin}">
+                    <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/Login.do"/>"><span class="tsnava3" >로그인 후 이용해 주세요</span></a>        
+                </c:if>
         	</li>
 	        <li class="text2 mx-2 dropdown">
 	            <!--<a class="tsnava2 dropdown-toggle" role="button" id="navbarDropdown" data-toggle="dropdown">${empty token ? "로그인 후 이용해 주세요" : payload.name+="님 반갑습니다" }</a>-->
@@ -316,7 +625,7 @@ ul {
 							<div class="ts__box">
 								<ul class="left__wr">
 									<li>
-										<a href="#" class="title">영양소 찾기</a>
+										<p class="title">영양소 찾기</p>
 										<a href="<c:url value="/NutrientSelect.do"/>">인기 영양소</a>
 							            <a href="<c:url value="/NutrientSelectVitamin.do"/>">비타민</a>	   
 							            <a href="<c:url value="/NutrientSelectMineral.do"/>">미네랄 및 기타영양소</a>	         
@@ -324,22 +633,22 @@ ul {
 										
 									</li>
 									<li>
-										<a href="#" class="title">영양제 찾기</a>
+										<p class="title">영양제 찾기</p>
 										<a href="<c:url value="/ranking/selectfood.do"/>">전체 검색</a>
 							            <a href="<c:url value="/ranking/selectfoodnutrient.do"/>">성분 검색</a>	 			
 							            <a href="<c:url value="/ranking/selectfoodcompany.do"/>">제품명/브랜드 검색</a>										
 									</li>
 									<li>
-										<a href="#" class="title">정신건강 테스트</a>
+										<p class="title">정신건강 테스트</p>
 										<a href="<c:url value="/project/MentalTest1.do"/>">심리적 스트레스</a>
 										<a href="<c:url value="/project/MentalTest2.do"/>">흡연 유형 평가</a>			
 										<a href="<c:url value="/project/MentalTest3.do"/>">알코올 의존(AUDIT-K)</a>				
 										<a href="<c:url value="/project/MentalTest4.do"/>">우울증(CES-D)</a>									
 									</li>
 									<li>
-										<a href="#" class="title">무엇을 넣지</a>
+										<p class="title">무엇을 넣지</p>
 										<a class="dropdown-item" href="<c:url value="/AdminMain.do"/>">관리자</a>
-	                    				<a class="dropdown-item" href="<c:url value="/test1.do"/>">태현(테스트)</a>
+	                    				<a class="dropdown-item" href="<c:url value="/functionfood/selectissue.do"/>">태현(테스트)</a>
 										
 									</li>
 								</ul>
@@ -486,6 +795,67 @@ ul {
         </div>
     </div>
 	navbar left side end-->
+	<!-- 챗봇 파트 -->
+	<div id="btnBot">
+        <!-- <button class="btn btn-secondary" id="btnBot">MEDI-Q Bot</button> -->
+        <div class="clickBtn"><a href="#" class="round colorBtn " onclick="showChatbot()">Q-Bot<span class="round font-weight-bold">무엇이든<br/>물어보세요</span></a></div>
+    </div>
+
+    <div class="chatbot" id="chatbot">
+        <div class="container">
+            <div class="p-2 m-1">
+                <img src="/images/chatbot/bot_title.png" class="mr-2 w-50"/>
+                <img src="/images/chatbot/bot_x.png" class="btn btn_x"/>
+            </div>
+            
+            <div class="textdialog">
+                <div>
+                    <div class="container mt-2 w-100">
+                        <div class="skeleton-gpt d-flex row bg-light align-content-center p-0 m-0">
+                            <div class="col-2 d-flex justify-content-center align-items-center">
+                                <img src="/images/chatbot/bot_a.png" class="gtp_ans_img"/>
+                            </div>
+                            <h6 class="gptAnswer col-10 d-flex p-3 ">안녕하세요. 무엇을 도와드릴까요?</h6>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="userDialog p-2"style="display:none;">
+                    <div class="skeleton-user d-flex row p-0 m-0 align-items-center">
+                        <div class="col-2 d-flex justify-content-center p-3">
+                            <img src="/images/chatbot/bot_q.png" class="user_ques_img"/>
+                        </div>
+                        <div class="usersQuestion col-10 d-flex p-3 w-100"></div>
+                    </div>
+                </div>
+                
+                <div class="gptDialog p-2"style="display:none;">
+                    <div class="skeleton-gpt d-flex row p-0 m-0 align-items-center">
+                        <div class="gptAnswer col-10 d-flex p-3"></div>
+                        <div class="col-2 d-flex justify-content-center p-3">
+                            <img src="/images/chatbot/bot_a.png" class="gtp_ans_img"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inputDIV p-1 mt-1">
+                <input type="text" class="form-control w-100 rounded bg-light" id="userInput" placeholder="무엇이든 물어보세요">
+            </div>
+        </div>
+        <!-- loading modal -->
+        <div class="loading_dot">
+            <h2 class="pt-2 pl-3 loadbar">답변을 준비중입니다</h2>
+            <div class="pl-2">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
 	const firebaseConfig = {
@@ -539,6 +909,10 @@ ul {
                         })
                     })
 		}
+    });
+	
+		
+		
 	});
 	//스크롤을 내리면 값에 변화에 따라 배경색 주기
 	jQuery(document).ready(function ($) {

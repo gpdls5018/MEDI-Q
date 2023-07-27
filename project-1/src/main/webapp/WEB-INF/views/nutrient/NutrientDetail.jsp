@@ -61,7 +61,7 @@
     
         .tab {
             display: none;
-            padding: 20px;
+            padding: 0 20px 20px 20px;
             border: 1px solid #ddd;
             border-top: none;
         }
@@ -200,17 +200,15 @@
 		}
 		
 		/* 검색창 스타일 추가 */
-
 		.search {
 		  display: flex;
 		}
 		
 		.searchTerm {
-		  width: 500px;
 		  border-right: none;
 		  padding: 5px;
-		  height: 50px;
-		  border-radius: 10px 0 0 10px;
+		  height: 64px;
+		  border-radius: 32px;
 		  outline: none;
 		  /*border: 3px solid #EF605D;*/
 		}
@@ -220,16 +218,17 @@
 		}
 		
 		.searchButton {
-		  width: 60px;
-		  height: 50px;
+		  width: 124px;
+		  height: 64px;
 		  /*border: #EF605D;*/
 		  background: #EF605D;
 		  text-align: center;
 		  color: #fff;
-		  border-radius: 0 10px 10px 0;
+		  border-radius: 32px;
 		  cursor: pointer;
 		  font-size: 20px;
 		}
+		
 	/*상단 배너 스타일*/
 #contentInfoCon {
     position: relative;
@@ -290,17 +289,17 @@
         </div>
     </aside>
 
-
 	<!-- 검색창 -->
-	<div class="search d-flex justify-content-center" style="padding: 150px 0px 80px; background-color: #fdfbf6;">
-	    <input id="searchInput" style="font-size:17px;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
-	    <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
-   	    </button>
-    </div>
+	<div class="d-flex justify-content-center" style="background-color: #fdfbf6;">
+		<div class="search d-flex justify-content-center" style="padding: 150px 0px 80px; position: relative; width: 960px;">
+		    <input id="searchInput" style="font-size:20px; width: 100%;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
+		    <button type="submit" class="searchButton" style="position: absolute; right: 0;">
+	        <i class="fa fa-search"></i>
+	   	    </button>
+	    </div>
+	</div>
 
-
-    <div class="container mb-5" style="margin-top: 50px;">
+    <div class="container pb-5" style="margin-top: 10px;">
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
@@ -848,8 +847,6 @@
         	var ing = "${ingredientNames}";
         	var ingArray = ing.slice(1, -1).split(",");
         	Array.prototype.push.apply(searchSource, ingArray);
-        	
-        	
 	        
 	        $("#searchInput").autocomplete({  //오토 컴플릿트 시작
 	            source : searchSource,    // source 는 자동 완성 대상
@@ -858,6 +855,20 @@
 	                var name = ui.item.value.trim();
 	                var url = "/NutrientDetail.do?name="+encodeURIComponent(name);
 	                window.location.href = url; // 페이지를 해당 URL로 이동합니다.
+	                
+	             	// 검색어 서버에 전송
+	                $.ajax({
+	                    url: "/search.do",
+	                    method: "POST",
+	                    contentType: "application/json",
+	                    data: JSON.stringify(name),
+	                    success: function(response) {
+	                        console.log("Search history saved");
+	                    },
+	                    error: function(err) {
+	                        console.error("Error saving search history:", err);
+	                    }
+	                });
 	            },
 	            focus : function(event, ui) {    //포커스 가면
 	                return false;//한글 에러 잡기용도로 사용됨
@@ -877,8 +888,11 @@
 	                //console.log(event);
 	            },
 	            open: function(event, ui) {
-	                $(this).autocomplete("widget").css("width", "494px");
-	                $(this).autocomplete("widget").css("text-align","center");
+	                var autocompleteWidget = $(this).autocomplete("widget");
+	                autocompleteWidget.css("width", "905px");
+	                autocompleteWidget.css("text-align", "center");
+	                autocompleteWidget.css("left", "50%");  // 왼쪽 위치를 50%로 설정하여 가로 중앙에 배치
+	                autocompleteWidget.css("transform", "translateX(-50%)");  // 반 너비만큼 이동하여 가운데로 정렬
 	            }
 	        });
 

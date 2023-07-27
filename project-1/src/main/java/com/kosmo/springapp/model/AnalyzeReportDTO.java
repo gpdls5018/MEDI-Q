@@ -18,6 +18,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Alias("analyzeReportDto")
 public class AnalyzeReportDTO {
+	private int analyzeno;
 	private String userId;
 	private String takePurposes;
 	private String takeFoods;

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosmo.springapp.nutrient.service.impl.NutrientSelectMapper;
@@ -143,9 +145,6 @@ public class NutrientController {
 		}
 
 		
-
-
-		
 		// 탭 이동시 뿌려주기
 		List<String> vitaminNames = nutrietnSelectMapper.getVitaminName();
 		model.addAttribute("vitaminNames",vitaminNames);
@@ -241,8 +240,6 @@ public class NutrientController {
 		List<String> top10 = nutrietnSelectMapper.getTop10();
 		model.addAttribute("top10",top10);
 		
-		
-		
 		model.addAttribute("title_name",name);
 		return "nutrient/NutrientDetail";
 		
@@ -261,18 +258,20 @@ public class NutrientController {
 		nutrietnSelectMapper.increaseF_VIEW(name);
 		model.addAttribute("f_view",f_view+1);
 		
-		
-		
-		
-		
-		
-		
 	    return "redirect:/detail.do?no=" + no;
 	}
 		
+	// 검색어 기록
+	@PostMapping("/search.do")
+    public void search(@RequestBody String keyword) {
 		
-		
-		
+		// 검색어 앞뒤에 추가된 "와 " 제거
+	    String trimmedKeyword = keyword;
+        trimmedKeyword = trimmedKeyword.substring(1, trimmedKeyword.length() - 1);
+	    
+        // 검색어를 DB에 저장
+		nutrietnSelectMapper.saveSearchHistory(trimmedKeyword);	
+	}
 	
 	
 	

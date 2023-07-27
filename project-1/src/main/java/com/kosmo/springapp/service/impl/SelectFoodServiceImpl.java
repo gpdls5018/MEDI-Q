@@ -57,4 +57,14 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	public List<AvgStarScoreCountDTO> selectFoodListFoodScoreTop10() {
 		return mapper.selectFoodListFoodScoreTop10();
 	}
+
+	@Override
+	public List<AvgStarScoreCountDTO> selectFoodListFromHealthissue(String healthissue) {
+		return mapper.selectFoodListFromHealthissue(healthissue);
+	}
+
+	@Override
+	public List<AvgStarScoreCountDTO> FoodListFromHealthissue(String healthissue) {
+		return mapper.FoodListFromHealthissue(healthissue);
+	}
 }

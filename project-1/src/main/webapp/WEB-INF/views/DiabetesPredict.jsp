@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="col mb-3">
-                    <strong>혈압</strong>
+                    <strong>혈압(평균)</strong>
                     <input type="text" class="form-control" id="bloodpress" name="bloodpress"  placeholder="혈압수치를 입력해주세요" value="${(healthInfoDto.bloodPressure_high + healthInfoDto.bloodPressure_low) / 2}" required>
                     <div class="invalid-feedback">
                         혈압수치를 입력해주세요
@@ -65,14 +65,14 @@
 
         <div class="col-6">
             <canvas id="drawing_canvas"></canvas>
-            <img src="<c:url value="/resources/images/basic/AI.jpg"/>" id="machineImage" style="width:100%;height:100%;border-radius:50%;"/>
+            <img src="<c:url value="/images/basic/AI.jpg"/>" id="machineImage" style="width:100%;height:100%;border-radius:50%;"/>
         </div>
     </div>
     <hr class="mt-5">
     <div class="effect-custom-font m-5">
     	<div class="title mb-5" style="font-size:30px;">
-    		<img src="<c:url value="/resources/images/mainicon.png"/>" style="width:30px;height:30px;">
-    		<img src="<c:url value="/resources/images/maintitle.png"/>" style="height:30px;">
+    		<img src="<c:url value="/images/mainicon.png"/>" style="width:30px;height:30px;">
+    		<img src="<c:url value="/images/maintitle.png"/>" style="height:30px;">
 										와 다른 질병을 예측해 보아요!</div>
     	<ul class="list-unstyled" style="line-height:300%">
     		<li class="mb-4"><div class="p-2" style="border-radius:40px;font-size:20px;background-color:#ff9558">심장질환 예측하기</div></li>

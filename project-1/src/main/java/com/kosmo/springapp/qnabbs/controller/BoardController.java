@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.kosmo.springapp.qnabbs.service.DaoService;
 import com.kosmo.springapp.qnabbs.service.ListPagingData;
 import com.kosmo.springapp.qnabbs.service.PagingUtil;
 import com.kosmo.springapp.qnabbs.service.impl.board.AnswerServiceImpl;
+import com.kosmo.springapp.qnabbs.service.impl.board.BoardServiceImpl;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
 
@@ -35,13 +35,11 @@ public class BoardController {
 	private String secretKey;
 	@Value("${token-name}")
 	private String tokenName;
-	//service주입
+	
 	@Autowired
-	private DaoService board;
-	//loginserviceimpl주입
+	private BoardServiceImpl board;
 	@Autowired
 	private LoginServiceImpl loginService;
-	
 	@Autowired
 	private AnswerServiceImpl answerservice;
 	
@@ -53,16 +51,18 @@ public class BoardController {
 			HttpServletRequest req,
 			Model model) {
 		
+		//id값 불러옴
 		String token= jwTokensService.getToken(req, tokenName);//token을 가져옴
 		Map payload = jwTokensService.getTokenPayloads(token, secretKey);//payload로 만듬
 		if(payload.get("sub") != null) {//payload는 map형태의 많은 데이터(이건 TRUE)하지만 .get("sub")를 통해 아이디가 있는지 판별(있으면 null이 아님)
 			String id=payload.get("sub").toString();//가져온 id를 String id에 저장(현재 로그인한 아이디)
 			model.addAttribute("id", id);//모델에 id란 이름으로 id 저장
 		}
+		//목록에 대한 데이타 저장
 		ListPagingData listPagingData= board.selectList(map, req, nowPage);
+		System.out.println("listPagingData:"+listPagingData.getRecords());
 		//데이타 저장
 		model.addAttribute("listPagingData", listPagingData);	
-		//
 		return "board/List";
 	
 	}/////////////////////
@@ -143,7 +143,7 @@ public class BoardController {
 		
 		return "board/View";
 	}///////////////
-	
+	//수정page 이동
 	@GetMapping("/Edit.do")
 	public String edit(HttpServletRequest req,@RequestParam Map map,Model model) {
 		//String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
@@ -154,7 +154,7 @@ public class BoardController {
 		System.out.println("record값확인"+model);
 		return "board/Edit";
 	}/////////////
-	
+	//수정 process처리
 	@PostMapping("/EditProcess.do")
 	public String editProcess(HttpServletRequest req,@RequestParam Map map,Model model) {
 		//map.put("id", "petrus11");
