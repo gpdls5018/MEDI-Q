@@ -77,12 +77,67 @@
         background-color: #FFFFFF !important;
         color: #FF4400;
     }
-</style>
+#contentInfoCon {
+    position: relative;
+    height: 383px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#contentInfoCon .content-sub-tit {
+    font-size: 16px;
+    color: #222;
+    overflow: hidden;
+}
+#contentInfoCon .content-tit {
+    color: #222;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.36;
+    letter-spacing: -0.02em;
+    margin-top: 37px;
+}
+.visual-img-con {
+	position:absolute;
+	width:100%;
+	height:100%;
+    background: url("https://www.hectohealthcare.com/resources/images/layout/sub_visual_pr.jpg") no-repeat;
+    background-color: #fff;
+    z-index: 1;
+    top:70px;
+	border:none;
+}
+.tsarea {
+	position: absolute;
+	width: 700px;
+	height: 250px;
+	top:170px;
+	left:50px;
+	border:none;
+	z-index: 2;
+	text-align: center;
+	box-shadow: 0px 0px 0px white;
+	align-items: center;
+}
+.tsnava2:after {
+	display: none;
+}
+ </style>
 
-<div id="tsmain">
-	<div class="everybanner1">
-        <div class="everybanner1-1 clearfix"></div>
-	</div>
+
+	<aside id="contentInfoCon" class="area animated">
+        <!-- 각각 대메뉴 마다 이미지 다르게 들어갑니다. -->
+                <!-- 브랜드 스토리 -->
+                <div class="visual-img-con animatedleft"></div>	
+
+        <div class="tsarea">
+            <p class="content-sub-tit">Global Healthcare</p>
+            <h3 class="content-tit" style="text-align:left; margin-left: 50px;">
+                <p style="font-weight: 300;">AI 알고리즘 기반의</p>
+                <span>개인 맞춤형 헬스케어</span>
+            </h3>
+        </div>
+    </aside>
 	
     <div class="container">
         <ul class="nav nav-pills">
@@ -110,9 +165,11 @@
 		<!-- 왼쪽 몸통부분 -->
 	     <article class="maints justify-content-center">
 	     	<div class="container ">
+	     		<!-- 
 		        <h3 class="display-4 text-center first-text" style="color: #2E8B57;"><strong><span style="color:#EF605D; font-weight:900;">
 		        <img src="<c:url value="/images/magazine_images/medi/healthcare.png"/>" class="img-fluid medi-imgs" style="width:110px">
 		        건강정보</span> 페이지</strong></h3>
+		         -->
 		        <div class="row my-1" id="video-channel"></div>
 		        <br>
 		        <h2 class="text-center " style="font-weight:bold; color: #00ACE5;">
@@ -202,24 +259,6 @@
 		</aside>
 		-->
 	</section>
-</div><!-- id=main  -->
+
+
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
-
-<script>
-$(document).ready(function(){
-    $('.slider1').bxSlider({
-        slideWidth: 1500,
-        minSlides: 1,
-        maxSlides: 1,
-        slideMargin: 1,
-        auto : true,
-        stopAutoOnClick : true,
-        pager : true,
-    });
-});
-
-//사이드바 함수 적용
-$(document).ready(function() {
-  $('.tsidebar').stick_in_parent();
-});
-</script>
