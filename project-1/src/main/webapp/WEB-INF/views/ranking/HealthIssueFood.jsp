@@ -142,7 +142,7 @@ body{
 							<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
 						</c:if>
 							<span class="txt1">${item.company}</span>
-							<span class="txt2">${item.productName}</span>
+							<span class="txt2" style="max-width: 260px;">${item.productName}</span>
 							<div class="review">
 								<span class="star-point">&nbsp;<fmt:formatNumber value="${item.AVG_Score }" pattern=".00"  var="AVG"/>${AVG }</span>
 								<span class="txt3">(${item.REVIEW_Count }개)</span>
@@ -164,7 +164,7 @@ body{
 							<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
 						</c:if>
 							<span class="txt1">${item.company}</span>
-							<span class="txt2">${item.productName}</span>
+							<span class="txt2" style="max-width: 260px;">${item.productName}</span>
 							<div class="review">
 								<span class="star-point">&nbsp;0</span>
 								<span class="txt3">(0개)</span>
