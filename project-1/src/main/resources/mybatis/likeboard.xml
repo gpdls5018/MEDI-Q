@@ -27,5 +27,4 @@
 	    SELECT COUNT(*) FROM LIKEBOARD
 	    WHERE "NO" = #{no}
 	</select>
-	
 </mapper>

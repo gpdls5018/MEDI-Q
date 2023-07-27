@@ -103,12 +103,12 @@
 	                    <img src="<c:url value="/images/qna/qna_ans.png"/>" class="qna_ans ml-1">
 	                    <div class="row justify-content-center pt-3">
 	                    	<!--여기부터 답변출력  -->
-	                    	<c:if test="${! empty FAILURE}">
+	                    	<%-- <c:if test="${! empty FAILURE}">
 								<div class="alert alert-success alert-dismissible fade show">
 									<button type="button" class="close" data-dismiss="alert">×</button>
 									<strong>Failure!</strong> ${FAILURE }
 								</div>
-							</c:if>
+							</c:if> --%>
 							<!-- 질문 출력 부분 -->
 							<div class="card_deco col-12 p-1 m-2">
 	                            <div class="card-body p-2 m-3">
@@ -177,7 +177,7 @@
 									</c:if>
 			                    </div>
 		                    </div>
-                    	</c:when>	
+                    	</c:when>
 	                    <c:when test="${not empty paramMap.CONTENT }">                      
 						    <!-- 답글이 존재시 뷰 -->
 							<div class="card_deco col-12 p-1 answer-section"><!-- class 속성 answer-section으로 답변삭제시 태그들 아래 다 삭제 -->
@@ -230,7 +230,6 @@
 	$(document).on('click','.my-delete',function() {
         if(confirm('답변글을 삭제하시겠습니까?')){
             var answerNo = $(this).data('answer-no');//data-answer-no="${paramMap.ANSWER_NO}"
-         	// Ajax 요청 생성
             $.ajax({
                 url: "<c:url value="/board/AnswerDelete.do"/>",
                 type: 'DELETE',
@@ -241,7 +240,7 @@
                 console.log('삭제 성공:', data);
                 alert('답변삭제 완료');
                 $('.answer-section').remove();
-                //페이지 리로드 실행(ajax로 요청은 보냈으나 다시 리로드; 기능은 성공)
+                //페이지 재실행(ajax로 요청은 보냈으나 다시 리로드;;기능은 성공)
                 window.location.href = "<c:url value="/board/View.do?no=${record.NO}"/>";
             });
         }
@@ -249,8 +248,8 @@
     // 좋아요 버튼 클릭 이벤트 처리
     $(document).on('click','#likeToggleBtn',function () {
     	var postNo = $(this).data('board-no');//board-no="${record.NO }"
-        confirm('좋아요을 누르시겠습니까?'+postNo);//114출력됨
-        console.log(postNo);//114출력됨
+        //confirm('좋아요을 누르시겠습니까?'+postNo);//114출력됨
+        //console.log(postNo);//114출력됨
         $.ajax({
             url: "<c:url value="/like/Toggle.do"/>",
             type: 'POST',
@@ -258,7 +257,7 @@
             dataType: 'json',// 받아올 데이터 타입을 json으로 설정
         }).done(function(data){
         	console.log('좋아요 통신성공:',data);
-        	alert('좋아요 통신성공');
+        	//alert('좋아요 통신성공');
         	if(data){
         		$('#likeCountText').text(data + '명에게 도움이 됐습니다.');
         	} else{
@@ -283,7 +282,7 @@
             contentType: "application/json"
         }).done(function(data){
             console.log('좋아요 개수 통신 성공:', data);
-            alert('좋아요 개수 통신 성공'+data);
+            //alert('좋아요 개수 통신 성공'+data);
             // 성공적으로 개수를 받아오면 업데이트
             $('#likeCountText').text(data + '명에게 도움이 됐습니다.');
         });

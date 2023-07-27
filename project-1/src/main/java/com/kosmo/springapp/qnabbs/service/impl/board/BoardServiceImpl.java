@@ -107,20 +107,19 @@ public class BoardServiceImpl implements DaoService {
 			affected=template.execute(status -> {
 				//답변삭제 먼저 되면1 안되면0
 				System.out.println("delete serviceimpl여기 체크");
-				System.out.println("map의 가지고 있는거 :"+map);
-				int boarddelete = answermapper.boarddelete(map);
+				System.out.println("map의 가지고 있는거 :"+map);//{no=114}
+				int boarddelete = answermapper.boarddelete(map); //글번호로 게시물의 답변글들 삭제(글작성시 버튼이 없어서 1개만 삭제됨)
 				System.out.println("답변글의 답글들을 다 삭제했다면 boarddelete는 n갯수:"+boarddelete);
-				//답변이 다 삭제된, 질문 글 삭제
-	            mapper.delete(map);
-	            return boarddelete;
+	            mapper.delete(map); //답변이 다 삭제된, 게시물 삭제
+	            return boarddelete; //0,1 (답변글의 갯수 반환)
 			});
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 			return -1;
 		}
-		System.out.println("affected:"+affected);
-		return 	affected;
+		System.out.println("affected:"+affected); //boarddelete의 반환값이 저장
+		return 	affected; //boarddelete의 반환값이 저장
 	}///////////////
 
 }
