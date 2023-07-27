@@ -383,7 +383,7 @@ html, body {
 			            </a>
 		            </div>
 		            <div id="top-banner-4" class="banner" id="tsbaimg4">
-			            <a href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>">
+			            <a href="<c:url value="/MachineLearn.do"/>">
 			              <div class="banner-inner-wrapper" id="banner-inner-wrapper4" >
 			              	 <p style="color: grey;">내 위암 발병률은 몇 퍼센트일까?</p>
 			              	 <h1 style="font-size: 57px;">🧬 주요 질환의 발병 위험도를 예측해드려요!</h1>

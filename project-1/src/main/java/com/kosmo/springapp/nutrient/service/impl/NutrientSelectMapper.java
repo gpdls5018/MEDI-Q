@@ -73,6 +73,9 @@ public interface NutrientSelectMapper {
 	// 조회수로 Top10 가져오기
 	List<String> getTop10();
 
+	// 검색어 저장
+	void saveSearchHistory(String keyword);
+
 	
 	
 

@@ -315,7 +315,7 @@ public class AdminController {
         List<String> foodTop10 = new ArrayList<>();
         for (int i = 0; i < Math.min(foodInfos.size(), 10); i++) {
             Map<String, Object> foodInfo = foodInfos.get(i);
-            String productName = getStringValue(foodInfo.get("PRODUCTNAME"), 3);
+            String productName = getStringValue(foodInfo.get("PRODUCTNAME"), 4);
             foodTop10.add(productName);
         }
         model.addAttribute("foodTop10", foodTop10);
@@ -443,7 +443,7 @@ public class AdminController {
         List<String> nutTop10 = new ArrayList<>();
         for (int i = 0; i < Math.min(mergedInfos.size(), 10); i++) {
             Map<String, Object> mergedInfo = mergedInfos.get(i);
-            String name = getStringValue(mergedInfo.get("name"), 3);
+            String name = getStringValue(mergedInfo.get("name"), 4);
             nutTop10.add(name);
         }
         model.addAttribute("nutTop10", nutTop10);
@@ -456,6 +456,19 @@ public class AdminController {
             nutTop10v.add(view);
         }
         model.addAttribute("nutTop10v", nutTop10v);
+        
+        // 영양소 Top10 검색수
+        List<Integer> nutTop10s = new ArrayList<>();
+        for (int i = 0; i < Math.min(mergedInfos.size(), 10); i++) {
+            Map<String, Object> mergedInfo = mergedInfos.get(i);
+            String name = getStringValue(mergedInfo.get("name"), 20);
+            
+            int sCount = adminMapper.getNutTop10s(name);
+            
+            nutTop10s.add(sCount);
+        }
+        model.addAttribute("nutTop10s", nutTop10s);
+        
         
 	    return "admin/AdminDB";
 	}

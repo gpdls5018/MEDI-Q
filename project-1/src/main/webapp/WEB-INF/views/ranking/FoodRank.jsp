@@ -129,9 +129,7 @@ body{
 					<span class="s-txt1">인기 검색어</span>
 					<div class="search-keywords">
 						<c:forEach items="${RankingKeyWord }" var="Keyword" varStatus="status">
-							<c:if test="${status.index < 5}">
 								<a tabindex="0" class="search-keyword" href="/functionfood/selectcompany.do?foodname=${Keyword }">${Keyword }</a>
-							</c:if>
 						</c:forEach>
 					</div>
 				</div>
