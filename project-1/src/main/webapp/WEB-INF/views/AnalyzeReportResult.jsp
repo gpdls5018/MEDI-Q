@@ -116,7 +116,7 @@ progress {
 									<li style="color:#6e6e6e;">
 										<span style="font-size:17px;color:#000000;background-color:#ffdcdc;">
 										${resultListDto.ingredientCount}개의 영양제</span>
-										를 통해 <span style="font-size:17px;color:#000000;background-color:#ffdcdc">${fn:length(resultListDto.nutrient_list_report)+resultListDto.ingredientCount}개의 영양소</span>를 섭취하고 있어요.
+										를 통해 <span style="font-size:17px;color:#000000;background-color:#ffdcdc">기능성 영양소 ${resultListDto.ingredientCount}개, </span>
 									</li>
 									<li style="color:#6e6e6e;">
 										섭취하고 있는 
@@ -127,22 +127,6 @@ progress {
 										점수는 <span style="font-size:23px;color:#000000;">${resultListDto.resultScore}</span> 점 입니다
 									</li>
 								</ul>
-								<div style="margin-top:15px;font-size:25px;">
-									<c:forEach items="${resultListDto.listdto}" var="dto" varStatus="loop" >
-										<c:if test="${fn:length(dto.foodForHelpPurpose) eq 0}" var="item_1">
-											<span>${dto.takePurpose}</span>을(를) 위한 영양제,&nbsp;
-										</c:if>
-									</c:forEach>
-									<c:if test="${fn:length(resultListDto.nutrient_list_report) <= 5}" var="bad">
-										5대영양소의 섭취가 많이 필요해 보여요
-									</c:if>
-									<c:if test="${fn:length(resultListDto.nutrient_list_report) > 5 and fn:length(resultListDto.nutrient_list_no_report)<=10}" var="soso">
-										5대영양소의 섭취가 조금 필요해 보여요
-									</c:if>
-									<c:if test="${!bad and !soso and !item_1}" var="good">
-										5대영양소의 섭취는 충분해요!
-									</c:if>
-								</div>
 							</div>
 						</div>
 						<div class="col-6">
