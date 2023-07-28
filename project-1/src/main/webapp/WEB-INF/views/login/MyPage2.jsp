@@ -938,7 +938,7 @@ body {
 		}
 	});
 	var foodli = document.querySelector('#select-div ul');
-	var foodList = food.split('},');
+	var foodList = food=='[]' ? "" :food.split('},');
 	for(var i=0;i<foodList.length;i++){
 		var foodname = foodList[i].split(',')[0].split('=')[1];
 		var foodimg = i==foodList.length-1 ? foodList[i].split(',')[1].split('=')[1].split('}')[0] : foodList[i].split(',')[1].split('=')[1];
