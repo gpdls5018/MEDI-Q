@@ -47,10 +47,13 @@
 		</div>
         <h2 class="text-primary font-weight-bold mt-5">통합적 한국판 우울증 척도(CES-D)</h2>
         <small><strong class="small font-weight-bold text-black-50">평가도구원문 : The Center for Epidemiologic Studies Depression Scale(CES-D)</strong></small>
-        <p class="mt-2" style="font-size: 1rem">
-            다음 문항은 마음건강의 정도를 파악하기 위한 것입니다.<br/>
-            아래에 적혀 있는 문항을 잘 읽으신 후, 지난 일주일 동안의 자신의 현재 상태를 가장 잘 나타내는 것에 표시해주시기 바랍니다.
-        </p>
+	    <div class="d-flex justify-content-between">
+	        <p class="mt-2" style="font-size: 1rem">
+	            다음 문항은 마음건강의 정도를 파악하기 위한 것입니다.<br/>
+	            아래에 적혀 있는 문항을 잘 읽으신 후, 지난 일주일 동안의 자신의 현재 상태를 가장 잘 나타내는 것에 표시해주시기 바랍니다.
+	        </p>
+	        <button class="btn btn-outline-primary py-0" style="height: 40px" onclick="javascript:result();">최근 결과 확인하기</button>
+	    </div>
         <div class="line"></div>
 	    <div>
 	        <table>

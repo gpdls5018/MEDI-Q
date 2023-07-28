@@ -23,7 +23,6 @@ public class HealthMemoController {
 	@PostMapping("/Memo.do")
 	@ResponseBody
 	public Map calendarPost(@RequestParam Map map) {
-		System.out.println("map: "+map);
 		
 		if("edit".equals(map.get("type"))) {//날짜에 저장된 정보가 있을 경우
 			healthMemoIServicempl.update(map);

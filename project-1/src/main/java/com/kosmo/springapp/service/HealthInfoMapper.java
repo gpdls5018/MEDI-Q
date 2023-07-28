@@ -12,5 +12,5 @@ public interface HealthInfoMapper {
 
 	HealthInfoDTO selectHealthInfoByUserId(String userId);
 
-
+	int selectHealthInfoCount(String userId);
 }

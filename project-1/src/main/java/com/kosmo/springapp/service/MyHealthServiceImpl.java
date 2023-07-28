@@ -59,4 +59,10 @@ public class MyHealthServiceImpl implements MyHealthService{
 		return mapper.selectFood(id);
 	}
 
+	@Override
+	public int selectMyHealth(String id) {
+		
+		return mapper.selectMyHealth(id);
+	}
+
 }

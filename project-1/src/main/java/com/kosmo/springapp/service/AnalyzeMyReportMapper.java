@@ -25,4 +25,5 @@ public interface AnalyzeMyReportMapper {
 
 	int deleteAnalyzeReport(int analyzeno);
 
+	int selectAnalyzeReportCount(String id);
 }

@@ -47,10 +47,13 @@
 		</div>
         <h2 class="text-primary font-weight-bold mt-5">심리적 스트레스</h2>
         <small><strong class="small font-weight-bold text-black-50">평가도구원문 : Psychosocial Wellbeing Index-short form(PWI-SF)</strong></small>
-        <p class="mt-2" style="font-size: 1rem">
-            다음 문항은 심리적인 스트레스의 정도를 파악하기 위한 것입니다.<br/>
-            각 문항을 읽고, 자신의 현재 상태를 가장 잘 나타내는 것에 표시해주시기 바랍니다.
-        </p>
+        <div class="d-flex justify-content-between">
+	        <p class="mt-2" style="font-size: 1rem">
+	            다음 문항은 심리적인 스트레스의 정도를 파악하기 위한 것입니다.<br/>
+	            각 문항을 읽고, 자신의 현재 상태를 가장 잘 나타내는 것에 표시해주시기 바랍니다.
+	        </p>
+	        <button id="resultCheck" class="btn btn-outline-primary py-0" style="height: 40px" onclick="javascript:result();" data-target="#result" data-backdrop="static" >최근 결과 확인하기</button>
+	    </div>
         <div class="line"></div>
 	    <div>
 	        <table>
@@ -410,7 +413,20 @@
 
 				//$('#result').css('display','block');
 				sum += parseInt($(this).val());
-				//console.log('sum:',sum,$(this).val())
+				//console.log('sum:',sum,$(this).val())				
+			});
+			
+			$.ajax({
+				data:{
+					name:'test1',
+					sum:sum
+				},
+				url:'<c:url value="/project/MentalResult.do"/>',
+	    		method:'post',
+	    		dataType:'json'
+			}).done((result)=>{
+				console.log('success:',result)
+				
 				if(sum >= 27){//고위험군
 					$('#resultT').addClass('text-danger');
 					$('#resultT').html(`<img alt='느낌표' src='/images/basic/warning2.png'/>스트레스 고위험군입니다`);
@@ -433,9 +449,58 @@
 						    스트레스 상황에서 대처하는 방법을 미리 준비해 둔다면, 스트레스를 받더라도 쉽게 좌절하지 않고 문제를 해결해 나갈 수 있을 것입니다.<br/>
 						    스트레스 대처 방법에 대해서 궁금하시다면 상담심리사와 상담하시길 바랍니다.`);
 				}
+			}).fail(()=>{
+				console.log('error')
 			});
 		}
 	});
+    
+    function result(){
+    	$.ajax({
+    		data:{name:"result",test:"test1"},
+    		url:'<c:url value="/project/MentalResult.do"/>',
+    		method:'post',
+    		dataType:'json'
+    	}).done((result)=>{
+    		result = parseInt(result);
+/*
+			if(isNaN(result)){
+				//console.log('this:',$('#resultCheck'))
+				$('#resultCheck').attr('data-toggle','');
+				alert('최근 결과가 없습니다');
+			}
+			*/
+				$('#resultCheck').attr('data-toggle','modal');
+				$('#resultT').removeClass('text-danger text-primary');
+				
+				if(result >= 27){//고위험군
+					$('#resultT').addClass('text-danger');
+					$('#resultT').html(`<img alt='느낌표' src='/images/basic/warning2.png'/>스트레스 고위험군입니다`);
+					$('#resultC').html(`현재 스트레스를 매우 많이 경험하고 있습니다.<br/>
+						    심리적으로 불현감이 높고, 직장 및 일상생활 또는 신체에 부정적인 영향이 있을 수 있습니다.<br/>
+						    혼자서 고민하고 힘들어 하기보다, 전문가의 상담을 받는다면 심리적이나 신체적인 어려움을 극복하는데 도움이 됩니다.<br/>
+						    의사 또는 상담심리사와 상담을 권유합니다.`);
+				}
+				else if(result <= 8){//건강군
+					$('#resultT').addClass('text-primary');
+					$('#resultT').html(`<img alt='엄지' src='/images/basic/like.png'/>스트레스 건강군입니다.`);
+					$('#resultC').html(`현재 스트레스를 경험하지 않고 있으며, 심리적으로 건강하게 생활하고 있습니다.<br/>
+						    평소의 스트레스 관리방법을 꾸준히 유지하시기 바랍니다.`);
+				}
+				else{//잠재적 스트레스군
+					$('#resultT').addClass('text-danger');
+					$('#resultT').html(`<img alt='느낌표' src='/images/basic/warning2.png'/>스트레스 잠재군입니다.`);
+					$('#resultC').html(`현재 스트레스를 많이 경험하지는 않고 있습니다.<br/>
+						    그러나 상황의 변화에 따라 스트레스 고위험군으로 변경될 가능성이 있습니다.<br/>
+						    스트레스 상황에서 대처하는 방법을 미리 준비해 둔다면, 스트레스를 받더라도 쉽게 좌절하지 않고 문제를 해결해 나갈 수 있을 것입니다.<br/>
+						    스트레스 대처 방법에 대해서 궁금하시다면 상담심리사와 상담하시길 바랍니다.`);
+				}
+    	}).fail((e)=>{
+    		if(e.responseText=="error"){
+    			alert('최근 결과가 없습니다');
+    		}
+    	});
+    }
 
 </script>
 </html>
