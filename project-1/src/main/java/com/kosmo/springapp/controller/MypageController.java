@@ -138,11 +138,12 @@ public class MypageController {
 		}
 		
 		Map map = new HashMap<>();
-		
 		map.put("mm_Id", id);
 		map.put("mm_Date", clickDate);
 		
 		HealthMemoDTO memo = healthMemoIServicempl.selectOne(map);
+		MyHealthDTO my = myHealthServiceImpl.select(id);
+		List food = myHealthServiceImpl.selectFood(id);
 		
 		if(memo != null) {
 			memo.setMm_Date(memo.getMm_Date().split(" ")[0]);
@@ -152,6 +153,8 @@ public class MypageController {
 		model.addAttribute("profImg", profImg);
 		model.addAttribute("memos", memos);
 		model.addAttribute("memo", memo);
+		model.addAttribute("my", my);//등록한 건강정보
+		model.addAttribute("food", food);//등록한 영양제 정보
 		
 		return "login/MyPage";
 	}
