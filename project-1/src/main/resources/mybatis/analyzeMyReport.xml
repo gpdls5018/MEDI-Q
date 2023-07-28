@@ -30,4 +30,8 @@
  	<delete id="deleteAnalyzeReport" parameterType="Int">
  		DELETE FROM ANALYZETABLE WHERE analyzeno = #{analyzeno}
  	</delete>
+ 	
+ 	<select id="selectAnalyzeReportCount" parameterType="String" resultType="int">
+ 		SELECT COUNT(*) FROM ANALYZETABLE WHERE USERID=#{id}
+ 	</select>
 </mapper>

@@ -41,9 +41,12 @@ import com.kosmo.springapp.service.FCMInitializer;
 import com.kosmo.springapp.service.HeartCountService;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.MyHealthServiceImpl;
+import com.kosmo.springapp.service.impl.AnalyzeMyReportServiceImpl;
+import com.kosmo.springapp.service.impl.HealthInfoServiceImpl;
 import com.kosmo.springapp.service.impl.HealthMemoIServicempl;
 import com.kosmo.springapp.service.impl.HeartCountServiceImpl;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
+import com.kosmo.springapp.service.impl.MentalTestServiceImpl;
 import com.kosmo.springapp.service.impl.ReviewServiceImpl;
 
 @RequestMapping("/project")
@@ -62,6 +65,12 @@ public class MypageController {
 	private HeartCountServiceImpl heartCountServiceImpl;
 	@Autowired
 	private MyHealthServiceImpl myHealthServiceImpl;
+	@Autowired
+	private AnalyzeMyReportServiceImpl analyzeMyReportServiceImpl;
+	@Autowired
+	private HealthInfoServiceImpl healthInfoServiceImpl;
+	@Autowired
+	private MentalTestServiceImpl mentalTestServiceImpl;
 
 	@Value("${secret-key}")
 	private String secretKey;
@@ -307,6 +316,21 @@ public class MypageController {
 		return healthRegi;
 	}
 	
+	//건강프로필 프로그레스 바
+	@PostMapping("/ProgressProfile.do")
+	@ResponseBody
+	public Map progressProfile(@RequestParam String id) {
+		Map map = new HashMap<>();
+
+		int arc = analyzeMyReportServiceImpl.selectAnalyzeReportCount(id);
+		int hi = healthInfoServiceImpl.selectHealthInfoCount(id);
+		int mh = myHealthServiceImpl.selectMyHealth(id);
+
+		map.put("arc", arc);//등록한 분석 여부
+		
+		return map;
+	}
+	
 	//정신건강테스트1
 	@GetMapping("/MentalTest1.do")
 	public String mentalTest1() {
@@ -328,6 +352,36 @@ public class MypageController {
 	@GetMapping("/MentalTest4.do")
 	public String mentalTest4() {
 		return "mentaltest/MentalTest4";
+	}
+	
+	//정신건강테스트 결과
+	@PostMapping("/MentalResult.do")
+	@ResponseBody
+	public String mentalResult(@RequestParam Map map, HttpServletRequest req) {
+		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
+		String name = map.get("name").toString();
+		String result = "";
+		System.out.println("name: "+name);
+		try {
+			if("result".equals(name)) {//최근 결과값 필요
+				System.out.println("왜 여기 못들어올까");
+				String test = map.get("test").toString();
+				System.out.println("test: "+test);
+				result = mentalTestServiceImpl.selectResult(id).get(test).toString();
+				System.out.println("최근 결과값: "+result);
+				return result;
+			}
+			else {//값 저장
+				map.put("id", id);
+				map.put(name, map.get("sum"));
+				result = Integer.toString(mentalTestServiceImpl.insertResult(map));
+				System.out.println("저장: "+result);
+				return result;
+			}
+		}
+		catch (Exception e) {
+			return "error";
+		}
 	}
 	
 }

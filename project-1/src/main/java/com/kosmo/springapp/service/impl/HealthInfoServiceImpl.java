@@ -25,6 +25,8 @@ public class HealthInfoServiceImpl {
 		return healthInfoMapper.selectHealthInfoByUserId(userId);
 	}
 
-
+	public int selectHealthInfoCount(String id) {
+		return healthInfoMapper.selectHealthInfoCount(id);
+	}
 
 }

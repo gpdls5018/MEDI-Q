@@ -14,4 +14,5 @@ public interface MyHealthService {
 	MyHealthDTO select(String id);
 	int insert(String[] healthRefi, HttpServletRequest req);
 	int delete(String id);
+	int selectMyHealth(String id);
 }

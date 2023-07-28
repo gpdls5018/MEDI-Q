@@ -59,4 +59,8 @@
 		FROM (SELECT * FROM HEALTHINFO WHERE userId = #{userId})
 		WHERE ROWNUM = 1
 	</select>
+	
+	<select id="selectHealthInfoCount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM HEALTHINFO WHERE USERID = #{id}
+	</select>
 </mapper>
