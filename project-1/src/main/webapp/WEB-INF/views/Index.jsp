@@ -383,7 +383,7 @@ html, body {
 			            </a>
 		            </div>
 		            <div id="top-banner-4" class="banner" id="tsbaimg4">
-			            <a href="<c:url value="/MachineLearn.do"/>">
+			            <a href='<c:url value="/loadHealthInfo.do?userId=${userId}"/>'>
 			              <div class="banner-inner-wrapper" id="banner-inner-wrapper4" >
 			              	 <p style="color: grey;">내 위암 발병률은 몇 퍼센트일까?</p>
 			              	 <h1 style="font-size: 57px;">🧬 주요 질환의 발병 위험도를 예측해드려요!</h1>
@@ -544,7 +544,7 @@ html, body {
 		<img class="p5firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
 		<img class="p5secondimg" src="https://img.freepik.com/free-photo/medical-banner-with-doctor-and-patient_23-2149611238.jpg?t=st=1690267394~exp=1690267994~hmac=fb7aed3ed65edbd91d766aa10882c0c81a40eb4410eb84b864dbb0d94afffa06" >
 	  	<div class="section section1-2c animatedleft">
-	       <a href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>" style="text-decoration: none;">
+	       <a href="<c:url value="/loadHealthInfo.do?userId=${userId}"/>" style="text-decoration: none;">
 	           <div class="content">
 	               <span class="txt1" style=" text-align: center; width: 100%;">👨‍⚕️ 주요 질환의 <span style="color: #EF605D;">발병 위험도</span>를 예측해드려요 </span>
 	               <br/>
