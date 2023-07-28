@@ -649,8 +649,8 @@ ul {
 										<p class="title">분석 / 추천</p>
 										<a href="#">건강 및 분석</a>
 										<a href="#">발병위험도 예측</a>
-										<a class="dropdown-item" href="<c:url value="/AdminMain.do"/>">관리자</a>
-	                    				<a class="dropdown-item" href="<c:url value="/functionfood/selectissue.do"/>">태현(테스트)</a>
+										<a href="<c:url value="/AdminMain.do"/>">관리자</a>
+	                    				<a href="<c:url value="/functionfood/selectissue.do"/>">태현(테스트)</a>
 										
 									</li>
 								</ul>
