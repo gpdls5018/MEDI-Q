@@ -244,22 +244,6 @@ public class NutrientController {
 		return "nutrient/NutrientDetail";
 		
 	}
-	
-	// 추천 영양제 상세페이지로 이동
-	@GetMapping("/NutrientToFoodDetail.do")
-	public String nutrientToFoodDetail(@RequestParam String name, Model model) {
-		
-		// 영양제의 번호 가져오기
-		String no = nutrietnSelectMapper.findNobyFoodName(name);
-		//System.out.println(no);
-		
-		// 영양제의 조회수 가져오기
-		int f_view = nutrietnSelectMapper.getF_VIEW(name);
-		nutrietnSelectMapper.increaseF_VIEW(name);
-		model.addAttribute("f_view",f_view+1);
-		
-	    return "redirect:/detail.do?no=" + no;
-	}
 		
 	// 검색어 기록
 	@PostMapping("/search.do")
