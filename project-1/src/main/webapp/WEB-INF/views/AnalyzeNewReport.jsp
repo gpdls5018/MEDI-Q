@@ -415,7 +415,7 @@ body{
     	</div>
 	</div>
   </div>
-</body>
+
 <script>
 
 
@@ -720,3 +720,5 @@ preferTypeSpan.addEventListener('DOMSubtreeModified', updateAnalyzeButtonState);
 lastChooseFoodData.addEventListener('DOMSubtreeModified', updateAnalyzeButtonState);
 
 </script>
+	</body>
+</html>
