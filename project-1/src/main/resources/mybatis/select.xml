@@ -77,9 +77,9 @@
 	
 	<!-- 5대영양소 추천 영양제 가져오기 -->
 	<select id="getProductNameNImgUrlFromFoodtableByN" parameterType="String" resultType="Map">
-		SELECT PRODUCTNAME, IMGURL, F_VIEW
+		SELECT PRODUCTNAME, IMGURL, F_VIEW, NO
 		FROM (
-		    SELECT ft.PRODUCTNAME, ft.IMGURL, ft.F_VIEW,
+		    SELECT ft.PRODUCTNAME, ft.IMGURL, ft.F_VIEW, ft.NO,
 		        ROW_NUMBER() OVER (PARTITION BY ft.F_VIEW ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL) AS RN
 		    FROM FOODTABLE ft
 		    WHERE (
@@ -109,28 +109,28 @@
 	
 	<!-- 기능성원료 추천 영양제 가져오기 -->
 	<select id="getProductNameNImgUrlFromFoodtableByI" parameterType="String" resultType="Map">
-		SELECT PRODUCTNAME, IMGURL, F_VIEW
+		SELECT PRODUCTNAME, IMGURL, F_VIEW, NO
 		FROM (
-		    SELECT ft.PRODUCTNAME, ft.IMGURL, ft.F_VIEW,
+		    SELECT ft.PRODUCTNAME, ft.IMGURL, ft.F_VIEW, ft.NO,
 		        ROW_NUMBER() OVER (PARTITION BY ft.F_VIEW ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL) AS RN
 		    FROM FOODTABLE ft
 		    WHERE (
 		        ft.NUTRIENT LIKE '%' || (
 		            SELECT I_FINDINGNAME
-	                FROM INGREDIENT
-	                WHERE I_NAME = #{name}
+		            FROM INGREDIENT
+		            WHERE I_NAME = #{name}
 		        ) || '%'
 		        OR
 		        ft.STANDARD LIKE '%' || (
 		            SELECT I_FINDINGNAME
-	                FROM INGREDIENT
-	                WHERE I_NAME = #{name}
+		            FROM INGREDIENT
+		            WHERE I_NAME = #{name}
 		        ) || '%'
 		        OR
 		        ft.CAUTION LIKE '%' || (
 		            SELECT I_FINDINGNAME
-	                FROM INGREDIENT
-	                WHERE I_NAME = #{name}
+		            FROM INGREDIENT
+		            WHERE I_NAME = #{name}
 		        ) || '%'
 		    )
 		    ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL, ft.F_VIEW DESC
