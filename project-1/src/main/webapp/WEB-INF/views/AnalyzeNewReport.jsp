@@ -52,10 +52,9 @@ body{
       border-radius: 15px;
     }
     .card-checked {
-      background-color:#FFDDD0;
-      border: 3px solid #ff4b4b;
-      color: #ff4b4b;
-      border-radius: 15px;
+      box-shadow: 0 0 0 3px #ff4b4b;
+	  color: #ff4b4b;
+	  border-radius: 15px;
     }
     .food-li {
       background-color: white;
@@ -64,10 +63,14 @@ body{
       flex: 0 0 25%;
     }
     .food-li:hover {
-      border: #ff4b4b solid 2px;
+      box-shadow: 0 0 0 3px gray;
+	  color: black;
+	  border-radius: 15px;
     }
     .food-li-checked {
-      border: #ff4b4b solid 2px;
+      box-shadow: 0 0 0 3px #ff4b4b;
+	  color: #ff4b4b;
+	  border-radius: 15px;
     }
     
     .check-effect-tag {
@@ -182,7 +185,7 @@ body{
 	            	<span aria-hidden="true">&times;</span>
 	          	</button>
   			</div>
-  			<div class="ml-5" style="color:#545454">중복 선택이 가능합니다. (최대 3개)</div>
+  			<div class="ml-5" style="color:#545454">중복 선택이 가능합니다.</div>
   			<div class="modal-body p-2" style="height:200px;flex:1;">
   				<div class="check-effect-tags d-flex m-3" style="flex-wrap: wrap;">
 			        <span class="check-effect-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">비싸더라도 좋은 원료</span>
@@ -392,16 +395,19 @@ body{
 	        	</div>
         	</div>
         	<div class="modal-body">
-		        <div class="ml-5">
+		        <div class="ml-5" style="min-height: 150px;">
 		          <ul class="list-unstyled d-flex" id="searchFoodList" style="flex-wrap: wrap;">
 		            <li class="food-li m-2" style="text-align: center;flex-basis: 100px;display:None">
 		              <img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
 		              <div style="font-size: 15px; color: #939393;width:150px;"></div>
 		            </li>
 		          </ul>
-	          </div>
-	          <h5 class="modal-title mx-2" style="border-top: 1px solid gray; ">내가 선택한 영양제 👇</h5>
-      		</div>
+	          	</div>
+				<div class="mt-5 ml-3" style="min-height: 150px;" id="selected-foods">
+				    <h5 class="modal-title mx-2" style="border-top: 1px solid gray;">내가 선택한 영양제 👇</h5>
+				    <ul id="selected-food-list" class="list-unstyled d-flex" style="flex-wrap: wrap;"></ul>
+				</div>
+        	</div>
       		<div class="modal-footer">
         		<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
         		<button type="button" class="btn btn-primary" id="save-take-food">저장하기</button>
@@ -411,7 +417,8 @@ body{
   </div>
 </body>
 <script>
-	
+
+
   $("#take-purpose").click(function(e){
     e.preventDefault();
     $('#take-purpose-modal').modal("show");
@@ -430,6 +437,51 @@ body{
   $('.check-effect-tags').children().click(function() {
       console.log($(this).html());
       $(this).toggleClass('check-effect-tag-select');
+  });
+  
+  
+// (내가선택한 영양제 목록 스크립트)
+  var selectedFoods = [];
+
+  // 영양제 선택 시 이벤트
+  $(document).on("click", ".food-li", function() {
+    var selectedFoodName = $(this).find("div").text().trim();
+    var selectedFoodImage = $(this).find("img").attr("src");
+
+    // 객체에 영양제 이름과 이미지 URL 추가
+    var foodObj = {
+      name: selectedFoodName,
+      image: selectedFoodImage
+    };
+
+    // 체크 여부 확인
+    var isChecked = $(this).hasClass("checked");
+
+    if (isChecked) {
+      // 이미 선택되어 있던 영양제를 클릭하면 선택 해제
+      // 배열에서 해당 영양제를 제거
+      var index = selectedFoods.findIndex(function(food) {
+        return food.name === selectedFoodName;
+      });
+      selectedFoods.splice(index, 1);
+      $(this).removeClass("checked");
+    } else {
+      // 새로운 영양제를 선택할 경우 배열에 추가
+      selectedFoods.push(foodObj);
+      $(this).addClass("checked");
+    }
+
+    // "내가 선택한 영양제" 목록 업데이트
+    var selectedFoodList = $("#selected-food-list");
+    selectedFoodList.empty();
+    selectedFoods.forEach(function(food) {
+      // 영양제 이름과 이미지를 함께 출력하는 리스트 아이템 생성
+      var listItem = $("<li>").css("margin", "10px").css("box-shadow","2px 2px 5px gray").css("border-radius","15px");
+      listItem.append($("<img>").attr("src", food.image).css("width", "160px").css("height", "160px").css("border-radius", "15px"));
+      listItem.append($("<br>"));
+	  listItem.append($("<span>").css("font-size", "13px").css("margin-left","10px").text(food.name));
+      selectedFoodList.append(listItem);
+    });
   });
   
 
@@ -484,48 +536,57 @@ body{
   });
 
 ///////////////////////////////////////섭취목적
-  $("#take-purpose-modal .card").click(function(){
-    if($(this).hasClass("card")) {
-      $(this).toggleClass("card-checked");
-    }
-  });
-  let takePurPoses= Array();
-  $('#save-take-purpose').click(function() {
-    var takePurPose = document.querySelectorAll('#take-purpose-modal .card-checked');
-    takePurPoses = [];
-    for(var i=0; i<takePurPose.length;i++) {
-      console.log(takePurPose[i].querySelector(".card-title").innerHTML);
-      takePurPoses.push(takePurPose[i].querySelector(".card-title").innerHTML);
-    }
-    document.querySelector('#choose-purposes').innerHTML = takePurPoses;
-    document.querySelector(".take-purpose-span").innerHTML = takePurPoses.length;
-    $('#take-purpose-modal').modal('hide');
-  });
+	  $("#take-purpose-modal .card").click(function(){
+	    if($(this).hasClass("card")) {
+	    	if ($(this).hasClass("card-checked") || $("#take-purpose-modal .card-checked").length < 3) {
+	      $(this).toggleClass("card-checked");
+	  	  }
+	    }
+	  });
+ 
+	  let takePurPoses= Array();
+	  $('#save-take-purpose').click(function() {
+	    var takePurPose = document.querySelectorAll('#take-purpose-modal .card-checked');
+	    takePurPoses = [];
+	    for(var i=0; i<takePurPose.length;i++) {
+	      console.log(takePurPose[i].querySelector(".card-title").innerHTML);
+	      takePurPoses.push(takePurPose[i].querySelector(".card-title").innerHTML);
+	    }
+	    document.querySelector('#choose-purposes').innerHTML = takePurPoses;
+	    document.querySelector(".take-purpose-span").innerHTML = takePurPoses.length;
+	    $('#take-purpose-modal').modal('hide');
+	  });
+
 ///////////////////////////////////////
 
 
 ///////////////////////////////////////선호제형
-  $("#prefer-shape-modal .card").click(function(){
-    if($(this).hasClass("card")) {
-      $(this).toggleClass("card-checked");
-    }
-  });
-  let preferShapes= Array();
-  $('#save-prefer-shape').click(function() {
-    var preferShape = document.querySelectorAll('#prefer-shape-modal .card-checked');
-    preferTypes = [];
-    for(var i=0; i<preferShape.length;i++) {
-      console.log(preferShape[i].querySelector(".card-title").innerHTML);
-      preferShapes.push(preferShape[i].querySelector(".card-title").innerHTML);
-    }
-    document.querySelector('#choose-shapes').innerHTML = preferShapes;
-    document.querySelector(".prefer-shape-span").innerHTML = preferShapes.length;
-    $('#prefer-shape-modal').modal('hide');
-  });
+	  $("#prefer-shape-modal .card").click(function(){
+	    if($(this).hasClass("card")) {
+	    	if ($(this).hasClass("card-checked") || $("#prefer-shape-modal .card-checked").length < 3) {
+	      $(this).toggleClass("card-checked");
+	  		}
+	    }
+	  });
+
+	  let preferShapes= Array();
+	  $('#save-prefer-shape').click(function() {
+	    var preferShape = document.querySelectorAll('#prefer-shape-modal .card-checked');
+	    preferTypes = [];
+	    for(var i=0; i<preferShape.length;i++) {
+	      console.log(preferShape[i].querySelector(".card-title").innerHTML);
+	      preferShapes.push(preferShape[i].querySelector(".card-title").innerHTML);
+	    }
+	    document.querySelector('#choose-shapes').innerHTML = preferShapes;
+	    document.querySelector(".prefer-shape-span").innerHTML = preferShapes.length;
+	    $('#prefer-shape-modal').modal('hide');
+	  });
+
+
 ///////////////////////////////////////
 
 //////////////////////////////////////선호 유형
-  let preferTypes= Array();
+ let preferTypes= Array();
   $('#save-prefer-type').click(function() {
     var preferType = document.querySelectorAll('.check-effect-tag-select');
     preferTypes = [];
@@ -542,10 +603,7 @@ body{
 
 
 
-
-
-
-
+/*
   var takeFoods = Array();
   $('#save-take-food').click(function() {
     var takeFood = document.querySelectorAll('#searchFoodList .food-li-checked');
@@ -558,6 +616,32 @@ body{
     }
     $('#take-foodList-modal').modal('hide');
   });
+ */
+ var takeFoods = Array();
+ $('#save-take-food').click(function() {
+   var takeFood = document.querySelectorAll('#searchFoodList .food-li-checked');
+   var foodContainer = $('.food-selected-list ul');
+
+   // Clear previously shown values
+   foodContainer.empty();
+
+   for (var i = 0; i < takeFood.length; i++) {
+     console.log(takeFood[i].querySelector("div").innerHTML);
+     takeFoods.push(takeFood[i].querySelector("div").innerHTML);
+
+     // Get the selected food name and image URL
+     var foodName = takeFood[i].querySelector("div").innerHTML;
+     var foodImage = takeFood[i].querySelector("img").getAttribute("src");
+
+     // Append selected food with image to the list
+     var listItem = $("<li>").css("margin", "10px");
+     listItem.append($("<img>").attr("src", foodImage).css("width", "160px").css("height", "160px").css("border-radius", "15px"));
+	 listItem.append($("<br>"));
+     listItem.append($("<span>").css({"font-size": "13px", "margin-left": "10px", "display ": "inline-block", "width": "150px","word-break": "break-word"}).text(foodName));
+     foodContainer.append(listItem);
+   }
+   $('#take-foodList-modal').modal('hide');
+ });
 
   
   function preventSubmit(event) {

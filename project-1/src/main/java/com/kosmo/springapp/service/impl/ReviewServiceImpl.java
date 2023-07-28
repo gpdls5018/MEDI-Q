@@ -67,4 +67,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewMapper.selectReviewByUserId(userId);
 	}
 
+	public int deleteReview(Map map) {
+		
+		return reviewMapper.deleteReview(map);
+	}
+
 }

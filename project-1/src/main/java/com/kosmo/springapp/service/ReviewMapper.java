@@ -27,4 +27,6 @@ public interface ReviewMapper {
 	List<Map<String, Integer>> selectTotalReviewInfoNoEffectList(int no);
 
 	List<Map> selectReviewByUserId(String userId);
+
+	int deleteReview(Map map);
 }

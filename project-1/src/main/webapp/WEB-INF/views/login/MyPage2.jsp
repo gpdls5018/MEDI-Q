@@ -7,6 +7,8 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 
 <style>
 body {
@@ -263,7 +265,7 @@ body {
         display: flex;
         position: relative;
         flex-direction: column;
-        box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
         border-radius: 10px;
         margin-top: 5px;
         width: 185px;
@@ -296,10 +298,10 @@ body {
     }
     .sdp {
         color: #EF605D;
+        font-size: 15px;
         font-weight: bold;
         margin: 0;
         padding: 5px;
-        margin-left: auto;
         margin-right: 0;
     }
     .snp {
@@ -351,7 +353,7 @@ body {
         display: flex;
         position: relative;
         flex-direction: row;
-        box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
         border-radius: .5rem;
         width: 500px;
         height: 130px;
@@ -548,6 +550,13 @@ body {
 	    display: none; /* 크롬, 사파리, 오페라, 엣지 */
 	}
 	
+	/* close 버튼 */
+	.fa-xmark:hover,.fa-magnifying-glass:hover{
+		cursor: pointer;
+	}
+	.fa-magnifying-glass{
+		margin-left: auto;
+	}
 	
 </style>
 <!-- 메인 바디 부분 -->
@@ -644,23 +653,35 @@ body {
                                     	</c:if>
                                     	<c:if test="${not isEmptyReview }">
 	                                    	<c:forEach var="r" items="${review }">
-	                                    		<a href='<c:url value="/detail.do?no=${r['NO'] }"/>'>
-		                                        	<li class="review">
-			                                            <section class="kzDdbXreview">
-			                                                <section class="divimg" style="width: 160px;">
-			                                                    <img fetchpriority="high" src="${r['IMGURL'] }" style="max-width:120px; height:120px; color: transparent; margin-top: 10px; border-radius: 10px;">
-			                                                </section>
-			                                                <label for="wishBtn:rk0:" class="bPHVOx">
-			                                                    <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
-			                                                </label>
+		                                        <li class="review">
+			                                        <section class="kzDdbXreview">
+			                                            <section class="divimg" style="width: 160px;">
+			                                                <img fetchpriority="high" src="${r['IMGURL'] }" style="max-width:120px; height:120px; color: transparent; margin-top: 10px; border-radius: 10px;">
 			                                            </section>
-			                                            <div class="reviewinfo w-100">
-			                                                <div class="sdp">${fn:split(r['R_REGIDATE']," ")[0]}</div>
-			                                                <div class="snp">${r['PRODUCTNAME'] }</div>
-			                                                <div class="srp">${r['CONTENT'] }</div>
+			                                            <label for="wishBtn:rk0:" class="bPHVOx">
+			                                                <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
+			                                            </label>
+			                                        </section>
+			                                        <div class="reviewinfo w-100">
+			                                        	<input type="hidden" name="no" value='${r["NO"]}' />
+			                                           	<div class="d-flex justify-content-between w-100" style="height: 35px">
+			                                            	<div class="star-count d-flex m-2 align-items-center">
+												              	<i class='bi bi-star${r["STARSCORE"] >= 1 ? "-fill" : "" } rating' style="font-size:20px;color: #ffe23c;"></i>
+												              	<i class='bi bi-star${r["STARSCORE"] >= 2 ? "-fill" : "" } rating' style="font-size:20px;color: #ffe23c;"></i>
+												              	<i class='bi bi-star${r["STARSCORE"] >= 3 ? "-fill" : "" } rating' style="font-size:20px;color: #ffe23c;"></i>
+												              	<i class='bi bi-star${r["STARSCORE"] >= 4 ? "-fill" : "" } rating' style="font-size:20px;color: #ffe23c;"></i>
+												              	<i class='bi bi-star${r["STARSCORE"] == 5 ? "-fill" : "" } rating"'style="font-size:20px;color: #ffe23c;"></i>
+												            </div>
+			                                                <div class="sdp d-flex align-items-center">${fn:split(r['R_REGIDATE']," ")[0]}</div>
 			                                            </div>
-		                                        	</li>
-		                                        </a>
+			                                            <div class="snp">${r['PRODUCTNAME'] }</div>
+			                                            <div class="d-flex justify-content-between w-100">
+				                                            <div class="srp">${r['CONTENT'] }</div>
+				                                            <i class="fa-solid fa-magnifying-glass mt-4"></i>
+				                                            <i class="fa-solid fa-xmark mx-2 mt-4"></i>
+				                                        </div>
+			                                        </div>
+		                                        </li>
 	                                        </c:forEach>
                                         </c:if>
                                     </ul>
@@ -938,7 +959,7 @@ body {
 		}
 	});
 	var foodli = document.querySelector('#select-div ul');
-	var foodList = food.split('},');
+	var foodList = food=='[]' ? "" :food.split('},');
 	for(var i=0;i<foodList.length;i++){
 		var foodname = foodList[i].split(',')[0].split('=')[1];
 		var foodimg = i==foodList.length-1 ? foodList[i].split(',')[1].split('=')[1].split('}')[0] : foodList[i].split(',')[1].split('=')[1];
@@ -1083,6 +1104,48 @@ body {
 		});
 	});
 	
+	//close버튼 클릭 시 리뷰 삭제하기
+	$('.fa-xmark').click(function(){
+		console.log('id:','${info.id}')
+		console.log('no:',$(this).parent().parent().find('[name=no]').val())
+		Swal.fire({
+			  title: 'Are you sure?',
+			  text: "You won't be able to revert this!",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				$.ajax({
+					data:{
+						id:'${info.id}',
+						no:$(this).parent().parent().find('[name=no]').val()
+					},
+					url:'<c:url value="/DeleteReview.do"/>',
+					method:'post',
+					dataType:'json'
+				}).done(data=>{
+					console.log(data)
+					if(data>=1){
+					    Swal.fire(
+					      'Deleted!',
+					      'Your file has been deleted.',
+					      'success'
+					    )
+					}
+					location.href = window.location.href;
+				}).fail(function(){console.log('error')});
+			  }
+			})
+	});
+	
+	//리뷰 돋보기 클릭 시 상세보기 페이지 이동
+	$('.fa-magnifying-glass').click(function(){
+		var no = $(this).parent().parent().find("[name=no]").val();
+		location.href = '<c:url value="/detail.do?no="/>'+no;
+	});
 
 	//이미지 수정하기
 	$('#imgEdit').click(function(){
