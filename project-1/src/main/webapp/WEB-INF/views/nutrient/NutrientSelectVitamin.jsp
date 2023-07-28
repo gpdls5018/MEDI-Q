@@ -172,7 +172,7 @@
 }
 #contentInfoCon .content-tit {
     color: #222;
-    font-size: 50px;
+    font-size: 45px;
     font-weight: 700;
     line-height: 1.36;
     letter-spacing: -0.02em;
@@ -190,7 +190,7 @@
 }
 .tsarea {
 	position: absolute;
-	width: 700px;
+	width: 1000px;
 	height: 250px;
 	top:170px;
 	left:50px;
@@ -209,10 +209,9 @@
                 <div class="visual-img-con animatedleft"></div>	
 
         <div class="tsarea">
-            <p class="content-sub-tit">Global Healthcare</p>
-            <h3 class="content-tit" style="text-align:left; margin-left: 50px;">
-                <p style="font-weight: 300;">AI 알고리즘 기반의</p>
-                <span>개인 맞춤형 헬스케어</span>
+            <h3 class="content-tit" style="text-align:left; margin-left: 150px;">
+                <span>인기 성분 Top 10</span>
+                <p style="font-weight: 500; font-size: 23px; margin-top: 20px; color:gray">800개 영양성분 중 가장 인기있는 100개 성분의 Best 제품을 만나보세요</p>
             </h3>
         </div>
     </aside>

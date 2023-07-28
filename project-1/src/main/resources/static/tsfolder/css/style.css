@@ -994,7 +994,7 @@ a {
         width: calc(100% - 10px);
         transform: translateX(10px);
         height: 250px;
-        background-color: gray;
+        background-color: rgb(198, 198, 198);
         border-radius: 20px;
         margin-bottom: 20px;
         list-style-type: none;

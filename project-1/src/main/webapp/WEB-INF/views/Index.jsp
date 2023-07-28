@@ -407,7 +407,7 @@ html, body {
 		<!-- 페이지 2 -->
 		<div class="tssection" id="tssection2">
 			<img class="p2firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
-			<img class="p2secondimg" src="https://img.freepik.com/premium-photo/group-of-yellow-round-tablets-forms-a-heart-shape-on-a-blue-background_248952-2.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=ais" >
+			<img class="p2secondimg" src="https://img.freepik.com/premium-photo/vitamins-herbal-supplements-jars-with-green-plant-white-background-with-space-text-biologically-active-additives_76158-538.jpg" >
 			<a type="button" class="p2firsta btn" href='<c:url value="/ranking/selectfood.do"/>' >더 보기 →</a>
 			 <div class="animatedright" style="margin-right: 200px; align-items: center;">
 				<div class="row justify-content-center pt-5" style="margin: 50px 0px 50px 0px; width: 800px">
@@ -495,8 +495,8 @@ html, body {
 		<!--  페이지4 -->
 	  <div class="tssection" id="tssection4">
 			<img class="p4firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
-			<img class="p4secondimg" src="https://img.freepik.com/premium-photo/woman-professional-nutritionist-checking-dietary-supplements-in-hand-surrounded-by-a-variety-of-fruits-nuts-vegetables-and-dietary-supplements-on-the-table_126277-2390.jpg" >
-		  <div class="gCSEJp animatedright">
+			<img class="p4secondimg" src="https://img.freepik.com/free-photo/clipboard-with-pills-frame_23-2148533094.jpg?size=626&ext=jpg&ga=GA1.2.1515223053.1688355068&semt=ais" >
+		  <div class="gCSEJp animatedright" style="margin-bottom: 100px;">
 	     	<c:if test="${not empty analyzeReport}">
 		        <h1 class="mb-3 text-center" >📋 <span style="color:#EF605D; font-size: 42px;">${userName}</span>님의 최근 분석 리포트</h1>
 		        <div class="ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
@@ -542,7 +542,7 @@ html, body {
 	  <!-- 페이지5 -->
 	  <div class="tssection" id="tssection5">
 		<img class="p5firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
-		<img class="p5secondimg" src="https://img.freepik.com/free-photo/medical-banner-with-doctor-and-patient_23-2149611238.jpg?t=st=1690267394~exp=1690267994~hmac=fb7aed3ed65edbd91d766aa10882c0c81a40eb4410eb84b864dbb0d94afffa06" >
+		<img class="p5secondimg" src="https://img.freepik.com/premium-photo/analyses-large-amounts-data-idea-business-intelligence-charts-company-finances-are-displayed-screen-that-is-simulated_27634-1108.jpg?size=626&ext=jpg&ga=GA1.1.1515223053.1688355068&semt=ais" >
 	  	<div class="section section1-2c animatedleft">
 	       <a href="<c:url value="/loadHealthInfo.do?userId=${userId}"/>" style="text-decoration: none;">
 	           <div class="content">
