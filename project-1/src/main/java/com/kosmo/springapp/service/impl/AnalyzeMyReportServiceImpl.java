@@ -128,7 +128,6 @@ public class AnalyzeMyReportServiceImpl {
             String nutNumber = entry.getValue();
 			NutrientDTO nutdto = analyzeService.findNutrientByName(nut);//현재 영양소에 해당하는 정보를 가져온다(서브네임과 비교한다)
 			Matcher DMmatcher = cappattern.matcher(nutdto.getN_DRI_M());
-            Matcher DFmatcher = cappattern.matcher(nutdto.getN_DRI_F());
 
         	if(DMmatcher.find()) {
         		if(nutdto.getN_UL_M() != null) {//상한 섭취량 존재유무 판단
