@@ -81,6 +81,10 @@ body{
 				<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
 					<div class="search-etc">
 					<span class="s-txt1">인기 검색어</span>
+					<form action="/diet.do">
+							<input id="searchProduct3" type="text" name="takefood" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${takefood}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
+							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct3()"></button>
+					</form>
 					<div class="search-keywords">
 						<a tabindex="0" class="search-keyword" href="/functionfood/healthissue.do?healthissue=장 건강">장 건강</a>
 						<a tabindex="0" class="search-keyword" href="/functionfood/healthissue.do?healthissue=눈 건강">눈 건강</a>
@@ -102,6 +106,19 @@ body{
 						<a tabindex="0" class="search-keyword" href="/functionfood/healthissue.do?healthissue=혈당">혈당 조절</a>
 						<a tabindex="0" class="search-keyword" href="/functionfood/healthissue.do?healthissue=수면">수면질 개선</a>
 					</div>
+					<c:forEach items="${foodlist}" var="onefooddiet">
+					    <p>Food Name: ${onefooddiet.foodname}</p>
+					    <p>One Time Serving Weight: ${onefooddiet.onetime}</p>
+					    <p>Calories: ${onefooddiet.calory}</p>
+					    <p>Carbohydrate: ${onefooddiet.Carbohydrate}</p>
+					    <p>Protein: ${onefooddiet.Protein}</p>
+					    <p>Fat: ${onefooddiet.fat}</p>
+					    <p>Sugar: ${onefooddiet.sugar}</p>
+					    <p>Sodium: ${onefooddiet.Sodium}</p>
+					    <p>Cholesterol: ${onefooddiet.Cholesterol}</p>
+					    <p>Saturated: ${onefooddiet.saturated}</p>
+					    <p>Trans Fat: ${onefooddiet["Trans "]}</p>
+					</c:forEach>
 					<div class="modal-body d-flex flex-wrap p-4 justify-content-around" style="height:200px;">
 			          <div class="card" style="width: 8rem;height:10rem;">
 			          	<a href="/functionfood/healthissue.do?healthissue=장 건강">
