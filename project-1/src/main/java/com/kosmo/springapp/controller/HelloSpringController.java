@@ -61,6 +61,7 @@ public class HelloSpringController {
 			model.addAttribute("analyzeReport",analyzeMyReportServiceImpl.selectAnalyzeReport(id));
 			MemberDTO memberDto = loginService.selectOne(req);
 			model.addAttribute("userName",memberDto.getName());
+			model.addAttribute("userId",memberDto.getId());
 		}
 		catch(NullPointerException e) {
 			model.addAttribute("userName","???");
