@@ -173,7 +173,7 @@ ul {
 
         /* 드롭다운 메뉴 스타일 */
         .dropdown-menu {
-        	width:1760px;
+        	width:1770px;
             border: none;
             background-color: rgba(0,0,0,0);
         }
@@ -596,7 +596,7 @@ ul {
 	       </li>
 	       <li class="tsnavli">
 	            <a class="tsnava1" href="<c:url value="/board/List.do" />">
-	             커뮤니티
+	             맞춤 상담 Q&A
 	            </a>
 	       </li>
         </ul>
@@ -630,13 +630,13 @@ ul {
 							            <a href="<c:url value="/NutrientSelectVitamin.do"/>">비타민</a>	   
 							            <a href="<c:url value="/NutrientSelectMineral.do"/>">미네랄 및 기타영양소</a>	         
 							            <a href="<c:url value="/NutrientSelectFunctional.do"/>">기능성 원료</a>
-										
 									</li>
 									<li>
 										<p class="title">영양제 찾기</p>
 										<a href="<c:url value="/ranking/selectfood.do"/>">전체 검색</a>
 							            <a href="<c:url value="/ranking/selectfoodnutrient.do"/>">성분 검색</a>	 			
-							            <a href="<c:url value="/ranking/selectfoodcompany.do"/>">제품명/브랜드 검색</a>										
+							            <a href="<c:url value="/ranking/selectfoodcompany.do"/>">제품명/브랜드 검색</a>
+							            <a href="#">건강고민 검색</a>											
 									</li>
 									<li>
 										<p class="title">정신건강 테스트</p>
@@ -646,7 +646,9 @@ ul {
 										<a href="<c:url value="/project/MentalTest4.do"/>">우울증(CES-D)</a>									
 									</li>
 									<li>
-										<p class="title">무엇을 넣지</p>
+										<p class="title">분석 / 추천</p>
+										<a href="#">건강 및 분석</a>
+										<a href="#">발병위험도 예측</a>
 										<a class="dropdown-item" href="<c:url value="/AdminMain.do"/>">관리자</a>
 	                    				<a class="dropdown-item" href="<c:url value="/functionfood/selectissue.do"/>">태현(테스트)</a>
 										

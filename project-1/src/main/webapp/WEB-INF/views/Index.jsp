@@ -293,7 +293,7 @@ html, body {
  .wrap * {padding: 0;margin: 0;}
  .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
  .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
- .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+ .info .title {padding: 5px 0 0 10px;height: 35px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
  .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
  .info .close:hover {cursor: pointer;}
  .info .body {position: relative;overflow: hidden;}
@@ -407,7 +407,7 @@ html, body {
 		<!-- 페이지 2 -->
 		<div class="tssection" id="tssection2">
 			<img class="p2firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
-			<img class="p2secondimg" src="https://img.freepik.com/free-photo/top-view-of-pills-and-container-with-days-of-the-weeks_23-2148533506.jpg?t=st=1690265424~exp=1690266024~hmac=c6915b7b9323aa3481da8da02c23782ad2688e9f310990a27e3a7df424b0d618" >
+			<img class="p2secondimg" src="https://img.freepik.com/premium-photo/group-of-yellow-round-tablets-forms-a-heart-shape-on-a-blue-background_248952-2.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=ais" >
 			<a type="button" class="p2firsta btn" href='<c:url value="/ranking/selectfood.do"/>' >더 보기 →</a>
 			 <div class="animatedright" style="margin-right: 200px; align-items: center;">
 				<div class="row justify-content-center pt-5" style="margin: 50px 0px 50px 0px; width: 800px">
