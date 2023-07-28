@@ -1234,7 +1234,6 @@ body {
 </body>
 
 <script>
-console.log($('#worry'))
 	var dates_ = '<c:out value="${date}"/>'
 	var dates = dates_.substring(1);
 	//console.log('dates:',dates)
@@ -1317,7 +1316,7 @@ console.log($('#worry'))
 		}
 	});
 	var foodli = document.querySelector('#select-div ul');
-	var foodList = food.split('},');
+	var foodList = food=='[]' ? "" :food.split('},');
 
 	for(var i=0;i<foodList.length;i++){
 		var foodname = foodList[i].split(',')[0].split('=')[1];
