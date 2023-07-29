@@ -101,18 +101,18 @@
                              <div class="card_deco col-12 p-0 m-0">
 	                            <div class="card-body p-2 m-3">
 	                                <div class="form-group">
-                                		<label for="usr"><h3><kbd class="btn_deco font-weight-bold">제목</kbd></h3></label>
-                                		<input type="text" name="title" class="form-control" placeholder="제목을 입력하세요"value="${record.TITLE }">
+                                		<label for="usr"><h3><kbd class="btn_deco font-weight-bold">질문 제목</kbd></h3></label>
+                                		<input type="text" name="title" class="form-control" placeholder="${title}" disabled >
                             		</div>
 	                            	<br>
 		                            <div class="form-group">
-										<label for="comment"><h3><kbd class="btn_deco font-weight-bold">질문 내용</kbd></h3></label>
+										<label for="comment"><h3><kbd class="btn_deco font-weight-bold">답변내용 수정</kbd></h3></label>
 	                                	<textarea class="form-control" rows="15" name="content">${record.CONTENT }</textarea>
 	                            	</div>
 	                            </div>
                             </div>
                             <div class="pt-3 pl-4">
-	                            <button type="submit" class="btn btn-light text-light text_2 btn_deco" style="font-size:22px;">수정</button>
+	                            <button type="submit" class="btn btn-light text-light text_2 btn_deco" style="font-size:22px;">답변수정 등록</button>
 	                            <input type="hidden" value="${record.ANSWER_NO}" name="answer_no">
 	                            <input type="hidden" value="${record.BOARD_NO}" name="no">
                             </div>
