@@ -53,10 +53,10 @@ body{
     .sanse {
     	border: none; 
     	background: rgba(0,0,0,0); 
-    	font-size: 20px; 
+    	font-size: 16px; 
     	font-weight: bold;
     	color:gray;
-    	margin-left: 20px;
+    	margin-left: 5px;
     }
     .sanse:hover {
     	box-shadow: 2px 2px 5px gray;
@@ -106,7 +106,7 @@ body{
 			 <div class="gCSEJp" style="margin: 10px 0px; padding: 0px; ">
 		        <h1 class="mb-3 text-center" > 최근 분석 리포트</h1>
 		     	<c:if test="${not empty analyzeReport}">
-			        <div class="ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px; width: 95%;">
+			        <div class="ibNwmg d-flex" style="justify-content:flex-start;  margin:30px 0px 40px 15px; width: 95%;">
 			            <a data-gtm-id="report-home-recent-blank" class="ktaGqG" style="text-decoration: none; cursor:none; background-color: 
 					      ${analyzeReport.score >= 0 && analyzeReport.score < 25 ? 'rgba(255, 0, 0, 0.7)' :
 					        analyzeReport.score >= 25 && analyzeReport.score < 50 ? 'rgba(255, 165, 0, 0.7)' :
@@ -172,7 +172,7 @@ body{
 			<div class="gCSEJp" style="margin: 10px 0px; padding: 0px; ">
 		        <h1 class="mb-3 text-center" > 저장된 분석 리포트</h1>
 				<c:forEach items="${analzeReportAll}" var="analyzeReportOne">
-			        <div class="ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px; width: 95%;">
+			        <div class="ibNwmg d-flex" style="justify-content:flex-start; margin:30px 0px 40px 15px; width: 95%;">
 			            <form class="ktaGqG" action='<c:url value="/analyzeMyReportReLoad.do"/>' method="POST" style="text-decoration: none; background-color: 
 					      ${analyzeReportOne.score >= 0 && analyzeReportOne.score < 25 ? 'rgba(255, 0, 0, 0.7)' :
 					        analyzeReportOne.score >= 25 && analyzeReportOne.score < 50 ? 'rgba(255, 165, 0, 0.7)' :
@@ -198,8 +198,8 @@ body{
 							                <c:set var="takeFood" value="${fn:replace(analyzeReportOne.takeFoods, '[', '')}" />
 							                <c:set var="takeFood" value="${fn:replace(takeFood, ']', '')}" />
 							                <input type="hidden" value="${takeFood}" name="takeFood"/>
-							                <button type="submit" class="sanse">상세보기→</button>
-						    			    <span style="margin-left: 250px;"class="delete_report" data-value="${analyzeReportOne.analyzeno}">🗑</span>  
+							                <button type="submit" class="sanse">상세보기</button>
+						    			    <span style="margin-left: 300px;"class="delete_report" data-value="${analyzeReportOne.analyzeno}">🗑</span>  
 			               					<input type="hidden" value="${analyzeReportOne.analyzeno}"/>
 					    			    </div>
 			                            <p class="jeiOCr1">${analyzeReportOne.score}<span class="ml-3" style="color:black; font-size: 20px;">점</span></p>

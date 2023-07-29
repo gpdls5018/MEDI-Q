@@ -103,12 +103,12 @@
 	                    <img src="<c:url value="/images/qna/qna_ans.png"/>" class="qna_ans ml-1">
 	                    <div class="row justify-content-center pt-3">
 	                    	<!--여기부터 답변출력  -->
-	                    	<c:if test="${! empty FAILURE}">
+	                    	<%-- <c:if test="${! empty FAILURE}">
 								<div class="alert alert-success alert-dismissible fade show">
 									<button type="button" class="close" data-dismiss="alert">×</button>
 									<strong>Failure!</strong> ${FAILURE }
 								</div>
-							</c:if>
+							</c:if> --%>
 							<!-- 질문 출력 부분 -->
 							<div class="card_deco col-12 p-1 m-2">
 	                            <div class="card-body p-2 m-3">
@@ -124,18 +124,20 @@
 	                        <br/>
 	                        <!-- 임시위치 버튼 -->
 	                        <div class="d-flex flex-wrap flex-direction justify-content-center" id="content_footer">
-								<a href='<c:url value="/board/Edit.do?no=${record.NO}"/>'class="text-decoration-none p-1">
-									<button class="btn btn-light text-light btn_deco">수정</button>
-								</a> 
-								<a href="javascript:isDelete();" class="text-decoration-none p-1">
-									<button class="btn btn-light text-light btn_deco">삭제</button>
-								</a> 
+								<c:if test="${id eq record.ID}">
+									<a href='<c:url value="/board/Edit.do?no=${record.NO}"/>'class="text-decoration-none p-1">
+										<button class="btn btn-light text-light btn_deco">수정</button>
+									</a> 
+									<a href="javascript:isDelete();" class="text-decoration-none p-1">
+										<button class="btn btn-light text-light btn_deco">삭제</button>
+									</a>
+								</c:if> 
 								<a href='<c:url value="/board/List.do"/>' class="text-decoration-none p-1">
 									<button class="btn btn-light text-light btn_deco">목록</button>
 								</a>
 								<!-- id가 관리자일때만 버튼이 보임 -->
 								<!-- 참이면(not false) -->
-								<c:if test="${active eq 'Y' }"><!-- member속성 ACTIVE 관리자('A')일때만,만약 약사 속성('G')로 수정할거면 A대신 G로 교체 -->
+								<c:if test="${active eq 'A' }"><!-- member속성 ACTIVE 관리자('A')일때만,만약 약사 속성('G')로 수정할거면 A대신 G로 교체 -->
 									<c:choose>
 										<c:when test="${empty paramMap.CONTENT}">
 											<a href='<c:url value="/board/AnswerWrite.do?no=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
@@ -177,7 +179,7 @@
 									</c:if>
 			                    </div>
 		                    </div>
-                    	</c:when>	
+                    	</c:when>
 	                    <c:when test="${not empty paramMap.CONTENT }">                      
 						    <!-- 답글이 존재시 뷰 -->
 							<div class="card_deco col-12 p-1 answer-section"><!-- class 속성 answer-section으로 답변삭제시 태그들 아래 다 삭제 -->
@@ -194,8 +196,8 @@
 								 		<span class="card-text"><h5>${paramMap.CONTENT}</h5></span><!-- 답변내용 -->
 										<hr style="border: 1px solid #E6E9ED;"/>
 										<div class="card-text d-flex align-items-center">
-											<button id="likeToggleBtn" class="btn btn-light text-light btn_deco mr-3" data-board-no="${record.NO }">도움이 돼요</button>
-											<span id="likeCountText" class="font-weight-bold" data-boards-no="${record.NO }">${record.NO }는 갯수   명에게 도움이 됐습니다.</span>
+											<button id="likeToggleBtn" class="btn btn-light text-light btn_deco mr-3" data-answer-no="${paramMap.ANSWER_NO}">도움이 돼요</button>
+											<span id="likeCountText" class="font-weight-bold" data-answer-no="${paramMap.ANSWER_NO}">${record.NO }는 갯수   명에게 도움이 됐습니다.</span>
 										</div>
 									</c:if>
 				            	</div>
@@ -230,7 +232,6 @@
 	$(document).on('click','.my-delete',function() {
         if(confirm('답변글을 삭제하시겠습니까?')){
             var answerNo = $(this).data('answer-no');//data-answer-no="${paramMap.ANSWER_NO}"
-         	// Ajax 요청 생성
             $.ajax({
                 url: "<c:url value="/board/AnswerDelete.do"/>",
                 type: 'DELETE',
@@ -241,16 +242,16 @@
                 console.log('삭제 성공:', data);
                 alert('답변삭제 완료');
                 $('.answer-section').remove();
-                //페이지 리로드 실행(ajax로 요청은 보냈으나 다시 리로드; 기능은 성공)
+                //페이지 재실행(ajax로 요청은 보냈으나 다시 리로드;;기능은 성공)
                 window.location.href = "<c:url value="/board/View.do?no=${record.NO}"/>";
             });
         }
     });
     // 좋아요 버튼 클릭 이벤트 처리
     $(document).on('click','#likeToggleBtn',function () {
-    	var postNo = $(this).data('board-no');//board-no="${record.NO }"
-        confirm('좋아요을 누르시겠습니까?'+postNo);//114출력됨
-        console.log(postNo);//114출력됨
+    	var postNo = $(this).data('answer-no');//data-answer-no="${paramMap.ANSWER_NO}"
+        //confirm('좋아요을 누르시겠습니까?'+postNo);//114출력됨
+        //console.log(postNo);//114출력됨
         $.ajax({
             url: "<c:url value="/like/Toggle.do"/>",
             type: 'POST',
@@ -258,7 +259,7 @@
             dataType: 'json',// 받아올 데이터 타입을 json으로 설정
         }).done(function(data){
         	console.log('좋아요 통신성공:',data);
-        	alert('좋아요 통신성공');
+        	//alert('좋아요 통신성공');
         	if(data){
         		$('#likeCountText').text(data + '명에게 도움이 됐습니다.');
         	} else{
@@ -273,7 +274,7 @@
     });
  	// 좋아요 개수 조회
     function getTotalLikes() {
-        var getNo = $('#likeCountText').data('boards-no'); // data 속성에서 게시물 번호 가져오기
+        var getNo = $('#likeCountText').data('answer-no'); // data 속성에서 답변글 번호 가져오기 //data-answer-no="${paramMap.ANSWER_NO}"
         console.log("콘솔 체크용getNo값 확인:",getNo);//114출력 확인 
         $.ajax({
         	url: "<c:url value="/like/Count.do"/>",
@@ -283,7 +284,7 @@
             contentType: "application/json"
         }).done(function(data){
             console.log('좋아요 개수 통신 성공:', data);
-            alert('좋아요 개수 통신 성공'+data);
+            //alert('좋아요 개수 통신 성공'+data);
             // 성공적으로 개수를 받아오면 업데이트
             $('#likeCountText').text(data + '명에게 도움이 됐습니다.');
         });

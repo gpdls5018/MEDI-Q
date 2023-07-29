@@ -19,4 +19,7 @@
  		FROM (SELECT * FROM FOODTABLE WHERE MATERIAL LIKE '%' || #{purpose} || '%' ORDER BY F_VIEW DESC)
 		WHERE ROWNUM &lt;=10
  	</select>
+ 	<select id="selectFood" parameterType="String" resultType="functionalFoodListDto">
+ 		SELECT * FROM foodtable WHERE no=#{no}
+ 	</select>
 </mapper>

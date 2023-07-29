@@ -24,37 +24,108 @@
 <jsp:include page="/WEB-INF/views/template/Top.jsp" />
 <div class="container effect-custom-font" >
 	<div class="m-5"style="height:50px;"></div>
-    <div class="m-5 display-4 effect-custom-font" style="text-align:center;">당뇨병 수치 예측하기</div>
+    <div class="m-5 display-4 effect-custom-font" style="text-align:center;">심장질환 수치 예측하기</div>
 	<div class="model-score m-4" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd>70%</kbd> 입니다</div>
     <div class="row">
         <div class="col-6">
             <form id="personInfoForm" class="validation-form" novalidate>
-                <div class="col mb-3">
-                    <strong>연령</strong>
-                    <input type="text" class="form-control" id="age" name="age" placeholder="연령을 입력해주세요" value="" required>
+            	<div class="col mb-3">
+                    <strong>성별</strong>
+                    <div class="form-check">
+					  <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="2">
+					  <label class="form-check-label" for="gender_Man">
+					    남성
+					  </label>
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="gender" id="gender_Woman" value="1">
+					  <label class="form-check-label" for="gender_Woman">
+					    여성
+					  </label>
+					</div>
                     <div class="invalid-feedback">
-                        연령을 입력해주세요.
+                        성별을 체크해 주세요
                     </div>
                 </div>
                 <div class="col mb-3">
-                    <strong>BMI</strong>
-                    <input type="text" class="form-control" id="bmi" name="bmi" placeholder="체질량 지수를 입력해주세요" value="${healthInfoDto.bmi}" required>
+                    <strong>신장</strong>
+                    <input type="text" class="form-control" id="height" name="height" placeholder="신장을 입력해주세요" value="${healthInfoDto.height}" required>cm
                     <div class="invalid-feedback">
-                        체질량 지수를 입력해주세요
+                        신장을 입력해주세요
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <strong>몸무게</strong>
+                    <input type="text" class="form-control" id="weight" name="weight" placeholder="몸무게를 입력해주세요" value="${healthInfoDto.weight}" required>kg
+                    <div class="invalid-feedback">
+                        몸무게를 입력해주세요
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <strong>혈압(최고/최저)</strong>
+                    <div class="d-flex">
+	                    <input type="text" class="form-control m-1" id="bloodpress_high" name="bloodpress_high"  placeholder="최고혈압" value="${healthInfoDto.bloodPressure_high}" required> / 
+	                    <input type="text" class="form-control m-1" id="bloodpress_low" name="bloodpress_low"  placeholder="최저혈압" value="${healthInfoDto.bloodPressure_low}" required>
+                    </div>
+                    <div class="invalid-feedback">
+                        혈압수치를 입력해주세요
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <strong>콜레스테롤</strong>
+                    <input type="text" class="form-control" id="total_cholesterol" name="total_cholesterol" placeholder="총 콜레스테롤 수치를 입력해주세요" value="${healthInfoDto.total_cholesterol}" required>mg/dL
+                    <div class="invalid-feedback">
+                        콜레스테롤 수치를 입력해주세요
                     </div>
                 </div>
                 <div class="col mb-3">
                     <strong>포도당</strong>
-                    <input type="text" class="form-control" id="glucose" name="glucose" placeholder="포도당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required>
+                    <input type="text" class="form-control" id="glucose" name="glucose" placeholder="포도당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required>mg/dL
                     <div class="invalid-feedback">
                         포도당 수치를 입력해주세요
                     </div>
                 </div>
                 <div class="col mb-3">
-                    <strong>혈압</strong>
-                    <input type="text" class="form-control" id="bloodpress" name="bloodpress"  placeholder="혈압수치를 입력해주세요" value="${(healthInfoDto.bloodPressure_high + healthInfoDto.bloodPressure_low) / 2}" required>
+                	<strong>흡연</strong>
+	                <div class="form-check">
+				  		<input class="form-check-input" type="radio" name="smoke_check" value="0">
+					  	<label class="form-check-label" for="smoke_check">
+						    흡연자입니다
+					  	</label>
+					</div>
+					<div class="form-check">
+				    	<input class="form-check-input" type="radio" name="smoke_check" value="1" >
+					  	<label class="form-check-label" for="smoke_check">
+						    비흡연자입니다
+					  	</label>
+					</div>
+	                <div class="invalid-feedback">
+	                       흡연 유무를 체크해주세요
+	                </div>
+                </div>
+                <div class="col mb-3">
+                	<strong>음주</strong>
+	                <div class="form-check">
+				  		<input class="form-check-input" type="radio" name="alco_check" value="0">
+					  	<label class="form-check-label" for="alco_check">
+						    음주를 합니다
+					  	</label>
+					</div>
+					<div class="form-check">
+				    	<input class="form-check-input" type="radio" name="alco_check" value="1" >
+					  	<label class="form-check-label" for="alco_check">
+						    음주를 하지 않습니다
+					  	</label>
+					</div>
+	                <div class="invalid-feedback">
+	                       음주 유무를 체크해주세요
+	                </div>
+                </div>
+                <div class="col mb-3">
+                    <strong>연령</strong>
+                    <input type="text" class="form-control" id="age" name="age" placeholder="연령을 입력해주세요" value="" required>
                     <div class="invalid-feedback">
-                        혈압수치를 입력해주세요
+                        연령을 입력해주세요
                     </div>
                 </div>
                 <hr class="mb-4">
@@ -65,14 +136,14 @@
 
         <div class="col-6">
             <canvas id="drawing_canvas"></canvas>
-            <img src="<c:url value="/resources/images/basic/AI.jpg"/>" id="machineImage" style="width:100%;height:100%;border-radius:50%;"/>
+            <img src="<c:url value="/images/basic/AI.jpg"/>" id="machineImage" style="width:100%;height:100%;border-radius:50%;"/>
         </div>
     </div>
     <hr class="mt-5">
     <div class="effect-custom-font m-5">
     	<div class="title mb-5" style="font-size:30px;">
-    		<img src="<c:url value="/resources/images/mainicon.png"/>" style="width:30px;height:30px;">
-    		<img src="<c:url value="/resources/images/maintitle.png"/>" style="height:30px;">
+    		<img src="<c:url value="/images/mainicon.png"/>" style="width:30px;height:30px;">
+    		<img src="<c:url value="/images/maintitle.png"/>" style="height:30px;">
 										와 다른 질병을 예측해 보아요!</div>
     	<ul class="list-unstyled" style="line-height:300%">
     		<li class="mb-4"><div class="p-2" style="border-radius:40px;font-size:20px;background-color:#ff9558">심장질환 예측하기</div></li>
@@ -97,10 +168,18 @@
                         text: '다시한번 확인해 주세요!',
                     });
                 } else {
-                    var age = $('#age').val();
-                    var bmi = $('#bmi').val();
+                	var gender = document.querySelector("input[name=gender]:checked").value;
+                    var height = $('#height').val();
+                    var weight = $('#weight').val();
+                    var bloodpress_high = $('#bloodpress_high').val();
+                    var bloodpress_low = $('#bloodpress_low').val();
+                    var total_cholesterol = $('#total_cholesterol').val();
+                    total_cholesterol = total_cholesterol <= 200 ? 1 : (total_cholesterol <= 240 ? 2 : 3);
                     var glucose = $('#glucose').val();
-                    var bloodpress = $('#bloodpress').val();
+                    glucose = glucose <= 100 ? 1 : (glucose <= 125 ? 2 : 3);
+                    var smoke = document.querySelector("input[name=smoke_check]:checked").value;
+                    var alco = document.querySelector("input[name=alco_check]:checked").value;
+                    var age = $('#age').val();
                     $('.model-score').hide();
                     const Toast = Swal.mixin({
                         toast: true,
@@ -119,14 +198,21 @@
                     });
                     setTimeout(function () {
                     	var data = {
-	                            "age": age,
-	                            "bmi": bmi,
+	                            "gender": gender,
+	                            "height": height,
+	                            "weight": weight,
+	                            "bloodpress_high": bloodpress_high,
+	                            "bloodpress_low": bloodpress_low,
+	                            "total_cholesterol": total_cholesterol,
 	                            "glucose": glucose,
-	                            "bloodpress": bloodpress,
+	                            "smoke": smoke,
+	                            "alco": alco,
+	                            "age": age
 	                        }
+                    	
                         $.ajax({
                             type: 'POST',
-                            url: 'http://192.168.0.16/diabetes',
+                            url: 'http://192.168.0.16/cardiovascular',
                             contentType : "application/json",
                             dataType: 'json',
                             data: JSON.stringify(data),
@@ -137,6 +223,7 @@
                                 requestAnimationFrame(loop);
                                 $('#machineImage').hide();
                             }
+                        
                         });
                     }, 1500);
                 }

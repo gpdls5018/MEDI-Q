@@ -91,7 +91,7 @@
 }
 #contentInfoCon .content-tit {
     color: #222;
-    font-size: 50px;
+    font-size: 42px;
     font-weight: 700;
     line-height: 1.36;
     letter-spacing: -0.02em;
@@ -109,7 +109,7 @@
 }
 .tsarea {
 	position: absolute;
-	width: 700px;
+	width: 1000px;
 	height: 250px;
 	top:170px;
 	left:50px;
@@ -119,22 +119,17 @@
 	box-shadow: 0px 0px 0px white;
 	align-items: center;
 }
-.tsnava2:after {
-	display: none;
-}
- </style>
+     </style>
 
-
+	<!-- 상단배너 div -->
 	<aside id="contentInfoCon" class="area animated">
         <!-- 각각 대메뉴 마다 이미지 다르게 들어갑니다. -->
                 <!-- 브랜드 스토리 -->
                 <div class="visual-img-con animatedleft"></div>	
 
         <div class="tsarea">
-            <p class="content-sub-tit">Global Healthcare</p>
-            <h3 class="content-tit" style="text-align:left; margin-left: 50px;">
-                <p style="font-weight: 300;">AI 알고리즘 기반의</p>
-                <span>개인 맞춤형 헬스케어</span>
+            <h3 class="content-tit" style="text-align:left; margin-left: 150px;">
+                <span>영양제와 건강에 대한 모든 것,<br/><span style="color:#EF605D;">MEDI-Q</span>에서 확인하세요!</span>
             </h3>
         </div>
     </aside>

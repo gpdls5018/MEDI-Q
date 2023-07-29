@@ -126,30 +126,30 @@
 	font-weight: 600;
 	align-items: center;
 	font-size: 21px;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 .tsnava2 {
 	color: #EF605D;
 	font-weight: bold;
-	font-size: 30px;
+	font-size: 40px;
 	align-items: flex-end;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-    margin-right: 25px;
+    margin-right: 5px;
     padding-top: 0px;
 }
 .tsnava3 {
-	color: black;
+	color: gray;
 	font-weight: bold;
 	font-size: 16px;
     padding-top: 10px;
+    margin-right: 20px;
 }
 .tsnava1:hover {
 	color:black;
 	text-decoration: none;
 }
 .tslogina span:hover {
-	color:white;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	color:black;
 	text-decoration: none;
 }
 
@@ -173,7 +173,7 @@ ul {
 
         /* 드롭다운 메뉴 스타일 */
         .dropdown-menu {
-        	width:1760px;
+        	width:1770px;
             border: none;
             background-color: rgba(0,0,0,0);
         }
@@ -596,7 +596,7 @@ ul {
 	       </li>
 	       <li class="tsnavli">
 	            <a class="tsnava1" href="<c:url value="/board/List.do" />">
-	             커뮤니티
+	             맞춤 상담 Q&A
 	            </a>
 	       </li>
         </ul>
@@ -609,10 +609,12 @@ ul {
         <ul class="d-flex" style="margin-right: 50px;">
         	<li class="text2 mx-2 dropdown" style="display:flex; align-items: center;">
         		<c:if test="${not empty token}" var="isLogin">       
-                    <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/MyPage.do"/>"><span class="tsnava3" ><span style="color:#EF605D;">'${payload.name}'</span>님 반갑습니다</span></a>
+                    <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/MyPage.do"/>"><span class="tsnava3" >마이페이지</span></a>
+                    <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/Logout.do"/>"><span class="tsnava3" >로그아웃</span></a>
                 </c:if>
                 <c:if test="${not isLogin}">
-                    <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/Login.do"/>"><span class="tsnava3" >로그인 후 이용해 주세요</span></a>        
+                    <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/Login.do"/>"><span class="tsnava3" >로그인</span></a>
+                    <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/Join.do"/>"><span class="tsnava3" >회원가입</span></a>        
                 </c:if>
         	</li>
 	        <li class="text2 mx-2 dropdown">
@@ -630,13 +632,13 @@ ul {
 							            <a href="<c:url value="/NutrientSelectVitamin.do"/>">비타민</a>	   
 							            <a href="<c:url value="/NutrientSelectMineral.do"/>">미네랄 및 기타영양소</a>	         
 							            <a href="<c:url value="/NutrientSelectFunctional.do"/>">기능성 원료</a>
-										
 									</li>
 									<li>
 										<p class="title">영양제 찾기</p>
 										<a href="<c:url value="/ranking/selectfood.do"/>">전체 검색</a>
 							            <a href="<c:url value="/ranking/selectfoodnutrient.do"/>">성분 검색</a>	 			
-							            <a href="<c:url value="/ranking/selectfoodcompany.do"/>">제품명/브랜드 검색</a>										
+							            <a href="<c:url value="/ranking/selectfoodcompany.do"/>">제품명/브랜드 검색</a>
+							            <a href="<c:url value="/ranking/HealthSelect.do"/>">건강고민 검색</a>											
 									</li>
 									<li>
 										<p class="title">정신건강 테스트</p>
@@ -646,14 +648,17 @@ ul {
 										<a href="<c:url value="/project/MentalTest4.do"/>">우울증(CES-D)</a>									
 									</li>
 									<li>
-										<p class="title">무엇을 넣지</p>
-										<a class="dropdown-item" href="<c:url value="/AdminMain.do"/>">관리자</a>
-	                    				<a class="dropdown-item" href="<c:url value="/functionfood/selectissue.do"/>">태현(테스트)</a>
+										<p class="title">분석 / 추천</p>
+										<a href="#">건강 및 분석</a>
+										<a href="#">발병위험도 예측</a>
+										<a href="<c:url value="/AdminMain.do"/>">관리자</a>
+	                    				<a href="<c:url value="/functionfood/selectissue.do"/>">태현(테스트)</a>
 										
 									</li>
 								</ul>
 								<div class="right__wr">
 									<img src="<c:url value="/images/tsimages/mascot.png"/>" style="height: 230px; width: 400px;" >
+									<!--  
 									<div class="d-flex">
 						                <c:if test="${not empty token}" var="isLogin">       
 						                    <a class="dropdown-item" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>
@@ -664,6 +669,7 @@ ul {
 						                    <a class="dropdown-item" href="<c:url value="/project/Join.do"/>">회원가입</a>       
 						                </c:if>
 					                </div>
+					                -->
 									<a href="<c:url value='/' />" class="home__btn">Home<img src="https://www.bundangcheil.com/images/pcham_menu_arrow.svg" alt="이동"></a>
 								</div>
 							</div>

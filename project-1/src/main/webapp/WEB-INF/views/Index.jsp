@@ -293,7 +293,7 @@ html, body {
  .wrap * {padding: 0;margin: 0;}
  .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
  .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
- .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+ .info .title {padding: 5px 0 0 10px;height: 35px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
  .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
  .info .close:hover {cursor: pointer;}
  .info .body {position: relative;overflow: hidden;}
@@ -383,7 +383,7 @@ html, body {
 			            </a>
 		            </div>
 		            <div id="top-banner-4" class="banner" id="tsbaimg4">
-			            <a href="<c:url value="/MachineLearn.do"/>">
+			            <a href='<c:url value="/loadHealthInfo.do?userId=${userId}"/>'>
 			              <div class="banner-inner-wrapper" id="banner-inner-wrapper4" >
 			              	 <p style="color: grey;">내 위암 발병률은 몇 퍼센트일까?</p>
 			              	 <h1 style="font-size: 57px;">🧬 주요 질환의 발병 위험도를 예측해드려요!</h1>
@@ -407,7 +407,7 @@ html, body {
 		<!-- 페이지 2 -->
 		<div class="tssection" id="tssection2">
 			<img class="p2firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
-			<img class="p2secondimg" src="https://img.freepik.com/free-photo/top-view-of-pills-and-container-with-days-of-the-weeks_23-2148533506.jpg?t=st=1690265424~exp=1690266024~hmac=c6915b7b9323aa3481da8da02c23782ad2688e9f310990a27e3a7df424b0d618" >
+			<img class="p2secondimg" src="https://img.freepik.com/premium-photo/vitamins-herbal-supplements-jars-with-green-plant-white-background-with-space-text-biologically-active-additives_76158-538.jpg" >
 			<a type="button" class="p2firsta btn" href='<c:url value="/ranking/selectfood.do"/>' >더 보기 →</a>
 			 <div class="animatedright" style="margin-right: 200px; align-items: center;">
 				<div class="row justify-content-center pt-5" style="margin: 50px 0px 50px 0px; width: 800px">
@@ -495,8 +495,8 @@ html, body {
 		<!--  페이지4 -->
 	  <div class="tssection" id="tssection4">
 			<img class="p4firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
-			<img class="p4secondimg" src="https://img.freepik.com/premium-photo/woman-professional-nutritionist-checking-dietary-supplements-in-hand-surrounded-by-a-variety-of-fruits-nuts-vegetables-and-dietary-supplements-on-the-table_126277-2390.jpg" >
-		  <div class="gCSEJp animatedright">
+			<img class="p4secondimg" src="https://img.freepik.com/free-photo/clipboard-with-pills-frame_23-2148533094.jpg?size=626&ext=jpg&ga=GA1.2.1515223053.1688355068&semt=ais" >
+		  <div class="gCSEJp animatedright" style="margin-bottom: 100px;">
 	     	<c:if test="${not empty analyzeReport}">
 		        <h1 class="mb-3 text-center" >📋 <span style="color:#EF605D; font-size: 42px;">${userName}</span>님의 최근 분석 리포트</h1>
 		        <div class="ml-1 ibNwmg d-flex" style="justify-content:flex-start; margin-top: 30px; margin-bottom: 40px;">
@@ -542,9 +542,9 @@ html, body {
 	  <!-- 페이지5 -->
 	  <div class="tssection" id="tssection5">
 		<img class="p5firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
-		<img class="p5secondimg" src="https://img.freepik.com/free-photo/medical-banner-with-doctor-and-patient_23-2149611238.jpg?t=st=1690267394~exp=1690267994~hmac=fb7aed3ed65edbd91d766aa10882c0c81a40eb4410eb84b864dbb0d94afffa06" >
+		<img class="p5secondimg" src="https://img.freepik.com/premium-photo/analyses-large-amounts-data-idea-business-intelligence-charts-company-finances-are-displayed-screen-that-is-simulated_27634-1108.jpg?size=626&ext=jpg&ga=GA1.1.1515223053.1688355068&semt=ais" >
 	  	<div class="section section1-2c animatedleft">
-	       <a href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>" style="text-decoration: none;">
+	       <a href="<c:url value="/loadHealthInfo.do?userId=${userId}"/>" style="text-decoration: none;">
 	           <div class="content">
 	               <span class="txt1" style=" text-align: center; width: 100%;">👨‍⚕️ 주요 질환의 <span style="color: #EF605D;">발병 위험도</span>를 예측해드려요 </span>
 	               <br/>
