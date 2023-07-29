@@ -37,14 +37,14 @@ progress {
     position: relative;
 }
 #myProgress::-webkit-progress-value {
-	background-color: tomato;
+	background-color: #FF5733;
 	border-left: 1px solid black;
 }
 #myProgress1::-webkit-progress-value {
-	background-color: skyblue;
+	background-color: #007BFF;
 }
 #myProgress2::-webkit-progress-value {
-	background-color: gold;
+	background-color: #52BE80;
 }
  /*ts 스타일 공간*/
     .my-title {
@@ -60,8 +60,16 @@ progress {
     	justify-content:center;
     	border-radius: 40px 40px 0px 0px;
 		box-shadow: rgba(108, 108, 108, 0.15) 0px -1px 10px;
-		margin-top: 50px;
+		margin-top: 40px;
     }
+    .5dame {
+    	color: black;
+    	text-decoration: none;
+    }
+    .5dame:hover {
+    	color: white;
+    }
+
 </style>
 <body>
 	<div class="container my-3" style="min-height: 880px; max-width: 920px; background-color: white; border-radius: 15px;">
@@ -70,14 +78,14 @@ progress {
 			<c:set var="nowDate" value="${today}"/>
 			<fmt:formatDate var="formattedDate" value="${nowDate}" pattern="yyyy.MM.dd" />
 			<!--<div class="float-right mt-3" style="font-size:32px; margin-right: 250px;"><span style="font-size:36px; color:#ffdcdc;">${memberDto.name} </span>님의 분석 결과</div> -->
-			<div class="float-right mt-3" style="font-size:18px; margin-right: 350px;"><span style="font-size:20px; color:#ffdcdc;">${formattedDate}</span> 기준</div>
-			<div class="effect-custom-font my-2" style="margin-right: 350px; font-size: 24px;" >총 점수는 <span style="font-size:50px;">${resultListDto.resultScore}</span>점</div>
-			<button class="btn effect-custom-font my-2" onClick="location.href='<c:url value="/AnalyzeNewReport.do"/>'" style="border-radius:15px;background-color:#ff5924;color:white;width:40%; margin-right: 350px;">다시 분석하기</button>
+			<div class="float-right " style="color:#9c9c9c; font-size:16px; margin:50px 350px 0px 0px;">${formattedDate} 기준</div>
+			<div class="effect-custom-font mb-2" style="margin-right: 350px; font-size: 24px;" >총 점수는 <span style="font-size:50px;">${resultListDto.resultScore} </span> 점</div>
+			<button class="btn effect-custom-font my-2" onClick="location.href='<c:url value="/AnalyzeNewReport.do"/>'" style="border-radius:15px;background-color:#ff5924;color:white;width:30%; margin-right: 350px;">다시 분석하기</button>
 		</div>
 		
 		<div class="tsanalyze">
 			<div class="m-3">
-				<div class="effect-custom-font m-1" style="font-size:24px;color:#868686;text-align:center;"><span style="font-size:26px; color:#ffdcdc;">${memberDto.name} </span>님의 <br/>영양제 분석 리포트</div>
+				<div class="effect-custom-font m-1" style="font-size:20px;color:#545454;text-align:center;"><span style="font-size:24px; color:#272727;">${memberDto.name} </span>님의 <br/>영양제 분석 리포트</div>
 				<div class="effect-custom-font my-3" style="font-size:20px;text-align:center;">
 				<span style="color:#868686;font-size:15px;">성별</span>
 				<c:if test="${memberDto.gender eq 'M'}" var="gender">
@@ -95,57 +103,57 @@ progress {
 				${nowDate - birth1}
 				</div>
 				
-				<div class="jumbotron effect-custom-font" style="border-radius:25px;">
+				<div class="jumbotron effect-custom-font" style="background-color:#f5f5f5; border-radius:25px; padding: 2rem 1rem;">
 					<div class="row">
-						<div class="col-6">
+						<div class="" style="text-align: center;">
 							<c:if test="${resultListDto.resultScore < 30}">
-								<span style="font-size:25px;text-weight:bold;">💥 이대로는 안돼요! 분발해봐요! 💥</span>
+								<span style="font-size:28px;text-weight:bold;">이대로는 안돼요! 분발해봐요! 💥</span>
 							</c:if>
 							<c:if test="${resultListDto.resultScore >=30 and resultListDto.resultScore < 60}">
-								<span style="font-size:25px;text-weight:bold;">🔥 MEDI-Q 와 조금 더 노력해봐요! 🔥</span>
+								<span style="font-size:28px;text-weight:bold;">MEDI-Q 와 조금 더 노력해봐요! 🔥</span>
 							</c:if>
 							<c:if test="${resultListDto.resultScore >=60 and resultListDto.resultScore <= 100}">
-								<span style="font-size:25px;text-weight:bold;">🎉 와우! 정말 잘하고 있어요 🎉</span>
+								<span style="font-size:28px;text-weight:bold;">와우! 정말 잘하고 있어요 🎉</span>
 							</c:if>
-							<div class="mt-3" style="font-size:15px;">
-								<ul style="line-height: 40px;">
-									<li style="color:#6e6e6e;">
-										${memberDto.name}님은 현재 <span style="font-size:17px;color:#000000;background-color:#ffdcdc">${fn:length(resultListDto.listdto)}개의 목적</span>
-										을 위해 영양제를 섭취 중이시네요!
-									</li>
-									<li style="color:#6e6e6e;">
-										<span style="font-size:17px;color:#000000;background-color:#ffdcdc;">
-										${resultListDto.ingredientCount}개의 영양제</span>
-										를 통해 <span style="font-size:17px;color:#000000;background-color:#ffdcdc">기능성 영양소 ${resultListDto.ingredientCount}개, </span>
-									</li>
-									<li style="color:#6e6e6e;">
-										섭취하고 있는 
-										<span style="font-size:17px;color:#000000;background-color:#ffdcdc;">5대영양소는 현재 총 ${fn:length(resultListDto.nutrient_list_report)} 개</span>
-										 이므로
-									</li>
-									<li>
-										점수는 <span style="font-size:23px;color:#000000;">${resultListDto.resultScore}</span> 점 입니다
-									</li>
-								</ul>
+							<div class="d-flex mt-3" style="flex-direction: row; width: 800px; justify-content: space-around;">
+								<div class="" style="margin-top:20px; font-size:15px;">
+									<ul style="line-height: 40px; text-align: left; ">
+										<li style="color:#6e6e6e;">
+											${memberDto.name}님은 현재 <span style="font-size:17px;color:#000000;">${fn:length(resultListDto.listdto)}개의 목적</span>
+											을 위해 영양제를 섭취 중이시네요!
+										</li>
+										<li style="color:#6e6e6e;">
+											<span style="font-size:17px;color:#000000;">
+											${resultListDto.ingredientCount}개의 영양제</span>
+											를 통해 <span style="font-size:17px;color:#000000;">기능성 영양소 ${resultListDto.ingredientCount}개, </span>
+										</li>
+										<li style="color:#6e6e6e;">
+											현재 섭취하고 있는 
+											<span style="font-size:17px;color:#000000;">5대영양소는 총 ${fn:length(resultListDto.nutrient_list_report)} 개</span>
+											 이므로
+										</li>
+										<li>
+											점수는 <span style="font-size:23px;color:#000000;">${resultListDto.resultScore}</span> 점 입니다
+										</li>
+									</ul>
+								</div>							
+								<div class="ml-5" style="width:270px;height:270px;">
+								    <canvas id="chart"></canvas>
+								</div>
 							</div>
-						</div>
-						<div class="col-6">
-							  <div class="ml-3" style="width:300px;height:300px;">
-							    <canvas id="chart"></canvas>
-							  </div>
 						</div>
 					</div>
 				</div>
-				<div class="mt-5 effect-custom-font">
-					<div class="effect-custom-font m-1" style="font-size:30px;color:#868686;text-align:center;">섭취 목적별 기능성 원료 분석</div>
+				<div class="mt-4 mb-2 effect-custom-font">
+					<div class="effect-custom-font ml-3 my-2" style="font-size:30px; color:#272727; text-align:left; ">섭취 목적별 기능성 원료 분석</div>
 				</div>
 				<c:forEach items="${resultListDto.listdto}" var="dto" varStatus="loop">
-				<div class="jumbotron" style="border-radius:25px;">
+				<div class="jumbotron" style="padding:30px 20px; margin-bottom:15px; border-radius:25px; background-color:#f5f5f5;">
 					<div class="row">
 						<div class="col-3">
 							<div class="effect-custom-font" style="font-size:30px;">
-								<div>${loop.count}. ${dto.takePurpose}</div>
-								<div><img src="<c:url value="/images/health_img/${dto.takePurpose}"/>.png" style="width:150px;height:150px;"/></div>
+								<div><img src="<c:url value="/images/health_img/${dto.takePurpose}"/>.png" style="margin-left:30px; width:100px;height:100px;"/></div>
+								<div style="margin: 20px 0px 5px 20px ;">${loop.count}.<br/> ${dto.takePurpose}</div>
 							</div>
 						</div>
 						<div class="col-9">
@@ -153,8 +161,8 @@ progress {
 									'${dto.takePurpose}' 에 도움이 되는 기능성 원료 <span style="font-size:20px;color:#000000">${fn:length(dto.foodList)} 가지 중 ${fn:length(dto.foodList) - fn:length(dto.ingredient_list_no_report)} 개</span> 를 섭취하고 있습니다
 							</div>
 							<c:if test="${fn:length(dto.foodForHelpPurpose) eq 0}" var="noHelp">
-								<div class="effect-custom-font"><span style="font-size:17px;color:red;background-color:#ffdcdc">현재 아무런 기능성 원료도 섭취하지 않아요!</span>  <span style="color:red;font-size:15px;background-color:#ffdcdc">아래의 추천 기능성 원료를 참고해 주세요</span></div>
-								<img src="<c:url value="/images/basic/warning.png"/>" style="width:200px;height:200px;margin-left:100px;"/>
+								<div class="effect-custom-font"><span style="font-size:17px;color:red;">현재 아무런 기능성 원료도 섭취하지 않아요!<br/></span>  <span style="color:red;font-size:15px;">아래의 추천 기능성 원료를 참고해 주세요</span></div>
+								<img src="https://img.freepik.com/free-icon/no-drugs_318-533694.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=ais" style="width:150px;height:150px;margin:20px 0px 0px 100px; border-radius: 30%; "/>
 							</c:if>
 							<c:if test="${not noHelp}">
 							<div class="effect-custom-font" style="font-size:20px;">아래는 복용 중이신 영양제 중 '${dto.takePurpose}' 에 도움이 되는 기능성 원료입니다</div>
@@ -172,7 +180,7 @@ progress {
 							<div class="effect-custom-font mt-5" style="font-size:20px;">'${dto.takePurpose}'에 좋은 추천 기능성 원료</div>
 							<c:forEach items="${dto.ingredient_list_no_report}" var="ingredient" varStatus="index">
 								
-								<span class="effect-custom-font p-0 m-2" style="background-color:#fdb576;border-radius:15px;font-size:15px;">${ingredient}</span>
+								<span class="effect-custom-font p-0 m-2" style="border-radius:15px;font-size:15px; color:#3A3A3A">${ingredient}</span>
 								<c:if test="${index.count % 4 == 0}">
 									<br>
 								</c:if>
@@ -181,37 +189,82 @@ progress {
 					</div>
 				</div>
 				</c:forEach>
-				<div class="effect-custom-font m-1" style="font-size:30px;color:#868686;text-align:center;">5대 영양소</div>
+				<div class="effect-custom-font ml-3 my-2" style="font-size:30px;color:#272727;text-align:left;">5대 영양소</div>
 				<div class="effect-custom-font">
-					<div class="row jumbotron m-1"  style="border-radius:25px;">
+					<div class="row jumbotron m-1"  style="border-radius:25px; background-color:#f5f5f5;">
 						<div class="col-6" style="border-radius:15px;">
-							현재 섭취하고 있는 5대 영양소입니다
-							<div class="mt-3" style="overflow: auto;height:300px;">
+							<span class=" px-3"><span style="color:#B0E2FF;">현재 섭취하고 있는</span> 5대 영양소입니다</span>
+							<div class="mt-3 px-3" style="overflow: auto;height:300px; border-radius:15px; border:2px solid gray;">
 								<ul class="list-unstyled mt-3">
 									<c:forEach items="${resultListDto.nutrient_list_report}" var="nutrient">
-									<a href="/NutrientDetail.do?name=${nutrient}"><li>✅ ${nutrient}</li></a>
+									<li><a class="5dame" href="/NutrientDetail.do?name=${nutrient}">✅ ${nutrient}</a></li>
 									</c:forEach>
 								</ul>
 							</div>
 						</div>
 						<div class="col-6" style="border-radius:15px;">
-							현재 섭취하고 있지 않는 5대 영양소입니다
-							<div class="mt-3" style="overflow: auto;height:300px;">
+							<span class=" px-3"><span style="color:#FFB0B0">현재 섭취하고 있지 않는</span> 5대 영양소입니다</span>
+							<div class="mt-3 px-3" style="overflow: auto;height:300px; border-radius:15px; border:2px solid gray;">
 								<ul class="list-unstyled mt-3">
 								<c:forEach items="${resultListDto.nutrient_list_no_report}" var="no_nutrient">
-									<a href="/NutrientDetail.do?name=${no_nutrient}"><li style="font-size:15px;">❌ ${no_nutrient}</li></a>
+									<a class="5dame" href="/NutrientDetail.do?name=${no_nutrient}"><li style="font-size:15px;">❌ ${no_nutrient}</li></a>
 								</c:forEach>
 								</ul>
 							</div>
 						</div>
+						<div class="my-3">
+							<span style="font-size:20px; color:#3A3A3A;"> <span style="font-size:24px; text-weight:bold;">권장 섭취량</span> : 건강한 생활을 위해 섭취하도록 정하여 장려하는 양. </span><br/>
+							<span style="font-size:20px; color:#3A3A3A;"> <span style="font-size:24px; text-weight:bold;">상한 섭취량</span> : 인체 건강에 유해한 영향이 나타나지 않는 최대 영양소 섭취 수준. </span>
+							<div class="row" style="margin-top: 20px;">
+								<div class="effect-custom-font" style="font-size:15px;">
+									<c:forEach items="${resultListDto.getNutIntakeDTOs()}" var="item" varStatus="i">
+										<c:if test="${item.UL != 0 }">
+										    <div style="box-shadow:1px 1px 2px black; padding-left:10px; position: relative; background-color:#ffffff;  border-radius: 4px; overflow: hidden; width:825px;">
+										    	<div style="text-align:center; margin-bottom: 10px">${item.nut}의 적정 섭취량</div>
+										        <div style="text-align:center; font-size: 13px; margin-bottom: 12px; width: 100%" class="mt-2">
+				                                		<span style="margin-right:9%;">권장 섭취량: ${item.DRIUnit}</span>                       	
+				                                		<span style="margin-left:9%;">상한 섭취량: ${item.ULUnit}</span><br>                    	
+					                                <div style="height:1px; margin:10px 0px;">
+					                                	<span class="arrow-down" style="margin-right: 255px; margin-bottom: 20px;">▼</span>
+					                                	<span class="arrow-down" style="margin-right: 10px; margin-bottom: 20px;">▼</span>
+					                                </div>
+					                            </div>
+										        <div class="progress-container" style="white-space: nowrap;">
+										            <progress id="myProgress" style="border-right:2px dotted black;width:33%" value="${item.nutNumber}" max="${item.DRI}"></progress><progress id="myProgress1" style="border-right:2px dotted black;width:33%" <c:if test="${item.nutNumber < item.DRI }">value="${item.nutNumber-item.DRI}"</c:if> <c:if test="${item.nutNumber > item.DRI }">value="${item.nutNumber}"</c:if> max="${item.UL}"></progress><progress id="myProgress2" style="border-right: 1px solid black;width:33%" value="${item.nutNumber-item.UL}" max="${item.UL*3}"></progress>
+										        </div>
+										        <div style="text-align: center;"><span <c:if test="${item.nutNumber <item.DRI}">style='color:tomato;'</c:if><c:if test="${(item.nutNumber >= item.DRI) && (item.nutNumber <= item.UL)}">style='color:skyblue;'</c:if><c:if test="${item.nutNumber >item.UL}">style='color:gold;'</c:if>>${item.nutNumber}</span> 만큼 드시고 계십니다</div>
+										    </div>
+										    <br/>
+									    </c:if>
+									    <c:if test="${item.UL == 0 }">
+										    <div style="box-shadow:2px 2px 5px gray;padding: 10px; border-radius: 10px;">
+										        <div style="text-align: center;margin-bottom: 10px">${item.nut}의 적정 섭취량</div>
+										        <div style="text-align: center;margin-bottom: 10px">${item.DRIUnit}</div>
+										        <div class="progress-container" style="white-space: nowrap;">
+										            <progress id="myProgress" style="border-right:2px dotted black;width:33%" value="${item.nutNumber}" max="${item.DRI}"></progress><progress id="myProgress1" style="width:66%; border-right:1px solid black" value="${item.nutNumber}" max="${item.DRI * 10}"></progress>
+										        </div>
+										        <div style="text-align: center;"><span <c:if test="${item.nutNumber <item.DRI}">style='color:tomato;'</c:if><c:if test="${item.nutNumber >=item.DRI}">style='color:skyblue;'</c:if>>${item.nutNumber}</span> 만큼 드시고 계십니다</div>
+										    </div>
+										    <br/>
+									    </c:if>
+									</c:forEach>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
+			<span style="color:gray;font-size:18px;text-weight:600; margin: 20px 30px 0px;">· MEDI-Q에서 제공하는 분석 리포트는 의사의 처방을 대신하지 않습니다. </span><br/>
+			<span style="color:gray;font-size:18px;text-weight:600; margin:5px 30px 0px;">· 본 분석 리포트는 MEDI-Q의 데이터 분석을 기반으로 구성하였습니다. </span>
+
+
+
+
 			<div class="mt-5 effect-custom-font">
-				<div class="effect-custom-font m-1" style="font-size:30px;color:#868686;text-align:center;">5대 영양소 섭취량 비교</div>
+				<div class="effect-custom-font ml-3 my-2" style="font-size:30px;color:#272727;text-align:left;">5대 영양소 분석</div>
 			</div>
-			<div class="jumbotron" style="border-radius:25px;position: relative;">
+			<div class="jumbotron" style="border-radius:25px; position: relative; background-color:#f5f5f5;">
 				<span style="font-size:25px;text-weight:bold;"> 권장 섭취량 : 건강한 생활을 위해 섭취하도록 정하여 장려하는 양. </span><br/>
-				<span style="font-size:25px;text-weight:bold;"> 상한 섭취량 : 인체 건강에 유해한 영향이 나타나지 않는 최대 영양소 섭취 수준. </span><br/><br/>
+				<span style="font-size:25px;text-weight:bold; margin-bottom: 10px;"> 상한 섭취량 : 인체 건강에 유해한 영향이 나타나지 않는 최대 영양소 섭취 수준. </span><br/><br/>
 				<div class="row">
 					<div class="effect-custom-font" style="font-size:15px;">
 						<c:forEach items="${resultListDto.getNutIntakeDTOs()}" var="item" varStatus="i">
@@ -222,7 +275,7 @@ progress {
 							        <div class="progress-container" style="white-space: nowrap;">
 							            <progress id="myProgress" style="border-right:2px dotted black;width:33%" value="${item.nutNumber}" max="${item.DRI}"></progress><progress id="myProgress1" style="border-right:2px dotted black;width:33%" <c:if test="${item.nutNumber < item.DRI }">value="${item.nutNumber-item.DRI}"</c:if> <c:if test="${item.nutNumber > item.DRI }">value="${item.nutNumber}"</c:if> max="${item.UL}"></progress><progress id="myProgress2" style="border-right: 1px solid black;width:33%" value="${item.nutNumber-item.UL}" max="${item.UL*3}"></progress>
 							        </div>
-							        <div style="text-align: center;"><span <c:if test="${item.nutNumber <item.DRI}">style='color:tomato;'</c:if><c:if test="${(item.nutNumber >= item.DRI) && (item.nutNumber <= item.UL)}">style='color:skyblue;'</c:if><c:if test="${item.nutNumber >item.UL}">style='color:gold;'</c:if>>${item.nutNumber}</span> 만큼 드시고 계십니다</div>
+							        <div style="text-align: center;"><span <c:if test="${item.nutNumber <item.DRI}">style='color:#FF5733;'</c:if><c:if test="${(item.nutNumber >= item.DRI) && (item.nutNumber <= item.UL)}">style='color:#007BFF;'</c:if><c:if test="${item.nutNumber >item.UL}">style='color:#52BE80;'</c:if>>${item.nutNumber}</span> 만큼 드시고 계십니다</div>
 							    </div>
 							    <br/>
 						    </c:if>
@@ -241,6 +294,7 @@ progress {
 					</div>
 				</div>
 			</div>
+	
 		</div>
 	</div>
 	<script>
