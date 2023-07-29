@@ -566,20 +566,20 @@ html, body {
 		            <!-- <div class="qna-mark-home" style="display: block; text-align: center; width: 100%;">Q&amp;A</div> -->
 		            <span class="ge-title get-20-2">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
 		            <div class="qna-list-wrap">
-		                <c:forEach items="${boardList}" var="item" varStatus="status">
-	                        <c:if test="${status.index < 3}">
+		            	<c:forEach var="like" items="${likes }"><!-- 추천수 TOP3 -->
 		                    <div class="qna-card">
 		                        <div class="ingredient-tags">
-		                            <div class="ingredient-tag">
+		                            <div class="ingredient-tag"><!-- 구현안됨 -->
 		                                기타
 		                            </div>
 		                        </div>
 		                        <br/>
-		                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="/board/View.do?no=${item.no }">
-		                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>${item.title }</span>
-		                            <span class="txt2">${item.content } </span>
+		                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=${like.NO }"/>">
+		                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>${like.TITLE }</span>
+		                            <span class="txt2">${like.CONTENT } </span>
 		                        </a>
-		                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="/board/View.do?no=${item.no }">
+		                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=${like.NO }"/>">
+		                                <!--  답변에 대한 것이라 삭제 예정
 		                                <div class="qna-user-icon qna-user-icon-1"></div>
 		                                <c:if test="${status.index ==0 }"> 
 		                                	<div class="qna-user-txt">액체형(리퀴드) 오메가3 제품을 선택하거나, 일반 캡슐 제품을 잘라서 내용물만 섭취하시는 것을 추천해요! </div>
@@ -590,16 +590,15 @@ html, body {
 		                                <c:if test="${status.index ==2 }"> 
 		                                	<div class="qna-user-txt">과다복용은 부작용을 유발할 수 있어요. 식품의약품안전처 혹은 제품에 명시된 적정량을 섭취하는걸 추천합니다. </div>
 		                                </c:if>
+		                                 -->
 		                            <div class="user-info-row">
-		                                <span class="user-name">${boardmemberList.get(status.index).getName() }</span>
-		                                <span class="user-agesex"><fmt:formatDate value="${boardmemberList[status.index].getBirth()}" pattern="yyyy" var="age" />${2023-age }세</span>
+		                                <span class="user-name">${like.NAME }</span>
+		                                <span class="user-agesex"> ${like.AGE_GROUP} / ${like.GENDER}  ${like.POSTDATE }</span>
 		                            </div>
 		                        </a>
 		                    </div>
-			                </c:if>
 			            </c:forEach>
 		            </div>
-	
 		            <div class="clearfix mb-2" style="position: absolute; right:100px; top:80px;">
 		                <a tabindex="0" class="more-qna" href="<c:url value="/board/List.do" />"><b>Q&amp;A 더보기</b></a>
 		            </div>
@@ -745,4 +744,3 @@ $(window).on("wheel", function(e) {
 
 </script>
 </div><!-- id=main  -->
-    

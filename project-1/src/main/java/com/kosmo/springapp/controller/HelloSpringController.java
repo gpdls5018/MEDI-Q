@@ -2,6 +2,7 @@ package com.kosmo.springapp.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -50,6 +51,8 @@ public class HelloSpringController {
 	private String secretKey;
 	@Autowired
 	private LoginServiceImpl loginService;
+	@Autowired
+	private BoardMapper mapper;
 	
 	@GetMapping("/") 
 	public String index(Model model,HttpServletRequest req) {
@@ -67,10 +70,15 @@ public class HelloSpringController {
 			model.addAttribute("userName","???");
 			
 		}
-		List<BoardDTO> boardList = qnamapper.BoardList();
-		List<BoardMemberDTO> boardmemberList = qnamapper.BoardListMember();
-		model.addAttribute("boardList", boardList);
-		model.addAttribute("boardmemberList", boardmemberList);
+		//List<BoardDTO> boardList = qnamapper.BoardList();
+		//List<BoardMemberDTO> boardmemberList = qnamapper.BoardListMember();
+		//model.addAttribute("boardList", boardList);
+		//model.addAttribute("boardmemberList", boardmemberList);
+		Map map =new HashMap<>();
+		List likes=mapper.likeList(map);
+		System.out.println("likes:체크"+likes);
+		model.addAttribute("likes", likes);
+		
 		model.addAttribute("listData", listData);
 		
 		// 조회수에 따른 인기영양소 Top10 가져오기
