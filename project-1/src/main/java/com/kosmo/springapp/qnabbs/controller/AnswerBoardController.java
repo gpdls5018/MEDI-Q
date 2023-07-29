@@ -85,13 +85,15 @@ public class AnswerBoardController {
 	}//////////////////////////////////////////////
 	//View페이지에서 답변글 수정폼으로 이동
 	@GetMapping("/AnswerEdit.do")
-	public String answeredit(@RequestParam Map map,Model model) {
+	public String answeredit(@RequestParam Map map,@RequestParam String title ,Model model) {
 		
 		System.out.println("edit체크용1");
 		map=answerservice.answerselectOne(map); //답변글 상세보기
 		System.out.println("map에 있는 값:"+map);
 		System.out.println("edit체크용2");
 		System.out.println("map에 있는 거 체크:"+map);
+		model.addAttribute("title", title);
+		System.out.println("title체크:"+title);
 		model.addAttribute("record", map); 
 		System.out.println("editmodel의 값 확인:"+model); //{record={BOARD_NO=120, POSTDATE=2023-07-27 21:57:32.0, TITLE=김길동입니다, ANSWER_NO=326, CONTENT=asd, ID=choi, NAME=최승훈}}
 		return "board/AnswerEdit"; //답변글 수정폼으로 이동
