@@ -92,4 +92,21 @@ public class LoadHealthInfoController {
 		}
 		return "DiabetesPredict";
 	}
+	
+	@GetMapping("/CardiovascularPredict.do")
+	public String cardiovascularPredict(HttpServletRequest req, HttpServletResponse resp,Model model) {
+		try {
+			String token = jwTokensService.getToken(req, tokenName);
+			Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
+			String id = payloads.get("sub").toString();
+			HealthInfoDTO healthInfoDto = healthInfoServiceImpl.selectHealthInfoByUserId(id);
+			if(healthInfoDto != null) {
+				model.addAttribute("healthInfoDto",healthInfoDto);
+			}
+		}
+		catch (Exception e) {
+			
+		}
+		return "CardiovascularPredict";
+	}
 }
