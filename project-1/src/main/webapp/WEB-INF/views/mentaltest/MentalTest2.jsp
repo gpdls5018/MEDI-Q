@@ -53,7 +53,7 @@
 	            지금 당신이 담배를 피우고 있는 이유는 무엇일까요?<br/> 
 	            나도 모르고 있는 나의 흡연유형을 다음의 평가를 통해서 알려드립니다
 	        </p>
-	        <button class="btn btn-outline-primary py-0" style="height: 40px" onclick="javascript:result();">최근 결과 확인하기</button>
+	        <button id="resultCheck" class="btn btn-outline-primary py-0" style="height: 40px" onclick="javascript:result();" data-target="#result" data-backdrop="static" >최근 결과 확인하기</button>
 	    </div>
         <div class="line"></div>
 	    <div>
@@ -467,7 +467,98 @@
 				sumf += parseInt($(this).val());
 			});
 			//console.log('suma:%s,sumb:%s,sumc:%s,sumd:%s,sume:%s,sumf:%s',suma,sumb,sumc,sumd,sume,sumf);
-			if(suma >= 11){
+			var sum = suma+' '+sumb+' '+sumc+' '+sumd+' '+sume+' '+sumf;
+			$.ajax({
+				data:{
+					name:'test2',
+					sum:sum
+				},
+				url:'<c:url value="/project/MentalResult.do"/>',
+	    		method:'post',
+	    		dataType:'json'
+			}).done((result)=>{
+				console.log('success:',result)
+			
+				if(suma >= 11){
+					text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/images/basic/warning2.png'/>흡연유형 해석결과 당신은 자극형 입니다</h5>
+						<p id="resultC"><img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">대체 자극을 찾아라!</span><br/>
+						자극형 흡연자는 흡연행위를 생활의 활력을 북돋는 것처럼 느끼고, 
+						이것이 습관화된 상태이므로, 다른 방법을 생활의 활력소로 이용한다면 금연에 도움이 될 수 있다. 
+						우선, 담배를 잊을 정도로 매우 바쁘게 지내고, 집에 있는 동안에도 산책이나 집안청소, 요리, 운동 등 활동적으로 생활한다. 
+						몸과 정신이 느슨해질 때에는 가벼운 세수를 하여 기분을 상쾌하게 만들도록 한다. 
+						갑작스럽게 담배가 피우고 싶을 때에는 찬물, 무가당껌, 무가당사탕 등을 먹고, 식사 후에는 곧바로 이를 닦도록 한다. 
+						또한 수면시간을 충분히 확보하여 정신을 맑은 상태로 유지하는 것이 좋다.</p>`;
+				}
+				if(sumb >= 11){
+					text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/images/basic/warning2.png'/>흡연유형 해석결과 당신은 손장난형 입니다</h5>
+						<p id="resultC"><img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">손을 바쁘게 만들어라!</span><br/>
+						손장난형 흡연자는 담배 피우는 행위 자체를 즐기며 담배를 손장난을 위한 도구로 활용한다. 
+						따라서 담배 이외의 다른 대용품이 금연을 유지하는데 꼭 필요하다. 
+						휴대가 간편한 악력기, 지압봉, 작은공 등을 사용하여 담배 이외의 것으로 주의를 환기시킨다. 
+						연필, 볼펜, 지우개, 고무줄 등 간단한 사무용품을 이용하거나 꽃이나 화초를 키우는 것도 좋다. 
+						손과 도구를 이용해 만들 수 있는 장난감 등을 조립하거나 책장, 서랍청소도 추천한다.</p>`;
+				}
+				if(sumc >= 11){
+					text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/images/basic/warning2.png'/>흡연유형 해석결과 당신은 즐거움과 편안함형 입니다</h5>
+						<p id="resultC"><img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">다른 즐거움의 대안을 찾아라!</span><br/>
+						즐거움과 편안함형 흡연자는 흡연을 통해 신체적, 정신적 즐거움을 얻는다고 생각한다. 
+						따라서 우선적으로 금연을 했을 때 얻을수 있는 즐거움에 대해서 목록을 작성해보는 것이 좋다. 
+						또한 즐길 수 있는 가벼운 운동이나 독서를 시작하거나, 음악 감상과 온수목욕 등으로 편안한 마음상태를 만들도록 한다. 
+						금연을 지지하는 가족, 친구, 애인과 함께 유익한 시간을 계획해서 보내는 것도 좋은 방법이다.</p>`;
+				}
+				if(sumd >= 11){
+					text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/images/basic/warning2.png'/>흡연유형 해석결과 당신은 스트레스 해소형 입니다</h5>
+						<p id="resultC"><img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">이완할 수 있는 대안을 찾아라!</span><br/>
+						스트레스 해소형 흡연자는 말 그대로 일상의 스트레스를 담배에 의지하여 해결하고 있다. 
+						이런 경우에는 흡연이 일시적인 긴장이완에 도움이 될 수도 있지만 
+						오히려 만성스트레스를 일으킨다는 사실을 깨닫고 담배 이외의 스트레스 해소법을 마련해야 한다. 
+						가장 효과적인 방법으로는 규칙적인 운동을 꼽을 수 있다. 
+						또한 일상에서 즐길수 있는 자신만의 취미를 갖는 것도 좋다. 
+						갑작스러운 스트레스에는 심호흡을 하거나, 명상, 음악감상 등을 통해 긴장을 이완시키고, 
+						악력기, 지압봉, 작은 공 등을 휴대하고 다니면서 주의를 환기시키는 것도 좋은 방법이다.</p>`;
+				}
+				if(sume >= 11){
+					text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/images/basic/warning2.png'/>흡연유형 해석결과 당신은 육체, 심리적 중독형 입니다</h5>
+						<p id="resultC"><img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">흡연갈망에 대한 대처방법을 찾아라!</span><br/>
+						육체, 심리적 중독형 흡연자는 과도한 흡연으로 니코틴에 대한 의존도가 심한 경우에 해당한다. 
+						이런 경우는 금연 시 금단증세가 심하게 나타날 수 있기 때문에 
+						금연상담가의 도움을 얻어 니코틴 보조제(패치, 껌, 사탕)를 사용하는 것이 도움이 될 수 있다. 
+						특히, 알코올과 카페인은 니코틴과 뇌에서 작용하는 부위와 기적이 동일하므로 
+						술과 커피를 금연과 동시에 적극적으로 조절해야만 한다. 
+						평소에 담배 이외에 사용 할 수 있는 무가당껌, 무가당사탕, 은단 등을 휴대하고 다닌다.</p>`;
+				}
+				if(sumf >= 11){
+					text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/images/basic/warning2.png'/>흡연유형 해석결과 당신은 습관형 입니다</h5>
+						<p id="resultC"><img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">자동적 흡연을 유발하는 환경을 바꿔라</span><br/>
+						습관형 흡연자는 자신도 모르게 담배를 피우는 경우가 많다. 
+						따라서 흡연일기를 작성하여 어떠한 상황에서 흡연충동이 일어나는지를 확인하고 
+						그러한 장소나 상황 등을 피하도록 해야 한다. 
+						또한 일상적인 생활패턴에 변화를 주거나 적당한 운동이나 취미활동을 찾아보는 것도 도움이 된다. 
+						습관적으로 담배를 피웠던 상황에서 찬물이나 무가당껌, 무가당사탕, 은단, 악력기, 지압봉 등을 사용하는 것이 좋다.</p>`;
+				}
+				if(text.length==0){
+					text = `<h5 id="resultT" class="text-primary font-weight-bold mb-3"><img alt='엄지' src='/images/basic/like.png'/>흡연유형에 속하는 부분이 없습니다.</h5>`;
+				}
+				if(!$('#text').find('h5').length){
+					$('#text').append(text);
+				}
+			}).fail(()=>{
+				console.log('error')
+			});
+		}
+	});
+
+    function result(){
+    	console.log('test2')
+    	$.ajax({
+    		data:{name:"result",test:"test2"},
+    		url:'<c:url value="/project/MentalResult.do"/>',
+    		method:'post'
+    		//dataType:'json'
+    	}).done((result)=>{
+    		console.log('success:',parseInt(result.split(' ')[0]))
+			
+			if(parseInt(result.split(' ')[0]) >= 11){
 				text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/images/basic/warning2.png'/>흡연유형 해석결과 당신은 자극형 입니다</h5>
 					<p id="resultC"><img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">대체 자극을 찾아라!</span><br/>
 					자극형 흡연자는 흡연행위를 생활의 활력을 북돋는 것처럼 느끼고, 
@@ -477,7 +568,7 @@
 					갑작스럽게 담배가 피우고 싶을 때에는 찬물, 무가당껌, 무가당사탕 등을 먹고, 식사 후에는 곧바로 이를 닦도록 한다. 
 					또한 수면시간을 충분히 확보하여 정신을 맑은 상태로 유지하는 것이 좋다.</p>`;
 			}
-			if(sumb >= 11){
+			if(parseInt(result.split(' ')[1]) >= 11){
 				text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/images/basic/warning2.png'/>흡연유형 해석결과 당신은 손장난형 입니다</h5>
 					<p id="resultC"><img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">손을 바쁘게 만들어라!</span><br/>
 					손장난형 흡연자는 담배 피우는 행위 자체를 즐기며 담배를 손장난을 위한 도구로 활용한다. 
@@ -486,7 +577,7 @@
 					연필, 볼펜, 지우개, 고무줄 등 간단한 사무용품을 이용하거나 꽃이나 화초를 키우는 것도 좋다. 
 					손과 도구를 이용해 만들 수 있는 장난감 등을 조립하거나 책장, 서랍청소도 추천한다.</p>`;
 			}
-			if(sumc >= 11){
+			if(parseInt(result.split(' ')[2]) >= 11){
 				text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/images/basic/warning2.png'/>흡연유형 해석결과 당신은 즐거움과 편안함형 입니다</h5>
 					<p id="resultC"><img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">다른 즐거움의 대안을 찾아라!</span><br/>
 					즐거움과 편안함형 흡연자는 흡연을 통해 신체적, 정신적 즐거움을 얻는다고 생각한다. 
@@ -494,7 +585,7 @@
 					또한 즐길 수 있는 가벼운 운동이나 독서를 시작하거나, 음악 감상과 온수목욕 등으로 편안한 마음상태를 만들도록 한다. 
 					금연을 지지하는 가족, 친구, 애인과 함께 유익한 시간을 계획해서 보내는 것도 좋은 방법이다.</p>`;
 			}
-			if(sumd >= 11){
+			if(parseInt(result.split(' ')[3]) >= 11){
 				text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/images/basic/warning2.png'/>흡연유형 해석결과 당신은 스트레스 해소형 입니다</h5>
 					<p id="resultC"><img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">이완할 수 있는 대안을 찾아라!</span><br/>
 					스트레스 해소형 흡연자는 말 그대로 일상의 스트레스를 담배에 의지하여 해결하고 있다. 
@@ -505,7 +596,7 @@
 					갑작스러운 스트레스에는 심호흡을 하거나, 명상, 음악감상 등을 통해 긴장을 이완시키고, 
 					악력기, 지압봉, 작은 공 등을 휴대하고 다니면서 주의를 환기시키는 것도 좋은 방법이다.</p>`;
 			}
-			if(sume >= 11){
+			if(parseInt(result.split(' ')[4]) >= 11){
 				text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/images/basic/warning2.png'/>흡연유형 해석결과 당신은 육체, 심리적 중독형 입니다</h5>
 					<p id="resultC"><img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">흡연갈망에 대한 대처방법을 찾아라!</span><br/>
 					육체, 심리적 중독형 흡연자는 과도한 흡연으로 니코틴에 대한 의존도가 심한 경우에 해당한다. 
@@ -515,7 +606,7 @@
 					술과 커피를 금연과 동시에 적극적으로 조절해야만 한다. 
 					평소에 담배 이외에 사용 할 수 있는 무가당껌, 무가당사탕, 은단 등을 휴대하고 다닌다.</p>`;
 			}
-			if(sumf >= 11){
+			if(parseInt(result.split(' ')[5]) >= 11){
 				text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/images/basic/warning2.png'/>흡연유형 해석결과 당신은 습관형 입니다</h5>
 					<p id="resultC"><img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">자동적 흡연을 유발하는 환경을 바꿔라</span><br/>
 					습관형 흡연자는 자신도 모르게 담배를 피우는 경우가 많다. 
@@ -530,8 +621,14 @@
 			if(!$('#text').find('h5').length){
 				$('#text').append(text);
 			}
-		}
-	});
-
+			
+			$('#result').modal('show');
+			
+    	}).fail((e)=>{
+    		if(e.responseText=="error"){
+    			alert('최근 결과가 없습니다');
+    		}
+    	});
+    }
 </script>
 </html>

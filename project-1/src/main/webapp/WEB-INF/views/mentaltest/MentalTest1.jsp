@@ -462,14 +462,12 @@
     		method:'post',
     		dataType:'json'
     	}).done((result)=>{
-    		result = parseInt(result);
-/*
-			if(isNaN(result)){
-				//console.log('this:',$('#resultCheck'))
-				$('#resultCheck').attr('data-toggle','');
-				alert('최근 결과가 없습니다');
-			}
-			*/
+    		if(!result){
+    			alert('최근 결과가 없습니다');
+    		}
+    		else{
+    			result = parseInt(result);
+    			
 				$('#resultCheck').attr('data-toggle','modal');
 				$('#resultT').removeClass('text-danger text-primary');
 				
@@ -495,6 +493,9 @@
 						    스트레스 상황에서 대처하는 방법을 미리 준비해 둔다면, 스트레스를 받더라도 쉽게 좌절하지 않고 문제를 해결해 나갈 수 있을 것입니다.<br/>
 						    스트레스 대처 방법에 대해서 궁금하시다면 상담심리사와 상담하시길 바랍니다.`);
 				}
+				
+    			$('#result').modal('show');
+    		}
     	}).fail((e)=>{
     		if(e.responseText=="error"){
     			alert('최근 결과가 없습니다');

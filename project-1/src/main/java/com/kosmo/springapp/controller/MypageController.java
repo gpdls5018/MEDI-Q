@@ -322,11 +322,23 @@ public class MypageController {
 	public Map progressProfile(@RequestParam String id) {
 		Map map = new HashMap<>();
 
-		int arc = analyzeMyReportServiceImpl.selectAnalyzeReportCount(id);
-		int hi = healthInfoServiceImpl.selectHealthInfoCount(id);
-		int mh = myHealthServiceImpl.selectMyHealth(id);
-
-		map.put("arc", arc);//등록한 분석 여부
+		int arc = analyzeMyReportServiceImpl.selectAnalyzeReportCount(id)==1 ? 25 : 0;
+		int hi = healthInfoServiceImpl.selectHealthInfoCount(id)==1 ? 25 : 0;
+		int mh = myHealthServiceImpl.selectMyHealth(id)==1 ? 25 : 0;
+		Map mt = mentalTestServiceImpl.selectResult(id);
+		
+		if(mt != null) {
+			int test1 = "".equals(mt.get("TEST1")) ? 0 : 6;
+			int test2 = "".equals(mt.get("TEST2")) ? 0 : 6;
+			int test3 = "".equals(mt.get("TEST3")) ? 0 : 6;
+			int test4 = "".equals(mt.get("TEST4")) ? 0 : 7;
+			System.out.println(test1+"/"+test2+"/"+test3+"/"+test4+"/");
+			map.put("mt", test1+test2+test3+test4);//등록한 정신건강테스트 4종 여부-25(6/6/6/7)
+		}
+		map.put("arc", arc);//등록한 분석 여부-25
+		map.put("hi", hi);//등록한 건강검진결과 확인 여부-25
+		map.put("mh", mh);//등록한 나의 건강정보 등록 여부-25
+		map.put("mt", 0);//등록한 정신건강테스트 4종 여부-25(6/6/6/7)
 		
 		return map;
 	}
@@ -360,26 +372,26 @@ public class MypageController {
 	public String mentalResult(@RequestParam Map map, HttpServletRequest req) {
 		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
 		String name = map.get("name").toString();
-		String result = "";
 		System.out.println("name: "+name);
 		try {
 			if("result".equals(name)) {//최근 결과값 필요
-				System.out.println("왜 여기 못들어올까");
 				String test = map.get("test").toString();
-				System.out.println("test: "+test);
-				result = mentalTestServiceImpl.selectResult(id).get(test).toString();
-				System.out.println("최근 결과값: "+result);
+				map = mentalTestServiceImpl.selectResult(id);
+				String result = map.get(test.toUpperCase()).toString();
+				System.out.println("result: "+result);
 				return result;
 			}
 			else {//값 저장
 				map.put("id", id);
+				System.out.println("sum: "+map.get("sum"));
 				map.put(name, map.get("sum"));
-				result = Integer.toString(mentalTestServiceImpl.insertResult(map));
+				int result = mentalTestServiceImpl.insertResult(map);
 				System.out.println("저장: "+result);
-				return result;
+				return Integer.toString(result);
 			}
 		}
 		catch (Exception e) {
+			System.out.println(e.getMessage());
 			return "error";
 		}
 	}

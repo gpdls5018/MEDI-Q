@@ -21,12 +21,11 @@ public class MentalTestServiceImpl {
 	public int insertResult(Map map) {
 		String id = map.get("id").toString();
 		int flag = mapper.selectFlag(id);
-		System.out.println("flag: "+flag);
 		if(flag == 0) {
-			System.out.println("insert/////////////");
 			return mapper.insertResult(map);
 		}
 		else {
+			System.out.println("update/////////////");
 			return mapper.updateResult(map);
 		}
 	}
