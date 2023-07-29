@@ -42,7 +42,7 @@ public class AnswerBoardController {
 	public String answerwrite(@RequestParam String no,Model model) {
 		//뷰에 정보 반환
 		System.out.println("답변쓰기 페이지 이동 성공");
-		System.out.println("no : "+no);
+		System.out.println("질문글 no : "+no);
 		model.addAttribute("no",no);
 		return "board/AnswerWrite"; //답변글로 이동
 	}//////////////////////////////////////////////

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.kosmo.springapp.qnabbs.service.LikeBoardService;
 
-
 @Service("likeBoardservice")
 public class LikeBoardServiceImpl implements LikeBoardService {
 
@@ -36,4 +35,5 @@ public class LikeBoardServiceImpl implements LikeBoardService {
 		System.out.println("like체크용");
 		return mapper.getTotalLikes(no);
 	}
+	
 }

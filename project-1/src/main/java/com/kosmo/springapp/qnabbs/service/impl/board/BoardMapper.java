@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface BoardMapper {
 
+	List<Map> likeList(Map map); //추천수TOP3 목록
+	
 	List<Map> selectList(Map map); //게시물 목록
 	
 	Map selectOne(Map map); //게시물 상세보기

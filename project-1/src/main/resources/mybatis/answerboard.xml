@@ -30,7 +30,7 @@
 	<update id="answerupdate" parameterType="map">
 		UPDATE answer_board SET title=#{title},content=#{content} WHERE answer_no=#{answer_no}
 	</update>
-	<!-- (답변글 NO로)답변글 삭제 -->
+	<!-- (답변글 NO로)답변글 삭제 (삭제시 게시물이 남아있어서 다시쓰면 추천수count는 1로 올라가 있음 추천수 0으로 초기화 시켜야됨) -->
 	<delete id="answerdelete" parameterType="map">
 		DELETE answer_board WHERE answer_no=#{answer_no}
 	</delete>

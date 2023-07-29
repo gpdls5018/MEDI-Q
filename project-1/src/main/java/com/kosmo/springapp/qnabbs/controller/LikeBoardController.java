@@ -46,12 +46,13 @@ public class LikeBoardController {
 			
 			System.out.println("toggle여기오는가!!!!!!?");
 			//회원 id,게시물 no로 토글형식으로 반환값:true,false
+			System.out.println("answer_no:"+no);
 			boolean toggle=likeBoardservice.toggleLike(id, no);
 			System.out.println("toggle:"+toggle);
 			int toggleInt = toggle ? 1 : 0; //true,false를  int 1,0으로 변환
 			System.out.println("toggleInt: " + toggleInt);
 			int togggle=likeBoardservice.getTotalLikes(no); //게시물의 총 좋아요 개수 조회
-			System.out.println("togggle:"+togggle);
+			System.out.println("togggle 1 or 0:"+togggle);
 			return togggle; //게시물의 총 좋아요 개수를 반환
 		}else {//회원이 아닌 경우 클릭을 누를때
 			System.out.println("회원이 아닌 경우 클릭을 누를때?");
@@ -59,7 +60,7 @@ public class LikeBoardController {
 			return toggle; //게시물의 총 좋아요 개수를 반환
 		}
     }
-	// 게시물의 총 좋아요 개수 조회
+	// 게시물의 총 좋아요 개수 조회  //(답변글 존재x시 answer_no=(null) 400error이지만 기능엔 문제 없음)
     @GetMapping("/Count.do")
     public int getTotalLikes(@RequestParam int no) {
     	System.out.println("likeno:컨트롤러에서 확인:"+no);
