@@ -30,8 +30,12 @@ public class SelectFoodRankListController {
 	}
 	
 	@GetMapping("/functionfood/selectissue.do")
-	public String hselectissue() {
+	public String hselectissue2() {
 		return "ranking/HealthIssueFood";
+	}
+	@GetMapping("/ranking/HealthSelect.do")
+	public String hselectissue() {
+		return "ranking/HealthSelect";
 	}
 	@GetMapping("/functionfood/healthissue.do")
 	public String hissue(@RequestParam String healthissue,Model model) {

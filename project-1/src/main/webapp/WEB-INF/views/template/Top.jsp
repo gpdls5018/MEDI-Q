@@ -638,7 +638,7 @@ ul {
 										<a href="<c:url value="/ranking/selectfood.do"/>">전체 검색</a>
 							            <a href="<c:url value="/ranking/selectfoodnutrient.do"/>">성분 검색</a>	 			
 							            <a href="<c:url value="/ranking/selectfoodcompany.do"/>">제품명/브랜드 검색</a>
-							            <a href="#">건강고민 검색</a>											
+							            <a href="<c:url value="/ranking/HealthSelect.do"/>">건강고민 검색</a>											
 									</li>
 									<li>
 										<p class="title">정신건강 테스트</p>
