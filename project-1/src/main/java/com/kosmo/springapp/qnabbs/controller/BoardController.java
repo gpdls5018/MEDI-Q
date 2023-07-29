@@ -92,13 +92,14 @@ public class BoardController {
 		int affected = board.insert(map);
 		//map에 1명의 글 저장 
 		map = board.selectOne(map);
+		System.out.println("writemap에 있는거 찾기:"+map);
 		//글 입력 실패시
 		if(affected==0) {
 			//model.addAttribute("InputError","다시 작성해주세요");//아직안함
 			return "board/View";
 		}
-		//작성하고 난 뒤 목록페이지로 이동
-		return "forward:/board/List.do"; 
+		//작성하고 상세페이지로 이동
+		return "redirect:/board/View.do?no=" + map.get("NO");
 	}////////////////////
 	
 	//상세보기
