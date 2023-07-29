@@ -112,19 +112,20 @@
                 <div class="d-flex col-2">
                 </div>
                 <div class="d-flex col-8 flex-wrap flex-direction justify-content-center align-content-stretch">
-                    <div class="col">
+                    <div class="col"><!-- 세로로 자주찾는 질문&답변 게시물-->
+                    	<!-- 인기 있는 질문시작 -->
                         <img src="<c:url value="/images/qna/qna_now.png"/>" class="qna_now">
                         <div class="row justify-content-center pt-4">
 	                        <c:if test="${not isEmpty}">
-	                        	<c:forEach var="record" items="${listPagingData.records }">
-			                        <a class="card_deco text-decoration-none a_deco col-12 p-1 m-2" href="<c:url value="/board/View.do?no=${record.NO }"/>">
+	                        	<c:forEach var="like" items="${listPagingData.likes }"><!-- 추천수 TOP3 -->
+			                        <a class="card_deco text-decoration-none a_deco col-12 p-1 m-2" href="<c:url value="/board/View.do?no=${like.NO }"/>">
 			                            <div class="card-body p-2 m-3">
-			                                <span class="card-title font-weight-bold card_font1"><span class="card_font2">Q.&nbsp;</span>${record.TITLE }</span>
+			                                <span class="card-title font-weight-bold card_font1"><span class="card_font2">Q.&nbsp;</span>${like.TITLE }</span>
 			                                <br>
-			                                <p class="card-text"><h5>${record.CONTENT }</h5></p>
+			                                <p class="card-text"><h5>${like.CONTENT }</h5></p>
 			                                <hr style="border: 1px solid #E6E9ED;"/>
-			                                <span class="card-text"><h6 class="font-weight-bold text-muted">${record.NAME } ${record.AGE_GROUP} / ${record.GENDER}</h6></span>
-			                                <p class="card-text"><h6 class="font-weight-bold text-muted">${record.POSTDATE }</h6></p>
+			                                <span class="card-text"><h6 class="font-weight-bold text-muted">${like.NAME } ${like.AGE_GROUP} / ${like.GENDER}</h6></span>
+			                                <p class="card-text"><h6 class="font-weight-bold text-muted">${like.POSTDATE }</h6></p>
 			                            </div>
 			                        </a>
 								</c:forEach>
@@ -135,6 +136,7 @@
                         <br/>
   						<div class="row align-items-end pb-4">
   							<div class="col">
+  								<!-- 1:1 답변 게시물 시작 -->
 	                        	<img src="<c:url value="/images/qna/qna_ans.png"/>" class="qna_ans p-0 m-0">
 	                        </div>
 	                        <!-- 토큰이 존재하는 경우 버튼을 보여줍니다. -->

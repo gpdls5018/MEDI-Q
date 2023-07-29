@@ -88,13 +88,13 @@
                 <div class="col mb-3">
                 	<strong>흡연</strong>
 	                <div class="form-check">
-				  		<input class="form-check-input" type="radio" name="smoke_check" value="1">
+				  		<input class="form-check-input" type="radio" name="smoke_check" value="0">
 					  	<label class="form-check-label" for="smoke_check">
 						    흡연자입니다
 					  	</label>
 					</div>
 					<div class="form-check">
-				    	<input class="form-check-input" type="radio" name="smoke_check" value="0" >
+				    	<input class="form-check-input" type="radio" name="smoke_check" value="1" >
 					  	<label class="form-check-label" for="smoke_check">
 						    비흡연자입니다
 					  	</label>
@@ -106,13 +106,13 @@
                 <div class="col mb-3">
                 	<strong>음주</strong>
 	                <div class="form-check">
-				  		<input class="form-check-input" type="radio" name="alco_check" value="1">
+				  		<input class="form-check-input" type="radio" name="alco_check" value="0">
 					  	<label class="form-check-label" for="alco_check">
 						    음주를 합니다
 					  	</label>
 					</div>
 					<div class="form-check">
-				    	<input class="form-check-input" type="radio" name="alco_check" value="0" >
+				    	<input class="form-check-input" type="radio" name="alco_check" value="1" >
 					  	<label class="form-check-label" for="alco_check">
 						    음주를 하지 않습니다
 					  	</label>

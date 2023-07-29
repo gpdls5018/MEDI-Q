@@ -182,15 +182,9 @@ body {
         color:black;
     }
     .recently {
-        display: flex;
+        /*display: flex;*/
         flex-direction: row;
         min-height: 270px;
-    }
-    .health {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
     }
     .news {
         flex: 0.8;
@@ -235,32 +229,42 @@ body {
     }
     /*써클로직*/
     .circle {
-        width: 150px;
-        margin: 20px 20px;
+        width: 300px;
+        margin: 40px 0px;
+        padding-right: 0;
         display: inline-block;
         position: relative;
         text-align: center;
         line-height: 1.2;
     }
     .circle canvas {
-        width: 120px;
-        height: 120px;
+        width: 150px;
+        height: 150px;
     }
     .circle strong {
         position: absolute;
-        top: 40px;
+        top: 50px;
         left: 0px;
         width: 100%;
         text-align: center;
         line-height: 40px;
         font-size: 30px;
     }
-    .circle span {
-        display: block;
-        color: #aaa;
-        margin-top: 12px;
+    .recently div {
+    	color: rgba(48, 69, 92, 0.8);
+    	font-size: 18px;
+    	font-weight: bold;
+    	display: flex;
+		justify-content: center;
+        margin-top: 15px;
     }
-    
+    .health {
+    	width: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 /* datepicker css */
@@ -373,7 +377,9 @@ body {
 .diaryStart::-webkit-scrollbar {
     display: none; /* 크롬, 사파리, 오페라, 엣지 */
 }
-
+.diary h5{
+	font-weight: 550;
+}
 .diary h5,.flipIn {
   color: rgba(48, 69, 92, 0.8);
 }
@@ -748,7 +754,8 @@ body {
 	
 	.health a,.health a:hover{
 		text-decoration: none;
-		color: black;
+		color: rgb(255, 125, 125);
+    	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 	}
 	
 </style>
@@ -801,16 +808,17 @@ body {
                         <div class="body_box">
                             <div class="update_box">
                                 <div class="news">
-                                    
                                     <div class="board recently" style="flex:1;">
-                                        <div class="second circle">
-                                            <strong></strong>
-                                            <span>건강기록 <br> 수행률</span>
-                                        </div>
-                                        <div class="health"style="font-size: 18px; font-weight: bold; ">
-                                            <a href="javascript:progressDiary()">${fn:split(current,"-")[1]}월의 건강 다이어리 수행률</a>
-                                            <a href="javascript:progressProfile()">건강 프로필 완성률</a>
-                                        </div>
+                                    	<div>${fn:split(current,"-")[1] }월의 건강 프로그래스</div>
+                                    	<div>
+	                                        <div class="second circle">
+	                                            <strong></strong>
+	                                        </div>
+	                                        <div class="health mr-3 mb-4"style="font-size: 18px; font-weight: bold; ">
+	                                            <a href="javascript:progressDiary()">건강 다이어리</a>
+	                                            <a class="mt-3 mb-2" href="javascript:progressProfile()">건강 프로필</a>
+	                                        </div>
+	                                    </div>
                                     </div>  
                                     
                                     <div class="board num" style="flex:1; max-height: 310px;">
@@ -1786,7 +1794,7 @@ body {
 		});
 	}
 	
-	function progressProfile(){
+	function progressProfile(){//건강 프로필 수행률
 		$.ajax({
 			data:{id:'${info.id}'},
 			url:'<c:url value="/project/ProgressProfile.do"/>',
@@ -1794,11 +1802,18 @@ body {
 			dataType:'json'
 		}).done((data)=>{
 			console.log('success:',data);
-		}).fail(()=>{console.log('error');});
-		$('.second.circle').circleProgress({
-		    value: diaryCount/lastDate
-		}).on('circle-animation-progress', function(event, progress) {
-		  	$(this).find('strong').html(Math.round((diaryCount/lastDate*100) * progress) + '<i>%</i>');
+			var sum = data.arc + data.hi + data.mh + data.mt;
+			$('.second.circle').circleProgress({
+			    value: sum/100
+			}).on('circle-animation-progress', function(event, progress) {
+			  	$(this).find('strong').html(Math.round((sum/100*100) * progress) + '<i>%</i>');
+			});
+		}).fail(()=>{
+			$('.second.circle').circleProgress({
+			    value: 0
+			}).on('circle-animation-progress', function(event, progress) {
+			  	$(this).find('strong').html(Math.round(0 * progress) + '<i>%</i>');
+			});
 		});
 	}
 </script>

@@ -20,6 +20,8 @@ public class ListPagingData<T> {
 	private List<T> records;
 	//페이징 관련 데이타 저장
 	private Map map;
+	//추천수 목록 데이타 저장
+	private List likes;
 	//페이징 표시용 문자열 저장
 	private String pagingString; 
 }

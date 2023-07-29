@@ -6,11 +6,11 @@
 <mapper namespace="com.kosmo.springapp.service.MentalTestMapper">
 
 	<select id="selectResult" parameterType="String" resultType="Map">
-		select * from MENTALTEST where id=#{id}
+		SELECT * FROM MENTALTEST WHERE ID=#{id}
 	</select>
 	
 	<select id="selectFlag" parameterType="String" resultType="int">
-		SELECT COUNT(*) MENTALTEST WHERE ID=#{id}
+		SELECT COUNT(*) FROM MENTALTEST WHERE ID=#{id}
 	</select>
 	
 	<insert id="insertResult" parameterType="Map">
@@ -18,17 +18,6 @@
 	</insert>
 	
 	<update id="updateResult" parameterType="Map">
-		<if test="test1 != null">
-			UPDATE MENTALTEST SET TEST1=#{test1} WHERE ID=#{id}
-		</if>
-		<if test="test2 != null">
-			UPDATE MENTALTEST SET TEST2=#{test2} WHERE ID=#{id}
-		</if>
-		<if test="test3 != null">
-			UPDATE MENTALTEST SET TEST3=#{test3} WHERE ID=#{id}
-		</if>
-		<if test="test4 != null">
-			UPDATE MENTALTEST SET TEST4=#{test4} WHERE ID=#{id}
-		</if>
+		UPDATE MENTALTEST SET ${name}=#{sum} WHERE ID=#{id}
 	</update>
 </mapper>
