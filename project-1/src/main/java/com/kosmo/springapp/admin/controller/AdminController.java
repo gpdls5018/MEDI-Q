@@ -28,6 +28,7 @@ import java.math.BigDecimal;
 import java.sql.Clob;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import com.kosmo.springapp.admin.service.AdminMapper;
 import com.kosmo.springapp.model.MemberDTO;
@@ -41,6 +42,7 @@ public class AdminController {
 	// 관리자 메인 화면
 	@GetMapping("/AdminMain.do")
 	public String adminMain() {
+		
 		
 		
 	    return "admin/AdminMain";
@@ -289,8 +291,6 @@ public class AdminController {
 
         return ageDataMap;
     }
-    
-    
     /////////////////////////////////관리자 회원관리 화면
     
     /////////////////////////////////영양소, 영양제 DB 관리
@@ -481,11 +481,82 @@ public class AdminController {
         }
         return stringValue;
     }
+    /////////////////////////////////영양소, 영양제 DB 관리
     
-    
-    
-   
-    
+    /////////////////////////////////영양제 분석 결과
+    @GetMapping("/AdminIssue.do")
+ 	public String AdminIssue(Model model) {
+ 		
+    	// 분석 정보 가져오기
+    	List<Map<String, Object>> analyzeInfo = adminMapper.getInfoFromAnalyzeTable();
+    	
+    	// 현재 날짜를 가져와서 연령 계산에 사용합니다.
+        LocalDate currentDate = LocalDate.now();
+        
+        // SimpleDateFormat을 이용해 날짜 포맷 지정
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        for (Map<String, Object> row : analyzeInfo) {
+        	
+        	// 행에서 선택 건강고민 정보를 추출합니다.
+            String takePurposes = (String) row.get("TAKEPURPOSES");
+            if (takePurposes != null) {
+                // 선택 건강고민 값을 [, ]로 둘러싸지 않도록 수정합니다.
+                takePurposes = takePurposes.replaceAll("\\[|\\]", "");
+
+                // 선택 건강고민 정보를 해당 행의 맵에 추가합니다.
+                row.put("TAKEPURPOSES", takePurposes);
+            }
+        	
+        	// 행에서 분석일 정보를 추출합니다.
+            Timestamp analyzedTimestamp = (Timestamp) row.get("ANALYZEDATE");
+            if (analyzedTimestamp != null) {
+                // Timestamp를 Date로 변환하고, 시분초를 제외한 날짜 문자열로 변환합니다.
+                String analyzedDate = dateFormat.format(analyzedTimestamp);
+
+                // 분석일 정보를 해당 행의 맵에 추가합니다.
+                row.put("ANALYZEDATE", analyzedDate);
+            }
+            
+            // 행에서 생년월일 정보를 추출합니다.
+            Timestamp birthTimestamp = (Timestamp) row.get("BIRTH");
+            if (birthTimestamp != null) {
+            	
+                // Timestamp를 Date로 변환합니다.
+                Date birthDate = new Date(birthTimestamp.getTime());
+
+                // 생년월일을 LocalDate로 변환합니다.
+                LocalDate birthLocalDate = birthDate.toLocalDate();
+
+                // 나이 계산
+                int age = Period.between(birthLocalDate, currentDate).getYears();
+
+                // 연령대 그룹화
+                String ageRange;
+                if (age < 20) {
+                    ageRange = "20대 미만";
+                } else if (age >= 20 && age < 30) {
+                    ageRange = "20대";
+                } else if (age >= 30 && age < 40) {
+                    ageRange = "30대";
+                } else if (age >= 40 && age < 50) {
+                    ageRange = "40대";
+                } else if (age >= 50 && age < 60) {
+                    ageRange = "50대";
+                } else {
+                    ageRange = "60대 이상";
+                }
+
+                // 연령대 정보를 해당 행의 맵에 추가합니다.
+                row.put("AGE_RANGE", ageRange);
+            }
+        }
+
+        model.addAttribute("analyzeInfo", analyzeInfo);
+    	
+ 		
+ 	    return "admin/AdminIssue";
+ 	}
    
     
     

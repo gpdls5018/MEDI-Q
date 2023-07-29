@@ -116,31 +116,6 @@
 		WHERE TRUNC(REGDATE) = TRUNC(SYSDATE)
 	</select>
 	
-	<!-- 연령대별 회원 수 조회 쿼리 -->
-    <select id="getAgeData" resultType="java.util.Map">
-        <![CDATA[
-            SELECT 
-                CASE 
-                    WHEN FLOOR(MONTHS_BETWEEN(SYSDATE, BIRTH) / 12) < 20 THEN '20대 미만'
-                    WHEN FLOOR(MONTHS_BETWEEN(SYSDATE, BIRTH) / 12) BETWEEN 20 AND 29 THEN '20대'
-                    WHEN FLOOR(MONTHS_BETWEEN(SYSDATE, BIRTH) / 12) BETWEEN 30 AND 39 THEN '30대'
-                    WHEN FLOOR(MONTHS_BETWEEN(SYSDATE, BIRTH) / 12) BETWEEN 40 AND 49 THEN '40대'
-                    WHEN FLOOR(MONTHS_BETWEEN(SYSDATE, BIRTH) / 12) >= 50 THEN '50대 이상'
-                END AS age_group,
-                COUNT(*) AS count
-            FROM MEMBER
-            WHERE TRUNC(REGDATE) >= TRUNC(SYSDATE) - 6
-            GROUP BY 
-                CASE 
-                    WHEN FLOOR(MONTHS_BETWEEN(SYSDATE, BIRTH) / 12) < 20 THEN '20대 미만'
-                    WHEN FLOOR(MONTHS_BETWEEN(SYSDATE, BIRTH) / 12) BETWEEN 20 AND 29 THEN '20대'
-                    WHEN FLOOR(MONTHS_BETWEEN(SYSDATE, BIRTH) / 12) BETWEEN 30 AND 39 THEN '30대'
-                    WHEN FLOOR(MONTHS_BETWEEN(SYSDATE, BIRTH) / 12) BETWEEN 40 AND 49 THEN '40대'
-                    WHEN FLOOR(MONTHS_BETWEEN(SYSDATE, BIRTH) / 12) >= 50 THEN '50대 이상'
-                END
-        ]]>
-    </select>
-	
 	<!-- FOODTABLE에서 정보 가져오기 -->
 	<select id="getInfoFromFoodTable" resultType="Map">
 		SELECT * FROM (
@@ -227,6 +202,31 @@
 	    WHERE KEYWORD LIKE '%' || #{name} || '%'
 	    	AND SEARCH_DATE >= SYSDATE - 6
 	</select>	
+	
+	<select id="getInfoFromAnalyzeTable" resultType="Map">
+		SELECT 
+		    A.USERID,
+		    A.TAKEPURPOSES,
+		    A.SCORE,
+		    A.ANALYZEDATE,
+		    M.BIRTH
+		FROM
+		    ANALYZETABLE A
+		INNER JOIN
+		    MEMBER M
+		ON
+		    A.USERID = M.ID
+	    ORDER BY A.ANALYZEDATE DESC
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

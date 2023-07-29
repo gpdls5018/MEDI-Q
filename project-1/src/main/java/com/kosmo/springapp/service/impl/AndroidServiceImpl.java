@@ -26,4 +26,8 @@ public class AndroidServiceImpl {
 		return androidMapper.selectFoodListByPurpose(purpose);
 	}
 
+	public FunctionalFoodListDTO selectFood(String no) {
+		return androidMapper.selectFood(no);
+	}
+
 }

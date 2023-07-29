@@ -263,7 +263,6 @@ body {
     
 }
 
-
 /* datepicker css */
 		.ui-datepicker-trigger { width: 70px; cursor: pointer; }
         .ui-widget-header { border: 0px solid #dddddd; background: #fff; } 
@@ -746,6 +745,12 @@ body {
 	#healthRegi #food .subMenu::-webkit-scrollbar {
 	    display: none; /* 크롬, 사파리, 오페라, 엣지 */
 	}
+	
+	.health a,.health a:hover{
+		text-decoration: none;
+		color: black;
+	}
+	
 </style>
 
 <!-- 메인 바디 부분 -->
@@ -803,11 +808,10 @@ body {
                                             <span>건강기록 <br> 수행률</span>
                                         </div>
                                         <div class="health"style="font-size: 18px; font-weight: bold; ">
-                                            <a>글자 1</a>
-                                            <a>글자 2</a>
+                                            <a href="javascript:progressDiary()">${fn:split(current,"-")[1]}월의 건강 다이어리 수행률</a>
+                                            <a href="javascript:progressProfile()">건강 프로필 완성률</a>
                                         </div>
                                     </div>  
-                                    
                                     
                                     <div class="board num" style="flex:1; max-height: 310px;">
                                         <div class="line1" style="max-height: 310px;">
@@ -1763,14 +1767,38 @@ body {
 
 <script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.2/dist/circle-progress.js"></script>
 <script>
-	//벨류 값이 원테두리에 들어가는 수치 math.round는 안에 들어가는 확률 값
-	 $('.second.circle').circleProgress({
-	    value: 0.9
-	  }).on('circle-animation-progress', function(event, progress) {
-	    $(this).find('strong').html(Math.round(90 * progress) + '<i>%</i>');
-	  });		
-	 
+	var lastDate;
 	$(function(){
 		 $('.datepicker').datepicker();
+		 lastDate = $('.ui-state-default:last').html();
+		 progressDiary(lastDate);
 	})
+
+	//벨류 값이 원테두리에 들어가는 수치 math.round는 안에 들어가는 확률 값
+	function progressDiary(lastDate){ //건강다이어리 수행률
+		var today = new Date();
+		var lastDate = new Date(today.getFullYear(),today.getMonth()+1,0).toString().split(" ")[2];
+		var diaryCount = $('.full-highlight').length;
+		$('.second.circle').circleProgress({
+		    value: diaryCount/lastDate
+		}).on('circle-animation-progress', function(event, progress) {
+		  	$(this).find('strong').html(Math.round((diaryCount/lastDate*100) * progress) + '<i>%</i>');
+		});
+	}
+	
+	function progressProfile(){
+		$.ajax({
+			data:{id:'${info.id}'},
+			url:'<c:url value="/project/ProgressProfile.do"/>',
+			method:'post',
+			dataType:'json'
+		}).done((data)=>{
+			console.log('success:',data);
+		}).fail(()=>{console.log('error');});
+		$('.second.circle').circleProgress({
+		    value: diaryCount/lastDate
+		}).on('circle-animation-progress', function(event, progress) {
+		  	$(this).find('strong').html(Math.round((diaryCount/lastDate*100) * progress) + '<i>%</i>');
+		});
+	}
 </script>

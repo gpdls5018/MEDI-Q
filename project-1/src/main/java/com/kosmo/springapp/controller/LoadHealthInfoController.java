@@ -29,7 +29,7 @@ public class LoadHealthInfoController {
 	
 	@GetMapping("/loadHealthInfo.do")
 	public String loadHealthInfoByOCR(HttpServletRequest req, HttpServletResponse resp, @RequestParam String userId,Model model) throws IOException {
-		/*
+		
 		try {
 			 if (userId == null || userId.isEmpty()) {
 		        throw new NullPointerException();
@@ -38,11 +38,11 @@ public class LoadHealthInfoController {
 			resp.setContentType("text/html; charset=UTF-8");
 			 resp.setCharacterEncoding("UTF-8");
 			 PrintWriter out = resp.getWriter();
-			 out.println("<script>alert('로그인 후 이용해 주세요');history.back();</script>");
+			 out.println("<script>alert('회원정보가 필요한 서비스입니다\\r로그인 후 이용해 주세요');location.href='/project/Login.do';</script>");
 			 out.flush();
 			 return null;
 		}
-		*/
+		
 		model.addAttribute("userId",userId);
 		HealthInfoDTO loadHealthInfo = healthInfoServiceImpl.selectHealthInfoByUserId(userId);
 		model.addAttribute("loadHealthInfo",loadHealthInfo);

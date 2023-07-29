@@ -14,4 +14,5 @@ public interface MyHealthMapper {
 	List selectFood(String id);
 	int insert(Map map);
 	int delete(String id);
+	int selectMyHealth(String id);
 }

@@ -415,7 +415,7 @@ body{
     	</div>
 	</div>
   </div>
-</body>
+
 <script>
 
 
@@ -441,48 +441,51 @@ body{
   
   
 // (내가선택한 영양제 목록 스크립트)
-  var selectedFoods = [];
+var selectedFoods = [];
 
-  // 영양제 선택 시 이벤트
-  $(document).on("click", ".food-li", function() {
-    var selectedFoodName = $(this).find("div").text().trim();
-    var selectedFoodImage = $(this).find("img").attr("src");
+// 영양제 선택 시 이벤트
+$(document).on("click", ".food-li", function() {
+  var selectedFoodName = $(this).find("div").text().trim();
+  var selectedFoodImage = $(this).find("img").attr("src");
 
-    // 객체에 영양제 이름과 이미지 URL 추가
-    var foodObj = {
-      name: selectedFoodName,
-      image: selectedFoodImage
-    };
+  // 객체에 영양제 이름과 이미지 URL 추가
+  var foodObj = {
+    name: selectedFoodName,
+    image: selectedFoodImage
+  };
 
-    // 체크 여부 확인
-    var isChecked = $(this).hasClass("checked");
+  // 체크 여부 확인
+  var isChecked = $(this).hasClass("checked");
 
-    if (isChecked) {
-      // 이미 선택되어 있던 영양제를 클릭하면 선택 해제
-      // 배열에서 해당 영양제를 제거
-      var index = selectedFoods.findIndex(function(food) {
-        return food.name === selectedFoodName;
-      });
-      selectedFoods.splice(index, 1);
-      $(this).removeClass("checked");
-    } else {
-      // 새로운 영양제를 선택할 경우 배열에 추가
-      selectedFoods.push(foodObj);
-      $(this).addClass("checked");
-    }
-
-    // "내가 선택한 영양제" 목록 업데이트
-    var selectedFoodList = $("#selected-food-list");
-    selectedFoodList.empty();
-    selectedFoods.forEach(function(food) {
-      // 영양제 이름과 이미지를 함께 출력하는 리스트 아이템 생성
-      var listItem = $("<li>").css("margin", "10px").css("box-shadow","2px 2px 5px gray").css("border-radius","15px");
-      listItem.append($("<img>").attr("src", food.image).css("width", "160px").css("height", "160px").css("border-radius", "15px"));
-      listItem.append($("<br>"));
-	  listItem.append($("<span>").css("font-size", "13px").css("margin-left","10px").text(food.name));
-      selectedFoodList.append(listItem);
+  if (isChecked) {
+    // 이미 선택되어 있던 영양제를 클릭하면 선택 해제
+    // 배열에서 해당 영양제를 제거
+    var index = selectedFoods.findIndex(function(food) {
+      return food.name === selectedFoodName;
     });
-  });
+    selectedFoods.splice(index, 1);
+    $(this).removeClass("checked");
+
+    // Remove the corresponding item from the selected list
+    $("#selected-food-list li").each(function() {
+      if ($(this).find("span").text().trim() === selectedFoodName) {
+        $(this).remove();
+        return false; // Break the loop after finding and removing the item
+      }
+    });
+  } else {
+    // 새로운 영양제를 선택할 경우 배열에 추가
+    selectedFoods.push(foodObj);
+    $(this).addClass("checked");
+
+    // Add the selected item to the selected list
+    var listItem = $("<li>").css("margin", "10px").css("box-shadow", "2px 2px 5px gray").css("border-radius", "15px");
+    listItem.append($("<img>").attr("src", selectedFoodImage).css("width", "160px").css("height", "160px").css("border-radius", "15px"));
+    listItem.append($("<br>"));
+    listItem.append($("<span>").css("font-size", "13px").css("margin-left", "10px").text(selectedFoodName));
+    $("#selected-food-list").append(listItem);
+  }
+});
   
 
   const ulDiv = document.querySelector('#searchFoodList');
@@ -622,23 +625,29 @@ body{
    var takeFood = document.querySelectorAll('#searchFoodList .food-li-checked');
    var foodContainer = $('.food-selected-list ul');
 
-   // Clear previously shown values
-   foodContainer.empty();
+   // Get the existing food names in the foodContainer
+   var existingFoodNames = foodContainer.find('span').map(function() {
+     return $(this).text().trim();
+   }).get();
 
    for (var i = 0; i < takeFood.length; i++) {
-     console.log(takeFood[i].querySelector("div").innerHTML);
-     takeFoods.push(takeFood[i].querySelector("div").innerHTML);
-
-     // Get the selected food name and image URL
      var foodName = takeFood[i].querySelector("div").innerHTML;
-     var foodImage = takeFood[i].querySelector("img").getAttribute("src");
 
-     // Append selected food with image to the list
-     var listItem = $("<li>").css("margin", "10px");
-     listItem.append($("<img>").attr("src", foodImage).css("width", "160px").css("height", "160px").css("border-radius", "15px"));
-	 listItem.append($("<br>"));
-     listItem.append($("<span>").css({"font-size": "13px", "margin-left": "10px", "display ": "inline-block", "width": "150px","word-break": "break-word"}).text(foodName));
-     foodContainer.append(listItem);
+     // Check if the food name already exists in the foodContainer
+     if (existingFoodNames.indexOf(foodName) === -1) {
+       console.log(foodName);
+       takeFoods.push(foodName);
+
+       // Get the selected food image URL
+       var foodImage = takeFood[i].querySelector("img").getAttribute("src");
+
+       // Append selected food with image to the list
+       var listItem = $("<li>").css("margin", "10px");
+       listItem.append($("<img>").attr("src", foodImage).css("width", "160px").css("height", "160px").css("border-radius", "15px"));
+       listItem.append($("<br>"));
+       listItem.append($("<span>").css({"font-size": "13px", "margin-left": "10px", "display ": "inline-block", "width": "150px","word-break": "break-word"}).text(foodName));
+       foodContainer.append(listItem);
+     }
    }
    $('#take-foodList-modal').modal('hide');
  });
@@ -720,3 +729,5 @@ preferTypeSpan.addEventListener('DOMSubtreeModified', updateAnalyzeButtonState);
 lastChooseFoodData.addEventListener('DOMSubtreeModified', updateAnalyzeButtonState);
 
 </script>
+	</body>
+</html>

@@ -540,4 +540,8 @@ public AnalyzeResultListDTO analyzeMyReportM(Map map) {
 	public int deleteAnalyzeReport(int analyzeno) {
 		return analyzeMyReportMapper.deleteAnalyzeReport(analyzeno);
 	}
+	
+	public int selectAnalyzeReportCount(String id) {
+		return analyzeMyReportMapper.selectAnalyzeReportCount(id);
+	}
 }
