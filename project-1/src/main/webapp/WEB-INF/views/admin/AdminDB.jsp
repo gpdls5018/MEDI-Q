@@ -295,7 +295,8 @@
 			</div>
 	    	
 	        <!-- 2번 div -->
-			<div class="each-container">
+			<div class="each-container append_mask_parent">
+			
 				<!-- 회원테이블 -->
 		        <div class="chart-container table-wrapper" style="height: 650px;">
 			        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 13px;">
@@ -304,6 +305,7 @@
 					        <option>영양소 테이블 목록</option>
 					    </select>
 					</div>
+					<div id="append_mask_div"></div>
 		        	<div class="table-wrapper" style="height: 531px; overflow-y: auto; padding-right: 5px;">
 					    <table id="first">
 					        <thead>
@@ -329,7 +331,7 @@
 								        <td>
 								        	<div class="button-wrapper">
 							            		<!-- 갱신 버튼 -->
-               									<button class="button" onclick="/detail.do?no=111">
+               									<button class="button update_review" value="${foodInfo.no}">
 						                            <span>업데이트</span>
 						                        </button>
 					                        </div>
@@ -547,12 +549,36 @@
             }
         });
 
-        
-   
-        
-        
-        
-        
+   		//업데이트 버튼 클릭시 파일 업데이트
+   		$(".update_review").click(function() {
+   			console.log(this.value);
+   			var maskWidth = document.querySelector("#first").offsetWidth;
+   			var maskHeight = 560;
+   			var mask       = "<div id='mask' style='position:absolute; z-index:9000; background-color:#000000;'><div id='loadingImg' style='display:none;'></div></div>";
+   			var loadingImg = "<img src='<c:url value="images/Spinner.gif"/>' style='position: relative;top:190px;left:210px;display: block;'/>";
+   		 	$('#append_mask_div').append(mask);
+		    $('#mask').css({
+		             'width' : maskWidth,
+		             'height': maskHeight,
+		             'opacity' : '0.3'
+		     }); 
+		     //마스크 표시
+		     $('#mask').show();
+		     $('#loadingImg').append(loadingImg);
+		     $('#loadingImg').show();
+   			
+   			$.ajax({
+                type: 'PUT',
+                url: 'http://192.168.0.16/review/'+this.value,
+                success: function (response) {
+					console.log(response);
+					alert(response);
+					$('#append_mask_div, #loadingImg').empty();
+					$('#mask, #loadingImg').hide();
+                }
+            
+            });
+   		});
     </script>
 </body>
 </html>
