@@ -144,16 +144,18 @@ public class BoardController {
 			System.out.println("성공");
 			//질문글의 no로 답변글을 불러와서 paramMap에 저장
 			paramMap=answerservice.answerselectOne(map);
+			//줄바꿈 답변글 엔터키 br태그 적용
+			if(paramMap !=null) {
+				Object paramcontentObj = paramMap.get("CONTENT");
+				System.out.println("paramcontentObj:"+paramcontentObj);
+		        if (paramcontentObj instanceof String) {
+		            String content = (String) paramcontentObj;
+		            content = content.replaceAll("\r\n", "<br>");
+		            paramMap.put("CONTENT", content);
+		        }
+			}
 		}
 		System.out.println("체크용4");
-		//줄바꿈 답변글 엔터키 br태그 적용
-		Object paramcontentObj = paramMap.get("CONTENT");
-		System.out.println("paramcontentObj:"+paramcontentObj);
-        if (paramcontentObj instanceof String) {
-            String content = (String) paramcontentObj;
-            content = content.replaceAll("\r\n", "<br>");
-            paramMap.put("CONTENT", content);
-        }
         System.out.println("paramMap(답변이 없으면 null):"+paramMap);
 		//paramMap이란 이름으로 map을 저장
 		model.addAttribute("paramMap", paramMap);
