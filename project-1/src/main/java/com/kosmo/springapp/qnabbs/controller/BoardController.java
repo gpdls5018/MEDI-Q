@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kosmo.springapp.qnabbs.service.DaoService;
 import com.kosmo.springapp.qnabbs.service.ListPagingData;
 import com.kosmo.springapp.qnabbs.service.PagingUtil;
 import com.kosmo.springapp.qnabbs.service.impl.board.AnswerServiceImpl;
-import com.kosmo.springapp.qnabbs.service.impl.board.BoardServiceImpl;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
 
@@ -37,7 +37,7 @@ public class BoardController {
 	private String tokenName;
 	
 	@Autowired
-	private BoardServiceImpl board;
+	private DaoService board;
 	@Autowired
 	private LoginServiceImpl loginService;
 	@Autowired
@@ -46,11 +46,13 @@ public class BoardController {
 	//post로 write.do를 요청받음, 뷰페이지에서 
 	@RequestMapping(value="/List.do",method = {RequestMethod.GET,RequestMethod.POST})
 	public String list(
-			@RequestParam Map map,
+			//@RequestParam Map map,
 			@RequestParam(required = false,defaultValue = "1",value = PagingUtil.NOWPAGE) int nowPage,
 			HttpServletRequest req,
+			//@RequestParam Map likemap,
 			Model model) {
 		
+		//회원인 경우
 		//id값 불러옴
 		String token= jwTokensService.getToken(req, tokenName);//token을 가져옴
 		Map payload = jwTokensService.getTokenPayloads(token, secretKey);//payload로 만듬
@@ -58,11 +60,16 @@ public class BoardController {
 			String id=payload.get("sub").toString();//가져온 id를 String id에 저장(현재 로그인한 아이디)
 			model.addAttribute("id", id);//모델에 id란 이름으로 id 저장
 		}
+		Map map =new HashMap<>();
+		Map likemap =new HashMap<>();
 		//목록에 대한 데이타 저장
-		ListPagingData listPagingData= board.selectList(map, req, nowPage);
-		System.out.println("listPagingData:"+listPagingData.getRecords());
+		ListPagingData listPagingData= board.selectList(map, req, nowPage, likemap);
+		//System.out.println("listPagingData:"+listPagingData);
 		//데이타 저장
 		model.addAttribute("listPagingData", listPagingData);	
+		//추천수TOP3 목록에 대한 데이타 저장
+		
+		
 		return "board/List";
 	
 	}/////////////////////
@@ -97,7 +104,7 @@ public class BoardController {
 	//상세보기
 	@RequestMapping(value="/View.do",method = {RequestMethod.GET,RequestMethod.POST})
 	public String view(HttpServletRequest req,@RequestParam Map map,Model model) { 
-		
+		System.out.println("map에 있는게 뭐야?"+map);//board의 no를 가지고 있음
 		//회원인 경우
 		String token= jwTokensService.getToken(req, tokenName);//token을 가져옴
 		Map payload = jwTokensService.getTokenPayloads(token, secretKey);//payload로 만듬
@@ -110,7 +117,6 @@ public class BoardController {
 			System.out.println("active:"+active);//"Y, A, N 중 하나"
 			model.addAttribute("active", active);//model에 active로 저장
 		}
-		
 		//답변글 Map생성
 		Map paramMap =new HashMap<>();
 		

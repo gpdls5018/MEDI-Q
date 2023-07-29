@@ -36,7 +36,7 @@ public class BoardServiceImpl implements DaoService {
 	
 	
 	@Override
-	public ListPagingData selectList(Map map, HttpServletRequest req, int nowPage) {
+	public ListPagingData selectList(Map map, HttpServletRequest req, int nowPage,Map likemap) {
 		//[페이징 로직 시작]
 		//1.총 레코드 수 : 테이블에서 조회
 		//  페이지 사이즈 수/블록 페이지 수: 속성파일(paging.properties-PlaceHolderConfig.java에 위치 설정해주어야 한다)에서 읽기
@@ -47,21 +47,31 @@ public class BoardServiceImpl implements DaoService {
 		map.put(PagingUtil.PAGE_SIZE, pageSize);
 		map.put(PagingUtil.BLOCK_PAGE, blockPage);
 		map.put(PagingUtil.NOWPAGE, nowPage);
+		System.out.println("listmap:"+map);
 		//시작/끝 행번호 및 총 페이지 수 설정:PagingUtil.setMapForPaging()호출
 		PagingUtil.setMapForPaging(map);		
 		//글 전체 목록 얻기
 		List records= mapper.selectList(map);
+		System.out.println("records체크:"+records);
+		//추천수TOP3 목록 얻기
+		List likes=mapper.likeList(map);
+		System.out.println("likes체크:"+likes);
 		//페이징 문자열 얻기
 		String pagingString=PagingUtil.pagingBootStrapStyle(totalCount, pageSize, blockPage, nowPage,req.getContextPath()+ "/board/List.do?");
 		//페이징과 관련된 정보 및 모든 목록을 담는 ListPagingData객체 생성		
 		ListPagingData listPagingData = ListPagingData.builder()
 													.records(records)//글 전체 목록 설정
+													.likes(likes)//추천수 목록 설정
 													.map(map)//페이징 관련 데이타 설정
 													.pagingString(pagingString)//페이징 문자열 설정
 													.build();
+		System.out.println("listPagingData체크:"+listPagingData.getMap());
+		System.out.println("listPagingData체크:"+listPagingData.getRecords());
+		System.out.println("listPagingData체크:"+listPagingData.getLikes());
 		return listPagingData;
 	}////////////////////
-
+	
+	
 	@Override
 	public Map selectOne(Map map) {
 		return mapper.selectOne(map);
@@ -107,20 +117,19 @@ public class BoardServiceImpl implements DaoService {
 			affected=template.execute(status -> {
 				//답변삭제 먼저 되면1 안되면0
 				System.out.println("delete serviceimpl여기 체크");
-				System.out.println("map의 가지고 있는거 :"+map);
-				int boarddelete = answermapper.boarddelete(map);
+				System.out.println("map의 가지고 있는거 :"+map);//{no=114}
+				int boarddelete = answermapper.boarddelete(map); //글번호로 게시물의 답변글들 삭제(글작성시 버튼이 없어서 1개만 삭제됨)
 				System.out.println("답변글의 답글들을 다 삭제했다면 boarddelete는 n갯수:"+boarddelete);
-				//답변이 다 삭제된, 질문 글 삭제
-	            mapper.delete(map);
-	            return boarddelete;
+	            mapper.delete(map); //답변이 다 삭제된, 게시물 삭제
+	            return boarddelete; //0,1 (답변글의 갯수 반환)
 			});
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 			return -1;
 		}
-		System.out.println("affected:"+affected);
-		return 	affected;
+		System.out.println("affected:"+affected); //boarddelete의 반환값이 저장
+		return 	affected; //boarddelete의 반환값이 저장
 	}///////////////
 
 }
