@@ -119,6 +119,9 @@
 	box-shadow: 0px 0px 0px white;
 	align-items: center;
 }
+.tsnava2:after {
+	display: none;
+}
      </style>
 
 	<!-- 상단배너 div -->
