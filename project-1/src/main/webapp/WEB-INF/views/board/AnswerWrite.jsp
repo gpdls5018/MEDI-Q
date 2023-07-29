@@ -102,18 +102,18 @@
 	                            <div class="card-body p-2 m-3">
 	                                <div class="form-group">
 									  <label for="usr"><h3><kbd class="btn_deco font-weight-bold">질문</kbd></h3></label>
-									  <input type="text" id="usr" name="title" class="form-control form-control-lg" placeholder="질문을 입력하세요"">
+									  <input type="text" id="usr" name="title" class="form-control form-control-lg" placeholder="${title}" disabled >
 									</div>
 	                                <br>
 	                                <div class="form-group">
-									  <label for="comment"><h3><kbd class="btn_deco font-weight-bold">질문 내용</kbd></h3></label>
-									  <textarea id="comment" name="content" class="form-control form-control-lg" rows="5" placeholder="질문 내용을 입력하세요" ></textarea>
+									  <label for="comment"><h3><kbd class="btn_deco font-weight-bold">답변내용 작성</kbd></h3></label>
+									  <textarea id="comment" name="content" class="form-control form-control-lg" rows="5" placeholder="답변내용을 입력하세요" >${records.title }</textarea>
 									</div>
 	                            </div>
 	                        </div>
 	                        
 	                        <div class="pt-3 pl-4">
-	                            <button type="submit" class="btn btn-light text-light text_2 btn_deco" style="font-size:22px;">등록</button>
+	                            <button type="submit" class="btn btn-light text-light text_2 btn_deco" style="font-size:22px;">답변 등록</button>
 	                            <input type="hidden" value="${no}" name="no">
                             </div>
                         </form>

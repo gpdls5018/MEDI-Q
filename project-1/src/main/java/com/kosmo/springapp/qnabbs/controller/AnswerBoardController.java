@@ -39,11 +39,13 @@ public class AnswerBoardController {
 	
 	//board/View.jsp에서 요청받아 폼으로 이동
 	@GetMapping("/AnswerWrite.do")
-	public String answerwrite(@RequestParam String no,Model model) {
+	public String answerwrite(@RequestParam String no,@RequestParam String title,Model model) {
 		//뷰에 정보 반환
 		System.out.println("답변쓰기 페이지 이동 성공");
 		System.out.println("질문글 no : "+no);
 		model.addAttribute("no",no);
+		model.addAttribute("title", title);
+		System.out.println("title체크:"+title);
 		return "board/AnswerWrite"; //답변글로 이동
 	}//////////////////////////////////////////////
 
