@@ -29,6 +29,24 @@ public class SelectFoodRankListController {
 		return "ranking/FoodRank";
 	}
 	
+	@GetMapping("/functionfood/selectissue.do")
+	public String hselectissue2() {
+		return "ranking/HealthIssueFood";
+	}
+	@GetMapping("/ranking/HealthSelect.do")
+	public String hselectissue() {
+		return "ranking/HealthSelect";
+	}
+	@GetMapping("/functionfood/healthissue.do")
+	public String hissue(@RequestParam String healthissue,Model model) {
+		List<AvgStarScoreCountDTO> listData = selectfoodservice.selectFoodListFromHealthissue(healthissue);
+		List<AvgStarScoreCountDTO> listData2 = selectfoodservice.FoodListFromHealthissue(healthissue);
+		model.addAttribute("healthissue", healthissue);
+		model.addAttribute("listData", listData);
+		model.addAttribute("listData2", listData2);
+		return "ranking/HealthIssueFood";
+	}
+	
 	@GetMapping("/ranking/selectfoodnutrient.do")
 	public String foodnutrient(Model model) {
 		List<String> RankingKeyWord = selectfoodservice.RankingKeyWord();

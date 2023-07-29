@@ -61,7 +61,7 @@
     
         .tab {
             display: none;
-            padding: 20px;
+            padding: 0 20px 20px 20px;
             border: 1px solid #ddd;
             border-top: none;
         }
@@ -136,7 +136,6 @@
             font-weight: bold;
         }
 
-       
         
         /* 이미지 추가 */
 		.image {
@@ -200,17 +199,15 @@
 		}
 		
 		/* 검색창 스타일 추가 */
-
 		.search {
 		  display: flex;
 		}
 		
 		.searchTerm {
-		  width: 500px;
 		  border-right: none;
 		  padding: 5px;
-		  height: 50px;
-		  border-radius: 10px 0 0 10px;
+		  height: 64px;
+		  border-radius: 32px;
 		  outline: none;
 		  /*border: 3px solid #EF605D;*/
 		}
@@ -220,16 +217,17 @@
 		}
 		
 		.searchButton {
-		  width: 60px;
-		  height: 50px;
+		  width: 124px;
+		  height: 64px;
 		  /*border: #EF605D;*/
 		  background: #EF605D;
 		  text-align: center;
 		  color: #fff;
-		  border-radius: 0 10px 10px 0;
+		  border-radius: 32px;
 		  cursor: pointer;
 		  font-size: 20px;
 		}
+		
 	/*상단 배너 스타일*/
 #contentInfoCon {
     position: relative;
@@ -245,7 +243,7 @@
 }
 #contentInfoCon .content-tit {
     color: #222;
-    font-size: 50px;
+    font-size: 45px;
     font-weight: 700;
     line-height: 1.36;
     letter-spacing: -0.02em;
@@ -263,7 +261,7 @@
 }
 .tsarea {
 	position: absolute;
-	width: 700px;
+	width: 1000px;
 	height: 250px;
 	top:170px;
 	left:50px;
@@ -282,25 +280,24 @@
                 <div class="visual-img-con animatedleft"></div>	
 
         <div class="tsarea">
-            <p class="content-sub-tit">Global Healthcare</p>
-            <h3 class="content-tit" style="text-align:left; margin-left: 50px;">
-                <p style="font-weight: 300;">AI 알고리즘 기반의</p>
-                <span>개인 맞춤형 헬스케어</span>
+            <h3 class="content-tit" style="text-align:left; margin-left: 150px;">
+                <span>인기 성분 Top 10</span>
+                <p style="font-weight: 500; font-size: 23px; margin-top: 20px; color:gray">800개 영양성분 중 가장 인기있는 100개 성분의 Best 제품을 만나보세요</p>
             </h3>
         </div>
     </aside>
 
-
 	<!-- 검색창 -->
-	<div class="search d-flex justify-content-center" style="padding: 150px 0px 80px; background-color: #fdfbf6;">
-	    <input id="searchInput" style="font-size:17px;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
-	    <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
-   	    </button>
-    </div>
+	<div class="d-flex justify-content-center" style="background-color: #fdfbf6;">
+		<div class="search d-flex justify-content-center" style="padding: 150px 0px 80px; position: relative; width: 960px;">
+		    <input id="searchInput" style="font-size:20px; width: 100%;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
+		    <button type="submit" class="searchButton" style="position: absolute; right: 0;">
+	        <i class="fa fa-search"></i>
+	   	    </button>
+	    </div>
+	</div>
 
-
-    <div class="container mb-5" style="margin-top: 50px;">
+    <div class="container pb-5" style="margin-top: 10px;">
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
@@ -338,7 +335,7 @@
                 <div id="outer" class="d-flex justify-content-center mt-4 pt-4 pb-5 w-100"><!-- style="border: #ddd solid; border-radius: 10px;" -->
                     <div id="inner" class="w-75 ">
                         <div class="">
-                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 관련 건강고민</b></h4>
+                            <h4 style="margin-left: 8%;"><b>1. 관련 건강고민</b></h4>
                             <hr class="bg-warning" style="margin-bottom: 35px;">
                             <c:forEach var="n_func" items="${n_FUNC }" varStatus="loop">
     							<span class="text-center" style="font-size: 15px; display: inline-block; width: 260px;"><mark>&nbsp;${loop.count}) ${n_func}&nbsp;</mark></span>
@@ -354,19 +351,19 @@
                             </c:forEach>
                         </div>
                         <div class="mt-5">
-                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 상세설명</b></h4>
+                            <h4 style="margin-left: 8%;"><b>2. 상세설명</b></h4>
                             <hr class="bg-warning" style="margin-bottom: 35px;">
                             <div class="d-flex justify-content-center">
                             <c:if test="${not empty desc }">
-	                            <p style="font-size: 15px; width: 650px;">${desc }</p>
+	                            <p style="font-size: 15px; width: 83%;">${desc }</p>
 	                        </c:if>    
 	                        <c:if test="${not empty i_desc }">
-	                            <p style="font-size: 15px; width: 650px;">${i_desc }</p>
+	                            <p style="font-size: 15px; width: 83%;">${i_desc }</p>
 	                        </c:if>    
                             </div>
                         </div>
                         <div class="mt-4">
-                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 섭취량</b></h4>
+                            <h4 style="margin-left: 8%;"><b>3. 섭취량</b></h4>
                             <hr class="bg-warning" style="margin-bottom: 35px;">
                             <div class="justify-content-center">
                                 <div class="d-flex flex-column align-items-center pb-4">
@@ -374,20 +371,21 @@
                                 <!-- 5대 상한 있음 -->
 	                            <c:if test="${not empty n_UL_M }" var="limit">
                         	        <c:if test="${not empty n_UL_M}">
-		                            <p style="font-size: 13px; margin-bottom: 13px;" class="mt-2">
-	                                	남성 권장 섭취량: ${n_DRI_M }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                            <div style="font-size: 13px; margin-bottom: 18px; width: 60%" class="mt-2">
+	                                		<span style="margin-left:12%;  margin-right: 20%;">남성 권장 섭취량: ${n_DRI_M }</span>
 	                                	<c:if test="${not empty n_UL_M}">
-	                                	남성 상한 섭취량: ${n_UL_M }<br/>
+	                                		<span>남성 상한 섭취량: ${n_UL_M }</span><br/>
 	                                	</c:if>
-		                                여성 권장 섭취량: ${n_DRI_F }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                                	<span style="margin-left:12%;  margin-right: 20%;">여성 권장 섭취량: ${n_DRI_F }</span>
 		                                <c:if test="${not empty n_UL_F}">
-		                                	여성 상한 섭취량: ${n_UL_F }
+		                                	<span>여성 상한 섭취량: ${n_UL_F }</span><br/>
 		                                </c:if>
 	                                
-		                                <div style="height:1px;">
-		                                	<span class="arrow-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow-down"></span>
+		                                <div style="height:1px; margin-top: 12px;">
+		                                	<span class="arrow-down" style="margin-left: 23%;"></span>
+		                                	<span class="arrow-down" style="margin-left: 50%;"></span>
 		                                </div>
-		                            </p>
+		                            </div>
 		                            <div class="progress w-75 progress-bar text-danger" > 
 	                                    <div class="progress-bar-inner"></div>
 	                                    <div class="progress-text"></div>
@@ -398,10 +396,10 @@
 	                            <!-- 5대 상한 없음 -->
 	                            <c:if test="${not limit && empty i_DRI}">
 		                            <p style="font-size: 13px; margin-bottom: 13px;" class="mt-2">
-	                                	남성 권장 섭취량: ${n_DRI_M }<br/><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/> -->
-		                                여성 권장 섭취량: ${n_DRI_F }<br/><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/> -->
+	                                	남성 권장 섭취량: ${n_DRI_M }<br/>
+		                                여성 권장 섭취량: ${n_DRI_F }<br/>
 		                                <div style="height:1px;">
-		                                	<span class="arrow-down"></span><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+		                                	<span class="arrow-down"></span>
 		                                </div>
 	                                </p> 
 	                                <div class="progress w-75 progress-bar text-danger" > 
@@ -412,13 +410,14 @@
 	                            
 	                            <!-- 기능성 상한 있음 -->
 	                            <c:if test="${not empty i_DRI && not empty i_UL }">
-		                            <p style="font-size: 13px; margin-bottom: 13px;" class="mt-2">
-		                                	권장 섭취량: ${i_DRI }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		                                	상한 섭취량: ${i_UL }<br/>
-		                                <div style="height:1px;">
-		                                	<span class="arrow-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow-down"></span>
+		                            <div style="font-size: 13px; margin-bottom: 18px; width: 60%" class="mt-2">
+	                                	<span style="margin-left:15%;  margin-right: 24%;">권장 섭취량: ${i_DRI }</span>
+	                                	<span>상한 섭취량: ${i_UL }</span><br/>
+		                                <div style="height:1px; margin-top: 12px;">
+		                                	<span class="arrow-down" style="margin-left: 23%;"></span>
+		                                	<span class="arrow-down" style="margin-left: 50%;"></span>
 		                                </div>
-		                            </p>
+		                            </div>
 		                            <div class="progress w-75 progress-bar text-danger" > 
 	                                    <div class="progress-bar-inner"></div>
 	                                    <div class="progress-text"></div>
@@ -428,9 +427,9 @@
 	                            <!-- 기능성 상한 없음 -->	
 	                            <c:if test="${not empty i_DRI && empty i_UL }">
 		                            <p style="font-size: 13px; margin-bottom: 13px;" class="mt-2">
-		                                	권장 섭취량: ${i_DRI }<br/><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/> -->
+		                                	권장 섭취량: ${i_DRI }<br/>
 		                                <div style="height:1px;">
-		                                	<span class="arrow-down"></span><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+		                                	<span class="arrow-down"></span>
 		                                </div>
 		                            </p>
 		                            <div class="progress w-75 progress-bar text-danger" > 
@@ -446,10 +445,10 @@
                         <c:if test="${vit }">
 	                        <div style="margin-top: 60px;">
 		                        <c:if test="${not empty n_LACK }">
-		                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. 결핍시 증상</b></h4>
+		                            <h4 style="margin-left: 8%;"><b>4. 결핍시 증상</b></h4>
                             		<hr class="bg-warning" style="margin-bottom: 35px;">
 		                            <div class="d-flex justify-content-center">
-		                            	<p style="font-size: 15px; width: 650px;">· ${n_LACK }이 있어요.</p>
+		                            	<p style="font-size: 15px; width: 83%;">· ${n_LACK }이 있어요.</p>
 		                            </div>
 		                        </c:if>
 	                        </div>
@@ -457,10 +456,10 @@
                         <c:if test="${vit }">
                         	<c:if test="${not empty caution }">
 		                        <div class="mt-5">
-		                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. 주의사항</b></h4>
+		                            <h4 style="margin-left: 8%;"><b>5. 주의사항</b></h4>
                             		<hr class="bg-warning" style="margin-bottom: 35px;">
 		                            <div class="d-flex justify-content-center">
-		                            	<p style="font-size: 15px; width: 650px;">${caution }</p>
+		                            	<p style="font-size: 15px; width: 83%;">${caution }</p>
 		                            </div>	
 		                        </div>
 		                    </c:if>
@@ -468,10 +467,10 @@
                         <c:if test="${not vit }">
                             <c:if test="${not empty i_caution }">
 		                        <div class="mt-5">
-		                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. 주의사항</b></h4>
+		                            <h4 style="margin-left: 8%;"><b>4. 주의사항</b></h4>
 		                            <hr class="bg-warning" style="margin-bottom: 35px;">
 		                            <div class="d-flex justify-content-center">
-		                            	<p style="font-size: 15px; width: 650px;">${i_caution }</p>
+		                            	<p style="font-size: 15px; width: 83%;">${i_caution }</p>
 		                            </div>
 		                        </div>
 		                    </c:if>
@@ -479,17 +478,17 @@
                         <c:if test="${vit }">
 	                        <div class="mt-4">
 		                        <c:if test="${not empty caution}" var="exist">
-		                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. 섭취 음식</b></h4>
+		                            <h4 style="margin-left: 8%;"><b>6. 섭취 음식</b></h4>
 		                            <hr class="bg-warning" style="margin-bottom: 35px;">
 		                            <div class="d-flex justify-content-center">
-		                            	<p style="font-size: 15px; width: 650px;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
+		                            	<p style="font-size: 15px; width: 83%;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
 		                            </div>
 		                        </c:if>
 		                        <c:if test="${not exist }">
-		                        	<h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. 섭취 음식</b></h4>
+		                        	<h4 style="margin-left: 8%;"><b>5. 섭취 음식</b></h4>
 		                            <hr class="bg-warning" style="margin-bottom: 35px;">
 		                            <div class="d-flex justify-content-center">
-		                            	<p style="font-size: 15px; width: 650px;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
+		                            	<p style="font-size: 15px; width: 83%;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
 		                            </div>
 		                        </c:if>
 	                        </div>
@@ -498,10 +497,10 @@
 	                    <c:if test="${vit }">
 	                        <div class="mt-5">
 		                        <c:if test="${not empty caution}" var="exist">
-		                            <h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. 추천 영양제</b></h4>
+		                            <h4 style="margin-left: 8%;"><b>7. 추천 영양제</b></h4>
 		                        </c:if>
 		                        <c:if test="${not exist }">
-		                        	<h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. 추천 영양제</b></h4>
+		                        	<h4 style="margin-left: 8%;"><b>6. 추천 영양제</b></h4>
 		                        </c:if>
 		                            <hr class="bg-warning" style="margin-bottom: 35px;">
 		                            <c:forEach var="productInfo" items="${n_productInfoList}" varStatus="loop">
@@ -514,7 +513,7 @@
 										    	
 										    	<!-- 이미지 있는 경우 우선 가져옴 -->
 											    <c:if test="${not empty productInfo.PRODUCTNAME}" var="first">
-													<div class="box" style="white-space: nowrap; width:700px;" onclick="location.href='/NutrientToFoodDetail.do?name=${productInfo.PRODUCTNAME}'">
+													<div class="box" style="white-space: nowrap; width:85%;" onclick="location.href='/detail.do?no=${productInfo.NO}'">
 					    								<c:if test="${loop.count == 1}">
 															<b class="text-center" style="width:150px; font-size: 15px;">🥇 ${loop.count }위</b>
 														</c:if>
@@ -543,38 +542,6 @@
 												        <b class="text-center" style="font-size: 13px; width: 300px;">&nbsp;${productInfo.PRODUCTNAME}</b>
 												    </div>
 											    </c:if>
-											    
-											    <!-- 이미지 없는 경우
-											    <c:if test="${! first}">
-													<div class="box" style="white-space: nowrap; width:700px;" onclick="location.href='/NutrientToFoodDetail.do?name=${productInfo.PRODUCTNAME}'">
-					    								<c:if test="${loop.count == 1}">
-															<b class="text-center" style="width:150px; font-size: 15px;">🥇 ${loop.count }위</b>
-														</c:if>
-														<c:if test="${loop.count == 2}">
-															<b class="text-center" style="width:150px; font-size: 15px;">🥈 ${loop.count }위</b>
-														</c:if>
-														<c:if test="${loop.count == 3}">
-															<b class="text-center" style="width:150px; font-size: 15px;">🥉 ${loop.count }위</b>
-														</c:if>
-														<c:if test="${loop.count == 4}">
-															<b class="text-center" style="width:150px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
-														</c:if>
-														<c:if test="${loop.count == 5}">
-															<b class="text-center" style="width:150px; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp; ${loop.count }위</b>
-														</c:if>
-														
-												    	
-												    	<c:if test="${productInfo.IMGURL != null }" var="existimg">
-												        	<img src="${productInfo.IMGURL}" alt="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
-												        </c:if>
-
-												        <c:if test="${not existimg }">
- 													        <img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="width: 100px; height: 100px;">
-												        </c:if>
-												        
-												        <b class="text-center" style="font-size: 13px; width: 300px;">&nbsp;${productInfo.PRODUCTNAME}</b>
-												    </div>
-											    </c:if> -->
 											</div>
 										</div>  
 									</p>
@@ -588,10 +555,10 @@
 	                    <c:if test="${not vit }">
 		                    <div class="mt-5">
 		                    	<c:if test="${empty i_caution }">
-		                    		<h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. 추천 영양제</b></h4>
+		                    		<h4 style="margin-left: 8%;"><b>4. 추천 영양제</b></h4>
 		                    	</c:if>
 		                    	<c:if test="${not empty i_caution }">
-		                    		<h4><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. 추천 영양제</b></h4>
+		                    		<h4 style="margin-left: 8%;"><b>5. 추천 영양제</b></h4>
 		                    	</c:if>
 	                            <hr class="bg-warning" style="margin-bottom: 35px;">
 	                            <c:forEach var="productInfo" items="${i_productInfoList}" varStatus="loop">
@@ -603,7 +570,7 @@
 										    <div class="box-container justify-content-center">
 										    	<!-- 이미지 있는 경우 우선 가져옴 -->
 											    <c:if test="${not empty productInfo.PRODUCTNAME}" var="first">
-													<div class="box" style="white-space: nowrap; width:700px;" onclick="location.href='/NutrientToFoodDetail.do?name=${productInfo.PRODUCTNAME}'">
+													<div class="box" style="white-space: nowrap; width:85%;" onclick="location.href='/detail.do?no=${productInfo.NO}'">
 					    								<c:if test="${loop.count == 1}">
 															<b class="text-center" style="width:150px; font-size: 15px;">🥇 ${loop.count }위</b>
 														</c:if>
@@ -805,8 +772,8 @@
 
         // 상세페이지 넘어왔을 때 위쪽 탭 밑줄 없애는 코드
         document.addEventListener('DOMContentLoaded', function() {
-  			var show = document.querySelector('body > div.container.mb-5 > div.tab.pt-1.pb-5');
-  			var removetarget = document.querySelector('body > div.container.mb-5 > div:nth-child(1) > ul > li:nth-child(1) > a');
+  			var show = document.querySelector('body > div.container.pb-5 > div.tab.pt-1.pb-5');
+  			var removetarget = document.querySelector('body > div.container.pb-5 > div:nth-child(1) > ul > li:nth-child(1) > a');
   			if (show.style.display === 'block') {
     			removetarget.classList.remove("active");
   			}
@@ -848,8 +815,6 @@
         	var ing = "${ingredientNames}";
         	var ingArray = ing.slice(1, -1).split(",");
         	Array.prototype.push.apply(searchSource, ingArray);
-        	
-        	
 	        
 	        $("#searchInput").autocomplete({  //오토 컴플릿트 시작
 	            source : searchSource,    // source 는 자동 완성 대상
@@ -858,6 +823,20 @@
 	                var name = ui.item.value.trim();
 	                var url = "/NutrientDetail.do?name="+encodeURIComponent(name);
 	                window.location.href = url; // 페이지를 해당 URL로 이동합니다.
+	                
+	             	// 검색어 서버에 전송
+	                $.ajax({
+	                    url: "/search.do",
+	                    method: "POST",
+	                    contentType: "application/json",
+	                    data: JSON.stringify(name),
+	                    success: function(response) {
+	                        console.log("Search history saved");
+	                    },
+	                    error: function(err) {
+	                        console.error("Error saving search history:", err);
+	                    }
+	                });
 	            },
 	            focus : function(event, ui) {    //포커스 가면
 	                return false;//한글 에러 잡기용도로 사용됨
@@ -877,8 +856,11 @@
 	                //console.log(event);
 	            },
 	            open: function(event, ui) {
-	                $(this).autocomplete("widget").css("width", "494px");
-	                $(this).autocomplete("widget").css("text-align","center");
+	                var autocompleteWidget = $(this).autocomplete("widget");
+	                autocompleteWidget.css("width", "905px");
+	                autocompleteWidget.css("text-align", "center");
+	                autocompleteWidget.css("left", "50%");  // 왼쪽 위치를 50%로 설정하여 가로 중앙에 배치
+	                autocompleteWidget.css("transform", "translateX(-50%)");  // 반 너비만큼 이동하여 가운데로 정렬
 	            }
 	        });
 

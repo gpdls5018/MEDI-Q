@@ -15,4 +15,6 @@ public interface AndroidMapper {
 
 	List<FunctionalFoodListDTO> selectFoodListByPurpose(String purpose);
 
+	FunctionalFoodListDTO selectFood(String no);
+
 }

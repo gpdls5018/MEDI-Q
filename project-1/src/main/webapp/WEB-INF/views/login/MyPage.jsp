@@ -3,9 +3,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <style>
 body {
@@ -262,7 +263,6 @@ body {
     
 }
 
-
 /* datepicker css */
 		.ui-datepicker-trigger { width: 70px; cursor: pointer; }
         .ui-widget-header { border: 0px solid #dddddd; background: #fff; } 
@@ -340,15 +340,17 @@ body {
         .full-highlight,.full-highlight a  { background: #fc79529f; clip-path: circle(30% at 50% 50%);}
 
 /* 건강 기록 */
-	.acco img{
+.diary .acco img{
 	width: 32px;
 	margin-left: 5px;
 	cursor: pointer;
 }
+/*
 .transition {
   transition: all 0.25s ease-in-out;
 }
-.flipIn {
+*/
+.diary .flipIn {
   animation: flipdown 0.5s ease both;
 }
 
@@ -372,11 +374,11 @@ body {
     display: none; /* 크롬, 사파리, 오페라, 엣지 */
 }
 
-h5,.flipIn {
+.diary h5,.flipIn {
   color: rgba(48, 69, 92, 0.8);
 }
 
-.acco {
+.diary .acco {
   color: rgba(48, 69, 92, 0.8);
   font-size: 17px;
   line-height: 26px;
@@ -390,13 +392,13 @@ h5,.flipIn {
   transition: all 0.5s ease-in-out;
 }
 
-ul {
+.diary ul {
   list-style: none;
   perspective: 900px;
   padding: 0;
   margin: 0;
 }
-form ul li {
+.diary form ul li {
   position: relative;
   padding: 0;
   margin: 0;
@@ -405,32 +407,32 @@ form ul li {
   border-top: 1px solid #01aa72a4;
   animation: flipdown 0.5s ease both;
 }
-ul li:nth-of-type(1) {
+.diary ul li:nth-of-type(1) {
   animation-delay: 0.3s;
 }
-ul li:nth-of-type(2) {
+.diary ul li:nth-of-type(2) {
   animation-delay: 0.5s;
 }
-ul li:nth-of-type(3) {
+.diary ul li:nth-of-type(3) {
   animation-delay: 0.75s;
 }
-ul li:nth-of-type(4) {
+.diary ul li:nth-of-type(4) {
   animation-delay: 1.0s;
 }
-ul li:nth-of-type(5) {
+.diary ul li:nth-of-type(5) {
   animation-delay: 1.25s;
 }
-ul li:nth-of-type(6) {
+.diary ul li:nth-of-type(6) {
   animation-delay: 1.5s;
 }
-#btn li:nth-of-type(1) {
+.diary #btn li:nth-of-type(1) {
   animation-delay: 1.75s;
 }
-ul li:last-of-type {
+.diary ul li:last-of-type {
   padding-bottom: 0;
 }
 
-ul li input[type=checkbox] {
+.diary ul li input[type=checkbox] {
   position: absolute;
   cursor: pointer;
   width: 100%;
@@ -438,7 +440,7 @@ ul li input[type=checkbox] {
   z-index: 1;
   opacity: 0;
 }
-ul li input[type=checkbox]:checked ~ .acco {
+.diary ul li input[type=checkbox]:checked ~ .acco {
   margin-top: 0;
   max-height: 0;
   opacity: 0;
@@ -475,33 +477,19 @@ ul li input[type=checkbox]:checked ~ .acco {
 }
 
 /* add / condition */
-	.add{
+	.diary .add{
 		display: flex;
 		justify-content: between;
 		align-items: center;
 		margin-bottom: 5px;
 	}
-	.condition{
+	.diary .condition{
 		border:3px solid skyblue;
 		border-radius:100px 100px;
 	}
 	
-/* 알레르기 */
-.full{
-		background-color: coral;
-		border-radius: 10%;
-	}
-	.allergy{
-		padding-left: 0;
-		padding-right: 0;
-		margin: 5px 5px;
-	}
-	i,small{
-		cursor: pointer;
-	}
-	
 /* bmi */
-.c-bmi {
+.diary .c-bmi {
 	  border-radius: .25rem;
 	  box-sizing: border-box;
 	  font-family: ui-sans-serif, system-ui, sans-serif;
@@ -509,7 +497,7 @@ ul li input[type=checkbox]:checked ~ .acco {
 	  width: 40rem;
 	  width: 100%;
 	}
-	.c-bmi__groups {
+	.diary .c-bmi__groups {
 	  border: 0;
 	  flex-wrap: wrap;
 	  color: rgba(48, 69, 92, 0.8);
@@ -522,20 +510,20 @@ ul li input[type=checkbox]:checked ~ .acco {
 	  display: flex;
 	  justify-content: center;
 	}
-	.c-bmi__groups label {
+	.diary .c-bmi__groups label {
 	  display: flex;
 	  padding: .5rem;
 	  position: relative;
 	}
 	
-	[for="bmi-g0"] { background-color: #4691e2; }
-	[for="bmi-g1"] { background-color: #0cb764; }
-	[for="bmi-g2"] { background-color: #febf18; }
-	[for="bmi-g3"] { background-color: #fc8711; }
-	[for="bmi-g4"] { background-color: #ff6455; }
-	[for="bmi-g5"] { background-color: #cc1100; color: #fff; }
+	.diary [for="bmi-g0"] { background-color: #4691e2; }
+	.diary [for="bmi-g1"] { background-color: #0cb764; }
+	.diary [for="bmi-g2"] { background-color: #febf18; }
+	.diary [for="bmi-g3"] { background-color: #fc8711; }
+	.diary [for="bmi-g4"] { background-color: #ff6455; }
+	.diary [for="bmi-g5"] { background-color: #cc1100; color: #fff; }
 	
-	.c-bmi__groups input:checked + label::before {
+	.diary .c-bmi__groups input:checked + label::before {
 	  background-color: #fff;
 	  clip-path: polygon(0% 0%,0% 100%,75.00% 50.00%);
 	  content: '';
@@ -546,23 +534,23 @@ ul li input[type=checkbox]:checked ~ .acco {
 	  top: 0.35rem;
 	  width: 1rem;
 	}
-	.c-bmi__groups input:checked + label + div {
+	.diary .c-bmi__groups input:checked + label + div {
 	  display: block;
 	  flex: 0 0 100%;
 	}
-	.c-bmi__label {
+	.diary .c-bmi__label {
 	  display: block;
 	  font-size: medium;
 	  margin: 0 0 1rem 0;
 	  position: relative;
 	}
-	.c-bmi__label output {
+	.diary .c-bmi__label output {
 	  position: absolute;
 	  right: 0;
 	  top: 0;
 	}
 	
-	.c-bmi [type="radio"] { display: none; }
+	.diary .c-bmi [type="radio"] { display: none; }
 	
 	/* RWD */
 	@media (min-width: 600px) {
@@ -574,7 +562,195 @@ ul li input[type=checkbox]:checked ~ .acco {
 	    top: -1rem;
 	    transform: translateX(-50%);
 	    width: 1.5rem;
-	  }	
+	  }
+	  
+/* 건강 데이터 아코디언 */
+		*{
+            margin: 0;
+            padding: 0;
+            font-family: 'lato';
+            list-style: none;
+            text-decoration: none;
+        }
+        #healthRegi .item a:hover{
+            text-decoration: none;
+            color: #ffffff;
+        }
+        #healthRegi .wrapper{/*위치(가운데 정렬)*/
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #healthRegi .mainMenu{
+            width: 620px;
+            display: block;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        #healthRegi .item{
+            border-top: 1.5px solid #ef584a;
+            overflow: hidden;
+        }
+        #healthRegi .button{
+            display: block;
+            padding: 15px 20px;
+            background-color: #ff9e81;
+            color: #ffffff;
+            position: relative;
+        }
+        #healthRegi .button:before{
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right:8px solid transparent;
+            border-top:10px solid #ff9e81;
+            right: 15px;
+            bottom: -10px;
+            z-index: 9;  
+        }
+        #healthRegi .subMenu{
+            display: flex;
+            justify-content: center;
+            background: #ffffff;
+            overflow: hidden;
+            transition: max-height 0.7s;
+            max-height: 0;
+            border-left: #ddc2c2 .2px solid;
+            border-right: #ddc2c2 .2px solid;
+        }
+        #healthRegi .subMenu span{
+            border: #ddc2c2 .2px solid;
+            margin: 3px;
+            word-break: break-all;
+        }
+        #healthRegi .subMenu span:before{
+            content: '';
+            opacity: 0;
+            transition: opacity 0.3s;
+
+        }
+        #healthRegi .subMenu span:hover:before{
+            content: '';
+            position: absolute;
+            height: 0;
+            width: 6px;
+            left: 0;
+            top:0;
+            opacity: 1;
+            border-top: 24px solid transparent;
+            border-bottom: 24px solid transparent;
+        }
+        #healthRegi .subMenu span:after{
+            content: '';
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        #healthRegi .subMenu span:hover:after{
+            content: '';
+            position: absolute;
+            height: 0;
+            width: 6px;
+            right: 0px;
+            top:0;
+            opacity: 1;
+
+            border-top: 24px solid transparent;
+            border-bottom: 24px solid transparent;
+        }
+        #healthRegi .subMenu span:hover{
+            background: #ffa798;
+            transition: all 0.3s;
+            border-bottom: 1px solid #ffa798;
+        }
+        #healthRegi .item:target .subMenu{
+            max-height: 30em;
+        }
+        
+        #healthRegi .item:last-child{
+            background-color: white;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        
+    #healthRegi .col{
+    	max-width: 65px !important;
+    	
+    }
+	#healthRegi #allergy .subMenu{
+		height: 60px;
+		padding: 0 5px;
+	}
+	#healthRegi .allergy{
+		width: 55px;
+		padding-right: 0;
+		padding-left: 0;
+		margin-right: 2px;
+		margin-left: 2px;
+	}
+    #healthRegi .allergy img{
+    	margin-top: 2px;
+    	margin-bottom: 2px;
+        width: 30px;
+    }
+    #healthRegi small{
+    	font-size: 13px;
+    }
+	#healthRegi .allergy,small{
+		cursor: pointer;
+	}
+	
+	#healthRegi .full{
+		border: #ff9e81 .2px solid;
+		border-radius: 10%;
+		box-sizing: border-box;
+	}
+	
+	#healthRegi .fullClick{
+		background-color: #ff9e81;
+	}
+	
+	/* modal 사이즈 지정 */
+	#healthRegi modal-fullsize {
+	  width: 800px;;
+	  height: 500px;
+	  margin: 0;
+	  padding: 0;
+	  border-radius: 10px; 
+	}
+
+	/* 영양제 검색 */
+	.food-li {
+	  width: 120px;
+      background-color: white;
+      color: black;
+      border-radius: 15px;
+      flex: 0 0 25%;
+    }
+	#searchFoodList .food-li:hover {
+      border: #ff4b4b solid 2px;
+    }
+    #select-div .food-li:hover{
+    	border: rgb(197, 197, 197) solid 2px;
+    }
+    #healthRegi .food-li-checked {
+      border: #ff4b4b solid 2px;
+    }
+
+	#healthRegi #food .subMenu{
+		overflow-y: scroll;
+	}
+	#healthRegi #food .subMenu::-webkit-scrollbar {
+	    display: none; /* 크롬, 사파리, 오페라, 엣지 */
+	}
+	
+	.health a,.health a:hover{
+		text-decoration: none;
+		color: black;
+	}
+	
 </style>
 
 <!-- 메인 바디 부분 -->
@@ -594,7 +770,7 @@ ul li input[type=checkbox]:checked ~ .acco {
                         <span id="id">${info.id }</span>
                         
                         <ul class="profilemenu ml-auto">
-                        	<li><a href="" id="" class="sidenava1"  data-target="#modalView" data-backdrop="static">나의 건강 정보 등록</a></li>
+                        	<li><a href="" id="" class="sidenava1" data-toggle="modal" data-target="#healthModal" data-backdrop="static">나의 건강 정보 등록</a></li>
                         	<li><a class="sidenava2" href="<c:url value="/loadHealthInfo.do?userId=${info.id}"/>">건강검진정보 불러오기</a></li>
                             <li><a href="" id="imgEdit" class="sidenava3"  data-target="#modalView" data-backdrop="static">프로필 이미지수정</a></li>
                             <c:if test='${info.social_Fl eq "Y"}' var="isSocial"><!-- 소셜용 -->
@@ -632,11 +808,10 @@ ul li input[type=checkbox]:checked ~ .acco {
                                             <span>건강기록 <br> 수행률</span>
                                         </div>
                                         <div class="health"style="font-size: 18px; font-weight: bold; ">
-                                            <a>글자 1</a>
-                                            <a>글자 2</a>
+                                            <a href="javascript:progressDiary()">${fn:split(current,"-")[1]}월의 건강 다이어리 수행률</a>
+                                            <a href="javascript:progressProfile()">건강 프로필 완성률</a>
                                         </div>
                                     </div>  
-                                    
                                     
                                     <div class="board num" style="flex:1; max-height: 310px;">
                                         <div class="line1" style="max-height: 310px;">
@@ -648,7 +823,7 @@ ul li input[type=checkbox]:checked ~ .acco {
                             <div class="secnews">
                                 
                                 <div class="board diaryStart">
-                                    <div class="col diary" style="max-width: 600px">
+                                    <div class="col diary" style="width: 600px">
 							        	<form action="#">
 							        		<div class="row justify-content-between align-items-center pb-2 pl-3 pr-3">		        		
 								        		<!-- 다른 날짜 클릭하면 클릭한 날짜가 보이도록 -->
@@ -731,117 +906,6 @@ ul li input[type=checkbox]:checked ~ .acco {
 														</div>
 													</div>
 												</li>
-												<li>
-													<input type="checkbox" checked>
-													<div class="d-flex justify-content-between">
-														<div class="flipIn">복용 영양제</div>
-														<i class="fa-solid fa-angle-down"></i>
-													</div>
-													<div class="acco">
-														<div class="add">
-															<input class="form-control" value="비타민" style="height: 35px; width: 100px">
-															<input class="form-control mx-2" type="number" min="1" max="6" style="height: 35px; width: 50px"> 정
-															<i class="xmark fa-regular fa-circle-xmark ml-1"></i>
-														</div>
-														<div class="add">
-															<input class="form-control" value="철분제" style="height: 35px; width: 100px">
-															<input class="form-control mx-2" type="number" min="1" max="6" style="height: 35px; width: 50px"> 정
-															<i class="xmark fa-regular fa-circle-xmark ml-1"></i>
-														</div>
-														<div class="add">
-															<input class="form-control" value="엽산" style="height: 35px; width: 100px">
-															<input class="form-control mx-2" type="number" min="1" max="6" style="height: 35px; width: 50px"> 정
-															<i class="xmark fa-regular fa-circle-xmark ml-1"></i>
-														</div>
-														<a href="javascript:addList()" id="add">추가</a>	
-													</div>							
-												</li>
-							
-												<li>
-													<input type="checkbox" checked>
-													<div class="d-flex justify-content-between">
-														<div class="flipIn">알레르기</div>
-														<i class="fa-solid fa-angle-down"></i>
-													</div>
-													<div class="acco">
-														<div class="row mx-1">
-															<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="알류" src='<c:url value="/images/allergy/egg.png"/>'>
-														    	<small class="d-block text-center">알류</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="우유" src='<c:url value="/images/allergy/milk.png"/>'>
-														    	<small class="d-block text-center">우유</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="메밀" src='<c:url value="/images/allergy/memil.png"/>'>
-														    	<small class="d-block text-center">메밀</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="땅콩" src='<c:url value="/images/allergy/peanut.png"/>'>
-														    	<small class="d-block text-center">땅콩</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="대두" src='<c:url value="/images/allergy/bean.png"/>'>
-														    	<small class="d-block text-center">대두</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="밀" src='<c:url value="/images/allergy/wheat.png"/>'>
-														    	<small class="d-block text-center">밀</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="고등어" src='<c:url value="/images/allergy/mackerel.png"/>'>
-														    	<small class="d-block text-center">고등어</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="게" src='<c:url value="/images/allergy/crab.png"/>'>
-														    	<small class="d-block text-center">게</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="새우" src='<c:url value="/images/allergy/shrimp.png"/>'>
-														    	<small class="d-block text-center">새우</small>	
-													    	</div>
-													    </div>
-													    <div class="row mx-1">
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="토마토" src='<c:url value="/images/allergy/tomato.png"/>'>
-														    	<small class="d-block text-center">토마토</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="복숭아" src='<c:url value="/images/allergy/peach.png"/>'>
-														    	<small class="d-block text-center">복숭아</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="호두" src='<c:url value="/images/allergy/walnut.png"/>'>
-														    	<small class="d-block text-center">호두</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="돼지고기" src='<c:url value="/images/allergy/pork.png"/>'>
-														    	<small class="d-block text-center mx-n2">돼지고기</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="닭고기" src='<c:url value="/images/allergy/chicken.png"/>'>
-														    	<small class="d-block text-center">닭고기</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="쇠고기" src='<c:url value="/images/allergy/beef.png"/>'>
-														    	<small class="d-block text-center">쇠고기</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="오징어" src='<c:url value="/images/allergy/squid.png"/>'>
-														    	<small class="d-block text-center">오징어</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="조개류" src='<c:url value="/images/allergy/clam.png"/>'>
-														    	<small class="d-block text-center">조개류</small>	
-													    	</div>
-													    	<div class="col allergy">
-														    	<img class="d-block mx-auto" alt="잣" src='<c:url value="/images/allergy/pinenut.png"/>'>
-														    	<small class="d-block text-center">잣</small>	
-													    	</div>
-													    </div>
-													</div>
-												</li>
 						
 												<li>
 													<input type="checkbox" checked>
@@ -911,6 +975,199 @@ ul li input[type=checkbox]:checked ~ .acco {
             </div>
         </div>
     </div>
+	
+	<!-- 건강정보 등록 모달 시작 -->
+    <div class="modal fade" id="healthModal">	
+		<div class="modal-dialog modal-dialog-centered modal-fullsize">
+			<div class="modal-content modal-fullsize" style="width: 800px">
+				
+				<!-- Modal body -->
+				<div class="modal-body d-flex justify-content-center">
+					<form id="healthRegi" class="form-inline justify-content-center" action='<c:url value="/project/healthInfo.do"/>' method="POST">
+						<div class="wrapper">
+					        <ul class="mainMenu">
+					        
+						        <li class="item">
+					                <div class="bg-light font-weight-bold py-3 pl-2" style="color: #ef584a;">나의 건강 정보 등록</div>
+					            </li>
+					            
+					            <li class="item" id="worry">
+					                <a href="#worry" class="button">나의 건강고민</a>
+					                <div class="subMenu">
+					                    <span class="btn text-black-50">간 건강</span>
+					                    <span class="btn text-black-50">뼈 건강</span>
+					                    <span class="btn text-black-50">두뇌활동</span>
+					                    <span class="btn text-black-50">피부 건강</span>
+					                    <span class="btn text-black-50">면역 기능</span>
+					                    <span class="btn text-black-50">운동 능력</span>  
+					                </div>
+					                <div class="subMenu">
+					                    <span class="btn text-black-50">눈 건강</span>
+					                    <span class="btn text-black-50">혈중 콜레스테롤</span>
+					                    <span class="btn text-black-50">수면</span>
+					                    <span class="btn text-black-50">혈액 순환</span>
+					                    <span class="btn text-black-50">장 건강</span> 
+					                    <span class="btn text-black-50">체지방</span>
+					                </div>
+					            </li>
+					
+					            <li class="item" id="disease">
+					                <a href="#disease" class="button">기저질환</a>
+					                <div class="subMenu">
+					                    <span class="btn text-black-50">고중성지방혈증</span>
+					                    <span class="btn text-black-50">고혈압</span>
+					                    <span class="btn text-black-50">비타민D 부족</span>
+					                    <span class="btn text-black-50">당뇨</span>
+					                    <span class="btn text-black-50">변비</span>
+					                    <span class="btn text-black-50">신장 질환</span>
+					                </div>
+					                <div class="subMenu">
+					                    <span class="btn text-black-50">과체중/비만</span>
+					                    <span class="btn text-black-50">저체중</span>
+					                    <span class="btn text-black-50">수면장애(불면증)</span>
+					                    <span class="btn text-black-50">위장 질환</span>
+					                    <span class="btn text-black-50">대장 질환</span>                   
+					                </div>
+					                <div class="subMenu">
+					                    <span class="btn text-black-50">고지혈증(콜레스테롤)</span>                    
+					                    <span class="btn text-black-50">빈혈</span>
+					                    <span class="btn text-black-50">간 질환</span>
+					                    <span class="btn text-black-50">관절염</span>
+					                    <span class="btn text-black-50">골감소증/골다공증</span>                   
+					                </div>
+					            </li>
+					
+					            <li class="item" id="allergy">
+					                <a href="#allergy" class="button">알러지</a>
+					                <div class="row subMenu">
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="알류" src='<c:url value="/images/allergy/egg.png"/>'>
+					                        <small class="d-block text-center">알류</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="우유" src='<c:url value="/images/allergy/milk.png"/>'>
+					                        <small class="d-block text-center">우유</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="돼지고기" src='<c:url value="/images/allergy/pork.png"/>'>
+					                        <small class="d-block text-center mx-n2">돼지고기</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="닭고기" src='<c:url value="/images/allergy/chicken.png"/>'>
+					                        <small class="d-block text-center">닭고기</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="쇠고기" src='<c:url value="/images/allergy/beef.png"/>'>
+					                        <small class="d-block text-center">쇠고기</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="메밀" src='<c:url value="/images/allergy/memil.png"/>'>
+					                        <small class="d-block text-center">메밀</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="땅콩" src='<c:url value="/images/allergy/peanut.png"/>'>
+					                        <small class="d-block text-center">땅콩</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="대두" src='<c:url value="/images/allergy/bean.png"/>'>
+					                        <small class="d-block text-center">대두</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="밀" src='<c:url value="/images/allergy/wheat.png"/>'>
+					                        <small class="d-block text-center">밀</small>	
+					                    </div>
+					                </div>
+					                <div class="row subMenu">
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="고등어" src='<c:url value="/images/allergy/mackerel.png"/>'>
+					                        <small class="d-block text-center">고등어</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="게" src='<c:url value="/images/allergy/crab.png"/>'>
+					                        <small class="d-block text-center">게</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="새우" src='<c:url value="/images/allergy/shrimp.png"/>'>
+					                        <small class="d-block text-center">새우</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="토마토" src='<c:url value="/images/allergy/tomato.png"/>'>
+					                        <small class="d-block text-center">토마토</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="복숭아" src='<c:url value="/images/allergy/peach.png"/>'>
+					                        <small class="d-block text-center">복숭아</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="호두" src='<c:url value="/images/allergy/walnut.png"/>'>
+					                        <small class="d-block text-center">호두</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="오징어" src='<c:url value="/images/allergy/squid.png"/>'>
+					                        <small class="d-block text-center">오징어</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="조개류" src='<c:url value="/images/allergy/clam.png"/>'>
+					                        <small class="d-block text-center">조개류</small>	
+					                    </div>
+					                    <div class="col allergy">
+					                        <img class="d-block mx-auto" alt="잣" src='<c:url value="/images/allergy/pinenut.png"/>'>
+					                        <small class="d-block text-center">잣</small>	
+					                    </div>
+					                </div>
+					            </li>
+					            <li class="item" id="food">
+					                <a href="#food" class="button">영양제 선택하기</a>
+					                <div class="subMenu d-block">
+					                    <p id="search-myFood" class="my-2" style=" font-size: 15px; display:flex; align-items: center; justify-content: center; font-weight: bold;">섭취중인 영양제를 등록해주세요</p>
+					                    <div class="input-group" style="text-align: center;">
+						      				<input id=searchText class="form-control" type="text" placeholder="브랜드명 혹은 제품명을 입력해주세요" style="border-radius:10px; width:350px;">
+						          		</div>
+						          		<div class="h">
+								          	<ul class="list-unstyled d-flex justify-content-center px-2" id="searchFoodList" style="flex-wrap: wrap;">
+								            	<li class="food-li m-2 px-2" style="text-align: center;flex-basis: 100px;display:None">
+								              		<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="width:100px;height:100px;border-radius: 15px;">
+								              		<div style="font-size: 15px;color: #939393;"></div>
+								            	</li>
+								          	</ul>
+							          	</div>
+					                </div>
+					           	
+						            <a href="#select-food" class="button">내가 먹는 영양제</a>
+						            <div class="subMenu" id="select-div">
+						              	<div class="d-block">
+							              	<!-- 여기에 영양제 검색->선택 시 이미지 꾸리기 -->
+							               	<ul class="list-unstyled d-flex justify-content-center px-2" style="flex-wrap: wrap;">
+							                		
+							               	</ul>
+						               	</div>
+						            </div>
+						        </li>
+					            
+					            <li class="item" id="special">
+					                <a href="#special" class="button">건강 특수 상태</a>
+					                <div class="subMenu">
+					                    <span class="btn btn-outline-secondary">흡연 중</span>
+					                    <span class="btn btn-outline-secondary">임신 중</span>
+					                    <span class="btn btn-outline-secondary">수유 중</span>
+					                    <span class="btn btn-outline-secondary">6개월 내 자녀계획 있음</span>
+					                    <span class="btn btn-outline-secondary">폐경기</span>
+					                </div>
+					            </li>
+					            
+					            <li class="item button d-flex justify-content-end py-1">
+					                <input type="submit" class="btn btn-outline-info mx-2" value="확인"/>
+									<button type="button" class="btn btn-outline-danger" data-dismiss="modal">닫기</button>
+					            </li>
+					        </ul>
+					    </div>
+				    </form>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!-- 건강정보 등록 모달 끝 -->
+    
     
 	<!-- 수정/삭제시 사용할 모달 시작 -->
 	<div class="modal fade" id="modalView">	
@@ -950,6 +1207,8 @@ ul li input[type=checkbox]:checked ~ .acco {
 	<!-- 수정/삭제시 사용할 모달 끝 -->
 		
 </div>
+
+<!-- 건강 다이어리 -->
 <c:set var="current" value="${current}"/>
 	
 <c:set var="date" value="${memo.mm_Date}"/>
@@ -960,8 +1219,6 @@ ul li input[type=checkbox]:checked ~ .acco {
 <c:set var="ment" value="${memo.mm_Mental}"/>
 <c:set var="chest" value="${memo.mm_Chest}"/>
 <c:set var="body" value="${memo.mm_Body}"/>
-<c:set var="nutr" value="${memo.mm_Nutrients}"/>
-<c:set var="allergy" value="${memo.mm_Allergy}"/>
 <c:set var="height" value="${memo.mm_Height}"/>
 <c:set var="weight" value="${memo.mm_Weight}"/>
 <c:set var="content" value="${memo.mm_Content}"/>
@@ -971,12 +1228,19 @@ ul li input[type=checkbox]:checked ~ .acco {
 	<c:set var="date" value="${date } ${diary.mm_Date }"/>
 </c:forEach>
 
+<!-- 건강 정보 등록 -->
+<c:set var="worry" value="${my.worry}"/>
+<c:set var="disease" value="${my.disease}"/>
+<c:set var="allergy" value="${my.allergy}"/>
+<c:set var="food" value="${food}"/>
+<c:set var="special" value="${my.special}"/>
+
 </body>
 
-<script>	
+<script>
 	var dates_ = '<c:out value="${date}"/>'
 	var dates = dates_.substring(1);
-	//console.log('dates:',dates)/*
+	//console.log('dates:',dates)
 	$.datepicker.setDefaults({
 		dateFormat: 'yy-mm-dd',
 		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
@@ -1031,6 +1295,175 @@ ul li input[type=checkbox]:checked ~ .acco {
 			
 		}
 	});
+	
+	var worry = '<c:out value="${worry}"/>';
+	var disease = '<c:out value="${disease}"/>';
+	var allergy = '<c:out value="${allergy}"/>';
+	var food = '<c:out value="${food}"/>';
+	var special = '<c:out value="${special}"/>';
+	
+	//건강정보 불러오기
+	$('#worry').find('span').each(function(){
+		if(worry.includes($(this).html())){
+			$(this).addClass('fullClick');
+		}
+	});
+	$('#disease,#special,.allergy').find('span,small').each(function(){
+		if(disease.includes($(this).html())){
+			$(this).addClass('fullClick');
+		}
+		if(special.includes($(this).html())){
+			$(this).addClass('fullClick');
+		}
+		if(allergy.includes($(this).html())){
+			$(this).parent().addClass('full');
+		}
+	});
+	var foodli = document.querySelector('#select-div ul');
+	var foodList = food=='[]' ? "" :food.split('},');
+
+	for(var i=0;i<foodList.length;i++){
+		var foodname = foodList[i].split(',')[0].split('=')[1];
+		var foodimg = i==foodList.length-1 ? foodList[i].split(',')[1].split('=')[1].split('}')[0] : foodList[i].split(',')[1].split('=')[1];
+		var li = document.querySelector('.food-li').cloneNode(true);
+		li.style.display='';
+		console.log('check:',foodimg)
+		if (!foodimg.length) {
+			foodimg = 'http://localhost:9090/images/thumbnail_img/NO_IMG.jpeg';
+		}
+		li.querySelector('img').src = foodimg;
+		li.querySelector('div').innerHTML = foodname;
+		foodli.appendChild(li);
+	}
+	//내가 선택한 영양제 클릭 시 삭제
+	$('#select-div .food-li').click(function(){
+		$(this).remove();
+	});
+
+	//건강정보 저장
+	$('#healthRegi').submit(function(e){
+		e.preventDefault();
+		
+		var healthRegi = new Array(5);
+
+		for(var i=0;i<healthRegi.length;i++){
+			healthRegi[i] = new Array();
+		}
+		$('.fullClick,.full,#select-div .food-li').each(function(){
+			var id = $(this).parent().parent().prop('id');
+			switch(id){
+				case 'worry': healthRegi[0].push($(this).html()); break;
+				case 'disease' : healthRegi[1].push($(this).html()); break;
+				case 'allergy' : healthRegi[2].push($(this).find('small').html()); break;
+				case 'special' : healthRegi[4].push($(this).html()); break;
+				default : healthRegi[3].push($(this).find('div').html());
+			}
+		});
+		console.log('healthRegi:',healthRegi)
+		
+		$.ajax({
+			data:{'healthRegi':healthRegi},
+			method:'post',
+			url:'<c:url value="/project/healthInfo.do"/>',
+			traditional : true,
+			dataType:'json'
+		}).done(function(data){
+			alert('건강 정보가 저장되었습니다.');
+			location.href = window.location.href.split('#')[0];
+		}).fail(function(){
+			console.log('fail');
+		});		
+	});
+
+	//알레르기 아이콘 클릭 이벤트
+	$('.allergy').click(function(){
+		$(this).toggleClass('full');
+	});
+	
+	//span 클릭 이벤트
+	$('.subMenu span').click(function(){
+		$(this).toggleClass('fullClick');
+		$(this).toggleClass('text-white');
+	});
+	
+	//영양제 검색
+	const ulDiv = document.querySelector('#searchFoodList');
+	$( "#searchText" ).autocomplete({
+	   source : function(request,response) {
+		   $.ajax({
+			   url: "<c:url value='/searchMyFood.do'/>",
+			   data : { "searchWord" : $( "#searchText" ).val()},
+		   }).done(function(searchFood) {
+			   /*
+			    var p = document.createElement('p');
+			    //var empty = document.querySelector('#empty');
+			    p.setAttribute('style','font-size:15px;margin-left: 85px;');
+			    //p.setAttribute('id','empty');
+			    
+			    if(searchFood.length){*/
+				   	var nameList = searchFood.map(function(item){return item['PRODUCTNAME'];});
+				   	response(nameList);
+				   	var imgList = searchFood.map(function(item){return item['IMGURL'];});
+				   	while (ulDiv.childElementCount > 1) {
+				   		ulDiv.removeChild(ulDiv.lastChild); // 마지막 자식 요소를 제거
+				   		//ulDiv.removeChild(empty);
+				   	}
+				   	
+				   	searchFood.forEach(function(item) {
+				   		var li = document.querySelector('.food-li').cloneNode(true);
+				   		li.style.display = '';
+				   		document.querySelector('.h').style.height='322px';
+				   		li.classList.replace('food-li-checked','food-li');
+				   		if (item['IMGURL']===undefined) {
+				   			item['IMGURL'] = 'http://localhost:9090/images/thumbnail_img/NO_IMG.jpeg';
+				   		}
+				   		li.querySelector('img').src = item['IMGURL'];
+				   		li.querySelector('div').innerHTML = item['PRODUCTNAME'];
+				   		ulDiv.appendChild(li);
+				   	});
+			   /* }
+			    else{
+			    	while (ulDiv.childElementCount >= 1) {
+				   		ulDiv.removeChild(ulDiv.lastChild);
+				   	}
+			    	p.textContent='입력한 제품과 동일한 제품이 없습니다';
+			    	ulDiv.appendChild(p);
+			    }*/
+		   }).fail(function(error) {
+			   	console.log(error);
+		   });
+	   }
+	});
+	$("#healthModal").on("shown.bs.modal", function() {
+	    // 자동완성 기능 초기화
+	    $("#searchText").autocomplete("option", "appendTo", "#healthModal");
+  	});
+
+	//내가 선택한 영양제 등록
+	$(document).on('click', '#searchFoodList .food-li', function() {
+	    var foodContainer = $('#select-div ul');
+	    var selectFood = foodContainer.find('.food-li');
+	    var click = $(this).find('div').html();
+	    var target = $(this);
+	    var equalFlag = false;
+
+	    selectFood.each(function(){
+	    	if(click === $(this).find('div').html()){
+	    		alert('이미 등록된 영양제입니다');
+	    		equalFlag = true;
+		    	return false;
+	    	}
+	    });
+	    if(!selectFood.length || !equalFlag){
+	    	target.clone(true).appendTo(foodContainer);
+	    }
+	    
+	  	//내가 선택한 영양제 클릭 시 삭제
+		$('#select-div .food-li').click(function(){
+			$(this).remove();
+		});
+	});
+	
 	
 	//컨드롤러에서 가져온 정보 꾸리기(기본값=오늘날짜)
 	var current_ = '<c:out value="${current}"/>';
@@ -1096,54 +1529,8 @@ ul li input[type=checkbox]:checked ~ .acco {
 				$(this).toggleClass('bodySelcted');
 			}
 		});
-		var info_nutr = '<c:out value="${nutr}"/>';
-		//console.log('info_nutr:',info_nutr.split('$').length)
-		var nutr;
-		var count;
-		if(info_nutr.length && info_nutr.split('$').length!=3){
-			var clone = $('.add:eq(0)').clone();
-			$('.add').remove()
-			var k = info_nutr.split('$').length;
-			var target = $("#add");
-			var appendedList = Array(k).fill(null).map(_ => clone.clone());
-			target.before(appendedList);
-			
-			info_nutr.split('$').forEach(function(item,index){
-				nutr = item.split('/')[0];
-				count = item.split('/')[1];
-				$('.add:eq('+index+')').children(':eq(0)').val(nutr).end().children(':eq(1)').val(count);
-			});
-		}
-		else if(info_nutr.length){ //0개가 아닐 때 일 때
-			info_nutr.split('$').forEach(function(item,index){
-				nutr = item.split('/')[0];
-				count = item.split('/')[1];
-				if(info_nutr.split('$').length==3){
-					$('.add:eq('+index+')').children(':eq(0)').val(nutr).end().children(':eq(1)').val(count);
-				}
-			});
-		}
-		
-		var info_allergy = '<c:out value="${allergy}"/>';
-		info_allergy.split(' ').forEach(function(item){
-			$('.allergy').children('small').each(function(){			
-				//console.log('name:',$(this).html())
-				//console.log('item:',item)
-				if(item==$(this).html()){
-					//console.log('allergy:',$(this).html())
-					$(this).parent().addClass('full');
-				}
-			});
-		});
-		var info_h = '<c:out value="${height}"/>';
-		$('[name=h]').val(info_h);
-		var info_w = '<c:out value="${weight}"/>';
-		$('[name=w]').val(info_w);
-		var info_content = '<c:out value="${content}"/>';
-		//console.log('test:',info_content)
-		$('#content').val(info_content);
 	}
-
+		
 	//확인,수정,삭제 어떻게 보일 지
 	var isExist = false;
 	dates.split(" ").forEach(function(d){
@@ -1207,29 +1594,6 @@ ul li input[type=checkbox]:checked ~ .acco {
 			body += $(this).html()+' ';
 		});
 		body = body.substring(0,parseInt(body.length)-1);
-		
-		//복용 영양제+정 수
-		var nutrients = '';
-		$('.add').find('input').each(function(index){
-			//console.log('count:',count)
-			if(index%2==0){
-				nutrients += $(this).val();
-			}
-			else{
-				nutrients += '/'+$(this).val()+'$';
-			}		
-		});
-		nutrients = nutrients.substring(0,parseInt(nutrients.length)-1);
-		console.log('allergy:',$('.acco').find('input.allergy'))
-		//알레르기
-		var allergy = '';
-		$('.acco').find('.full').each(function(){
-			allergy += $(this).find('small').html()+' ';
-		});
-		$('.acco').find('input.allergy').each(function(){
-			allergy += $(this).val()+' ';
-		});
-		allergy = allergy.substring(0,parseInt(allergy.length)-1);
 
 		$.ajax({
 			data:{
@@ -1243,8 +1607,6 @@ ul li input[type=checkbox]:checked ~ .acco {
 				mm_Mental:mental,
 				mm_Chest:chest,
 				mm_Body:body,
-				mm_Nutrients:nutrients,
-				mm_Allergy:allergy,
 				mm_Height:height.value,
 				mm_Weight:weight.value,
 				mm_Content:$('[name=content]').val()
@@ -1318,16 +1680,6 @@ ul li input[type=checkbox]:checked ~ .acco {
 	$('.acco:eq(0)').children().click(function(){
 		$('.acco:eq(0)').children().removeClass('condition');
 		$(this).toggleClass('condition');
-	});
-	
-	//알레르기 아이콘 클릭 이벤트
-	$('.allergy').click(function(){
-		$(this).toggleClass('full');
-	});
-	
-	//복용 영양제 삭제하기
-	$('.xmark').click(function(){
-		$(this).parent().remove()
 	});
 	
 	//bmi 계산
@@ -1415,14 +1767,38 @@ ul li input[type=checkbox]:checked ~ .acco {
 
 <script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.2/dist/circle-progress.js"></script>
 <script>
-	//벨류 값이 원테두리에 들어가는 수치 math.round는 안에 들어가는 확률 값
-	 $('.second.circle').circleProgress({
-	    value: 0.9
-	  }).on('circle-animation-progress', function(event, progress) {
-	    $(this).find('strong').html(Math.round(90 * progress) + '<i>%</i>');
-	  });		
-	 
+	var lastDate;
 	$(function(){
 		 $('.datepicker').datepicker();
+		 lastDate = $('.ui-state-default:last').html();
+		 progressDiary(lastDate);
 	})
+
+	//벨류 값이 원테두리에 들어가는 수치 math.round는 안에 들어가는 확률 값
+	function progressDiary(lastDate){ //건강다이어리 수행률
+		var today = new Date();
+		var lastDate = new Date(today.getFullYear(),today.getMonth()+1,0).toString().split(" ")[2];
+		var diaryCount = $('.full-highlight').length;
+		$('.second.circle').circleProgress({
+		    value: diaryCount/lastDate
+		}).on('circle-animation-progress', function(event, progress) {
+		  	$(this).find('strong').html(Math.round((diaryCount/lastDate*100) * progress) + '<i>%</i>');
+		});
+	}
+	
+	function progressProfile(){
+		$.ajax({
+			data:{id:'${info.id}'},
+			url:'<c:url value="/project/ProgressProfile.do"/>',
+			method:'post',
+			dataType:'json'
+		}).done((data)=>{
+			console.log('success:',data);
+		}).fail(()=>{console.log('error');});
+		$('.second.circle').circleProgress({
+		    value: diaryCount/lastDate
+		}).on('circle-animation-progress', function(event, progress) {
+		  	$(this).find('strong').html(Math.round((diaryCount/lastDate*100) * progress) + '<i>%</i>');
+		});
+	}
 </script>

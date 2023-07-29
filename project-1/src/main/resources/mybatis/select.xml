@@ -77,66 +77,70 @@
 	
 	<!-- 5대영양소 추천 영양제 가져오기 -->
 	<select id="getProductNameNImgUrlFromFoodtableByN" parameterType="String" resultType="Map">
-		SELECT PRODUCTNAME, IMGURL, F_VIEW
+		SELECT *
 		FROM (
-		    SELECT ft.PRODUCTNAME, ft.IMGURL, ft.F_VIEW,
-		        ROW_NUMBER() OVER (PARTITION BY ft.F_VIEW ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL) AS RN
-		    FROM FOODTABLE ft
-		    WHERE (
-		        ft.NUTRIENT LIKE '%' || (
-		            SELECT N_FINDINGNAME
-		            FROM NUTRIENT
-		            WHERE N_NAME = #{name}
-		        ) || '%'
-		        OR
-		        ft.STANDARD LIKE '%' || (
-		            SELECT N_FINDINGNAME
-		            FROM NUTRIENT
-		            WHERE N_NAME = #{name}
-		        ) || '%'
-		        OR
-		        ft.CAUTION LIKE '%' || (
-		            SELECT N_FINDINGNAME
-		            FROM NUTRIENT
-		            WHERE N_NAME = #{name}
-		        ) || '%'
+		    SELECT PRODUCTNAME, IMGURL, F_VIEW, NO
+		    FROM (
+		        SELECT ft.PRODUCTNAME, ft.IMGURL, ft.F_VIEW, ft.NO,
+		            ROW_NUMBER() OVER (PARTITION BY ft.F_VIEW ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL) AS RN
+		        FROM FOODTABLE ft
+		        WHERE (
+		            ft.NUTRIENT LIKE '%' || (
+		                SELECT N_FINDINGNAME
+		                FROM NUTRIENT
+		                WHERE N_NAME = #{name}
+		            ) || '%'
+		            OR
+		            ft.STANDARD LIKE '%' || (
+		                SELECT N_FINDINGNAME
+		                FROM NUTRIENT
+		                WHERE N_NAME = #{name}
+		            ) || '%'
+		            OR
+		            ft.CAUTION LIKE '%' || (
+		                SELECT N_FINDINGNAME
+		                FROM NUTRIENT
+		                WHERE N_NAME = #{name}
+		            ) || '%'
+		        )
+		        ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL, ft.F_VIEW DESC
 		    )
-		    ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL, ft.F_VIEW DESC
-		) t
-		WHERE ROWNUM &lt;= 5
-		ORDER BY F_VIEW DESC
+		    ORDER BY F_VIEW DESC
+		) WHERE ROWNUM &lt;= 5
 	</select>
 	
 	<!-- 기능성원료 추천 영양제 가져오기 -->
 	<select id="getProductNameNImgUrlFromFoodtableByI" parameterType="String" resultType="Map">
-		SELECT PRODUCTNAME, IMGURL, F_VIEW
+		SELECT *
 		FROM (
-		    SELECT ft.PRODUCTNAME, ft.IMGURL, ft.F_VIEW,
-		        ROW_NUMBER() OVER (PARTITION BY ft.F_VIEW ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL) AS RN
-		    FROM FOODTABLE ft
-		    WHERE (
-		        ft.NUTRIENT LIKE '%' || (
-		            SELECT I_FINDINGNAME
-	                FROM INGREDIENT
-	                WHERE I_NAME = #{name}
-		        ) || '%'
-		        OR
-		        ft.STANDARD LIKE '%' || (
-		            SELECT I_FINDINGNAME
-	                FROM INGREDIENT
-	                WHERE I_NAME = #{name}
-		        ) || '%'
-		        OR
-		        ft.CAUTION LIKE '%' || (
-		            SELECT I_FINDINGNAME
-	                FROM INGREDIENT
-	                WHERE I_NAME = #{name}
-		        ) || '%'
+		    SELECT PRODUCTNAME, IMGURL, F_VIEW, NO
+		    FROM (
+		        SELECT ft.PRODUCTNAME, ft.IMGURL, ft.F_VIEW, ft.NO,
+		            ROW_NUMBER() OVER (PARTITION BY ft.F_VIEW ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL) AS RN
+		        FROM FOODTABLE ft
+		        WHERE (
+		            ft.NUTRIENT LIKE '%' || (
+		                SELECT I_FINDINGNAME
+			            FROM INGREDIENT
+			            WHERE I_NAME = #{name}
+		            ) || '%'
+		            OR
+		            ft.STANDARD LIKE '%' || (
+		                SELECT I_FINDINGNAME
+			            FROM INGREDIENT
+			            WHERE I_NAME = #{name}
+		            ) || '%'
+		            OR
+		            ft.CAUTION LIKE '%' || (
+		                SELECT I_FINDINGNAME
+			            FROM INGREDIENT
+			            WHERE I_NAME = #{name}
+		            ) || '%'
+		        )
+		        ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL, ft.F_VIEW DESC
 		    )
-		    ORDER BY CASE WHEN ft.IMGURL IS NULL THEN 1 ELSE 0 END, ft.IMGURL, ft.F_VIEW DESC
-		) t
-		WHERE ROWNUM &lt;= 5
-		ORDER BY F_VIEW DESC
+		    ORDER BY F_VIEW DESC
+		) WHERE ROWNUM &lt;= 5
 	</select>
 	
 	
@@ -146,7 +150,6 @@
 		FROM FOODTABLE
 		WHERE PRODUCTNAME = #{name}
 	</select>
-	
 	
 	<!-- 조회수 가져오고 증가 -->
 	<!-- 5대 영양소 -->
@@ -176,9 +179,6 @@
 		UPDATE FOODTABLE SET F_VIEW = F_VIEW + 1 WHERE PRODUCTNAME = #{name}
 	</update>
 
-
-
-
 	<!-- 조회수 순서로 Top10 가져오기 -->
 	<select id="getTop10" resultType="String">
 	    SELECT NAME
@@ -207,7 +207,11 @@
 	    ORDER BY CASE WHEN N_VIEW &gt;= I_VIEW THEN N_VIEW ELSE I_VIEW END DESC
 	</select>
 
-
+	<!-- SEARCH_HISTORY 테이블에 검색어 저장하는 쿼리 -->
+	<insert id="saveSearchHistory" parameterType="String">
+	    INSERT INTO SEARCH_HISTORY (ID, KEYWORD, SEARCH_DATE)
+    	VALUES (SEARCH_HISTORY_SEQ.NEXTVAL, #{keyword}, SYSDATE)
+	</insert>
 
 
 

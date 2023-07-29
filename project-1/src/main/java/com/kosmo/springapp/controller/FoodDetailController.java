@@ -318,9 +318,17 @@ public class FoodDetailController {
 		 
 		 List<String> takeList = Arrays.asList(map.get("takePurpose").split(","));
 		 List<String> foodList = Arrays.asList(map.get("takeFood").replaceAll("amp;","").split(","));
+         for (int i = 0; i < takeList.size(); i++) {
+             takeList.set(i, takeList.get(i).trim());
+         }
+         for (int i = 0; i < foodList.size(); i++) {
+        	 foodList.set(i, foodList.get(i).trim());
+         }
 		 Map<String,List<String>> userMap = new HashMap<>();
 		 userMap.put("takePurpose", takeList);
+		 System.out.println("userMap: takePurpose : "+userMap.get("takePurpose"));
 		 userMap.put("takeFood", foodList);
+		 System.out.println("userMap: takeFood : "+userMap.get("takeFood"));
 		 MemberDTO memberDto = loginService.selectOne(req);
 		 if(memberDto.getGender().equals("M")) {
 			 AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReportM(userMap);
@@ -336,6 +344,35 @@ public class FoodDetailController {
 		 }
 		 return "AnalyzeReportResult";
 	 }
+	 @PostMapping("/analyzeMyReportReLoad.do")
+	 public String analyzeMyReportReLoad(@RequestParam Map<String,String> map,Model model,HttpServletRequest req,HttpServletResponse resp) {
+		 
+		 List<String> takeList = Arrays.asList(map.get("takePurpose").split(","));
+         for (int i = 0; i < takeList.size(); i++) {
+             takeList.set(i, takeList.get(i).trim());
+         }
+		 List<String> foodList = Arrays.asList(map.get("takeFood").replaceAll("amp;","").split(","));
+         for (int i = 0; i < foodList.size(); i++) {
+        	 foodList.set(i, foodList.get(i).trim());
+         }
+		 Map<String,List<String>> userMap = new HashMap<>();
+		 userMap.put("takePurpose", takeList);
+		 System.out.println("userMap: takePurpose : "+userMap.get("takePurpose"));
+		 userMap.put("takeFood", foodList);
+		 System.out.println("userMap: takeFood : "+userMap.get("takeFood"));
+		 MemberDTO memberDto = loginService.selectOne(req);
+		 if(memberDto.getGender().equals("M")) {
+			 AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReportM(userMap);
+			 model.addAttribute("memberDto",memberDto);
+			 model.addAttribute("resultListDto",resultListDto);
+		 }
+		 else if(memberDto.getGender().equals("F")) {
+			 AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReportF(userMap);
+			 model.addAttribute("memberDto",memberDto);
+			 model.addAttribute("resultListDto",resultListDto);
+		 }
+		 return "AnalyzeReportResult";
+	 }
 	 
 	 @GetMapping("/searchMyFood.do")
 	 @ResponseBody
@@ -344,6 +381,10 @@ public class FoodDetailController {
 		 return nameList;
 	 }
 	 
-	 
+	 @GetMapping("/deleteAnalyzeReport.do")
+	 @ResponseBody
+	 public int deleteAnalyzeReport(@RequestParam String analyzeno) {
+		 return analyzeMyReportServiceImpl.deleteAnalyzeReport(Integer.parseInt(analyzeno));
+	 }
 	 
 }

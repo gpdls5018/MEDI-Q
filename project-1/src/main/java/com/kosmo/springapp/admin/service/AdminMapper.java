@@ -44,9 +44,6 @@ public interface AdminMapper {
 	int scount_2days_ago();
 	int scount_1days_ago();
 	int scount_0days_ago();
-
-	// 연령대별 회원 가져오기
-	List<Map<String, Object>> getAgeData();
 	
 	///////////////////////////////////////////////////DB관련
 	
@@ -57,8 +54,14 @@ public interface AdminMapper {
 	List<Map<String, Object>> getInfoFromNut();
 	List<Map<String, Object>> getInfoFromIng();
 
+	// 영양소 Top10 검색수 가져오기
+	int getNutTop10s(String name);
+
+	//////////////////////////////////////////////////분석결과
 	
+	// 분석 결과 가져오기
 	
+	List<Map<String, Object>> getInfoFromAnalyzeTable();
 	
 	
 	

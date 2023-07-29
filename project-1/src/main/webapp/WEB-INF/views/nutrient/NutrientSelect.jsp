@@ -61,7 +61,7 @@
     
         .tab {
             display: none;
-            padding: 20px;
+            padding: 0 20px 20px 20px;
             border: 1px solid #ddd;
             border-top: none;
         }
@@ -128,17 +128,15 @@
 		}
 		
 		/* 검색창 스타일 추가 */
-
 		.search {
 		  display: flex;
 		}
 		
 		.searchTerm {
-		  width: 500px;
 		  border-right: none;
 		  padding: 5px;
-		  height: 50px;
-		  border-radius: 10px 0 0 10px;
+		  height: 64px;
+		  border-radius: 32px;
 		  outline: none;
 		  /*border: 3px solid #EF605D;*/
 		}
@@ -148,13 +146,13 @@
 		}
 		
 		.searchButton {
-		  width: 60px;
-		  height: 50px;
+		  width: 124px;
+		  height: 64px;
 		  /*border: #EF605D;*/
 		  background: #EF605D;
 		  text-align: center;
 		  color: #fff;
-		  border-radius: 0 10px 10px 0;
+		  border-radius: 32px;
 		  cursor: pointer;
 		  font-size: 20px;
 		}
@@ -175,8 +173,8 @@
 }
 #contentInfoCon .content-tit {
     color: #222;
-    font-size: 50px;
-    font-weight: 700;
+    font-size: 45px;
+    font-weight: bold;
     line-height: 1.36;
     letter-spacing: -0.02em;
     margin-top: 37px;
@@ -193,7 +191,7 @@
 }
 .tsarea {
 	position: absolute;
-	width: 700px;
+	width: 1000px;
 	height: 250px;
 	top:170px;
 	left:50px;
@@ -212,25 +210,24 @@
                 <div class="visual-img-con animatedleft"></div>	
 
         <div class="tsarea">
-            <p class="content-sub-tit">Global Healthcare</p>
-            <h3 class="content-tit" style="text-align:left; margin-left: 50px;">
-                <p style="font-weight: 300;">AI 알고리즘 기반의</p>
-                <span>개인 맞춤형 헬스케어</span>
+            <h3 class="content-tit" style="text-align:left; margin-left: 150px;">
+                <span>인기 성분 Top 10</span>
+                <p style="font-weight: 500; font-size: 23px; margin-top: 20px; color:gray">800개 영양성분 중 가장 인기있는 100개 성분의 Best 제품을 만나보세요</p>
             </h3>
         </div>
     </aside>
-	
 
 	<!-- 검색창 -->
-	<div class="search d-flex justify-content-center" style="padding: 150px 0px 80px; background-color: #fdfbf6;">
-	    <input id="searchInput" style="font-size:17px;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
-	    <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
-   	    </button>
-    </div>
+	<div class="d-flex justify-content-center" style="background-color: #fdfbf6;">
+		<div class="search d-flex justify-content-center" style="padding: 150px 0px 80px; position: relative; width: 960px;">
+		    <input id="searchInput" style="font-size:20px; width: 100%;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
+		    <button type="submit" class="searchButton" style="position: absolute; right: 0;">
+	        <i class="fa fa-search"></i>
+	   	    </button>
+	    </div>
+	</div>
 
-	
-    <div class="container pb-5" style="margin-top: 50px;">
+    <div class="container pb-5" style="margin-top: 10px;">
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
@@ -247,7 +244,7 @@
                 </li>
             </ul>
         </div>
-        <div class="pt-2">
+        <div>
             <div id="popular" class="tab active border-0">
                 <!-- 인기성분에 해당하는 상자 내용 -->
                 <!-- 이미지 -->
@@ -390,6 +387,20 @@
 	                var name = ui.item.value.trim();
 	                var url = "/NutrientDetail.do?name="+encodeURIComponent(name);
 	                window.location.href = url; // 페이지를 해당 URL로 이동합니다.
+	                
+	             	// 검색어 서버에 전송
+	                $.ajax({
+	                    url: "/search.do",
+	                    method: "POST",
+	                    contentType: "application/json",
+	                    data: JSON.stringify(name),
+	                    success: function(response) {
+	                        console.log("Search history saved");
+	                    },
+	                    error: function(err) {
+	                        console.error("Error saving search history:", err);
+	                    }
+	                });
 	            },
 	            focus : function(event, ui) {    //포커스 가면
 	                return false;//한글 에러 잡기용도로 사용됨
@@ -409,8 +420,11 @@
 	                //console.log(event);
 	            },
 	            open: function(event, ui) {
-	                $(this).autocomplete("widget").css("width", "494px");
-	                $(this).autocomplete("widget").css("text-align","center");
+	                var autocompleteWidget = $(this).autocomplete("widget");
+	                autocompleteWidget.css("width", "905px");
+	                autocompleteWidget.css("text-align", "center");
+	                autocompleteWidget.css("left", "50%");  // 왼쪽 위치를 50%로 설정하여 가로 중앙에 배치
+	                autocompleteWidget.css("transform", "translateX(-50%)");  // 반 너비만큼 이동하여 가운데로 정렬
 	            }
 	        });
 

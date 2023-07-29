@@ -47,11 +47,14 @@
 	</div>
         <h2 class="text-primary font-weight-bold mt-5">흡연 유형 평가</h2>
         <small><strong class="small font-weight-bold text-black-50">평가도구 원문: Why smoking test</strong></small>
-        <p class="mt-2" style="font-size: 1rem">
-            모두 동일한 담배를 피우고 있기는 하지만 담배를 피워서 얻고자 하는 효과는 흡연자마다 다릅니다.<br/>
-            지금 당신이 담배를 피우고 있는 이유는 무엇일까요?<br/> 
-            나도 모르고 있는 나의 흡연유형을 다음의 평가를 통해서 알려드립니다
-        </p>
+        <div class="d-flex justify-content-between">
+	        <p class="mt-2" style="font-size: 1rem">
+	            모두 동일한 담배를 피우고 있기는 하지만 담배를 피워서 얻고자 하는 효과는 흡연자마다 다릅니다.<br/>
+	            지금 당신이 담배를 피우고 있는 이유는 무엇일까요?<br/> 
+	            나도 모르고 있는 나의 흡연유형을 다음의 평가를 통해서 알려드립니다
+	        </p>
+	        <button class="btn btn-outline-primary py-0" style="height: 40px" onclick="javascript:result();">최근 결과 확인하기</button>
+	    </div>
         <div class="line"></div>
 	    <div>
 	        <table>

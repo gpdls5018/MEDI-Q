@@ -23,18 +23,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 <style>
+body{
+	background-color: #fdfbf6;
+}
     .effect-custom-font {
       font-family : Noto Sans KR, sans-serif;
     }
     .change-style{
-      font-size:15px;
+      font-size:14px;
       cursor:pointer;
       border-radius: 15px;
-      color:#939393
+      color:#9c9c9c;
+      margin-left: 550px;
     }
     .change-style:hover {
-      background-color:#ff4b4b;
-      color: white;
+      color: black;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px gray;
     }
     .card {
       background-color: white;
@@ -47,10 +52,9 @@
       border-radius: 15px;
     }
     .card-checked {
-      background-color:#FFDDD0;
-      border: 3px solid #ff4b4b;
-      color: #ff4b4b;
-      border-radius: 15px;
+      box-shadow: 0 0 0 3px #ff4b4b;
+	  color: #ff4b4b;
+	  border-radius: 15px;
     }
     .food-li {
       background-color: white;
@@ -59,10 +63,14 @@
       flex: 0 0 25%;
     }
     .food-li:hover {
-      border: #ff4b4b solid 2px;
+      box-shadow: 0 0 0 3px gray;
+	  color: black;
+	  border-radius: 15px;
     }
     .food-li-checked {
-      border: #ff4b4b solid 2px;
+      box-shadow: 0 0 0 3px #ff4b4b;
+	  color: #ff4b4b;
+	  border-radius: 15px;
     }
     
     .check-effect-tag {
@@ -77,65 +85,94 @@
       color:#ff4b4b;
       background-color:#ffece5;
     }
+    /*ts 스타일 공간*/
+    .my-title {
+    	position:relative;
+    	background-image: url("https://www.hectohealthcare.com/resources/images/layout/sub_visual_brand.jpg");
+    	background-repeat: no-repeat;
+    	background-size: cover;
+    	margin-top: 70px;
+    }
+    .tsanalyze {
+    	display: flex;
+    	flex-direction:column;
+    	justify-content:center;
+    	border-radius: 40px 40px 0px 0px;
+		box-shadow: rgba(108, 108, 108, 0.15) 0px -1px 10px;
+		margin-top: 50px;
+    }
+    .jumbotron {
+    	background-color: #f6f6f6;
+    	border-radius:15px;
+    	width:100%;
+    	height:120px; 
+    	padding: 24px 20px;
+    }
 </style>
 <body>
-	<div class="container mt-5 effect-custom-font">
-		<div class="my-title d-flex justify-content-between m-auto" style="width:80%;">
-			<div class="mt-5" style="font-size:40px;"><span style="background-color:#ffdcdc;">${UserName}</span>님의 분석 리포트</div>
+		<div class="container my-3" style="min-height: 880px; max-width: 920px; background-color: white; border-radius: 15px;">
+			<div class="my-title d-flex effect-custom-font justify-content-between" style="align-items:center; width:100%;height:200px;">
+				<div class="" style="font-size:32px; margin-left: 80px;"><span style="font-size:40px; color:#FDCDBC;">${UserName} </span> 님의 <br>영양제 분석 리포트</div>
+			</div>
+		    <!--Q1#-->
+		    <div class="tsanalyze">
+			    <form id="sendReportData" action="<c:url value="/analyzeMyReport.do"/>" method="post" onsubmit="preventSubmit(event)">
+			    <div class="m-5" style="font-size:26px; font-weight: bold; margin-left: 50px;">${UserName}님의 영양제 관련 취향을 선택해주세요.</div>
+					<div class="m-5 d-flex justify-content-around" style="flex-direction: column;">
+					
+						<div class="jumbotron">
+							<div class="d-flex">
+								<div class="effect-custom-font" style="font-size:20px;">섭취 목적</div>
+								<div class="take-purpose-div">
+			            			<span style="color:#ff4b4b; font-size:20px; font-weight: bold; margin-left: 20px;" class="take-purpose-span"></span>
+			          			</div>
+			          			<div id="take-purpose" class="effect-custom-font p-2 change-style">변경하기 →</div>
+							</div>
+			        		<div id="choose-purposes" class="mt-2" style="font-weight:bold; font-size:16px; color:#7B7B7B;"></div>
+						</div>
+						
+				      	<div class="jumbotron">
+							<div class="d-flex">
+								<div class="effect-custom-font" style="font-size:20px;">선호 제형</div>
+								<div class="effect-custom-font">
+				           	 		<span class="prefer-shape-span" style="color:#ff4b4b; font-size:20px; font-weight: bold; margin-left: 20px;"></span>
+				          		</div>
+					       		<div id="prefer-shape" class="effect-custom-font p-2 change-style">변경하기 →</div>
+							</div>
+				       		<div id="choose-shapes" class="mt-2" style="font-weight:bold; font-size:16px; color:#7B7B7B;"></div>
+						</div>
+						
+				      	<div class="jumbotron">
+							<div class="d-flex">
+								<div class="effect-custom-font" style="font-size:20px;">선호 유형</div>
+								<div class="effect-custom-font">
+						            <span class="prefer-type-span" style="color:#ff4b4b; font-size:20px; font-weight: bold; margin-left: 20px;"></span>
+						        </div>
+			        			<div id="prefer-type" class="effect-custom-font p-2 change-style">변경하기 →</div>	
+							</div>
+			        		<div id="choose-types" class="mt-2" style="font-weight:bold; font-size:16px; color:#7B7B7B;"></div>
+						</div>
+					</div>
+				    <!--Q2#-->
+				    <div class="question-2 mx-5 my-1 effect-custom-font">
+				      <div style="font-size:26px; font-weight: bold;">현재 먹고 있는 영양제를 등록해보세요!
+				      	<button class="btn btn-warning m-5 effect-custom-font" style="border-radius:15px;" id="search-myFood">영양제 검색하러 가기-></button>
+				      </div>
+				      <div class="jumbotron food-selected-list" style="height:500px;">
+				        <ul class="list-unstyled d-flex"  style="flex-wrap: wrap;" id="last-choose-food-data">
+				        
+				        </ul>
+				      </div>
+				    </div>
+			    	<!-- 분석하기 -->
+			    	<div class="m-5">
+			      		<button class="btn btn-danger" style="border-radius:15px; width:100%" id="analyze-myFood">분석하기</button>
+			    	</div>
+			    	<input type="hidden" name="takePurpose" id="takePurPose" value=""/>
+			    	<input type="hidden" name="takeFood" id="takeFood" value=""/>
+			   </form>
+			</div>
 		</div>
-		<div class="m-5" style="height:3px;background-color:#ccc"></div>
-    <!--Q1#-->
-    <form id="sendReportData" action="<c:url value="/analyzeMyReport.do"/>" method="post" onsubmit="preventSubmit(event)">
-    <div class="m-5" style="font-size:30px;"><span>Q1#</span> 영양제 관련 취향을 선택해주세요.</div>
-		<div class="m-5 d-flex justify-content-around">
-			<div class="jumbotron p-4" style="border-radius:15px;width:30%;height:200px;">
-				<div class="d-flex">
-					<div class="effect-custom-font" style="font-size:35px;">1️⃣ 섭취 목적</div>
-					<div class="take-purpose-div p-2">
-            			<span style="color:#ff4b4b;font-size:20px;" class="take-purpose-span"></span>
-          			</div>
-				</div>
-        		<div id="take-purpose" class="effect-custom-font p-2 change-style">변경하기</div>
-        		<div id="choose-purposes" class="mt-2"></div>
-			</div>
-	      	<div class="jumbotron p-4" style="border-radius:15px;width:30%;height:200px;">
-				<div class="d-flex">
-					<div class="effect-custom-font" style="font-size:35px;">2️⃣ 선호 제형</div>
-					<div class="effect-custom-font p-2">
-	           	 		<span class="prefer-shape-span" style="color:#ff4b4b;font-size:20px;"></span>
-	          		</div>
-				</div>
-	       		<div id="prefer-shape" class="effect-custom-font p-2 change-style">변경하기</div>
-	       		<div id="choose-shapes" class="mt-2"></div>
-			</div>
-	      	<div class="jumbotron p-4" style="border-radius:15px;width:30%;height:200px;">
-				<div class="d-flex">
-					<div class="effect-custom-font" style="font-size:35px;">3️⃣ 선호 유형</div>
-					<div class="effect-custom-font p-2">
-			            <span class="prefer-type-span" style="color:#ff4b4b;font-size:20px;"></span>
-			        </div>
-				</div>
-        		<div id="prefer-type" class="effect-custom-font p-2 change-style">변경하기</div>
-        		<div id="choose-types" class="mt-2"></div>
-			</div>
-		</div>
-	    <!--Q2#-->
-	    <div class="question-2 m-5 effect-custom-font">
-	      <div style="font-size:30px;"><span>Q2#</span> 현재 먹고 있는 영양제를 등록해보세요!<button class="btn btn-warning m-5 effect-custom-font" style="border-radius:15px;" id="search-myFood">영양제 검색하러 가기-></button></div>
-	      <div class="jumbotron food-selected-list" style="height:500px;">
-	        <ul class="list-unstyled d-flex"  style="flex-wrap: wrap;" id="last-choose-food-data">
-	        
-	        </ul>
-	      </div>
-	    </div>
-    	<!-- 분석하기 -->
-    	<div class="m-5">
-      		<button class="btn btn-danger" style="border-radius:15px; width:100%" id="analyze-myFood">분석하기</button>
-    	</div>
-    	<input type="hidden" name="takePurpose" id="takePurPose" value=""/>
-    	<input type="hidden" name="takeFood" id="takeFood" value=""/>
-   </form>
-</div>
 
 
   <!-- modal 등록하기 : 선호 유형 -->
@@ -148,7 +185,7 @@
 	            	<span aria-hidden="true">&times;</span>
 	          	</button>
   			</div>
-  			<div class="ml-5" style="color:#545454">중복 선택이 가능합니다. (최대 3개)</div>
+  			<div class="ml-5" style="color:#545454">중복 선택이 가능합니다.</div>
   			<div class="modal-body p-2" style="height:200px;flex:1;">
   				<div class="check-effect-tags d-flex m-3" style="flex-wrap: wrap;">
 			        <span class="check-effect-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">비싸더라도 좋은 원료</span>
@@ -358,15 +395,19 @@
 	        	</div>
         	</div>
         	<div class="modal-body">
-		        <div class="ml-5">
+		        <div class="ml-5" style="min-height: 150px;">
 		          <ul class="list-unstyled d-flex" id="searchFoodList" style="flex-wrap: wrap;">
 		            <li class="food-li m-2" style="text-align: center;flex-basis: 100px;display:None">
 		              <img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="width:150px;height:150px;border-radius: 15px;">
-		              <div style="font-size: 15px;color: #939393;width:150px;"></div>
+		              <div style="font-size: 15px; color: #939393;width:150px;"></div>
 		            </li>
 		          </ul>
-	          </div>
-      		</div>
+	          	</div>
+				<div class="mt-5 ml-3" style="min-height: 150px;" id="selected-foods">
+				    <h5 class="modal-title mx-2" style="border-top: 1px solid gray;">내가 선택한 영양제 👇</h5>
+				    <ul id="selected-food-list" class="list-unstyled d-flex" style="flex-wrap: wrap;"></ul>
+				</div>
+        	</div>
       		<div class="modal-footer">
         		<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
         		<button type="button" class="btn btn-primary" id="save-take-food">저장하기</button>
@@ -374,9 +415,10 @@
     	</div>
 	</div>
   </div>
-</body>
+
 <script>
-	
+
+
   $("#take-purpose").click(function(e){
     e.preventDefault();
     $('#take-purpose-modal').modal("show");
@@ -396,6 +438,54 @@
       console.log($(this).html());
       $(this).toggleClass('check-effect-tag-select');
   });
+  
+  
+// (내가선택한 영양제 목록 스크립트)
+var selectedFoods = [];
+
+// 영양제 선택 시 이벤트
+$(document).on("click", ".food-li", function() {
+  var selectedFoodName = $(this).find("div").text().trim();
+  var selectedFoodImage = $(this).find("img").attr("src");
+
+  // 객체에 영양제 이름과 이미지 URL 추가
+  var foodObj = {
+    name: selectedFoodName,
+    image: selectedFoodImage
+  };
+
+  // 체크 여부 확인
+  var isChecked = $(this).hasClass("checked");
+
+  if (isChecked) {
+    // 이미 선택되어 있던 영양제를 클릭하면 선택 해제
+    // 배열에서 해당 영양제를 제거
+    var index = selectedFoods.findIndex(function(food) {
+      return food.name === selectedFoodName;
+    });
+    selectedFoods.splice(index, 1);
+    $(this).removeClass("checked");
+
+    // Remove the corresponding item from the selected list
+    $("#selected-food-list li").each(function() {
+      if ($(this).find("span").text().trim() === selectedFoodName) {
+        $(this).remove();
+        return false; // Break the loop after finding and removing the item
+      }
+    });
+  } else {
+    // 새로운 영양제를 선택할 경우 배열에 추가
+    selectedFoods.push(foodObj);
+    $(this).addClass("checked");
+
+    // Add the selected item to the selected list
+    var listItem = $("<li>").css("margin", "10px").css("box-shadow", "2px 2px 5px gray").css("border-radius", "15px");
+    listItem.append($("<img>").attr("src", selectedFoodImage).css("width", "160px").css("height", "160px").css("border-radius", "15px"));
+    listItem.append($("<br>"));
+    listItem.append($("<span>").css("font-size", "13px").css("margin-left", "10px").text(selectedFoodName));
+    $("#selected-food-list").append(listItem);
+  }
+});
   
 
   const ulDiv = document.querySelector('#searchFoodList');
@@ -449,48 +539,57 @@
   });
 
 ///////////////////////////////////////섭취목적
-  $("#take-purpose-modal .card").click(function(){
-    if($(this).hasClass("card")) {
-      $(this).toggleClass("card-checked");
-    }
-  });
-  let takePurPoses= Array();
-  $('#save-take-purpose').click(function() {
-    var takePurPose = document.querySelectorAll('#take-purpose-modal .card-checked');
-    takePurPoses = [];
-    for(var i=0; i<takePurPose.length;i++) {
-      console.log(takePurPose[i].querySelector(".card-title").innerHTML);
-      takePurPoses.push(takePurPose[i].querySelector(".card-title").innerHTML);
-    }
-    document.querySelector('#choose-purposes').innerHTML = takePurPoses;
-    document.querySelector(".take-purpose-span").innerHTML = takePurPoses.length;
-    $('#take-purpose-modal').modal('hide');
-  });
+	  $("#take-purpose-modal .card").click(function(){
+	    if($(this).hasClass("card")) {
+	    	if ($(this).hasClass("card-checked") || $("#take-purpose-modal .card-checked").length < 3) {
+	      $(this).toggleClass("card-checked");
+	  	  }
+	    }
+	  });
+ 
+	  let takePurPoses= Array();
+	  $('#save-take-purpose').click(function() {
+	    var takePurPose = document.querySelectorAll('#take-purpose-modal .card-checked');
+	    takePurPoses = [];
+	    for(var i=0; i<takePurPose.length;i++) {
+	      console.log(takePurPose[i].querySelector(".card-title").innerHTML);
+	      takePurPoses.push(takePurPose[i].querySelector(".card-title").innerHTML);
+	    }
+	    document.querySelector('#choose-purposes').innerHTML = takePurPoses;
+	    document.querySelector(".take-purpose-span").innerHTML = takePurPoses.length;
+	    $('#take-purpose-modal').modal('hide');
+	  });
+
 ///////////////////////////////////////
 
 
 ///////////////////////////////////////선호제형
-  $("#prefer-shape-modal .card").click(function(){
-    if($(this).hasClass("card")) {
-      $(this).toggleClass("card-checked");
-    }
-  });
-  let preferShapes= Array();
-  $('#save-prefer-shape').click(function() {
-    var preferShape = document.querySelectorAll('#prefer-shape-modal .card-checked');
-    preferTypes = [];
-    for(var i=0; i<preferShape.length;i++) {
-      console.log(preferShape[i].querySelector(".card-title").innerHTML);
-      preferShapes.push(preferShape[i].querySelector(".card-title").innerHTML);
-    }
-    document.querySelector('#choose-shapes').innerHTML = preferShapes;
-    document.querySelector(".prefer-shape-span").innerHTML = preferShapes.length;
-    $('#prefer-shape-modal').modal('hide');
-  });
+	  $("#prefer-shape-modal .card").click(function(){
+	    if($(this).hasClass("card")) {
+	    	if ($(this).hasClass("card-checked") || $("#prefer-shape-modal .card-checked").length < 3) {
+	      $(this).toggleClass("card-checked");
+	  		}
+	    }
+	  });
+
+	  let preferShapes= Array();
+	  $('#save-prefer-shape').click(function() {
+	    var preferShape = document.querySelectorAll('#prefer-shape-modal .card-checked');
+	    preferTypes = [];
+	    for(var i=0; i<preferShape.length;i++) {
+	      console.log(preferShape[i].querySelector(".card-title").innerHTML);
+	      preferShapes.push(preferShape[i].querySelector(".card-title").innerHTML);
+	    }
+	    document.querySelector('#choose-shapes').innerHTML = preferShapes;
+	    document.querySelector(".prefer-shape-span").innerHTML = preferShapes.length;
+	    $('#prefer-shape-modal').modal('hide');
+	  });
+
+
 ///////////////////////////////////////
 
 //////////////////////////////////////선호 유형
-  let preferTypes= Array();
+ let preferTypes= Array();
   $('#save-prefer-type').click(function() {
     var preferType = document.querySelectorAll('.check-effect-tag-select');
     preferTypes = [];
@@ -507,10 +606,7 @@
 
 
 
-
-
-
-
+/*
   var takeFoods = Array();
   $('#save-take-food').click(function() {
     var takeFood = document.querySelectorAll('#searchFoodList .food-li-checked');
@@ -523,6 +619,38 @@
     }
     $('#take-foodList-modal').modal('hide');
   });
+ */
+ var takeFoods = Array();
+ $('#save-take-food').click(function() {
+   var takeFood = document.querySelectorAll('#searchFoodList .food-li-checked');
+   var foodContainer = $('.food-selected-list ul');
+
+   // Get the existing food names in the foodContainer
+   var existingFoodNames = foodContainer.find('span').map(function() {
+     return $(this).text().trim();
+   }).get();
+
+   for (var i = 0; i < takeFood.length; i++) {
+     var foodName = takeFood[i].querySelector("div").innerHTML;
+
+     // Check if the food name already exists in the foodContainer
+     if (existingFoodNames.indexOf(foodName) === -1) {
+       console.log(foodName);
+       takeFoods.push(foodName);
+
+       // Get the selected food image URL
+       var foodImage = takeFood[i].querySelector("img").getAttribute("src");
+
+       // Append selected food with image to the list
+       var listItem = $("<li>").css("margin", "10px");
+       listItem.append($("<img>").attr("src", foodImage).css("width", "160px").css("height", "160px").css("border-radius", "15px"));
+       listItem.append($("<br>"));
+       listItem.append($("<span>").css({"font-size": "13px", "margin-left": "10px", "display ": "inline-block", "width": "150px","word-break": "break-word"}).text(foodName));
+       foodContainer.append(listItem);
+     }
+   }
+   $('#take-foodList-modal').modal('hide');
+ });
 
   
   function preventSubmit(event) {
@@ -601,3 +729,5 @@ preferTypeSpan.addEventListener('DOMSubtreeModified', updateAnalyzeButtonState);
 lastChooseFoodData.addEventListener('DOMSubtreeModified', updateAnalyzeButtonState);
 
 </script>
+	</body>
+</html>

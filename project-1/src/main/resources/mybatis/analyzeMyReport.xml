@@ -17,7 +17,7 @@
  		SELECT n_name FROM nutrient
  	</select>
  	<insert id="saveAnalyzeReport" parameterType="analyzeReportDto">
- 		INSERT INTO ANALYZETABLE VALUES (#{userId},#{takePurposes},#{takeFoods},#{score},SYSDATE)
+ 		INSERT INTO ANALYZETABLE VALUES (ANALYZETABLE_SQ.NEXTVAL,#{userId},#{takePurposes},#{takeFoods},#{score},SYSDATE)
  	</insert>
  	<select id="selectAnalyzeReport" parameterType="String" resultType="analyzeReportDto">
  		SELECT *
@@ -26,5 +26,12 @@
  	</select>
 	<select id="selectAnalyzeReportAll" parameterType="String" resultType="analyzeReportDto">
 		SELECT * FROM ANALYZETABLE WHERE userId= #{id} ORDER BY ANALYZEDATE DESC 
+ 	</select>
+ 	<delete id="deleteAnalyzeReport" parameterType="Int">
+ 		DELETE FROM ANALYZETABLE WHERE analyzeno = #{analyzeno}
+ 	</delete>
+ 	
+ 	<select id="selectAnalyzeReportCount" parameterType="String" resultType="int">
+ 		SELECT COUNT(*) FROM ANALYZETABLE WHERE USERID=#{id}
  	</select>
 </mapper>

@@ -16,7 +16,10 @@
 	<div class="jumbotron m-5 effect-custom-font" style="font-size:40px;">AI를 이용한 나의 질병 예측</div>
 	
 	<div class="jumbotron m-5 effect-custom-font">
-		<a href="/DiabetesPredict.do?userId="> 1. 당뇨병 예측하기 >>> 클릭시 이동</a>
+		<a href="/DiabetesPredict.do?"> 1. 당뇨병 예측하기 >>> 클릭시 이동</a>
+	</div>
+		<div class="jumbotron m-5 effect-custom-font">
+		<a href="/CardiovascularPredict.do?"> 2. 심장질환 예측하기 >>> 클릭시 이동</a>
 	</div>
 </div>
 

@@ -62,9 +62,14 @@
 		ORDER BY count DESC
 	</select>
 	<select id="selectReviewByUserId" parameterType="String" resultType="Map">
-		SELECT FOODTABLE.NO NO,PRODUCTNAME,content,R_REGIDATE,FOODTABLE.IMGURL IMGURL
+		SELECT FOODTABLE.NO NO,PRODUCTNAME,content,R_REGIDATE,FOODTABLE.IMGURL IMGURL,STARSCORE
                           FROM REVIEWTABLE RIGHT OUTER JOIN FOODTABLE 
                           ON REVIEWTABLE.R_PRODUCTNO =FOODTABLE.NO  
                           WHERE R_ID = #{userId}
+                          GROUP BY FOODTABLE.NO,PRODUCTNAME,content,R_REGIDATE,FOODTABLE.IMGURL,STARSCORE
 	</select>
+	
+	<delete id="deleteReview" parameterType="Map">
+		DELETE FROM REVIEWTABLE WHERE R_ID=#{id} AND R_PRODUCTNO=#{no}
+	</delete>
 </mapper>

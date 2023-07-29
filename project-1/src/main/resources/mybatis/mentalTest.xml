@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 매퍼 파일 -->
+<mapper namespace="com.kosmo.springapp.service.MentalTestMapper">
+
+	<select id="selectResult" parameterType="String" resultType="Map">
+		select * from MENTALTEST where id=#{id}
+	</select>
+	
+	<select id="selectFlag" parameterType="String" resultType="int">
+		SELECT COUNT(*) MENTALTEST WHERE ID=#{id}
+	</select>
+	
+	<insert id="insertResult" parameterType="Map">
+		INSERT INTO MENTALTEST VALUES(#{id},#{test1},#{test2},#{test3},#{test4})
+	</insert>
+	
+	<update id="updateResult" parameterType="Map">
+		<if test="test1 != null">
+			UPDATE MENTALTEST SET TEST1=#{test1} WHERE ID=#{id}
+		</if>
+		<if test="test2 != null">
+			UPDATE MENTALTEST SET TEST2=#{test2} WHERE ID=#{id}
+		</if>
+		<if test="test3 != null">
+			UPDATE MENTALTEST SET TEST3=#{test3} WHERE ID=#{id}
+		</if>
+		<if test="test4 != null">
+			UPDATE MENTALTEST SET TEST4=#{test4} WHERE ID=#{id}
+		</if>
+	</update>
+</mapper>

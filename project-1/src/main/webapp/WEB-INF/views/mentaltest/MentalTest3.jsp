@@ -48,11 +48,14 @@
 	
         <h2 class="text-primary font-weight-bold mt-5">알코올 사용장애 평가(AUDIT-K)</h2>
         <small><strong class="small font-weight-bold text-black-50">평가도구원문 : Alcohol Use Disorder Identification Test-Korea(AUDIT-K)</strong></small>
-        <p class="mt-2" style="font-size: 1rem">
-            다음 문항은 알코올 의존 정도를 파악하기 위한 것입니다.<br/>
-            질문에 나오는 1잔이란 술의 종류와 관계없이 1잔의 양을 의미합니다.<br/>
-            각 문항을 읽고, 자신의 현재 상태를 가장 잘 나타내는 것에 표시해주시기 바랍니다.
-        </p>
+        <div class="d-flex justify-content-between">
+	        <p class="mt-2" style="font-size: 1rem">
+	            다음 문항은 알코올 의존 정도를 파악하기 위한 것입니다.<br/>
+	            질문에 나오는 1잔이란 술의 종류와 관계없이 1잔의 양을 의미합니다.<br/>
+	            각 문항을 읽고, 자신의 현재 상태를 가장 잘 나타내는 것에 표시해주시기 바랍니다.
+	        </p>
+	        <button class="btn btn-outline-primary py-0" style="height: 40px" onclick="javascript:result();">최근 결과 확인하기</button>
+	    </div>
         <div class="line"></div>
 	    <div>
 	        <table>
@@ -69,7 +72,7 @@
 	                    </td>
 	                </tr>
 	                <tr>
-	                    <th class="pt-4"><span class="text-primary">01</span> 얼마나 자주 술을 마십니까?</th>
+	                    <th><span class="text-primary">01</span> 얼마나 자주 술을 마십니까?</th>
 	                </tr>
 	                <tr class="border-bottom tr-content">
 	                    <td class="py-4">

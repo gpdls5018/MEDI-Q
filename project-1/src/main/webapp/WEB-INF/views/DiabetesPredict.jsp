@@ -24,7 +24,7 @@
 <jsp:include page="/WEB-INF/views/template/Top.jsp" />
 <div class="container effect-custom-font" >
 	<div class="m-5"style="height:50px;"></div>
-    <div class="m-5 display-4 effect-custom-font" style="text-align:center;">심혈관질환 수치 예측하기</div>
+    <div class="m-5 display-4 effect-custom-font" style="text-align:center;">당뇨병 수치 예측하기</div>
 	<div class="model-score m-4" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd>70%</kbd> 입니다</div>
     <div class="row">
         <div class="col-6">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="col mb-3">
-                    <strong>혈압</strong>
+                    <strong>혈압(평균)</strong>
                     <input type="text" class="form-control" id="bloodpress" name="bloodpress"  placeholder="혈압수치를 입력해주세요" value="${(healthInfoDto.bloodPressure_high + healthInfoDto.bloodPressure_low) / 2}" required>
                     <div class="invalid-feedback">
                         혈압수치를 입력해주세요
@@ -65,14 +65,14 @@
 
         <div class="col-6">
             <canvas id="drawing_canvas"></canvas>
-            <img src="<c:url value="/resources/images/basic/AI.jpg"/>" id="machineImage" style="width:100%;height:100%;border-radius:50%;"/>
+            <img src="<c:url value="/images/basic/AI.jpg"/>" id="machineImage" style="width:100%;height:100%;border-radius:50%;"/>
         </div>
     </div>
     <hr class="mt-5">
     <div class="effect-custom-font m-5">
     	<div class="title mb-5" style="font-size:30px;">
-    		<img src="<c:url value="/resources/images/mainicon.png"/>" style="width:30px;height:30px;">
-    		<img src="<c:url value="/resources/images/maintitle.png"/>" style="height:30px;">
+    		<img src="<c:url value="/images/mainicon.png"/>" style="width:30px;height:30px;">
+    		<img src="<c:url value="/images/maintitle.png"/>" style="height:30px;">
 										와 다른 질병을 예측해 보아요!</div>
     	<ul class="list-unstyled" style="line-height:300%">
     		<li class="mb-4"><div class="p-2" style="border-radius:40px;font-size:20px;background-color:#ff9558">심장질환 예측하기</div></li>

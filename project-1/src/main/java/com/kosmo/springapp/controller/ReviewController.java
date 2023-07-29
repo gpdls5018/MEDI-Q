@@ -45,4 +45,11 @@ public class ReviewController {
 		List<ReviewDTO> listDto = reviewServiceImpl.selectReviewByFoodNo(map);
 		return listDto;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/DeleteReview.do", method = RequestMethod.POST)
+	public int deleteReview(@RequestParam Map map) {
+		int delete = reviewServiceImpl.deleteReview(map);
+		return delete;
+	}
 }

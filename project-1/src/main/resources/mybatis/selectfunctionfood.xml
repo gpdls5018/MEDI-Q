@@ -64,8 +64,19 @@
 		)
 		WHERE ROWNUM &lt;= 10
 	</select>
+	<select id="selectFoodListFromHealthissue" parameterType="String" resultType="AvgStarScoreCountDTO">
+		select * from foodtable F JOIN (
+		    SELECT R_PRODUCTNO, AVG(STARSCORE) AS AVG_SCORE, COUNT(*) AS REVIEW_COUNT
+		    FROM REVIEWTABLE
+		    GROUP BY R_PRODUCTNO
+		)R ON F.NO = R.R_PRODUCTNO
+		where F.material like '%${healthissue}%' ORDER by R.AVG_SCORE + ((R.AVG_SCORE * R.REVIEW_COUNT)/1000) DESC, imgurl ASC
+	</select>
+	<select id="FoodListFromHealthissue" parameterType="String" resultType="AvgStarScoreCountDTO">
+		select * from foodtable where material like '%${healthissue}%' ORDER by imgurl ASC
+	</select>
 	<select id="RankingKeyWord" resultType="String">
-		SELECT KEYWORD FROM KEYWORD ORDER BY WORDCOUNT DESC
+		SELECT KEYWORD FROM KEYWORD WHERE ROWNUM &lt;= 5 ORDER BY WORDCOUNT DESC
 	</select>
 	<update id="selectKeyWord" parameterType="String" >
 		UPDATE KEYWORD SET WORDCOUNT = WORDCOUNT + 1 WHERE KEYWORD = '${foodname}'
