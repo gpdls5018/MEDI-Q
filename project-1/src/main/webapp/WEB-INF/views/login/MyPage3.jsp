@@ -131,7 +131,7 @@ body {
         font-weight: bold;
         margin-bottom: 10px;
         text-align: center;
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        /*text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);*/
     }
 
     .fontinfo {
@@ -208,7 +208,7 @@ body {
         font-weight: bold;
         margin-bottom: 10px;
         text-align: center;
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        /*text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);*/
     }
     .miniroom img {
         margin: 20px 0px 0px 20px;
@@ -1031,11 +1031,11 @@ body {
 					            <li class="item" id="special">
 					                <a href="#special" class="button">건강 특수 상태</a>
 					                <div class="subMenu">
-					                    <span class="btn btn-outline-secondary">흡연 중</span>
-					                    <span class="btn btn-outline-secondary">임신 중</span>
-					                    <span class="btn btn-outline-secondary">수유 중</span>
-					                    <span class="btn btn-outline-secondary">6개월 내 자녀계획 있음</span>
-					                    <span class="btn btn-outline-secondary">폐경기</span>
+					                    <span class="btn text-black-50">흡연 중</span>
+					                    <span class="btn text-black-50">임신 중</span>
+					                    <span class="btn text-black-50">수유 중</span>
+					                    <span class="btn text-black-50">6개월 내 자녀계획 있음</span>
+					                    <span class="btn text-black-50">폐경기</span>
 					                </div>
 					            </li>
 					            

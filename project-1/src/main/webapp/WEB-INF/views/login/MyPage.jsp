@@ -823,8 +823,8 @@ body {
 	                                            <strong></strong>
 	                                        </div>
 	                                        <div class="health mr-3 mb-4"style="font-size: 18px; font-weight: bold; ">
-	                                            <a href="javascript:progressDiary()">건강 다이어리</a>
-	                                            <a class="mt-3 mb-2" href="javascript:progressProfile()">건강 프로필</a>
+	                                            <a href="javascript:progressDiary()"><span class="badge rounded-pill text-white py-2 px-3" style="background-color: #fc79529f; font-size: 17px;">건강 다이어리</span></a>
+	                                            <a class="mt-3 mb-2" href="javascript:progressProfile()"><span class="badge rounded-pill text-white py-2 px-3" style="background-color: #fc79529f; font-size: 17px;">건강 프로필</span></a>
 	                                        </div>
 	                                    </div>
                                     </div>  
@@ -1163,11 +1163,11 @@ body {
 					            <li class="item" id="special">
 					                <a href="#special" class="button">건강 특수 상태</a>
 					                <div class="subMenu">
-					                    <span class="btn btn-outline-secondary">흡연 중</span>
-					                    <span class="btn btn-outline-secondary">임신 중</span>
-					                    <span class="btn btn-outline-secondary">수유 중</span>
-					                    <span class="btn btn-outline-secondary">6개월 내 자녀계획 있음</span>
-					                    <span class="btn btn-outline-secondary">폐경기</span>
+					                    <span class="btn text-black-50">흡연 중</span>
+					                    <span class="btn text-black-50">임신 중</span>
+					                    <span class="btn text-black-50">수유 중</span>
+					                    <span class="btn text-black-50">6개월 내 자녀계획 있음</span>
+					                    <span class="btn text-black-50">폐경기</span>
 					                </div>
 					            </li>
 					            
@@ -1378,8 +1378,8 @@ body {
 	var foodList = food=='[]' ? "" :food.split('},');
 
 	for(var i=0;i<foodList.length;i++){
-		var foodname = foodList[i].split(',')[0].split('=')[1];
-		var foodimg = i==foodList.length-1 ? foodList[i].split(',')[1].split('=')[1].split('}')[0] : foodList[i].split(',')[1].split('=')[1];
+		var foodname = foodList[i].split(',')[1].split('=')[1];
+		var foodimg = i==foodList.length-1 ? foodList[i].split(',')[2].split('=')[1].split('}')[0] : foodList[i].split(',')[2].split('=')[1];
 		var li = document.querySelector('.food-li').cloneNode(true);
 		li.style.display='';
 		console.log('check:',foodimg)
