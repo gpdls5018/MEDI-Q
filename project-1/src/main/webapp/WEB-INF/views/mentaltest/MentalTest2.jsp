@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="m" uri="/WEB-INF/tlds/common.tld" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <style>
         .line{
@@ -26,6 +28,11 @@
         }
 </style>
 <body>
+	<fmt:bundle basename="config.tokens">
+			<fmt:message key="secret-key" var="key"/>
+        </fmt:bundle>
+        <c:set var="token" value="${cookie['User-Token'].value }"/>
+	<c:set var="payload" value='${m:getTokenPayloads(token,key) }' />
 	
 	<div class="container" style="margin-top: 100px">
 	<!-- tap 화면 -->
@@ -45,6 +52,7 @@
 		    </li>
 		</ul>
 	</div>
+	
         <h2 class="text-primary font-weight-bold mt-5">흡연 유형 평가</h2>
         <small><strong class="small font-weight-bold text-black-50">평가도구 원문: Why smoking test</strong></small>
         <div class="d-flex justify-content-between">
@@ -427,7 +435,7 @@
     topBtn.onclick = (()=>{
     	window.scrollTo({ top: 0, behavior: "smooth" });  
     })
-    
+    console.log('//',${empty payload.sub})
     //흡연유형 결과 뿌리기
 	$('#resultM').click(function(){
 		$('#text').children().remove();
@@ -549,7 +557,10 @@
 	});
 
     function result(){
-    	console.log('test2')
+    	if(${empty payload.sub}){
+			alert('로그인 후에 이용 가능한 서비스 입니다');
+			return false;
+		}
     	$.ajax({
     		data:{name:"result",test:"test2"},
     		url:'<c:url value="/project/MentalResult.do"/>',
@@ -557,7 +568,7 @@
     		//dataType:'json'
     	}).done((result)=>{
     		console.log('success:',parseInt(result.split(' ')[0]))
-			
+			var text='';
 			if(parseInt(result.split(' ')[0]) >= 11){
 				text += `<h5 id="resultT" class="text-danger font-weight-bold mb-3"><img alt='느낌표' src='/images/basic/warning2.png'/>흡연유형 해석결과 당신은 자극형 입니다</h5>
 					<p id="resultC"><img alt='해결' src='/images/basic/solution.png'/><span class="font-weight-bold">대체 자극을 찾아라!</span><br/>
