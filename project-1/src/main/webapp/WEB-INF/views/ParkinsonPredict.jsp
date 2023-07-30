@@ -41,6 +41,7 @@
             method: "post"
         }).done(function(response) {
         	// 받아온 이미지 base64 데이터
+        	console.log(response.score);
             var imageBase64 = response.image_base64;
 
             // 이미지 생성 및 화면에 출력

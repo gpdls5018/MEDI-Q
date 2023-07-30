@@ -2,12 +2,18 @@ package com.kosmo.springapp.model;
 
 import org.apache.ibatis.type.Alias;
 
+import com.google.api.client.util.Objects;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@Data
+@EqualsAndHashCode(exclude = "no")
 @Setter
 @Getter
 @Builder
