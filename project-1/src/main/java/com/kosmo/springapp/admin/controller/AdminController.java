@@ -1,6 +1,9 @@
 package com.kosmo.springapp.admin.controller;
 
 import java.util.ArrayList;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -485,7 +488,7 @@ public class AdminController {
     
     /////////////////////////////////영양제 분석 결과
     @GetMapping("/AdminIssue.do")
- 	public String AdminIssue(Model model) {
+ 	public String AdminIssue(Model model) throws JsonProcessingException {
  		
     	// 분석 정보 가져오기
     	List<Map<String, Object>> analyzeInfo = adminMapper.getInfoFromAnalyzeTable();
@@ -554,12 +557,37 @@ public class AdminController {
 
         model.addAttribute("analyzeInfo", analyzeInfo);
     	
- 		
- 	    return "admin/AdminIssue";
- 	}
-   
-    
-    
+        
+        // 연령대별로 선택한 건강고민의 개수를 계산합니다.
+        Map<String, Map<String, Integer>> selectionCountData = new HashMap<>();
+        for (Map<String, Object> row : analyzeInfo) {
+            String ageRange = (String) row.get("AGE_RANGE");
+
+            String takePurposesString = (String) row.get("TAKEPURPOSES");
+            if (takePurposesString != null) {
+                // 쉼표를 구분자로 사용하여 문자열을 분리합니다.
+                String[] takePurposes = takePurposesString.split(","); 
+
+                if (!selectionCountData.containsKey(ageRange)) {
+                    selectionCountData.put(ageRange, new HashMap<>());
+                }
+
+                Map<String, Integer> countMap = selectionCountData.get(ageRange);
+                for (String takePurpose : takePurposes) {
+                    // 문자열 앞 뒤의 공백을 제거합니다.
+                    String trimmedTakePurpose = takePurpose.trim(); 
+                    countMap.put(trimmedTakePurpose, countMap.getOrDefault(trimmedTakePurpose, 0) + 1);
+                }
+            }
+        }
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String selectionCountDataJson = objectMapper.writeValueAsString(selectionCountData);
+
+        model.addAttribute("selectionCountDataJson", selectionCountDataJson);
+
+        return "admin/AdminIssue";
+    }
     
     
     
