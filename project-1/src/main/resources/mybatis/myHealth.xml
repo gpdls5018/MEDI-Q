@@ -10,7 +10,7 @@
 	</select>
 
 	<select id="selectFood" parameterType="String" resultType="Map">
-		SELECT PRODUCTNAME,IMGURL
+		SELECT PRODUCTNAME,IMGURL,NO,COMPANY
 		FROM FOODTABLE
 		WHERE PRODUCTNAME IN (
 		SELECT REGEXP_SUBSTR(foodname, '[^,]+', 1, b.lv) AS foodname

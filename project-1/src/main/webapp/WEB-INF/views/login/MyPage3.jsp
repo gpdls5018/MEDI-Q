@@ -9,6 +9,8 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 <style>
 body {
@@ -121,7 +123,7 @@ body {
     .update_box {
         display: flex;
         flex-direction: column;
-        width: 420px;
+        width: 660px;
     }
     .update_font {
         font-size: 24px;
@@ -153,6 +155,7 @@ body {
         color:black;
     }
     .recently {
+    	width: 650px;
         display: flex;
         flex-direction: row;
         min-height: 180px;
@@ -193,7 +196,7 @@ body {
         background-color: white;
         border-radius: 10px;
         box-shadow: .1rem .1rem .3rem gray;
-        width: 540px;
+        width: 300px;
         height: 570px;
     }
     .miniroom_box {
@@ -210,18 +213,21 @@ body {
     .miniroom img {
         margin: 20px 0px 0px 20px;
     }
-    
+   
     .lnMHMg {
         margin: 5px 0px;
-        width: 400px;
+        width: 640px;
         height: 560px;
     }
     .kriRoB {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 5px 10px;
-        width: 380px;
+        width: 620px;
         height: 540px;
+    }
+    .kriRoB li{
+    	cursor: pointer;
     }
     .kriRoBreview {
         width: 500px;
@@ -241,7 +247,6 @@ body {
         box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
         border-radius: 10px;
         margin-top: 5px;
-        width: 185px;
         height: 250px;
     }
     .kzDdbX {
@@ -531,6 +536,147 @@ body {
 		margin-left: auto;
 	}
 	
+/* 알림버튼 on/off */
+.btn-onoff{
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20px;
+}
+.btn-onoff input{
+  position: absolute;
+  opacity:0
+}
+.btn-onoff span{
+	position: relative;
+	display: block;
+	width: 80px;
+	height: 34px;
+	border-radius: 40px;
+	background: #ccc;
+	border: 1px solid #ccc;
+	-webkit-transition: 400ms;
+	-moz-transition: 400ms;
+	-ms-transition: 400ms;
+	transition: 400ms
+}
+.btn-onoff input:checked ~ span{
+  border: 1px solid #0084ff;
+  background: #0084ff;
+}
+.btn-onoff input ~ span:before{
+	content: 'Off';
+	display: block;
+	width: 45px;
+	height: 34px;
+	position: absolute;
+	right: 0px;
+	font-size: 14px;
+	font-family: "Arial";
+	font-weight: bold;
+	line-height: 34px;
+	color: #444;
+	padding: 0px 8px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	-webkit-transition: 500ms;
+	-moz-transition: 500ms;
+	-ms-transition: 500ms;
+	transition: 500ms
+}
+.btn-onoff input:checked ~ span:before{
+	content: 'On';
+	right: 28px;
+	color: #fff
+}
+.btn-onoff input ~ span:after{
+	content: '';
+	position: absolute;
+	width: 26px;
+	height: 26px;
+	top: 4px;
+	left: 4px;
+	background: #fff;
+	border-radius: 50%;
+	-webkit-transition: 400ms;
+	-moz-transition: 400ms;
+	-ms-transition: 400ms;
+	transition: 400ms
+}
+.btn-onoff:hover input ~ span:after{
+	-webkit-transform:scale(0.9);
+	-moz-transform:scale(0.9);
+	-ms-transform:scale(0.9);
+	transform:scale(0.9)
+}
+.btn-onoff input:checked ~ span:after{
+	content: '';
+	left: 51px;
+}
+
+/* 알람 아이콘 */
+.alarmIcon{
+	width: 30px; 
+	margin-left:130px; 
+	margin-top:10px; 
+	margin-bottom: 2px;
+	position: absolute;
+}
+.alarmBorder{
+	border: 1px solid #0084ff;
+	box-shadow: 0 0.2rem 0.5rem #0084ff;
+}
+.hide{
+	display: none;
+}
+
+/* 읽기 전용 효과 */
+	.readonly-div {
+    	pointer-events: none;
+    	background-color: #efefef !important;
+  	}
+  	
+/* 반복 요일 선택 */
+#readonlyDiv span{
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.weekly{
+	width: 30px;
+	height: 30px;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #fc79529f;
+	border: #EF605D 1px solid;
+	border-radius: 50%;
+	margin: 0 2px;
+	cursor: pointer;
+}
+.weekly-change{
+	background-color: #EF605D;
+	border: #fc79529f 1px solid;
+}
+.alarm-count{
+	width: 23px;
+	height: 23px;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color:#ccc; 
+	border:#ccc 1px solid;
+	border-radius: 50%;
+	margin: 0 2px;
+	cursor: pointer;
+}
+.count-change{
+	background-color: #EF605D;
+	border: #fc79529f 1px solid;
+}
+	
 </style>
 <!-- 메인 바디 부분 -->
 <div id="tsmain">
@@ -573,41 +719,42 @@ body {
                         <div class="fontinfo d-flex justify-content-between">
                         	<div>My page</div>
                             <div class="tab-menu fontinfotap mr-3">
-                                <a href="<c:url value="/project/MyPage3.do"/>" class="tab-button"><img alt="pill" src='<c:url value="/images/basic/pills.png"/>' style="width: 21px"/>${fn:substring(info.name,1,3) }님의 약장</a>
+                                <a href="#" class="tab-button" style="color:#fa7a7ab9;"><img alt="pill" src='<c:url value="/images/basic/pills.png"/>' style="width: 21px"/>${fn:substring(info.name,1,3) }님의 약장</a>
                                 <a href="<c:url value="/project/MyPage.do"/>" class="tab-button">건강 다이어리</a>
-                                <a href='#' class="tab-button" style="color:#fa7a7ab9">찜방&리뷰관리</a>
+                                <a href='<c:url value="/project/MyPage2.do"/>' class="tab-button">찜방&리뷰관리</a>
                             </div>
                         </div>
                         <div class="body_box">
                             <div class="update_box">
                                 <div class="news">
                                     <div class="update_font">
-                                        영양제 찜방
+                                        <img alt="pill" src='<c:url value="/images/basic/pills.png"/>' style="width: 25px"/> ${fn:substring(info.name,1,3) }님의 약장
                                     </div>
                                     <div class="board recently" style="flex:1;">
                                         <article class="WishListMain__Body-sc-uykdsg-3 lnMHMg">
                                         	<!-- 정보 없으면 emptypills.jpg 이미지 띄우기 -->
-                                            <c:if test="${empty foodlike }" var="isEmptyFood">
+                                            <c:if test="${empty food }" var="isEmptyFood">
                                                	<span class="d-block h-50 my-n5"></span>
                                     			<img alt="empty" src="/images/basic/emptypills.jpg" style="width: 100%"/>
                                             </c:if>
                                             <ul class="kriRoB" style="list-style: none; padding-inline-start: 10px;">
                                                 <c:if test="${not isEmptyFood }">
-                                                	<c:forEach var="f" items="${foodlike }">
-                                                		<a href='<c:url value="/detail.do?no=${f.NO }"/>'>
-			                                                <li class="WishListMain__WishItem-sc-uykdsg-5 cqOzav">
+                                                	<c:forEach var="f" items="${food }">
+                                                		
+			                                                <li class="food WishListMain__WishItem-sc-uykdsg-5 cqOzav">
 			                                                    <section class="kzDdbX">
 			                                                        <section class="divimg">
+			                                                        	<img id="alarmIcon" class="hide" alt="alarm" src="/images/basic/alarm.png"/>
 			                                                            <img fetchpriority="high" src="${f.IMGURL }" style="width:150px; height:150px; margin-top: 10px; border-radius: 10px;">
 			                                                        </section>
 			                                                        <label for="wishBtn:rk0:" class="bPHVOx">
 			                                                            <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
 			                                                        </label>
 			                                                    </section>
-			                                                    <p class="kWbUNE">${f.FOODNAME }</p>
+			                                                    <p class="kWbUNE">${f.PRODUCTNAME }</p>
 			                                                    <p class="kCBLwp">${f.COMPANY }</p>
 			                                                </li>
-			                                        	</a>
+			                                        	
 	                                                </c:forEach>
     											</c:if>
     											
@@ -617,48 +764,55 @@ body {
                                 </div>
                             </div>
                             <div class="secnews">
-                                <div class="miniroom_font">리뷰관리 페이지</div>
-                                <div class="board">
-                                    <ul class="kriRoBreview" style="list-style: none; padding-left: 0">
-                                    	<c:if test="${empty review }" var="isEmptyReview" >
-                                    		<span class="d-block h-50 my-n4"></span>
-                                    		<img alt="empty" src="/images/basic/empty_review.jpg" style="width: 100%"/>
-                                    	</c:if>
-                                    	<c:if test="${not isEmptyReview }">
-	                                    	<c:forEach var="r" items="${review }">
-		                                        <li class="review">
-			                                        <section class="kzDdbXreview">
-			                                            <section class="divimg" style="width: 160px;">
-			                                                <img fetchpriority="high" src="${r['IMGURL'] }" style="max-width:120px; height:120px; color: transparent; margin-top: 10px; border-radius: 10px;">
-			                                            </section>
-			                                            <label for="wishBtn:rk0:" class="bPHVOx">
-			                                                <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
-			                                            </label>
-			                                        </section>
-			                                        <div class="reviewinfo w-100">
-			                                        	<input type="hidden" name="no" value='${r["NO"]}' />
-			                                           	<div class="d-flex justify-content-between w-100" style="height: 35px">
-			                                            	<div class="star-count d-flex m-2 align-items-center">
-												              	<i class='bi bi-star${r["STARSCORE"] >= 1 ? "-fill" : "" } rating' style="font-size:20px;color: #ffe23c;"></i>
-												              	<i class='bi bi-star${r["STARSCORE"] >= 2 ? "-fill" : "" } rating' style="font-size:20px;color: #ffe23c;"></i>
-												              	<i class='bi bi-star${r["STARSCORE"] >= 3 ? "-fill" : "" } rating' style="font-size:20px;color: #ffe23c;"></i>
-												              	<i class='bi bi-star${r["STARSCORE"] >= 4 ? "-fill" : "" } rating' style="font-size:20px;color: #ffe23c;"></i>
-												              	<i class='bi bi-star${r["STARSCORE"] == 5 ? "-fill" : "" } rating"'style="font-size:20px;color: #ffe23c;"></i>
-												            </div>
-			                                                <div class="sdp d-flex align-items-center">${fn:split(r['R_REGIDATE']," ")[0]}</div>
-			                                            </div>
-			                                            <div class="snp">${r['PRODUCTNAME'] }</div>
-			                                            <div class="d-flex justify-content-between w-100">
-				                                            <div class="srp">${r['CONTENT'] }</div>
-				                                            <i class="fa-solid fa-magnifying-glass mt-4"></i>
-				                                            <i class="fa-solid fa-xmark mx-2 mt-4"></i>
-				                                        </div>
-			                                        </div>
-		                                        </li>
-	                                        </c:forEach>
-                                        </c:if>
-                                    </ul>
-                                    
+                                <div class="miniroom_font">
+                                	<img alt="alam" src="/images/basic/alarm.png" style="width: 30px; margin-bottom: 2px;"/> 영양제 알리미
+                                </div>
+                                <div id="readonlyDiv" class="board readonly-div">
+                                	<ul id="alarm-li" class="" style="list-style: none; padding: 10px;">
+                                	
+                                	</ul>
+                                	<form id="alarm-check">
+								        <div class="my-2 d-flex">
+											<span class="d-flex align-items-center">알람 여부</span>
+											<div class="ml-auto mr-2">
+											    <label class="btn-onoff">
+													<input id="alarmCheck" type="checkbox" name="name" data-onoff="toggle"><span></span>
+												</label>
+											</div>
+										</div>
+										<div id="no-check" class="hide font-weight-bold" style="color: red; font-size: 13px;">알람 여부를 체크해주세요</div>
+										<div class="my-2">
+											<span>반복</span>
+											<div id="alarm-range" class="d-inline-flex align-items-center">
+												<span class="weekly">월</span>
+												<span class="weekly">화</span>
+												<span class="weekly">수</span>
+												<span class="weekly">목</span>
+												<span class="weekly">금</span>
+												<span class="weekly">토</span>
+												<span class="weekly">일</span>
+											</div>
+										</div>
+										<div id="no-range" class="hide font-weight-bold" style="color: red; font-size: 13px;">반복 요일을 선택해주세요</div>
+										<div class="d-flex align-items-center my-2">
+											<span>섭취 시간</span>
+											<input type="text" class="timepicker ml-auto form-control mr-2" name="alarmTime" style="width: 100px"/>
+										</div>
+										<div id="no-time" class="hide font-weight-bold" style="color: red; font-size: 13px;">섭취 시간을 선택해주세요</div>
+										<div class="d-flex align-items-center my-2">
+											<span>섭취 횟수</span>
+											<div id="alarm-count" class="d-flex ml-auto">
+												<span class="alarm-count mr-2"><i class="plus fa-solid fa-plus"></i></span>
+												<span id="count">1</span>
+												<span class="alarm-count ml-2 mr-2"><i class="minus fa-solid fa-minus"></i></span>
+											</div>
+										</div>
+										
+										<div class="mr-2 my-3 d-flex">
+											<input type="submit" class="btn btn-outline-primary ml-auto py-1" style="font-size: 15px;" value="저장"/>
+											<input type="submit" class="btn btn-outline-danger ml-2 py-1" style="font-size: 15px;" value="삭제"/>
+										</div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -934,8 +1088,9 @@ body {
 	var foodli = document.querySelector('#select-div ul');
 	var foodList = food=='[]' ? "" :food.split('},');
 	for(var i=0;i<foodList.length;i++){
-		var foodname = foodList[i].split(',')[0].split('=')[1];
-		var foodimg = i==foodList.length-1 ? foodList[i].split(',')[1].split('=')[1].split('}')[0] : foodList[i].split(',')[1].split('=')[1];
+		//console.log('list:',foodList)
+		var foodname = foodList[i].split(',')[1].split('=')[1];
+		var foodimg = i==foodList.length-1 ? foodList[i].split(',')[2].split('=')[1].split('}')[0] : foodList[i].split(',')[2].split('=')[1];
 		var li = document.querySelector('.food-li').cloneNode(true);
 		li.style.display='';
 		console.log('check:',foodimg)
@@ -1162,5 +1317,135 @@ body {
 		$('.custom-file').css('display','none');
 		$('a[name=defaultImg]').css('display','none');
 		$('input[type=password]').css('display','').prev().css('display','');
+	});
+	
+	//클릭 시 알람 이미지 추가 및 div 활성화 /////////////알람이 등록되면 아이콘 추가되도록 수정하자!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	$('.food').click(function(){
+		var li = $(this).clone();
+		$('#alarm-li').empty(); //기존에 클릭한 li 삭제
+		$('#no-check').addClass('hide'); //알림 체크 메시지 숨김
+		$('.alarmIcon').addClass('hide'); //알람 아이콘 숨기기(클릭한 li에만 추가하기 위해)
+		$('.food').removeClass('alarmBorder'); //클릭한 li만 css효과주기위해
+		$('#readonlyDiv').removeClass('readonly-div'); //클릭가능하도록 활성화하기 위해
+		$(this).find('#alarmIcon').removeClass('hide').addClass('alarmIcon'); //알람 아이콘 추가
+		$(this).addClass('alarmBorder'); //클릭한 li만 css효과주기위해
+		$('#alarm-li').append(li); //클릭한 li 추가
+	});
+	
+	//반복 요일 클릭 시 체크한 효과(색 변경)
+	$('#alarm-range .weekly').click(function(){
+		$(this).toggleClass('weekly-change');
+	});
+	
+	//섭취 횟수 클릭 시 css변환 및 숫자 증감
+	$('#alarm-count .alarm-count').click(function(){
+		$('#alarm-count .alarm-count').removeClass('count-change');
+		$(this).addClass('count-change');
+
+		var num = parseInt($('#count').html());
+		if(!$(this).find('.minus').length){ //플러스 클릭 시
+			$('#count').html(num+1);
+		}
+		else{ //마이너스 클릭 시
+			if($('#count').html()==='1'){
+				alert('1개 이하는 선택할 수 없습니다')
+			}
+			else{
+				$('#count').html(num-1);
+			}
+		}
+	});
+	
+	//알람시간 설정
+	$('.timepicker').timepicker({
+		timeFormat: 'HH:mm',
+        interval: 5,
+        startTime: '09:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true
+	});
+	
+	//알림 저장
+	$('#alarm-check [type=submit]').click(function(e){
+		e.preventDefault();
+		if(!$('#alarmCheck:checked').length){
+			$('#no-check').removeClass('hide');
+		}
+		else{
+			$('#no-check').addClass('hide');
+		}
+		if(!$('.weekly-change').length){
+			$('#no-range').removeClass('hide');
+		}
+		else{
+			$('#no-range').addClass('hide');
+		}
+		if(!$('[name=alarmTime]').val()){
+			$('#no-time').removeClass('hide');
+		}
+		else{
+			$('#no-time').addClass('hide');
+		}
+
+		if($('#alarm-check .hide').length===3){
+			var weekly = '';
+			var foodname = $('#alarm-li .kWbUNE').html();
+			$('.weekly-change').each(function(){
+				weekly += $(this).html()+' ';
+			});
+			weekly = weekly.substring(0,parseInt(weekly.length)-1);
+			
+			$.ajax({
+				data:{
+					type:$(this).val(),
+					id:'${info.id}',
+					foodname:foodname,
+					weekly:weekly,
+					alarm_time:$('[name=alarmTime]').val(),
+					take_pill:$('#count').html()
+				},
+				url:'<c:url value="/project/TakeAlarm.do"/>',
+				method:'post'
+			}).done(function(data){
+				if(data.type==='저장'){
+					Swal.fire({//저장 시 알람 아이콘 추가/////////////////////////////
+						  title: 'Do you want to save the changes?',
+						  showDenyButton: true,
+						  showCancelButton: true,
+						  confirmButtonText: 'Save',
+						  denyButtonText: `Don't save`,
+						}).then((result) => {
+						  /* Read more about isConfirmed, isDenied below */
+						  if (result.isConfirmed) {
+						    Swal.fire('Saved!', '', 'success')
+						  } else if (result.isDenied) {
+						    Swal.fire('Changes are not saved', '', 'info')
+						  }
+						})
+				}
+				else{//삭제 시 알람 아이콘 빼기///////////////////////////////////////
+					Swal.fire({
+						  title: 'Are you sure?',
+						  text: "You won't be able to revert this!",
+						  icon: 'warning',
+						  showCancelButton: true,
+						  confirmButtonColor: '#3085d6',
+						  cancelButtonColor: '#d33',
+						  confirmButtonText: 'Yes, delete it!'
+						}).then((result) => {
+						  if (result.isConfirmed) {
+						    Swal.fire(
+						      'Deleted!',
+						      'Your file has been deleted.',
+						      'success'
+						    )
+						  }
+						})
+				}
+			}).fail(function(){
+				console.log('error')
+			});
+		}
 	});
 </script>

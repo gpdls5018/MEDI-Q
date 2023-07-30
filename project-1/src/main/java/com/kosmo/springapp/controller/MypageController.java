@@ -37,6 +37,7 @@ import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.model.MyHealthDTO;
 import com.kosmo.springapp.model.ProfileImageDTO;
 import com.kosmo.springapp.model.ReviewDTO;
+import com.kosmo.springapp.model.TakeFoodAlarmDTO;
 import com.kosmo.springapp.service.FCMInitializer;
 import com.kosmo.springapp.service.HeartCountService;
 import com.kosmo.springapp.service.JWTokensService;
@@ -48,6 +49,7 @@ import com.kosmo.springapp.service.impl.HeartCountServiceImpl;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
 import com.kosmo.springapp.service.impl.MentalTestServiceImpl;
 import com.kosmo.springapp.service.impl.ReviewServiceImpl;
+import com.kosmo.springapp.service.impl.TakeFoodAlarmServiceImpl;
 
 @RequestMapping("/project")
 @Controller
@@ -71,6 +73,8 @@ public class MypageController {
 	private HealthInfoServiceImpl healthInfoServiceImpl;
 	@Autowired
 	private MentalTestServiceImpl mentalTestServiceImpl;
+	@Autowired
+	private TakeFoodAlarmServiceImpl takeFoodAlarmServiceImpl;
 
 	@Value("${secret-key}")
 	private String secretKey;
@@ -133,6 +137,23 @@ public class MypageController {
 		model.addAttribute("food", food);//등록한 영양제 정보
 		
 		return "login/MyPage2";
+	}
+	
+	@GetMapping("/MyPage3.do")
+	public String mypage3(HttpServletRequest req, Model model) {
+		MemberDTO member = loginService.selectOne(req);	
+		String id = member.getId();
+		
+		ProfileImageDTO profImg = loginService.selectProfImg(id);
+		MyHealthDTO my = myHealthServiceImpl.select(id);
+		List food = myHealthServiceImpl.selectFood(id);
+		
+		model.addAttribute("info", member);//회원 정보
+		model.addAttribute("profImg", profImg);//프로필 이미지
+		model.addAttribute("my", my);//등록한 건강정보
+		model.addAttribute("food", food);//등록한 영양제 정보
+		
+		return "login/MyPage3";
 	}
 	
 	@GetMapping("/ClickDate.do")
@@ -396,4 +417,17 @@ public class MypageController {
 		}
 	}
 	
+	//복용 알림 설정
+	@PostMapping("/TakeAlarm.do")
+	@ResponseBody
+	public Map takeAlarm(@RequestParam Map map) {
+		System.out.println("dto: "+map);
+		if("저장".equals(map.get("type"))) {
+			takeFoodAlarmServiceImpl.insertAlarm(map);
+		}
+		else {
+			takeFoodAlarmServiceImpl.deleteAlarm(map);
+		}
+		return map;
+	}
 }
