@@ -211,8 +211,9 @@
 
         <div class="tsarea">
             <h3 class="content-tit" style="text-align:left; margin-left: 150px;">
-                <span>인기 성분 Top 10</span>
-                <p style="font-weight: 500; font-size: 23px; margin-top: 20px; color:gray">800개 영양성분 중 가장 인기있는 100개 성분의 Best 제품을 만나보세요</p>
+                <span style="color:#EF605D; font-weight: 700;">MEDI-Q</span>
+                <span>인기 성분 Top 10&nbsp;👨‍⚕</span>
+                <p style="font-weight: 500; font-size: 23px; margin-top: 20px; color:gray">100가지 영양성분 중 가장 인기있는 10개 성분의 Best 제품을 만나보세요!</p>
             </h3>
         </div>
     </aside>
@@ -231,16 +232,16 @@
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link active" href="#" onclick="openTab(event, 'popular')">인기 영양소</a>
+                    <a style="font-size: 18px; cursor: pointer;" class="nav-link active" onclick="openTab(event, 'popular')" >인기 영양소</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'vitamin')">비타민</a>
+                    <a style="font-size: 18px; cursor: pointer;" class="nav-link" onclick="openTab(event, 'vitamin')">비타민</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'mineral')">미네랄 및 기타영양소</a>
+                    <a style="font-size: 18px; cursor: pointer;" class="nav-link" onclick="openTab(event, 'mineral')">미네랄 및 기타영양소</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'functional')">기능성 원료</a>
+                    <a style="font-size: 18px; cursor: pointer;" class="nav-link" onclick="openTab(event, 'functional')">기능성 원료</a>
                 </li>
             </ul>
         </div>

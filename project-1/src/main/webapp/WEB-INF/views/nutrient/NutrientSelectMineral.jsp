@@ -230,16 +230,16 @@
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'popular')">인기 영양소</a>
+                    <a style="font-size: 18px; cursor: pointer;" class="nav-link" onclick="openTab(event, 'popular')">인기 영양소</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'vitamin')">비타민</a>
+                    <a style="font-size: 18px; cursor: pointer;" class="nav-link" onclick="openTab(event, 'vitamin')">비타민</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link active" href="#" onclick="openTab(event, 'mineral')">미네랄 및 기타영양소</a>
+                    <a style="font-size: 18px; cursor: pointer;" class="nav-link active" onclick="openTab(event, 'mineral')">미네랄 및 기타영양소</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'functional')">기능성 원료</a>
+                    <a style="font-size: 18px; cursor: pointer;" class="nav-link" onclick="openTab(event, 'functional')">기능성 원료</a>
                 </li>
             </ul>
         </div>
