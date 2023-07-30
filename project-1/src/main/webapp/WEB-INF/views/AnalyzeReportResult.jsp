@@ -224,9 +224,9 @@ progress {
 										        <div style="text-align:center; font-size: 13px; margin-bottom: 12px; width: 100%" class="mt-2">
 				                                		<span style="margin-right:9%;">권장 섭취량: ${item.DRIUnit}</span>                       	
 				                                		<span style="margin-left:9%;">상한 섭취량: ${item.ULUnit}</span><br>                    	
-					                                <div style="height:1px; margin:10px 0px;">
-					                                	<span class="arrow-down" style="margin-right: 255px; margin-bottom: 20px;">▼</span>
-					                                	<span class="arrow-down" style="margin-right: 10px; margin-bottom: 20px;">▼</span>
+					                                <div style="height:10px; margin:5px 0px;">
+					                                	<span class="arrow-down" style="margin-right: 253px; margin-bottom: 20px;">▼</span>
+					                                	<span class="arrow-down" style="margin-right: 12px; margin-bottom: 20px;">▼</span>
 					                                </div>
 					                            </div>
 										        <div class="progress-container" style="white-space: nowrap;">
