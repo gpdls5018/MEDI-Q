@@ -12,13 +12,11 @@
         top: 0px;
         border-bottom: 0.8px solid var(--color-bs-gray-300);
     }
-
     .lmQXYu {
         padding: 0px;
         font: bold;
         height: 52px;
     }
-
     .ijXoMb {
         border-radius: 40px;
         background-color: orange;
@@ -37,17 +35,13 @@
         -webkit-box-pack: center;
         justify-content: start;
     }
-
-
     .btn-6c img {
         margin-bottom: 10px;
     }
-
     .btn-6c label {
         display: block;
         white-space: nowrap;
     }
-
     .btn-6c {
         display: flex;
         color: #ffffff;
@@ -67,15 +61,12 @@
         font-size: 16px;
         line-height: 24px;
     }
-
-
     .active{
         background: transparent;
         background-color: rgb(231, 193, 120);
         font-weight: bold;
         border: 5px solid orange;
     }
-
     section {
         margin: 0 auto;
         padding: 5em 3em;
@@ -91,8 +82,6 @@
     .color-6 {
         background: #f3f3f3;
     }
-
-
     /* General button style (reset) */
     .btn {
         
@@ -107,7 +96,6 @@
         position: relative;
         text-align: center;
         color: black;
-
     }
 body{
 	background-color: white;
@@ -155,13 +143,11 @@ body{
 	align-items: center;
 }
      </style>
-
 	<!-- 상단배너 div -->
 	<aside id="contentInfoCon" class="area animated">
         <!-- 각각 대메뉴 마다 이미지 다르게 들어갑니다. -->
                 <!-- 브랜드 스토리 -->
                 <div class="visual-img-con animatedleft"></div>	
-
         <div class="tsarea">
             <h3 class="content-tit" style="text-align:left; margin-left: 150px;">
                 <span><span style="color:#EF605D;">MEDI-Q</span> 영양제 인기순위</span>
@@ -174,22 +160,22 @@ body{
         <section class="color-6">
             <h3 style="font-weight: bold; color: black;">영양제를 먹는 이유가 무엇인가요?</h3>
             <p>
-                <a href="/functionfood/healthissue.do?healthissue=피로개선">
+                <a href="/functionfood/healthissue.do?healthissue=피로감">
 	                <button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
 					    <img src="/images/tsimages/free-icon-fatigue-7959669.png" loading="lazy" width="48" height="48" style="color: transparent;">
 					    <label>피로감</label>
+					</button>
+				</a>
+				<a href="/functionfood/healthissue.do?healthissue=두뇌활동">
+					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
+					    <img src="/images/tsimages/free-icon-brainstorm-7778191.png" loading="lazy" width="48" height="48" style="color: transparent;">
+					    <label>두뇌활동</label>
 					</button>
 				</a>
 				<a href="/functionfood/healthissue.do?healthissue=눈 건강">
 					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
 					    <img src="/images/tsimages/free-icon-eye-care-2824810.png" loading="lazy" width="48" height="48" style="color: transparent;">
 					    <label>눈 건강</label>
-					</button>
-				</a>
-				<a href="/functionfood/healthissue.do?healthissue=피부 건강">
-					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
-					    <img src="/images/tsimages/free-icon-skin-protection-5228128.png" loading="lazy" width="48" height="48" style="color: transparent;">
-					    <label>피부 건강</label>
 					</button>
 				</a>
 				<a href="/functionfood/healthissue.do?healthissue=체지방">
@@ -200,10 +186,10 @@ body{
 				</a>
             </p>
             <p>
-            	<a href="/functionfood/healthissue.do?healthissue=혈행개선">
+            	<a href="/functionfood/healthissue.do?healthissue=혈관 & 혈액순환">
 	                <button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
 					    <img src="/images/tsimages/free-icon-blood-test-3127109.png" loading="lazy" width="48" height="48" style="color: transparent;">
-					    <label>혈행개선</label>
+					    <label>혈관 &amp; 혈액순환</label>
 					</button>
 				</a>
 				<a href="/functionfood/healthissue.do?healthissue=간 건강">
@@ -218,12 +204,10 @@ body{
 					    <label>장 건강</label>
 					</button>
 				</a>
-				<a href="/functionfood/healthissue.do?healthissue=수면질 개선">
 				<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
-				    <img src="/images/tsimages/sleep.png" loading="lazy" width="48" height="48" style="color: transparent;">
-				    <label>수면질 개선</label>
+				    <img src="/images/tsimages/free-icon-stress-4897269.png" loading="lazy" width="48" height="48" style="color: transparent;">
+				    <label>스트레스 &amp; 수면</label>
 				</button>
-				</a>
             </p>
             <p>
             	<a href="/functionfood/healthissue.do?healthissue=면역기능">
@@ -232,56 +216,56 @@ body{
 					    <label>면역기능</label>
 					</button>
 				</a>
-				<a href="/functionfood/healthissue.do?healthissue=혈중 콜레스테롤 개선">
-				<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
-				    <img src="/images/tsimages/free-icon-cholesterol-2738776.png" loading="lazy" width="48" height="48" style="color: transparent;">
-				    <label>혈중 콜레스테롤</label>
-				</button>
+				<a href="/functionfood/healthissue.do?healthissue=혈중 콜레스테롤">
+					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
+					    <img src="/images/tsimages/free-icon-cholesterol-2738776.png" loading="lazy" width="48" height="48" style="color: transparent;">
+					    <label>혈중 콜레스테롤</label>
+					</button>
 				</a>
 				<a href="/functionfood/healthissue.do?healthissue=뼈 건강">
-				<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
-				    <img src="/images/tsimages/free-icon-bones-4706841.png" loading="lazy" width="48" height="48" style="color: transparent;">
-				    <label>뼈 건강</label>
-				</button>
+					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
+					    <img src="/images/tsimages/free-icon-bones-4706841.png" loading="lazy" width="48" height="48" style="color: transparent;">
+					    <label>뼈 건강</label>
+					</button>
 				</a>
-				<a href="/functionfood/healthissue.do?healthissue=항산화">
+				<a href="/functionfood/healthissue.do?healthissue=노화 & 항산화">
 					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
 					    <img src="/images/tsimages/free-icon-aging-5684039.png" loading="lazy" width="48" height="48" style="color: transparent;">
-					    <label>항산화</label>
+					    <label>노화 &amp; 항산화</label>
 					</button>
 				</a>
             </p>
             <p>
-            	<a href="/functionfood/healthissue.do?healthissue=월경전 상태 개선">
-	                <button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
-					    <img src="/images/tsimages/menstruation.png" loading="lazy" width="48" height="48" style="color: transparent;">
-					    <label>월경전 상태 개선</label>
-					</button>
-				</a>
-				<a href="/functionfood/healthissue.do?healthissue=위 건강/소화기능">
+				<a href="/functionfood/healthissue.do?healthissue=소화 & 위식도 건강">
 					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
 					    <img src="/images/tsimages/free-icon-gastroenterology-9340021.png" loading="lazy" width="48" height="48" style="color: transparent;">
-					    <label>위 건강 &amp; 소화기능</label>
+					    <label>소화 &amp; 위식도 건강</label>
 					</button>
 				</a>
-				<a href="/functionfood/healthissue.do?healthissue=전립선 건강">
-				<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
-				    <img src="/images/tsimages/prostate.png" loading="lazy" width="48" height="48" style="color: transparent;">
-				    <label>전립선 건강</label>
-				</button>
-				</a>
-				<a href="/functionfood/healthissue.do?healthissue=갑상선 호르몬 합성">
+				<a href="/functionfood/healthissue.do?healthissue=갑상선 건강">
 					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
 					    <img src="/images/tsimages/free-icon-tiroid-1546181.png" loading="lazy" width="48" height="48" style="color: transparent;">
-					    <label>갑상선 호르몬 합성</label>
+					    <label>갑상선 건강</label>
+					</button>
+				</a>
+            	<a href="/functionfood/healthissue.do?healthissue=여성 건강">
+	                <button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
+					    <img src="/images/tsimages/free-icon-female-symbol-6866440.png" loading="lazy" width="48" height="48" style="color: transparent;">
+					    <label>여성 건강</label>
+					</button>
+				</a>
+				<a href="/functionfood/healthissue.do?healthissue=남성 건강">
+					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
+					    <img src="/images/tsimages/free-icon-male-gender-2404544.png" loading="lazy" width="48" height="48" style="color: transparent;">
+					    <label>남성 건강</label>
 					</button>
 				</a>
             </p>
             <p>
-            	<a href="/functionfood/healthissue.do?healthissue=어린이 성장">
+            	<a href="/functionfood/healthissue.do?healthissue=빈혈">
 	                <button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
-					    <img src="/images/tsimages/children.png" loading="lazy" width="48" height="48" style="color: transparent;">
-					    <label>어린이 성장</label>
+					    <img src="/images/tsimages/free-icon-dizziness-3997779.png" loading="lazy" width="48" height="48" style="color: transparent;">
+					    <label>빈혈</label>
 					</button>
 				</a>
 				<a href="/functionfood/healthissue.do?healthissue=혈압">
@@ -290,24 +274,10 @@ body{
 					    <label>혈압</label>
 					</button>
 				</a>
-				<a href="/functionfood/healthissue.do?healthissue=운동수행 능력">
-					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
-					    <img src="/images/tsimages/free-icon-exercise-1683155.png" loading="lazy" width="48" height="48" style="color: transparent;">
-					    <label>운동수행 능력</label>
-					</button>
-				</a>
-				<a href="/functionfood/healthissue.do?healthissue=기억력 개선">
-					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
-					    <img src="/images/tsimages/free-icon-brainstorm-7778191.png" loading="lazy" width="48" height="48" style="color: transparent;">
-					    <label>기억력 개선</label>
-					</button>
-				</a>
-            </p>
-            <p>
-            	<a href="/functionfood/healthissue.do?healthissue=혈당 조절">
+            	<a href="/functionfood/healthissue.do?healthissue=혈당">
 	                <button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
 					    <img src='/images/tsimages/free-icon-glucose-meter-4228683.png' loading="lazy" width="48" height="48" style="color: transparent;">
-					    <label>혈당 조절</label>
+					    <label>혈당</label>
 					</button>
 				</a>
 				<a href="/functionfood/healthissue.do?healthissue=혈중 중성지방">
@@ -316,47 +286,60 @@ body{
 					    <label>혈중 중성지방</label>
 					</button>
 				</a>
-				<a href="/functionfood/healthissue.do?healthissue=치아">
+            </p>
+            <p>
+				<a href="/functionfood/healthissue.do?healthissue=치아 & 잇몸">
 					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
 					    <img src='/images/tsimages/free-icon-clean-tooth-2461581.png' loading="lazy" width="48" height="48" style="color: transparent;">
-					    <label>치아</label>
+					    <label>치아 &amp; 잇몸</label>
 					</button>
 				</a>
-				<a href="/functionfood/healthissue.do?healthissue=태아">
+				<a href="/functionfood/healthissue.do?healthissue=임산부 & 태아 건강">
 					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
 					    <img src='/images/tsimages/free-icon-mother-6381743.png' loading="lazy" width="48" height="48" style="color: transparent;">
-					    <label>태아 건강</label>
+					    <label>임산부 &amp; 태아 건강</label>
+					</button>
+				</a>
+				<a href="/functionfood/healthissue.do?healthissue=운동 능력 & 근육량">
+					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
+					    <img src="/images/tsimages/free-icon-exercise-1683155.png" loading="lazy" width="48" height="48" style="color: transparent;">
+					    <label>운동 능력 &amp; 근육량</label>
+					</button>
+				</a>
+				<a href="/functionfood/healthissue.do?healthissue=피부 건강">
+					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
+					    <img src="/images/tsimages/free-icon-skin-protection-5228128.png" loading="lazy" width="48" height="48" style="color: transparent;">
+					    <label>피부 건강</label>
 					</button>
 				</a>
             </p>
             <p>
-            	<a href="/functionfood/healthissue.do?healthissue=구강 건강">
+            	<a href="/functionfood/healthissue.do?healthissue=탈모 & 손톱 건강">
 	                <button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
-					    <img src='/images/tsimages/mouth.png' loading="lazy" width="48" height="48" style="color: transparent;">
-					    <label>구강 건강</label>
+					    <img src='/images/tsimages/free-icon-hair-loss-7350888.png' loading="lazy" width="48" height="48" style="color: transparent;">
+					    <label>탈모 &amp; 손톱 건강</label>
 					</button>
 				</a>
-				<a href="/functionfood/healthissue.do?healthissue=관절">
+				<a href="/functionfood/healthissue.do?healthissue=관절 건강">
 					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
 					    <img src='/images/tsimages/free-icon-knee-joint-6037860.png' loading="lazy" width="48" height="48" style="color: transparent;">
 					    <label>관절 건강</label>
 					</button>
 				</a>
-				<a href="/functionfood/healthissue.do?healthissue=갱년기 여성">
+				<a href="/functionfood/healthissue.do?healthissue=여성 갱년기">
 					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
 					    <img src='/images/tsimages/free-icon-anti-aging-2117129.png' loading="lazy" width="48" height="48" style="color: transparent;">
 					    <label>여성 갱년기</label>
 					</button>
 				</a>
-				<a href="/functionfood/healthissue.do?healthissue=긴장완화">
+				<a href="/functionfood/healthissue.do?healthissue=호흡기 건강">
 					<button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
-					    <img src='/images/tsimages/anxiety.png' loading="lazy" width="48" height="48" style="color: transparent;">
-					    <label>긴장 완화</label>
+					    <img src='/images/tsimages/free-icon-respiratory-2751016.png' loading="lazy" width="48" height="48" style="color: transparent;">
+					    <label>호흡기 건강</label>
 					</button>
 				</a>
             </p>
           </section>
         </div>
-
 	</body>
 </html>

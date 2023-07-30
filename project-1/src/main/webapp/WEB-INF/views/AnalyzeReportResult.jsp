@@ -250,7 +250,7 @@ progress {
 					                                </div>
 					                            </div>
 										        <div class="progress-container" style="white-space: nowrap;">
-										            <progress id="myProgress" style="border-right:2px dotted black;width:33%" value="${item.nutNumber}" max="${item.DRI}"></progress><progress id="myProgress1" style="width:66%; border-right:1px solid black" value="${item.nutNumber}" max="${item.DRI * 10}"></progress>
+										            <progress id="myProgress" style="border-right:2px dotted black;width:33%" value="${item.nutNumber}" max="${item.DRI}"></progress><progress id="myProgress1" style="width:66%; border-right:1px solid black" value="${item.nutNumber-item.DRI}" max="${item.DRI * 10}"></progress>
 										        </div>
 										        <div style="text-align: center;margin-top:3px;"><span <c:if test="${item.nutNumber <item.DRI}">style='color:#007BFF;'</c:if><c:if test="${item.nutNumber >=item.DRI}">style='color:#52BE80;'</c:if>>
 										        <c:if test="${item.nutNumber <item.DRI}"><span style="background-color: #007BFF;color:blue;border-radius: 10px">부족</span></c:if><c:if test="${item.nutNumber >= item.DRI}"><span style="background-color:#52BE80;color: green; border-radius: 10px">적정</span></c:if>${item.nutNumber}</span> 만큼 드시고 계십니다</div>
