@@ -109,4 +109,9 @@ public class LoadHealthInfoController {
 		}
 		return "CardiovascularPredict";
 	}
+	
+	@GetMapping("/ParkinsonPredict.do")
+	public String parkinsonPredict() {
+		return "ParkinsonPredict";
+	}
 }

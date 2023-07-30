@@ -300,8 +300,8 @@ ul li input[type=checkbox]:checked ~ .acco {
 	transition: 400ms
 }
 .btn-onoff input:checked ~ span{
-  border: 1px solid #4CAF50;
-  background: #4CAF50
+  border: 1px solid #0084ff;
+  background: #0084ff
 }
 .btn-onoff input ~ span:before{
 	content: 'Off';

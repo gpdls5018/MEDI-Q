@@ -724,7 +724,7 @@ body {
 	  height: 500px;
 	  margin: 0;
 	  padding: 0;
-	  border-radius: 10px; 
+	  border-radius: 10px;
 	}
 
 	/* 영양제 검색 */
@@ -756,6 +756,14 @@ body {
 		text-decoration: none;
 		color: rgb(255, 125, 125);
     	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+	}
+	
+	#alamModal modal-fullsize{
+		width: 800px;
+	  	height: 500px;
+	  	margin: 0;
+	  	padding: 0;
+	  	border-radius: 10px;
 	}
 	
 </style>
@@ -800,9 +808,9 @@ body {
                         <div class="fontinfo d-flex justify-content-between">
                         	<div>My page</div>
                             <div class="tab-menu fontinfotap mr-3">
-                                <a href="#" class="tab-button">영양제 알리미</a>
+                                <a href="<c:url value="/project/MyPage3.do"/>" class="tab-button"><img alt="pill" src='<c:url value="/images/basic/pills.png"/>' style="width: 21px"/>${fn:substring(info.name,1,3) }님의 약장</a>
                                 <a href="#" class="tab-button" style="color:#fa7a7ab9">건강 다이어리</a>
-                                <a href='<c:url value="/project/MyPage2.do"/>' class="tab-button">약장&리뷰관리</a>
+                                <a href='<c:url value="/project/MyPage2.do"/>' class="tab-button">찜방&리뷰관리</a>
                             </div>
                         </div>
                         <div class="body_box">
@@ -1175,6 +1183,45 @@ body {
 		</div>
 	</div>
     <!-- 건강정보 등록 모달 끝 -->
+    
+    <!-- 복약 알림 모달 시작 -->
+    <div class="modal fade" id="alamModal">	
+		<div class="modal-dialog modal-dialog-centered modal-fullsize">
+			<div class="modal-content modal-fullsize" style="width: 800px">
+				
+				<!-- Modal body -->
+				<div class="modal-body d-flex justify-content-center">
+					<form id="foodAlam" class="form-inline justify-content-center" action='<c:url value="/project/foodAlam.do"/>' method="POST">
+						<div class="mb-4 d-flex align-items-center font-weight-bold">
+							<img alt="alam" src="/images/basic/alarm.png" style="width: 25px"/>
+							<span>영양제 알리미</span>
+						</div>
+						<div class="d-flex justify-content-between align-items-center">
+				        	<div>
+						         <span>알람 여부</span>
+						         <label class="btn-onoff">
+									<input type="checkbox" name="name" data-onoff="toggle"><span></span>
+								</label>
+							</div>
+							<div class="d-inline-flex align-items-center">
+								<span>복용 시간</span>
+								<input type="time" class="form-control ml-3" name="pillTime" style="width: 150px"/>
+							</div>
+						</div>
+						<div class="d-inline-flex align-items-center">
+							<span>복용 정 수</span>
+							<input type="number" class="form-control ml-3" name="pillCount" style="width: 100px"/>
+						</div>
+						<div>
+							<input type="submit" class="btn btn-outline-info mx-2" value="확인"/>
+							<button type="button" class="btn btn-outline-danger" data-dismiss="modal">닫기</button>
+						</div>
+				    </form>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!-- 복약 알림 모달 끝 -->
     
     
 	<!-- 수정/삭제시 사용할 모달 시작 -->

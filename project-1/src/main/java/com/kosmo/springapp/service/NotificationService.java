@@ -1,7 +1,11 @@
 package com.kosmo.springapp.service;
 
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.format.TextStyle;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.model.NotificationRequest;
+import com.kosmo.springapp.service.impl.TakeFoodAlarmServiceImpl;
 
 @Service
 public class NotificationService {
@@ -26,6 +31,8 @@ public class NotificationService {
 	private JWTokensService jwTokensService;
 	@Autowired 
 	private FCMService fcmService;
+	@Autowired
+	private TakeFoodAlarmServiceImpl takeFoodAlarmServiceImpl;
 	
 	@Value("${secret-key}")
 	private String secretKey;
@@ -38,6 +45,14 @@ public class NotificationService {
     public void register(final String userId, final String fcmtoken, HttpServletRequest req, HttpServletResponse resp) {
         String loginToken = jwTokensService.getToken(req, tokenName);
     	boolean isLogin = jwTokensService.verifyToken(loginToken, tokenName, secretKey, req, resp);
+    	List<Map> alarms = takeFoodAlarmServiceImpl.selectById(userId);
+    	String foodname = "";
+    	String foodtime = "";
+    	
+    	for(Map alarm : alarms) {
+    		
+    	}
+    	System.out.println("alarm: "+alarms);
     	
     	tokenMap.put(userId, fcmtoken);
     	tokenMap.put("loginToken", loginToken);
@@ -56,9 +71,16 @@ public class NotificationService {
     public void test() {
 		//현재 시간 분단위로 뽑아서 등록된 복용시간이랑,id 일치할 때 알림 띄워야함
 		//토큰도 필요함??????????????????????????
+    	LocalDateTime date = LocalDateTime.now();
+    	DayOfWeek dayOfWeek = date.getDayOfWeek();
+    	String week = dayOfWeek.getDisplayName(TextStyle.SHORT,Locale.KOREAN);
+    	System.out.println("요일: "+week);
+    	
+    	
+    	
 		String c =LocalDateTime.now().toString();
 		String current = c.substring(0,c.lastIndexOf(":")); //현재 시간
-		//System.out.println("현재시간: "+current);
+		System.out.println("현재시간: "+current);
 		
 		//사용자 알람시간
 		String alam = LocalDateTime.of(2023,7,24,19,55).toString().split("\\.")[0];
