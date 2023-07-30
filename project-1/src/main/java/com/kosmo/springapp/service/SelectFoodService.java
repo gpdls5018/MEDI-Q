@@ -18,6 +18,7 @@ public interface SelectFoodService {
 	List<AvgStarScoreCountDTO> selectFoodListFoodScoreTop10();
 	List<String> RankingKeyWord();
 	List<CheckWordDTO> checkWord(String foodname);
+	String healthIssueCou(String healthissue);
 	void newWord(String foodname);
 	void selectKeyWord(String foodname);
 }

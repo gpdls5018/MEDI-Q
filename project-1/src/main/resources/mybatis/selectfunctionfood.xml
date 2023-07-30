@@ -75,6 +75,9 @@
 	<select id="FoodListFromHealthissue" parameterType="String" resultType="AvgStarScoreCountDTO">
 		select * from foodtable where material like '%${healthissue}%' ORDER by imgurl ASC
 	</select>
+	<select id="healthIssueCou" parameterType="String" resultType="String">
+		select H_COUPLING from healthissue where H_NAME like '%${healthissue}%'
+	</select>
 	<select id="RankingKeyWord" resultType="String">
 		SELECT KEYWORD FROM KEYWORD WHERE ROWNUM &lt;= 5 ORDER BY WORDCOUNT DESC
 	</select>
