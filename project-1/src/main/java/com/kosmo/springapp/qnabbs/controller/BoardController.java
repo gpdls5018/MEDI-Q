@@ -22,9 +22,6 @@ import com.kosmo.springapp.qnabbs.service.impl.board.AnswerServiceImpl;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
 
-
-
-
 @Controller
 @RequestMapping("/board")
 public class BoardController {
@@ -43,13 +40,12 @@ public class BoardController {
 	@Autowired
 	private AnswerServiceImpl answerservice;
 	
-	//post로 write.do를 요청받음, 뷰페이지에서 
 	@RequestMapping(value="/List.do",method = {RequestMethod.GET,RequestMethod.POST})
 	public String list(
-			//@RequestParam Map map,
+			@RequestParam Map map,
 			@RequestParam(required = false,defaultValue = "1",value = PagingUtil.NOWPAGE) int nowPage,
 			HttpServletRequest req,
-			//@RequestParam Map likemap,
+			@RequestParam Map likemap,
 			Model model) {
 		
 		//회원인 경우
@@ -60,11 +56,11 @@ public class BoardController {
 			String id=payload.get("sub").toString();//가져온 id를 String id에 저장(현재 로그인한 아이디)
 			model.addAttribute("id", id);//모델에 id란 이름으로 id 저장
 		}
-		Map map =new HashMap<>();
-		Map likemap =new HashMap<>();
+		//Map map =new HashMap<>();
+		//Map likemap =new HashMap<>();
+		
 		//목록에 대한 데이타 저장
 		ListPagingData listPagingData= board.selectList(map, req, nowPage, likemap);
-		//System.out.println("listPagingData:"+listPagingData);
 		//데이타 저장
 		model.addAttribute("listPagingData", listPagingData);	
 		//추천수TOP3 목록에 대한 데이타 저장
@@ -105,7 +101,7 @@ public class BoardController {
 	//상세보기
 	@RequestMapping(value="/View.do",method = {RequestMethod.GET,RequestMethod.POST})
 	public String view(HttpServletRequest req,@RequestParam Map map,Model model) { 
-		System.out.println("map에 있는게 뭐야?"+map);//board의 no를 가지고 있음
+		//System.out.println("map에 있는게 뭐야?"+map);//board의 no를 가지고 있음
 		//회원인 경우
 		String token= jwTokensService.getToken(req, tokenName);//token을 가져옴
 		Map payload = jwTokensService.getTokenPayloads(token, secretKey);//payload로 만듬
@@ -115,34 +111,34 @@ public class BoardController {
 			
 			//작성자가 관리자인지 아닌지 체크, id로 회원정보 가져와서 active 정보 가져옴
 			String active=loginService.selectOne(id).getActive();
-			System.out.println("active:"+active);//"Y, A, N 중 하나"
+			//System.out.println("active:"+active);//"Y, A, N 중 하나"
 			model.addAttribute("active", active);//model에 active로 저장
 		}
 		//답변글 Map생성
 		Map paramMap =new HashMap<>();
 		
-		System.out.println("체크용1");//삭제 예정
+		//System.out.println("체크용1");//삭제 예정
 		//질문글 하나 불러와서 map에 저장
-		System.out.println("map에 무엇이 있나? "+map);//{no=값,87}
+		//System.out.println("map에 무엇이 있나? "+map);//{no=값,87}
 		map=board.selectOne(map);
 		//줄바꿈 질문글 엔터키 br태그 적용
 		Object contentObj = map.get("CONTENT");
-		System.out.println("contentObj:"+contentObj);
+		//System.out.println("contentObj:"+contentObj);
         if (contentObj instanceof String) {
             String content = (String) contentObj;
             content = content.replaceAll("\r\n", "<br>");
             map.put("CONTENT", content);
         }
-		System.out.println("체크용2");//삭제 예정
+		//System.out.println("체크용2");//삭제 예정
 		//질문글 하나 record란 이름으로 저장
 		model.addAttribute("record", map);
-		System.out.println("체크용3");//삭제 예정
-		System.out.println("map의 값 체크"+map);//map의 값 체크{NO=87, POSTDATE=2023.07.25, AGE_GROUP=20대, ACTIVE=Y, GENDER=남자, TITLE=1ㅁ2, CONTENT=111ㅁ2, NAME=최*훈}
-		System.out.println("여기서 아래 에러 발생함!");
+		//System.out.println("체크용3");//삭제 예정
+		//System.out.println("map의 값 체크"+map);//map의 값 체크{NO=87, POSTDATE=2023.07.25, AGE_GROUP=20대, ACTIVE=Y, GENDER=남자, TITLE=1ㅁ2, CONTENT=111ㅁ2, NAME=최*훈}
+		//System.out.println("여기서 아래 에러 발생함!");
 		if (map.get("NO") != null) {
-			System.out.println("map의 NO:"+map.get("NO"));//map의 NO:87
-			System.out.println("여기로 들어오는가?");
-			System.out.println("성공");
+			//System.out.println("map의 NO:"+map.get("NO"));//map의 NO:87
+			//System.out.println("여기로 들어오는가?");
+			//System.out.println("성공");
 			//질문글의 no로 답변글을 불러와서 paramMap에 저장
 			paramMap=answerservice.answerselectOne(map);
 			//줄바꿈 답변글 엔터키 br태그 적용
@@ -156,7 +152,7 @@ public class BoardController {
 		        }
 			}
 		}
-		System.out.println("체크용4");
+		//System.out.println("체크용4");
         System.out.println("paramMap(답변이 없으면 null):"+paramMap);
 		//paramMap이란 이름으로 map을 저장
 		model.addAttribute("paramMap", paramMap);
@@ -180,7 +176,7 @@ public class BoardController {
 		//map.put("id", "petrus11");
 		//String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
 		//map.put("id", id);
-		System.out.println("여기부터...");
+		//System.out.println("여기부터...");
 		int affected = board.update(map);
 	    if (affected == 0) {
 	        model.addAttribute("inputError", "입력 오류입니다. 다시 입력해주세요");

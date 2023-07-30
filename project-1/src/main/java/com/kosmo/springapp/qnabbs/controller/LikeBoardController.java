@@ -44,18 +44,18 @@ public class LikeBoardController {
 		if(payload.get("sub") != null) {//payload는 map형태의 많은 데이터(이건 TRUE)하지만 .get("sub")를 통해 아이디가 있는지 판별(있으면 null이 아님)
 			String id=payload.get("sub").toString();//가져온 id를 String id에 저장(현재 로그인한 아이디)
 			
-			System.out.println("toggle여기오는가!!!!!!?");
+			//System.out.println("toggle여기오는가!!!!!!?");
 			//회원 id,게시물 no로 토글형식으로 반환값:true,false
-			System.out.println("answer_no:"+no);
+			//System.out.println("answer_no:"+no);
 			boolean toggle=likeBoardservice.toggleLike(id, no);
-			System.out.println("toggle:"+toggle);
+			//System.out.println("toggle:"+toggle);
 			int toggleInt = toggle ? 1 : 0; //true,false를  int 1,0으로 변환
-			System.out.println("toggleInt: " + toggleInt);
+			//System.out.println("toggleInt: " + toggleInt);
 			int togggle=likeBoardservice.getTotalLikes(no); //게시물의 총 좋아요 개수 조회
-			System.out.println("togggle 1 or 0:"+togggle);
+			//System.out.println("togggle 1 or 0중 하나 "+togggle);
 			return togggle; //게시물의 총 좋아요 개수를 반환
 		}else {//회원이 아닌 경우 클릭을 누를때
-			System.out.println("회원이 아닌 경우 클릭을 누를때?");
+			//System.out.println("회원이 아닌 경우 클릭을 누를때?");
 			int toggle=likeBoardservice.getTotalLikes(no); //게시물의 총 좋아요 개수 조회(아무 변화가 없음)
 			return toggle; //게시물의 총 좋아요 개수를 반환
 		}

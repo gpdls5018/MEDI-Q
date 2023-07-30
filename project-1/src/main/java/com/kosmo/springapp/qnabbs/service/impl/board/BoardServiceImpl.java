@@ -47,15 +47,15 @@ public class BoardServiceImpl implements DaoService {
 		map.put(PagingUtil.PAGE_SIZE, pageSize);
 		map.put(PagingUtil.BLOCK_PAGE, blockPage);
 		map.put(PagingUtil.NOWPAGE, nowPage);
-		System.out.println("listmap:"+map);
+		//System.out.println("listmap:"+map);
 		//시작/끝 행번호 및 총 페이지 수 설정:PagingUtil.setMapForPaging()호출
 		PagingUtil.setMapForPaging(map);		
 		//글 전체 목록 얻기
 		List records= mapper.selectList(map);
-		System.out.println("records체크:"+records);
+		//System.out.println("records체크:"+records);
 		//추천수TOP3 목록 얻기
 		List likes=mapper.likeList(map);
-		System.out.println("likes체크:"+likes);
+		//System.out.println("likes체크:"+likes);
 		//페이징 문자열 얻기
 		String pagingString=PagingUtil.pagingBootStrapStyle(totalCount, pageSize, blockPage, nowPage,req.getContextPath()+ "/board/List.do?");
 		//페이징과 관련된 정보 및 모든 목록을 담는 ListPagingData객체 생성		
@@ -65,9 +65,9 @@ public class BoardServiceImpl implements DaoService {
 													.map(map)//페이징 관련 데이타 설정
 													.pagingString(pagingString)//페이징 문자열 설정
 													.build();
-		System.out.println("listPagingData체크:"+listPagingData.getMap());
-		System.out.println("listPagingData체크:"+listPagingData.getRecords());
-		System.out.println("listPagingData체크:"+listPagingData.getLikes());
+		//System.out.println("listPagingData체크:"+listPagingData.getMap());
+		//System.out.println("listPagingData체크:"+listPagingData.getRecords());
+		//System.out.println("listPagingData체크:"+listPagingData.getLikes());
 		return listPagingData;
 	}////////////////////
 	
@@ -116,10 +116,10 @@ public class BoardServiceImpl implements DaoService {
 			//람다함수
 			affected=template.execute(status -> {
 				//답변삭제 먼저 되면1 안되면0
-				System.out.println("delete serviceimpl여기 체크");
-				System.out.println("map의 가지고 있는거 :"+map);//{no=114}
+				//System.out.println("delete serviceimpl여기 체크");
+				//System.out.println("map의 가지고 있는거 :"+map);//{no=114}
 				int boarddelete = answermapper.boarddelete(map); //글번호로 게시물의 답변글들 삭제(글작성시 버튼이 없어서 1개만 삭제됨)
-				System.out.println("답변글의 답글들을 다 삭제했다면 boarddelete는 n갯수:"+boarddelete);
+				//System.out.println("답변글의 답글들을 다 삭제했다면 boarddelete는 n갯수:"+boarddelete);
 	            mapper.delete(map); //답변이 다 삭제된, 게시물 삭제
 	            return boarddelete; //0,1 (답변글의 갯수 반환)
 			});
