@@ -258,7 +258,7 @@ progress {
 
 
 
-
+			<!-- 
 			<div class="mt-5 effect-custom-font">
 				<div class="effect-custom-font ml-3 my-2" style="font-size:30px;color:#272727;text-align:left;">5대 영양소 분석</div>
 			</div>
@@ -294,7 +294,7 @@ progress {
 					</div>
 				</div>
 			</div>
-	
+			 -->
 		</div>
 	</div>
 	<script>
