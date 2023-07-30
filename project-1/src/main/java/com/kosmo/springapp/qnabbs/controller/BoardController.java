@@ -92,13 +92,14 @@ public class BoardController {
 		int affected = board.insert(map);
 		//map에 1명의 글 저장 
 		map = board.selectOne(map);
+		System.out.println("writemap에 있는거 찾기:"+map);
 		//글 입력 실패시
 		if(affected==0) {
 			//model.addAttribute("InputError","다시 작성해주세요");//아직안함
 			return "board/View";
 		}
-		//작성하고 난 뒤 목록페이지로 이동
-		return "forward:/board/List.do"; 
+		//작성하고 상세페이지로 이동
+		return "redirect:/board/View.do?no=" + map.get("NO");
 	}////////////////////
 	
 	//상세보기
@@ -124,12 +125,19 @@ public class BoardController {
 		//질문글 하나 불러와서 map에 저장
 		System.out.println("map에 무엇이 있나? "+map);//{no=값,87}
 		map=board.selectOne(map);
+		//줄바꿈 질문글 엔터키 br태그 적용
+		Object contentObj = map.get("CONTENT");
+		System.out.println("contentObj:"+contentObj);
+        if (contentObj instanceof String) {
+            String content = (String) contentObj;
+            content = content.replaceAll("\r\n", "<br>");
+            map.put("CONTENT", content);
+        }
 		System.out.println("체크용2");//삭제 예정
 		//질문글 하나 record란 이름으로 저장
 		model.addAttribute("record", map);
 		System.out.println("체크용3");//삭제 예정
 		System.out.println("map의 값 체크"+map);//map의 값 체크{NO=87, POSTDATE=2023.07.25, AGE_GROUP=20대, ACTIVE=Y, GENDER=남자, TITLE=1ㅁ2, CONTENT=111ㅁ2, NAME=최*훈}
-		//
 		System.out.println("여기서 아래 에러 발생함!");
 		if (map.get("NO") != null) {
 			System.out.println("map의 NO:"+map.get("NO"));//map의 NO:87
@@ -137,16 +145,22 @@ public class BoardController {
 			System.out.println("성공");
 			//질문글의 no로 답변글을 불러와서 paramMap에 저장
 			paramMap=answerservice.answerselectOne(map);
+			//줄바꿈 답변글 엔터키 br태그 적용
+			if(paramMap !=null) {
+				Object paramcontentObj = paramMap.get("CONTENT");
+				System.out.println("paramcontentObj:"+paramcontentObj);
+		        if (paramcontentObj instanceof String) {
+		            String content = (String) paramcontentObj;
+		            content = content.replaceAll("\r\n", "<br>");
+		            paramMap.put("CONTENT", content);
+		        }
+			}
 		}
 		System.out.println("체크용4");
+        System.out.println("paramMap(답변이 없으면 null):"+paramMap);
 		//paramMap이란 이름으로 map을 저장
 		model.addAttribute("paramMap", paramMap);
 		//paramMap을 출력
-		System.out.println("paramMap(답변이 없으면 null):"+paramMap);
-		System.out.println("체크용5");
-		System.out.println("여기출력까지 성공함");
-		
-		
 		return "board/View";
 	}///////////////
 	//수정page 이동

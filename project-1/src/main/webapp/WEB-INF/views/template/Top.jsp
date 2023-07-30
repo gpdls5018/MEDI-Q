@@ -571,14 +571,14 @@ ul {
 </head>
 <body>
 <div class="container-fluid position-relative p-0" style="width:100%;">
-	 <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="justify-content:space-around; padding:10px 0px;" id="navbar">
+	 <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="justify-content:space-around; padding:0px;" id="navbar">
 
         <a class="navbar-brand" href="<c:url value='/' />">
         	<img src="<c:url value='/images/mainicon.png' />" width="50" height="40">
         	<img src="<c:url value='/images/maintitle.png' />" width="160" height="40">
         </a>
         
-        <ul class="tsnavul d-flex" >
+        <ul class="tsnavul d-flex" style="margin-bottom: 2px;">
         	<li class="tsnavli">
 	            <a class="tsnava1" href="<c:url value="/NutrientSelect.do"/>">
 	             영양성분 검색
@@ -606,8 +606,8 @@ ul {
         </fmt:bundle>
         <c:set var="token" value="${cookie['User-Token'].value }"/>
         <c:set var="payload" value='${m:getTokenPayloads(token,key) }' />
-        <ul class="d-flex" style="margin-right: 50px;">
-        	<li class="text2 mx-2 dropdown" style="display:flex; align-items: center;">
+        <ul class="d-flex" style="margin:0px 30px 7px 0px;">
+        	<li class="text2 mx-1 dropdown mt-1" style="display:flex; align-items: center;">
         		<c:if test="${not empty token}" var="isLogin">       
                     <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/MyPage.do"/>"><span class="tsnava3" >마이페이지</span></a>
                     <a class="tslogina" style="text-decoration: none;" href="<c:url value="/project/Logout.do"/>"><span class="tsnava3" >로그아웃</span></a>
@@ -649,8 +649,8 @@ ul {
 									</li>
 									<li>
 										<p class="title">분석 / 추천</p>
-										<a href="#">건강 및 분석</a>
-										<a href="#">발병위험도 예측</a>
+										<a href="<c:url value="/analyzeMyFood.do"/>">건강 및 분석</a>
+										<a href="<c:url value="/loadHealthInfo.do?userId=${payload.sub}"/>">발병위험도 예측</a>
 										<a href="<c:url value="/AdminMain.do"/>">관리자</a>
 	                    				<a href="<c:url value="/functionfood/selectissue.do"/>">태현(테스트)</a>
 										

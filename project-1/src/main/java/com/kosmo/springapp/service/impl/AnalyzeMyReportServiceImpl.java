@@ -28,15 +28,13 @@ public class AnalyzeMyReportServiceImpl {
 	AnalyzeMyReportMapper analyzeMyReportMapper;
 	@Autowired
 	AnalyzeServiceImpl analyzeService;
-public AnalyzeResultListDTO analyzeMyReportM(Map map) {
-		
+	public AnalyzeResultListDTO analyzeMyReportM(Map map) {
 		
 		// 필수 영양소(비타민 등)을 담기 위한 리스트(모든 필수 영양소, 현재 섭취중인 필수 영양소, 섭취가 필요한 필수 영양소)
 		List<String> nutrient_list = analyzeMyReportMapper.selectNutrient_list();
 		List<String> nutrient_list_report = new ArrayList<String>();
 		List<String> nutrient_list_no_report = new ArrayList<String>(nutrient_list);
 		List<String> nuts = analyzeService.nutrientList();
-		List<String> resultList = new ArrayList<>();
 		Pattern cappattern = Pattern.compile("[0-9.]{1,}");
 		List<AnalyzeResultDTO> analyzeResultDTOs = new ArrayList<AnalyzeResultDTO>();
 		AnalyzeResultListDTO analyzeResultListDTO = new AnalyzeResultListDTO();
@@ -520,6 +518,7 @@ public AnalyzeResultListDTO analyzeMyReportM(Map map) {
 		analyzeResultListDTO.setIngredientCount(((List)map.get("takeFood")).size());
 		return analyzeResultListDTO;
 	}
+	
 	public int saveAnalyzeReport(String id, List<String> takeList, List<String> foodList,int score) {
 		AnalyzeReportDTO analyzeReportDTO = new AnalyzeReportDTO();
 		analyzeReportDTO.setUserId(id);
