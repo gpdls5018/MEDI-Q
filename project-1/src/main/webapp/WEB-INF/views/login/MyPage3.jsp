@@ -131,7 +131,7 @@ body {
         font-weight: bold;
         margin-bottom: 10px;
         text-align: center;
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        /*text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);*/
     }
 
     .fontinfo {
@@ -208,7 +208,7 @@ body {
         font-weight: bold;
         margin-bottom: 10px;
         text-align: center;
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        /*text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);*/
     }
     .miniroom img {
         margin: 20px 0px 0px 20px;
