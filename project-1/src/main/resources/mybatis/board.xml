@@ -76,7 +76,7 @@
 		SELECT COUNT(*)
 		FROM board b JOIN member m ON m.id=b.id
 	</select>
-	<!-- 추천수 목록보기 -->
+	<!-- 추천수 TOP5 목록보기 -->
 	<select id="likeList" parameterType="map" resultType="map">
 		SELECT * FROM (
 		    SELECT b.no, b.title, b.content, TO_CHAR(b.postdate, 'YYYY.MM.DD') AS postdate,

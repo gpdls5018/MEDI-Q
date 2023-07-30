@@ -76,7 +76,7 @@ public class HelloSpringController {
 		//model.addAttribute("boardmemberList", boardmemberList);
 		Map map =new HashMap<>();
 		List likes=mapper.likeList(map);
-		System.out.println("likes:체크"+likes);
+		//System.out.println("likes:체크"+likes);
 		model.addAttribute("likes", likes);
 		
 		model.addAttribute("listData", listData);

@@ -170,6 +170,15 @@
 body{
 	background-color: #fdfbf6;
 }
+.page-link{
+	color:black;
+}
+.page-link{
+	color:gray;
+	margin:0px 10px 10px 0px;
+	list-style: none;
+	border: 1px solid #E6E9ED;
+}
      </style>
 
 	<!-- 상단배너 div -->
@@ -264,13 +273,4 @@ body{
     </main>
 	<!-- 페이징 출력 -->
 	<div class="p-3">${listPagingData.pagingString}</div>
-	<!-- css적용 안했음  -->
-    <!-- <ul class="pagination pagination-lg  justify-content-center">
-        <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-    </ul> -->
-
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>

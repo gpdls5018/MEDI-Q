@@ -289,6 +289,12 @@ html, body {
     line-height: 1.5em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+.hori3{
+	position: absolute; 
+	top:75px;
+	right:130px;
+}
  .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
  .wrap * {padding: 0;margin: 0;}
  .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
@@ -565,20 +571,26 @@ html, body {
 		        <div class="content">
 		            <!-- <div class="qna-mark-home" style="display: block; text-align: center; width: 100%;">Q&amp;A</div> -->
 		            <span class="ge-title get-20-2">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
+		            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:0px 0px 35px; ">현재 추천수가 가장 높은 영양제 Top3를 알려드릴게요</p>
+		            <a type="button" class="p2firsta btn hori3" href="<c:url value="/board/List.do" />">더 보기 →</a>
+		            <div class="clearfix mb-2" style="position: absolute; right:10px; top:-400px">
+		            </div>
 		            <div class="qna-list-wrap">
 		            	<c:forEach var="like" items="${likes }"><!-- 추천수 TOP3 -->
 		                    <div class="qna-card">
 		                        <div class="ingredient-tags">
-		                            <div class="ingredient-tag"><!-- 구현안됨 -->
+		                            <!-- 
+		                            <div class="ingredient-tag">
 		                                기타
 		                            </div>
+		                            -->
 		                        </div>
 		                        <br/>
-		                        <a tabindex="0" class="qna-main" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=${like.NO }"/>">
+		                        <a tabindex="0" class="text-decoration-none qna-main" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=${like.NO }"/>">
 		                            <span class="txt1"><span class="qmark">Q.&nbsp;</span>${like.TITLE }</span>
 		                            <span class="txt2">${like.CONTENT } </span>
 		                        </a>
-		                        <a tabindex="0" class="qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=${like.NO }"/>">
+		                        <a tabindex="0" class="text-decoration-none qna-user-wrap" title="이 Q&amp;A의 상세정보 보기" href="<c:url value="/board/View.do?no=${like.NO }"/>">
 		                                <!--  답변에 대한 것이라 삭제 예정
 		                                <div class="qna-user-icon qna-user-icon-1"></div>
 		                                <c:if test="${status.index ==0 }"> 
@@ -599,9 +611,11 @@ html, body {
 		                    </div>
 			            </c:forEach>
 		            </div>
+		            <!-- 
 		            <div class="clearfix mb-2" style="position: absolute; right:100px; top:80px;">
-		                <a tabindex="0" class="more-qna" href="<c:url value="/board/List.do" />"><b>Q&amp;A 더보기</b></a>
+		                <a tabindex="0" class="text-decoration-none more-qna" href="<c:url value="/board/List.do" />">Q&amp;A 더보기</a>
 		            </div>
+		             -->
 		        </div>
 		    </div>
 	  	</div>
