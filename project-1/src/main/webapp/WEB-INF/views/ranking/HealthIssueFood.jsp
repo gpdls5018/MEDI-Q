@@ -293,7 +293,7 @@ body{
 				<!-- 화면을 처음들어 갔을 경우 건기식 또는 회사이름을 안적었을 경우 -->
 				<c:if test="${not empty healthissue}">
 					<div class="top-wrap-070">
-						<h1 class="txt2" style="margin-bottom: 30px; text-align: center; font-size: 30px;"><b><span> ${healthissue}</span>에 좋은 제품 검색결과 <span><fmt:formatNumber value="${listData.size() + listData2.size()}" pattern="#,###" /></span>건</b></h1>
+						<h1 class="txt2" style="margin-bottom: 30px; text-align: center; font-size: 30px;"><b><span> ${healthissue}</span>에 좋은 제품 검색결과</b></h1>
 					</div>
 					<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
 					<div class="new-wide-wrap new-wide-wrap-070">

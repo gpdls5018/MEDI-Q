@@ -36,7 +36,7 @@ public class SelectFoodRankListController {
 	
 	@GetMapping("/functionfood/selectissue.do")
 	public String hselectissue2() {
-		return "ranking/HealthIssueFood";
+		return "test1";
 	}
 	@GetMapping("/ranking/HealthSelect.do")
 	public String hselectissue() {
@@ -68,7 +68,6 @@ public class SelectFoodRankListController {
         }
 
 		model.addAttribute("healthissue", healthissue);
-		//model.addAttribute("listData", uniqueData);
 		model.addAttribute("listData", listData);
 		model.addAttribute("listData2", listData2);
 		return "ranking/HealthIssueFood";
