@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
@@ -13,26 +9,58 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 <jsp:include page="/WEB-INF/views/template/Top.jsp" />
 <style>
+body{
+	background-color: #fdfbf6;
+}
    	.effect-custom-font {
       font-family : Noto Sans KR, sans-serif;
     }
     .hr-class {
     	border : solid 3px #ccc;
     }
+    /*ts 스타일 공간*/
+    .my-title {
+    	position:relative;
+    	background-image: url("https://www.hectohealthcare.com/resources/images/layout/sub_visual_brand.jpg");
+    	background-repeat: no-repeat;
+    	background-size: cover;
+    	margin-top: 70px;
+    }
+    .tsanalyze {
+    	display: flex;
+    	flex-direction:column;
+    	justify-content:center;
+    	border-radius: 40px 40px 0px 0px;
+		box-shadow: rgba(108, 108, 108, 0.15) 0px -1px 10px;
+		margin-top: 50px;
+    }
+    .jumbotron {
+    	background-color: #f6f6f6;
+    	border-radius:15px;
+    	width:100%;
+    	height:120px; 
+    	padding: 24px 20px;
+    }
+    .inputValue {
+    	width:140px;
+    	text-align: right;
+    	margin-right: 5px;
+    }
 </style>
 <body>
-	<div class="container mt-5 effect-custom-font">
-		<div class="jumbotron" style="margin-top:100px;font-size:30px;">
-			<kbd>${userId}</kbd>님의 건강정보
-		</div> 
-		<div class="hr-class mt-5"></div>
-		<div class="load-way d-flex justify-content-around mt-5">
-			<div id="LoadhealthInfoByOCRBtn"><input type="file" name="files" class="btn btn-info"/></div>
+		<div class="container my-3" style="min-height: 880px; max-width: 1100px; background-color: white; border-radius: 15px;">
+			<div class="my-title d-flex effect-custom-font justify-content-between" style="align-items:center; width:100%;height:200px;">
+				<div class="" style="font-size:32px; margin-left: 180px;"><span style="font-size:40px; color:#FDCDBC;">${userId} </span> 님의 건강정보</div>
+			</div>
+			
+			
+	<div class="container mt-3 effect-custom-font" >
+		<div class="load-way d-flex justify-content-around my-5">
+			<div id="LoadhealthInfoByOCRBtn"><input type="file" name="files" class="btn btn-info" style=""/></div>
 			<div class="btn btn-warning">건강검진 API로 불러오기</div>
 		</div>
-		<div class="hr-class mt-5 mb-5"></div>
-		<div>&#x1F601; 올바르게 불러왔는지 값을 확인한 후 저장을 눌러주세요!</div>
-		<div class="health-info-table effect-custom-font row">
+		<div class="mt-5 mb-2 ml-5">&#x1F601; 올바르게 불러왔는지 값을 확인한 후 저장을 눌러주세요!</div>
+		<div class="health-info-table ml-3 mt-3 effect-custom-font row">
 					<c:if test="${empty loadHealthInfo}" var="emptyInfo">
 					<table class="table table-bordered col-8">
 				<form action="<c:url value="/saveHealthData.do"/>" method="POST" onsubmit="preventSubmit(event)" id="sendHealthData">
@@ -79,8 +107,8 @@
 			        </tr>
 	      		    <tr>
 			    		<th>고혈압</th>
-			            <td>혈압(최고/최저)</td>
-			            <td><input class="inputValue" type="text" value="0" name="bloodPressure_high"> / <input class="inputValue" type="text" value="0" name="bloodPressure_low">mmHg</td>
+			            <td>혈압(최저/최고)</td>
+			            <td><input class="inputValue" type="text" value="0" name="bloodPressure_low"> /<br> <input class="inputValue" type="text" value="0" name="bloodPressure_high">mmHg</td>
 			        </tr>
 	           		<tr>
 			    		<th>신장질환</th>
@@ -132,7 +160,7 @@
 			        	<td>감마지피티(a - GPT)</td>
 			        	<td><input class="inputValue" type="text" value="0" name="gpt">U/L</td>
 			        </tr> 
-			        		        </form>
+			    </form>
 		    </table>
 		    <div class="col-4"><canvas id="canvas"></canvas></div>
 		</div>
@@ -243,9 +271,8 @@
 		</div>
 		<button class="btn btn-warning mb-5" style="width:100%;" id="updateHealthDataBtn">수정하기</button>
 			        </c:if>
-
+		</div>
 	</div>
-</body>
 <script>
 	$("input[name=files]").change(function(e) {
 		 var fileInput = document.querySelector('input[name=files]');
@@ -353,4 +380,5 @@
 	    })
   });
 </script>
-<jsp:include page="/WEB-INF/views/template/Footer.jsp" />
+	</body>
+</html>
