@@ -10,9 +10,10 @@
 	</select>
 
 	<select id="selectFood" parameterType="String" resultType="Map">
-		SELECT PRODUCTNAME,IMGURL,NO,COMPANY
-		FROM FOODTABLE
-		WHERE PRODUCTNAME IN (
+		SELECT ft.PRODUCTNAME,ft.IMGURL,ft.NO,ft.COMPANY,tfa.ALARM_FL
+		FROM FOODTABLE ft
+		LEFT JOIN take_food_alarm tfa ON ft.PRODUCTNAME = tfa.FOODNAME AND tfa.ID = 'KIM'
+		WHERE ft.PRODUCTNAME IN (
 		SELECT REGEXP_SUBSTR(foodname, '[^,]+', 1, b.lv) AS foodname
 		FROM my_health a, (SELECT LEVEL AS lv FROM dual CONNECT BY LEVEL &#60;= 10) b
 		WHERE REGEXP_SUBSTR(foodname, '[^,]+', 1, b.lv) IS NOT NULL and id=#{id})

@@ -808,9 +808,9 @@ body {
                         <div class="fontinfo d-flex justify-content-between">
                         	<div>My page</div>
                             <div class="tab-menu fontinfotap mr-3">
-                                <a href="<c:url value="/project/MyPage3.do"/>" class="tab-button"><img alt="pill" src='<c:url value="/images/basic/pills.png"/>' style="width: 21px"/>${fn:substring(info.name,1,3) }님의 약장</a>
                                 <a href="#" class="tab-button" style="color:#fa7a7ab9">건강 다이어리</a>
                                 <a href='<c:url value="/project/MyPage2.do"/>' class="tab-button">찜방&리뷰관리</a>
+                                <a href="<c:url value="/project/MyPage3.do"/>" class="tab-button"><img alt="pill" src='<c:url value="/images/basic/pills.png"/>' style="width: 21px"/>${fn:substring(info.name,1,3) }님의 약장</a>
                             </div>
                         </div>
                         <div class="body_box">

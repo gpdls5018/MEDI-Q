@@ -147,11 +147,13 @@ public class MypageController {
 		ProfileImageDTO profImg = loginService.selectProfImg(id);
 		MyHealthDTO my = myHealthServiceImpl.select(id);
 		List food = myHealthServiceImpl.selectFood(id);
+		List<Map> alarms = takeFoodAlarmServiceImpl.selectById(id);
 		
 		model.addAttribute("info", member);//회원 정보
 		model.addAttribute("profImg", profImg);//프로필 이미지
 		model.addAttribute("my", my);//등록한 건강정보
 		model.addAttribute("food", food);//등록한 영양제 정보
+		model.addAttribute("alarms", alarms);//등록한 영양제 정보
 		
 		return "login/MyPage3";
 	}
@@ -421,12 +423,16 @@ public class MypageController {
 	@PostMapping("/TakeAlarm.do")
 	@ResponseBody
 	public Map takeAlarm(@RequestParam Map map) {
-		System.out.println("dto: "+map);
+		System.out.println("알람 map: "+map);
 		if("저장".equals(map.get("type"))) {
 			takeFoodAlarmServiceImpl.insertAlarm(map);
 		}
-		else {
+		else if("삭제".equals(map.get("type"))){
 			takeFoodAlarmServiceImpl.deleteAlarm(map);
+		}
+		else {
+			map = takeFoodAlarmServiceImpl.selectTakeFoodAlarm(map);
+			System.out.println("data map: "+map);
 		}
 		return map;
 	}

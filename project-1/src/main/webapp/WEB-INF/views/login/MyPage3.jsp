@@ -719,9 +719,9 @@ body {
                         <div class="fontinfo d-flex justify-content-between">
                         	<div>My page</div>
                             <div class="tab-menu fontinfotap mr-3">
-                                <a href="#" class="tab-button" style="color:#fa7a7ab9;"><img alt="pill" src='<c:url value="/images/basic/pills.png"/>' style="width: 21px"/>${fn:substring(info.name,1,3) }님의 약장</a>
                                 <a href="<c:url value="/project/MyPage.do"/>" class="tab-button">건강 다이어리</a>
                                 <a href='<c:url value="/project/MyPage2.do"/>' class="tab-button">찜방&리뷰관리</a>
+                                <a href="#" class="tab-button" style="color:#fa7a7ab9;"><img alt="pill" src='<c:url value="/images/basic/pills.png"/>' style="width: 21px"/>${fn:substring(info.name,1,3) }님의 약장</a>
                             </div>
                         </div>
                         <div class="body_box">
@@ -734,17 +734,19 @@ body {
                                         <article class="WishListMain__Body-sc-uykdsg-3 lnMHMg">
                                         	<!-- 정보 없으면 emptypills.jpg 이미지 띄우기 -->
                                             <c:if test="${empty food }" var="isEmptyFood">
-                                               	<span class="d-block h-50 my-n5"></span>
                                     			<img alt="empty" src="/images/basic/emptypills.jpg" style="width: 100%"/>
                                             </c:if>
-                                            <ul class="kriRoB" style="list-style: none; padding-inline-start: 10px;">
-                                                <c:if test="${not isEmptyFood }">
+                                            
+                                            <c:if test="${not isEmptyFood }">
+                                            	<ul class="kriRoB" style="list-style: none; padding-inline-start: 10px;">
                                                 	<c:forEach var="f" items="${food }">
                                                 		
 			                                                <li class="food WishListMain__WishItem-sc-uykdsg-5 cqOzav">
 			                                                    <section class="kzDdbX">
 			                                                        <section class="divimg">
-			                                                        	<img id="alarmIcon" class="hide" alt="alarm" src="/images/basic/alarm.png"/>
+			                                                        	<c:if test="${not empty f.ALARM_FL}">
+			                                                        		<img id="alarmIcon" class="alarmIcon" alt="alarm" src="/images/basic/alarm.png"/>
+			                                                            </c:if>
 			                                                            <img fetchpriority="high" src="${f.IMGURL }" style="width:150px; height:150px; margin-top: 10px; border-radius: 10px;">
 			                                                        </section>
 			                                                        <label for="wishBtn:rk0:" class="bPHVOx">
@@ -756,9 +758,8 @@ body {
 			                                                </li>
 			                                        	
 	                                                </c:forEach>
-    											</c:if>
-    											
-                                            </ul>
+                                            	</ul>
+                                            </c:if>
                                         </article>
                                     </div>
                                 </div>
@@ -810,7 +811,7 @@ body {
 										
 										<div class="mr-2 my-3 d-flex">
 											<input type="submit" class="btn btn-outline-primary ml-auto py-1" style="font-size: 15px;" value="저장"/>
-											<input type="submit" class="btn btn-outline-danger ml-2 py-1" style="font-size: 15px;" value="삭제"/>
+											<input type="submit" id="danger" class="hide btn btn-outline-danger ml-2 py-1" style="font-size: 15px;" value="삭제"/>
 										</div>
                                     </form>
                                 </div>
@@ -1319,17 +1320,50 @@ body {
 		$('input[type=password]').css('display','').prev().css('display','');
 	});
 	
-	//클릭 시 알람 이미지 추가 및 div 활성화 /////////////알람이 등록되면 아이콘 추가되도록 수정하자!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//클릭 시 div 활성화 및 알림 정보 가져오기
 	$('.food').click(function(){
 		var li = $(this).clone();
 		$('#alarm-li').empty(); //기존에 클릭한 li 삭제
 		$('#no-check').addClass('hide'); //알림 체크 메시지 숨김
-		$('.alarmIcon').addClass('hide'); //알람 아이콘 숨기기(클릭한 li에만 추가하기 위해)
 		$('.food').removeClass('alarmBorder'); //클릭한 li만 css효과주기위해
 		$('#readonlyDiv').removeClass('readonly-div'); //클릭가능하도록 활성화하기 위해
-		$(this).find('#alarmIcon').removeClass('hide').addClass('alarmIcon'); //알람 아이콘 추가
 		$(this).addClass('alarmBorder'); //클릭한 li만 css효과주기위해
 		$('#alarm-li').append(li); //클릭한 li 추가
+
+		$('#alarmCheck').prop('checked',false);
+		$('.weekly').removeClass('weekly-change');
+		$('[name=alarmTime]').val('');
+		$('#count').html('1');
+		$('#alarm-check [type=submit]:last').addClass('hide');
+		
+		$('#no-check').addClass('hide');
+		$('#no-range').addClass('hide');
+		$('#no-time').addClass('hide');
+		
+		$.ajax({
+			data:{
+				type:'정보',
+				id:'${info.id}',
+				foodname:$('#alarm-li').find('.kWbUNE').html()
+			},
+			url:'<c:url value="/project/TakeAlarm.do"/>',
+			method:'post'
+			//dataType:'json'
+		}).done(function(data){
+			if(data.ALARM_FL==='Y'){
+				$('#alarmCheck').prop('checked',true);
+				$('.weekly').each(function(){
+					if(data.WEEKLY.includes($(this).html())){
+						$(this).addClass('weekly-change');
+					}
+				});
+				$('[name=alarmTime]').val(data.ALARM_TIME);
+				$('#count').html(data.TAKE_PILL);
+				$('#alarm-check [type=submit]:last').removeClass('hide');
+			}
+		}).fail(function(request,status,error){
+			console.log('error',error)
+		});
 	});
 	
 	//반복 요일 클릭 시 체크한 효과(색 변경)
@@ -1365,9 +1399,8 @@ body {
         dropdown: true,
         scrollbar: true
 	});
-	
-	//알림 저장
-	$('#alarm-check [type=submit]').click(function(e){
+
+	//알림 저장	$('#alarm-check [type=submit]').click(function(e){
 		e.preventDefault();
 		if(!$('#alarmCheck:checked').length){
 			$('#no-check').removeClass('hide');
@@ -1387,8 +1420,9 @@ body {
 		else{
 			$('#no-time').addClass('hide');
 		}
-
-		if($('#alarm-check .hide').length===3){
+		console.log($('#alarm-check .hide'),$('#danger').is('.hide'))
+		
+		if(!$('#danger').is('.hide') ? $('#alarm-check .hide').length===3 : $('#alarm-check .hide').length===4){
 			var weekly = '';
 			var foodname = $('#alarm-li .kWbUNE').html();
 			$('.weekly-change').each(function(){
@@ -1396,56 +1430,77 @@ body {
 			});
 			weekly = weekly.substring(0,parseInt(weekly.length)-1);
 			
-			$.ajax({
-				data:{
-					type:$(this).val(),
-					id:'${info.id}',
-					foodname:foodname,
-					weekly:weekly,
-					alarm_time:$('[name=alarmTime]').val(),
-					take_pill:$('#count').html()
-				},
-				url:'<c:url value="/project/TakeAlarm.do"/>',
-				method:'post'
-			}).done(function(data){
-				if(data.type==='저장'){
-					Swal.fire({//저장 시 알람 아이콘 추가/////////////////////////////
-						  title: 'Do you want to save the changes?',
-						  showDenyButton: true,
-						  showCancelButton: true,
-						  confirmButtonText: 'Save',
-						  denyButtonText: `Don't save`,
-						}).then((result) => {
-						  /* Read more about isConfirmed, isDenied below */
-						  if (result.isConfirmed) {
-						    Swal.fire('Saved!', '', 'success')
-						  } else if (result.isDenied) {
-						    Swal.fire('Changes are not saved', '', 'info')
-						  }
-						})
-				}
-				else{//삭제 시 알람 아이콘 빼기///////////////////////////////////////
-					Swal.fire({
-						  title: 'Are you sure?',
-						  text: "You won't be able to revert this!",
-						  icon: 'warning',
-						  showCancelButton: true,
-						  confirmButtonColor: '#3085d6',
-						  cancelButtonColor: '#d33',
-						  confirmButtonText: 'Yes, delete it!'
-						}).then((result) => {
-						  if (result.isConfirmed) {
-						    Swal.fire(
-						      'Deleted!',
-						      'Your file has been deleted.',
-						      'success'
-						    )
-						  }
-						})
-				}
-			}).fail(function(){
-				console.log('error')
-			});
+			if($(this).val()==='저장'){
+				Swal.fire({//저장 시 알람 아이콘 추가/////////////////////////////
+					  title: 'Do you want to save the changes?',
+					  showDenyButton: true,
+					  showCancelButton: true,
+					  confirmButtonText: 'Save',
+					  denyButtonText: `Don't save`,
+					}).then((result) => {
+					  /* Read more about isConfirmed, isDenied below */
+					  if (result.isConfirmed) {
+						$.ajax({
+							data:{
+								type:$(this).val(),
+								id:'${info.id}',
+								foodname:foodname,
+								weekly:weekly,
+								alarm_time:$('[name=alarmTime]').val(),
+								take_pill:$('#count').html()
+							},
+							url:'<c:url value="/project/TakeAlarm.do"/>',
+							method:'post'
+						}).done(function(data){
+							console.log('success',data)
+						}).fail(function(){
+							console.log('error')
+						});
+						  
+					  	Swal.fire('Saved!', '', 'success')
+					  	location.href = window.location.href;
+					  } else if (result.isDenied) {
+					    Swal.fire('Changes are not saved', '', 'info')
+					  }
+				})
+			}
+			else{//삭제 시 알람 아이콘 빼기///////////////////////////////////////
+				Swal.fire({
+					  title: 'Are you sure?',
+					  text: "You won't be able to revert this!",
+					  icon: 'warning',
+					  showCancelButton: true,
+					  confirmButtonColor: '#3085d6',
+					  cancelButtonColor: '#d33',
+					  confirmButtonText: 'Yes, delete it!'
+					}).then((result) => {
+					  if (result.isConfirmed) {
+						  $.ajax({
+							data:{
+								type:$(this).val(),
+								id:'${info.id}',
+								foodname:foodname,
+								weekly:weekly,
+								alarm_time:$('[name=alarmTime]').val(),
+								take_pill:$('#count').html()
+							},
+							url:'<c:url value="/project/TakeAlarm.do"/>',
+							method:'post'
+						}).done(function(data){
+							console.log('success',data)
+						}).fail(function(){
+							console.log('error')
+						});
+						  
+					    Swal.fire(
+					      'Deleted!',
+					      'Your file has been deleted.',
+					      'success'
+					    )
+					    location.href = window.location.href;
+					  }
+				})
+			}
 		}
 	});
 </script>
