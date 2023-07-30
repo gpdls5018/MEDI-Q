@@ -1378,8 +1378,8 @@ body {
 	var foodList = food=='[]' ? "" :food.split('},');
 
 	for(var i=0;i<foodList.length;i++){
-		var foodname = foodList[i].split(',')[0].split('=')[1];
-		var foodimg = i==foodList.length-1 ? foodList[i].split(',')[1].split('=')[1].split('}')[0] : foodList[i].split(',')[1].split('=')[1];
+		var foodname = foodList[i].split(',')[1].split('=')[1];
+		var foodimg = i==foodList.length-1 ? foodList[i].split(',')[2].split('=')[1].split('}')[0] : foodList[i].split(',')[2].split('=')[1];
 		var li = document.querySelector('.food-li').cloneNode(true);
 		li.style.display='';
 		console.log('check:',foodimg)
