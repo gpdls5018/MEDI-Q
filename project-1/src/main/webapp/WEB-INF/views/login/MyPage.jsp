@@ -823,8 +823,8 @@ body {
 	                                            <strong></strong>
 	                                        </div>
 	                                        <div class="health mr-3 mb-4"style="font-size: 18px; font-weight: bold; ">
-	                                            <a href="javascript:progressDiary()">건강 다이어리</a>
-	                                            <a class="mt-3 mb-2" href="javascript:progressProfile()">건강 프로필</a>
+	                                            <a href="javascript:progressDiary()"><span class="badge rounded-pill text-white py-2 px-3" style="background-color: #fc79529f; font-size: 17px;">건강 다이어리</span></a>
+	                                            <a class="mt-3 mb-2" href="javascript:progressProfile()"><span class="badge rounded-pill text-white py-2 px-3" style="background-color: #fc79529f; font-size: 17px;">건강 프로필</span></a>
 	                                        </div>
 	                                    </div>
                                     </div>  
