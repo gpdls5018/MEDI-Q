@@ -18,8 +18,11 @@
 	<div class="jumbotron m-5 effect-custom-font">
 		<a href="/DiabetesPredict.do?"> 1. 당뇨병 예측하기 >>> 클릭시 이동</a>
 	</div>
-		<div class="jumbotron m-5 effect-custom-font">
+	<div class="jumbotron m-5 effect-custom-font">
 		<a href="/CardiovascularPredict.do?"> 2. 심장질환 예측하기 >>> 클릭시 이동</a>
+	</div>
+	<div class="jumbotron m-5 effect-custom-font">
+		<a href="/ParkinsonPredict.do?"> 3. 파킨슨(치매) 예측하기 >>> 클릭시 이동</a>
 	</div>
 </div>
 
