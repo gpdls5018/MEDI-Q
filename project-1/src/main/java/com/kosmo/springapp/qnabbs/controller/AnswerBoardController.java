@@ -41,11 +41,11 @@ public class AnswerBoardController {
 	@GetMapping("/AnswerWrite.do")
 	public String answerwrite(@RequestParam String no,@RequestParam String title,Model model) {
 		//뷰에 정보 반환
-		System.out.println("답변쓰기 페이지 이동 성공");
-		System.out.println("질문글 no : "+no);
+		//System.out.println("답변쓰기 페이지 이동 성공");
+		//System.out.println("질문글 no : "+no);
 		model.addAttribute("no",no);
 		model.addAttribute("title", title);
-		System.out.println("title체크:"+title);
+		//System.out.println("title체크:"+title);
 		return "board/AnswerWrite"; //답변글로 이동
 	}//////////////////////////////////////////////
 
@@ -56,19 +56,19 @@ public class AnswerBoardController {
 		//작성자 id 필요
 		//id란 이름으로 token의 id를 저장
 		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
-		System.out.println(123);
+		//System.out.println(123);
 		//map타입으로 id란 이름으로 id저장
 		map.put("id", id);
-		System.out.println("adminid체크:"+id);
+		//System.out.println("adminid체크:"+id);
 		
 		//affect에 글작성이 성공하였다면 (int)1, 실패면 0으로 저장
-		System.out.println("체크용1");
-		System.out.println(map); //map에 {title=김길동입니다, content=asd, no=120, id=choi}
+		//System.out.println("체크용1");
+		//System.out.println(map); //map에 {title=김길동입니다, content=asd, no=120, id=choi}
 		//입력
 		int affected=answerservice.answerinsert(map);
-		System.out.println("affected는 0 or 1인 값:"+affected);
-		System.out.println("체크용2");
-		System.out.println("map에 들어있는 값 : "+map); //map에 {title=김길동입니다, content=asd, no=120, id=choi}
+		//System.out.println("affected는 0 or 1인 값:"+affected);
+		//System.out.println("체크용2");
+		//System.out.println("map에 들어있는 값 : "+map); //map에 {title=김길동입니다, content=asd, no=120, id=choi}
 		model.addAttribute("map", map);
 
 		//글 입력 실패시
@@ -79,7 +79,7 @@ public class AnswerBoardController {
 			return "board/AnswerWrite"; 
 		}
 		//작성하고 난 뒤 목록페이지로 이동
-		System.out.println("답변 answercontroller까지 성공 여기이후는 view에서 에러입니다");
+		//System.out.println("답변 answercontroller까지 성공 여기이후는 view에서 에러입니다");
 	    // /board/View.do핸들러 메서드로 감
 		return "forward:/board/View.do"; // 뷰정보 반환 - 상세보기로 처리하는 컨트롤러로 이동
 	}//////////////////////////////////////////////
@@ -87,15 +87,15 @@ public class AnswerBoardController {
 	@GetMapping("/AnswerEdit.do")
 	public String answeredit(@RequestParam Map map,@RequestParam String title ,Model model) {
 		
-		System.out.println("edit체크용1");
+		//System.out.println("edit체크용1");
 		map=answerservice.answerselectOne(map); //답변글 상세보기
-		System.out.println("map에 있는 값:"+map);
-		System.out.println("edit체크용2");
-		System.out.println("map에 있는 거 체크:"+map);
+		//System.out.println("map에 있는 값:"+map);
+		//System.out.println("edit체크용2");
+		//System.out.println("map에 있는 거 체크:"+map);
 		model.addAttribute("title", title);
-		System.out.println("title체크:"+title);
+		//System.out.println("title체크:"+title);
 		model.addAttribute("record", map); 
-		System.out.println("editmodel의 값 확인:"+model); //{record={BOARD_NO=120, POSTDATE=2023-07-27 21:57:32.0, TITLE=김길동입니다, ANSWER_NO=326, CONTENT=asd, ID=choi, NAME=최승훈}}
+		//System.out.println("editmodel의 값 확인:"+model); //{record={BOARD_NO=120, POSTDATE=2023-07-27 21:57:32.0, TITLE=김길동입니다, ANSWER_NO=326, CONTENT=asd, ID=choi, NAME=최승훈}}
 		return "board/AnswerEdit"; //답변글 수정폼으로 이동
 	}//////////////////////////////////////////////
 	//답변글 수정처리
@@ -109,7 +109,7 @@ public class AnswerBoardController {
 	        //model.addAttribute("record", map);
 	        return "board/AnswerEdit"; //다시 답변 수정 폼으로 이동
 		}
-		System.out.println("여기 이후로는 view문제입니다");
+		//System.out.println("여기 이후로는 view문제입니다");
 		return "forward:/board/View.do"; // 뷰정보 반환 - 상세보기로 처리하는 컨트롤러로 이동
 	}////////////////////////////////////////////////
 }

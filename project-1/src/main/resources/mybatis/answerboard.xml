@@ -13,7 +13,7 @@
 	</insert>
 	<!-- 답변글 상세보기 -->
 	<select id="answerselectOne" parameterType="map" resultType="map">
-		SELECT ab.*, m.name
+		SELECT ab.answer_no,ab.board_no,ab.content,ab.id,TO_CHAR(ab.postdate, 'YYYY.MM.DD') AS postdate, m.name
 	    FROM answer_board ab
 	    JOIN member m ON ab.id = m.id
 	    <where>

@@ -342,7 +342,7 @@
 		        <!-- 도표1: 라인 차트 -->
 				<div class="chart-container" style="margin-bottom: 50px; height: 650px;">
 					<p class="text-center" style="font-size: 16px;"><b>연령대별 건강고민 통계</b></p>
-					<div id="myDiv" style="height: 550px; width: 570px; margin-left: 19px;"></div>
+					<div id="myDiv" style="margin-left: 19px;"></div><!-- style="height: 550px; width: 570px;" -->
 				</div>
 			</div>
 	    	
@@ -385,163 +385,88 @@
 	
     <script>
 	    
-    	const labels = ["20대 미만", "20대", "30대", "40대", "50대", "60대 이상"];
+	    const selectionCountDataJson = JSON.parse('${selectionCountDataJson}');
+	
+	    const labels = ["20대 미만", "20대", "30대", "40대", "50대", "60대 이상"];
+	
+	    var healthIssues = [
+	        "피로감", "스트레스 & 수면", "노화 & 항산화", "면역 기능", "빈혈", "눈 건강", "갑상선 건강", "호흡기 건강",
+	        "소화 & 위식도 건강", "간 건강", "장 건강", "뼈 건강", "관절 건강", "탈모 & 손톱 건강", "피부 건강",
+	        "두뇌활동", "운동 능력 & 근육량", "혈압", "혈당", "혈관 & 혈액순환", "혈중 중성지방", "혈중 콜레스테롤",
+	        "체지방", "치아 & 잇몸", "남성 건강", "여성 건강", "임산부 & 태아 건강", "여성 갱년기"
+	    ];
+	
+	    healthIssues = healthIssues.reverse(); // 역순 재배치
+	
+	    var traces = [];
+	    
+	    labels.forEach(function(label, index) {
+	        var x = [];
+	        var y = [];
+	        var markerSize = [];
+	        var colors = [];
+	        var colorscale = [
+	            [0, 'rgb(0, 128, 255)'],
+	            [0.5, 'rgb(102, 255, 178)'],
+	            [1, 'rgb(255, 0, 0)']
+	        ];
 
-    	const healthIssues = [
-    		  "피로감", "스트레스 & 수면", "노화 & 항산화", "면역 기능", "빈혈", "눈 건강", "갑상선 건강", "호흡기 건강",
-    		  "소화 & 위식도 건강", "간 건강", "장 건강", "뼈 건강", "관절 건강", "탈모 & 손톱 건강", "피부 건강",
-    		  "두뇌활동", "운동 능력 & 근육량", "혈압", "혈당", "혈관 & 혈액순환", "혈중 중성지방", "혈중 콜레스테롤",
-    		  "체지방", "치아 & 잇몸", "남성 건강", "여성 건강", "임산부 & 태아 건강", "여성 갱년기"
-    		];
-    	
-    	// pChart
-    	Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv', function (err, data) {
-		
-			var lookup = {};
-			function getData(year, continent) {
-				var byYear, trace;
-				if (!(byYear = lookup[year])) {;
-				  	byYear = lookup[year] = {};
-				}
-				if (!(trace = byYear[continent])) {
-	    			trace = byYear[continent] = {
-	      				x: [],
-					    y: [],
-						id: [],
-						text: [],
-						marker: {size: []}
-	   				};
-				}
-				return trace;
-			}
-		
-			for (var i = 0; i < data.length; i++) {
-				var datum = data[i];
-				var trace = getData(datum.year, datum.continent);
-				trace.text.push(datum.country);
-				trace.id.push(datum.country);
-				trace.x.push(datum.lifeExp);
-				trace.y.push(datum.gdpPercap);
-				trace.marker.size.push(datum.pop);
-			}
+	        healthIssues.forEach(function (issue) {
+	            var count = (selectionCountDataJson[label] && selectionCountDataJson[label][issue]) || 0;
+	            x.push(label);
+	            y.push(issue);
+	            markerSize.push(count);
+	            colors.push(count);
+	        });
+	        
+	        var maxCount = Math.max(...colors); // Calculate maxCount after colors have been populated
 
-			var years = Object.keys(lookup);
-			var firstYear = lookup[years[0]];
-			var continents = Object.keys(firstYear);
-			
-			var traces = [];
-			for (i = 0; i < continents.length; i++) {
-	  			var data = firstYear[continents[i]];
-	  			traces.push({
-	    			name: continents[i],
-				    x: labels, // 수정된 부분: x축에 labels 변수의 리스트 값을 사용
-				    y: healthIssues,
-				    id: data.id.slice(),
-				    text: data.text.slice(),
-				    mode: 'markers',
-				    marker: {
-				        size: data.marker.size.slice(),
-				        sizemode: 'area',
-				        sizeref: 200000
-	    			}
-	  			});
-			}
+	        traces.push({
+	            x: x,
+	            y: y,
+	            mode: 'markers',
+	            marker: {
+	                size: markerSize,
+	                sizemode: 'area',
+	                sizeref: 0.01,
+	                color: colors,
+	                colorscale: colorscale,
+	                colorbar: {
+	                    title: '빈도',
+	                    thickness: 20, // reduce colorbar thickness
+	                    len: 0.5,
+	                    tickvals: [Math.min(...colors), maxCount], // specify tick positions
+	                    ticktext: [Math.min(...colors), maxCount], // specify tick labels
+	                    showticklabels: false, // Add this line to hide the numeric labels
+	                },
+	                cmin: Math.min(...colors),
+	                cmax: maxCount
+	            },
+	            hovertemplate: '%{y}, 선택 수: %{marker.size}<extra></extra>',
+	        });
+	    });
 
-    		var frames = [];
-    		for (i = 0; i < years.length; i++) {
-      			frames.push({
-      				name: years[i],
-      				data: continents.map(function (continent) {
-        				return getData(years[i], continent);
-      				})
-    			})
-  			}
-  
-  			var sliderSteps = [];
- 			for (i = 0; i < years.length; i++) {
-    			sliderSteps.push({
-      				method: 'animate',
-					label: years[i],
-					args: [[years[i]], {
-        				mode: 'immediate',
-				        transition: {duration: 300},
-				        frame: {duration: 300, redraw: false},
-      				}]
-    			});
-  			}
-  
-			var layout = {
-			    hovermode: 'closest',
-			    updatemenus: [{
-					x: 0,
-					y: 0,
-					yanchor: 'top',
-					xanchor: 'left',
-					showactive: false,
-					direction: 'left',
-					type: 'buttons',
-					pad: {t: 87, r: 10},
-					buttons: [{
-				        method: 'animate',
-				        args: [null, {
-							mode: 'immediate',
-							fromcurrent: true,
-							transition: {duration: 300},
-							frame: {duration: 500, redraw: false}
-				        }],
-				        label: '시작'
-      				}, {
-				        method: 'animate',
-				        args: [[null], {
-							mode: 'immediate',
-							transition: {duration: 0},
-							frame: {duration: 0, redraw: false}
-				        }],
-				        label: '정지'
-      				}]
-			}],
-    		sliders: [{
-				pad: {l: 130, t: 55},
-				currentvalue: {
-			        visible: true,
-			        prefix: '분석일:',
-			        xanchor: 'right',
-			        font: {size: 20, color: '#666'}
-				},
-				steps: sliderSteps
-    		}]
-  		};
-			
-  		Plotly.plot('myDiv', {
-		    data: traces,
-		    layout: layout,
-		    config: {showSendToCloud:true},
-		    frames: frames,
-  		});
-	});
-    	
-    	
-    	
-    	
-    	
-    	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-        
+	    var layout = {
+	        showlegend: false,
+	        hovermode: 'closest',
+	        height: 550,
+	        width: 570,
+	        margin: {
+	            l: 100,
+	            r: 20,
+	            t: 0,
+	            b: 25
+	        },
+	        yaxis: {
+	            tickfont: {
+	                size: 10
+	            }
+	        },
+	        coloraxis: {colorbar: {title: 'Counts'}}
+	    };
+
+	    Plotly.newPlot('myDiv', traces, layout);
+	     
         
     </script>
 </body>

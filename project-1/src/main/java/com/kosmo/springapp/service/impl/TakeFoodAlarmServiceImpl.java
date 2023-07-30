@@ -32,4 +32,8 @@ public class TakeFoodAlarmServiceImpl {
 	public int deleteAlarm(Map map) {
 		return mapper.deleteTakeFoodAlarm(map);
 	}
+
+	public Map selectTakeFoodAlarm(Map map) {
+		return mapper.selectTakeFoodAlarm(map);
+	}
 }

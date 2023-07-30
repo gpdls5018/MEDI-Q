@@ -14,8 +14,12 @@
 	</select>
 	
 	<insert id="insertTakeFoodAlarm" parameterType="Map">
-		INSERT INTO TAKE_FOOD_ALARM VALUES(#{id},#{foodname},#{weekly},#{alarm_time},#{take_pill})
+		INSERT INTO TAKE_FOOD_ALARM VALUES(#{id},#{foodname},#{weekly},#{alarm_time},#{take_pill},DEFAULT)
 	</insert>
+	
+	<update id="updateTakeFoodAlarm" parameterType="Map">
+		UPDATE TAKE_FOOD_ALARM SET WEEKLY=#{weekly},ALARM_TIME=#{alarm_time},TAKE_PILL=#{take_pill} WHERE ID=#{id} AND FOODNAME=#{foodname}
+	</update>
 	
 	<delete id="deleteTakeFoodAlarm" parameterType="Map">
 		DELETE FROM TAKE_FOOD_ALARM WHERE ID=#{id} AND FOODNAME=#{foodname}

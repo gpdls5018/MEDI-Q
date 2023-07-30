@@ -301,16 +301,16 @@
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link active" href="#" onclick="openTab(event, 'popular')">인기 영양소</a>
+                    <a style="font-size: 18px; cursor: pointer;" class="nav-link active" onclick="openTab(event, 'popular')">인기 영양소</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'vitamin')">비타민</a>
+                    <a style="font-size: 18px; cursor: pointer;" class="nav-link" onclick="openTab(event, 'vitamin')">비타민</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'mineral')">미네랄 및 기타영양소</a>
+                    <a style="font-size: 18px; cursor: pointer;" class="nav-link" onclick="openTab(event, 'mineral')">미네랄 및 기타영양소</a>
                 </li>
                 <li class="nav-item col-3">
-                    <a style="font-size: 18px;" class="nav-link" href="#" onclick="openTab(event, 'functional')">기능성 원료</a>
+                    <a style="font-size: 18px; cursor: pointer;" class="nav-link" onclick="openTab(event, 'functional')">기능성 원료</a>
                 </li>
             </ul>
         </div>
@@ -372,11 +372,11 @@
 	                            <c:if test="${not empty n_UL_M }" var="limit">
                         	        <c:if test="${not empty n_UL_M}">
 		                            <div style="font-size: 13px; margin-bottom: 18px; width: 60%" class="mt-2">
-	                                		<span style="margin-left:12%;  margin-right: 20%;">남성 권장 섭취량: ${n_DRI_M }</span>
+	                                		<span style="margin-left:6%;  margin-right: 18%;">남성 권장 섭취량: ${n_DRI_M }</span>
 	                                	<c:if test="${not empty n_UL_M}">
 	                                		<span>남성 상한 섭취량: ${n_UL_M }</span><br/>
 	                                	</c:if>
-		                                	<span style="margin-left:12%;  margin-right: 20%;">여성 권장 섭취량: ${n_DRI_F }</span>
+		                                	<span style="margin-left:6%;  margin-right: 18%;">여성 권장 섭취량: ${n_DRI_F }</span>
 		                                <c:if test="${not empty n_UL_F}">
 		                                	<span>여성 상한 섭취량: ${n_UL_F }</span><br/>
 		                                </c:if>

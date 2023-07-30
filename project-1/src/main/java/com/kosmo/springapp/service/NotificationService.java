@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Vector;
 import java.util.concurrent.ExecutionException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,21 +40,30 @@ public class NotificationService {
 	@Value("${token-name}")
 	private String tokenName;
 	
-    private final Map<String, Object> tokenMap = new HashMap<>();
+	private final Map<String, Object> tokenMap = new HashMap<>();
+	private final List<Map<String, Object>> tokenList = new Vector<>();
  
     //사용자의 Id값을 Key, 토큰 값을 Value로 갖는 Map을 사용해서 토큰 값을 관리한다.
     public void register(final String userId, final String fcmtoken, HttpServletRequest req, HttpServletResponse resp) {
         String loginToken = jwTokensService.getToken(req, tokenName);
     	boolean isLogin = jwTokensService.verifyToken(loginToken, tokenName, secretKey, req, resp);
     	List<Map> alarms = takeFoodAlarmServiceImpl.selectById(userId);
-    	String foodname = "";
-    	String foodtime = "";
-    	
+    	//System.out.println("alarms: "+alarms);
     	for(Map alarm : alarms) {
+    		String foodname = alarm.get("FOODNAME").toString();
+    		String foodtime = alarm.get("ALARM_TIME").toString();
+    		String weekly = alarm.get("WEEKLY").toString();
+    		String foodcount = alarm.get("TAKE_PILL").toString();
     		
+    		Map<String, Object> map = new HashMap<>();
+    		map.put("foodname", foodname);
+    		map.put("foodtime", foodtime);
+    		map.put("weekly", weekly);
+    		map.put("foodcount", foodcount);
+    		
+    		tokenList.add(map);
     	}
-    	System.out.println("alarm: "+alarms);
-    	
+    	//System.out.println("아이디당 저장된 알람정보(register): "+tokenList);
     	tokenMap.put(userId, fcmtoken);
     	tokenMap.put("loginToken", loginToken);
     	tokenMap.put("isLogin", isLogin);
@@ -68,36 +78,32 @@ public class NotificationService {
     }
     
     @Scheduled(cron = "0 */5 * * * *")
-    public void test() {
-		//현재 시간 분단위로 뽑아서 등록된 복용시간이랑,id 일치할 때 알림 띄워야함
-		//토큰도 필요함??????????????????????????
+    public void scheduled() {
     	LocalDateTime date = LocalDateTime.now();
     	DayOfWeek dayOfWeek = date.getDayOfWeek();
-    	String week = dayOfWeek.getDisplayName(TextStyle.SHORT,Locale.KOREAN);
-    	System.out.println("요일: "+week);
     	
+    	String weekly = dayOfWeek.getDisplayName(TextStyle.SHORT,Locale.KOREAN); //현재 요일
+    	String current = date.getHour()+":"+date.getMinute(); //현재 시간
+    	//System.out.println("아이디당 저장된 알람정보(scheduled): "+tokenList);
+    	//System.out.println("현재시간: "+current);
     	
-    	
-		String c =LocalDateTime.now().toString();
-		String current = c.substring(0,c.lastIndexOf(":")); //현재 시간
-		System.out.println("현재시간: "+current);
-		
-		//사용자 알람시간
-		String alam = LocalDateTime.of(2023,7,24,19,55).toString().split("\\.")[0];
-		//System.out.println("test: "+alam);
-		if(alam.equals(current)) {
-			createReceiveNotification();
-		}		
+    	for(Map map : tokenList) {
+    		//System.out.println("weekly: "+map.get("weekly"));
+    		//System.out.println("foodtime: "+map.get("foodtime"));
+    		if(map.get("weekly").equals(weekly) && map.get("foodtime").equals(current)) {
+        		createReceiveNotification(map.get("foodname").toString(),map.get("foodcount").toString());//보낼 때 정보 보내야함(복용 약,정 수)
+        	}
+    	}
 	}
     
-    private void createReceiveNotification() {
+    private void createReceiveNotification(String foodname, String foodcount) {
         if ("true".equals(tokenMap.get("isLogin").toString())) {
         	String id = jwTokensService.getTokenPayloads(tokenMap.get("loginToken").toString(),secretKey).get("sub").toString();
 
         	NotificationRequest notificationRequest = NotificationRequest.builder()
                     .title("MEDI-Q")
                     .token(tokenMap.get(id).toString())
-                    .message("고려비타민 정 복용시간입니다")
+                    .message(String.format("%s님\r\n%s\r\n%s 정 복용시간입니다",id,foodname,foodcount))
                     .icon("../images/mainicon.png")
                     //.timestamp(timestamp)
                     .build();

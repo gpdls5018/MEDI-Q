@@ -530,14 +530,14 @@ body {
 	.diary [for="bmi-g5"] { background-color: #cc1100; color: #fff; }
 	
 	.diary .c-bmi__groups input:checked + label::before {
-	  background-color: #fff;
-	  clip-path: polygon(0% 0%,0% 100%,75.00% 50.00%);
+	  /*background-color: #fff;
+	  clip-path: polygon(0% 0%,0% 100%,75.00% 50.00%);*/
 	  content: '';
 	  display: inline-block;
 	  height: 1rem;
-	  left: 0.5rem;
+	  /*left: 0.5rem;*/
 	  position: absolute;
-	  top: 0.35rem;
+	  /*top: 0.35rem;*/
 	  width: 1rem;
 	}
 	.diary .c-bmi__groups input:checked + label + div {
@@ -808,9 +808,9 @@ body {
                         <div class="fontinfo d-flex justify-content-between">
                         	<div>My page</div>
                             <div class="tab-menu fontinfotap mr-3">
-                                <a href="<c:url value="/project/MyPage3.do"/>" class="tab-button"><img alt="pill" src='<c:url value="/images/basic/pills.png"/>' style="width: 21px"/>${fn:substring(info.name,1,3) }님의 약장</a>
                                 <a href="#" class="tab-button" style="color:#fa7a7ab9">건강 다이어리</a>
                                 <a href='<c:url value="/project/MyPage2.do"/>' class="tab-button">찜방&리뷰관리</a>
+                                <a href="<c:url value="/project/MyPage3.do"/>" class="tab-button"><img alt="pill" src='<c:url value="/images/basic/pills.png"/>' style="width: 21px"/>${fn:substring(info.name,1,3) }님의 약장</a>
                             </div>
                         </div>
                         <div class="body_box">
@@ -823,8 +823,8 @@ body {
 	                                            <strong></strong>
 	                                        </div>
 	                                        <div class="health mr-3 mb-4"style="font-size: 18px; font-weight: bold; ">
-	                                            <a href="javascript:progressDiary()">건강 다이어리</a>
-	                                            <a class="mt-3 mb-2" href="javascript:progressProfile()">건강 프로필</a>
+	                                            <a href="javascript:progressDiary()"><span class="badge rounded-pill text-white py-2 px-3" style="background-color: #fc79529f; font-size: 17px;">건강 다이어리</span></a>
+	                                            <a class="mt-3 mb-2" href="javascript:progressProfile()"><span class="badge rounded-pill text-white py-2 px-3" style="background-color: #fc79529f; font-size: 17px;">건강 프로필</span></a>
 	                                        </div>
 	                                    </div>
                                     </div>  
@@ -1163,11 +1163,11 @@ body {
 					            <li class="item" id="special">
 					                <a href="#special" class="button">건강 특수 상태</a>
 					                <div class="subMenu">
-					                    <span class="btn btn-outline-secondary">흡연 중</span>
-					                    <span class="btn btn-outline-secondary">임신 중</span>
-					                    <span class="btn btn-outline-secondary">수유 중</span>
-					                    <span class="btn btn-outline-secondary">6개월 내 자녀계획 있음</span>
-					                    <span class="btn btn-outline-secondary">폐경기</span>
+					                    <span class="btn text-black-50">흡연 중</span>
+					                    <span class="btn text-black-50">임신 중</span>
+					                    <span class="btn text-black-50">수유 중</span>
+					                    <span class="btn text-black-50">6개월 내 자녀계획 있음</span>
+					                    <span class="btn text-black-50">폐경기</span>
 					                </div>
 					            </li>
 					            
@@ -1378,8 +1378,8 @@ body {
 	var foodList = food=='[]' ? "" :food.split('},');
 
 	for(var i=0;i<foodList.length;i++){
-		var foodname = foodList[i].split(',')[0].split('=')[1];
-		var foodimg = i==foodList.length-1 ? foodList[i].split(',')[1].split('=')[1].split('}')[0] : foodList[i].split(',')[1].split('=')[1];
+		var foodname = foodList[i].split(',')[1].split('=')[1];
+		var foodimg = i==foodList.length-1 ? foodList[i].split(',')[2].split('=')[1].split('}')[0] : foodList[i].split(',')[2].split('=')[1];
 		var li = document.querySelector('.food-li').cloneNode(true);
 		li.style.display='';
 		console.log('check:',foodimg)
@@ -1742,7 +1742,12 @@ body {
 	 var height = bmi.querySelector('input[name=h]');
 	 var weight = bmi.querySelector('input[name=w]');
 	 var gram = bmi.querySelectorAll('input[name=g]');
+	 
 	 function result(){
+		if(!weight.value || !height.value){
+			alert('키와 체중을 입력해주세요');
+			return false;
+		}
 	 	bmi.querySelector('.c-bmi__groups').style.display='';
 		var e=parseInt(height.value), //키 숫자타입으로 구하기
 			t=parseInt(weight.value),//체중 숫자타입으로 구하기

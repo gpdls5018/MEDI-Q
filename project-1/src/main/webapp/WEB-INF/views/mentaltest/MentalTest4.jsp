@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="m" uri="/WEB-INF/tlds/common.tld" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <style>
         .line{
@@ -26,6 +28,11 @@
         }
 </style>
 <body>
+	<fmt:bundle basename="config.tokens">
+			<fmt:message key="secret-key" var="key"/>
+        </fmt:bundle>
+        <c:set var="token" value="${cookie['User-Token'].value }"/>
+	<c:set var="payload" value='${m:getTokenPayloads(token,key) }' />
 	
 	<div class="container" style="margin-top: 100px">
 		<!-- tap 화면 -->
@@ -538,6 +545,10 @@
 	});
 
     function result(){
+    	if(${empty payload.sub}){
+			alert('로그인 후에 이용 가능한 서비스 입니다');
+			return false;
+		}
     	$.ajax({
     		data:{name:"result",test:"test4"},
     		url:'<c:url value="/project/MentalResult.do"/>',

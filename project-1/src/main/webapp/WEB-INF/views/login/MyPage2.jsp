@@ -129,7 +129,7 @@ body {
         font-weight: bold;
         margin-bottom: 10px;
         text-align: center;
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        /*text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);*/
     }
 
     .fontinfo {
@@ -205,7 +205,7 @@ body {
         font-weight: bold;
         margin-bottom: 10px;
         text-align: center;
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        /*text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);*/
     }
     .miniroom img {
         margin: 20px 0px 0px 20px;
@@ -573,9 +573,9 @@ body {
                         <div class="fontinfo d-flex justify-content-between">
                         	<div>My page</div>
                             <div class="tab-menu fontinfotap mr-3">
-                                <a href="<c:url value="/project/MyPage3.do"/>" class="tab-button"><img alt="pill" src='<c:url value="/images/basic/pills.png"/>' style="width: 21px"/>${fn:substring(info.name,1,3) }님의 약장</a>
                                 <a href="<c:url value="/project/MyPage.do"/>" class="tab-button">건강 다이어리</a>
                                 <a href='#' class="tab-button" style="color:#fa7a7ab9">찜방&리뷰관리</a>
+                                <a href="<c:url value="/project/MyPage3.do"/>" class="tab-button"><img alt="pill" src='<c:url value="/images/basic/pills.png"/>' style="width: 21px"/>${fn:substring(info.name,1,3) }님의 약장</a>
                             </div>
                         </div>
                         <div class="body_box">
@@ -876,11 +876,11 @@ body {
 					            <li class="item" id="special">
 					                <a href="#special" class="button">건강 특수 상태</a>
 					                <div class="subMenu">
-					                    <span class="btn btn-outline-secondary">흡연 중</span>
-					                    <span class="btn btn-outline-secondary">임신 중</span>
-					                    <span class="btn btn-outline-secondary">수유 중</span>
-					                    <span class="btn btn-outline-secondary">6개월 내 자녀계획 있음</span>
-					                    <span class="btn btn-outline-secondary">폐경기</span>
+					                    <span class="btn text-black-50">흡연 중</span>
+					                    <span class="btn text-black-50">임신 중</span>
+					                    <span class="btn text-black-50">수유 중</span>
+					                    <span class="btn text-black-50">6개월 내 자녀계획 있음</span>
+					                    <span class="btn text-black-50">폐경기</span>
 					                </div>
 					            </li>
 					            
@@ -934,8 +934,8 @@ body {
 	var foodli = document.querySelector('#select-div ul');
 	var foodList = food=='[]' ? "" :food.split('},');
 	for(var i=0;i<foodList.length;i++){
-		var foodname = foodList[i].split(',')[0].split('=')[1];
-		var foodimg = i==foodList.length-1 ? foodList[i].split(',')[1].split('=')[1].split('}')[0] : foodList[i].split(',')[1].split('=')[1];
+		var foodname = foodList[i].split(',')[1].split('=')[1];
+		var foodimg = i==foodList.length-1 ? foodList[i].split(',')[2].split('=')[1].split('}')[0] : foodList[i].split(',')[2].split('=')[1];
 		var li = document.querySelector('.food-li').cloneNode(true);
 		li.style.display='';
 		console.log('check:',foodimg)

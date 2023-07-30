@@ -195,9 +195,10 @@
 										<div>${paramMap.TITLE }</div>
 								 		<span class="card-text"><h5>${paramMap.CONTENT}</h5></span><!-- 답변내용 -->
 										<hr style="border: 1px solid #E6E9ED;"/>
+	<!--2023.07.30 여기 답변글 날짜 추가 -->	<p class="card-text"><h6 class="font-weight-bold text-muted">${paramMap.POSTDATE }</h6></p>
 										<div class="card-text d-flex align-items-center">
 											<button id="likeToggleBtn" class="btn btn-light text-light btn_deco mr-3" data-answer-no="${paramMap.ANSWER_NO}">도움이 돼요</button>
-											<span id="likeCountText" class="font-weight-bold" data-answer-no="${paramMap.ANSWER_NO}">${record.NO }는 갯수   명에게 도움이 됐습니다.</span>
+											<span id="likeCountText" class="font-weight-bold" data-answer-no="${paramMap.ANSWER_NO}">0 명에게 도움이 됐습니다.</span>
 										</div>
 									</c:if>
 				            	</div>
