@@ -530,14 +530,14 @@ body {
 	.diary [for="bmi-g5"] { background-color: #cc1100; color: #fff; }
 	
 	.diary .c-bmi__groups input:checked + label::before {
-	  background-color: #fff;
-	  clip-path: polygon(0% 0%,0% 100%,75.00% 50.00%);
+	  /*background-color: #fff;
+	  clip-path: polygon(0% 0%,0% 100%,75.00% 50.00%);*/
 	  content: '';
 	  display: inline-block;
 	  height: 1rem;
-	  left: 0.5rem;
+	  /*left: 0.5rem;*/
 	  position: absolute;
-	  top: 0.35rem;
+	  /*top: 0.35rem;*/
 	  width: 1rem;
 	}
 	.diary .c-bmi__groups input:checked + label + div {
@@ -1742,7 +1742,12 @@ body {
 	 var height = bmi.querySelector('input[name=h]');
 	 var weight = bmi.querySelector('input[name=w]');
 	 var gram = bmi.querySelectorAll('input[name=g]');
+	 
 	 function result(){
+		if(!weight.value || !height.value){
+			alert('키와 체중을 입력해주세요');
+			return false;
+		}
 	 	bmi.querySelector('.c-bmi__groups').style.display='';
 		var e=parseInt(height.value), //키 숫자타입으로 구하기
 			t=parseInt(weight.value),//체중 숫자타입으로 구하기
