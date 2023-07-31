@@ -757,8 +757,8 @@ body {
 			                                                            <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
 			                                                        </label>
 			                                                    </section>
-			                                                    <p class="kWbUNE">${f.PRODUCTNAME }</p>
-			                                                    <p class="kCBLwp">${f.COMPANY }</p>
+			                                                    <p class="kWbUNE" title="${f.PRODUCTNAME }">${f.PRODUCTNAME }</p>
+			                                                    <p class="kCBLwp" title="${f.COMPANY }">${f.COMPANY }</p>
 			                                                </li>
 			                                        	
 	                                                </c:forEach>

@@ -629,8 +629,8 @@ body {
 			                                                        <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
 			                                                    </label>
 			                                                </section>
-			                                                <p class="kWbUNE">${f.FOODNAME }</p>
-			                                                <p class="kCBLwp">${f.COMPANY }</p>
+			                                                <p class="kWbUNE" title="${f.FOODNAME }">${f.FOODNAME }</p>
+			                                                <p class="kCBLwp" title="${f.COMPANY }">${f.COMPANY }</p>
 			                                            </li>
 	                                                </c:forEach>
     											</c:if>
@@ -975,9 +975,25 @@ body {
 		li.querySelector('div').innerHTML = foodname;
 		foodli.appendChild(li);
 	}
+
 	//내가 선택한 영양제 클릭 시 삭제
 	$('#select-div .food-li').click(function(){
-		$(this).remove();
+		var click = $(this);
+		//console.log('click',click)
+		var foodList = food=='[]' ? "" :food.split('},');
+		for(var i=0;i<foodList.length;i++){
+			var alarm_fl = foodList[i].split(',')[3].split('=')[1];
+			var food_name = foodList[i].split(',')[1].split('=')[1];
+			//console.log('alarm_fl:',alarm_fl)
+			//console.log('food_name:',food_name)
+			if(food_name===click.find('div').html() && alarm_fl==='Y'){
+				alert('해당 영양제에 알람이 등록되어있습니다\r\n알람을 먼저 해제해주세요')
+				return false;
+			}
+			else if(food_name===click.find('div').html() && !alarm_fl==='Y'){
+				click.remove();
+			}
+		}
 	});
 	/*
 	[{PRODUCTNAME=영롱 비건 쌀마그네슘, IMGURL=https://health-functional-food.s3.ap-northeast-2.amazonaws.com/saved/2020001201619/D35haRYto_L-8rbtpZ_pa}, {PRODUCTNAME=영양가득 한끼 쉐이크, IMGURL=https://health-functional-food.s3.ap-northeast-2.amazonaws.com/saved/200400200082123/iRgh5eZXMvtR2sQdqCStU}]
@@ -1165,7 +1181,6 @@ body {
 				url:'<c:url value="/Heart.do?foodname="/>'+encodeURIComponent(foodname)
 			}).done(function(data){
 				if(data.heart==='1'){
-					console.log('새로고침!!!')
 					location.replace(location.href);
 				}
 			}).fail(function(){
