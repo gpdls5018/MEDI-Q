@@ -1,11 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <jsp:include page="/WEB-INF/views/template/Top.jsp" />
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
-<jsp:include page="/WEB-INF/views/template/Top.jsp" />
 
 <style>
 	#drawing_canvas {
@@ -99,15 +99,13 @@ body {
 		    </div>
 		</div>
 	</div>
-
 	<script>
 	    $(document).ready(function() {
 	        $('#personInfoForm').submit(function (event) {
 	            event.preventDefault();
 	            event.stopImmediatePropagation();
-	
+	            
 	            var forms = document.getElementsByClassName('validation-form');
-	
 	            Array.prototype.filter.call(forms, (form) => {
 	                if (form.checkValidity() === false) {
 	                    Swal.fire({
@@ -131,7 +129,18 @@ body {
 	                            toast.addEventListener('mouseenter', Swal.stopTimer)
 	                            toast.addEventListener('mouseleave', Swal.resumeTimer)
 	                        }
-
+	                    });
+	                    Toast.fire({
+	                        icon: 'success',
+	                        title: '모델이 예측 중입니다'
+	                    });
+	                    setTimeout(function () {
+	                    	var data = {
+		                            "age": age,
+		                            "bmi": bmi,
+		                            "glucose": glucose,
+		                            "bloodpress": bloodpress
+		                        }
                         $.ajax({
                             type: 'POST',
                             url: 'http://192.168.0.16/diabetes',
@@ -152,44 +161,9 @@ body {
             });
         });
     });
-    const TWO_PI = Math.PI * 2;
-    const HALF_PI = Math.PI * 0.5;
-
-	                    });
-	                    Toast.fire({
-	                        icon: 'success',
-	                        title: '모델이 예측 중입니다'
-	                    });
-	                    setTimeout(function () {
-	                    	var data = {
-		                            "age": age,
-		                            "bmi": bmi,
-		                            "glucose": glucose,
-		                            "bloodpress": bloodpress,
-		                        }
-	                        $.ajax({
-	                            type: 'POST',
-	                            url: 'http://192.168.0.16/cardiovascular',
-	                            contentType : "application/json",
-	                            dataType: 'json',
-	                            data: JSON.stringify(data),
-	                            success: function (response) {
-	                                console.log('%o',response);
-	                                console.log(response[0])
-	                                initDrawingCanvas((response[0][1]*100).toFixed(1));
-	                                requestAnimationFrame(loop);
-	                                $('#machineImage').hide();
-	                            }
-	                        });
-	                    }, 1500);
-	                }
-	                form.classList.add('was-validated');
-	            });
-	        });
-	    });
 	    const TWO_PI = Math.PI * 2;
 	    const HALF_PI = Math.PI * 0.5;
-	
+
 	    // canvas settings
 	    var viewWidth = 512,
 	        viewHeight = 350,
@@ -197,43 +171,43 @@ body {
 	        ctx,
 	        timeStep = (1/60),
 	        textValue;
-	
+
 	    Point = function(x, y) {
 	        this.x = x || 0;
 	        this.y = y || 0;
 	    };
-	
+
 	    Particle = function(p0, p1, p2, p3) {
 	        this.p0 = p0;
 	        this.p1 = p1;
 	        this.p2 = p2;
 	        this.p3 = p3;
-	
+
 	        this.time = 0;
 	        this.duration = 3 + Math.random() * 2;
 	        this.color =  '#' + Math.floor((Math.random() * 0xffffff)).toString(16);
-	
+
 	        this.w = 8;
 	        this.h = 6;
-	
+
 	        this.complete = false;
 	    };
-	
+
 	    Particle.prototype = {
 	        update:function() {
 	            this.time = Math.min(this.duration, this.time + timeStep);
-	
+
 	            var f = Ease.outCubic(this.time, 0, 1, this.duration);
 	            var p = cubeBezier(this.p0, this.p1, this.p2, this.p3, f);
-	
+
 	            var dx = p.x - this.x;
 	            var dy = p.y - this.y;
-	
+
 	            this.r =  Math.atan2(dy, dx) + HALF_PI;
 	            this.sy = Math.sin(Math.PI * f * 10);
 	            this.x = p.x;
 	            this.y = p.y;
-	
+
 	            this.complete = this.time === this.duration;
 	        },
 	        draw:function() {
@@ -241,24 +215,24 @@ body {
 	            ctx.translate(this.x, this.y);
 	            ctx.rotate(this.r);
 	            ctx.scale(1, this.sy);
-	
+
 	            ctx.fillStyle = this.color;
 	            ctx.fillRect(-this.w * 0.5, -this.h * 0.5, this.w, this.h);
-	
+
 	            ctx.restore();
 	        }
 	    };
-	
+
 	    Loader = function(x, y) {
 	        this.x = x;
 	        this.y = y;
-	
+
 	        this.r = 24;
 	        this._progress = 0;
-	
+
 	        this.complete = false;
 	    };
-	
+
 	    Loader.prototype = {
 	        reset:function() {
 	            this._progress = 0;
@@ -266,7 +240,7 @@ body {
 	        },
 	        set progress(p) {
 	            this._progress = p < 0 ? 0 : (p > 1 ? 1 : p);
-	
+
 	            this.complete = this._progress === 1;
 	        },
 	        get progress() {
@@ -281,21 +255,21 @@ body {
 	            ctx.fill();
 	        }
 	    };
-	
+
 	    // pun intended
 	    Exploader = function(x, y) {
 	        this.x = x;
 	        this.y = y;
-	
+
 	        this.startRadius = 24;
-	
+
 	        this.time = 0;
 	        this.duration = 0.4;
 	        this.progress = 0;
-	
+
 	        this.complete = false;
 	    };
-	
+
 	    Exploader.prototype = {
 	        reset:function() {
 	            this.time = 0;
@@ -305,7 +279,7 @@ body {
 	        update:function() {
 	            this.time = Math.min(this.duration, this.time + timeStep);
 	            this.progress = Ease.inBack(this.time, 0, 1, this.duration);
-	
+
 	            this.complete = this.time === this.duration;
 	        },
 	        draw:function() {
@@ -315,12 +289,12 @@ body {
 	            ctx.fill();
 	        }
 	    };
-	
+
 	    var particles = [],
 	        loader,
 	        exploader,
 	        phase = 0;
-	
+
 	    function initDrawingCanvas(data) {
 	        drawingCanvas.width = viewWidth;
 	        drawingCanvas.height = viewHeight;
@@ -330,28 +304,28 @@ body {
 	        createExploader();
 	        createParticles();
 	    }
-	
+
 	    function createLoader() {
 	        loader = new Loader(viewWidth * 0.5, viewHeight * 0.5);
 	    }
-	
+
 	    function createExploader() {
 	        exploader = new Exploader(viewWidth * 0.5, viewHeight * 0.5);
 	    }
-	
+
 	    function createParticles() {
 	        for (var i = 0; i < 128; i++) {
 	            var p0 = new Point(viewWidth * 0.5, viewHeight * 0.5);
 	            var p1 = new Point(Math.random() * viewWidth, Math.random() * viewHeight);
 	            var p2 = new Point(Math.random() * viewWidth, Math.random() * viewHeight);
 	            var p3 = new Point(Math.random() * viewWidth, viewHeight + 64);
-	
+
 	            particles.push(new Particle(p0, p1, p2, p3));
 	        }
 	    }
-	
+
 	    function update() {
-	
+
 	        switch (phase) {
 	            case 0:
 	                loader.progress += (1/45);
@@ -366,10 +340,10 @@ body {
 	                break;
 	        }
 	    }
-	
+
 	    function draw() {
 	        ctx.clearRect(0, 0, viewWidth, viewHeight);
-	
+
 	        switch (phase) {
 	            case 0:
 	                loader.draw();
@@ -387,13 +361,13 @@ body {
 	                break;
 	        }
 	    }
-	
-	
-	
+
+
+
 	    function loop() {
 	        update();
 	        draw();
-	
+
 	        if (phase === 0 && loader.complete) {
 	            phase = 1;
 	        }
@@ -409,19 +383,19 @@ body {
 	            //createParticles();
 	            return;
 	        }
-	
+
 	        requestAnimationFrame(loop);
 	    }
-	
+
 	    function checkParticlesComplete() {
 	        for (var i = 0; i < particles.length; i++) {
 	            if (particles[i].complete === false) return false;
 	        }
 	        return true;
 	    }
-	
+
 	    // math and stuff
-	
+
 	    /**
 	     * easing equations from http://gizma.com/easing/
 	     * t = current time
@@ -450,14 +424,14 @@ body {
 	            return c*(t/=d)*t*((s+1)*t - s) + b;
 	        }
 	    };
-	
+
 	    function cubeBezier(p0, c0, c1, p1, t) {
 	        var p = new Point();
 	        var nt = (1 - t);
-	
+
 	        p.x = nt * nt * nt * p0.x + 3 * nt * nt * t * c0.x + 3 * nt * t * t * c1.x + t * t * t * p1.x;
 	        p.y = nt * nt * nt * p0.y + 3 * nt * nt * t * c0.y + 3 * nt * t * t * c1.y + t * t * t * p1.y;
-	
+
 	        return p;
 	    }
 	</script>
