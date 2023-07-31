@@ -603,7 +603,7 @@ html, body {
 		                                	<div class="qna-user-txt">과다복용은 부작용을 유발할 수 있어요. 식품의약품안전처 혹은 제품에 명시된 적정량을 섭취하는걸 추천합니다. </div>
 		                                </c:if>
 		                                 -->
-		                            <div class="user-info-row">
+		                            <div class="user-info-row" style="margin-top: 5px;">
 		                                <span class="user-name">${like.NAME }</span>
 		                                <span class="user-agesex"> ${like.AGE_GROUP} / ${like.GENDER}  ${like.POSTDATE }</span>
 		                            </div>

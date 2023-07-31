@@ -1559,7 +1559,7 @@ a {
     width: 85%;
     height: 200px;
     display: block;
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
     background: #FFFFFF;
     border: 1px solid #E6E9ED;
     box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
