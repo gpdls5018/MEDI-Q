@@ -57,6 +57,7 @@ public class LikeBoardController {
 		}else {//회원이 아닌 경우 클릭을 누를때
 			//System.out.println("회원이 아닌 경우 클릭을 누를때?");
 			int toggle=likeBoardservice.getTotalLikes(no); //게시물의 총 좋아요 개수 조회(아무 변화가 없음)
+			toggle=-1;//비회원일때 -1로 저장
 			return toggle; //게시물의 총 좋아요 개수를 반환
 		}
     }
