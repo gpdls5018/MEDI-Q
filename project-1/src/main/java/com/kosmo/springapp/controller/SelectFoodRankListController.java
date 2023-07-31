@@ -83,8 +83,8 @@ public class SelectFoodRankListController {
         else if(healthissue.trim().equals("임산부")) {
         	healthissue = "임산부 & 태아 건강";
         }
-        else if(healthissue.trim().equals("운동능력")) {
-        	healthissue = "운동능력 & 근육량";
+        else if(healthissue.trim().equals("운동 능력")) {
+        	healthissue = "운동 능력 & 근육량";
         }
         else if(healthissue.trim().equals("탈모")) {
         	healthissue = "탈모 & 손톱 건강";

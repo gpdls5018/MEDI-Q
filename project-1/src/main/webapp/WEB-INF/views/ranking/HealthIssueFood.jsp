@@ -53,7 +53,27 @@ body{
 	align-items: center;
 }
      </style>
+<style>
+  #healthIssueSelect {
+    background-color: #f2f2f2;
+    color: #333;
+  }
 
+  /* 마우스로 select 요소를 호버할 때의 스타일을 지정합니다 */
+  #healthIssueSelect:hover {
+    background-color: #e0e0e0;
+  }
+
+  /* select 요소가 드롭다운될 때의 스타일을 지정합니다 */
+  #healthIssueSelect:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+    /* 드롭다운 시 보이는 옵션 개수를 5개로 설정합니다 */
+    /* 필요에 따라 원하는 숫자로 변경할 수 있습니다 */
+    size: 5;
+  }
+</style>
 	<!-- 상단배너 div -->
 	<aside id="contentInfoCon" class="area animated">
         <!-- 각각 대메뉴 마다 이미지 다르게 들어갑니다. -->
