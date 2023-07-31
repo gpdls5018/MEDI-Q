@@ -42,12 +42,32 @@ body{
     	padding: 24px 20px;
     }
     .inputValue {
-    	width:140px;
+    	width:100px;
     	text-align: right;
     	margin-right: 5px;
+    	margin-left: 120px;
     }
+    .inputValue1 {
+    	width:100px;
+    	text-align: right;
+    	margin-right: 5px;
+    	margin-left: 60px;
+    }
+    .inputValue2 {
+    	width:100px;
+    	text-align: right;
+    	margin-right: 5px;
+
+    }
+    tr {
+    	text-align: center;
+    }
+    tr td:last-child{
+    	text-align: left;
+    }
+
 </style>
-<body>
+
 		<div class="container my-3" style="min-height: 880px; max-width: 1100px; background-color: white; border-radius: 15px;">
 			<div class="my-title d-flex effect-custom-font justify-content-between" style="align-items:center; width:100%;height:200px;">
 				<div class="" style="font-size:32px; margin-left: 180px;"><span style="font-size:40px; color:#FDCDBC;">${userId} </span> 님의 건강정보</div>
@@ -56,8 +76,8 @@ body{
 			
 	<div class="container mt-3 effect-custom-font" >
 		<div class="load-way d-flex justify-content-around my-5">
-			<div id="LoadhealthInfoByOCRBtn"><input type="file" name="files" class="btn btn-info" style=""/></div>
-			<div class="btn btn-warning">건강검진 API로 불러오기</div>
+			<div id="LoadhealthInfoByOCRBtn"><input type="file" name="files" class="btn btn-info"/></div>
+			<!--  <div class="btn btn-warning">건강검진 API로 불러오기</div> -->
 		</div>
 		<div class="mt-5 mb-2 ml-5">&#x1F601; 올바르게 불러왔는지 값을 확인한 후 저장을 눌러주세요!</div>
 		<div class="health-info-table ml-3 mt-3 effect-custom-font row">
@@ -66,7 +86,7 @@ body{
 				<form action="<c:url value="/saveHealthData.do"/>" method="POST" onsubmit="preventSubmit(event)" id="sendHealthData">
 					<input type="hidden" name="userId" value="${userId}"/>
 			        <colgroup>
-			            <col width=10%>
+			            <col width=12%>
 			            <col width=20%>
 			            <col width=40%>
 			        </colgroup>
@@ -108,7 +128,7 @@ body{
 	      		    <tr>
 			    		<th>고혈압</th>
 			            <td>혈압(최저/최고)</td>
-			            <td><input class="inputValue" type="text" value="0" name="bloodPressure_low"> /<br> <input class="inputValue" type="text" value="0" name="bloodPressure_high">mmHg</td>
+			            <td><input class="inputValue1" type="text" value="0" name="bloodPressure_low"> / <input class="inputValue2" style="margin-top: 5px;" type="text" value="0" name="bloodPressure_high">mmHg</td>
 			        </tr>
 	           		<tr>
 			    		<th>신장질환</th>
@@ -171,9 +191,9 @@ body{
 				<form action="<c:url value="/updateHealthData.do"/>" method="POST" onsubmit="preventSubmit(event)" id="sendHealthData">
 					<input type="hidden" name="userId" value="${userId}"/>
 			        <colgroup>
-			            <col width=10%>
-			            <col width=20%>
-			            <col width=40%>
+			            <col width=12%>
+			            <col width=18%>
+			            <col width=38%>
 			        </colgroup>
 			        <tr class="table-primary">
 			            <th>목표 질환</th>
@@ -212,8 +232,8 @@ body{
 			        </tr>
 	      		    <tr>
 			    		<th>고혈압</th>
-			            <td>혈압(최고/최저)</td>
-			            <td><input class="inputValue" type="text" value="${loadHealthInfo.bloodPressure_high}" name="bloodPressure_high"> / <input class="inputValue" type="text" value="${loadHealthInfo.bloodPressure_low}" name="bloodPressure_low">mmHg</td>
+			            <td>혈압(최저/최고)</td>
+			            <td><input class="inputValue1" type="text" value="${loadHealthInfo.bloodPressure_low}" name="bloodPressure_low"> / <input class="inputValue2" style="margin-top: 5px;" type="text" value="${loadHealthInfo.bloodPressure_high}" name="bloodPressure_high"> mmHg</td>
 			        </tr>
 	           		<tr>
 			    		<th>신장질환</th>
@@ -269,7 +289,7 @@ body{
 		    </table>
 		    <div class="col-4"><canvas id="canvas"></canvas></div>
 		</div>
-		<button class="btn btn-warning mb-5" style="width:100%;" id="updateHealthDataBtn">수정하기</button>
+		<button class="btn btn-warning mb-5" style="width:80%; border-radius: 10px; margin-left: 110px;" id="updateHealthDataBtn">수정하기</button>
 			        </c:if>
 		</div>
 	</div>

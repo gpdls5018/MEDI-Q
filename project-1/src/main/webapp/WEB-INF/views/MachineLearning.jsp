@@ -5,27 +5,83 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
 <style>
+body{
+	background-color: #fdfbf6;
+}
    	.effect-custom-font {
       font-family : Noto Sans KR, sans-serif;
     }
     .hr-class {
     	border : solid 3px #ccc;
     }
+    
+     /*ts 스타일 공간*/
+    .my-title {
+    	position:relative;
+    	background-image: url("https://www.hectohealthcare.com/resources/images/layout/sub_visual_brand.jpg");
+    	background-repeat: no-repeat;
+    	background-size: cover;
+    	margin-top: 70px;
+    }
+
+    .jumbotron {
+    	display:flex;
+    	flex-direction:row;
+    	background-color: white;
+    	border-radius:15px;
+    	width:100%;
+    	height:120px; 
+    	padding: 24px 20px;
+    }
+	.tsai:hover {
+		color:white;
+		border: 2px solid #FD9F28;
+		border-radius: 10px;
+		padding: 10px;
+	}
+	.tsai {
+		box-shadow: 2px 2px 5px black;
+		border-radius: 10px;
+		padding: 10px;
+	}
+	.tsaibg {
+		box-shadow: 2px 2px 5px black;
+		border-radius: 10px;
+	}
+
 </style>
-<div class="container">
-	<div class="jumbotron m-5 effect-custom-font" style="font-size:40px;">AI를 이용한 나의 질병 예측</div>
-	
-	<div class="jumbotron m-5 effect-custom-font">
-		<a href="/DiabetesPredict.do?"> 1. 당뇨병 예측하기 >>> 클릭시 이동</a>
-	</div>
-	<div class="jumbotron m-5 effect-custom-font">
-		<a href="/CardiovascularPredict.do?"> 2. 심장질환 예측하기 >>> 클릭시 이동</a>
-	</div>
-	<div class="jumbotron m-5 effect-custom-font">
-		<a href="/ParkinsonPredict.do?"> 3. 파킨슨(치매) 예측하기 >>> 클릭시 이동</a>
-	</div>
-</div>
+
+		<div class="container my-3" style="min-height: 880px; max-width: 1100px; background-color: white; border-radius: 15px;">
+			<div class="my-title d-flex effect-custom-font justify-content-between" style="align-items:center; width:100%;height:200px;">
+				<div class="" style="font-size:32px; margin-left: 180px;">인공지능을 통한<br/> <span style="color:#EF605D;">질병 예측 예방 시스템 구축</span></div>
+			</div>
+
+			<div class="container">
+				<div class="jumbotron row m-2 effect-custom-font" style="position: relative; min-height: 800px;">
+					<span style="font-size: 36px;">AI를 이용한 나의 질병 예측하기</span>
+					<div class="tsai" style="position: absolute; top:150px; left:50px;">
+						<a href="/DiabetesPredict.do?" style="color:black; font-weight: bold; text-decoration: none;">						
+						<img alt="당뇨" style="border-radius:15px; width: 200px; height: 200px;" src="https://img.freepik.com/free-photo/covid-recovery-center-female-doctor-checking-elder-patient-s-oxygen-level_23-2148847834.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=sph">
+						 <br/>당뇨병 예측</a>
+					</div>
+					<div class="tsai" style="position: absolute; top:150px; left:450px;">
+						<a href="/CardiovascularPredict.do?" style="color:black; font-weight: bold; text-decoration: none;">						
+						<img alt="심장질환" style="border-radius:15px; width: 200px; height: 200px;" src="https://img.freepik.com/premium-photo/hands-holding-chest-with-symptom-heart-attack-disease_33807-784.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=sph">
+						<br/>심장질환 예측</a>
+					</div>
+					<div class="tsai" style="position: absolute; top:420px; left:250px;">
+						<a href="/ParkinsonPredict.do?" style="color:black; font-weight: bold; text-decoration: none;">						
+						<img alt="치매" style="border-radius:15px; width: 200px; height: 200px;" src="https://img.freepik.com/premium-photo/handsome-depressed-man-in-casual-clothes_85574-5904.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=sph">
+						<br/>파킨슨(치매) 예측</a>
+					</div>
+				</div>
+				<div class="tsaibg" style="position: absolute; top:330px; right:70px;">
+					<img alt="건강" style="border-radius:10px; width: 600px; height: 600px;" src="https://www.mkhealth.co.kr/news/photo/202302/62710_66694_459.jpg">
+				</div>
+			</div>
+		</div>
 
 
 
-<jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
+	</body>
+</html>
