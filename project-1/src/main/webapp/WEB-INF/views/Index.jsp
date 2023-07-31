@@ -386,7 +386,7 @@ html, body {
 <div id="tsmain">
 	<!-- 페이지 1 -->
 	 <div class="tssection" id="tssection1">
-		  <section id="section-119">
+		  <section id="section-119" style="margin-bottom: 40px;">
 		        <div class="content-slider">
 		          <input type="radio" id="banner1" class="sec-1-input" name="banner" checked>
 		          <input type="radio" id="banner2" class="sec-1-input" name="banner">
