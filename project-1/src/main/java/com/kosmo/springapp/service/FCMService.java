@@ -50,10 +50,10 @@ public class FCMService {
                 .setToken(notificationRequest.getToken())
                 .setWebpushConfig(WebpushConfig.builder().putHeader("ttl", "300")
                         .setNotification(WebpushNotification.builder()
-                        		.setTimestampMillis(notificationRequest.getTimestamp())
                         		.setTitle(notificationRequest.getTitle())
                         		.setBody(notificationRequest.getMessage())
                         		.setIcon(notificationRequest.getIcon())
+                        		.setImage(notificationRequest.getImage())
                         		.build())
                         		/*
                         		new WebpushNotification(
