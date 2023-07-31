@@ -128,7 +128,7 @@ html, body {
 }
 #tssection6 {
 	background-color:white;
-	background: linear-gradient(to bottom, #fdfbf6 60% , white 60%);
+	background: linear-gradient(to bottom, #fdfbf6 54% , white 54%);
 	flex-direction: column;
 	position: relative;
 }
@@ -269,8 +269,8 @@ html, body {
 .p2firsta {
 	position: absolute;
 	z-index:2;
-	top:470px; 
-	right:100px;
+	top:410px; 
+	right:130px;
 	color:gray;
 	padding: 10px; 
 	text-align: center;
@@ -386,7 +386,7 @@ html, body {
 <div id="tsmain">
 	<!-- 페이지 1 -->
 	 <div class="tssection" id="tssection1">
-		  <section id="section-119" style="margin-bottom: 40px;">
+		  <section id="section-119" style="margin-bottom: 30px;">
 		        <div class="content-slider">
 		          <input type="radio" id="banner1" class="sec-1-input" name="banner" checked>
 		          <input type="radio" id="banner2" class="sec-1-input" name="banner">
