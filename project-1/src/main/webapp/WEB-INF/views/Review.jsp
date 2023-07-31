@@ -77,10 +77,10 @@
 
 </style>
 <body>
-  <div class="container">
+  <div class="container" style="margin-top: 100px;">
     <hr>
     <div class="food jumbotron d-flex" style="border-radius: 20px;height:300px;">
-      <img src="${listOne.imgURL}" style="border-radius: 20px;width:200px;"/>
+      <img src="${listOne.imgURL}" style="border-radius: 20px;width:200px;height: auto;"/>
       <div class="food-text m-auto effect-custom-font" style="font-size: 25px;">
         <div class="food-company">${listOne.company}</div>
         <div class="food-title">${listOne.productName}</div>

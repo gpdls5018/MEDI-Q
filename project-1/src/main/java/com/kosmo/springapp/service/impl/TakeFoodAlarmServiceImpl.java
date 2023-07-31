@@ -21,7 +21,7 @@ public class TakeFoodAlarmServiceImpl {
 
 	public int insertAlarm(Map map) {
 		Map alarm = mapper.selectTakeFoodAlarm(map);
-		System.out.println("impl의 alarm: "+alarm);
+		//System.out.println("impl의 alarm: "+alarm);
 		if(alarm==null)
 			return mapper.insertTakeFoodAlarm(map);
 		else {

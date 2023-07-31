@@ -817,7 +817,7 @@ body {
                             <div class="update_box">
                                 <div class="news">
                                     <div class="board recently" style="flex:1;">
-                                    	<div>${fn:split(current,"-")[1] }월의 건강 프로그래스</div>
+                                    	<div>${fn:split(current,"-")[1] }월의 건강 달성 프로젝트</div>
                                     	<div>
 	                                        <div class="second circle">
 	                                            <strong></strong>
