@@ -571,7 +571,7 @@ html, body {
 		        <div class="content">
 		            <!-- <div class="qna-mark-home" style="display: block; text-align: center; width: 100%;">Q&amp;A</div> -->
 		            <span class="ge-title get-20-2">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
-		            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:0px 0px 35px; ">현재 추천수가 가장 높은 영양제 Top3를 알려드릴게요</p>
+		            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:0px 0px 10px; ">현재 추천수가 가장 높은 영양제 Top3를 알려드릴게요</p>
 		            <a type="button" class="p2firsta btn hori3" href="<c:url value="/board/List.do" />">더 보기 →</a>
 		            <div class="clearfix mb-2" style="position: absolute; right:10px; top:-400px">
 		            </div>
