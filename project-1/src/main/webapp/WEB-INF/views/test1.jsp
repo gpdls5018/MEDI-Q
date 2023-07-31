@@ -79,12 +79,12 @@ body{
 				</div>
 				<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
 					<div class="search-etc">
-					<span class="s-txt1">인기 검색어</span>
+					<div class="ipt-main-wrap">
 					<form action="/diet.do">
 							<input id="searchProduct3" type="text" name="takefood" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${takefood}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
 							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct3()"></button>
 					</form>
-					
+					</div>
 					<c:forEach items="${foodlist}" var="onefooddiet">
 					    <p>Food Name: ${onefooddiet.foodname}</p>
 					    <p>One Time Serving Weight: ${onefooddiet.onetime}</p>
