@@ -12,7 +12,7 @@
     <title>MEDI Q</title>
     <style>
        .qna_banner{
-        	width:75%;
+        	width:60%;
         	height:280px;
         	background-color:#FDCDBC;
             border-radius: 30px;
@@ -28,7 +28,7 @@
 	         position:absolute;
 	         width: 200px;
 	         top:calc(100vh - 85vh);
-	         right:20%;
+	         right:25%;
 	     }
 		.text_1{
 			font-size:70px;
@@ -67,7 +67,7 @@
 		}
 		.qna_bbs{
 			height:90px;
-			padding-left:calc(100vw - 1570px);
+			padding-left:15px;
 		}
 		.card_font1{
 			font-size:26px;
@@ -92,24 +92,28 @@
         </div>
         
         <div class="container-fluid pt-3 mt-3">
-			<img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs mb-4">
+        	<div class="row">
+	        	<div class="d-flex col-3"></div>
+	        	<%-- <div class="d-flex col"><img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs mb-4"></div> --%>
+	        	<div class="d-flex col-3"></div>
+            </div>
             <div class="row d-flex flex-wrap align-content-stretch">
-                <div class="d-flex col-2">
+                <div class="d-flex col-3">
                 </div>
-                <div class="d-flex col-8 flex-wrap flex-direction justify-content-center align-content-stretch">
+                <div class="d-flex col-6 flex-wrap flex-direction justify-content-center align-content-stretch">
                     <div class="col">
                         <form method="post" action="/board/Write.do">
                             <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
                             <div class="card_deco col-12 p-0 m-0">
 	                            <div class="card-body p-2 m-3">
 	                                <div class="form-group">
-									  <label for="usr"><h3><kbd class="btn_deco font-weight-bold">질문</kbd></h3></label>
-									  <input type="text" id="usr" name="title" class="form-control form-control-lg" placeholder="질문을 입력하세요" >
+									  <label for="usr"><h3><kbd class="btn_deco font-weight-bold">제목</kbd></h3></label>
+									  <input type="text" id="usr" name="title" class="form-control form-control-lg" placeholder="제목을 입력하세요" >
 									</div>
 	                                <br>
 	                                <div class="form-group">
 									  <label for="comment"><h3><kbd class="btn_deco font-weight-bold">질문 내용</kbd></h3></label>
-									  <textarea id="comment" name="content" class="form-control form-control-lg" rows="5" placeholder="질문 내용을 입력하세요" ></textarea>
+									  <textarea id="comment" name="content" class="form-control form-control-lg" rows="5" placeholder="내용을 입력하세요" ></textarea>
 									</div>
 	                            </div>
 	                        </div>
@@ -129,7 +133,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="d-flex col-2 flex-wrap align-content-stretch pt-3 mt-3">
+                <div class="d-flex col-3 flex-wrap align-content-stretch pt-3 mt-3">
                 </div>
             </div>
         </div>

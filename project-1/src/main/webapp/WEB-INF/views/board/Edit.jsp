@@ -12,7 +12,7 @@
     <title>MEDI Q</title>
     <style>
     	.qna_banner{
-        	width:75%;
+        	width:60%;
         	height:280px;
         	background-color:#FDCDBC;
             border-radius: 30px;
@@ -28,7 +28,7 @@
 	         position:absolute;
 	         width: 200px;
 	         top:calc(100vh - 85vh);
-	         right:20%;
+	         right:25%;
 	     }
 		.text_1{
 			font-size:70px;
@@ -67,6 +67,7 @@
 		}
 		.qna_bbs{
 			height:90px;
+			padding-left:15px;
 		}
 		.card_font1{
 			font-size:26px;
@@ -91,18 +92,26 @@
         </div>
         <div class="container-fluid pt-5 mt-5">
             <div class="row d-flex flex-wrap align-content-stretch">
-                <div class="d-flex col-2">
+                <div class="row">
+               		<div class="d-flex col-3"></div>
+               		<div class="d-flex col"><img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs ml-1 mb-3"></div>
+               		<div class="d-flex col-3"></div>
+               	</div>
+                <div class="d-flex col-3">
                 </div>
                 
+                <%-- 
                 <c:if test="${! empty InputError}">
 					<div class="alert alert-success alert-dismissible fade show">
 						<button type="button" class="close" data-dismiss="alert">&times;</button>
 						<strong>Failure!</strong> ${InputError}
 					</div>
 				</c:if>
+				 --%>
                 <div class="d-flex col flex-wrap flex-direction justify-content-center align-content-stretch">
                     <div class="col pb-5">
-	                    <img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs ml-1 mb-3">
+                    	
+	                    <%-- <img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs ml-1 mb-3"> --%>
 	                    <div class="col justify-content-center p-0 m-0">
 	                    	<form method="post" action="/board/EditProcess.do">
 	                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -145,7 +154,7 @@
                      -->
                 </div>
             </div>
-            <div class="d-flex col-2 flex-wrap align-content-stretch">
+            <div class="d-flex col-3 flex-wrap align-content-stretch">
             </div>
         </div>
     </main>

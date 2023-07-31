@@ -15,7 +15,7 @@
 </head>
 <style>
 	.qna_banner{
-       	width:75%;
+       	width:60%;
        	height:280px;
        	background-color:#FDCDBC;
 		border-radius: 30px;
@@ -31,7 +31,7 @@
          position:absolute;
          width: 200px;
          top:calc(100vh - 85vh);
-         right:20%;
+         right:25%;
      }
 	.text_1{
 		font-size:70px;
@@ -95,10 +95,10 @@
         <!-- 게시판 시작 -->
 	    <div class="container-fluid pt-5 mt-3">
 	        <div class="row d-flex flex-wrap align-content-stretch">
-	            <div class="d-flex col-2">
+	            <div class="d-flex col-3">
 	            </div>
 	            <!-- 게시판 가운데 부분 -->
-	            <div class="d-flex col-8 flex-wrap flex-direction justify-content-center align-content-stretch">
+	            <div class="d-flex col-6 flex-wrap flex-direction justify-content-center align-content-stretch">
 	                <div class="col pb-5">
 	                    <img src="<c:url value="/images/qna/qna_ans.png"/>" class="qna_ans ml-1">
 	                    <div class="row justify-content-center pt-3">
@@ -208,7 +208,7 @@
 		            </c:choose>
 				</div>
             </div>
-            <div class="d-flex col-2 flex-wrap align-content-stretch">
+            <div class="d-flex col-3 flex-wrap align-content-stretch">
             </div>
 	        <div class="row d-flex flex-wrap flex-direction justify-content-center pt-3">
 	        	<div class="col-3">
