@@ -35,7 +35,7 @@ public class LikeBoardController {
 	@PostMapping("/Toggle.do")
 	public int toggleLike(@RequestParam int no,HttpServletRequest req,Model model) {
 		
-		System.out.println("liketoggle체크요");
+		//System.out.println("liketoggle체크");
 		
 		//여기는 회원인 경우
 		//id값 불러옴
@@ -64,7 +64,7 @@ public class LikeBoardController {
 	// 게시물의 총 좋아요 개수 조회  //(답변글 존재x시 answer_no=(null) 400error이지만 기능엔 문제 없음)
     @GetMapping("/Count.do")
     public int getTotalLikes(@RequestParam int no) {
-    	System.out.println("likeno:컨트롤러에서 확인:"+no);
+    	//System.out.println("likeno:컨트롤러에서 확인:"+no);
         return likeBoardservice.getTotalLikes(no); //게시물의 총 좋아요 개수 조회
     }
 }

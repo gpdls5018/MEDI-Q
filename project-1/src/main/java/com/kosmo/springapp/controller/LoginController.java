@@ -83,16 +83,18 @@ public class LoginController {
 	public String login(@RequestParam Map map, Model model, HttpServletRequest req, HttpServletResponse resp) {
 
 		boolean flag = loginService.isMember(map);// 쿼리문으로 회원여부 판단
-		MemberDTO member = loginService.selectOne(map.get("id").toString());
+		String id = map.get("id").toString();
+		MemberDTO member = loginService.selectOne(id);
 		String active = member==null ? "" : member.getActive();
 
 		if (flag && !"N".equals(active)) {// 회원 or 관리자 일 때
-			String id = map.get("id").toString();
-			String name = loginService.selectOne(id).getName();
+			String name = member.getName();
+			String activeFl = member.getActive();
 
 			// 토큰 생성한 뒤 쿠키에 저장
 			Map<String, Object> payloads = new HashMap<>();// 사용자 임의 데이타
 			payloads.put("name", name);
+			payloads.put("activeFl", activeFl);
 
 			long expirationTime = 1000 * 60 * 60 *24; // 토큰의 만료시간 설정
 

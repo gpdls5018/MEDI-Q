@@ -682,9 +682,10 @@ ul {
 										<p class="title">분석 / 추천</p>
 										<a href="<c:url value="/analyzeMyFood.do"/>">건강 및 분석</a>
 										<a href="<c:url value="/loadHealthInfo.do?userId=${payload.sub}"/>">발병위험도 예측</a>
-										<a href="<c:url value="/AdminMain.do"/>">관리자</a>
-	                    				<a href="<c:url value="/functionfood/selectissue.do"/>">태현(테스트)</a>
-										
+										<c:if test="${payload.activeFl eq 'A' }">
+											<a href="<c:url value="/AdminMain.do"/>">관리자</a>
+		                    				<a href="<c:url value="/functionfood/selectissue.do"/>">태현(테스트)</a>
+										</c:if>
 									</li>
 								</ul>
 								<div class="right__wr">

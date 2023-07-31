@@ -180,10 +180,70 @@ left: 146px;
     align-items: center;
     justify-content: center;
 }
-</style>
-<div>
+body{
+	background-color: #fdfbf6;
+}
+#contentInfoCon {
+    position: relative;
+    height: 383px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#contentInfoCon .content-sub-tit {
+    font-size: 16px;
+    color: #222;
+    overflow: hidden;
+}
+#contentInfoCon .content-tit {
+    color: #222;
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 1.36;
+    letter-spacing: -0.02em;
+    margin-top: 37px;
+}
+.visual-img-con {
+	position:absolute;
+	width:100%;
+	height:100%;
+    background: url("https://www.hectohealthcare.com/resources/images/layout/sub_visual_company.jpg") no-repeat;
+    background-color: #fff;
+    z-index: 1;
+    top:70px;
+	border:none;
+}
+.tsarea {
+	position: absolute;
+	width: 1000px;
+	height: 250px;
+	top:170px;
+	left:50px;
+	border:none;
+	z-index: 2;
+	text-align: center;
+	box-shadow: 0px 0px 0px white;
+	align-items: center;
+}
+     </style>
+
+	<!-- 상단배너 div -->
+	<aside id="contentInfoCon" class="area animated">
+        <!-- 각각 대메뉴 마다 이미지 다르게 들어갑니다. -->
+                <!-- 브랜드 스토리 -->
+                <div class="visual-img-con animatedleft"></div>	
+
+        <div class="tsarea">
+            <h3 class="content-tit" style="text-align:left; margin-left: 150px;">
+                <span><span style="color:#EF605D;">MEDI-Q</span> 영양제</span>
+                <p style="font-weight: 500; font-size: 23px; margin-top: 20px; color:gray">실제 섭취하는 유저들의 리뷰와 피드백으로 만든<br/> 가장 믿을만한 영양제</p>
+            </h3>
+        </div>
+    </aside>
+    
+
 <div class="background-top">
-	<p class="display-4 back-img" style="background-image: url('<c:url value="/images/nutrient_img/bg_bl.png"/>');">${listOne.productName}</p>
+	<p class="display-4 back-img" style="border-radius:10px; background-image: url('<c:url value="/images/nutrient_img/bg_bl.png"/>');">${listOne.productName}</p>
 </div>
 <div class="container">
 <div class="empty-space" style="height:32px;"></div>
@@ -586,7 +646,7 @@ left: 146px;
   		</div><!-- 탭 2 끝 -->
    	</div><!-- 탭 끝 -->
 </div>
-</div>
+
 <input type="hidden" value="${listOne.no}" id="productNo">
 <script>
 
