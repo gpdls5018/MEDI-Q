@@ -386,7 +386,7 @@ html, body {
 <div id="tsmain">
 	<!-- 페이지 1 -->
 	 <div class="tssection" id="tssection1">
-		  <section id="section-119">
+		  <section id="section-119" style="margin-bottom: 40px;">
 		        <div class="content-slider">
 		          <input type="radio" id="banner1" class="sec-1-input" name="banner" checked>
 		          <input type="radio" id="banner2" class="sec-1-input" name="banner">
@@ -663,10 +663,20 @@ html, body {
 	              <figure><a href="<c:url value="/magazine.do?no=03"/>"><img src="<c:url value="/images/thumbnail_img/RedM_Hia.jpg"/>" style="width:100%; height:240px" ></a></figure>
 	              <figure><a href="<c:url value="/magazine.do?no=04"/>"><img src="<c:url value="/images/thumbnail_img/RedM_Pro.jpg"/>" style="width:100%; height:240px" ></a></figure>
 	              <figure><a href="<c:url value="/magazine.do?no=05"/>"><img src="<c:url value="/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:240px" ></a></figure>
-  	              <figure><a href="#"><img src="<c:url value="/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:240px" ></a></figure>	              
-  	              <figure><a href="#"><img src="<c:url value="/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:240px" ></a></figure>
-  	              <figure><a href="#"><img src="<c:url value="/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:240px" ></a></figure>
-  	              <figure><a href="#"><img src="<c:url value="/images/thumbnail_img/YellowM_Mus.jpg"/>" style="width:100%; height:240px" ></a></figure>
+  	              <figure><a href="<c:url value="/magazine.do?no=06"/>"><img src="<c:url value="/images/thumbnail_img/SkyM_Yoo.jpg"/>" style="width:100%; height:240px" ></a></figure>
+	              <figure><a href="<c:url value="/magazine.do?no=07"/>"><img src="<c:url value="/images/thumbnail_img/PurpleM_Ten.jpg"/>" style="width:100%; height:240px" ></a></figure>
+	              <figure><a href="<c:url value="/magazine.do?no=08"/>"><img src="<c:url value="/images/thumbnail_img/PurpleM_Hei.jpg"/>" style="width:100%; height:240px" ></a></figure>
+	              <figure><a href="<c:url value="/magazine.do?no=09"/>"><img src="<c:url value="/images/thumbnail_img/PurpleM_Heal.jpg"/>" style="width:100%; height:240px" ></a></figure>
+	              <figure><a href="<c:url value="/magazine.do?no=10"/>"><img src="<c:url value="/images/thumbnail_img/GreenM_Depre.jpg"/>" style="width:100%; height:240px" ></a></figure>
+  	              <figure><a href="<c:url value="/magazine.do?no=11"/>"><img src="<c:url value="/images/thumbnail_img/GreenM_Yoo.jpg"/>" style="width:100%; height:240px" ></a></figure>
+  	              <figure><a href="<c:url value="/magazine.do?no=12"/>"><img src="<c:url value="/images/thumbnail_img/GreenM_Wat.jpg"/>" style="width:100%; height:240px" ></a></figure>
+  	              <figure><a href="<c:url value="/magazine.do?no=13"/>"><img src="<c:url value="/images/thumbnail_img/GreenM_Sleep.jpg"/>" style="width:100%; height:240px" ></a></figure>
+  	       		  <figure><a href="<c:url value="/magazine.do?no=14"/>"><img src="<c:url value="/images/thumbnail_img/SkyM_Yoo_2.jpg"/>" style="width:100%; height:240px" ></a></figure>
+  	       		  <figure><a href="<c:url value="/magazine.do?no=15"/>"><img src="<c:url value="/images/thumbnail_img/SkyM_Vita.jpg"/>" style="width:100%; height:240px" ></a></figure>
+	          	  <figure><a href="<c:url value="/magazine.do?no=16"/>"><img src="<c:url value="/images/thumbnail_img/YellowM_Sleep.jpg"/>" style="width:100%; height:240px" ></a></figure>
+	          	  <figure><a href="<c:url value="/magazine.do?no=17"/>"><img src="<c:url value="/images/thumbnail_img/YellowM_Depre.jpg"/>" style="width:100%; height:240px" ></a></figure>
+	          	  <figure><a href="<c:url value="/magazine.do?no=18"/>"><img src="<c:url value="/images/thumbnail_img/YellowM_Mois.jpg"/>" style="width:100%; height:240px" ></a></figure>
+	          	  <figure><a href="<c:url value="/magazine.do?no=19"/>"><img src="<c:url value="/images/thumbnail_img/YellowM_Diet.jpg"/>" style="width:100%; height:240px" ></a></figure>
 	          </div>
 	      </div>
 	 </div>	  

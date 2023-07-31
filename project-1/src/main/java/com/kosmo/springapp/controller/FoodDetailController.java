@@ -78,7 +78,7 @@ public class FoodDetailController {
 	     String id = payloads.get("sub").toString();
 	     foodname = foodname.replace("%20", " ");
 	     String heart = HeartCountService.HeartCount(id, foodname);
-	     
+
 	     // 서버에서 현재 좋아요 상태를 확인하여 response에 추가
 	     response.put("heart", heart);
 	     

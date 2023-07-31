@@ -247,7 +247,7 @@ body {
         box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
         border-radius: 10px;
         margin-top: 5px;
-        height: 250px;
+        height: 230px;
     }
     .kzDdbX {
         position: relative;
@@ -262,16 +262,18 @@ body {
         margin-left: 10px;
     }
     .kCBLwp {
+    	width: 176px;
+    	height: 20px;
         margin: 10px 10px;
         color: gray;
         font-weight: 400;
         word-break: break-all;
         text-overflow: ellipsis;
         overflow: hidden;
-        display: -webkit-box;
+        white-space: nowrap;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
-        display: flex;
+        display: block;
         vertical-align: bottom;
     }
     .sdp {
@@ -308,14 +310,16 @@ body {
         -webkit-line-clamp: 2;
     }
     .kWbUNE {
-    	height: 40px;
+    	width: 176px;
+    	height: 20px;
         margin: 5px 10px;
         color: black;
         font-weight: bold;
         word-break: break-all;
         text-overflow: ellipsis;
         overflow: hidden;
-        display: -webkit-box;
+        white-space: nowrap;
+        display: block;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
     }
@@ -753,8 +757,8 @@ body {
 			                                                            <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
 			                                                        </label>
 			                                                    </section>
-			                                                    <p class="kWbUNE">${f.PRODUCTNAME }</p>
-			                                                    <p class="kCBLwp">${f.COMPANY }</p>
+			                                                    <p class="kWbUNE" title="${f.PRODUCTNAME }">${f.PRODUCTNAME }</p>
+			                                                    <p class="kCBLwp" title="${f.COMPANY }">${f.COMPANY }</p>
 			                                                </li>
 			                                        	
 	                                                </c:forEach>

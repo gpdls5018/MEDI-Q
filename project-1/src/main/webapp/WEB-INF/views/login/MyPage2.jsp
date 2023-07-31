@@ -242,7 +242,7 @@ body {
         border-radius: 10px;
         margin-top: 5px;
         width: 185px;
-        height: 250px;
+        height: 230px;
     }
     .kzDdbX {
         position: relative;
@@ -257,17 +257,19 @@ body {
         margin-left: 10px;
     }
     .kCBLwp {
+    	width: 165px;
+    	height: 20px;
         margin: 10px 10px;
         color: gray;
         font-weight: 400;
         word-break: break-all;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
-        display: flex;
+        display: block;
         vertical-align: bottom;
+        overflow: hidden;
+	  	text-overflow: ellipsis;
+	  	white-space: nowrap;
     }
     .sdp {
         color: #EF605D;
@@ -303,16 +305,18 @@ body {
         -webkit-line-clamp: 2;
     }
     .kWbUNE {
-    	height: 40px;
+    	width: 165px;
+    	height: 20px;
         margin: 5px 10px;
         color: black;
         font-weight: bold;
         word-break: break-all;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        display: -webkit-box;
+        display: block;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
+        overflow: hidden;
+	  	text-overflow: ellipsis;
+	  	white-space: nowrap;
     }
     .detail {
         position: absolute;
@@ -531,6 +535,25 @@ body {
 		margin-left: auto;
 	}
 	
+	/* 찜 아이콘 */
+	.heartIcon{
+		color: red;
+		font-size: 1.3rem; 
+		margin-left:130px; 
+		margin-top:10px; 
+		margin-bottom: 2px;
+		position: absolute;
+		cursor: pointer;
+	}
+	.glasstIcon{
+		color: black;
+		font-size: 1.2rem; 
+		margin-left:105px; 
+		margin-top:10px; 
+		margin-bottom: 2px;
+		position: absolute;
+		cursor: pointer;
+	}
 </style>
 <!-- 메인 바디 부분 -->
 <div id="tsmain">
@@ -594,20 +617,21 @@ body {
                                             <ul class="kriRoB" style="list-style: none; padding-inline-start: 10px;">
                                                 <c:if test="${not isEmptyFood }">
                                                 	<c:forEach var="f" items="${foodlike }">
-                                                		<a href='<c:url value="/detail.do?no=${f.NO }"/>'>
-			                                                <li class="WishListMain__WishItem-sc-uykdsg-5 cqOzav">
-			                                                    <section class="kzDdbX">
-			                                                        <section class="divimg">
-			                                                            <img fetchpriority="high" src="${f.IMGURL }" style="width:150px; height:150px; margin-top: 10px; border-radius: 10px;">
-			                                                        </section>
-			                                                        <label for="wishBtn:rk0:" class="bPHVOx">
-			                                                            <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
-			                                                        </label>
+			                                            <li class="WishListMain__WishItem-sc-uykdsg-5 cqOzav">
+			                                               	<input type="hidden" name="no" value='${f.NO }' />
+			                                                <section class="kzDdbX">
+			                                                    <section class="divimg">
+			                                                       	<i class="heartG glasstIcon fa-solid fa-magnifying-glass"></i>
+			                                                        <i id="heartIcon" class="heartIcon fa-solid fa-heart"></i>
+			                                                        <img fetchpriority="high" src="${f.IMGURL }" style="width:150px; height:150px; margin-top: 10px; border-radius: 10px;">
 			                                                    </section>
-			                                                    <p class="kWbUNE">${f.FOODNAME }</p>
-			                                                    <p class="kCBLwp">${f.COMPANY }</p>
-			                                                </li>
-			                                        	</a>
+			                                                    <label for="wishBtn:rk0:" class="bPHVOx">
+			                                                        <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
+			                                                    </label>
+			                                                </section>
+			                                                <p class="kWbUNE" title="${f.FOODNAME }">${f.FOODNAME }</p>
+			                                                <p class="kCBLwp" title="${f.COMPANY }">${f.COMPANY }</p>
+			                                            </li>
 	                                                </c:forEach>
     											</c:if>
     											
@@ -621,15 +645,20 @@ body {
                                 <div class="board">
                                     <ul class="kriRoBreview" style="list-style: none; padding-left: 0">
                                     	<c:if test="${empty review }" var="isEmptyReview" >
-                                    		<span class="d-block h-50 my-n4"></span>
-                                    		<img alt="empty" src="/images/basic/empty_review.jpg" style="width: 100%"/>
+                                    		<span class="d-block" style="height: 100px;"></span>
+                                    		<img alt="empty" src="/images/basic/empty_review.jpg" style="width: 100%; margin-left: 10px;"/>
                                     	</c:if>
                                     	<c:if test="${not isEmptyReview }">
 	                                    	<c:forEach var="r" items="${review }">
 		                                        <li class="review">
 			                                        <section class="kzDdbXreview">
 			                                            <section class="divimg" style="width: 160px;">
-			                                                <img fetchpriority="high" src="${r['IMGURL'] }" style="max-width:120px; height:120px; color: transparent; margin-top: 10px; border-radius: 10px;">
+			                                            	<c:if test="${empty r['IMGURL'] }" var="imgEmpty">
+			                                                	<img fetchpriority="high" src='<c:url value="/images/basic/noPhoto.jpg"/>' style="max-width:120px; color: transparent; margin-top: 15px; border-radius: 10px;">
+			                                                </c:if>
+			                                                <c:if test="${not imgEmpty }">
+			                                                	<img fetchpriority="high" src="${r['IMGURL'] }" style="max-width:120px; height:120px; color: transparent; margin-top: 10px; border-radius: 10px;">
+			                                            	</c:if>
 			                                            </section>
 			                                            <label for="wishBtn:rk0:" class="bPHVOx">
 			                                                <input id="wishBtn:rk0:" data-gtm-id="global-wish-button" data-event-type="true" type="checkbox" hidden="" checked="">
@@ -650,7 +679,7 @@ body {
 			                                            <div class="snp">${r['PRODUCTNAME'] }</div>
 			                                            <div class="d-flex justify-content-between w-100">
 				                                            <div class="srp">${r['CONTENT'] }</div>
-				                                            <i class="fa-solid fa-magnifying-glass mt-4"></i>
+				                                            <i id="reviewG" class="reviewG fa-solid fa-magnifying-glass mt-4"></i>
 				                                            <i class="fa-solid fa-xmark mx-2 mt-4"></i>
 				                                        </div>
 			                                        </div>
@@ -946,9 +975,25 @@ body {
 		li.querySelector('div').innerHTML = foodname;
 		foodli.appendChild(li);
 	}
+
 	//내가 선택한 영양제 클릭 시 삭제
 	$('#select-div .food-li').click(function(){
-		$(this).remove();
+		var click = $(this);
+		//console.log('click',click)
+		var foodList = food=='[]' ? "" :food.split('},');
+		for(var i=0;i<foodList.length;i++){
+			var alarm_fl = foodList[i].split(',')[3].split('=')[1];
+			var food_name = foodList[i].split(',')[1].split('=')[1];
+			//console.log('alarm_fl:',alarm_fl)
+			//console.log('food_name:',food_name)
+			if(food_name===click.find('div').html() && alarm_fl==='Y'){
+				alert('해당 영양제에 알람이 등록되어있습니다\r\n알람을 먼저 해제해주세요')
+				return false;
+			}
+			else if(food_name===click.find('div').html() && !alarm_fl==='Y'){
+				click.remove();
+			}
+		}
 	});
 	/*
 	[{PRODUCTNAME=영롱 비건 쌀마그네슘, IMGURL=https://health-functional-food.s3.ap-northeast-2.amazonaws.com/saved/2020001201619/D35haRYto_L-8rbtpZ_pa}, {PRODUCTNAME=영양가득 한끼 쉐이크, IMGURL=https://health-functional-food.s3.ap-northeast-2.amazonaws.com/saved/200400200082123/iRgh5eZXMvtR2sQdqCStU}]
@@ -1115,9 +1160,33 @@ body {
 	});
 	
 	//리뷰 돋보기 클릭 시 상세보기 페이지 이동
-	$('.fa-magnifying-glass').click(function(){
+	$('.reviewG').click(function(){
 		var no = $(this).parent().parent().find("[name=no]").val();
 		location.href = '<c:url value="/detail.do?no="/>'+no;
+	});
+	
+	//찜 돋보기 클릭 시 상세보기 페이지 이동
+	$('.heartG').click(function(){
+		var no = $(this).parent().parent().parent().find("[name=no]").val();
+		location.href = '<c:url value="/detail.do?no="/>'+no;
+	});
+	
+	//찜 하트 아이콘 클릭 시 찜 해제
+	$('.heartIcon').click(function(){
+		var foodname = $(this).parent().parent().parent().find('.kWbUNE').html();
+		console.log('name:',foodname);
+		if(confirm(foodname+'을(를) 찜 해제하시겠습니까?')){
+			$.ajax({
+				//data:{},
+				url:'<c:url value="/Heart.do?foodname="/>'+encodeURIComponent(foodname)
+			}).done(function(data){
+				if(data.heart==='1'){
+					location.replace(location.href);
+				}
+			}).fail(function(){
+				console.log('error')
+			});
+		}
 	});
 
 	//이미지 수정하기

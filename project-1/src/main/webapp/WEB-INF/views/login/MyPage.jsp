@@ -1392,7 +1392,20 @@ body {
 	}
 	//내가 선택한 영양제 클릭 시 삭제
 	$('#select-div .food-li').click(function(){
-		$(this).remove();
+		var click = $(this);
+		var foodList = food=='[]' ? "" :food.split('},');
+		for(var i=0;i<foodList.length;i++){
+			var alarm_fl = foodList[i].split(',')[3].split('=')[1];
+			var food_name = foodList[i].split(',')[1].split('=')[1];
+		
+			if(food_name===click.find('div').html() && alarm_fl==='Y'){
+				alert('해당 영양제에 알람이 등록되어있습니다\r\n알람을 먼저 해제해주세요')
+				return false;
+			}
+			else if(food_name===click.find('div').html() && !alarm_fl==='Y'){
+				click.remove();
+			}
+		}
 	});
 
 	//건강정보 저장

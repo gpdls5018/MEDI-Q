@@ -33,7 +33,7 @@
 		margin-bottom: 130px;
 	}
 	.first-text{
-		margin-top: 50px;
+		margin-top: 30px;
 	}
 
 	.medi-img{
@@ -45,6 +45,10 @@
 		margin-right: 10px;
 		margin-bottom: 20px;
 	}
+	.custom-footer{
+		margin-bottom: 100px;
+	}
+	
 	#contentInfoCon {
 	    position: relative;
 	    height: 383px;
@@ -203,7 +207,7 @@
 	
     <div style="padding-top:100px;">
 		<!-- 왼쪽 몸통부분 -->
-	     <div class="justify-content-center">
+	     <div class="justify-content-center custom-footer">
 	     	<div class="container">
 	     		<!-- 
 		        <h3 class="display-4 text-center first-text" style="color: #2E8B57;"><strong><span style="color:#EF605D; font-weight:900;">
@@ -214,12 +218,14 @@
 		        <div class="row my-1" id="video-channel"></div>
 		        <br>
 		        -->
+		        <!-- 
 		        <div>
 			        <h2 class="text-center " style="font-weight:bold; color: #00ACE5;">
 				        <img src="<c:url value="/images/magazine_images/medi/advice.png"/>" class="img-fluid medi-img" style="width:140px">
 				        현직 약사가 쉽게 알려주는 <strong style="color:#FF4500; font-weight:900;">건강정보</strong>
 			        </h2>
 		        </div>
+		         -->
 			</div>
 			
 	        <div class="container">
@@ -244,6 +250,12 @@
 				    </li>
 				</ul>
 			</div>
+			
+			<div class="container">	
+		        <h3 class="display-4 text-center first-text" style="color: #2E8B57;"><strong><span style="color:#EF605D; font-weight:900;">
+		        <img src="<c:url value="/images/magazine_images/medi/healthcare.png"/>" class="img-fluid medi-imgs" style="width:110px">
+		        건강정보</span> 페이지</strong></h3>
+			</div>
 			<div class="main">
 				<div class="sec_body">
 					<div class="commons" id="mag_content">
@@ -267,55 +279,125 @@
 							</a>
 						</div>
 					</div>
-					<div class="factcheck" id="mag_content">
+					<div class="recipe" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=02"/>">
-								<img class="mag_img" src="<c:url value="/images/thumbnail_img/RedM_Col.jpg"/>">
-							</a>
-						</div>
-					</div>
-					<div class="healnlife" id="mag_content">
-						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=01"/>">
-								<img class="mag_img" src="<c:url value="/images/thumbnail_img/SkyM_Yoo.jpg"/>">
-							</a>
-						</div>
-					</div>
-					<div class="commons" id="mag_content">
-						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=06"/>">
-								<img class="mag_img" src="<c:url value="/images/thumbnail_img/SkyM_Yoo.jpg"/>">
-							</a>
-						</div>
-					</div>
-					<div class="atoz" id="mag_content">
-						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=04"/>">
-								<img class="mag_img" src="<c:url value="/images/thumbnail_img/RedM_Pro.jpg"/>">
+							<a href="<c:url value="/magazine.do?no=16"/>">
+								<img class="mag_img" src="<c:url value="/images/thumbnail_img/YellowM_Sleep.jpg"/>">
 							</a>
 						</div>
 					</div>
 					<div class="recipe" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=05"/>">
-								<img class="mag_img" src="<c:url value="/images/thumbnail_img/YellowM_Mus.jpg"/>">
+							<a href="<c:url value="/magazine.do?no=18"/>">
+								<img class="mag_img" src="<c:url value="/images/thumbnail_img/YellowM_Mois.jpg"/>">
 							</a>
 						</div>
 					</div>
-					<div class="factcheck" id="mag_content">
+					
+					<div class="atoz" id="mag_content">
 						<div class="mag_box">
 							<a href="<c:url value="/magazine.do?no=02"/>">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/RedM_Col.jpg"/>">
 							</a>
 						</div>
 					</div>
-					<div class="healnlife" id="mag_content">
+					
+					<div class="atoz" id="mag_content">
 						<div class="mag_box">
 							<a href="<c:url value="/magazine.do?no=01"/>">
-								<img class="mag_img" src="<c:url value="/images/thumbnail_img/SkyM_Yoo.jpg"/>">
+								<img class="mag_img" src="<c:url value="/images/thumbnail_img/RedM_Arg.jpg"/>">
 							</a>
 						</div>
 					</div>
+					
+					<div class="atoz" id="mag_content">
+						<div class="mag_box">
+							<a href="<c:url value="/magazine.do?no=03"/>">
+								<img class="mag_img" src="<c:url value="/images/thumbnail_img/RedM_Hia.jpg"/>">
+							</a>
+						</div>
+					</div>
+					<div class="recipe" id="mag_content">
+						<div class="mag_box">
+							<a href="<c:url value="/magazine.do?no=17"/>">
+								<img class="mag_img" src="<c:url value="/images/thumbnail_img/YellowM_Depre.jpg"/>">
+							</a>
+						</div>
+					</div>
+					<div class="recipe" id="mag_content">
+						<div class="mag_box">
+							<a href="<c:url value="/magazine.do?no=19"/>">
+								<img class="mag_img" src="<c:url value="/images/thumbnail_img/YellowM_Diet.jpg"/>">
+							</a>
+						</div>
+					</div>
+					
+					<div class="healnlife" id="mag_content">
+						<div class="mag_box">
+							<a href="<c:url value="/magazine.do?no=10"/>">
+								<img class="mag_img" src="<c:url value="/images/thumbnail_img/GreenM_Depre.jpg"/>">
+							</a>
+						</div>
+					</div>
+					<div class="healnlife" id="mag_content">
+						<div class="mag_box">
+							<a href="<c:url value="/magazine.do?no=13"/>">
+								<img class="mag_img" src="<c:url value="/images/thumbnail_img/GreenM_Sleep.jpg"/>">
+							</a>
+						</div>
+					</div>
+					<div class="commons" id="mag_content">
+						<div class="mag_box">
+							<a href="<c:url value="/magazine.do?no=14"/>">
+								<img class="mag_img" src="<c:url value="/images/thumbnail_img/SkyM_Yoo_2.jpg"/>">
+							</a>
+						</div>
+					</div>
+					<div class="commons" id="mag_content">
+						<div class="mag_box">
+							<a href="<c:url value="/magazine.do?no=15"/>">
+								<img class="mag_img" src="<c:url value="/images/thumbnail_img/SkyM_Vita.jpg"/>">
+							</a>
+						</div>
+					</div>
+					<div class="healnlife" id="mag_content">
+						<div class="mag_box">
+							<a href="<c:url value="/magazine.do?no=11"/>">
+								<img class="mag_img" src="<c:url value="/images/thumbnail_img/GreenM_Yoo.jpg"/>">
+							</a>
+						</div>
+					</div>
+					<div class="healnlife" id="mag_content">
+						<div class="mag_box">
+							<a href="<c:url value="/magazine.do?no=12"/>">
+								<img class="mag_img" src="<c:url value="/images/thumbnail_img/GreenM_Wat.jpg"/>">
+							</a>
+						</div>
+					</div>
+					
+					<div class="factcheck" id="mag_content">
+						<div class="mag_box">
+							<a href="<c:url value="/magazine.do?no=07"/>">
+								<img class="mag_img" src="<c:url value="/images/thumbnail_img/PurpleM_Ten.jpg"/>">
+							</a>
+						</div>
+					</div>
+					<div class="factcheck" id="mag_content">
+						<div class="mag_box">
+							<a href="<c:url value="/magazine.do?no=09"/>">
+								<img class="mag_img" src="<c:url value="/images/thumbnail_img/PurpleM_Heal.jpg"/>">
+							</a>
+						</div>
+					</div>
+					<div class="factcheck" id="mag_content">
+						<div class="mag_box">
+							<a href="<c:url value="/magazine.do?no=08"/>">
+								<img class="mag_img" src="<c:url value="/images/thumbnail_img/PurpleM_Hei.jpg"/>">
+							</a>
+						</div>
+					</div>
+					
+					
 				</div>
 			</div>
 					<!--
