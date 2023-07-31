@@ -229,6 +229,7 @@ public class NutrientController {
 //		model.addAttribute("n_DESC",n_DESC);
 		
 		String desc = nutrientSelectServiceImpl.editN_DESCbyVitaminName(name);
+		desc = desc.replace("·", "<span style=\"font-size: 20px;\">✔</span>");
 		model.addAttribute("desc",desc);
 		
 		String n_DRI_M = nutrietnSelectMapper.getN_DRI_MbyVitaminName(name);
@@ -263,6 +264,7 @@ public class NutrientController {
 //		model.addAttribute("i_DESC",i_DESC);
 		
 		String i_desc = nutrientSelectServiceImpl.editI_DESCbyIngredientName(name);
+		i_desc = i_desc.replace("·", "<span style=\"font-size: 20px;\">✔</span>");
 		model.addAttribute("i_desc",i_desc);
 		
 		String i_DRI = nutrietnSelectMapper.getI_DRIbyIngredientName(name);
