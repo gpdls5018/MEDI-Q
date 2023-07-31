@@ -632,7 +632,7 @@ $(document).on("click", ".food-li", function() {
 
    for (var i = 0; i < takeFood.length; i++) {
      var foodName = takeFood[i].querySelector("div").innerHTML;
-
+     foodName = foodName.replace(/&amp;/g, '&');
      // Check if the food name already exists in the foodContainer
      if (existingFoodNames.indexOf(foodName) === -1) {
        console.log(foodName);

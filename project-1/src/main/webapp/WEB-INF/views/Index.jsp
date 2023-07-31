@@ -130,6 +130,7 @@ html, body {
 	background-color:white;
 	background: linear-gradient(to bottom, #fdfbf6 60% , white 60%);
 	flex-direction: column;
+	position: relative;
 }
 #tssection7 { 
 	background: linear-gradient(to bottom, white 50%, #fdfbf6 50%);
@@ -236,6 +237,34 @@ html, body {
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); 
 	border: 5px solid white;
 	border-radius: 5px;
+}
+.p6firstimg{
+	position: absolute; 
+	z-index:2; 
+	top:85%; 
+	right:5%; 
+	width:700px; 
+	height:500px; 
+	transform: translate(20%, -85%);
+	border-radius: 50%;
+}
+.p6secondimg{
+	position: absolute; 
+	z-index:1; 
+	top:40%; 
+	right:6%; 
+	transform: translate(45%, -60%);
+	width:800px; 
+	height:600px; 
+}
+.p6threeimg{
+	position: absolute; 
+	z-index:1; 
+	top:44%; 
+	left:0%; 
+	transform: translate(-2%, -80%);
+	width:600px; 
+	height:500px; 
 }
 .p2firsta {
 	position: absolute;
@@ -567,6 +596,9 @@ html, body {
 	    
 	  	<!--  페이지6 -->
 	   <div class="tssection" id="tssection6">
+	   		<img class="p6firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
+	   		<img class="p6secondimg" src="<c:url value="/images/tsimages/question.png"/>" >
+	   		<img class="p6threeimg" src="<c:url value="/images/tsimages/faqs.png"/>" >
 		   <div class="section section20-2 section20-2-home ">
 		        <div class="content">
 		            <!-- <div class="qna-mark-home" style="display: block; text-align: center; width: 100%;">Q&amp;A</div> -->

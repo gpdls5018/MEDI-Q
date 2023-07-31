@@ -228,6 +228,39 @@
 		  font-size: 20px;
 		}
 		
+		/* 인기 검색어 */
+		.s-txt1 {
+		    height: 42px;
+		    line-height: 42px;
+		    font-weight: 700;
+		    font-size: 18px;
+		    float: left;
+		    color: #787E8B;
+		    padding-right: 20px;
+            margin-left: 20px;
+		}
+		
+		.search-keyword{
+			float: left;
+		    height: 42px;
+		    line-height: 42px;
+		    display: inline-block;
+		    background: #F4F6FA;
+		    border-radius: 21px;
+		    font-weight: 500;
+		    color: #787E8B;
+		    font-size: 18px;
+		    padding: 0px 15px;
+		    margin-left: 20px;
+		    text-decoration: none;
+		    cursor: pointer;
+		}
+		
+		.search-keyword:hover {
+			text-decoration: none;
+			color: #787E8B;
+		}
+		
 	/*상단 배너 스타일*/
 #contentInfoCon {
     position: relative;
@@ -276,28 +309,19 @@
 	<!-- 상단배너 div -->
 	<aside id="contentInfoCon" class="area animated">
         <!-- 각각 대메뉴 마다 이미지 다르게 들어갑니다. -->
-                <!-- 브랜드 스토리 -->
-                <div class="visual-img-con animatedleft"></div>	
-
+        <!-- 브랜드 스토리 -->
+        <div class="visual-img-con animatedleft"></div>	
         <div class="tsarea">
             <h3 class="content-tit" style="text-align:left; margin-left: 150px;">
-                <span>인기 성분 Top 10</span>
-                <p style="font-weight: 500; font-size: 23px; margin-top: 20px; color:gray">800개 영양성분 중 가장 인기있는 100개 성분의 Best 제품을 만나보세요</p>
+                <span style="font-family: 'Pretendard';">
+	                <span style="color:#EF605D; font-weight: 700;">MEDI-Q</span>
+	                영양소 찾아보기</span>
+                <p style="font-weight: 500; font-size: 23px; margin-top: 20px; color:gray">식품의약품안전처에서 제공한 올바른 정보를 확인해보세요!</p>
             </h3>
         </div>
     </aside>
 
-	<!-- 검색창 -->
-	<div class="d-flex justify-content-center" style="background-color: #fdfbf6;">
-		<div class="search d-flex justify-content-center" style="padding: 150px 0px 80px; position: relative; width: 960px;">
-		    <input id="searchInput" style="font-size:20px; width: 100%;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
-		    <button type="submit" class="searchButton" style="position: absolute; right: 0;">
-	        <i class="fa fa-search"></i>
-	   	    </button>
-	    </div>
-	</div>
-
-    <div class="container pb-5" style="margin-top: 10px;">
+    <div class="container pb-5" style="margin-top: 100px;">
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
@@ -371,19 +395,19 @@
                                 <!-- 5대 상한 있음 -->
 	                            <c:if test="${not empty n_UL_M }" var="limit">
                         	        <c:if test="${not empty n_UL_M}">
-		                            <div style="font-size: 13px; margin-bottom: 18px; width: 60%" class="mt-2">
-	                                		<span style="margin-left:6%;  margin-right: 18%;">남성 권장 섭취량: ${n_DRI_M }</span>
+		                            <div style="font-size: 13px; margin-bottom: 18px; width: 80%" class="mt-2">
+	                                		<span style="margin-left:20%;  margin-right: 14%;">남성 권장 섭취량: ${n_DRI_M }</span>
 	                                	<c:if test="${not empty n_UL_M}">
 	                                		<span>남성 상한 섭취량: ${n_UL_M }</span><br/>
 	                                	</c:if>
-		                                	<span style="margin-left:6%;  margin-right: 18%;">여성 권장 섭취량: ${n_DRI_F }</span>
+		                                	<span style="margin-left:20%;  margin-right: 14%;">여성 권장 섭취량: ${n_DRI_F }</span>
 		                                <c:if test="${not empty n_UL_F}">
 		                                	<span>여성 상한 섭취량: ${n_UL_F }</span><br/>
 		                                </c:if>
 	                                
 		                                <div style="height:1px; margin-top: 12px;">
-		                                	<span class="arrow-down" style="margin-left: 23%;"></span>
-		                                	<span class="arrow-down" style="margin-left: 50%;"></span>
+		                                	<span class="arrow-down" style="margin-left: 30%;"></span>
+		                                	<span class="arrow-down" style="margin-left: 37%;"></span>
 		                                </div>
 		                            </div>
 		                            <div class="progress w-75 progress-bar text-danger" > 
@@ -410,12 +434,12 @@
 	                            
 	                            <!-- 기능성 상한 있음 -->
 	                            <c:if test="${not empty i_DRI && not empty i_UL }">
-		                            <div style="font-size: 13px; margin-bottom: 18px; width: 60%" class="mt-2">
-	                                	<span style="margin-left:15%;  margin-right: 24%;">권장 섭취량: ${i_DRI }</span>
+		                            <div style="font-size: 13px; margin-bottom: 18px; width: 80%" class="mt-2">
+	                                	<span style="margin-left:24%;  margin-right: 20%;">권장 섭취량: ${i_DRI }</span>
 	                                	<span>상한 섭취량: ${i_UL }</span><br/>
 		                                <div style="height:1px; margin-top: 12px;">
-		                                	<span class="arrow-down" style="margin-left: 23%;"></span>
-		                                	<span class="arrow-down" style="margin-left: 50%;"></span>
+		                                	<span class="arrow-down" style="margin-left: 30%;"></span>
+		                                	<span class="arrow-down" style="margin-left: 37%;"></span>
 		                                </div>
 		                            </div>
 		                            <div class="progress w-75 progress-bar text-danger" > 
@@ -448,7 +472,7 @@
 		                            <h4 style="margin-left: 8%;"><b>4. 결핍시 증상</b></h4>
                             		<hr class="bg-warning" style="margin-bottom: 35px;">
 		                            <div class="d-flex justify-content-center">
-		                            	<p style="font-size: 15px; width: 83%;">· ${n_LACK }이 있어요.</p>
+		                            	<p style="font-size: 15px; width: 83%;"><span style="font-size: 20px;">🔻</span> ${n_LACK }이 있어요.</p>
 		                            </div>
 		                        </c:if>
 	                        </div>
@@ -481,14 +505,14 @@
 		                            <h4 style="margin-left: 8%;"><b>6. 섭취 음식</b></h4>
 		                            <hr class="bg-warning" style="margin-bottom: 35px;">
 		                            <div class="d-flex justify-content-center">
-		                            	<p style="font-size: 15px; width: 83%;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
+		                            	<p style="font-size: 15px; width: 83%;"><span style="font-size: 20px;">✔</span> ${n_FOOD }에서 섭취할 수 있어요.</p>
 		                            </div>
 		                        </c:if>
 		                        <c:if test="${not exist }">
 		                        	<h4 style="margin-left: 8%;"><b>5. 섭취 음식</b></h4>
 		                            <hr class="bg-warning" style="margin-bottom: 35px;">
 		                            <div class="d-flex justify-content-center">
-		                            	<p style="font-size: 15px; width: 83%;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
+		                            	<p style="font-size: 15px; width: 83%;"><span style="font-size: 20px;">✔</span> ${n_FOOD }에서 섭취할 수 있어요.</p>
 		                            </div>
 		                        </c:if>
 	                        </div>
@@ -614,16 +638,35 @@
         </div>
         
         	<!-- 탭 이동처리 -->
-       		<div id="popular" class="tab active border-0" style="display:none;">
-			
+       		<div id="popular" class="tab border-0">
                 <!-- 인기성분에 해당하는 상자 내용 -->
+                <!-- 이미지 -->
    				<div class="image mt-4">
 	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text text-color:black text-center" style="margin-top:22px;">
-		           		<b style="font-size: 30px;">👨‍⚕&nbsp;인기 성분 Top 10</b><br/>
+		           		<b style="font-size: 30px;">👨‍⚕&nbsp;인기 성분 TOP 10</b><br/>
 		           		<small>100가지 영양성분 중 가장 인기있는 10개 성분의 Best 제품을 만나보세요!</small>
                 	</div>
     			</div>
+    			<!-- 검색창 -->
+				<div class="d-flex justify-content-center">
+					<div class="search d-flex justify-content-center" style="padding: 50px 0px 20px; position: relative; width: 960px;">
+					    <input id="searchInput" style="font-size:20px; width: 100%;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
+					    <button type="submit" class="searchButton" style="position: absolute; right: 0;">
+				        <i class="fa fa-search"></i>
+				   	    </button>
+				    </div>
+				</div>
+				<!-- 인기 검색어 -->
+				<div class="search-etc" style="padding: 20px 0px 20px; justify-content: center; display: flex;">
+					<span class="s-txt1">인기 검색어</span>
+					<div class="search-keywords">
+						<c:forEach var="name" items="${top5}">
+							<a tabindex="0" class="search-keyword" href="/NutrientDetail.do?name=${name}">${name}</a>
+						</c:forEach>
+					</div>
+				</div>
+    			<!-- 영양소 div -->
                 <div class="box-container">
 	                <c:forEach var="name" items="${top10}">
 					    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
@@ -632,9 +675,10 @@
 					</c:forEach>
                 </div>
             </div>
-            
-	        <div id="vitamin" class="tab" style="display: none;">
-               	<!-- 비타민에 해당하는 상자 내용 -->
+                
+            <div id="vitamin" class="tab">
+                <!-- 비타민에 해당하는 상자 내용 -->
+                <!-- 이미지 -->
    				<div class="image mt-4">
 	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text text-color:black text-center" style="margin-top:22px;">
@@ -642,6 +686,25 @@
 		           		<small>14가지 비타민의 중요성과 효과를 자세히 알아보세요!</small>
                 	</div>
     			</div>
+    			<!-- 검색창 -->
+				<div class="d-flex justify-content-center">
+					<div class="search d-flex justify-content-center" style="padding: 50px 0px 20px; position: relative; width: 960px;">
+					    <input id="searchInput" style="font-size:20px; width: 100%;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
+					    <button type="submit" class="searchButton" style="position: absolute; right: 0;">
+				        <i class="fa fa-search"></i>
+				   	    </button>
+				    </div>
+				</div>
+				<!-- 인기 검색어 -->
+				<div class="search-etc" style="padding: 20px 0px 20px; justify-content: center; display: flex;">
+					<span class="s-txt1">인기 검색어</span>
+					<div class="search-keywords">
+						<c:forEach var="name" items="${top5v}">
+							<a style="font-size: 15px;" tabindex="0" class="search-keyword" href="/NutrientDetail.do?name=${name}">${name}</a>
+						</c:forEach>
+					</div>
+				</div>
+    			<!-- 영양소 div -->
     			<div class="box-container">
 	                <c:forEach var="name" items="${vitaminNames}">
 					    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
@@ -656,12 +719,31 @@
                 <div class="image mt-4">
 	                <img class="bg-img w-100" style="height:200px" src="<c:url value="/images/nutrient_img/bg_nt.png"/>"/>
 	                <div class="text text-color:black text-center" style="margin-top:22px;">
-		           		<b style="font-size: 30px;">🥗&nbsp;미네랄 및 기타영양소 찾아보기</b><br/>
+		           		<b style="font-size: 30px;">🥗&nbsp;미네랄 및 기타영양소 찾아보기</b><br/>		           		
 		           		<small>14가지 미네랄 및 기타영양소의 중요성과 효과를 자세히 알아보세요!</small>
                 	</div>
     			</div>
+    			<!-- 검색창 -->
+				<div class="d-flex justify-content-center">
+					<div class="search d-flex justify-content-center" style="padding: 50px 0px 20px; position: relative; width: 960px;">
+					    <input id="searchInput" style="font-size:20px; width: 100%;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
+					    <button type="submit" class="searchButton" style="position: absolute; right: 0;">
+				        <i class="fa fa-search"></i>
+				   	    </button>
+				    </div>
+				</div>
+				<!-- 인기 검색어 -->
+				<div class="search-etc" style="padding: 20px 0px 20px; justify-content: center; display: flex;">
+					<span class="s-txt1">인기 검색어</span>
+					<div class="search-keywords">
+						<c:forEach var="name" items="${top5m}">
+							<a tabindex="0" class="search-keyword" href="/NutrientDetail.do?name=${name}">${name}</a>
+						</c:forEach>
+					</div>
+				</div>
+    			<!-- 영양소 div -->
     			<div class="box-container">
-	                <c:forEach var="name" items="${etcNames}">
+    			    <c:forEach var="name" items="${etcNames}">
 					    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
 					        <b style="font-size: 14px;">${name}</b>
 					    </div>
@@ -678,9 +760,28 @@
 		           		<small>74가지 기능성 원료의 중요성과 효과를 자세히 알아보세요!</small>
                 	</div>
     			</div>
+    			<!-- 검색창 -->
+				<div class="d-flex justify-content-center">
+					<div class="search d-flex justify-content-center" style="padding: 50px 0px 20px; position: relative; width: 960px;">
+					    <input id="searchInput" style="font-size:20px; width: 100%;" type="text" class="searchTerm text-center" placeholder="어떤 영양소를 찾고 계신가요?‍"/>
+					    <button type="submit" class="searchButton" style="position: absolute; right: 0;">
+				        <i class="fa fa-search"></i>
+				   	    </button>
+				    </div>
+				</div>
+				<!-- 인기 검색어 -->
+				<div class="search-etc" style="padding: 20px 0px 20px; justify-content: center; display: flex;">
+					<span class="s-txt1">인기 검색어</span>
+					<div class="search-keywords">
+						<c:forEach var="name" items="${top5i}">
+							<a tabindex="0" class="search-keyword" href="/NutrientDetail.do?name=${name}">${name}</a>
+						</c:forEach>
+					</div>
+				</div>
+    			<!-- 영양소 div -->
     			<div class="box-container">
 	                <c:forEach var="name" items="${ingredientNames}">
-					   <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
+					    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
 					        <b style="font-size: 14px;">${name}</b>
 					    </div>
 					</c:forEach>
@@ -816,7 +917,7 @@
         	var ingArray = ing.slice(1, -1).split(",");
         	Array.prototype.push.apply(searchSource, ingArray);
 	        
-	        $("#searchInput").autocomplete({  //오토 컴플릿트 시작
+	        $(".searchTerm").autocomplete({  //오토 컴플릿트 시작
 	            source : searchSource,    // source 는 자동 완성 대상
 	            select : function(event, ui) {    //아이템 선택시
 	                //console.log(ui.item);
@@ -864,7 +965,27 @@
 	            }
 	        });
 
-	        
+	        $(document).on("click", ".searchButton", function() {
+	            var name = $(this).siblings(".searchTerm").val().trim();
+	            if (name) {
+	                var url = "/NutrientDetail.do?name=" + encodeURIComponent(name);
+	                window.location.href = url;
+
+	                // 검색어 서버에 전송
+	                $.ajax({
+	                    url: "/search.do",
+	                    method: "POST",
+	                    contentType: "application/json",
+	                    data: JSON.stringify(name),
+	                    success: function(response) {
+	                        console.log("Search history saved");
+	                    },
+	                    error: function(err) {
+	                        console.error("Error saving search history:", err);
+	                    }
+	                });
+	            }
+	        });
 	    });
 		
         
@@ -879,8 +1000,7 @@
        	}
         
 		
-		
-		
+        
 		
 		
 		

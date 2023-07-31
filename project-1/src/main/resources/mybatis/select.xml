@@ -213,7 +213,57 @@
     	VALUES (SEARCH_HISTORY_SEQ.NEXTVAL, #{keyword}, SYSDATE)
 	</insert>
 
-
+	<!-- 검색어 Top5 -->
+	<select id="getTop5" resultType="String">
+		SELECT * FROM (
+		  SELECT KEYWORD, COUNT(*) AS search_count
+		  FROM SEARCH_HISTORY
+		  GROUP BY KEYWORD
+		  ORDER BY search_count DESC
+		)
+		WHERE ROWNUM &lt;= 5
+	</select>
+	
+	<!-- 비타민 검색어 Top5 -->
+	<select id="getTop5v" resultType="String">
+		SELECT * FROM (
+		  SELECT KEYWORD, COUNT(*) AS search_count
+		  FROM SEARCH_HISTORY
+		  WHERE LOWER(KEYWORD) LIKE '%비타민%' OR LOWER(KEYWORD) LIKE '%베타카로틴%'
+		  GROUP BY KEYWORD
+		  ORDER BY search_count DESC
+		)
+		WHERE ROWNUM &lt;= 5
+	</select>
+	
+	<!-- 미네랄 검색어 Top5 -->
+	<select id="getTop5m" resultType="String">
+		SELECT * FROM (
+  			SELECT SH.KEYWORD, COUNT(*) AS search_count
+			  FROM SEARCH_HISTORY SH
+			  JOIN NUTRIENT N ON LOWER(SH.KEYWORD) = LOWER(N.N_NAME)
+			  WHERE LOWER(SH.KEYWORD) NOT LIKE '%비타민%' AND LOWER(SH.KEYWORD) NOT LIKE '%베타카로틴%'
+			  GROUP BY SH.KEYWORD
+			  ORDER BY search_count DESC
+			)
+		WHERE ROWNUM &lt;= 5
+	</select>
+	
+	<!-- 기능성원료 검색어 Top5 -->
+	<select id="getTop5i" resultType="String">
+		SELECT * FROM (
+		  SELECT SH.KEYWORD, COUNT(*) AS search_count
+		  FROM SEARCH_HISTORY SH
+		  JOIN INGREDIENT I ON LOWER(SH.KEYWORD) = LOWER(I.I_NAME)
+		  GROUP BY SH.KEYWORD
+		  ORDER BY search_count DESC
+		)
+		WHERE ROWNUM &lt;= 5
+	</select>
+	
+	
+	
+	
 
 	
 	
