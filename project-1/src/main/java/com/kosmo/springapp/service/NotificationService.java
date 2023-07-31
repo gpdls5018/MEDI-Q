@@ -78,7 +78,7 @@ public class NotificationService {
         }
     }
     
-    @Scheduled(cron = "0 * * * * *")//(cron = "0 */5 * * * *")
+    @Scheduled(cron = "0 */5 * * * *")
     public void scheduled() {
     	LocalDateTime date = LocalDateTime.now();
     	DayOfWeek dayOfWeek = date.getDayOfWeek();
