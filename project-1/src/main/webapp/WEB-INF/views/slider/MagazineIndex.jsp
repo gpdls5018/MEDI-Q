@@ -33,7 +33,7 @@
 		margin-bottom: 130px;
 	}
 	.first-text{
-		margin-top: 50px;
+		margin-top: 30px;
 	}
 
 	.medi-img{
@@ -45,6 +45,10 @@
 		margin-right: 10px;
 		margin-bottom: 20px;
 	}
+	.custom-footer{
+		margin-bottom: 100px;
+	}
+	
 	#contentInfoCon {
 	    position: relative;
 	    height: 383px;
@@ -203,7 +207,7 @@
 	
     <div style="padding-top:100px;">
 		<!-- 왼쪽 몸통부분 -->
-	     <div class="justify-content-center">
+	     <div class="justify-content-center custom-footer">
 	     	<div class="container">
 	     		<!-- 
 		        <h3 class="display-4 text-center first-text" style="color: #2E8B57;"><strong><span style="color:#EF605D; font-weight:900;">
@@ -214,12 +218,14 @@
 		        <div class="row my-1" id="video-channel"></div>
 		        <br>
 		        -->
+		        <!-- 
 		        <div>
 			        <h2 class="text-center " style="font-weight:bold; color: #00ACE5;">
 				        <img src="<c:url value="/images/magazine_images/medi/advice.png"/>" class="img-fluid medi-img" style="width:140px">
 				        현직 약사가 쉽게 알려주는 <strong style="color:#FF4500; font-weight:900;">건강정보</strong>
 			        </h2>
 		        </div>
+		         -->
 			</div>
 			
 	        <div class="container">
@@ -243,6 +249,12 @@
 				        <a class="nav-link" data-toggle="pill" href=".healnlife">Health & Life</a>
 				    </li>
 				</ul>
+			</div>
+			
+			<div class="container">	
+		        <h3 class="display-4 text-center first-text" style="color: #2E8B57;"><strong><span style="color:#EF605D; font-weight:900;">
+		        <img src="<c:url value="/images/magazine_images/medi/healthcare.png"/>" class="img-fluid medi-imgs" style="width:110px">
+		        건강정보</span> 페이지</strong></h3>
 			</div>
 			<div class="main">
 				<div class="sec_body">

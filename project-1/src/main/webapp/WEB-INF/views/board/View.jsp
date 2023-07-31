@@ -15,7 +15,7 @@
 </head>
 <style>
 	.qna_banner{
-       	width:75%;
+       	width:60%;
        	height:280px;
        	background-color:#FDCDBC;
 		border-radius: 30px;
@@ -31,7 +31,7 @@
          position:absolute;
          width: 200px;
          top:calc(100vh - 85vh);
-         right:20%;
+         right:25%;
      }
 	.text_1{
 		font-size:70px;
@@ -95,10 +95,10 @@
         <!-- 게시판 시작 -->
 	    <div class="container-fluid pt-5 mt-3">
 	        <div class="row d-flex flex-wrap align-content-stretch">
-	            <div class="d-flex col-2">
+	            <div class="d-flex col-3">
 	            </div>
 	            <!-- 게시판 가운데 부분 -->
-	            <div class="d-flex col-8 flex-wrap flex-direction justify-content-center align-content-stretch">
+	            <div class="d-flex col-6 flex-wrap flex-direction justify-content-center align-content-stretch">
 	                <div class="col pb-5">
 	                    <img src="<c:url value="/images/qna/qna_ans.png"/>" class="qna_ans ml-1">
 	                    <div class="row justify-content-center pt-3">
@@ -123,21 +123,22 @@
 	                        <br/>
 	                        <br/>
 	                        <!-- 임시위치 버튼 -->
+	                        <!--  -->
 	                        <div class="d-flex flex-wrap flex-direction justify-content-center" id="content_footer">
-								<c:if test="${id eq record.ID}">
+								<%-- <c:if test="${id eq record.ID}">
 									<a href='<c:url value="/board/Edit.do?no=${record.NO}"/>'class="text-decoration-none p-1">
 										<button class="btn btn-light text-light btn_deco">수정</button>
 									</a> 
 									<a href="javascript:isDelete();" class="text-decoration-none p-1">
 										<button class="btn btn-light text-light btn_deco">삭제</button>
 									</a>
-								</c:if> 
-								<a href='<c:url value="/board/List.do"/>' class="text-decoration-none p-1">
+								</c:if>  --%>
+								<%-- <a href='<c:url value="/board/List.do"/>' class="text-decoration-none p-1">
 									<button class="btn btn-light text-light btn_deco">목록</button>
-								</a>
+								</a> --%>
 								<!-- id가 관리자일때만 버튼이 보임 -->
 								<!-- 참이면(not false) -->
-								<c:if test="${active eq 'A' }"><!-- member속성 ACTIVE 관리자('A')일때만,만약 약사 속성('G')로 수정할거면 A대신 G로 교체 -->
+								<%-- <c:if test="${active eq 'A' }"><!-- member속성 ACTIVE 관리자('A')일때만,만약 약사 속성('G')로 수정할거면 A대신 G로 교체 -->
 									<c:choose>
 										<c:when test="${empty paramMap.CONTENT}">
 											<a href='<c:url value="/board/AnswerWrite.do?no=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
@@ -153,7 +154,7 @@
 											</div> 
 										</c:when>
 									</c:choose>
-								</c:if>
+								</c:if> --%>
 							</div>
 	                    </div>
 					</div><!-- 답변게시판 질문부분 끝 -->
@@ -207,14 +208,45 @@
 		            </c:choose>
 				</div>
             </div>
-            <div class="d-flex col-2 flex-wrap align-content-stretch">
+            <div class="d-flex col-3 flex-wrap align-content-stretch">
             </div>
 	        <div class="row d-flex flex-wrap flex-direction justify-content-center pt-3">
-	        	<div class="col-2"></div>
+	        	<div class="col-3">
+	        		<c:if test="${id eq record.ID}">
+						<a href='<c:url value="/board/Edit.do?no=${record.NO}"/>'class="text-decoration-none text_3">
+							<button class="btn btn-light text-white btn_deco">수정</button>
+						</a> 
+						<a href="javascript:isDelete();" class="text-decoration-none text_3">
+							<button class="btn btn-light text-white btn_deco">삭제</button>
+						</a>
+					</c:if> 
+	        	</div>
                 <%-- <a class="btn_deco rounded-pill col-1 text-decoration-none text-white text-center text_3 p-2" href="<c:url value="/board/View.do?no=${record.no-1}"/>">이전 질문</a> --%>
-                <a class=" btn_deco rounded-pill col-1 text-decoration-none text-white text-center text_3 p-2" href="<c:url value="/board/List.do"/>">질문 목록</a><!-- 그냥 넘길지 page번호까지 넘길지 고민 중 -->
+                
+                <a class="col-1 btn_deco rounded-pill col-1 text-decoration-none text-white text-center text_3 p-2" href="<c:url value="/board/List.do"/>">질문 목록</a><!-- 그냥 넘길지 page번호까지 넘길지 고민 중 -->
+                
                 <%-- <a class="btn_deco rounded-pill col-1 text-decoration-none text-white text-center text_3 p-2" href="<c:url value="/board/View.do?no=${record.no+1}"/>">다음 질문</a> --%>
-                <div class="col-2"></div>
+                
+                <div class="col-3" style="display: flex; justify-content: flex-end;">
+                	<!-- id가 관리자일때만 버튼이 보임 -->
+                	<c:if test="${active eq 'A' }"><!-- member속성 ACTIVE 관리자('A')일때만,만약 약사 속성('G')로 수정할거면 A대신 G로 교체 -->
+						<c:choose>
+							<c:when test="${empty paramMap.CONTENT}">
+								<a href='<c:url value="/board/AnswerWrite.do?no=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
+									<button class="btn btn-light text-light btn_deco">답변작성</button>
+								</a>
+							</c:when>
+							<c:when test="${not empty paramMap.CONTENT }">
+								<a href='<c:url value="/board/AnswerEdit.do?NO=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
+									<button class="btn btn-light text-light btn_deco">답변수정</button>
+								</a>
+								<div class="text-decoration-none p-1">
+									<button class="btn btn-light text-light btn_deco my-delete" data-answer-no="${paramMap.ANSWER_NO}">답변삭제</button><!-- my-delete속성으로 삭제기능 -->
+								</div> 
+							</c:when>
+						</c:choose>
+					</c:if>
+                </div>
             </div>
 	    </div>
 	    <br/>
@@ -261,8 +293,8 @@
         }).done(function(data){
         	console.log('좋아요 통신성공:',data);
         	//alert('좋아요 통신성공');
-        	if(data){
-        		$('#likeCountText').text(data + '명에게 도움이 됐습니다.');
+        	if(data ==-1){
+        		alert('회원만 추천할 수 있습니다.'); // 회원이 아닌 경우 알림 보여주기
         	} else{
         		$('#likeCountText').text(data + '명에게 도움이 됐습니다.');
         	}
