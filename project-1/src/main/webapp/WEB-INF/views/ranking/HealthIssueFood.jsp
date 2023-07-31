@@ -73,10 +73,8 @@ body{
 	<div class="all-wrap-in all-wrap-in-070">
 		<div class="ingredient-search-top">
 			<div class="content" style="background-color:#fdfbf6; padding-bottom: 20px;">
-			<!-- 건기식 또는 회사이름을 적었을 경우 -->
-				<!-- 화면을 처음들어 갔을 경우 건기식 또는 회사이름을 안적었을 경우 -->
 					<div class="top-wrap-070">
-						<h1 class="txt2" style="margin-bottom: 30px; text-align: center; font-size: 30px;"><b><span> ${healthissue}</span>에 좋은 제품 검색결과</b></h1>
+						<h1 class="txt2" style="margin-bottom: 30px; text-align: center; font-size: 30px;"><b><span> ${healthissue}</span>에 좋은 제품 검색결과 </b><span> ${listsize}</span>건</h1>
 					</div>
 					<div class="ipt-main-wrap">
 					<form action="/functionfood/healthissue.do">
