@@ -109,7 +109,7 @@
     th, td {
         border: 1px solid #dddddd;
         text-align: center;
-        padding: 8px;
+        padding: 10px 4px;
     }
 
     th {
@@ -363,12 +363,12 @@
 					    <table>
 					        <thead>
 				                <tr>
-				                	<th>번호</th>
-				                    <th>아이디</th>
-				                    <th>이름</th>
+				                	<th style="width:45px;">번호</th>
+				                    <th style="width:80px;">아이디</th>
+				                    <th style="width:52x;">이름</th>
 				                    <th>생년월일</th>
-				                    <th>이메일</th>
-				                    <th>설정</th>
+				                    <th style="width:80px;">이메일</th>
+				                    <th style="width:90px;">설정</th>
 				                </tr>
 				            </thead>
 				            <tbody>

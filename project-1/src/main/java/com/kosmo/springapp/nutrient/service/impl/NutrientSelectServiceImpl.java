@@ -210,7 +210,7 @@ public class NutrientSelectServiceImpl implements NutrientSelectService {
 	        caution = caution.replace("· 고용량 섭취하면 설사를","<span style=\"font-size: 27px;\">🚽</span> 고용량 섭취하면 설사를");
 	        caution = caution.replace("· 카페인으로 인해 칼슘 배설","<span style=\"font-size: 27px;\">🚽</span> 카페인으로 인해 칼슘 배설");
 	        caution = caution.replace("· 카페인을 과도하게 섭취하면 심장 박동이","<span style=\"font-size: 27px;\">💗</span> 카페인을 과도하게 섭취하면 심장 박동이");
-	        caution = caution.replace("· 여성호르몬 농도에 영향을","<span style=\"font-size: 27px;\">👩</span> 여성호르몬 농도에 영향을");
+	        caution = caution.replace("· 여성호르몬 농도에 영향을 줄 수 있으므로","<span style=\"font-size: 27px;\">👩</span> 여성호르몬 농도에 영향을 줄 수 있어서");
 	        caution = caution.replace("· 고용량 섭취하면 신장", "<span style=\"font-size: 27px;\">🚽</span> 고용량 섭취하면 신장");
 	        caution = caution.replace("· 고용량 섭취하면 요오드 조절에", "<span style=\"font-size: 27px;\">🩺</span> 고용량 섭취하면 요오드 조절에");
 	        caution = caution.replace("· 수술 전후 약물 대사에 영향을 줄 수 있어요.", "<span style=\"font-size: 27px;\">💊</span> 수술 전후 약물 대사에 영향을 줄 수 있어요.");

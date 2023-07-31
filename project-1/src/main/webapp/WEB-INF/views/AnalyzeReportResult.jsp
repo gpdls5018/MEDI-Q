@@ -20,14 +20,6 @@ body{
       font-family : Noto Sans KR, sans-serif;
     }
 
-progress::-webkit-progress-bar {
-    background-color: #e0eaf0;
-}
-
-progress::-webkit-progress-value {
-    background-color: #329ad1;
-}
-
 progress {
     background-color: #FFFFFF;
     width: 300px;
@@ -36,15 +28,29 @@ progress {
 	border-bottom: 1px solid black;
     position: relative;
 }
+
+progress::-webkit-progress-bar {
+    background-color: #e0eaf0;
+}
+[name=myProgress1]::-webkit-progress-bar {
+    background-color: #e0eaf0;
+    border-radius: 0px 20px 20px 0px;
+}
+#myProgress2::-webkit-progress-bar {
+    background-color: #e0eaf0;
+    border-radius: 0px 20px 20px 0px;
+}
 #myProgress::-webkit-progress-value {
 	background-color: #007BFF;
 	border-left: 1px solid black;
+	border-radius: 20px 0px 0px 20px;
 }
 #myProgress1::-webkit-progress-value {
 	background-color: #52BE80;
 }
 #myProgress2::-webkit-progress-value {
 	background-color: #FF5733;
+	border-radius: 0px 20px 20px 0px;
 }
  /*ts 스타일 공간*/
     .my-title {
@@ -241,7 +247,7 @@ progress {
 					                                </div>
 					                            </div>
 										        <div class="progress-container" style="white-space: nowrap;">
-										            <progress id="myProgress" style="border-right:2px dotted black;width:33%" value="${item.nutNumber}" max="${item.DRI}"></progress><progress id="myProgress1" style="border-right:2px dotted black;width:33%" <c:if test="${item.nutNumber < item.DRI }">value="${item.nutNumber-item.DRI}"</c:if><c:if test="${item.nutNumber > item.DRI }">value="${item.nutNumber}"</c:if> max="${item.UL}"></progress><progress id="myProgress2" style="border-right: 1px solid black;width:33%" value="${item.nutNumber-item.UL}" max="${item.UL*3}"></progress>
+										            <progress id="myProgress" style="border-radius: 20px 0px 0px 20px;border-right:2px dotted black;width:33%" value="${item.nutNumber}" max="${item.DRI}"></progress><progress id="myProgress1" style="border-right:2px dotted black;width:33%" <c:if test="${item.nutNumber < item.DRI }">value="${item.nutNumber-item.DRI}"</c:if><c:if test="${item.nutNumber > item.DRI }">value="${item.nutNumber}"</c:if> max="${item.UL}"></progress><progress id="myProgress2" style="border-radius: 0px 20px 20px 0px;border-right: 1px solid black;width:33%" value="${item.nutNumber-item.UL}" max="${item.UL*3}"></progress>
 										        </div>
 										        <div style="text-align: center;margin-top:3px;"><span <c:if test="${item.nutNumber <item.DRI}">style='color:#007BFF;'</c:if><c:if test="${(item.nutNumber >= item.DRI) && (item.nutNumber <= item.UL)}">style='color:#52BE80;'</c:if><c:if test="${item.nutNumber >item.UL}">style='color:#FF5733;'</c:if>>
 										        <c:if test="${item.nutNumber <item.DRI}"><span class="mx-1 px-2" style="background-color:#007BFF; color:blue;border-radius: 10px">부족</span></c:if><c:if test="${(item.nutNumber >= item.DRI) && (item.nutNumber <= item.UL)}"><span class="mx-1 px-2" style="background-color:#52BE80;color: green; border-radius: 10px">적정</span></c:if><c:if test="${item.nutNumber > item.UL }"><span class="mx-1 px-2" style="background-color:#FF5733;color: red;border-radius: 10px">과다</span></c:if> ${item.nutNumber}</span> 만큼 드시고 계십니다</div>
@@ -261,7 +267,7 @@ progress {
 					                                </div>
 					                            </div>
 										        <div class="progress-container" style="white-space: nowrap;">
-										            <progress id="myProgress" style="border-right:2px dotted black;width:33%" value="${item.nutNumber}" max="${item.DRI}"></progress><progress id="myProgress1" style="width:66%; border-right:1px solid black" value="${item.nutNumber-item.DRI}" max="${item.DRI * 10}"></progress>
+										            <progress id="myProgress" style="border-radius: 20px 0px 0px 20px;border-right:2px dotted black;width:33%" value="${item.nutNumber}" max="${item.DRI}"></progress><progress id="myProgress1" name="myProgress1" style="width:66%; border-right:1px solid black;border-radius: 0px 20px 20px 0px;" value="${item.nutNumber-item.DRI}" max="${item.DRI * 10}"></progress>
 										        </div>
 										        <div style="text-align: center;margin-top:3px;"><span <c:if test="${item.nutNumber <item.DRI}">style='color:#007BFF;'</c:if><c:if test="${item.nutNumber >=item.DRI}">style='color:#52BE80;'</c:if>>
 										        <c:if test="${item.nutNumber <item.DRI}"><span class="mx-1 px-2" style="background-color: #007BFF;color:blue;border-radius: 10px">부족</span></c:if><c:if test="${item.nutNumber >= item.DRI}"><span class="mx-1 px-2" style="background-color:#52BE80;color: green; border-radius: 10px">적정</span></c:if> ${item.nutNumber}</span> 만큼 드시고 계십니다</div>

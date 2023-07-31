@@ -2,11 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
@@ -75,19 +71,87 @@
         color: #fff236;
     }
 
-</style>
-<body>
-  <div class="container">
-    <hr>
-    <div class="food jumbotron d-flex" style="border-radius: 20px;height:300px;">
-      <img src="${listOne.imgURL}" style="border-radius: 20px;width:200px;"/>
-      <div class="food-text m-auto effect-custom-font" style="font-size: 25px;">
-        <div class="food-company">${listOne.company}</div>
-        <div class="food-title">${listOne.productName}</div>
+body{
+	background-color: #fdfbf6;
+}
+#contentInfoCon {
+    position: relative;
+    height: 383px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#contentInfoCon .content-sub-tit {
+    font-size: 16px;
+    color: #222;
+    overflow: hidden;
+}
+#contentInfoCon .content-tit {
+    color: #222;
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 1.36;
+    letter-spacing: -0.02em;
+    margin-top: 37px;
+}
+.visual-img-con {
+	position:absolute;
+	width:100%;
+	height:100%;
+    background: url("https://www.hectohealthcare.com/resources/images/layout/sub_visual_company.jpg") no-repeat;
+    background-color: #fff;
+    z-index: 1;
+    top:70px;
+	border:none;
+}
+.tsanalyze {
+   	display: flex;
+   	flex-direction:column;
+   	justify-content:center;
+   	border-radius: 40px 40px 0px 0px;
+	box-shadow: rgba(108, 108, 108, 0.15) 0px -1px 10px;
+	margin-top: 50px;
+}
+.tsarea {
+	position: absolute;
+	width: 1000px;
+	height: 250px;
+	top:170px;
+	left:50px;
+	border:none;
+	z-index: 2;
+	text-align: center;
+	box-shadow: 0px 0px 0px white;
+	align-items: center;
+}
+     </style>
+
+	<!-- 상단배너 div -->
+	<aside id="contentInfoCon" class="area animated">
+        <!-- 각각 대메뉴 마다 이미지 다르게 들어갑니다. -->
+                <!-- 브랜드 스토리 -->
+                <div class="visual-img-con animatedleft"></div>	
+
+        <div class="tsarea">
+            <h3 class="content-tit" style="text-align:left; margin-left: 150px;">
+                <span><span style="color:#EF605D;">MEDI-Q</span> 영양제</span>
+                <p style="font-weight: 500; font-size: 23px; margin-top: 20px; color:gray">실제 섭취하는 유저들의 리뷰와 피드백으로 만든<br/> 가장 믿을만한 영양제</p>
+            </h3>
+        </div>
+    </aside>
+    
+
+  <div class="container" style="min-height: 800px; max-width: 920px; background-color:white; margin-top:80px; border-radius: 20px; border-radius: 20px;">
+   <div class="tsanalyze mx-2">
+    <div class="food jumbotron d-flex" style=" width:840px; margin-left:17px; background-color:#FDCDBC; border-radius: 20px;height:300px; margin-top: 50px;">
+      <img src="${listOne.imgURL}" style="border-radius: 20px;width:200px;height: auto;"/>
+      <div class="food-text m-5 effect-custom-font" style="font-size: 25px;">
+        <div class="food-company" style="font-size: 26px; color: gray; font-weight: bold;">${listOne.company}</div>
+        <div class="food-title" style="font-size: 40px; color: white; font-weight: bold;">${listOne.productName}</div>
       </div>
     </div>
-    <div class="check-take-time effect-custom-font ">
-      <div style="font-size: 30px;">영양제를 얼마나 드셨나요?</div>
+    <div class="check-take-time effect-custom-font mx-3">
+      <div style="font-size: 30px; ">영양제를 얼마나 드셨나요?</div>
       <div class="check-take-time-tags d-flex m-3">
         <span class="check-take-time-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">1개월 미만</span>
         <span class="check-take-time-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">1~3개월</span>
@@ -96,7 +160,7 @@
         <span class="check-take-time-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">1년 이상</span>
       </div>
     </div>
-    <div class="check-rating effect-custom-font mt-5">
+    <div class="check-rating effect-custom-font mt-5 mx-3">
       <div style="font-size: 30px;">영양제에 만족하셨나요?</div>
       <div class="check-rating-stars m-3">
         <i class="bi bi-star check-rating-star"></i>
@@ -106,8 +170,8 @@
         <i class="bi bi-star check-rating-star"></i>
       </div>
     </div>
-    <div class="check-rating effect-custom-font mt-5">
-      <div style="font-size: 30px;">이 영양제를 먹고 일반적으로 느끼는 효과예요. 어떤 효과를 느꼈나요?</div>
+    <div class="check-rating effect-custom-font mt-5 mx-3">
+      <div style="font-size: 30px;">이 영양제를 먹고 일반적으로 느끼는 효과예요.<br/> 어떤 효과를 느꼈나요?</div>
       <div class="mt-3" style="font-size: 20px;color: #9e9e9e;">가장 많이 느낀 효과를 선택해 주세요. (최대 5개)<br>
         원하는 효과가 없을 경우 텍스트 후기에 남겨주세요!
       </div>
@@ -119,7 +183,7 @@
         <span class="check-effect-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">피부상태 개선</span>
       </div>
     </div>
-    <div class="check-rating effect-custom-font mt-5">
+    <div class="check-rating effect-custom-font mt-5 mx-3">
       <div style="font-size: 30px;">어떤 부작용이 있었나요?</div>
       <div class="mt-3" style="font-size: 20px;color: #9e9e9e;">가장 많이 느낀 부작용을 선택해 주세요. (최대 5개)<br></div>
       <div class="check-noEffect-tags d-flex m-3">
@@ -130,15 +194,15 @@
         <span class="check-noEffect-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">두통</span>
       </div>
     </div>
-    <div class="check-rating effect-custom-font mt-5">
+    <div class="check-rating effect-custom-font mt-5 mx-3">
       <div style="font-size: 30px;">영양제에 대한 상세한 후기를 들려주세요!</div>
       <textarea class="mt-3 jumbotron" style="width: 100%;border:solid 3px #dbdbdb;border-radius: 20px;" placeholder="영양제에 대한 솔직한 리뷰를 남겨주세요."></textarea>
     </div>
     <input type="hidden" value="${id}" id="userId">
     <input type="hidden" value="${listOne.no}" id="productNo">
-    <button class="btn btn-warning effect-custom-font mb-5" id="sendDataButton" style="width:100%;height:50px;"><i class="bi bi-clipboard-check p-1" style="font-size:25px;"></i>작성 완료!</button>
+    <button class="btn btn-warning effect-custom-font mb-5" id="sendDataButton" style="width:80%;height:50px; margin-left: 85px; border-radius: 20px;"><i class="bi bi-clipboard-check p-1" style="font-size:25px;"></i>작성 완료!</button>
   </div>
-
+ </div>
   
 
 
