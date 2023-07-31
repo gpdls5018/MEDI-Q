@@ -76,7 +76,14 @@ public interface NutrientSelectMapper {
 	// 검색어 저장
 	void saveSearchHistory(String keyword);
 
-	
+	// 인기 검색수 Top5
+	List<String> getTop5();
+	// 비타민 검색수 Top5
+	List<String> getTop5v();
+	// 미네랄 검색수 Top5
+	List<String> getTop5m();
+	// 기능성원료 검색수 Top5
+	List<String> getTop5i();
 	
 
 	

@@ -1104,7 +1104,18 @@ body {
 	}
 	//내가 선택한 영양제 클릭 시 삭제
 	$('#select-div .food-li').click(function(){
-		$(this).remove();
+		//console.log('///',$(this).find('div').html())
+		var click = $(this);
+		$('.food').each(function(){
+			//console.log('icon',$(this).find('#alarmIcon'))
+			if($(this).find('.kWbUNE').html()===click.find('div').html() && $(this).find('#alarmIcon').length){
+				alert('해당 영양제에 알람이 등록되어있습니다\r\n알람을 먼저 해제해주세요')
+				return false;
+			}
+			else if($(this).find('.kWbUNE').html()===click.find('div').html() && !$(this).find('#alarmIcon').length){
+				click.remove();
+			}
+		});
 	});
 	/*
 	[{PRODUCTNAME=영롱 비건 쌀마그네슘, IMGURL=https://health-functional-food.s3.ap-northeast-2.amazonaws.com/saved/2020001201619/D35haRYto_L-8rbtpZ_pa}, {PRODUCTNAME=영양가득 한끼 쉐이크, IMGURL=https://health-functional-food.s3.ap-northeast-2.amazonaws.com/saved/200400200082123/iRgh5eZXMvtR2sQdqCStU}]
