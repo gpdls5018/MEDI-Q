@@ -353,9 +353,9 @@ body{
             </div>
           </div>
           <div class="card" style="width: 8rem;height:10rem;">
-            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/혈액 순환.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
+            <img class="card-img-overlay m-auto" src="<c:url value="/images/health_img/혈액순환.png"/>" alt="Card image cap" style="width:100px;height:100px;border-radius: 15px;">
             <div class="card-body m-auto">
-              <h5 class="card-title">혈액 순환</h5>
+              <h5 class="card-title">혈액순환</h5>
             </div>
           </div>
           <div class="card" style="width: 8rem;height:10rem;">
