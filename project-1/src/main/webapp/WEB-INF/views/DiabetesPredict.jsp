@@ -43,18 +43,17 @@ body {
 		<div class="my-title d-flex effect-custom-font justify-content-between" style="align-items:center; width:100%;height:200px;">
 			<div class="" style="font-size:32px; margin-left: 180px;">인공지능을 통한<br/> <span style="color:#EF605D;">질병 예측 예방 시스템 구축</span></div>
 		</div>
-
 		<div class="container effect-custom-font" >
-		    <div class="mx-5 my-2 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">당뇨병 수치 예측하기</div>
+		    <div class="mx-5 my-5 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">당뇨병 수치 예측하기</div>
 			<div class="model-score  mx-2 mt-4" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd>70%</kbd> 입니다</div>
 		    <div class="row">
 		        <div class="col-6">
 		            <form id="personInfoForm" class="validation-form" novalidate>
 		                <div class="col mb-3">
 		                    <strong>연령</strong>
-		                    <input type="text" class="form-control" id="age" name="age" placeholder="연령을 입력해주세요" value="" required>
+		                    <input type="text" class="form-control" id="age" name="age" pattern="[0-9]+" placeholder="나이를 입력해주세요" value="" required>
 		                    <div class="invalid-feedback">
-		                        연령을 입력해주세요.
+		                        나이을 입력해주세요.
 		                    </div>
 		                </div>
 		                <div class="col mb-3">
@@ -86,7 +85,7 @@ body {
 		
 		        <div class="col-6">
 		            <canvas id="drawing_canvas"></canvas>
-		            <img src="<c:url value="/images/basic/AI.jpg"/>" id="machineImage" style="width:100%;height:100%;border-radius:50%;"/>
+		            <img src="https://img.freepik.com/premium-photo/older-adult-uses-an-app-on-his-smartphone-to-check-his-blood-pressure-in-the-living-room_624840-131.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=ais" id="machineImage" style="width:100%;height:100%;border-radius:20px;"/>
 		        </div>
 		    </div>
 		    <div class="effect-custom-font m-5 py-5">

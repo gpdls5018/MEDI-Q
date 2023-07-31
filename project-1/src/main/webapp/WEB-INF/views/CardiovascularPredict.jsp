@@ -20,138 +20,154 @@
       font-family : Noto Sans KR, sans-serif;
     }
     
-</style>
-<jsp:include page="/WEB-INF/views/template/Top.jsp" />
-<div class="container effect-custom-font" >
-	<div class="m-5"style="height:50px;"></div>
-    <div class="m-5 display-4 effect-custom-font" style="text-align:center;">심장질환 수치 예측하기</div>
-	<div class="model-score m-4" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd>70%</kbd> 입니다</div>
-    <div class="row">
-        <div class="col-6">
-            <form id="personInfoForm" class="validation-form" novalidate>
-            	<div class="col mb-3">
-                    <strong>성별</strong>
-                    <div class="form-check">
-					  <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="2">
-					  <label class="form-check-label" for="gender_Man">
-					    남성
-					  </label>
-					</div>
-					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="gender" id="gender_Woman" value="1">
-					  <label class="form-check-label" for="gender_Woman">
-					    여성
-					  </label>
-					</div>
-                    <div class="invalid-feedback">
-                        성별을 체크해 주세요
-                    </div>
-                </div>
-                <div class="col mb-3">
-                    <strong>신장</strong>
-                    <input type="text" class="form-control" id="height" name="height" placeholder="신장을 입력해주세요" value="${healthInfoDto.height}" required>cm
-                    <div class="invalid-feedback">
-                        신장을 입력해주세요
-                    </div>
-                </div>
-                <div class="col mb-3">
-                    <strong>몸무게</strong>
-                    <input type="text" class="form-control" id="weight" name="weight" placeholder="몸무게를 입력해주세요" value="${healthInfoDto.weight}" required>kg
-                    <div class="invalid-feedback">
-                        몸무게를 입력해주세요
-                    </div>
-                </div>
-                <div class="col mb-3">
-                    <strong>혈압(최고/최저)</strong>
-                    <div class="d-flex">
-	                    <input type="text" class="form-control m-1" id="bloodpress_high" name="bloodpress_high"  placeholder="최고혈압" value="${healthInfoDto.bloodPressure_high}" required> / 
-	                    <input type="text" class="form-control m-1" id="bloodpress_low" name="bloodpress_low"  placeholder="최저혈압" value="${healthInfoDto.bloodPressure_low}" required>
-                    </div>
-                    <div class="invalid-feedback">
-                        혈압수치를 입력해주세요
-                    </div>
-                </div>
-                <div class="col mb-3">
-                    <strong>콜레스테롤</strong>
-                    <input type="text" class="form-control" id="total_cholesterol" name="total_cholesterol" placeholder="총 콜레스테롤 수치를 입력해주세요" value="${healthInfoDto.total_cholesterol}" required>mg/dL
-                    <div class="invalid-feedback">
-                        콜레스테롤 수치를 입력해주세요
-                    </div>
-                </div>
-                <div class="col mb-3">
-                    <strong>포도당</strong>
-                    <input type="text" class="form-control" id="glucose" name="glucose" placeholder="포도당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required>mg/dL
-                    <div class="invalid-feedback">
-                        포도당 수치를 입력해주세요
-                    </div>
-                </div>
-                <div class="col mb-3">
-                	<strong>흡연</strong>
-	                <div class="form-check">
-				  		<input class="form-check-input" type="radio" name="smoke_check" value="0">
-					  	<label class="form-check-label" for="smoke_check">
-						    흡연자입니다
-					  	</label>
-					</div>
-					<div class="form-check">
-				    	<input class="form-check-input" type="radio" name="smoke_check" value="1" >
-					  	<label class="form-check-label" for="smoke_check">
-						    비흡연자입니다
-					  	</label>
-					</div>
-	                <div class="invalid-feedback">
-	                       흡연 유무를 체크해주세요
-	                </div>
-                </div>
-                <div class="col mb-3">
-                	<strong>음주</strong>
-	                <div class="form-check">
-				  		<input class="form-check-input" type="radio" name="alco_check" value="0">
-					  	<label class="form-check-label" for="alco_check">
-						    음주를 합니다
-					  	</label>
-					</div>
-					<div class="form-check">
-				    	<input class="form-check-input" type="radio" name="alco_check" value="1" >
-					  	<label class="form-check-label" for="alco_check">
-						    음주를 하지 않습니다
-					  	</label>
-					</div>
-	                <div class="invalid-feedback">
-	                       음주 유무를 체크해주세요
-	                </div>
-                </div>
-                <div class="col mb-3">
-                    <strong>연령</strong>
-                    <input type="text" class="form-control" id="age" name="age" placeholder="연령을 입력해주세요" value="" required>
-                    <div class="invalid-feedback">
-                        연령을 입력해주세요
-                    </div>
-                </div>
-                <hr class="mb-4">
-                <div class="mb-4"></div>
-                <button class="btn btn-primary btn-lg btn-block" type="submit">예측해보기</button>
-            </form>
-        </div>
+/*ts 스타일 공간*/
+body {
+	background-color: #fdfbf6;
+}
+.my-title {
+	position: relative;
+	background-image:
+		url("https://www.hectohealthcare.com/resources/images/layout/sub_visual_brand.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-top: 70px;
+}
 
-        <div class="col-6">
-            <canvas id="drawing_canvas"></canvas>
-            <img src="<c:url value="/images/basic/AI.jpg"/>" id="machineImage" style="width:100%;height:100%;border-radius:50%;"/>
-        </div>
-    </div>
-    <hr class="mt-5">
-    <div class="effect-custom-font m-5">
-    	<div class="title mb-5" style="font-size:30px;">
-    		<img src="<c:url value="/images/mainicon.png"/>" style="width:30px;height:30px;">
-    		<img src="<c:url value="/images/maintitle.png"/>" style="height:30px;">
-										와 다른 질병을 예측해 보아요!</div>
-    	<ul class="list-unstyled" style="line-height:300%">
-    		<li class="mb-4"><div class="p-2" style="border-radius:40px;font-size:20px;background-color:#ff9558">심장질환 예측하기</div></li>
-    		<li class="mb-4"><div class="p-2" style="border-radius:40px;font-size:20px;background-color:#ff9558">뇌졸중 예측하기</div></li>
-    		<li class="mb-4"><div class="p-2" style="border-radius:40px;font-size:20px;background-color:#ff9558">간암 예측하기</div></li>
-    	</ul>
-    </div>
-</div>
+
+
+</style>
+
+	<div class="container my-3" style="min-height: 880px; max-width: 1100px; background-color: white; border-radius: 15px;">
+		<div class="my-title d-flex effect-custom-font justify-content-between" style="align-items:center; width:100%;height:200px;">
+			<div class="" style="font-size:32px; margin-left: 180px;">인공지능을 통한<br/> <span style="color:#EF605D;">질병 예측 예방 시스템 구축</span></div>
+		</div>
+
+		<div class="container effect-custom-font" >
+		    <div class="mx-5 mt-1 mb-5 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">심장질환 수치 예측하기</div>
+			<div class="model-score m-4" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd>70%</kbd> 입니다</div>
+		    <div class="row">
+		        <div class="col-6">
+		            <form id="personInfoForm" class="validation-form" novalidate>
+		            	<div class="col mb-3">
+		                    <strong>성별</strong>
+		                    <div class="form-check">
+							  <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="2">
+							  <label class="form-check-label" for="gender_Man">
+							    남성
+							  </label>
+							</div>
+							<div class="form-check">
+							  <input class="form-check-input" type="radio" name="gender" id="gender_Woman" value="1">
+							  <label class="form-check-label" for="gender_Woman">
+							    여성
+							  </label>
+							</div>
+		                    <div class="invalid-feedback">
+		                        성별을 체크해 주세요
+		                    </div>
+		                </div>
+		                <div class="col mb-3">
+		                    <strong>신장</strong>
+		                    <input type="text" class="form-control" id="height" name="height" placeholder="신장을 입력해주세요" value="${healthInfoDto.height}" required>cm
+		                    <div class="invalid-feedback">
+		                        신장을 입력해주세요
+		                    </div>
+		                </div>
+		                <div class="col mb-3">
+		                    <strong>몸무게</strong>
+		                    <input type="text" class="form-control" id="weight" name="weight" placeholder="몸무게를 입력해주세요" value="${healthInfoDto.weight}" required>kg
+		                    <div class="invalid-feedback">
+		                        몸무게를 입력해주세요
+		                    </div>
+		                </div>
+		                <div class="col mb-3">
+		                    <strong>혈압(최고/최저)</strong>
+		                    <div class="d-flex">
+			                    <input type="text" class="form-control m-1" id="bloodpress_high" name="bloodpress_high"  placeholder="최고혈압" value="${healthInfoDto.bloodPressure_high}" required> / 
+			                    <input type="text" class="form-control m-1" id="bloodpress_low" name="bloodpress_low"  placeholder="최저혈압" value="${healthInfoDto.bloodPressure_low}" required>
+		                    </div>
+		                    <div class="invalid-feedback">
+		                        혈압수치를 입력해주세요
+		                    </div>
+		                </div>
+		                <div class="col mb-3">
+		                    <strong>콜레스테롤</strong>
+		                    <input type="text" class="form-control" id="total_cholesterol" name="total_cholesterol" placeholder="총 콜레스테롤 수치를 입력해주세요" value="${healthInfoDto.total_cholesterol}" required>mg/dL
+		                    <div class="invalid-feedback">
+		                        콜레스테롤 수치를 입력해주세요
+		                    </div>
+		                </div>
+		                <div class="col mb-3">
+		                    <strong>포도당</strong>
+		                    <input type="text" class="form-control" id="glucose" name="glucose" placeholder="포도당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required>mg/dL
+		                    <div class="invalid-feedback">
+		                        포도당 수치를 입력해주세요
+		                    </div>
+		                </div>
+		                <div class="col mb-3">
+		                	<strong>흡연</strong>
+			                <div class="form-check">
+						  		<input class="form-check-input" type="radio" name="smoke_check" value="0">
+							  	<label class="form-check-label" for="smoke_check">
+								    흡연자입니다
+							  	</label>
+							</div>
+							<div class="form-check">
+						    	<input class="form-check-input" type="radio" name="smoke_check" value="1" >
+							  	<label class="form-check-label" for="smoke_check">
+								    비흡연자입니다
+							  	</label>
+							</div>
+			                <div class="invalid-feedback">
+			                       흡연 유무를 체크해주세요
+			                </div>
+		                </div>
+		                <div class="col mb-3">
+		                	<strong>음주</strong>
+			                <div class="form-check">
+						  		<input class="form-check-input" type="radio" name="alco_check" value="0">
+							  	<label class="form-check-label" for="alco_check">
+								    음주를 합니다
+							  	</label>
+							</div>
+							<div class="form-check">
+						    	<input class="form-check-input" type="radio" name="alco_check" value="1" >
+							  	<label class="form-check-label" for="alco_check">
+								    음주를 하지 않습니다
+							  	</label>
+							</div>
+			                <div class="invalid-feedback">
+			                       음주 유무를 체크해주세요
+			                </div>
+		                </div>
+		                <div class="col mb-3">
+		                    <strong>연령</strong>
+		                    <input type="text" class="form-control" id="age" name="age" placeholder="연령을 입력해주세요" value="" required>
+		                    <div class="invalid-feedback">
+		                        연령을 입력해주세요
+		                    </div>
+		                </div>
+		                <hr class="mb-4">
+		                <div class="mb-4"></div>
+		                <button class="btn btn-primary btn-lg btn-block" type="submit">예측해보기</button>
+		            </form>
+		        </div>
+		
+		        <div class="col-6">
+		            <canvas id="drawing_canvas"></canvas>
+		            <img src="https://img.freepik.com/premium-vector/ai-medical-concept-with-virtual-human-heart-observed-by-medical-representative_1302-36624.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=ais" id="machineImage" style="width:100%;height:100%;border-radius:12px;"/>
+		        </div>
+		    </div>
+		    <hr class="mt-5">
+		    <div class="effect-custom-font m-5 py-5">
+		    	<div class="title mb-5" style="font-size:30px;">
+		    		<img src="<c:url value="/images/mainicon.png"/>" style="width:30px;height:30px;">
+		    		<img src="<c:url value="/images/maintitle.png"/>" style="height:30px;">
+												와 다른 질병을 예측해 보아요!</div>
+		    		<div class="p-2" style="border-radius:40px;font-size:20px;background-color:#ff9558; font-weight: bold; text-align: center;">다른 질병 예측하러 가기</div>
+		    </div>
+		</div>
+	</div>
 <script>
     $(document).ready(function() {
         $('#personInfoForm').submit(function (event) {

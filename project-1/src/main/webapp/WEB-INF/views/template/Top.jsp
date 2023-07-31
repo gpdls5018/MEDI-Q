@@ -138,7 +138,7 @@
     padding-top: 0px;
 }
 .tsnava3 {
-	color: gray;
+	color: black;
 	font-weight: bold;
 	font-size: 16px;
     padding-top: 10px;
@@ -149,7 +149,7 @@
 	text-decoration: none;
 }
 .tslogina span:hover {
-	color:black;
+	color:gray;
 	text-decoration: none;
 }
 
@@ -274,6 +274,7 @@ ul {
             right: 40px;
             bottom: 40px;
             z-index:3000;
+            cursor:pointer;
         }
         .clickBtn{
             list-style: none;
