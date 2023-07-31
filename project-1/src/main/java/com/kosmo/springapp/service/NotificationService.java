@@ -48,7 +48,8 @@ public class NotificationService {
         String loginToken = jwTokensService.getToken(req, tokenName);
     	boolean isLogin = jwTokensService.verifyToken(loginToken, tokenName, secretKey, req, resp);
     	List<Map> alarms = takeFoodAlarmServiceImpl.selectById(userId);
-    	//System.out.println("alarms: "+alarms);
+    	System.out.println("alarms: "+alarms);
+    	tokenList.clear();
     	for(Map alarm : alarms) {
     		String foodname = alarm.get("FOODNAME").toString();
     		String foodtime = alarm.get("ALARM_TIME").toString();
@@ -63,7 +64,7 @@ public class NotificationService {
     		
     		tokenList.add(map);
     	}
-    	//System.out.println("아이디당 저장된 알람정보(register): "+tokenList);
+    	System.out.println("아이디당 저장된 알람정보(register): "+tokenList);
     	tokenMap.put(userId, fcmtoken);
     	tokenMap.put("loginToken", loginToken);
     	tokenMap.put("isLogin", isLogin);
@@ -83,14 +84,19 @@ public class NotificationService {
     	DayOfWeek dayOfWeek = date.getDayOfWeek();
     	
     	String weekly = dayOfWeek.getDisplayName(TextStyle.SHORT,Locale.KOREAN); //현재 요일
-    	String current = date.getHour()+":"+date.getMinute(); //현재 시간
-    	//System.out.println("아이디당 저장된 알람정보(scheduled): "+tokenList);
-    	//System.out.println("현재시간: "+current);
+    	String hour = Integer.toString(date.getHour()).length()==1 ? "0"+date.getHour() : Integer.toString(date.getHour());
+    	String minute = Integer.toString(date.getMinute()).length()==1 ? "0"+date.getMinute() : Integer.toString(date.getMinute());
+    	String current = hour+":"+minute; //현재 시간
+    	System.out.println("아이디당 저장된 알람정보(scheduled): "+tokenList);
+    	System.out.println("현재시간: "+current);
     	
     	for(Map map : tokenList) {
-    		//System.out.println("weekly: "+map.get("weekly"));
-    		//System.out.println("foodtime: "+map.get("foodtime"));
-    		if(map.get("weekly").equals(weekly) && map.get("foodtime").equals(current)) {
+    		System.out.println("weekly: "+map.get("weekly"));
+    		System.out.println("foodtime: "+map.get("foodtime"));
+    		System.out.println("true 체크 "+weekly.contains(map.get("weekly").toString()));
+    		System.out.println("true 체크 "+map.get("weekly").toString().contains(weekly));
+    		if(map.get("weekly").toString().contains(weekly) && map.get("foodtime").equals(current)) {
+    			System.out.println("알람이 떠야함!!!!!!!!!!!!!");
         		createReceiveNotification(map.get("foodname").toString(),map.get("foodcount").toString());//보낼 때 정보 보내야함(복용 약,정 수)
         	}
     	}
