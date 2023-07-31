@@ -153,7 +153,7 @@
   
   <div style="font-size:24px;" class="contentTop">
     질염은 ‘여성의 감기’라고 불릴 만큼 여성이 흔하게 겪는 질환인데, 일교차가 큰 환절기가 되면 면역력이 떨어져 자주 발생하게 됩니다.
-    질염이 여성에게 워낙 흔하게 발생하는 만큼 질 건강을 관리하기 위해 <span style="background-color: #E1FFFF; font-size:30px;">‘질 유산균’</span>에 대해 알아보시는 것 같은데요. 
+    질염이 여성에게 워낙 흔하게 발생하는 만큼 질 건강을 관리하기 위해 <span style="background-color: #E1FFFF; font-size:28px;">‘질 유산균’</span>에 대해 알아보시는 것 같은데요. 
     질 유산균이 무엇인지부터 질 유산균과 관련해서 궁금해하는 부분까지 다 알려드릴게요!
   </div>
   
