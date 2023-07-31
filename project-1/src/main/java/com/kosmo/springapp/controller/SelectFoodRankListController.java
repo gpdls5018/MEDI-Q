@@ -49,7 +49,6 @@ public class SelectFoodRankListController {
 		String Hissuecous = selectfoodservice.healthIssueCou(healthissue);
 		String[] Hissuecou = Hissuecous.split("\\$");
 		Set<AvgStarScoreCountDTO> uniqueData = new HashSet<>();
-
         for (String hins : Hissuecou) {
             for (AvgStarScoreCountDTO hin : selectfoodservice.selectFoodListFromHealthissue(hins)) {
                 // listData에 객체를 추가하기 전에 중복 여부를 체크합니다.
@@ -65,6 +64,30 @@ public class SelectFoodRankListController {
                     uniqueData.add(hin);
                 }
             }
+        }
+        if(healthissue.trim().equals("혈관")) {
+        	healthissue = "혈관 & 혈액순환";
+        }
+        else if(healthissue.trim().equals("스트레스")) {
+        	healthissue = "스트레스 & 수면";
+        }
+        else if(healthissue.trim().equals("노화")) {
+        	healthissue = "노화 & 항산화";
+        }
+        else if(healthissue.trim().equals("소화")) {
+        	healthissue = "소화 & 위식도 건강";
+        }
+        else if(healthissue.trim().equals("치아")) {
+        	healthissue = "치아 & 잇몸";
+        }
+        else if(healthissue.trim().equals("임산부")) {
+        	healthissue = "임산부 & 태아 건강";
+        }
+        else if(healthissue.trim().equals("운동능력")) {
+        	healthissue = "운동능력 & 근육량";
+        }
+        else if(healthissue.trim().equals("탈모")) {
+        	healthissue = "탈모 & 손톱 건강";
         }
 
 		model.addAttribute("healthissue", healthissue);

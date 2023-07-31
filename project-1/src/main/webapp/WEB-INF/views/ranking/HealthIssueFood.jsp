@@ -77,10 +77,38 @@ body{
 						<h1 class="txt2" style="margin-bottom: 30px; text-align: center; font-size: 30px;"><b><span> ${healthissue}</span>에 좋은 제품 검색결과 </b><span> ${listsize}</span>건</h1>
 					</div>
 					<div class="ipt-main-wrap">
-					<form action="/functionfood/healthissue.do">
+					<form id="healthIssueForm" action="/functionfood/healthissue.do" method="GET" >
 						<div class="ipt-main-wrap-in">
-							<input id="searchProduct1" type="text" name="healthissue" class="ipt-main" autocomplete="off" title="건강고민을 적으세요" value="${foodname}" required minlength="1" placeholder="건강고민을 검색해보세요!">
-							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct1()"></button>
+							<select id="healthIssueSelect" onchange="submitForm()" class="ipt-main">
+								<option value="피로감">피로감</option>
+								<option value="스트레스 & 수면">스트레스 & 수면</option>
+								<option value="노화 & 항산화">노화 & 항산화</option>
+								<option value="면역 기능">면역 기능</option>
+								<option value="빈혈">빈혈</option>
+								<option value="눈 건강">눈 건강</option>
+								<option value="갑상선 건강">갑상선 건강</option>
+								<option value="호흡기 건강">호흡기 건강</option>
+								<option value="소화 & 위식도 건강">소화 & 위식도 건강</option>
+								<option value="간 건강">간 건강</option>
+								<option value="장 건강">장 건강</option>
+								<option value="뼈 건강">뼈 건강</option>
+								<option value="관절 건강">관절 건강</option>
+								<option value="탈모 & 손톱 건강">탈모 & 손톱 건강</option>
+								<option value="피부 건강">피부 건강</option>
+								<option value="두뇌활동">두뇌활동</option>
+								<option value="운동 능력 & 근육량">운동 능력 & 근육량</option>
+								<option value="혈압">혈압</option>
+								<option value="혈당">혈당</option>
+								<option value="혈관 & 혈액순환">혈관 & 혈액순환</option>
+								<option value="혈중 중성지방">혈중 중성지방</option>
+								<option value="혈중 콜레스테롤">혈중 콜레스테롤</option>
+								<option value="체지방">체지방</option>
+								<option value="치아 & 잇몸">치아 & 잇몸</option>
+								<option value="남성 건강">남성 건강</option>
+								<option value="여성 건강">여성 건강</option>
+								<option value="임산부 & 태아 건강">임산부 & 태아 건강</option>
+								<option value="여성 갱년기">여성 갱년기</option>
+							</select>
 						</div>
 					</form>
 					</div>
@@ -195,5 +223,13 @@ body{
             return false;
         });
 </script>
+<script>
+		function submitForm() {
+			var selectedValue = document.getElementById("healthIssueSelect").value;
+			window.location.href = "/functionfood/healthissue.do?healthissue=" + encodeURIComponent(selectedValue);
+		}
+	</script>
+	<!-- 건강 고민 선택 드롭다운 메뉴 -->
+	
 </body>
 </html>

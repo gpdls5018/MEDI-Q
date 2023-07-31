@@ -571,7 +571,7 @@ html, body {
 		        <div class="content">
 		            <!-- <div class="qna-mark-home" style="display: block; text-align: center; width: 100%;">Q&amp;A</div> -->
 		            <span class="ge-title get-20-2">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
-		            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:0px 0px 35px; ">현재 추천수가 가장 높은 영양제 Top3를 알려드릴게요</p>
+		            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:0px 0px 10px; ">현재 추천수가 가장 높은 영양제 Top3를 알려드릴게요</p>
 		            <a type="button" class="p2firsta btn hori3" href="<c:url value="/board/List.do" />">더 보기 →</a>
 		            <div class="clearfix mb-2" style="position: absolute; right:10px; top:-400px">
 		            </div>
@@ -603,7 +603,7 @@ html, body {
 		                                	<div class="qna-user-txt">과다복용은 부작용을 유발할 수 있어요. 식품의약품안전처 혹은 제품에 명시된 적정량을 섭취하는걸 추천합니다. </div>
 		                                </c:if>
 		                                 -->
-		                            <div class="user-info-row">
+		                            <div class="user-info-row" style="margin-top: 5px;">
 		                                <span class="user-name">${like.NAME }</span>
 		                                <span class="user-agesex"> ${like.AGE_GROUP} / ${like.GENDER}  ${like.POSTDATE }</span>
 		                            </div>
