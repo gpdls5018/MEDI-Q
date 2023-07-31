@@ -6,13 +6,13 @@
 <mapper namespace="com.kosmo.springapp.service.HeartCountMapper">
 
 	<select id="HeartCount" parameterType="String" resultType="String">
-		select count(*) from LIKEFOOD where id='${id}' AND foodname='${name}'
+		select count(*) from LIKEFOOD where id=#{id} AND foodname=#{name}
 	</select>
 	<insert id="insertHeart" parameterType="String">
-		insert into LIKEFOOD (ID,foodname) values('${id}','${name}')
+		insert into LIKEFOOD (ID,foodname) values(#{id},#{name})
 	</insert>
 	<delete id="deleteHeart" parameterType="String">
-		delete from LIKEFOOD where id='${id}' AND foodname='${name}'
+		delete from LIKEFOOD where id=#{id} AND foodname=#{name}
 	</delete>
 	<select id="selectFood" parameterType="String" resultType="Map">
 		SELECT FOODTABLE.NO NO,FOODNAME,COMPANY,FOODTABLE.IMGURL IMGURL

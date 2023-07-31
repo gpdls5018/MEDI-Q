@@ -26,7 +26,7 @@
   	font-size: 22px;
   }
   .paragraph-title{
-  	margin-top: 50px;
+  	margin-top: 40px;
   	margin-bottom: 70px;
   }
 
@@ -35,7 +35,7 @@
     font-size: 30px;
   }
   .custom-img{
-  	margin-top: 60px;
+  	margin-top: 40px;
   	margin-left: 40px;
   }
   .contents{

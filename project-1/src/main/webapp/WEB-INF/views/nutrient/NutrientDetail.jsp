@@ -472,7 +472,7 @@
 		                            <h4 style="margin-left: 8%;"><b>4. 결핍시 증상</b></h4>
                             		<hr class="bg-warning" style="margin-bottom: 35px;">
 		                            <div class="d-flex justify-content-center">
-		                            	<p style="font-size: 15px; width: 83%;">· ${n_LACK }이 있어요.</p>
+		                            	<p style="font-size: 15px; width: 83%;"><span style="font-size: 20px;">🔻</span> ${n_LACK }이 있어요.</p>
 		                            </div>
 		                        </c:if>
 	                        </div>
@@ -505,14 +505,14 @@
 		                            <h4 style="margin-left: 8%;"><b>6. 섭취 음식</b></h4>
 		                            <hr class="bg-warning" style="margin-bottom: 35px;">
 		                            <div class="d-flex justify-content-center">
-		                            	<p style="font-size: 15px; width: 83%;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
+		                            	<p style="font-size: 15px; width: 83%;"><span style="font-size: 20px;">✔</span> ${n_FOOD }에서 섭취할 수 있어요.</p>
 		                            </div>
 		                        </c:if>
 		                        <c:if test="${not exist }">
 		                        	<h4 style="margin-left: 8%;"><b>5. 섭취 음식</b></h4>
 		                            <hr class="bg-warning" style="margin-bottom: 35px;">
 		                            <div class="d-flex justify-content-center">
-		                            	<p style="font-size: 15px; width: 83%;">· ${n_FOOD }에서 섭취할 수 있어요.</p>
+		                            	<p style="font-size: 15px; width: 83%;"><span style="font-size: 20px;">✔</span> ${n_FOOD }에서 섭취할 수 있어요.</p>
 		                            </div>
 		                        </c:if>
 	                        </div>
@@ -1000,8 +1000,7 @@
        	}
         
 		
-		
-		
+        
 		
 		
 		

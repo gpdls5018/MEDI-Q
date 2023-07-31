@@ -68,10 +68,9 @@ body{
   #healthIssueSelect:focus {
     outline: none;
     border-color: #4CAF50;
-    box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
-    /* 드롭다운 시 보이는 옵션 개수를 5개로 설정합니다 */
-    /* 필요에 따라 원하는 숫자로 변경할 수 있습니다 */
-    size: 5;
+    
+    size:5;
+    
   }
 </style>
 	<!-- 상단배너 div -->

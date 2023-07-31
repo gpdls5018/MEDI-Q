@@ -199,7 +199,7 @@
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 							<div class="d-flex">
 								<input style="max-width: 300px;" type="text" class="form-control" placeholder="아이디" id="id" name="id" required/> 
-								<input type="button" id="idCheck" value="중복 체크" class="btn btn-outline-info ml-2"/>
+								<input type="button" id="idCheck" value="중복 체크" class="btn btn-outline-primary ml-2 py-0"/>
 							</div>
 							<input style="max-width: 300px;" type="password" class="form-control my-1" id="password" placeholder="비밀번호" name="password" required/>
 							<input style="max-width: 300px;" type="password" class="form-control" id="pwd" placeholder="확인용 비밀번호" name="pwd" required/>
@@ -216,7 +216,7 @@
 						<div class="col-md-12 form-group">
 							<div class="d-flex">
 								<input style="max-width: 300px;" type="text" class="form-control" placeholder="이메일" id="email" name="email" required/> 
-								<input type="button" id="mailNumBtn" value="인증번호 전송" class="btn btn-outline-info ml-2"/>
+								<input type="button" id="mailNumBtn" value="인증번호 전송" class="btn btn-outline-primary ml-2 py-0"/>
 							</div>
 							<input style="max-width: 300px;" type="text" class="form-control my-1" id="mailNum" placeholder="인증번호" name="mailNum" required/>
 						

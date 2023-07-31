@@ -153,7 +153,7 @@ public class MypageController {
 		model.addAttribute("profImg", profImg);//프로필 이미지
 		model.addAttribute("my", my);//등록한 건강정보
 		model.addAttribute("food", food);//등록한 영양제 정보
-		model.addAttribute("alarms", alarms);//등록한 영양제 정보
+		model.addAttribute("alarms", alarms);//등록한 영양제 알람 정보
 		
 		return "login/MyPage3";
 	}
