@@ -63,7 +63,6 @@ progress {
 		margin-top: 40px;
     }
     .5dame {
-    	color: black;
     	text-decoration: none;
     }
     .5dame:hover {
@@ -183,7 +182,7 @@ progress {
 									<li class="effect-custom-font" style="font-size:20px;">- ${helpfood.key}</li>
 										<ul class="list-unstyled" style="line-height:30px;">
 										<c:forEach items="${helpfood.value}" var="nutrient">
-											<li class="effect-custom-font" style="font-weight:bold; font-size:15px; color:#22b27f;">✅ ${nutrient}</li>
+											<li class="effect-custom-font" style="font-weight:bold; font-size:15px; color:#22b27f;"><a class="5dame" style="font-weight: bold;color:#22b27f; text-decoration: none;" href="/NutrientDetail.do?name=${nutrient}">✅ ${nutrient}</a></li>
 										</c:forEach>
 										</ul>
 								</c:forEach>
@@ -192,7 +191,7 @@ progress {
 							<div class="effect-custom-font mt-5" style="font-size:20px;">'${dto.takePurpose}'에 좋은 추천 기능성 원료</div>
 							<c:forEach items="${dto.ingredient_list_no_report}" var="ingredient" varStatus="index">
 								
-								<span class="effect-custom-font p-2 my-4 mx-2" style="line-height:50px; border-radius:15px;font-size:15px; color:#22b27f; background-color: #d7f2e9;">${ingredient}</span>
+								<span class="effect-custom-font p-2 my-4 mx-2" style="line-height:50px; border-radius:15px;font-size:15px; color:#22b27f; background-color: #d7f2e9;"><a class="5dame" style="font-weight: bold;color:#22b27f; text-decoration: none;" href="/NutrientDetail.do?name=${ingredient}">${ingredient}</a></span>
 								<c:if test="${index.count % 4 == 0}">
 									<br>
 								</c:if>
