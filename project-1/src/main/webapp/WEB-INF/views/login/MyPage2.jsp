@@ -91,7 +91,7 @@ body {
     }
 
     .profilemenu a:hover {
-        color:black;
+        color:#483D8B;
     }
 
     /*오른쪽 다이브 스타일*/
@@ -124,7 +124,7 @@ body {
         width: 420px;
     }
     .update_font {
-        font-size: 22px;
+        font-size: 21px;
         color: #483D8B;
         font-weight: bold;
         margin-bottom: 10px;
@@ -144,13 +144,13 @@ body {
         color: #EF605D;
         text-decoration: none;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 22px;
         vertical-align: bottom;
         margin: 10px 0px 10px 40px;
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
     }
     .fontinfotap a:hover {
-        color:black;
+        color:#483D8B;
     }
     .recently {
         display: flex;
@@ -200,7 +200,7 @@ body {
         flex: 0.8;
     }
     .miniroom_font {
-        font-size: 22px;
+        font-size: 21px;
         color: #483D8B;
         font-weight: bold;
         margin-bottom: 10px;
@@ -569,7 +569,7 @@ body {
 						<c:if test="${not isProfImg }">
 							<img class="img" alt="기본 프로필" src="<c:url value="/images/basic/friend.png" />" style="width: 180px; height: 180px">
 						</c:if>
-                        <span>${info.id }</span>
+                        <span>${info.name }</span>
 
                         <ul class="profilemenu ml-auto">
                         	<li><a href="" id="" class="sidenava1" data-toggle="modal" data-target="#healthModal" data-backdrop="static">나의 건강 정보 등록</a></li>
