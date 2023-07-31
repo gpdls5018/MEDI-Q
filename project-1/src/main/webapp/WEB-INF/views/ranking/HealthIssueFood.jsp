@@ -82,6 +82,8 @@ body{
 							<input id="searchProduct1" type="text" name="healthissue" class="ipt-main" autocomplete="off" title="건강고민을 적으세요" value="${foodname}" required minlength="1" placeholder="건강고민을 검색해보세요!">
 							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct1()"></button>
 						</div>
+						
+						</div>
 					</form>
 					</div>
 					<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
@@ -195,5 +197,21 @@ body{
             return false;
         });
 </script>
+<script>
+		function searchProduct1() {
+			// 선택된 건강 고민 값을 가져옵니다.
+			var healthIssue = getSelectedHealthIssue(); // 이 함수는 선택된 건강 고민을 반환합니다.
+
+			// input 태그의 값을 선택된 건강 고민으로 설정합니다.
+			document.getElementById("searchProduct1").value = healthIssue;
+		}
+
+		function getSelectedHealthIssue() {
+			var healthIssueSelect = document.getElementById("healthIssueSelect");
+			return healthIssueSelect.options[healthIssueSelect.selectedIndex].text;
+		}
+</script>
+	<!-- 건강 고민 선택 드롭다운 메뉴 -->
+	
 </body>
 </html>
