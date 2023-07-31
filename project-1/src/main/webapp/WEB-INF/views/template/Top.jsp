@@ -274,6 +274,7 @@ ul {
             right: 40px;
             bottom: 40px;
             z-index:3000;
+            cursor:pointer;
         }
         .clickBtn{
             list-style: none;
