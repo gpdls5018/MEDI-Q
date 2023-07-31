@@ -63,12 +63,23 @@ progress {
 		margin-top: 40px;
     }
     .5dame {
-    	color: black;
     	text-decoration: none;
     }
     .5dame:hover {
     	color: white;
     }
+    .tsthsc::-webkit-scrollbar {
+	  width: 8px;
+	}
+	
+	.tsthsc::-webkit-scrollbar-thumb {
+	  background-color: #bbb;
+	  border-radius: 5px;
+	}
+	
+	.tsthsc::-webkit-scrollbar-thumb:hover {
+	  background-color: black;
+	}
 
 </style>
 <body>
@@ -153,7 +164,7 @@ progress {
 						<div class="col-3">
 							<div class="effect-custom-font" style="font-size:30px;">
 								<div><img src="<c:url value="/images/health_img/${dto.takePurpose}"/>.png" style="margin-left:30px; width:100px;height:100px;"/></div>
-								<div style="margin: 20px 0px 5px 20px ;">${loop.count}.<br/> ${dto.takePurpose}</div>
+								<div style="margin: 20px 0px 5px 20px ;"> ${dto.takePurpose}</div>
 							</div>
 						</div>
 						<div class="col-9">
@@ -165,13 +176,13 @@ progress {
 								<img src="https://img.freepik.com/free-icon/no-drugs_318-533694.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=ais" style="width:150px;height:150px;margin:20px 0px 0px 100px; border-radius: 30%; "/>
 							</c:if>
 							<c:if test="${not noHelp}">
-							<div class="effect-custom-font" style="font-size:20px;">아래는 복용 중이신 영양제 중 '${dto.takePurpose}' 에 도움이 되는 기능성 원료입니다</div>
+							<div class="effect-custom-font" style="font-size:20px;">복용 중이신 영양제 중 <span style="color:#EF605D; font-weight: bold;">'${dto.takePurpose}'</span> 에 도움이 되는 기능성 원료입니다</div>
 								<ul class="list-unstyled mt-5">
 								<c:forEach items="${dto.foodForHelpPurpose}" var="helpfood">
 									<li class="effect-custom-font" style="font-size:20px;">- ${helpfood.key}</li>
 										<ul class="list-unstyled" style="line-height:30px;">
 										<c:forEach items="${helpfood.value}" var="nutrient">
-											<li class="effect-custom-font" style="font-size:15px;">✅ ${nutrient}</li>
+											<li class="effect-custom-font" style="font-weight:bold; font-size:15px; color:#22b27f;"><a class="5dame" style="font-weight: bold;color:#22b27f; text-decoration: none;" href="/NutrientDetail.do?name=${nutrient}">✅ ${nutrient}</a></li>
 										</c:forEach>
 										</ul>
 								</c:forEach>
@@ -180,7 +191,7 @@ progress {
 							<div class="effect-custom-font mt-5" style="font-size:20px;">'${dto.takePurpose}'에 좋은 추천 기능성 원료</div>
 							<c:forEach items="${dto.ingredient_list_no_report}" var="ingredient" varStatus="index">
 								
-								<span class="effect-custom-font p-0 m-2" style="border-radius:15px;font-size:15px; color:#3A3A3A">${ingredient}</span>
+								<span class="effect-custom-font p-2 my-4 mx-2" style="line-height:50px; border-radius:15px;font-size:15px; color:#22b27f; background-color: #d7f2e9;"><a class="5dame" style="font-weight: bold;color:#22b27f; text-decoration: none;" href="/NutrientDetail.do?name=${ingredient}">${ingredient}</a></span>
 								<c:if test="${index.count % 4 == 0}">
 									<br>
 								</c:if>
@@ -193,33 +204,33 @@ progress {
 				<div class="effect-custom-font">
 					<div class="row jumbotron m-1"  style="border-radius:25px; background-color:#f5f5f5;">
 						<div class="col-6" style="border-radius:15px;">
-							<span class=" px-3"><span style="color:#B0E2FF;">현재 섭취하고 있는</span> 5대 영양소입니다</span>
-							<div class="mt-3 px-3" style="overflow: auto;height:300px; border-radius:15px; border:2px solid gray;">
+							<span class=" px-3" style="font-size: 18px"><span style="color:#B0E2FF;">현재 섭취하고 있는</span> 5대 영양소입니다</span>
+							<div class="mt-3 px-3 tsthsc" style="overflow: auto;height:300px; border-radius:5px; border:2px solid gray;">
 								<ul class="list-unstyled mt-3">
 									<c:forEach items="${resultListDto.nutrient_list_report}" var="nutrient">
-									<li><a class="5dame" href="/NutrientDetail.do?name=${nutrient}">✅ ${nutrient}</a></li>
+									<li style="font-size:15px;"><a class="5dame" style="font-weight: bold; color:#343a40; text-decoration: none;" href="/NutrientDetail.do?name=${nutrient}">✅ ${nutrient}</a></li>
 									</c:forEach>
 								</ul>
 							</div>
 						</div>
 						<div class="col-6" style="border-radius:15px;">
-							<span class=" px-3"><span style="color:#FFB0B0">현재 섭취하고 있지 않는</span> 5대 영양소입니다</span>
-							<div class="mt-3 px-3" style="overflow: auto;height:300px; border-radius:15px; border:2px solid gray;">
+							<span class=" px-3" style="font-size: 18px"><span style="color:#FFB0B0">현재 섭취하고 있지 않는</span> 5대 영양소입니다</span>
+							<div class="mt-3 px-3 tsthsc" style="overflow: auto;height:300px; border-radius:5px; border:2px solid gray;">
 								<ul class="list-unstyled mt-3">
 								<c:forEach items="${resultListDto.nutrient_list_no_report}" var="no_nutrient">
-									<a class="5dame" href="/NutrientDetail.do?name=${no_nutrient}"><li style="font-size:15px;">❌ ${no_nutrient}</li></a>
+									<li style="font-size:15px;"><a class="5dame" style="font-weight: bold; color:#343a40; text-decoration: none;" href="/NutrientDetail.do?name=${no_nutrient}">❌ ${no_nutrient}</a></li>
 								</c:forEach>
 								</ul>
 							</div>
 						</div>
-						<div class="my-3">
+						<div class="mb-3" style="margin-top:40px; border-top: 2px dashed gray;">
 							<span style="font-size:20px; color:#3A3A3A;"> <span style="font-size:24px; text-weight:bold;">권장 섭취량</span> : 건강한 생활을 위해 섭취하도록 정하여 장려하는 양. </span><br/>
 							<span style="font-size:20px; color:#3A3A3A;"> <span style="font-size:24px; text-weight:bold;">상한 섭취량</span> : 인체 건강에 유해한 영향이 나타나지 않는 최대 영양소 섭취 수준. </span>
-							<div class="row" style="margin-top: 20px;">
-								<div class="effect-custom-font" style="font-size:15px;">
+							<div class="row tsthsc" style="background-color:#f9f8f8; margin-top: 20px; border: 1px solid #CCCCCC; border-radius: 15px; height: 640px; overflow-y: auto;">
+								<div class="effect-custom-font mx-1 my-3" style="font-size:15px;">
 									<c:forEach items="${resultListDto.getNutIntakeDTOs()}" var="item" varStatus="i">
 										<c:if test="${item.UL != 0 }">
-										    <div style="box-shadow:1px 1px 2px black; padding-left:10px; position: relative; background-color:#ffffff;  border-radius: 4px; overflow: hidden; width:825px;">
+										    <div style="box-shadow:1px 1px 2px gray; padding-left:10px; position: relative; background-color:#FFEFD5;  border-radius: 10px; overflow: hidden; width:800px;">
 										    	<div style="text-align:center; margin-bottom: 10px">${item.nut}의 적정 섭취량</div>
 										        <div style="text-align:center; font-size: 13px; margin-bottom: 12px; width: 100%" class="mt-2">
 				                                		<span style="margin-right:9%;">권장 섭취량: ${item.DRIUnit}</span>                       	
@@ -239,7 +250,7 @@ progress {
 									    </c:if>
 									    
 									    <c:if test="${item.UL == 0 }">
-										    <div style="box-shadow:1px 1px 2px black; padding-left:10px; position: relative; background-color:#ffffff;  border-radius: 4px; overflow: hidden; width:825px;">
+										    <div style="box-shadow:1px 1px 2px gray; padding-left:10px; position: relative; background-color:#FFEFD5;  border-radius: 10px; overflow: hidden; width:800px;">
 										        <div style="text-align: center;margin-bottom: 10px">${item.nut}의 적정 섭취량</div>
 										        <div style="text-align:center; font-size: 13px; margin-bottom: 12px; width: 100%" class="mt-2">
 				                                		<span style="margin-right:25%;">권장 섭취량: ${item.DRIUnit}</span>                       	
