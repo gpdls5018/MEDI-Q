@@ -70,6 +70,7 @@ public class SelectFoodRankListController {
 		model.addAttribute("healthissue", healthissue);
 		model.addAttribute("listData", listData);
 		model.addAttribute("listData2", listData2);
+		model.addAttribute("listsize", uniqueData.size());
 		return "ranking/HealthIssueFood";
 	}
 	
