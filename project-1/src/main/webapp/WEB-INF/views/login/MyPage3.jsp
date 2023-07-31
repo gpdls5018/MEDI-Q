@@ -261,7 +261,7 @@ body {
         display: block;
         margin-left: 10px;
     }
-    .kCBLwp {
+    .kriRoB .kCBLwp {
     	width: 176px;
     	height: 20px;
         margin: 10px 10px;
@@ -270,6 +270,19 @@ body {
         word-break: break-all;
         text-overflow: ellipsis;
         overflow: hidden;
+        white-space: nowrap;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        display: block;
+        vertical-align: bottom;
+    }
+    .kCBLwp{
+    	width: 176px;
+    	height: 20px;
+        margin: 10px 10px;
+        color: gray;
+        font-weight: 400;
+        word-break: break-all;
         white-space: nowrap;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
@@ -318,6 +331,18 @@ body {
         word-break: break-all;
         text-overflow: ellipsis;
         overflow: hidden;
+        white-space: nowrap;
+        display: block;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+    .kriRoB .kWbUNE {
+    	width: 176px;
+    	height: 20px;
+        margin: 5px 10px;
+        color: black;
+        font-weight: bold;
+        word-break: break-all;
         white-space: nowrap;
         display: block;
         -webkit-box-orient: vertical;

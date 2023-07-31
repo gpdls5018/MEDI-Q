@@ -160,6 +160,7 @@ public class MypageController {
 	
 	@GetMapping("/ClickDate.do")
 	public String clickDate(@RequestParam String clickDate, HttpServletRequest req, Model model) {
+		LocalDate current = LocalDate.now(); //현재날짜 구하기
 		MemberDTO member = loginService.selectOne(req);
 		String id = member.getId();
 		ProfileImageDTO profImg = loginService.selectProfImg(id);
@@ -180,6 +181,7 @@ public class MypageController {
 		if(memo != null) {
 			memo.setMm_Date(memo.getMm_Date().split(" ")[0]);
 		}
+		model.addAttribute("current", current);//오늘 날짜
 		model.addAttribute("clickDate", clickDate);
 		model.addAttribute("info", member);//추후 더 추가해야함
 		model.addAttribute("profImg", profImg);
