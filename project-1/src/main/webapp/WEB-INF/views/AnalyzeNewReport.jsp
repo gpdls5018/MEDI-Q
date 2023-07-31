@@ -418,7 +418,6 @@ body{
 
 <script>
 
-
   $("#take-purpose").click(function(e){
     e.preventDefault();
     $('#take-purpose-modal').modal("show");
@@ -650,6 +649,20 @@ $(document).on("click", ".food-li", function() {
      }
    }
    $('#take-foodList-modal').modal('hide');
+ });
+ 
+//Handle click event on the displayed items to remove them
+ $('.food-selected-list').on('click', 'li', function() {
+   var foodName = $(this).find("span").text().trim();
+
+   // Remove the item from the displayed list
+   $(this).remove();
+
+   // Remove the item from the takeFoods array
+   var index = takeFoods.indexOf(foodName);
+   if (index !== -1) {
+     takeFoods.splice(index, 1);
+   }
  });
 
   
