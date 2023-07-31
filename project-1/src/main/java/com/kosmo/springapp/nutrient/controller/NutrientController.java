@@ -1,5 +1,6 @@
 package com.kosmo.springapp.nutrient.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -41,6 +42,22 @@ public class NutrientController {
 		List<String> top10 = nutrietnSelectMapper.getTop10();
 		model.addAttribute("top10",top10);
 		
+		// 인기 영양소 Top5 검색수
+        List<String> top5 = nutrietnSelectMapper.getTop5();
+		model.addAttribute("top5",top5);
+		
+		// 비타민 Top5 검색수
+		List<String> top5v = nutrietnSelectMapper.getTop5v();
+		model.addAttribute("top5v",top5v);
+		
+		// 미네랄 Top5 검색수
+		List<String> top5m = nutrietnSelectMapper.getTop5m();
+		model.addAttribute("top5m",top5m);
+		
+		// 기능성 원료 Top5 검색수
+		List<String> top5i = nutrietnSelectMapper.getTop5i();
+		model.addAttribute("top5i",top5i);
+        
 		return "nutrient/NutrientSelect";
 	}
 	
@@ -60,6 +77,22 @@ public class NutrientController {
 		// 조회수에 따른 Top10 가져오기
 		List<String> top10 = nutrietnSelectMapper.getTop10();
 		model.addAttribute("top10",top10);
+		
+		// 인기 영양소 Top5 검색수
+        List<String> top5 = nutrietnSelectMapper.getTop5();
+		model.addAttribute("top5",top5);
+		
+		// 비타민 Top5 검색수
+		List<String> top5v = nutrietnSelectMapper.getTop5v();
+		model.addAttribute("top5v",top5v);
+		
+		// 미네랄 Top5 검색수
+		List<String> top5m = nutrietnSelectMapper.getTop5m();
+		model.addAttribute("top5m",top5m);
+		
+		// 기능성 원료 Top5 검색수
+		List<String> top5i = nutrietnSelectMapper.getTop5i();
+		model.addAttribute("top5i",top5i);
 		
 		return "nutrient/NutrientSelectVitamin";
 	}
@@ -81,6 +114,22 @@ public class NutrientController {
 		List<String> top10 = nutrietnSelectMapper.getTop10();
 		model.addAttribute("top10",top10);
 		
+		// 인기 영양소 Top5 검색수
+        List<String> top5 = nutrietnSelectMapper.getTop5();
+		model.addAttribute("top5",top5);
+		
+		// 비타민 Top5 검색수
+		List<String> top5v = nutrietnSelectMapper.getTop5v();
+		model.addAttribute("top5v",top5v);
+		
+		// 미네랄 Top5 검색수
+		List<String> top5m = nutrietnSelectMapper.getTop5m();
+		model.addAttribute("top5m",top5m);
+		
+		// 기능성 원료 Top5 검색수
+		List<String> top5i = nutrietnSelectMapper.getTop5i();
+		model.addAttribute("top5i",top5i);
+		
 		return "nutrient/NutrientSelectMineral";
 	}
 	
@@ -101,12 +150,29 @@ public class NutrientController {
 		List<String> top10 = nutrietnSelectMapper.getTop10();
 		model.addAttribute("top10",top10);
 		
+		// 인기 영양소 Top5 검색수
+        List<String> top5 = nutrietnSelectMapper.getTop5();
+		model.addAttribute("top5",top5);
+		
+		// 비타민 Top5 검색수
+		List<String> top5v = nutrietnSelectMapper.getTop5v();
+		model.addAttribute("top5v",top5v);
+		
+		// 미네랄 Top5 검색수
+		List<String> top5m = nutrietnSelectMapper.getTop5m();
+		model.addAttribute("top5m",top5m);
+		
+		// 기능성 원료 Top5 검색수
+		List<String> top5i = nutrietnSelectMapper.getTop5i();
+		model.addAttribute("top5i",top5i);
+		
 		return "nutrient/NutrientSelectFunctional";
 	}
 	
-	
+	// 상세 페이지로 이동
 	@GetMapping("/NutrientDetail.do")
 	public String nutrientdetail(@RequestParam String name, Model model) {
+		
 		if(name.equals("비타민B1") || name.equals("티아민")) {
 			name = "비타민B1(티아민)";
 		}
@@ -239,6 +305,22 @@ public class NutrientController {
 		// 조회수에 따른 Top10 가져오기
 		List<String> top10 = nutrietnSelectMapper.getTop10();
 		model.addAttribute("top10",top10);
+		
+		// 인기 영양소 Top5 검색수
+        List<String> top5 = nutrietnSelectMapper.getTop5();
+		model.addAttribute("top5",top5);
+		
+		// 비타민 Top5 검색수
+		List<String> top5v = nutrietnSelectMapper.getTop5v();
+		model.addAttribute("top5v",top5v);
+		
+		// 미네랄 Top5 검색수
+		List<String> top5m = nutrietnSelectMapper.getTop5m();
+		model.addAttribute("top5m",top5m);
+		
+		// 기능성 원료 Top5 검색수
+		List<String> top5i = nutrietnSelectMapper.getTop5i();
+		model.addAttribute("top5i",top5i);
 		
 		model.addAttribute("title_name",name);
 		return "nutrient/NutrientDetail";
