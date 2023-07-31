@@ -93,10 +93,7 @@ public class NotificationService {
     	for(Map map : tokenList) {
     		System.out.println("weekly: "+map.get("weekly"));
     		System.out.println("foodtime: "+map.get("foodtime"));
-    		System.out.println("true 체크 "+weekly.contains(map.get("weekly").toString()));
-    		System.out.println("true 체크 "+map.get("weekly").toString().contains(weekly));
     		if(map.get("weekly").toString().contains(weekly) && map.get("foodtime").equals(current)) {
-    			System.out.println("알람이 떠야함!!!!!!!!!!!!!");
         		createReceiveNotification(map.get("foodname").toString(),map.get("foodcount").toString());//보낼 때 정보 보내야함(복용 약,정 수)
         	}
     	}
@@ -111,7 +108,7 @@ public class NotificationService {
                     .token(tokenMap.get(id).toString())
                     .message(String.format("%s님\r\n%s\r\n%s 정 복용시간입니다",id,foodname,foodcount))
                     .icon("../images/mainicon.png")
-                    //.timestamp(timestamp)
+                    .image("../images/basic/bgWhite.jpg")
                     .build();
             sendNotification(notificationRequest);
         }
