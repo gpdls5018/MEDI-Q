@@ -512,21 +512,21 @@ body {
 	  padding: 0;
 	  text-align: center;
 	  width: 100%;
-	  margin-top: 30px;
+	  margin-top: 20px;
 	  display: flex;
 	  justify-content: center;
 	}
 	.diary .c-bmi__groups label {
-	  display: flex;
-	  padding: .5rem;
+	  /*display: flex;*/
+	  padding: 5px;
 	  position: relative;
 	}
 	
-	.diary [for="bmi-g0"] { background-color: #4691e2; }
-	.diary [for="bmi-g1"] { background-color: #0cb764; }
-	.diary [for="bmi-g2"] { background-color: #febf18; }
-	.diary [for="bmi-g3"] { background-color: #fc8711; }
-	.diary [for="bmi-g4"] { background-color: #ff6455; }
+	.diary [for="bmi-g0"] { background-color: #4691e2; width: 100px;}
+	.diary [for="bmi-g1"] { background-color: #0cb764; width: 100px;}
+	.diary [for="bmi-g2"] { background-color: #febf18; width: 100px;}
+	.diary [for="bmi-g3"] { background-color: #fc8711; width: 100px;}
+	.diary [for="bmi-g4"] { background-color: #ff6455; width: 100px;}
 	.diary [for="bmi-g5"] { background-color: #cc1100; color: #fff; }
 	
 	.diary .c-bmi__groups input:checked + label::before {
@@ -939,7 +939,7 @@ body {
 												                <a class="btn btn-primary h-100 ml-3" href="javascript:result()">BMI 계산</a>
 															</div>
 															<div class="c-bmi__groups" readonly style="display: none">
-																<label >나의 체질량지수</label>
+																<label class="mb-3">나의 체질량지수</label>
 																<div class="d-flex">
 														            <input type="radio" id="bmi-g0" name="g" />
 														            <label for="bmi-g0" name="l">저체중</label>
@@ -1769,7 +1769,7 @@ body {
 		//성별 먼저 확인하기**************************
 		if(h!=1){
 		    //console.log('당신의 적정 체중은'+(m-t)+'kg 입니다');
-		    bmi.lastElementChild.innerHTML='당신의 BMI 지수는 <span class="text-info">'+i+'</span>이고<br/>적정 체중은 <span class="text-info">'+((m-t)>=0?"+"+(m-t).toFixed(2):(m-t).toFixed(2))+'kg</span> 입니다';
+		    bmi.lastElementChild.innerHTML='당신의 BMI 지수는 <span class="text-info">'+i+'</span>이고<br/>적정 체중은 현재 체중에서 <span class="text-info">'+((m-t)>=0?"+"+(m-t).toFixed(2):(m-t).toFixed(2))+'kg</span> 입니다';
 		}
 		else{
 		    bmi.lastElementChild.innerHTML='정상입니다'
