@@ -171,13 +171,15 @@ body{
 	background-color: #fdfbf6;
 }
 .page-link{
-	color:black;
-}
-.page-link{
 	color:gray;
 	margin:0px 10px 10px 0px;
 	list-style: none;
 	border: 1px solid #E6E9ED;
+	transition: all 0.3s ease 0s;
+}
+.page-link:hover{
+	color:gray;
+	
 }
      </style>
 

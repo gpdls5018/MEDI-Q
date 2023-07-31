@@ -130,21 +130,21 @@ progress {
 								<div class="" style="margin-top:20px; font-size:15px;">
 									<ul style="line-height: 40px; text-align: left; ">
 										<li style="color:#6e6e6e;">
-											${memberDto.name}님은 현재 <span style="font-size:17px;color:#000000;">${fn:length(resultListDto.listdto)}개의 목적</span>
+											${memberDto.name}님은 <span style="font-size:17px;color:#000000;">${fn:length(resultListDto.listdto)}개의 목적</span>
 											을 위해 영양제를 섭취 중이시네요!
 										</li>
 										<li style="color:#6e6e6e;">
-											<span style="font-size:17px;color:#000000;">
+											현재 <span style="font-size:17px;color:#000000;">
 											${resultListDto.ingredientCount}개의 영양제</span>
-											를 통해 <span style="font-size:17px;color:#000000;">기능성 영양소 ${resultListDto.ingredientCount}개, </span>
+											를 통해 섭취하고 있는 영양소는
 										</li>
 										<li style="color:#6e6e6e;">
-											현재 섭취하고 있는 
-											<span style="font-size:17px;color:#000000;">5대영양소는 총 ${fn:length(resultListDto.nutrient_list_report)} 개</span>
-											 이므로
+											<span style="font-size:17px;color:#000000;">기능성 원료 ${resultListDto.ingredientCount} 개, </span> 
+											<span style="font-size:17px;color:#000000;">5대 영양소 총 ${fn:length(resultListDto.nutrient_list_report)} 개</span>
+											이고
 										</li>
-										<li>
-											점수는 <span style="font-size:23px;color:#000000;">${resultListDto.resultScore}</span> 점 입니다
+										<li style="color:#6e6e6e;">
+											합산한 점수는 총 <span style="font-size:23px;color:#000000;">${resultListDto.resultScore}</span> 점 입니다
 										</li>
 									</ul>
 								</div>							
@@ -223,48 +223,48 @@ progress {
 								</ul>
 							</div>
 						</div>
-						<div class="mb-3" style="margin-top:40px; border-top: 2px dashed gray;">
-							<span style="font-size:20px; color:#3A3A3A;"> <span style="font-size:24px; text-weight:bold;">권장 섭취량</span> : 건강한 생활을 위해 섭취하도록 정하여 장려하는 양. </span><br/>
-							<span style="font-size:20px; color:#3A3A3A;"> <span style="font-size:24px; text-weight:bold;">상한 섭취량</span> : 인체 건강에 유해한 영향이 나타나지 않는 최대 영양소 섭취 수준. </span>
+						<div class="mb-3 mt-4" style="margin-top:40px; border-top: 2px dashed gray;">
+							<span class="text-center mt-3" style="display:block; font-size:16px; color:#3A3A3A;"> <span style="font-size:20px; text-weight:bold;">권장 섭취량</span> : 건강한 생활을 위해 섭취하도록 정하여 장려하는 양. </span>
+							<span class="text-center" style="display:block; font-size:16px; color:#3A3A3A;"> <span style="font-size:20px; text-weight:bold;">상한 섭취량</span> : 인체 건강에 유해한 영향이 나타나지 않는 최대 영양소 섭취 수준. </span>
 							<div class="row tsthsc" style="background-color:#f9f8f8; margin-top: 20px; border: 1px solid #CCCCCC; border-radius: 15px; height: 640px; overflow-y: auto;">
 								<div class="effect-custom-font mx-1 my-3" style="font-size:15px;">
 									<c:forEach items="${resultListDto.getNutIntakeDTOs()}" var="item" varStatus="i">
 										<c:if test="${item.UL != 0 }">
-										    <div style="box-shadow:1px 1px 2px gray; padding-left:10px; position: relative; background-color:#FFEFD5;  border-radius: 10px; overflow: hidden; width:800px;">
+										    <div style="box-shadow:1px 1px 2px gray; padding-left:10px; position: relative; background-color:#F5F5F0;  border-radius: 10px; overflow: hidden; width:800px;">
 										    	<div style="text-align:center; margin-bottom: 10px">${item.nut}의 적정 섭취량</div>
 										        <div style="text-align:center; font-size: 13px; margin-bottom: 12px; width: 100%" class="mt-2">
 				                                		<span style="margin-right:9%;">권장 섭취량: ${item.DRIUnit}</span>                       	
 				                                		<span style="margin-left:9%;">상한 섭취량: ${item.ULUnit}</span><br>                    	
 					                                <div style="height:10px; margin:5px 0px;">
-					                                	<span class="arrow-down" style="margin-right: 253px; margin-bottom: 20px;">▼</span>
-					                                	<span class="arrow-down" style="margin-right: 12px; margin-bottom: 20px;">▼</span>
+					                                	<span class="arrow-down" style="margin-right: 245px; margin-bottom: 20px;">▼</span>
+					                                	<span class="arrow-down" style="margin-right: 10px; margin-bottom: 20px;">▼</span>
 					                                </div>
 					                            </div>
 										        <div class="progress-container" style="white-space: nowrap;">
 										            <progress id="myProgress" style="border-right:2px dotted black;width:33%" value="${item.nutNumber}" max="${item.DRI}"></progress><progress id="myProgress1" style="border-right:2px dotted black;width:33%" <c:if test="${item.nutNumber < item.DRI }">value="${item.nutNumber-item.DRI}"</c:if><c:if test="${item.nutNumber > item.DRI }">value="${item.nutNumber}"</c:if> max="${item.UL}"></progress><progress id="myProgress2" style="border-right: 1px solid black;width:33%" value="${item.nutNumber-item.UL}" max="${item.UL*3}"></progress>
 										        </div>
 										        <div style="text-align: center;margin-top:3px;"><span <c:if test="${item.nutNumber <item.DRI}">style='color:#007BFF;'</c:if><c:if test="${(item.nutNumber >= item.DRI) && (item.nutNumber <= item.UL)}">style='color:#52BE80;'</c:if><c:if test="${item.nutNumber >item.UL}">style='color:#FF5733;'</c:if>>
-										        <c:if test="${item.nutNumber <item.DRI}"><span style="background-color:#007BFF; color:blue;border-radius: 10px">부족</span></c:if><c:if test="${(item.nutNumber >= item.DRI) && (item.nutNumber <= item.UL)}"><span style="background-color:#52BE80;color: green; border-radius: 10px">적정</span></c:if><c:if test="${item.nutNumber > item.UL }"><span style="background-color:#FF5733;color: red;border-radius: 10px">과다</span></c:if> ${item.nutNumber}</span> 만큼 드시고 계십니다</div>
+										        <c:if test="${item.nutNumber <item.DRI}"><span class="mx-1 px-2" style="background-color:#007BFF; color:blue;border-radius: 10px">부족</span></c:if><c:if test="${(item.nutNumber >= item.DRI) && (item.nutNumber <= item.UL)}"><span class="mx-1 px-2" style="background-color:#52BE80;color: green; border-radius: 10px">적정</span></c:if><c:if test="${item.nutNumber > item.UL }"><span class="mx-1 px-2" style="background-color:#FF5733;color: red;border-radius: 10px">과다</span></c:if> ${item.nutNumber}</span> 만큼 드시고 계십니다</div>
 										    </div>
 										    <br/>
 									    </c:if>
 									    
 									    <c:if test="${item.UL == 0 }">
-										    <div style="box-shadow:1px 1px 2px gray; padding-left:10px; position: relative; background-color:#FFEFD5;  border-radius: 10px; overflow: hidden; width:800px;">
+										    <div style="box-shadow:1px 1px 2px gray; padding-left:10px; position: relative; background-color:#F5F5F0;  border-radius: 10px; overflow: hidden; width:800px;">
 										        <div style="text-align: center;margin-bottom: 10px">${item.nut}의 적정 섭취량</div>
 										        <div style="text-align:center; font-size: 13px; margin-bottom: 12px; width: 100%" class="mt-2">
 				                                		<span style="margin-right:25%;">권장 섭취량: ${item.DRIUnit}</span>                       	
 				                                		<span style="margin-left:9%;"></span><br>                   	
 					                                <div style="height:10px; margin:5px 0px;">
-					                                	<span class="arrow-down" style="margin-right: 267px; margin-bottom: 20px;">▼</span>
-					                                	<span class="arrow-down" style="margin-right: 12px; margin-bottom: 20px;"> </span>
+					                                	<span class="arrow-down" style="margin-right: 259px; margin-bottom: 20px;">▼</span>
+					                                	<span class="arrow-down" style="margin-right: 10px; margin-bottom: 20px;"></span>
 					                                </div>
 					                            </div>
 										        <div class="progress-container" style="white-space: nowrap;">
 										            <progress id="myProgress" style="border-right:2px dotted black;width:33%" value="${item.nutNumber}" max="${item.DRI}"></progress><progress id="myProgress1" style="width:66%; border-right:1px solid black" value="${item.nutNumber-item.DRI}" max="${item.DRI * 10}"></progress>
 										        </div>
 										        <div style="text-align: center;margin-top:3px;"><span <c:if test="${item.nutNumber <item.DRI}">style='color:#007BFF;'</c:if><c:if test="${item.nutNumber >=item.DRI}">style='color:#52BE80;'</c:if>>
-										        <c:if test="${item.nutNumber <item.DRI}"><span style="background-color: #007BFF;color:blue;border-radius: 10px">부족</span></c:if><c:if test="${item.nutNumber >= item.DRI}"><span style="background-color:#52BE80;color: green; border-radius: 10px">적정</span></c:if>${item.nutNumber}</span> 만큼 드시고 계십니다</div>
+										        <c:if test="${item.nutNumber <item.DRI}"><span class="mx-1 px-2" style="background-color: #007BFF;color:blue;border-radius: 10px">부족</span></c:if><c:if test="${item.nutNumber >= item.DRI}"><span class="mx-1 px-2" style="background-color:#52BE80;color: green; border-radius: 10px">적정</span></c:if> ${item.nutNumber}</span> 만큼 드시고 계십니다</div>
 										    </div>
 										    <br/>
 									    </c:if>
@@ -274,8 +274,8 @@ progress {
 						</div>
 					</div>
 				</div>
-			<span style="color:gray;font-size:18px;text-weight:600; margin: 20px 30px 0px;">· MEDI-Q에서 제공하는 분석 리포트는 의사의 처방을 대신하지 않습니다. </span><br/>
-			<span style="color:gray;font-size:18px;text-weight:600; margin:5px 30px 0px;">· 본 분석 리포트는 MEDI-Q의 데이터 분석을 기반으로 구성하였습니다. </span>
+			<span class="text-center" style="display:block; color:gray;font-size:18px;text-weight:600; margin: 20px 30px 0px;">· MEDI-Q에서 제공하는 분석 리포트는 의사의 처방을 대신하지 않습니다. </span><br/>
+			<span class="text-center" style="display:block; color:gray;font-size:18px;text-weight:600; margin: 5px 30px 20px;">· 본 분석 리포트는 MEDI-Q의 데이터 분석을 기반으로 구성하였습니다. </span>
 
 
 
