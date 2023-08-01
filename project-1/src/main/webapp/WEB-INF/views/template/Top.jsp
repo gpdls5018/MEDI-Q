@@ -524,7 +524,7 @@ ul {
 	                method: 'POST',
 	                headers: {
 	                    'Content-Type': 'application/json',
-	                    'Authorization': `Bearer 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`
+	                    'Authorization': `Bearer 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`
 	                },
 	                body: JSON.stringify({
 	                    model: 'gpt-3.5-turbo',
