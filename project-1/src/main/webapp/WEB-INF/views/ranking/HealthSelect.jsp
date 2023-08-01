@@ -241,10 +241,12 @@ body{
 					    <label>장 건강</label>
 					</button>
 				</a>
+				<a href="/functionfood/healthissue.do?healthissue=스트레스 & 수면">
 				<button class="btn btn-6 btn-6c" >
 				    <img src="/images/tsimages/free-icon-stress-4897269.png" loading="lazy" width="60" height="60" style="color: transparent;">
 				    <label>스트레스 &amp; 수면</label>
 				</button>
+				</a>
 				<a href="/functionfood/healthissue.do?healthissue=면역기능">
 	                <button class="btn btn-6 btn-6c" >
 					    <img src="/images/tsimages/free-icon-immunity-5106341.png" loading="lazy" width="60" height="60" style="color: transparent;">
