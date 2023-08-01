@@ -110,7 +110,7 @@
     th, td {
         border: 1px solid #dddddd;
         text-align: center;
-        padding: 8px;
+        padding: 8px 4px;
     }
 
     th {
@@ -356,7 +356,7 @@
 					        <thead>
 				                <tr>
 				                	<th style="width:40px;">번호</th>
-				                    <th style="width:100px;">아이디</th>
+				                    <th style="width:90px;">아이디</th>
 				                    <th style="width:65px;">연령대</th>
 				                    <th style="width:200px;">선택 건강고민</th>
 				                    <th style="width:40px;">점수</th>
