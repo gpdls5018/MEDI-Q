@@ -230,7 +230,7 @@ ul {
     list-style: none;
 }
 #ts__menu .ts__box .left__wr li .title {
-    font-size: 23px;
+    font-size: 22px;
     font-weight: bold;
     color: #152358;
     padding-bottom: 30px;
@@ -241,6 +241,8 @@ ul {
     text-decoration: none;
     line-height: 50px;
     color: black;
+    font-size: 16px;
+    font-weight: bold;
 }
 #ts__menu .ts__box .right__wr {
     width: 400px;
@@ -684,7 +686,6 @@ ul {
 										<a href="<c:url value="/loadHealthInfo.do?userId=${payload.sub}"/>">발병위험도 예측</a>
 										<c:if test="${payload.activeFl eq 'A' }">
 											<a href="<c:url value="/AdminMain.do"/>">관리자</a>
-		                    				<a href="<c:url value="/functionfood/selectissue.do"/>">태현(테스트)</a>
 										</c:if>
 									</li>
 								</ul>
