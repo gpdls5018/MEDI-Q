@@ -54,11 +54,11 @@
 		}
 		.card_deco_body{
 			padding:0.5rem;
-			background-color:#FDCDBC;
+			background-color:#fc6124;
 			border-radius: 20px;
 		}
 		.btn_deco{
-			background:linear-gradient(180deg,#ff4b09,#ff956c);
+			background-color:#ff956c;
 		}
 		.qna_mascot{
 			width:40px;
@@ -128,8 +128,8 @@
                                 <textarea class="form-control" rows="15" name="content"></textarea>
                             </div>
                             -->
-                            <div class="pl-1 pt-2 m-2">
-                            	<button type="submit" class="btn btn-light text-light btn_deco" style="font-size:22px;">등록</button>
+                            <div class="pl-3 pt-2 m-2">
+                            	<button type="submit" class="text-light btn_deco border-0 rounded" style="font-size:25px;">등록</button>
                             </div>
                         </form>
                     </div>

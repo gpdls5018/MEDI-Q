@@ -54,11 +54,14 @@
 		}
 		.card_deco_body{
 			padding:0.5rem;
-			background-color:#FDCDBC;
+			background-color:#ff956c;
 			border-radius: 20px;
 		}
 		.btn_deco{
-			background:linear-gradient(180deg,#ff4b09,#ff956c);
+			background-color:#ff4b09;
+		}
+		.btn_update{
+			background-color: #ff956c;
 		}
 		.qna_mascot{
 			width:40px;
@@ -113,7 +116,7 @@
 	                            </div>
                             </div>
                             <div class="pt-3 pl-4">
-	                            <button type="submit" class="btn btn-light text-light text_2 btn_deco" style="font-size:22px;">답변수정 등록</button>
+	                            <button type="submit" class="text-light btn_deco border-0 rounded text_2 btn_update" style="font-size:25px;">답변수정 등록</button>
 	                            <input type="hidden" value="${record.ANSWER_NO}" name="answer_no">
 	                            <input type="hidden" value="${record.BOARD_NO}" name="no">
                             </div>

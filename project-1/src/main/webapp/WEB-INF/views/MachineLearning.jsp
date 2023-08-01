@@ -54,38 +54,38 @@ body {
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 	border-radius: 10px;
 	position: absolute;
-	top: 300px;
-	right: 70px;
+	top: 385px;
+	right: 230px;
 
 }
 </style>
 
-		<div class="container my-3" style="min-height: 880px; max-width: 1100px; background-color: white; border-radius: 15px;">
+		<div class="container my-3" style="min-height: 880px; max-width: 1500px; background-color: white; border-radius: 15px;">
 			<div class="my-title d-flex effect-custom-font justify-content-between" style="align-items:center; width:100%;height:200px;">
-				<div class="" style="font-size:32px; margin-left: 180px;">인공지능을 통한<br/> <span style="color:#EF605D;">질병 예측 예방 시스템 구축</span></div>
+				<div class="" style="font-size:32px; margin-left: 180px;">인공지능을 통한<br/> <span style="color:#EF605D;">MEDI-Q</span> 질병예측 시스템</div>
 			</div>
 
 			<div class="container">
 				<div class="jumbotron row m-2 effect-custom-font" style="position: relative; min-height: 650px;">
 					<span style="font-size: 36px;">나의 질병 예측하기</span>
-					<div class="tsai" style="position: absolute; top:110px; left:50px;">
+					<div class="tsai" style="position: absolute; top:110px; left:-70px;">
 						<a href="/DiabetesPredict.do?" style="color:black; font-weight: bold; text-decoration: none;">						
 						<img alt="당뇨" style="border-radius:15px; width: 200px; height: 200px;" src="https://img.freepik.com/free-photo/covid-recovery-center-female-doctor-checking-elder-patient-s-oxygen-level_23-2148847834.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=sph">
 						 <br/>당뇨병 예측</a>
 					</div>
-					<div class="tsai" style="position: absolute; top:110px; left:450px;">
+					<div class="tsai" style="position: absolute; top:110px; left:430px;">
 						<a href="/CardiovascularPredict.do?" style="color:black; font-weight: bold; text-decoration: none;">						
 						<img alt="심장질환" style="border-radius:15px; width: 200px; height: 200px;" src="https://img.freepik.com/premium-photo/hands-holding-chest-with-symptom-heart-attack-disease_33807-784.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=sph">
 						<br/>심장질환 예측</a>
 					</div>
-					<div class="tsai" style="position: absolute; top:390px; left:250px;">
+					<div class="tsai" style="position: absolute; top:110px; left:180px;">
 						<a href="/ParkinsonPredict.do?" style="color:black; font-weight: bold; text-decoration: none;">						
 						<img alt="치매" style="border-radius:15px; width: 200px; height: 200px;" src="https://img.freepik.com/premium-photo/handsome-depressed-man-in-casual-clothes_85574-5904.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=sph">
 						<br/>파킨슨(치매) 예측</a>
 					</div>
 				</div>
 				<div class="tsaibg">
-					<img alt="건강" style="border-radius: 10px; width: 550px; height: 550px;" src="https://www.mkhealth.co.kr/news/photo/202302/62710_66694_459.jpg">
+					<img alt="건강" style="border-radius: 10px; width: 470px; height: 470px;" src="https://www.mkhealth.co.kr/news/photo/202302/62710_66694_459.jpg">
 				</div>
 			</div>
 		</div>

@@ -56,11 +56,17 @@
 	}
 	.card_deco_body{
 		padding:0.5rem;
-		background-color:#ff956c;
+		background-color:#fc6124;
 		border-radius: 20px;
 	}
 	.btn_deco{
-		background:linear-gradient(180deg,#ff4b09,#ff956c);
+		background-color:#ff956c;
+		box-shadow: 1px 1px 2px gray;
+		border: none;
+		color:white;
+	}
+	.btn_deco:hover {
+		color:rgba(255,255,255,0.8);
 	}
 	.qna_mascot{
 		width:40px;
@@ -76,6 +82,39 @@
 	}
 	.card_font2{
 		color: #EF605D;
+	}
+	.list_btn{
+		color:white;
+		position:relative;
+		left:850px;
+	}
+	.list_btn:hover{
+		color:rgba(255,255,255,0.8);
+	}
+	.re_del_btn{
+		position:absolute;
+		right:500px;
+	}
+	.btn_help{
+		width:120px;
+		height:40px;
+		font-size:20px;
+		font-weight:bold;
+		border-radius:15px;
+	}
+	.btn_wri_re{
+		width:120px;
+		height:35px;
+		font-size:18px;
+		font-weight:bold;
+		border-radius:10px;
+	}
+	.btn_wri_del{
+		width:80px;
+		height:35px;
+		font-size:18px;
+		font-weight:bold;
+		border-radius:10px;
 	}
 </style>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
@@ -121,6 +160,16 @@
 	                            </div>
 	                        </div>
 	                        <br/>
+	                        <div class="d-flex col-12 justify-content-end">
+				        		<c:if test="${id eq record.ID}">
+									<a href='<c:url value="/board/Edit.do?no=${record.NO}"/>'class="text-decoration-none text_3 pr-2">
+										<button class="text-white btn_deco btn_wri_del">수정</button>
+									</a> 
+									<a href="javascript:isDelete();" class="text-decoration-none text_3">
+										<button class="text-white btn_deco btn_wri_del">삭제</button>
+									</a>
+								</c:if> 
+				        	</div>
 	                        <br/>
 	                        <!-- 임시위치 버튼 -->
 	                        <!--  -->
@@ -198,7 +247,7 @@
 										<hr style="border: 1px solid #E6E9ED;"/>
 	<!--2023.07.30 여기 답변글 날짜 추가 -->	<p class="card-text"><h6 class="font-weight-bold text-muted">${paramMap.POSTDATE }</h6></p>
 										<div class="card-text d-flex align-items-center">
-											<button id="likeToggleBtn" class="btn btn-light text-light btn_deco mr-3" data-answer-no="${paramMap.ANSWER_NO}">도움이 돼요</button>
+											<button id="likeToggleBtn" class="btn_deco btn_help mr-3" data-answer-no="${paramMap.ANSWER_NO}">도움이 돼요</button>
 											<span id="likeCountText" class="font-weight-bold" data-answer-no="${paramMap.ANSWER_NO}">0 명에게 도움이 됐습니다.</span>
 										</div>
 									</c:if>
@@ -210,43 +259,32 @@
             </div>
             <div class="d-flex col-3 flex-wrap align-content-stretch">
             </div>
-	        <div class="row d-flex flex-wrap flex-direction justify-content-center pt-3">
-	        	<div class="col-3">
-	        		<c:if test="${id eq record.ID}">
-						<a href='<c:url value="/board/Edit.do?no=${record.NO}"/>'class="text-decoration-none text_3">
-							<button class="btn btn-light text-white btn_deco">수정</button>
-						</a> 
-						<a href="javascript:isDelete();" class="text-decoration-none text_3">
-							<button class="btn btn-light text-white btn_deco">삭제</button>
-						</a>
-					</c:if> 
-	        	</div>
+	        <div class="row pt-3 align-conten-center">
                 <%-- <a class="btn_deco rounded-pill col-1 text-decoration-none text-white text-center text_3 p-2" href="<c:url value="/board/View.do?no=${record.no-1}"/>">이전 질문</a> --%>
-                
-                <a class="col-1 btn_deco rounded-pill col-1 text-decoration-none text-white text-center text_3 p-2" href="<c:url value="/board/List.do"/>">질문 목록</a><!-- 그냥 넘길지 page번호까지 넘길지 고민 중 -->
+                <a class="d-flex justify-content-center col-1 btn_deco rounded-pill text_3 p-2 text-decoration-none list_btn" href="<c:url value="/board/List.do"/>">질문 목록</a><!-- 그냥 넘길지 page번호까지 넘길지 고민 중 -->
                 
                 <%-- <a class="btn_deco rounded-pill col-1 text-decoration-none text-white text-center text_3 p-2" href="<c:url value="/board/View.do?no=${record.no+1}"/>">다음 질문</a> --%>
-                
-                <div class="col-3" style="display: flex; justify-content: flex-end;">
+                <div class="d-flex re_del_btn">
                 	<!-- id가 관리자일때만 버튼이 보임 -->
                 	<c:if test="${active eq 'A' }"><!-- member속성 ACTIVE 관리자('A')일때만,만약 약사 속성('G')로 수정할거면 A대신 G로 교체 -->
 						<c:choose>
 							<c:when test="${empty paramMap.CONTENT}">
 								<a href='<c:url value="/board/AnswerWrite.do?no=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
-									<button class="btn btn-light text-light btn_deco">답변작성</button>
+									<button class="btn_deco btn_wri_re pr-2">답변작성</button>
 								</a>
 							</c:when>
 							<c:when test="${not empty paramMap.CONTENT }">
 								<a href='<c:url value="/board/AnswerEdit.do?NO=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
-									<button class="btn btn-light text-light btn_deco">답변수정</button>
+									<button class="btn_deco btn_wri_re">답변수정</button>
 								</a>
 								<div class="text-decoration-none p-1">
-									<button class="btn btn-light text-light btn_deco my-delete" data-answer-no="${paramMap.ANSWER_NO}">답변삭제</button><!-- my-delete속성으로 삭제기능 -->
+									<button class="btn_deco btn_wri_re my-delete" data-answer-no="${paramMap.ANSWER_NO}">답변삭제</button><!-- my-delete속성으로 삭제기능 -->
 								</div> 
 							</c:when>
 						</c:choose>
 					</c:if>
                 </div>
+
             </div>
 	    </div>
 	    <br/>

@@ -54,11 +54,11 @@
 		}
 		.card_deco_body{
 			padding:0.5rem;
-			background-color:#FDCDBC;
+			background-color:#fc6124;
 			border-radius: 20px;
 		}
 		.btn_deco{
-			background:linear-gradient(180deg,#ff4b09,#ff956c);
+			background-color:#ff956c;
 		}
 		.qna_mascot{
 			width:40px;
@@ -92,15 +92,10 @@
 			</div>
         </div>
         <div class="container-fluid pt-5 mt-5">
-            <div class="row d-flex flex-wrap align-content-stretch">
-                <div class="row">
-               		<div class="d-flex col-3"></div>
-               		<div class="d-flex col"><img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs ml-1 mb-3"></div>
-               		<div class="d-flex col-3"></div>
-               	</div>
-                <div class="d-flex col-3">
-                </div>
-                
+            <div class="row d-flex flex-wrap">
+				<!--<img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs ml-1 mb-3">-->
+                <div class="d-flex col-2">
+                </div>                
                 <%-- 
                 <c:if test="${! empty InputError}">
 					<div class="alert alert-success alert-dismissible fade show">
@@ -109,10 +104,9 @@
 					</div>
 				</c:if>
 				 --%>
-                <div class="d-flex col flex-wrap flex-direction justify-content-center align-content-stretch">
+                <div class="d-flex col flex-wrap flex-direction justify-content-center align-content-stretch mr-5 ml-5">
                     <div class="col pb-5">
-                    	
-	                    <%-- <img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs ml-1 mb-3"> --%>
+                    	<img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs ml-1 mb-3">
 	                    <div class="col justify-content-center p-0 m-0">
 	                    	<form method="post" action="/board/EditProcess.do">
 	                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -131,7 +125,7 @@
 		                            </div>
 		                        </div>
 		                        <div class="pl-2 m-3">
-	                            	<button type="submit" class="btn btn-light text-white btn_deco" style="font-size:22px;">수정</button>
+	                            	<button type="submit" class="text-light btn_deco border-0 rounded" style="font-size:25px;">수정</button>
 	                            </div>
 							</form>
 						</div>
@@ -155,7 +149,7 @@
                      -->
                 </div>
             </div>
-            <div class="d-flex col-3 flex-wrap align-content-stretch">
+            <div class="d-flex col-2 flex-wrap align-content-stretch">
             </div>
         </div>
     </main>

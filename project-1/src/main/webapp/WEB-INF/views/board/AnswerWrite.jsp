@@ -58,7 +58,10 @@
 			border-radius: 20px;
 		}
 		.btn_deco{
-			background:linear-gradient(180deg,#ff4b09,#ff956c);
+			background-color:#ff4b09;
+		}
+		.btn_update{
+			background-color: #ff956c;
 		}
 		.qna_mascot{
 			width:40px;
@@ -114,7 +117,7 @@
 	                        </div>
 	                        
 	                        <div class="pt-3 pl-4">
-	                            <button type="submit" class="btn btn-light text-light text_2 btn_deco" style="font-size:22px;">답변 등록</button>
+	                            <button type="submit" class="text-light btn_update border-0 rounded text_2" style="font-size:25px;">답변 등록</button>
 	                            <input type="hidden" value="${no}" name="no">
                             </div>
                         </form>
