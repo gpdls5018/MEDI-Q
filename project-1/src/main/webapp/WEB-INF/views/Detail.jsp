@@ -105,8 +105,7 @@
       background-color: #eaeaea;
     }
 
-.bubble
-{
+.bubble{
 position: relative;
 width: 600px;
 height: 120px;
@@ -260,13 +259,15 @@ a,a:hover{
 }
 
 .nutrient{
-	border: 1px solid #D6D9E0;
+	border: 1px solid #425fa0fd;;
 	border-radius: 15px;
 	padding: 6px;
 }
 .nutrient:hover{
-	background-color: #D6D9E0;
+	background-color: #425fa0fd;
+	color: white;
 }
+
      </style>
 
 	<!-- 상단배너 div -->
@@ -473,11 +474,13 @@ a,a:hover{
        	</div><!-- 탭 1 끝 -->
 	 	<div id="reviewStart" class="empty-space" style="height:50px;"></div>
 	  	<div class="effect-custom-font mt-5" style="font-size:25px;">구매 전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
+
 	  	<div class="bubble p-4 effect-custom-font" style="font-size:17px;">
 		  	아래는 구매자들의 리뷰를 분석한 키워드 입니다.^^
 		  	<br>가운데 <span style="background-color:#ffdcdc;color:#ff4b4b">제품명</span>을 바탕으로
 		  	<span style="background-color:#f0ffd1;color:#86B817">부정 키워드</span>, <span style="background-color:#cfebff;color:blue">긍정 키워드</span>를 확인해보세요!
-	  	 </div>
+	  	</div>
+
 	    <div class="review-scroll" id="review"><!-- 탭 2 시작 -->
    			<div class="jumbotron mt-1 row pt-3" style="background-color:#f5f5f5">
    				<div class="col-7" style="background-color:white;border-radius:15px;">
