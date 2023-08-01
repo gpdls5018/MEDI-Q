@@ -55,22 +55,25 @@ body{
      </style>
 <style>
   #healthIssueSelect {
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     color: #333;
+    width: 870px;
+  	margin-left: 35px;
   }
 
   /* 마우스로 select 요소를 호버할 때의 스타일을 지정합니다 */
   #healthIssueSelect:hover {
-    background-color: #e0e0e0;
+    background-color: #ffffff;
+    width: 870px;
+  	margin-left: 35px;
   }
 
   /* select 요소가 드롭다운될 때의 스타일을 지정합니다 */
   #healthIssueSelect:focus {
     outline: none;
-    border-color: #4CAF50;
-    
-    size:5;
-    
+    border-color: ffff;
+    width: 870px;
+  	margin-left: 35px;
   }
 </style>
 	<!-- 상단배너 div -->

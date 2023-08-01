@@ -22,4 +22,9 @@
  	<select id="selectFood" parameterType="String" resultType="functionalFoodListDto">
  		SELECT * FROM foodtable WHERE no=#{no}
  	</select>
+ 	<select id="selectFoodListByKeyWord" parameterType="String" resultType="functionalFoodListDto">
+ 		SELECT *
+ 		FROM (SELECT * FROM FOODTABLE WHERE PRODUCTNAME LIKE '%' || #{keyword} || '%' ORDER BY F_VIEW DESC)
+		WHERE ROWNUM &lt;=10
+ 	</select>
 </mapper>

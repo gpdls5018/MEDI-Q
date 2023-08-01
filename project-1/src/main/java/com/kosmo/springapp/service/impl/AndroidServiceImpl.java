@@ -30,4 +30,8 @@ public class AndroidServiceImpl {
 		return androidMapper.selectFood(no);
 	}
 
+	public List<FunctionalFoodListDTO> selectFoodListByKeyWord(String keyword) {
+		return androidMapper.selectFoodListByKeyWord(keyword);
+	}
+
 }

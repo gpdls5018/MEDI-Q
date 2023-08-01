@@ -1,5 +1,6 @@
 package com.kosmo.springapp.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -43,6 +44,12 @@ public class ReviewController {
 	@RequestMapping(value = "/SelectReview.do", method = RequestMethod.GET)
 	public List<ReviewDTO> selectReview(@RequestParam Map map) {
 		List<ReviewDTO> listDto = reviewServiceImpl.selectReviewByFoodNo(map);
+		int current = Integer.parseInt(LocalDate.now().toString().split("-")[0]); //현재날짜 구하기
+
+		for(ReviewDTO list : listDto) {
+			int birtYear = list.getBirth()==null ? current : Integer.parseInt(list.getBirth().split("-")[0]);
+			list.setBirth(Integer.toString((int)Math.floor((current-birtYear)/10)*10));
+		}
 		return listDto;
 	}
 	

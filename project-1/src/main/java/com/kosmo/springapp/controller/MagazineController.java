@@ -1,5 +1,6 @@
 package com.kosmo.springapp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosmo.springapp.magazine.service.impl.MagazineSelectMapper;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
+import com.kosmo.springapp.service.SelectFoodMapper;
 import com.kosmo.springapp.service.impl.MainPageServiceImpl;
+import com.kosmo.springapp.service.impl.SelectFoodServiceImpl;
 
 
 @Controller
@@ -19,10 +22,61 @@ public class MagazineController {
 	
 	@Autowired
 	MainPageServiceImpl mainPageService;
+	@Autowired
+	SelectFoodMapper mapper;
 	
 	@GetMapping("/magazine.do")
 	  public String magazine(@RequestParam String no,Map map,Model model) {
-	    List<FunctionalFoodListDTO> listData = mainPageService.selectFoodList();
+	    //List<FunctionalFoodListDTO> listData = mainPageService.selectFoodList();
+		List<FunctionalFoodListDTO> listData = new ArrayList<>();
+		if(no.equals("01")) {
+			listData =mapper.selectFoodListFromNut("아르기닌");
+		}
+		else if(no.equals("02")) {
+			listData =mapper.selectFoodListFromNut("콜라겐");
+		}
+		else if(no.equals("03")) {
+			listData =mapper.selectFoodListFromNut("히알루론산");
+		}
+		else if(no.equals("04")) {
+			listData =mapper.selectFoodListFromNut("프로폴리스");
+		}
+		else if(no.equals("05")) {
+			listData =mapper.selectFoodListFromNut("단백질");
+		}
+		else if(no.equals("06")) {
+			listData =mapper.selectFoodListFromNut("프로바이오틱스");
+		}
+		else if(no.equals("08")) {
+			listData =mapper.selectFoodListFromNut("황기");
+		}
+		else if(no.equals("11")) {
+			listData =mapper.selectFoodListFromNut("식이섬유");
+		}
+		else if(no.equals("13")) {
+			listData =mapper.selectFoodListFromNut("감태");
+		}
+		else if(no.equals("14")) {
+			listData =mapper.selectFoodListFromNut("프로바이오틱스");
+		}
+		else if(no.equals("15")) {
+			listData =mapper.selectFoodListFromNut("비타민D");
+		}
+		else if(no.equals("16")) {
+			listData =mapper.selectFoodListFromNut("마그네슘");
+		}
+		else if(no.equals("17")) {
+			listData =mapper.selectFoodListFromNut("EPA");
+		}
+		else if(no.equals("18")) {
+			listData =mapper.selectFoodListFromNut("히알루론산");
+		}
+		else if(no.equals("19")) {
+			listData =mapper.selectFoodListFromNut("단백질");
+		}
+		else {
+			listData = mainPageService.selectFoodList();
+		}
 	    model.addAttribute("listData",listData);
 	    return "slider/Magazine"+no;
 	  }

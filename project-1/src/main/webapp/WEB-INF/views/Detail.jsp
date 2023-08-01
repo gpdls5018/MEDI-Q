@@ -64,7 +64,9 @@
       font-size: 30px;
       line-height: 30px;
     }
-
+	.star-rating{
+		margin-bottom: 15px;
+	}
     .progress {
       width: 15px;
       height: 150px;
@@ -106,7 +108,7 @@
 .bubble
 {
 position: relative;
-width: 800px;
+width: 600px;
 height: 120px;
 padding: 7px;
 background: #FFFFFF;
@@ -166,6 +168,10 @@ left: 146px;
     text-align: center;
     font-size: 17px;
 }
+.review-effect{
+	display: flex;
+	margin-right: auto;
+}
 .write-review{
 	margin-top: 50px;
 	display: flex;
@@ -175,11 +181,14 @@ left: 146px;
 	background-color: #006AFF;
 	color: #fff;
 }
+
 .img-custom{
+	margin-top: 150px;
 	display: flex;
     align-items: center;
     justify-content: center;
 }
+
 body{
 	background-color: #fdfbf6;
 }
@@ -225,6 +234,22 @@ body{
 	box-shadow: 0px 0px 0px white;
 	align-items: center;
 }
+
+/* 타이틀 명 */
+.title-name{
+	font-size: 2rem;
+	font-weight: 600;
+}
+
+.circle{
+	width: 40px;
+	font-size: 1.5rem;
+	border: 1px rgba(48, 69, 92, 0.8) solid;
+	border-radius: 100%;
+	padding: 7px;
+	cursor: pointer;
+	margin: 0 2px;
+}
      </style>
 
 	<!-- 상단배너 div -->
@@ -241,43 +266,43 @@ body{
         </div>
     </aside>
     
-
-<div class="background-top">
-	<p class="display-4 back-img" style="border-radius:10px; background-image: url('<c:url value="/images/nutrient_img/bg_bl.png"/>');">${listOne.productName}</p>
-</div>
 <div class="container">
-<div class="empty-space" style="height:32px;"></div>
-<div style="display: flex; align-items: center;" class="img-custom">    
-    <h1 class="display-4" style="width:450px;">
-    <c:if test="${empty listOne.imgURL}" var="emptyIMG">
-    	<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" width="400px;" height="300px;" style="border-radius:20px;"/>
-    </c:if>
-    <c:if test="${not emptyIMG}">
-    	<img src="${listOne.imgURL}" width="400px;" height="300px;" style="border-radius:20px;"/>
-   	</c:if>
-   	</h1>
-   	<div style="display: flex; flex-direction: column; margin-left: 20px;">
-   		<c:if test="${heartcount eq '0' }">
-	   		<button data-initialtext="🤍 미복용중" id="heartButton" data-foodname="${listOne.productName}" style="margin-bottom:20px; background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
-			   🤍 찜하기
-			</button>
-		</c:if>
-		<c:if test="${heartcount eq '1' }">
-	   		<button data-initialtext="❤ 복용중" id="heartButton" data-foodname="${listOne.productName}" style="margin-bottom:20px; background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
-			   🧡 찜하기 취소
-			</button>
-		</c:if>
-        <button onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
-        <img src="<c:url value="/images/magazine_images/basic/basket.png"/>" class="img-fluid mr-1 mb-1" style="width:20px">
-        구매하러 가기</button>
-        <button onclick="window.location.href = '/ranking/selectfood.do'" style="background-color: darkorange; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; margin-top: 20px;">
-        <img src="<c:url value="/images/magazine_images/basic/search_2.png"/>" class="img-fluid mr-1 mb-1" style="width:20px">
-        다른 제품 검색하러 가기</button>
-    </div>
-</div>    
+
+	<div class="img-custom">    
+	    <c:if test="${empty listOne.imgURL}" var="emptyIMG">
+	    	<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="border-radius:20px;width: 300px;"/>
+	    </c:if>
+	    <c:if test="${not emptyIMG}">
+	    	<img src="${listOne.imgURL}" style="border-radius:20px;width: 300px;"/>
+	   	</c:if>
+	   	
+	   	<div class="ml-5">
+			<div class="title-name">${listOne.productName}</div>
+			<div class="d-flex align-items-center">
+				<div class="star-rating mt-2">
+			    	<i class="bi bi-star rating"></i>
+			        <i class="bi bi-star rating"></i>
+			        <i class="bi bi-star rating"></i>
+			        <i class="bi bi-star rating"></i>
+			        <i class="bi bi-star rating"></i>
+			    </div>
+			    <div class="ml-3">${totalReview }개의 리뷰</div>
+			</div>
+			<div class="mt-5">
+				<c:if test="${heartcount eq '1' }">
+					<i id="heartButton" data-foodname="${listOne.productName}" class="circle fa-solid fa-heart text-danger"></i><!-- 찬 하트 -->
+				</c:if>
+				<c:if test="${heartcount eq '0' }">
+					<i id="heartButton" data-foodname="${listOne.productName}" class="circle fa-regular fa-heart text-danger"></i><!-- 빈 하트 -->
+				</c:if>
+				<i onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" class="circle fa-solid fa-cart-plus text-primary"></i>
+				<i id="share" class="circle fa-solid fa-share-nodes text-secondary"></i>
+			</div>
+		</div>
+	</div>    
 	<!-- 탭 -->
 	<div class="tab-content mt-5 mb-5">
-	  	<div class="effect-custom-font mt-5" style="font-size:40px;">제품의 상세정보 내용이에요! </div>
+	  	<div class="effect-custom-font mt-5" style="font-size:25px;">제품의 상세정보 내용이에요! </div>
 	  	<div class="" id="detailTable"><!-- 탭 1 시작 -->
            	<table class="type09 mt-3">
                 <thead>
@@ -428,7 +453,7 @@ body{
             </table>
        	</div><!-- 탭 1 끝 -->
 	 	<div class="empty-space" style="height:50px;"></div>
-	  	<div class="effect-custom-font mt-5" style="font-size:40px;">구매전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
+	  	<div class="effect-custom-font mt-5" style="font-size:25px;">구매전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
 	  	<div class="bubble p-4 effect-custom-font" style="font-size:17px;">
 		  	아래는 구매자들의 리뷰를 분석한 키워드 입니다.^^
 		  	<br>가운데 <span style="background-color:#ffdcdc;color:#ff4b4b">제품명</span>을 바탕으로
@@ -616,15 +641,12 @@ body{
 			            	</div>
 			            	<div class="review-effect mt-4">
 			              		<h6>효과</h6>
-			              		<div class="review-content-effect m-2" >
-			              		</div>
+			              		<div class="review-content-effect m-2" ></div>
 			              		<h6>부작용</h6>
-			              		<div class="review-content-noEffect m-2">
-			              		</div>
+			              		<div class="review-content-noEffect m-2"></div>
 			            	</div>
 			            	<div class="review-content m-2 row">
-				              	<p class="mt-3" style="font-size:15px;">
-				              	</p>
+				              	<p class="mt-3" style="font-size:15px;"></p>
 			          		</div>
 			        	</div>
 			      	</li>
@@ -658,9 +680,13 @@ body{
 	  totalStarScore[i].className = totalStarScore[i].className.replace("bi-star","bi-star-fill");
   }
   
-  
-  
-  
+  //공유하기 클릭
+  var nowUrl = window.location.href;
+  document.getElementById("share").addEventListener("click", function() {
+		navigator.clipboard.writeText(nowUrl).then(res=>{
+			alert("주소가 복사되었습니다!");
+		})
+  });
   
 //무한 스크롤 
   const cardContainer = document.getElementById("review-ul");
@@ -671,9 +697,10 @@ body{
   const cardLimit = 99;
   const cardIncrease = 3;
   const pageCount = Math.ceil(cardLimit / cardIncrease);
-  let currentPage = 1;
+  let currentPage = 1; 
 
-  cardTotalElem.innerHTML = cardLimit;
+  //총 리뷰 갯수
+  cardTotalElem.innerHTML = '${totalReview}';
 
   var throttleTimer;
   const throttle = (callback, time) => {
@@ -702,8 +729,13 @@ body{
         return;
       }
       console.log(reviewData);
-      card.querySelector(".review-name").innerHTML = reviewData[0]['r_id'] === null ? 'Unknown' : reviewData[0]['r_id'];
+      card.querySelector(".review-name").innerHTML = reviewData[0]['r_id'] === null ? 'Unknown' : reviewData[0]['r_id']; 
+      card.querySelector(".review-ages").innerHTML = reviewData[0]['birth']+'대';
+      card.querySelector(".review-gender").innerHTML = reviewData[0]['gender']==='F' ? '여성' : '남성';
       card.querySelector(".review-period").innerHTML = reviewData[0]['takeTime'];
+      card.querySelector(".post-date").innerHTML = reviewData[0]['r_regidate'];
+      
+
       var starScore = parseInt(reviewData[0]['starScore']);
 
       for(var i=0;i<starScore;i++) {
@@ -742,14 +774,13 @@ body{
 
     const startRange = (pageIndex - 1) * cardIncrease;
     const endRange = currentPage == pageCount ? cardLimit : pageIndex * cardIncrease;
-
+	
     cardCountElem.innerHTML = endRange;
-
     for (let i = startRange + 1; i <= endRange; i++) {
       createCard(i);
     }
   };
-
+  
   const handleInfiniteScroll = () => {
     throttle(() => {
       const endOfPage =
@@ -784,27 +815,30 @@ body{
 	// 버튼 클릭 이벤트 핸들러 등록
 	heartButton.addEventListener('click', function() {
 	    var foodname = this.getAttribute('data-foodname');
+	    var like = this.className.includes('solid') ? '삭제' : '추가';
+	    //console.log('like:',like)
 	    var xhr = new XMLHttpRequest();
-	    
-	    xhr.onreadystatechange = function() {
-	        if (xhr.readyState === XMLHttpRequest.DONE) {
-	            if (xhr.status === 200) {
-	                // AJAX 요청이 성공한 경우
-	                var response = JSON.parse(xhr.responseText);
-	                var heart = response.heart;
-	                
-	                // 버튼 텍스트 변경
-	                if (heart === "1") {
-	                    heartButton.innerText = '🤍 미복용중';
-	                } else {
-	                    heartButton.innerText = '❤ 복용중';
-	                }
-	            } else {
-	                // AJAX 요청이 실패한 경우에 대한 처리
-	                console.error('AJAX 요청 실패:', xhr.status, xhr.statusText);
-	            }
-	        }
-	    };
+	    if(confirm(foodname+'을(를) 찜 '+ like +' 하시겠습니까?')){
+		    xhr.onreadystatechange = function() {
+		        if (xhr.readyState === XMLHttpRequest.DONE) {
+		            if (xhr.status === 200) {
+		                // AJAX 요청이 성공한 경우
+		                var response = JSON.parse(xhr.responseText);
+		                var heart = response.heart;
+		                console.log('///',typeof(heartButton.className))
+		                // 버튼 텍스트 변경
+		                if (heart === "1") {
+		                    heartButton.className = heartButton.className.replace("solid","regular");
+		                } else {
+		                	heartButton.className = heartButton.className.replace("regular","solid");
+		                }
+		            } else {
+		                // AJAX 요청이 실패한 경우에 대한 처리
+		                console.error('AJAX 요청 실패:', xhr.status, xhr.statusText);
+		            }
+		        }
+		    };
+	    }
 	    
 	    // AJAX 요청 설정
 	    xhr.open('GET', '/Heart.do?foodname=' + encodeURIComponent(foodname), true);
