@@ -155,7 +155,7 @@ body {
 		
 		        <div class="col-6">
 		            <canvas id="drawing_canvas"></canvas>
-		            <img src="https://img.freepik.com/premium-vector/ai-medical-concept-with-virtual-human-heart-observed-by-medical-representative_1302-36624.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=ais" id="machineImage" style="width:100%;height:100%;border-radius:12px;"/>
+		            <img src="https://img.freepik.com/free-vector/diagram-showing-blood-flow-human-heart_1308-90070.jpg?size=626&ext=jpg&ga=GA1.2.1515223053.1688355068&semt=ais" id="machineImage" style="width:100%;height:100%;border-radius:12px;"/>
 		        </div>
 		    </div>
 		    <hr class="mt-5">
