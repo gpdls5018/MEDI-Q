@@ -134,7 +134,6 @@ body{
 						</div>
 					</form>
 					</div>
-					<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
 					<div class="new-wide-wrap new-wide-wrap-070">
 						<div class="left-wing  ">
 						    <ul class="sm-menu-wrap">
@@ -188,7 +187,6 @@ body{
 								</c:forEach>
 							</div><!-- item-cards의 끝 -->
 						</div>
-					</div>
 				<!--<button id="moreBtn" tabindex="0" class="item-more" onclick="searchMore()">30개 더 보기</button>  -->
 			</div>
 		</div>
