@@ -75,7 +75,6 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -132,8 +131,11 @@ ul {
     position: relative;
     box-sizing: border-box;
     padding-left: 10px;
-    margin-bottom: 5px;
+    padding-right: 30px;
+    margin-top: 17px;
+    margin-bottom: 17px;
     text-align: justify;
+    font-size: 15px;
 }
 .pakinul1 {
 	color: #6866ab;
@@ -141,53 +143,63 @@ ul {
 }
 </style>
 
-		<div class="container my-3" style="min-height: 880px; max-width: 1200px; background-color: white; border-radius: 15px;">
-			<div class="my-title d-flex effect-custom-font justify-content-between" style="align-items:center; width:100%;height:200px;">
-				<div class="" style="font-size:32px; margin-left: 180px; font-weight: bold; line-height: 50px;">인공지능을 통한<br/> <span style="color:#EF605D;">MEDI-Q</span> 질병예측 시스템</div>
+	<div class="container my-3" style="min-height: 880px; max-width: 1200px; background-color: white; border-radius: 15px;">
+		<div class="my-title d-flex effect-custom-font justify-content-between" style="align-items:center; width:100%;height:200px;">
+			<div class="" style="font-size:32px; margin-left: 180px; font-weight: bold; line-height: 50px;">인공지능을 통한<br/> <span style="color:#EF605D;">MEDI-Q</span> 질병예측 시스템</div>
+		</div>
+		<div class="d-flex" style="flex-direction: row; position: relative;">
+			<div style="font-size: 18px;font-weight: bold; width: 100px; height: 100px; position: absolute; top:10px; left:10px;">
+				<img src="https://cdn-icons-png.flaticon.com/512/204/204574.png" style="width: 100px; height: 100px;" ><br/>
+				<span style="font-size: 15px;"><br/>&nbsp;&nbsp;&nbsp;&nbsp;나선 예시</span>
 			</div>
-			<div class="d-flex" style="flex-direction: row; position: relative;">
-				<div style="font-size: 18px;font-weight: bold; width: 200px; height: 200px; position: absolute; top:10px; left:10px;">
-					<img src="https://cdn-icons-png.flaticon.com/512/204/204574.png" style="width: 150px; height: 150px;" ><br/>
-					<span class="ml-4">예시자료</span>
-				</div>
-				<canvas id="jsCanvas" class="canvas" style="border:3px solid black; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.68);"></canvas>
-				<div style="border:2px solid gray; margin-left:50px; width:450px; border-radius: 10px;">
-					<div class="controls" style="height: 100%; width: 100%; margin-top: 50px;">
-						<div class="d-flex m-2" style="height: 550px; width:95%; flex-direction: column; border: solid 4px #f0ebf6;">
-							<h4 style="border-bottom: solid 1px rgba(0, 0, 0, 0.3); margin-bottom: 10px;">
-								<img src="https://www.kumc.or.kr/seasonPress/KUMM_vol17/img_sub/KS11_box_t1.png" style="margin-left:10px; width: 50px; height: 50px;" >
-								<span style="color:#222222; font-size: 25px; font-weight: bold; line-height: 45px;">파킨슨병 자가진단</span>
-							</h4>
-							<ul class="pakinul">
-								<li><span></span>종종걸음으로 걷고 보폭이 짧아졌다.</li>
-								<li><span></span>근육이 뻣뻣해지고, 조이거나 당긴다.</li>
-								<li><span></span>섬세한 동작을 하는 것이 어려워졌다.</li>
-								<li><span></span>걸을 때 자꾸 한쪽 다리가 땅에 끌린다.</li>
-								<li><span></span>편안한 자세나 누워있을 때 손발이 떨린다.</li>
-								<li><span></span>얼굴의 표정이 점점 없어지고 얼굴이 굳는다.</li>
-								<li><span></span>팔, 다리가 무거워지고 행동하는 것이 느려졌다.</li>
-								<li><span></span>침대나 의자에서 일어나거나 혼자서 돌아눕는<br/> 것이 힘들다.</li>
-								<li class="pakinul1">*2가지 이상 → 파킨슨병 가능성이 있음.</li>
-								<li class="pakinul1">*5가지 이상 → 파킨슨병일 확률이 높음.</li>
-							</ul>
-							
-							<div class="controls__btns" style="margin-top: 50px; text-align: center;">
-						        <button id="jsSave">결과보기</button>
-						    </div>
-						</div>
+			<canvas id="jsCanvas" class="canvas" style="border:3px solid black; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.68);"></canvas>
+			<div style="border:2px solid gray; margin-left:50px; width:450px; border-radius: 10px;">
+				<div class="controls" style="height: 100%; width: 100%; margin-top: 20px;">
+					<div class="d-flex m-2" style="height: 575px; width:95%; flex-direction: column; border: solid 4px #f0ebf6;">
+						<h4 style="border-bottom: solid 1px rgba(0, 0, 0, 0.3); margin-top:10px; padding-bottom:10px; display: flex; align-items: center; height: 80px;">
+							<img src="https://www.kumc.or.kr/seasonPress/KUMM_vol17/img_sub/KS11_box_t1.png" style="margin-left:25px; width: 50px; height: 50px;" >
+							<span style="margin-left:20px; color:#222222; font-size: 25px; font-weight: bold; line-height: 45px;">파킨슨병 AI 자가진단</span>
+						</h4>
+						<ul class="pakinul">
+							<li><span></span>종종걸음으로 걷고 보폭이 짧아졌다.</li>
+							<li><span></span>근육이 뻣뻣해지고, 조이거나 당긴다.</li>
+							<li><span></span>섬세한 동작을 하는 것이 어려워졌다.</li>
+							<li><span></span>걸을 때 자꾸 한쪽 다리가 땅에 끌린다.</li>
+							<li><span></span>편안한 자세나 누워있을 때 손발이 떨린다.</li>
+							<li><span></span>얼굴의 표정이 점점 없어지고 얼굴이 굳는다.</li>
+							<li><span></span>팔, 다리가 무거워지고 행동하는 것이 느려졌다.</li>
+							<li><span></span>침대나 의자에서 일어나거나 혼자서 돌아눕는<br/> 것이 힘들다.</li>
+							<li class="pakinul1">*2가지 이상 → 파킨슨병 가능성이 있음.</li>
+							<li class="pakinul1">*5가지 이상 → 파킨슨병일 확률이 높음.</li>
+						</ul>
+						<div class="controls__btns" style="margin-top: 27px; text-align: center; justify-content: center; display: flex;">
+					        <button id="jsSave" style="width:110px; height: 30px; font-size: 14px; margin-right: 50px;">결과보기</button>
+					        <button onclick="location.reload()" style="width:110px; height: 30px; font-size: 14px;">다시하기</button>
+					    </div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		<div id="modal" class="modal">
-		    <div class="modal-content" style="width:450px; height:450px;">
-		        <span class="close" style="text-align: right;">&times;</span>
-		        <div id="modal-content">
-					<div id="image-container"></div>
-				</div>
-		    </div>
-		</div>
+	</div>
+	
+	<div id="modal" class="modal">
+	    <div class="modal-content" style="width:900px; height:500px; display: flex; flex-direction: column;">
+	        <div style="display: flex; justify-content: flex-end; margin-right: 30px;"><span class="close">&times;</span></div>
+	        <div class="row" style="flex-grow: 1; display: flex;">
+	            <div class="col-6" id="modal-content" style="width: 400px; height: 400px; flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+	                <div id="image-container"></div>
+	            </div>
+	            <div class="col-6" style="width: 400px; height: 400px; flex-grow: 1; display: flex; align-items: center; justify-content: center; padding-left: 0px;">
+	                <ul class="pakinul">
+	                	<li class="text-center" style="font-weight:bold; font-size: 25px; margin-bottom: 40px; margin-top: 0px;"><b>파킨슨병 진단과정</b></li>
+	                    <li><span></span>MEDI-Q는 파킨슨병 진행시 발생하는 <b style="color: #EF605D">중추신경계 손상에 의한 떨림 증상을 기반으로</b> 머신러닝 알고리즘이 수집된 데이터를 분석하여 건강상태를 확인합니다.</li>
+	                    <li><span></span>사용자의 손떨림을 모니터링하고, 그림판에 <b style="color: #EF605D">그린 나선을 분석하여 현재 파킨슨병 진행상황을 예측합니다.</b></li>
+	                    <li><span></span>나선 그리기 진단시스템을 이용해 환자와 의료 전문가는 증상 변화를 빠르게 파악하고 치료 계획을 조정할 수 있습니다.</li>
+	                </ul>
+	            </div>
+	        </div>
+	    </div>
+	</div>
 
 <script>
 //모달창 생성
@@ -258,7 +270,7 @@ document.querySelector(".close").addEventListener("click", function() {
             var imageBase64 = response.image_base64;
 
             // 이미지 생성 및 모달 내부에 화면에 출력
-            var imageTag = '<img src="data:image/png;base64,' + imageBase64 + '" style="width:400px; height:400px;" alt="Image">';
+            var imageTag = '<img src="data:image/png;base64,' + imageBase64 + '" style="width:400px; height:400px; padding:0 15px; border:1px solid black;" alt="Image">';
             $('#modal-content').html(imageTag);
         });
     }
