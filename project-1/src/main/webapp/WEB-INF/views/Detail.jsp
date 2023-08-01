@@ -286,7 +286,7 @@ body{
 			        <i class="bi bi-star rating"></i>
 			        <i class="bi bi-star rating"></i>
 			    </div>
-			    <div class="ml-3">리뷰 총 갯수</div>
+			    <div class="ml-3">${totalReview }개의 리뷰</div>
 			</div>
 			<div class="mt-5">
 				<c:if test="${heartcount eq '1' }">
@@ -697,9 +697,10 @@ body{
   const cardLimit = 99;
   const cardIncrease = 3;
   const pageCount = Math.ceil(cardLimit / cardIncrease);
-  let currentPage = 1;
+  let currentPage = 1; 
 
-  cardTotalElem.innerHTML = cardLimit;
+  //총 리뷰 갯수
+  cardTotalElem.innerHTML = '${totalReview}';
 
   var throttleTimer;
   const throttle = (callback, time) => {
@@ -773,14 +774,13 @@ body{
 
     const startRange = (pageIndex - 1) * cardIncrease;
     const endRange = currentPage == pageCount ? cardLimit : pageIndex * cardIncrease;
-
+	
     cardCountElem.innerHTML = endRange;
-
     for (let i = startRange + 1; i <= endRange; i++) {
       createCard(i);
     }
   };
-
+  
   const handleInfiniteScroll = () => {
     throttle(() => {
       const endOfPage =
@@ -815,27 +815,30 @@ body{
 	// 버튼 클릭 이벤트 핸들러 등록
 	heartButton.addEventListener('click', function() {
 	    var foodname = this.getAttribute('data-foodname');
+	    var like = this.className.includes('solid') ? '삭제' : '추가';
+	    //console.log('like:',like)
 	    var xhr = new XMLHttpRequest();
-	    
-	    xhr.onreadystatechange = function() {
-	        if (xhr.readyState === XMLHttpRequest.DONE) {
-	            if (xhr.status === 200) {
-	                // AJAX 요청이 성공한 경우
-	                var response = JSON.parse(xhr.responseText);
-	                var heart = response.heart;
-	                console.log('///',typeof(heartButton.className))
-	                // 버튼 텍스트 변경
-	                if (heart === "0") {
-	                    heartButton.className = heartButton.className.replace("solid","regular");
-	                } else {
-	                	heartButton.className = heartButton.className.replace("regular","solid");
-	                }
-	            } else {
-	                // AJAX 요청이 실패한 경우에 대한 처리
-	                console.error('AJAX 요청 실패:', xhr.status, xhr.statusText);
-	            }
-	        }
-	    };
+	    if(confirm(foodname+'을(를) 찜 '+ like +' 하시겠습니까?')){
+		    xhr.onreadystatechange = function() {
+		        if (xhr.readyState === XMLHttpRequest.DONE) {
+		            if (xhr.status === 200) {
+		                // AJAX 요청이 성공한 경우
+		                var response = JSON.parse(xhr.responseText);
+		                var heart = response.heart;
+		                console.log('///',typeof(heartButton.className))
+		                // 버튼 텍스트 변경
+		                if (heart === "1") {
+		                    heartButton.className = heartButton.className.replace("solid","regular");
+		                } else {
+		                	heartButton.className = heartButton.className.replace("regular","solid");
+		                }
+		            } else {
+		                // AJAX 요청이 실패한 경우에 대한 처리
+		                console.error('AJAX 요청 실패:', xhr.status, xhr.statusText);
+		            }
+		        }
+		    };
+	    }
 	    
 	    // AJAX 요청 설정
 	    xhr.open('GET', '/Heart.do?foodname=' + encodeURIComponent(foodname), true);
