@@ -56,8 +56,11 @@
 	}
 	.card_deco_body{
 		padding:0.5rem;
-		background-color:#fc6124;
+		background-color:#FFF1DC;
 		border-radius: 20px;
+	}
+	.card_deco2_text{
+		color:#BCA77A;
 	}
 	.btn_deco{
 		background-color:#ff956c;
@@ -216,7 +219,7 @@
 		                        <div class="card-body card_deco_body m-2" style="padding:.5rem;"><!-- 네비 바 -->
 		                            <div class="card-text d-flex align-items-center">
 		                            	<img src="<c:url value="/images/qna/pharmacist.png"/>" class="qna_mascot">
-		                            	<span class="text-light font-weight-bold text_3 ml-2">메디큐 약사님의 답변입니다</span>
+		                            	<span class="card_deco2_text font-weight-bold text_3 ml-2">메디큐 약사님의 답변입니다</span>
 		                            </div>
 		                        </div><!-- 네비 바 -->
 		                        <div class="card-body m-2">
@@ -237,7 +240,7 @@
 					            <div class="card-body card_deco_body m-2" style="padding:.5rem;">
 					                <div class="card-text d-flex align-items-center">
 					                	<img src="<c:url value="/images/qna/pharmacist.png"/>" class="qna_mascot">
-					                	<span class="text-light font-weight-bold text_3 ml-2">메디큐 약사님의 답변입니다</span>
+					                	<span class="card_deco2_text font-weight-bold text_3 ml-2">메디큐 약사님의 답변입니다</span>
 					                </div>
 					            </div>
 				                <div class="card-body m-2">  
