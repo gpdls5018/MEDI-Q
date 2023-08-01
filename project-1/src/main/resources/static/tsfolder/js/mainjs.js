@@ -160,7 +160,39 @@ document.addEventListener("DOMContentLoaded", function() {
 	    overlay.setMap(null);     
 }
     
-  /////////////////////////지도 모달 버튼 함수////////////////////////////////
+  //////////////////////지도 모달 맨위로 이동하기 방지//////////////////////////////
+  $(document).ready(function() {
+  var scrollPosition;
+  
+  $('#tsModal').on('show.bs.modal', function () {
+    // 모달이 보이기 전에 현재 스크롤 위치를 저장합니다.
+    scrollPosition = $(document).scrollTop();
+    $('body').css({
+      overflow: 'hidden',
+      position: 'fixed',
+      top : -scrollPosition // 스크롤 위치만큼 상단을 이동시킵니다.
+    });
+  });
+
+  $('#tsModal').on('hidden.bs.modal', function () {
+    // 모달이 닫힌 후에 원래의 스크롤과 스타일을 복원합니다.
+    $('body').css({
+      overflow: '',
+      position: '',
+      top: ''
+    });
+    $(document).scrollTop(scrollPosition);
+  });
+
+  $("#tsBtn").click(function() {
+    $("#tsModal").modal({ backdrop: false });
+    setTimeout(function() { map.relayout(); }, 0);
+    initMap(); // 모달 열릴 때 지도 초기화 호출
+  });
+});
+  
+  
+  /////////////////////////지도 모달 버튼 함수///////////////////////////////////
       $(document).ready(function() {
         $("#tsBtn").click(function() {
           $("#tsModal").modal({ backdrop: false});
