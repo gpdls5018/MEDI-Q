@@ -168,6 +168,10 @@ left: 146px;
     text-align: center;
     font-size: 17px;
 }
+.review-effect{
+	display: flex;
+	margin-right: auto;
+}
 .write-review{
 	margin-top: 50px;
 	display: flex;
@@ -282,13 +286,13 @@ body{
 			        <i class="bi bi-star rating"></i>
 			        <i class="bi bi-star rating"></i>
 			    </div>
-			    <div class="ml-3">리뷰 총 갯수</div>
+			    <div class="ml-3">${totalReview }개의 리뷰</div>
 			</div>
 			<div class="mt-5">
-				<c:if test="${heartcount eq '0' }">
+				<c:if test="${heartcount eq '1' }">
 					<i id="heartButton" data-foodname="${listOne.productName}" class="circle fa-solid fa-heart text-danger"></i><!-- 찬 하트 -->
 				</c:if>
-				<c:if test="${heartcount eq '1' }">
+				<c:if test="${heartcount eq '0' }">
 					<i id="heartButton" data-foodname="${listOne.productName}" class="circle fa-regular fa-heart text-danger"></i><!-- 빈 하트 -->
 				</c:if>
 				<i onclick="window.open('https://search.shopping.naver.com/search/all?query=${listOne.productName}')" class="circle fa-solid fa-cart-plus text-primary"></i>
@@ -637,15 +641,12 @@ body{
 			            	</div>
 			            	<div class="review-effect mt-4">
 			              		<h6>효과</h6>
-			              		<div class="review-content-effect m-2" >
-			              		</div>
+			              		<div class="review-content-effect m-2" ></div>
 			              		<h6>부작용</h6>
-			              		<div class="review-content-noEffect m-2">
-			              		</div>
+			              		<div class="review-content-noEffect m-2"></div>
 			            	</div>
 			            	<div class="review-content m-2 row">
-				              	<p class="mt-3" style="font-size:15px;">
-				              	</p>
+				              	<p class="mt-3" style="font-size:15px;"></p>
 			          		</div>
 			        	</div>
 			      	</li>
@@ -696,9 +697,10 @@ body{
   const cardLimit = 99;
   const cardIncrease = 3;
   const pageCount = Math.ceil(cardLimit / cardIncrease);
-  let currentPage = 1;
+  let currentPage = 1; 
 
-  cardTotalElem.innerHTML = cardLimit;
+  //총 리뷰 갯수
+  cardTotalElem.innerHTML = '${totalReview}';
 
   var throttleTimer;
   const throttle = (callback, time) => {
@@ -727,8 +729,13 @@ body{
         return;
       }
       console.log(reviewData);
-      card.querySelector(".review-name").innerHTML = reviewData[0]['r_id'] === null ? 'Unknown' : reviewData[0]['r_id'];
+      card.querySelector(".review-name").innerHTML = reviewData[0]['r_id'] === null ? 'Unknown' : reviewData[0]['r_id']; 
+      card.querySelector(".review-ages").innerHTML = reviewData[0]['birth']+'대';
+      card.querySelector(".review-gender").innerHTML = reviewData[0]['gender']==='F' ? '여성' : '남성';
       card.querySelector(".review-period").innerHTML = reviewData[0]['takeTime'];
+      card.querySelector(".post-date").innerHTML = reviewData[0]['r_regidate'];
+      
+
       var starScore = parseInt(reviewData[0]['starScore']);
 
       for(var i=0;i<starScore;i++) {
@@ -767,14 +774,13 @@ body{
 
     const startRange = (pageIndex - 1) * cardIncrease;
     const endRange = currentPage == pageCount ? cardLimit : pageIndex * cardIncrease;
-
+	
     cardCountElem.innerHTML = endRange;
-
     for (let i = startRange + 1; i <= endRange; i++) {
       createCard(i);
     }
   };
-
+  
   const handleInfiniteScroll = () => {
     throttle(() => {
       const endOfPage =
@@ -809,27 +815,30 @@ body{
 	// 버튼 클릭 이벤트 핸들러 등록
 	heartButton.addEventListener('click', function() {
 	    var foodname = this.getAttribute('data-foodname');
+	    var like = this.className.includes('solid') ? '삭제' : '추가';
+	    //console.log('like:',like)
 	    var xhr = new XMLHttpRequest();
-	    
-	    xhr.onreadystatechange = function() {
-	        if (xhr.readyState === XMLHttpRequest.DONE) {
-	            if (xhr.status === 200) {
-	                // AJAX 요청이 성공한 경우
-	                var response = JSON.parse(xhr.responseText);
-	                var heart = response.heart;
-	                console.log('///',typeof(heartButton.className))
-	                // 버튼 텍스트 변경
-	                if (heart === "1") {
-	                    heartButton.className = heartButton.className.replace("regular","solid");
-	                } else {
-	                	heartButton.className = heartButton.className.replace("solid","regular");
-	                }
-	            } else {
-	                // AJAX 요청이 실패한 경우에 대한 처리
-	                console.error('AJAX 요청 실패:', xhr.status, xhr.statusText);
-	            }
-	        }
-	    };
+	    if(confirm(foodname+'을(를) 찜 '+ like +' 하시겠습니까?')){
+		    xhr.onreadystatechange = function() {
+		        if (xhr.readyState === XMLHttpRequest.DONE) {
+		            if (xhr.status === 200) {
+		                // AJAX 요청이 성공한 경우
+		                var response = JSON.parse(xhr.responseText);
+		                var heart = response.heart;
+		                console.log('///',typeof(heartButton.className))
+		                // 버튼 텍스트 변경
+		                if (heart === "1") {
+		                    heartButton.className = heartButton.className.replace("solid","regular");
+		                } else {
+		                	heartButton.className = heartButton.className.replace("regular","solid");
+		                }
+		            } else {
+		                // AJAX 요청이 실패한 경우에 대한 처리
+		                console.error('AJAX 요청 실패:', xhr.status, xhr.statusText);
+		            }
+		        }
+		    };
+	    }
 	    
 	    // AJAX 요청 설정
 	    xhr.open('GET', '/Heart.do?foodname=' + encodeURIComponent(foodname), true);

@@ -13,11 +13,12 @@
 	<select id="selectReviewByFoodNo" parameterType="Map" resultType="reviewDto">
 		SELECT * 
 		FROM (
-		   SELECT t.*, ROWNUM AS row_NUM
-		   FROM (
-		       SELECT * FROM REVIEWTABLE
-		       WHERE R_PRODUCTNO = #{no}
-		   ) t
+		   SELECT t.*, ROWNUM AS row_NUM, m.GENDER, m.BIRTH
+            FROM (
+                SELECT * FROM REVIEWTABLE
+                WHERE R_PRODUCTNO = #{no}
+            ) t
+            LEFT JOIN MEMBER m ON t.R_ID = m.ID
 		)
 		WHERE row_num &gt;= #{current} AND row_num &lt; #{current} + 1
 	</select>
@@ -72,4 +73,8 @@
 	<delete id="deleteReview" parameterType="Map">
 		DELETE FROM REVIEWTABLE WHERE R_ID=#{id} AND R_PRODUCTNO=#{no}
 	</delete>
+	
+	<select id="selectReviewByNo" parameterType="int" resultType="int">
+		SELECT count(*) FROM REVIEWTABLE WHERE r_productno=#{no}
+	</select>
 </mapper>

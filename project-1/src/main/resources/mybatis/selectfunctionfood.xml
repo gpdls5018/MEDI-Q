@@ -72,6 +72,9 @@
 		)R ON F.NO = R.R_PRODUCTNO
 		where F.material like '%${healthissue}%' ORDER by R.AVG_SCORE + ((R.AVG_SCORE * R.REVIEW_COUNT)/1000) DESC, imgurl ASC
 	</select>
+	<select id="selectFoodListFromNut" parameterType="String" resultType="FunctionalFoodListDTO">
+		select * from (select * from foodtable where NUTRIENT like '%${nut}%' ORDER by imgurl ASC) where ROWNUM &lt;= 5
+	</select>
 	<select id="FoodListFromHealthissue" parameterType="String" resultType="AvgStarScoreCountDTO">
 		select * from foodtable where material like '%${healthissue}%' AND ROWNUM &lt;= 500 ORDER by imgurl ASC
 	</select>

@@ -95,6 +95,11 @@ public class FoodDetailController {
 	 public String detailPage(HttpServletRequest req,Model model, Map map, @RequestParam String no) {
 			map.put("no",Integer.parseInt(no));
 		    FunctionalFoodListDTO listOne = mainPageServiceImpl.selectFoodOneByNo(map);
+		    
+		    //총 리뷰 수 가져오기
+		    int totalReview = reviewServiceImpl.selectReviewByNo(Integer.parseInt(no));
+		    model.addAttribute("totalReview", totalReview);
+		    
 		 	String token = jwTokensService.getToken(req, tokenName);
 			Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
 			if(payloads.get("sub")==null) {}
