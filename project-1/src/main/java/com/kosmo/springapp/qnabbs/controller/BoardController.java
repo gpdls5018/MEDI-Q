@@ -59,13 +59,10 @@ public class BoardController {
 		//Map map =new HashMap<>();
 		//Map likemap =new HashMap<>();
 		
-		//목록에 대한 데이타 저장
+		//목록에 대한 데이타 저장,likemap에 추천수 데이타 저장
 		ListPagingData listPagingData= board.selectList(map, req, nowPage, likemap);
 		//데이타 저장
 		model.addAttribute("listPagingData", listPagingData);	
-		//추천수TOP3 목록에 대한 데이타 저장
-		
-		
 		return "board/List";
 	
 	}/////////////////////
@@ -88,7 +85,7 @@ public class BoardController {
 		int affected = board.insert(map);
 		//map에 1명의 글 저장 
 		map = board.selectOne(map);
-		System.out.println("writemap에 있는거 찾기:"+map);
+		//System.out.println("writemap에 있는거 찾기:"+map);
 		//글 입력 실패시
 		if(affected==0) {
 			//model.addAttribute("InputError","다시 작성해주세요");//아직안함
@@ -144,7 +141,7 @@ public class BoardController {
 			//줄바꿈 답변글 엔터키 br태그 적용
 			if(paramMap !=null) {
 				Object paramcontentObj = paramMap.get("CONTENT");
-				System.out.println("paramcontentObj:"+paramcontentObj);
+				//System.out.println("paramcontentObj:"+paramcontentObj);
 		        if (paramcontentObj instanceof String) {
 		            String content = (String) paramcontentObj;
 		            content = content.replaceAll("\r\n", "<br>");
@@ -183,6 +180,7 @@ public class BoardController {
 	        model.addAttribute("record", map);
 	        return "board/Edit";
 	    } 
+	 // 뷰정보 반환 - 목록을 처리하는 컨트롤러로 이동
 	    return "forward:/board/View.do";
 	}//////////////////
 	
@@ -195,7 +193,7 @@ public class BoardController {
 		int deleteCount = board.delete(map);
 	    System.out.println("여기 delete후 "+deleteCount);
 		if (deleteCount == -1) {
-	        model.addAttribute("FAILURE", "삭제할 수 없어요");
+	        model.addAttribute("FAILURE", "삭제할 수 없어요");//안씀
 	        System.out.println("delete에 에러 발생");
 	        return "forward:/board/View.do";
 	    }
