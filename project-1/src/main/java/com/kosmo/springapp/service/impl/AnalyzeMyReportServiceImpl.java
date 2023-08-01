@@ -363,6 +363,7 @@ public class AnalyzeMyReportServiceImpl {
 	            if(listmatcher.find()) {//남자 28가지영양소 점수 부여
 	                String nutNumber = listmatcher.group(1);//건기식에 저장된 영양소량 확인용
 	                nutnummap.put(nut,nutNumber);
+	    	        System.out.println(nut+" : "+nutNumber);
 	            	if(map2.containsKey(nut)) {
 	                    float map2num = Float.parseFloat(map2.get(nut).toString());
 	                    float nutnum = Float.parseFloat(nutnummap.get(nut).toString());
@@ -380,7 +381,6 @@ public class AnalyzeMyReportServiceImpl {
 			NutrientDTO nutdto = analyzeService.findNutrientByName(nut);//현재 영양소에 해당하는 정보를 가져온다(서브네임과 비교한다)
 			Matcher DFmatcher = cappattern.matcher(nutdto.getN_DRI_F());
 	        NutIntakeDTO nutIntakeDTO = new NutIntakeDTO();
-
         	if(DFmatcher.find()) {
         		if(nutdto.getN_UL_F() != null) {//상한 섭취량 존재유무 판단
         			Matcher UFmatcher = cappattern.matcher(nutdto.getN_UL_F());

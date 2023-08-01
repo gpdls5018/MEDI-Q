@@ -270,7 +270,7 @@ progress::-webkit-progress-bar {
 										            <progress id="myProgress" style="border-radius: 20px 0px 0px 20px;border-right:2px dotted black;width:33%" value="${item.nutNumber}" max="${item.DRI}"></progress><progress id="myProgress1" name="myProgress1" style="width:66%; border-right:1px solid black;border-radius: 0px 20px 20px 0px;" value="${item.nutNumber-item.DRI}" max="${item.DRI * 10}"></progress>
 										        </div>
 										        <div style="text-align: center;margin-top:3px;"><span <c:if test="${item.nutNumber <item.DRI}">style='color:#007BFF;'</c:if><c:if test="${item.nutNumber >=item.DRI}">style='color:#52BE80;'</c:if>>
-										        <c:if test="${item.nutNumber <item.DRI}"><span class="mx-1 px-2" style="background-color: #007BFF;color:blue;border-radius: 10px">부족</span></c:if><c:if test="${item.nutNumber >= item.DRI}"><span class="mx-1 px-2" style="background-color:#52BE80;color: green; border-radius: 10px">적정</span></c:if> ${item.nutNumber}</span> 만큼 드시고 계십니다</div>
+										        <c:if test="${item.nutNumber <item.DRI}"><span class="mx-1 px-2" style="background-color: #007BFF;color:blue;border-radius: 10px">부족</span></c:if><c:if test="${item.nutNumber >= item.DRI}"><span class="mx-1 px-2" style="background-color:#52BE80;color: green; border-radius: 10px">적정</span></c:if> <fmt:formatNumber value="${item.nutNumber}" pattern="0.00" /></span> 만큼 드시고 계십니다</div>
 										    </div>
 										    <br/>
 									    </c:if>
@@ -322,6 +322,7 @@ progress::-webkit-progress-bar {
 				</div>
 			</div>
 			 -->
+			</div>
 		</div>
 	</div>
 	<script>
