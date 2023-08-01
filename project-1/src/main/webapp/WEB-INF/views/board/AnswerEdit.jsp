@@ -57,11 +57,17 @@
 			background-color:#ff956c;
 			border-radius: 20px;
 		}
-		.btn_deco{
-			background-color:#ff4b09;
+		.btn_deco{/*버튼 색*/
+			background-color:#FAEBD0;
 		}
-		.btn_update{
-			background-color: #ff956c;
+		.btn_deco_text{/*버튼 글자색*/
+			color:#BCA77A;
+		}
+		.btn_update{/*등록버튼색*/
+			background-color:#D2F8E6;
+		}
+		.btn_update_text{/*등록버튼글자색*/
+			color:#80AB97;
 		}
 		.qna_mascot{
 			width:40px;
@@ -105,18 +111,18 @@
                              <div class="card_deco col-12 p-0 m-0">
 	                            <div class="card-body p-2 m-3">
 	                                <div class="form-group">
-                                		<label for="usr"><h3><kbd class="btn_deco font-weight-bold">질문 제목</kbd></h3></label>
+                                		<label for="usr"><h3><kbd class="btn_deco btn_deco_text font-weight-bold">질문 제목</kbd></h3></label>
                                 		<input type="text" name="title" class="form-control" placeholder="${title}" disabled >
                             		</div>
 	                            	<br>
 		                            <div class="form-group">
-										<label for="comment"><h3><kbd class="btn_deco font-weight-bold">답변내용 수정</kbd></h3></label>
+										<label for="comment"><h3><kbd class="btn_deco btn_deco_text font-weight-bold">답변내용 수정</kbd></h3></label>
 	                                	<textarea class="form-control" rows="15" name="content">${record.CONTENT }</textarea>
 	                            	</div>
 	                            </div>
                             </div>
                             <div class="pt-3 pl-4">
-	                            <button type="submit" class="text-light btn_deco border-0 rounded text_2 btn_update" style="font-size:25px;">답변수정 등록</button>
+	                            <button type="submit" class="btn_update btn_update_text border-0 rounded" style="font-size:23px;">답변수정 등록</button>
 	                            <input type="hidden" value="${record.ANSWER_NO}" name="answer_no">
 	                            <input type="hidden" value="${record.BOARD_NO}" name="no">
                             </div>

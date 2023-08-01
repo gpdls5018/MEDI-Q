@@ -57,8 +57,17 @@
 			background-color:#fc6124;
 			border-radius: 20px;
 		}
-		.btn_deco{
-			background-color:#ff956c;
+		.btn_deco{/*버튼 색*/
+			background-color:#FAEBD0;
+		}
+		.btn_deco_text{/*버튼 글자색*/
+			color:#BCA77A;
+		}
+		.btn_update{/*등록버튼색*/
+			background-color:#D2F8E6;
+		}
+		.btn_update_text{/*등록버튼글자색*/
+			color:#80AB97;
 		}
 		.qna_mascot{
 			width:40px;
@@ -113,19 +122,19 @@
 		                    	<div class="card_deco p-1 m-2 col-12">
 		                            <div class="card-body p-2 m-3">
 		                                <div class="form-group">
-										  <label for="usr"><h3><kbd class="btn_deco font-weight-bold">질문 수정</kbd></h3></label>
+										  <label for="usr"><h3><kbd class="btn_deco btn_deco_text font-weight-bold">질문 수정</kbd></h3></label>
 										   <input type="hidden" name="no" value="${empty record.NO ? param.NO :record.NO}" />
 										  <input type="text" id="usr" name="title" value='${record.TITLE}${param.TITLE}' class="form-control form-control-lg" placeholder="질문을 수정하세요" >
 										</div>
 		                                <br>
 		                                <div class="form-group">
-										  <label for="comment"><h3><kbd class="btn_deco font-weight-bold">질문 내용 수정</kbd></h3></label>
+										  <label for="comment"><h3><kbd class="btn_deco btn_deco_text font-weight-bold">질문 내용 수정</kbd></h3></label>
 										  <textarea class="form-control" rows="15" name="content" placeholder="질문 내용을 수정하세요" id="comment">${record.CONTENT}${param.CONTENT }</textarea>
 										</div>
 		                            </div>
 		                        </div>
 		                        <div class="pl-2 m-3">
-	                            	<button type="submit" class="text-light btn_deco border-0 rounded" style="font-size:25px;">수정</button>
+	                            	<button type="submit" class="btn_update btn_update_text border-0 rounded" style="font-size:23px;">수정</button>
 	                            </div>
 							</form>
 						</div>
