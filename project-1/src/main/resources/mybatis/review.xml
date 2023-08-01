@@ -73,4 +73,8 @@
 	<delete id="deleteReview" parameterType="Map">
 		DELETE FROM REVIEWTABLE WHERE R_ID=#{id} AND R_PRODUCTNO=#{no}
 	</delete>
+	
+	<select id="selectReviewByNo" parameterType="int" resultType="int">
+		SELECT count(*) FROM REVIEWTABLE WHERE r_productno=#{no}
+	</select>
 </mapper>

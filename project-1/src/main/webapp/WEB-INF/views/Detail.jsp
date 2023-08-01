@@ -171,6 +171,8 @@ left: 146px;
 .review-effect{
 	display: flex;
 	margin-right: auto;
+	align-items: center;
+	height: 100%;
 }
 .write-review{
 	margin-top: 50px;
@@ -250,6 +252,21 @@ body{
 	cursor: pointer;
 	margin: 0 2px;
 }
+
+a,a:hover{
+	cursor: pointer;
+	text-decoration: none;
+	color: black;
+}
+
+.nutrient{
+	border: 1px solid #D6D9E0;
+	border-radius: 15px;
+	padding: 6px;
+}
+.nutrient:hover{
+	background-color: #D6D9E0;
+}
      </style>
 
 	<!-- 상단배너 div -->
@@ -286,7 +303,7 @@ body{
 			        <i class="bi bi-star rating"></i>
 			        <i class="bi bi-star rating"></i>
 			    </div>
-			    <div class="ml-3">리뷰 총 갯수</div>
+			    <a href="#reviewStart"><div class="ml-3">${totalReview }개의 리뷰</div></a>
 			</div>
 			<div class="mt-5">
 				<c:if test="${heartcount eq '1' }">
@@ -425,16 +442,18 @@ body{
 	                </tr>
 	                </c:if>
 	                <c:if test="${not empty listOne.nutrient }">
-	                <tr>
+	                <tr >
 	                    <th scope="row">성분</th>
 	                    <c:set var="nutrientList" value="${fn:split(listOne.nutrient, '$')}" />
 	                    <td>
-	                        <c:forEach items="${nutrientList}" var="item">
-	                    	<c:set var="item" value="${fn:replace(item, ' ', '')}" />
-		                        <a href="/NutrientDetail.do?name=${item}" style="text-decoration:none;">
-		                            <span class="badge badge-warning" style="font-size: 15px;">${item}</span>&nbsp;&nbsp;
-		                        </a>
-	                        </c:forEach>
+	                    	<div class="d-flex h-100">
+		                        <c:forEach items="${nutrientList}" var="item">
+		                    	<c:set var="item" value="${fn:replace(item, ' ', '')}" />
+			                        <a href="/NutrientDetail.do?name=${item}" style="text-decoration:none;">
+			                            <div class="nutrient text-nowrap mr-2 my-2" style="font-size: 15px;">${item}</div>
+			                        </a>
+		                        </c:forEach>
+		                    </div>
 	                    </td>
 	                </tr>
 	                </c:if>
@@ -444,7 +463,7 @@ body{
 	                    <c:set var="materialList" value="${fn:split(listOne.material, '$')}" />
 	                    <td>
 	                        <c:forEach items="${materialList}" var="item">
-	                            <span class="badge badge-danger" style="font-size: 15px;">${item}</span><br/>
+	                            <div class="my-3" ><span class="nutrient" style="font-size: 15px;">${item}</span></div>
 	                        </c:forEach>
 	                    </td>
 	                </tr>
@@ -452,8 +471,8 @@ body{
                 </tbody>
             </table>
        	</div><!-- 탭 1 끝 -->
-	 	<div class="empty-space" style="height:50px;"></div>
-	  	<div class="effect-custom-font mt-5" style="font-size:25px;">구매전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
+	 	<div id="reviewStart" class="empty-space" style="height:50px;"></div>
+	  	<div class="effect-custom-font mt-5" style="font-size:25px;">구매 전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
 	  	<div class="bubble p-4 effect-custom-font" style="font-size:17px;">
 		  	아래는 구매자들의 리뷰를 분석한 키워드 입니다.^^
 		  	<br>가운데 <span style="background-color:#ffdcdc;color:#ff4b4b">제품명</span>을 바탕으로
@@ -515,7 +534,7 @@ body{
 	   			<div class="review-board col-5">
 	   				<div class="ml-5 effect-custom-font" style="font-size:35px;">별점을 확인해보세요!</div>
 		      		<div class="star-board ml-5">
-		        		<div class="star-rating mt-2 ml-5">
+		        		<div class="star-rating2 mt-2 ml-5">
 		          			<i class="bi bi-star rating"></i>
 		          			<i class="bi bi-star rating"></i>
 		          			<i class="bi bi-star rating"></i>
@@ -639,11 +658,15 @@ body{
 			              		<i class="bi bi-star rating" style="font-size:20px;"></i>
 			              		<i class="bi bi-star rating" style="font-size:20px;"></i>
 			            	</div>
-			            	<div class="review-effect mt-4">
-			              		<h6>효과</h6>
-			              		<div class="review-content-effect m-2" ></div>
-			              		<h6>부작용</h6>
-			              		<div class="review-content-noEffect m-2"></div>
+			            	<div class="mt-4">
+			            		<div class="review-effect">
+				              		<span>효과</span>
+				              		<div class="review-content-effect m-2" ></div>
+				              	</div>
+				              	<div class="review-effect">
+				              		<span>부작용</span>
+				              		<div class="review-content-noEffect m-2"></div>
+				              	</div>
 			            	</div>
 			            	<div class="review-content m-2 row">
 				              	<p class="mt-3" style="font-size:15px;"></p>
@@ -652,10 +675,10 @@ body{
 			      	</li>
 			    </ul>
 			    <div id="loader">
-			      	<div class="skeleton-card p-3" style="text-align:center">
+			      	<div class="skeleton-card p-3 d-flex justify-content-center align-items-center" style="text-align:center">
 				      	<div class="spinner-border text-secondary" role="status">
 						</div>
-						<span class="visually-hidden">Loading...</span>
+						<span class="visually-hidden ml-2">Loading...</span>
 			      	</div>
 			    </div>
 		    	<div class="card-actions">
@@ -675,9 +698,14 @@ body{
 
 
 //리뷰 정보 출력(총 별점 평균 등, 효과들)
-  var totalStarScore = document.querySelectorAll("div.star-rating.mt-2 > i");
+  var totalStarScore = document.querySelectorAll(".star-rating > i");
   for(var i=0; i<${totalReviewDto.starScoreTotal}; i++) {
 	  totalStarScore[i].className = totalStarScore[i].className.replace("bi-star","bi-star-fill");
+  }
+  
+  var totalStarScore2 = document.querySelectorAll(".star-rating2 > i");
+  for(var i=0; i<${totalReviewDto.starScoreTotal}; i++) {
+	  totalStarScore2[i].className = totalStarScore2[i].className.replace("bi-star","bi-star-fill");
   }
   
   //공유하기 클릭
@@ -697,9 +725,10 @@ body{
   const cardLimit = 99;
   const cardIncrease = 3;
   const pageCount = Math.ceil(cardLimit / cardIncrease);
-  let currentPage = 1;
+  let currentPage = 1; 
 
-  cardTotalElem.innerHTML = cardLimit;
+  //총 리뷰 갯수
+  cardTotalElem.innerHTML = '${totalReview}';
 
   var throttleTimer;
   const throttle = (callback, time) => {
@@ -729,7 +758,7 @@ body{
       }
       console.log(reviewData);
       card.querySelector(".review-name").innerHTML = reviewData[0]['r_id'] === null ? 'Unknown' : reviewData[0]['r_id']; 
-      card.querySelector(".review-ages").innerHTML = reviewData[0]['birth']+'대';
+      card.querySelector(".review-ages").innerHTML = reviewData[0]['birth']==='0' ? '20대' : reviewData[0]['birth']+'대';
       card.querySelector(".review-gender").innerHTML = reviewData[0]['gender']==='F' ? '여성' : '남성';
       card.querySelector(".review-period").innerHTML = reviewData[0]['takeTime'];
       card.querySelector(".post-date").innerHTML = reviewData[0]['r_regidate'];
@@ -745,14 +774,14 @@ body{
       var effectValues = effect.match(/\[(.*?)\]/)[1];
       var effectValues = effectValues.split(", ");
       for(var effectValue of effectValues) {
-        card.querySelector(".review-content-effect").innerHTML += '<span class="p-1 mr-2" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:10px;">'+effectValue+'</span>';
+        card.querySelector(".review-content-effect").innerHTML += '<span class="p-1 mr-2" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:13px;">'+effectValue+'</span>';
       }
 
       var noEffect = reviewData[0]['noEffect'];
       var noEffectValues = noEffect.match(/\[(.*?)\]/)[1];
       var noEffectValues = noEffectValues.split(", ");
       for(var noEffectValue of noEffectValues) {
-        card.querySelector(".review-content-noEffect").innerHTML += '<span class="p-1 mr-2" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:10px;">'+noEffectValue+'</span>';
+        card.querySelector(".review-content-noEffect").innerHTML += '<span class="p-1 mr-2" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:13px;">'+noEffectValue+'</span>';
       }
       
       reviewData[0]['noEffect'];
@@ -773,14 +802,13 @@ body{
 
     const startRange = (pageIndex - 1) * cardIncrease;
     const endRange = currentPage == pageCount ? cardLimit : pageIndex * cardIncrease;
-
+	
     cardCountElem.innerHTML = endRange;
-
     for (let i = startRange + 1; i <= endRange; i++) {
       createCard(i);
     }
   };
-
+  
   const handleInfiniteScroll = () => {
     throttle(() => {
       const endOfPage =
@@ -815,27 +843,30 @@ body{
 	// 버튼 클릭 이벤트 핸들러 등록
 	heartButton.addEventListener('click', function() {
 	    var foodname = this.getAttribute('data-foodname');
+	    var like = this.className.includes('solid') ? '삭제' : '추가';
+	    //console.log('like:',like)
 	    var xhr = new XMLHttpRequest();
-	    
-	    xhr.onreadystatechange = function() {
-	        if (xhr.readyState === XMLHttpRequest.DONE) {
-	            if (xhr.status === 200) {
-	                // AJAX 요청이 성공한 경우
-	                var response = JSON.parse(xhr.responseText);
-	                var heart = response.heart;
-	                console.log('///',typeof(heartButton.className))
-	                // 버튼 텍스트 변경
-	                if (heart === "0") {
-	                    heartButton.className = heartButton.className.replace("solid","regular");
-	                } else {
-	                	heartButton.className = heartButton.className.replace("regular","solid");
-	                }
-	            } else {
-	                // AJAX 요청이 실패한 경우에 대한 처리
-	                console.error('AJAX 요청 실패:', xhr.status, xhr.statusText);
-	            }
-	        }
-	    };
+	    if(confirm(foodname+'을(를) 찜 '+ like +' 하시겠습니까?')){
+		    xhr.onreadystatechange = function() {
+		        if (xhr.readyState === XMLHttpRequest.DONE) {
+		            if (xhr.status === 200) {
+		                // AJAX 요청이 성공한 경우
+		                var response = JSON.parse(xhr.responseText);
+		                var heart = response.heart;
+		                console.log('///',typeof(heartButton.className))
+		                // 버튼 텍스트 변경
+		                if (heart === "1") {
+		                    heartButton.className = heartButton.className.replace("solid","regular");
+		                } else {
+		                	heartButton.className = heartButton.className.replace("regular","solid");
+		                }
+		            } else {
+		                // AJAX 요청이 실패한 경우에 대한 처리
+		                console.error('AJAX 요청 실패:', xhr.status, xhr.statusText);
+		            }
+		        }
+		    };
+	    }
 	    
 	    // AJAX 요청 설정
 	    xhr.open('GET', '/Heart.do?foodname=' + encodeURIComponent(foodname), true);

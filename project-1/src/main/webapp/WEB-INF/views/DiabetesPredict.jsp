@@ -93,12 +93,17 @@ body {
 		    		<img src="<c:url value="/images/mainicon.png"/>" style="width:30px;height:30px;">
 		    		<img src="<c:url value="/images/maintitle.png"/>" style="height:30px;">
 												와 다른 질병을 예측해 보아요!</div>
-		    		<div class="p-2" style="border-radius:40px;font-size:20px;background-color:#ff9558; font-weight: bold; text-align: center;">다른 질병 예측하러 가기</div>
+		    		<div class="p-2" style="cursor: pointer;border-radius:40px;font-size:20px;background-color:#ff9558; font-weight: bold; text-align: center;" onclick='redirectToPrediction()'>다른 질병 예측하러 가기</div>
 
 		    </div>
 		</div>
 	</div>
 	<script>
+	function redirectToPrediction() {
+	    // 여기에 이동할 URL을 설정합니다.
+	    var url = "<c:url value='/MachineLearn.do'/>"; // 해당 부분에 실제 URL을 입력합니다.
+	    window.location.href = url;
+	}
 	    $(document).ready(function() {
 	        $('#personInfoForm').submit(function (event) {
 	            event.preventDefault();
