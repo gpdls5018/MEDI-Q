@@ -64,10 +64,13 @@
 			color:#BCA77A;
 		}
 		.btn_update{/*등록버튼색*/
-			background-color:#D2F8E6;
+			background-color:#ff956c;
 		}
 		.btn_update_text{/*등록버튼글자색*/
-			color:#80AB97;
+			color:#FFFFFF;
+		}
+		.btn_align_right{/*등록,수정버튼 위치*/
+			text-align: right;
 		}
 		.qna_mascot{
 			width:40px;
@@ -100,10 +103,15 @@
 	            <img src="<c:url value="/images/qna/pharm.png"/>" class="qna_img">
 			</div>
         </div>
-        <div class="container-fluid pt-5 mt-5">
-            <div class="row d-flex flex-wrap">
-				<!--<img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs ml-1 mb-3">-->
-                <div class="d-flex col-2">
+        
+        <div class="container-fluid pt-3 mt-3">
+        	<!-- <div class="row">
+		       	<div class="d-flex col-3"></div>
+		       	<div class="d-flex col"><img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs mb-4"></div>
+		       	<div class="d-flex col-3"></div>
+		    </div> -->
+            <div class="row d-flex flex-wrap align-content-stretch">
+                <div class="d-flex col-3">
                 </div>                
                 <%-- 
                 <c:if test="${! empty InputError}">
@@ -113,52 +121,32 @@
 					</div>
 				</c:if>
 				 --%>
-                <div class="d-flex col flex-wrap flex-direction justify-content-center align-content-stretch mr-5 ml-5">
-                    <div class="col pb-5">
-                    	<img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs ml-1 mb-3">
-	                    <div class="col justify-content-center p-0 m-0">
-	                    	<form method="post" action="/board/EditProcess.do">
-	                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		                    	<div class="card_deco p-1 m-2 col-12">
-		                            <div class="card-body p-2 m-3">
-		                                <div class="form-group">
-										  <label for="usr"><h3><kbd class="btn_deco btn_deco_text font-weight-bold">질문 수정</kbd></h3></label>
-										   <input type="hidden" name="no" value="${empty record.NO ? param.NO :record.NO}" />
-										  <input type="text" id="usr" name="title" value='${record.TITLE}${param.TITLE}' class="form-control form-control-lg" placeholder="질문을 수정하세요" >
-										</div>
-		                                <br>
-		                                <div class="form-group">
-										  <label for="comment"><h3><kbd class="btn_deco btn_deco_text font-weight-bold">질문 내용 수정</kbd></h3></label>
-										  <textarea class="form-control" rows="15" name="content" placeholder="질문 내용을 수정하세요" id="comment">${record.CONTENT}${param.CONTENT }</textarea>
-										</div>
-		                            </div>
-		                        </div>
-		                        <div class="pl-2 m-3">
-	                            	<button type="submit" class="btn_update btn_update_text border-0 rounded" style="font-size:23px;">수정</button>
-	                            </div>
-							</form>
-						</div>
-                    
-                    <!--
+				 
+                <div class="d-flex col-6 flex-wrap flex-direction justify-content-center align-content-stretch">
                     <div class="col">
-                        <form method="post" action="/board/EditProcess.do">
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                            <div class="form-group">
-                                <label><kbd class="lead text_2 btn_deco">제목</kbd></label>
-                                <input type="hidden" name="no" value="${empty record.NO ? param.NO :record.NO}" />
-                                <input type="text"  value='${record.TITLE}${param.TITLE}' class="form-control" placeholder="제목을 입력하세요" name="title">
+                    	<form method="post" action="/board/EditProcess.do">
+	                    	<div class="card_deco col-12 p-0 m-0">
+	                            <div class="card-body p-2 m-3">
+	                                <div class="form-group">
+									  <label for="usr"><h3><kbd class="btn_deco btn_deco_text font-weight-bold">질문 수정</kbd></h3></label>
+									   <input type="hidden" name="no" value="${empty record.NO ? param.NO :record.NO}" />
+									   <input type="text" id="usr" name="title" class="form-control form-control-lg" placeholder="질문을 수정하세요" value='${record.TITLE}${param.TITLE}'>
+									</div>
+	                                <br>
+	                                <div class="form-group">
+									  <label for="comment"><h3><kbd class="btn_deco btn_deco_text font-weight-bold">질문 내용 수정</kbd></h3></label>
+									  <textarea id="comment" name="content" class="form-control" rows="6" placeholder="질문 내용을 수정하세요" >${record.CONTENT}${param.CONTENT }</textarea>
+									</div>
+	                            </div>
+	                        </div>
+	                        <div class="pr-3 pt-2 m-3 btn_align_right">
+                            	<button type="submit" class="btn_update btn_update_text border-0 rounded" style="font-size:23px;">수정</button>
                             </div>
-                            <div class="form-group">
-                                <label><kbd class="lead text_2 btn_deco">내용</kbd></label>
-                                <textarea class="form-control" rows="15" name="content">${record.CONTENT}${param.CONTENT }</textarea>
-                            </div>
-                            <button type="submit" class="btn btn-light text-light text_2 btn_deco">수정</button>
-                        </form>
-                    </div>
-                     -->
+						</form>
+					</div>
                 </div>
             </div>
-            <div class="d-flex col-2 flex-wrap align-content-stretch">
+            <div class="d-flex col-3 flex-wrap align-content-stretch">
             </div>
         </div>
     </main>
