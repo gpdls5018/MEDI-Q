@@ -258,6 +258,15 @@ a,a:hover{
 	text-decoration: none;
 	color: black;
 }
+
+.nutrient{
+	border: 1px solid #D6D9E0;
+	border-radius: 15px;
+	padding: 6px;
+}
+.nutrient:hover{
+	background-color: #D6D9E0;
+}
      </style>
 
 	<!-- 상단배너 div -->
@@ -433,16 +442,18 @@ a,a:hover{
 	                </tr>
 	                </c:if>
 	                <c:if test="${not empty listOne.nutrient }">
-	                <tr>
+	                <tr >
 	                    <th scope="row">성분</th>
 	                    <c:set var="nutrientList" value="${fn:split(listOne.nutrient, '$')}" />
 	                    <td>
-	                        <c:forEach items="${nutrientList}" var="item">
-	                    	<c:set var="item" value="${fn:replace(item, ' ', '')}" />
-		                        <a href="/NutrientDetail.do?name=${item}" style="text-decoration:none;">
-		                            <span class="badge badge-warning" style="font-size: 15px;">${item}</span>&nbsp;&nbsp;
-		                        </a>
-	                        </c:forEach>
+	                    	<div class="d-flex h-100">
+		                        <c:forEach items="${nutrientList}" var="item">
+		                    	<c:set var="item" value="${fn:replace(item, ' ', '')}" />
+			                        <a href="/NutrientDetail.do?name=${item}" style="text-decoration:none;">
+			                            <div class="nutrient text-nowrap mr-2 my-2" style="font-size: 15px;">${item}</div>
+			                        </a>
+		                        </c:forEach>
+		                    </div>
 	                    </td>
 	                </tr>
 	                </c:if>
@@ -452,7 +463,7 @@ a,a:hover{
 	                    <c:set var="materialList" value="${fn:split(listOne.material, '$')}" />
 	                    <td>
 	                        <c:forEach items="${materialList}" var="item">
-	                            <span class="badge badge-danger" style="font-size: 15px;">${item}</span><br/>
+	                            <div class="my-3" ><span class="nutrient" style="font-size: 15px;">${item}</span></div>
 	                        </c:forEach>
 	                    </td>
 	                </tr>
