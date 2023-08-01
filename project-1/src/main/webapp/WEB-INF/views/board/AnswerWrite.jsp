@@ -57,11 +57,17 @@
 			background-color:#FDCDBC;
 			border-radius: 20px;
 		}
-		.btn_deco{
-			background-color:#ff4b09;
+		.btn_deco{/*버튼 색*/
+			background-color:#FAEBD0;
 		}
-		.btn_update{
-			background-color: #ff956c;
+		.btn_deco_text{/*버튼 글자색*/
+			color:#BCA77A;
+		}
+		.btn_update{/*등록버튼색*/
+			background-color:#D2F8E6;
+		}
+		.btn_update_text{/*등록버튼글자색*/
+			color:#80AB97;
 		}
 		.qna_mascot{
 			width:40px;
@@ -105,19 +111,19 @@
                             <div class="card_deco col-12 p-0 m-0">
 	                            <div class="card-body p-2 m-3">
 	                                <div class="form-group">
-									  <label for="usr"><h3><kbd class="btn_deco font-weight-bold">질문 제목</kbd></h3></label>
+									  <label for="usr"><h3><kbd class="btn_deco btn_deco_text font-weight-bold">질문 제목</kbd></h3></label>
 									  <input type="text" id="usr" name="title" class="form-control form-control-lg" placeholder="${title}" disabled >
 									</div>
 	                                <br>
 	                                <div class="form-group">
-									  <label for="comment"><h3><kbd class="btn_deco font-weight-bold">답변내용 작성</kbd></h3></label>
+									  <label for="comment"><h3><kbd class="btn_deco btn_deco_text font-weight-bold">답변내용 작성</kbd></h3></label>
 									  <textarea id="comment" name="content" class="form-control form-control-lg" rows="5" placeholder="답변내용을 입력하세요" >${records.title }</textarea>
 									</div>
 	                            </div>
 	                        </div>
 	                        
 	                        <div class="pt-3 pl-4">
-	                            <button type="submit" class="text-light btn_update border-0 rounded text_2" style="font-size:25px;">답변 등록</button>
+	                            <button type="submit" class="btn_update btn_update_text border-0 rounded" style="font-size:23px;">답변 등록</button>
 	                            <input type="hidden" value="${no}" name="no">
                             </div>
                         </form>

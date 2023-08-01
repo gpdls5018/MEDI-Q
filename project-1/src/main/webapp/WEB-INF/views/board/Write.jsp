@@ -57,8 +57,17 @@
 			background-color:#fc6124;
 			border-radius: 20px;
 		}
-		.btn_deco{
-			background-color:#ff956c;
+		.btn_deco{/*버튼색*/
+			background-color:#FAEBD0;
+		}
+		.btn_deco_text{/*버튼 글자색*/
+			color:#BCA77A;
+		}
+		.btn_update{/*등록버튼색*/
+			background-color:#D2F8E6;
+		}
+		.btn_update_text{/*등록버튼글자색*/
+			color:#80AB97;
 		}
 		.qna_mascot{
 			width:40px;
@@ -108,12 +117,12 @@
                             <div class="card_deco col-12 p-0 m-0">
 	                            <div class="card-body p-2 m-3">
 	                                <div class="form-group">
-									  <label for="usr"><h3><kbd class="btn_deco font-weight-bold">제목</kbd></h3></label>
+									  <label for="usr"><h3><kbd class="btn_deco btn_deco_text font-weight-bold">제목</kbd></h3></label>
 									  <input type="text" id="usr" name="title" class="form-control form-control-lg" placeholder="제목을 입력하세요" >
 									</div>
 	                                <br>
 	                                <div class="form-group">
-									  <label for="comment"><h3><kbd class="btn_deco font-weight-bold">질문 내용</kbd></h3></label>
+									  <label for="comment"><h3><kbd class="btn_deco btn_deco_text font-weight-bold">질문 내용</kbd></h3></label>
 									  <textarea id="comment" name="content" class="form-control form-control-lg" rows="5" placeholder="내용을 입력하세요" ></textarea>
 									</div>
 	                            </div>
@@ -129,7 +138,7 @@
                             </div>
                             -->
                             <div class="pl-3 pt-2 m-2">
-                            	<button type="submit" class="text-light btn_deco border-0 rounded" style="font-size:25px;">등록</button>
+                            	<button type="submit" class="btn_update btn_update_text border-0 rounded" style="font-size:23px;">등록</button>
                             </div>
                         </form>
                     </div>
