@@ -17,4 +17,6 @@ public interface AndroidMapper {
 
 	FunctionalFoodListDTO selectFood(String no);
 
+	List<FunctionalFoodListDTO> selectFoodListByKeyWord(String keyword);
+
 }
