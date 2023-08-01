@@ -106,4 +106,9 @@ public class RestAPIController {
 	public FunctionalFoodListDTO androidSelectFood(@PathVariable(name = "no") String no) {
 		return androidServiceImpl.selectFood(no);
 	}
+	@GetMapping("/androidSelectFoodByKeyWord.do/{keyword}")
+	public List<FunctionalFoodListDTO> androidSelectFoodByKeyWord(@PathVariable(name = "keyword") String keyword) {
+		return androidServiceImpl.selectFoodListByKeyWord(keyword);
+	}
+	
 }

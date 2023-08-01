@@ -53,8 +53,8 @@
         -webkit-box-pack: center;
         justify-content: center;
         border: 1px solid var(--color-bs-gray-300);
-        width: 100px;
-        height: 100px;
+        width: 170px;
+        height: 170px;
         padding: 10px;
         border-radius: 12px;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
@@ -80,7 +80,7 @@
         z-index: 1;
     }
     .color-6 {
-        background: #f3f3f3;
+        background: #f5f5f0;
     }
     /* General button style (reset) */
     .btn {
@@ -97,9 +97,11 @@
         text-align: center;
         color: black;
     }
+    
 body{
 	background-color: white;
 }
+
 #contentInfoCon {
     position: relative;
     height: 383px;
@@ -142,6 +144,10 @@ body{
 	box-shadow: 0px 0px 0px white;
 	align-items: center;
 }
+	a:hover {
+  text-decoration: none;
+}
+
      </style>
 	<!-- 상단배너 div -->
 	<aside id="contentInfoCon" class="area animated">
@@ -158,7 +164,7 @@ body{
     
 	<div class="container" style="padding-bottom: 150px ;">
         <section class="color-6">
-            <h3 style="font-weight: bold; color: black;">영양제를 먹는 이유가 무엇인가요?</h3>
+            <h3 style="font-weight: bold; color: black; font-size: 30px; margin-top: 40px; margin-bottom: 20px;">어떤 건강고민을 해결하고 싶으신가요?</h3>
             <p>
                 <a href="/functionfood/healthissue.do?healthissue=피로감">
 	                <button class="btn btn-6 btn-6c" onclick="toggleButton(this)">
