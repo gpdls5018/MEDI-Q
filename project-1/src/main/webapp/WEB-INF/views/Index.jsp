@@ -269,8 +269,8 @@ html, body {
 .p2firsta {
 	position: absolute;
 	z-index:2;
-	top:410px; 
-	right:130px;
+	top:455px; 
+	right:270px;
 	color:gray;
 	padding: 10px; 
 	text-align: center;
@@ -284,8 +284,8 @@ html, body {
 .p3firsta {
 	position: absolute;
 	z-index:2;
-	top:500px; 
-	left:880px;
+	top:491px; 
+	left:817px;
 	color:gray;
 	padding: 10px; 
 	text-align: center;
@@ -321,8 +321,8 @@ html, body {
 
 .hori3{
 	position: absolute; 
-	top:75px;
-	right:130px;
+	top: 80px;
+	right: 170px;
 }
  .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
  .wrap * {padding: 0;margin: 0;}
@@ -338,6 +338,12 @@ html, body {
  .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
  .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
  .info .link {color: #5085BB;}
+ 
+ 
+ 
+ 
+ 
+ 
 </style>
 <!-- 슬라이더를 위한 CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
@@ -497,7 +503,7 @@ html, body {
 		<img class="p3secondimg" src="https://img.freepik.com/free-photo/healthy-lifestyle-of-veggies-and-fruit-slices_23-2148502235.jpg?t=st=1690263535~exp=1690264135~hmac=69f1fdeef82a37792807b85518bb146bceca7503b5c246ce5dc3a2b84c8f0535" >
 		<a type="button" class="p3firsta btn" href='<c:url value="/NutrientSelect.do"/>' >더 보기 →</a>	
 	  	<div class="animatedleft" style="margin-left: 200px;">
-			<div class="row justify-content-center pt-5" style="margin: 10px 0px 50px 0px; width: 800px">
+			<div class="row justify-content-center pt-2" style="margin: 10px 0px 50px 0px; width: 800px">
 		        <div class="p2div3 text-center" >
 		            <h1 class="p2h1 px-5 mb-5"><span style="color: #EF605D;">영양소를 </span> 검색해보세요.</h1>
 		            <form class="position-relative w-100 mx-auto animated slideInDown d-flex input-wrapper" required minlength="1" action="<c:url value="/functionfood/select.do"/>" style="box-shadow: 0px 0px 5px gray; border-radius: 20px;">
@@ -511,7 +517,7 @@ html, body {
 		 </div>
 	  
 	  	<div class="section section1-2b my-1" style="align-content: center;">
-	        <div class="content" style="margin-top: 50px; text-align: center;">
+	        <div class="content" style="margin-top: 20px; margin-left:25px; text-align: center;">
 	            <span class="txt1" ><span style="color:black; margin: 20px 0 20px 30px;">🌿 인기 영양소</span> Top10</span>
 	            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:35px 0px;">현재 조회수가 가장 높은 영양소 Top10을 알려드릴게요</p>
 	            <div class="ingredient-wrap" style="margin-left: 20px;">
@@ -602,8 +608,8 @@ html, body {
 		   <div class="section section20-2 section20-2-home ">
 		        <div class="content">
 		            <!-- <div class="qna-mark-home" style="display: block; text-align: center; width: 100%;">Q&amp;A</div> -->
-		            <span class="ge-title get-20-2">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
-		            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:0px 0px 10px; ">현재 추천수가 가장 높은 영양제 Top3를 알려드릴게요</p>
+		            <span class="ge-title get-20-2" style="margin-bottom: 40px;">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
+		            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:0px 0px 40px; ">현재 추천수가 가장 높은 영양제 Top3를 알려드릴게요</p>
 		            <a type="button" class="p2firsta btn hori3" href="<c:url value="/board/List.do" />">더 보기 →</a>
 		            <div class="clearfix mb-2" style="position: absolute; right:10px; top:-400px">
 		            </div>
@@ -674,7 +680,7 @@ html, body {
 	  
 	    
 	   <!--  페이지8 -->
-	  <div class="tssection" id="tssection8">
+	  <div class="tssection" id="tssection8" style="padding-bottom: 60px;">
 	      <div class="mainInner" style="margin: 50px 0px;">
 	            <h3 class="my-4 animated" >우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
 	            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:35px 0px;">우리동네에 어떤 병원과 약국이 있을까?</p>
@@ -686,13 +692,13 @@ html, body {
 	                        </button>
 	                        <div class="mapLayer">
 	                            <div class="closeLayerButton" onclick="closeMapLayer()">&times;</div>
-	                            	<h2>주소</h2>
-	      	                     	<p style="font-size:17px; color:gray; font-weight: bold; margin-bottom: 0px;">서울특별시 금천구 가산디지털2로 101<br/> B동 B304호(MEDI-Q팀)</p>
-	      	                     	<p style="font-size:15px; color:gray;">(주)한국소프트웨어아이엔씨 (153-759)</p>
-	                           		<a href="https://naver.me/Fcacgzd6" target="_blank">
-	                           		<img src="<c:url value="/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
-	                           		<a href="https://map.kakao.com/?urlX=473291&urlY=1104884&urlLevel=3&itemId=1784287516&q=%ED%95%9C%EB%9D%BC%EC%9B%90%EC%95%A4%EC%9B%90%ED%83%80%EC%9B%8C&srcid=1784287516&map_type=TYPE_MAP" target="_blank"> 
-	                           		<img src="<c:url value="/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
+                            	<h2>주소</h2>
+      	                     	<p style="font-size:17px; color:gray; font-weight: bold; margin-bottom: 0px;">서울특별시 금천구 가산디지털2로 101<br/> B동 B304호(MEDI-Q팀)</p>
+      	                     	<p style="font-size:15px; color:gray;">(주)한국소프트웨어아이엔씨 (153-759)</p>
+                           		<a href="https://naver.me/Fcacgzd6" target="_blank">
+                           		<img src="<c:url value="/images/tsimages/img_naver.png"/>" alt="NAVER">  지도로 보기</a>
+                           		<a href="https://map.kakao.com/?urlX=473291&urlY=1104884&urlLevel=3&itemId=1784287516&q=%ED%95%9C%EB%9D%BC%EC%9B%90%EC%95%A4%EC%9B%90%ED%83%80%EC%9B%8C&srcid=1784287516&map_type=TYPE_MAP" target="_blank"> 
+                           		<img src="<c:url value="/images/tsimages/img_daum.png"/>" alt="다음지도 보기">  지도로 보기</a>
 	                        </div>          
 	                    </div>
 	                </div>

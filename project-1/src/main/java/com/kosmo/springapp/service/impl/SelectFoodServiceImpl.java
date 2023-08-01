@@ -72,4 +72,9 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	public String healthIssueCou(String healthissue) {
 		return mapper.healthIssueCou(healthissue);
 	}
+
+	@Override
+	public List<FunctionalFoodListDTO> selectFoodListFromNut(String nut) {
+		return mapper.selectFoodListFromNut(nut);
+	}
 }
