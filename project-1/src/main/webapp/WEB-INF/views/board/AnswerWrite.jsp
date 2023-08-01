@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <title>MEDI Q</title>
     <style>
        .qna_banner{
@@ -57,7 +58,10 @@
 			border-radius: 20px;
 		}
 		.btn_deco{
-			background:linear-gradient(180deg,#ff4b09,#ff956c);
+			background-color:#ff4b09;
+		}
+		.btn_update{
+			background-color: #ff956c;
 		}
 		.qna_mascot{
 			width:40px;
@@ -113,7 +117,7 @@
 	                        </div>
 	                        
 	                        <div class="pt-3 pl-4">
-	                            <button type="submit" class="btn btn-light text-light text_2 btn_deco" style="font-size:22px;">답변 등록</button>
+	                            <button type="submit" class="text-light btn_update border-0 rounded text_2" style="font-size:25px;">답변 등록</button>
 	                            <input type="hidden" value="${no}" name="no">
                             </div>
                         </form>

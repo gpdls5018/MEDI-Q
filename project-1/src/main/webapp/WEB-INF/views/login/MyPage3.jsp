@@ -721,7 +721,7 @@ body {
 						<c:if test="${not isProfImg }">
 							<img class="img" alt="기본 프로필" src="<c:url value="/images/basic/friend.png" />" style="width: 180px; height: 180px">
 						</c:if>
-                        <span>${info.name }</span>
+                        <span>${info.id }</span>
 
                         <ul class="profilemenu ml-auto">
                         	<li><a href="" id="" class="sidenava1" data-toggle="modal" data-target="#healthModal" data-backdrop="static">나의 건강 정보 등록</a></li>

@@ -2,52 +2,47 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <title>MEDI Q</title>
-    <style>
-
-        .qna_banner{
-        	width:75%;
-        	height:280px;
-        	background-color:#FDCDBC;
-            border-radius: 30px;
-        }
-        .qna_title{
-        	position:relative;
-        	top:calc(100vh - 96vh);
-        	left:10%;
-        	color:white;
-        	margin:0px;
-        }
-        .qna_img{
-            position:absolute;
-            width: 200px;
-            top:calc(100vh - 85vh);
-            right:20%;
-        }
-        .text_1{
-        	font-size:70px;
-        	font-weight:bold;
-        }
-        .text_2{
-        	font-size:30px;
-        	font-weight:bold;
-        }
-        .text_3{
-        	font-size:20px;
-        	font-weight:bold;
-        }
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<title>MEDI Q</title>
+<style>
+	.qna_banner{
+       	width:75%;
+       	height:280px;
+       	background-color:#FDCDBC;
+           border-radius: 30px;
+       }
+       .qna_title{
+       	position:relative;
+       	top:calc(100vh - 96vh);
+       	left:10%;
+       	color:white;
+       	margin:0px;
+       }
+       .qna_img{
+           position:absolute;
+           width: 200px;
+           top:calc(100vh - 85vh);
+           right:20%;
+       }
+       .text_1{
+       	font-size:70px;
+       	font-weight:bold;
+       }
+       .text_2{
+       	font-size:30px;
+       	font-weight:bold;
+       }
+       .text_3{
+       	font-size:20px;
+       	font-weight:bold;
+       }
 		.qna_now{
-			width:550px;
-			height:90px;
+			height:80px;
 		}
 		.qna_ans{
-			width:400px;
-			height:90px;
+			height:80px;
 		}
 		.card_deco{
 			width: 92%;
@@ -60,20 +55,20 @@
 		}
 		.card_deco_body{
 			padding:0.5rem;
-			background-color:#FDCDBC;
+			background-color:#fc6124;
 			border-radius: 20px;
 		}
 		.btn_deco{
-			width:120px;
-        	height:50px;
-			background-color: #FDCDBC;
-			border-radius:15px;
+			width:110px;
+	       	height:40px;
+			background-color: #ff956c;
+			border-radius:10px;
 			box-shadow: 1px 1px 2px gray;
 			border: none;
-			color:#EF605D;
+			color:white;
 		}
 		.btn_deco:hover {
-			color:black;
+			color:rgba(255,255,255,0.8);
 		} 
 		.qna_mascot{
 			width:40px;
@@ -116,7 +111,7 @@
 		}
 		.a_deco{
 			color:black;
-            cursor: pointer;
+			cursor: pointer;
 		}
 		.a_deco:hover{
 			color:gray;
@@ -181,7 +176,7 @@ body{
 	color:gray;
 	
 }
-     </style>
+</style>
 
 	<!-- 상단배너 div -->
 	<aside id="contentInfoCon" class="area animated">
@@ -197,22 +192,22 @@ body{
         </div>
     </aside>
 
-        <div class="container-fluid pt-5 mt-5">
+        <div class="container-fluid" style="padding-top:150px">
             <div class="row d-flex flex-wrap align-content-stretch">
                 <div class="d-flex col-3"></div>
                 <div class="d-flex col-6 flex-wrap flex-direction justify-content-center align-content-stretch">
-                    <div class="row"><!-- 세로로 자주찾는 질문&답변 게시물-->
+                    <div class="row pb-3"><!-- 세로로 자주찾는 질문&답변 게시물-->
                     	<!-- 인기 있는 질문시작 -->
-                        <img src="<c:url value="/images/qna/qna_now.png"/>" class="qna_now" style="width: 450px; height: 80px;">
+                        <img src="<c:url value="/images/qna/qna_now.png"/>" class="qna_now">
                         <!-- 토큰이 존재하는 경우 버튼을 보여줍니다. -->
                         <c:if test="${not empty id }" var="isWriter"><!-- True,False를 isWriter에 저장-->
-	                        <div class="col mt-4">
-	                        	<a class="d-flex justify-content-end text-decoration-none mr-1" href='<c:url value="/board/Write.do"/>'>
-	                        		<button class=" btn_deco text_3" style="font-size:20px;">질문 작성</button>
+	                        <div class="col p-0 mt-5">
+	                        	<a class="d-flex justify-content-end text-decoration-none" href='<c:url value="/board/Write.do"/>'>
+	                        		<button class="btn_deco text_3" style="font-size:20px;">질문 작성</button>
 	                        	</a>
 	                        </div>
                         </c:if>
-                        <div class="row justify-content-center pt-2">
+                        <div class="row justify-content-center pt-3 pb-3">
 	                        <c:if test="${not isEmpty}">
 	                        	<c:forEach var="like" items="${listPagingData.likes }"><!-- 추천수 TOP3 -->
 			                        <a class="card_deco text-decoration-none a_deco col-12 p-1 m-2" href="<c:url value="/board/View.do?no=${like.NO }"/>">
@@ -231,14 +226,14 @@ body{
 
                         <br/>
   						<div class="row align-items-end pt-4 pb-2">
-  							<div class="col">
-  								<!-- 1:1 답변 게시물 시작 -->
-	                        	<img src="<c:url value="/images/qna/qna_ans.png"/>" class="qna_ans p-0 m-0" style="width: 370px; height: 80px;">
+  							<div class="col pt-3">
+  								<!-- 1:1 답변 게시 시작 -->
+	                        	<img src="<c:url value="/images/qna/qna_ans.png"/>" class="qna_ans">
 	                        </div>
 	                   
                         </div>
                         <!-- 질문에 대한 컨테이너 -->
-                        <div class="row justify-content-center p-0 m-0">
+                        <div class="row justify-content-center pt-2">
                         	<c:if test="${empty listPagingData.records }" var="isEmpty">
 								<div>등록된 자료가 없습니다.</div>
 							</c:if>
