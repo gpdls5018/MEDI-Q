@@ -73,12 +73,12 @@ body {
 						<img alt="당뇨" style="border-radius:15px; width: 200px; height: 200px;" src="https://img.freepik.com/free-photo/covid-recovery-center-female-doctor-checking-elder-patient-s-oxygen-level_23-2148847834.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=sph">
 						 <br/>당뇨병 예측</a>
 					</div>
-					<div class="tsai" style="position: absolute; top:110px; left:430px;">
+					<div class="tsai" style="position: absolute; top:110px; left:180px;">
 						<a href="/CardiovascularPredict.do?" style="color:black; font-weight: bold; text-decoration: none;">						
 						<img alt="심장질환" style="border-radius:15px; width: 200px; height: 200px;" src="https://img.freepik.com/premium-photo/hands-holding-chest-with-symptom-heart-attack-disease_33807-784.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=sph">
 						<br/>심장질환 예측</a>
 					</div>
-					<div class="tsai" style="position: absolute; top:110px; left:180px;">
+					<div class="tsai" style="position: absolute; top:110px; left:430px;">
 						<a href="/ParkinsonPredict.do?" style="color:black; font-weight: bold; text-decoration: none;">						
 						<img alt="치매" style="border-radius:15px; width: 200px; height: 200px;" src="https://img.freepik.com/premium-photo/handsome-depressed-man-in-casual-clothes_85574-5904.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=sph">
 						<br/>파킨슨(치매) 예측</a>
