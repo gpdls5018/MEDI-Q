@@ -13,7 +13,7 @@
     <title>MEDI Q</title>
     <style>
        .qna_banner{
-        	width:75%;
+        	width:60%;
         	height:280px;
         	background-color:#FDCDBC;
             border-radius: 30px;
@@ -29,7 +29,7 @@
 	         position:absolute;
 	         width: 200px;
 	         top:calc(100vh - 85vh);
-	         right:20%;
+	         right:25%;
 	     }
 		.text_1{
 			font-size:70px;
@@ -64,10 +64,13 @@
 			color:#BCA77A;
 		}
 		.btn_update{/*등록버튼색*/
-			background-color:#D2F8E6;
+			background-color:#ff956c;
 		}
 		.btn_update_text{/*등록버튼글자색*/
-			color:#80AB97;
+			color:#FFFFFF;
+		}
+		.btn_align_right{/*등록,수정버튼 위치*/
+			text-align: right;
 		}
 		.qna_mascot{
 			width:40px;
@@ -102,34 +105,44 @@
         </div>
         
         <div class="container-fluid pt-3 mt-3">
+        
+        	<!-- 
+        	<div class="row">
+	        	<div class="d-flex col-3"></div>
+	        	<div class="d-flex col"><img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs mb-4"></div>
+	        	<div class="d-flex col-3"></div>
+            </div>
+            -->
             <div class="row d-flex flex-wrap align-content-stretch">
-                <div class="d-flex col-2">
+                <div class="d-flex col-3">
                 </div>
-                <div class="d-flex col-8 flex-wrap flex-direction justify-content-center align-content-stretch">
+                
+                <div class="d-flex col-6 flex-wrap flex-direction justify-content-center align-content-stretch">
                     <div class="col">
                         <form method="post" action="/board/AnswerEdit.do">
                              <div class="card_deco col-12 p-0 m-0">
 	                            <div class="card-body p-2 m-3">
 	                                <div class="form-group">
                                 		<label for="usr"><h3><kbd class="btn_deco btn_deco_text font-weight-bold">질문 제목</kbd></h3></label>
-                                		<input type="text" name="title" class="form-control" placeholder="${title}" disabled >
+                                		<input type="hidden" value="${record.ANSWER_NO}" name="answer_no">
+	                            		<input type="hidden" value="${record.BOARD_NO}" name="no">
+                                		<input type="text" id="usr" name="title" class="form-control" placeholder="${title}" disabled >
                             		</div>
 	                            	<br>
 		                            <div class="form-group">
 										<label for="comment"><h3><kbd class="btn_deco btn_deco_text font-weight-bold">답변내용 수정</kbd></h3></label>
-	                                	<textarea class="form-control" rows="15" name="content">${record.CONTENT }</textarea>
+	                                	<textarea name="content" class="form-control" rows="6">${record.CONTENT }</textarea>
 	                            	</div>
 	                            </div>
                             </div>
-                            <div class="pt-3 pl-4">
+                            
+                            <div class="pt-2 pr-3 m-3 mb-4 btn_align_right">
 	                            <button type="submit" class="btn_update btn_update_text border-0 rounded" style="font-size:23px;">답변수정 등록</button>
-	                            <input type="hidden" value="${record.ANSWER_NO}" name="answer_no">
-	                            <input type="hidden" value="${record.BOARD_NO}" name="no">
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="d-flex col-2 flex-wrap align-content-stretch">
+                <div class="d-flex col-3 flex-wrap align-content-stretch pt-2 mb-3">
                 </div>
             </div>
         </div>
