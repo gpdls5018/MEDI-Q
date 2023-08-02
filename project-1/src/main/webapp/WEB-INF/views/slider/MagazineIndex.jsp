@@ -162,6 +162,81 @@
 	.carousel-indicators .active {
 	  background-color: #FF4400;
 	}
+	
+	.imgContent, .imgContent:hover{
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+	}
+	.imgContent-custom{
+	  padding-left: 20px;
+	}
+	.imgContentFontS{
+		margin-top : 5px;
+		margin-bottom : 5px;
+		font-size: 13px;	
+		display: block;
+		width: 180px; 
+		height: 28px; 
+		border: 2px solid #40AFFF;
+		color : #40AFFF;
+		border-radius: 20px; 
+		text-align: center;
+		padding-top: 2px;
+	}
+	.imgContentFontR{
+		margin-top : 5px;
+		margin-bottom : 5px;
+		font-size: 13px;	
+		display: block;
+		width: 180px; 
+		height: 28px; 
+		border: 2px solid #FF8080;
+		color : #FF8080;
+		border-radius: 20px; 
+		text-align: center;
+		padding-top: 2px;
+	}
+	.imgContentFontY{
+		margin-top : 5px;
+		margin-bottom : 5px;
+		font-size: 13px;	
+		display: block;
+		width: 180px; 
+		height: 28px; 
+		border: 2px solid #FFDD33;
+		color : #F2CA00;
+		border-radius: 20px; 
+		text-align: center;
+		padding-top: 2px;
+	}
+	.imgContentFontG{
+		margin-top : 5px;
+		margin-bottom : 5px;
+		font-size: 13px;	
+		display: block;
+		width: 180px; 
+		height: 28px; 
+		border: 2px solid #4F8F4F;
+		color : #4F8F4F;
+		border-radius: 20px; 
+		text-align: center;
+		padding-top: 2px;
+	}
+	.imgContentFontP{
+		margin-top : 5px;
+		margin-bottom : 5px;
+		font-size: 13px;	
+		display: block;
+		width: 180px; 
+		height: 28px; 
+		border: 2px solid #AE55D4;
+		color : #AE55D4;
+		border-radius: 20px; 
+		text-align: center;
+		padding-top: 2px;
+	}
+
 </style>
 <script>
 	window.addEventListener("DOMContentLoaded", function() {
@@ -308,139 +383,196 @@
 				<div class="sec_body">
 					<div class="commons" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=06"/>">
+							<a href="<c:url value="/magazine.do?no=06"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/SkyM_Yoo.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontS">영양제 상식</div>
+								질 유산균의 원리부터 자주 묻는 질문까지 한 번에!
+								</div>
 							</a>
 						</div>
 					</div>
 					<div class="atoz" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=04"/>">
+							<a href="<c:url value="/magazine.do?no=04"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/RedM_Pro.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontR">영양소 A to Z</div>
+								여러 종류의 프로폴리스, 어떤 걸 먹어야 할까?
+								</div>
 							</a>
 						</div>
 					</div>
 					<div class="recipe" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=05"/>">
+							<a href="<c:url value="/magazine.do?no=05"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/YellowM_Mus.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontY">영양제 레시피</div>
+								운동 전후로 챙기는 운동 영양제 레시피
+								</div>
 							</a>
 						</div>
 					</div>
 					<div class="recipe" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=16"/>">
+							<a href="<c:url value="/magazine.do?no=16"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/YellowM_Sleep.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontY">영양제 레시피</div>
+								밤을 지새는 사람들을 위한 불면증 영양제 레시피
+								</div>
 							</a>
 						</div>
 					</div>
 					<div class="recipe" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=18"/>">
+							<a href="<c:url value="/magazine.do?no=18"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/YellowM_Mois.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontY">영양제 레시피</div>
+								환절기에도 걱정 없는 피부 건강 영양제 레시피
+								</div>
 							</a>
 						</div>
 					</div>
 					
 					<div class="atoz" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=02"/>">
+							<a href="<c:url value="/magazine.do?no=02"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/RedM_Col.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontR">영양소 A to Z</div>
+								진짜 효과 있는 콜라겐을 고르는 법
+								</div>
 							</a>
 						</div>
 					</div>
 					
 					<div class="atoz" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=01"/>">
+							<a href="<c:url value="/magazine.do?no=01"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/RedM_Arg.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontR">영양소 A to Z</div>
+								운동러들의 필수 보충제, 아르기닌의 부작용
+								</div>
 							</a>
 						</div>
 					</div>
 					
 					<div class="atoz" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=03"/>">
+							<a href="<c:url value="/magazine.do?no=03"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/RedM_Hia.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontR">영양소 A to Z</div>
+								다양한 형태의 히알루론산, 어느 게 더 좋을까?
+								</div>
 							</a>
 						</div>
 					</div>
 					<div class="recipe" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=17"/>">
+							<a href="<c:url value="/magazine.do?no=17"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/YellowM_Depre.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontY">영양제 레시피</div>
+								약사가 추천하는 우울증 극복 영양제 레시피
+								</div>
 							</a>
 						</div>
 					</div>
 					<div class="recipe" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=19"/>">
+							<a href="<c:url value="/magazine.do?no=19"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/YellowM_Diet.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontY">영양제 레시피</div>
+								근육은 유지하고 지방만 쏙 빼는 영양제 레시피
+								</div>
 							</a>
 						</div>
 					</div>
 					
 					<div class="healnlife" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=10"/>">
+							<a href="<c:url value="/magazine.do?no=10"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/GreenM_Depre.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontG">Health & Life</div>
+								생리 기간이 다가오면 우울하고 여기저기 아파요
+								</div>
 							</a>
 						</div>
 					</div>
 					<div class="healnlife" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=13"/>">
+							<a href="<c:url value="/magazine.do?no=13"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/GreenM_Sleep.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontG">Health & Life</div>
+								수면제 없이 불면증 극복하는 법
+								</div>
 							</a>
 						</div>
 					</div>
 					<div class="commons" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=14"/>">
+							<a href="<c:url value="/magazine.do?no=14"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/SkyM_Yoo_2.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontS">영양제 상식</div>
+								변비 해결하려면, 유산균 이렇게 먹자!
+								</div>
 							</a>
 						</div>
 					</div>
 					<div class="commons" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=15"/>">
+							<a href="<c:url value="/magazine.do?no=15"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/SkyM_Vita.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontS">영양제 상식</div>
+								멀티비타민과 종합비타민, 알고 먹자!
+								</div>
 							</a>
 						</div>
 					</div>
 					<div class="healnlife" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=11"/>">
+							<a href="<c:url value="/magazine.do?no=11"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/GreenM_Yoo.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontG">Health & Life</div>
+								변비, 유산균 말고 다른 방법은 없을까?
+								</div>
 							</a>
 						</div>
 					</div>
 					<div class="healnlife" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=12"/>">
+							<a href="<c:url value="/magazine.do?no=12"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/GreenM_Wat.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontG">Health & Life</div>
+								건강을 위한 올바른 수분 섭취법
+								</div>
 							</a>
 						</div>
 					</div>
 					
 					<div class="factcheck" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=07"/>">
+							<a href="<c:url value="/magazine.do?no=07"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/PurpleM_Ten.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontP">영양제 팩트체크</div>
+								요즘은 텐텐으로 생리주기를 조절한다고…!?
+								</div>
 							</a>
 						</div>
 					</div>
 					<div class="factcheck" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=09"/>">
+							<a href="<c:url value="/magazine.do?no=09"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/PurpleM_Heal.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontP">영양제 팩트체크</div>
+								영양제 섭취 초기의 가려움, 설사... 영양제의 명현현상
+								</div>
 							</a>
 						</div>
 					</div>
 					<div class="factcheck" id="mag_content">
 						<div class="mag_box">
-							<a href="<c:url value="/magazine.do?no=08"/>">
+							<a href="<c:url value="/magazine.do?no=08"/>" class="imgContent" style="text-decoration: none;">
 								<img class="mag_img" src="<c:url value="/images/thumbnail_img/PurpleM_Hei.jpg"/>">
+								<div class="imgContent-custom"><div class="imgContentFontP">영양제 팩트체크</div>
+								키 크는 영양제, 우리 아이도 먹여야 할까?
+								</div>
 							</a>
 						</div>
 					</div>
