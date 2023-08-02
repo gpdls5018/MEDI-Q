@@ -146,6 +146,10 @@
 		display: block;
 		clear: both;
 	}
+	.carousel-inner img {
+	    width: 100%;
+	    height: 100%;
+  	}
 </style>
 <script>
 	window.addEventListener("DOMContentLoaded", function() {
@@ -226,6 +230,43 @@
 			        </h2>
 		        </div>
 		         -->
+		       <div id="banner" class="carousel slide mt-2 mb-4" data-ride="carousel">
+				  <ul class="carousel-indicators">
+				    <li data-target="#banner" data-slide-to="0" class="active"></li>
+				    <li data-target="#banner" data-slide-to="1"></li>
+				    <li data-target="#banner" data-slide-to="2"></li>
+				    <li data-target="#banner" data-slide-to="3"></li>
+				    <li data-target="#banner" data-slide-to="4"></li>
+				  </ul>
+				  
+				  <div class="carousel-inner">
+				    <div class="carousel-item active">
+				      <a href="<c:url value="/magazine.do?no=14"/>">
+				      	<img src="<c:url value="/images/magazine_images/banner/Commons_2.jpg"/>" width="1100" height="500">
+				      </a>
+				    </div>
+				    <div class="carousel-item">
+				      <a href="<c:url value="/magazine.do?no=15"/>">
+				      	<img src="<c:url value="/images/magazine_images/banner/Commons.jpg"/>" width="1100" height="500">
+				   	  </a>
+				    </div>
+				    <div class="carousel-item">
+					  <a href="<c:url value="/magazine.do?no=08"/>">
+					     <img src="<c:url value="/images/magazine_images/banner/Factcheck.jpg"/>" width="1100" height="500">
+					  </a>
+				    </div>
+				    <div class="carousel-item">
+				       <a href="<c:url value="/magazine.do?no=10"/>">
+				      	  <img src="<c:url value="/images/magazine_images/banner/HealthLife.jpg"/>" width="1100" height="500">
+				   	   </a>
+				    </div>
+				    <div class="carousel-item">
+				    	<a href="<c:url value="/magazine.do?no=17"/>">
+				      	   <img src="<c:url value="/images/magazine_images/banner/Recipe.jpg"/>" width="1100" height="500">
+				    	</a>
+				    </div>
+				  </div>
+				</div>
 			</div>
 			
 	        <div class="container">
@@ -251,11 +292,6 @@
 				</ul>
 			</div>
 			
-			<div class="container">	
-		        <h3 class="display-4 text-center first-text" style="color: #2E8B57;"><strong><span style="color:#EF605D; font-weight:900;">
-		        <img src="<c:url value="/images/magazine_images/medi/healthcare.png"/>" class="img-fluid medi-imgs" style="width:110px">
-		        건강정보</span> 페이지</strong></h3>
-			</div>
 			<div class="main">
 				<div class="sec_body">
 					<div class="commons" id="mag_content">
