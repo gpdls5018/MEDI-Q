@@ -19,8 +19,11 @@
                 WHERE R_PRODUCTNO = #{no}
             ) t
             LEFT JOIN MEMBER m ON t.R_ID = m.ID
+            order by row_NUM DESC
 		)
 		WHERE row_num &gt;= #{current} AND row_num &lt; #{current} + 1
+		order by row_NUM DESC
+		
 	</select>
 	<select id="selectTotalReviewInfoStarScoreAverage" parameterType="int" resultType="float">
 		SELECT COALESCE(ROUND(AVG(starscore),1), 0) AS average_value
