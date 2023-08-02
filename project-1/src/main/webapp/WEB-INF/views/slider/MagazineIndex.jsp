@@ -150,6 +150,18 @@
 	    width: 100%;
 	    height: 100%;
   	}
+
+	.carousel-indicators li {
+	  border-radius: 50%;
+	  width: 7px;
+	  height: 7px;
+	}
+	.carousel-indicators li {
+	  background-color: orange;
+	}
+	.carousel-indicators .active {
+	  background-color: #FF4400;
+	}
 </style>
 <script>
 	window.addEventListener("DOMContentLoaded", function() {
