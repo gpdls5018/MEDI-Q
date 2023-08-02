@@ -39,10 +39,12 @@
     <!-- Template Stylesheet -->
     <link href="<c:url value="/tsfolder/css/style.css"/>" rel="stylesheet">
 	
-     <!-- Template Javascript -->
-     <script src="<c:url value="/tsfolder/js/main.js"/>" ></script>
+	<!-- Template Javascript -->
+	<script src="<c:url value="/tsfolder/js/main.js"/>" ></script>
+	<!-- chatbot -->
+	<script src="<c:url value="/images/chatbot/serial.js"/>"></script>
      
-     <!-- googlefont -->
+    <!-- googlefont -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin> 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2? family=Hahmlet&family=Nanum+Myeongjo&family=Stylish&display=swap" rel="stylesheet">
@@ -514,17 +516,19 @@ ul {
 	    window.addEventListener('DOMContentLoaded', ()=>{
 	        var chatgpt = document.querySelector('.gptAnswer');
 	        var modal = document.querySelector('#lodingModal');
+	        var apiKey;
 	        //chatGTP 값 전달
 	        function sendToChatGPT(content){
 	            var cloneUserDialog = document.querySelector(".userDialog").cloneNode(true);
 	            cloneUserDialog.querySelector(".usersQuestion").innerHTML = content;//사용자가 입력한 값 받기
 	            cloneUserDialog.style.display='';
 	            document.querySelector(".textdialog").appendChild(cloneUserDialog);//사용자가 입력한 값 출력
+	            apiKey = serial.apiKey;
 	            fetch('https://api.openai.com/v1/chat/completions', {
 	                method: 'POST',
 	                headers: {
 	                    'Content-Type': 'application/json',
-	                    'Authorization': `Bearer apiKey`
+	                    'Authorization': `Bearer `+ apiKey
 	                },
 	                body: JSON.stringify({
 	                    model: 'gpt-3.5-turbo',
