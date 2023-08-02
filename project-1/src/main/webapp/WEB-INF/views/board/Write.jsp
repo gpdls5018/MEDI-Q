@@ -64,10 +64,13 @@
 			color:#BCA77A;
 		}
 		.btn_update{/*등록버튼색*/
-			background-color:#D2F8E6;
+			background-color:#ff956c;
 		}
 		.btn_update_text{/*등록버튼글자색*/
-			color:#80AB97;
+			color:#FFFFFF;
+		}
+		.btn_align_right{/*등록,수정버튼 위치*/
+			text-align: right;
 		}
 		.qna_mascot{
 			width:40px;
@@ -102,18 +105,20 @@
         </div>
         
         <div class="container-fluid pt-3 mt-3">
+        	<!-- 
         	<div class="row">
 	        	<div class="d-flex col-3"></div>
-	        	<%-- <div class="d-flex col"><img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs mb-4"></div> --%>
+	        	<div class="d-flex col"><img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs mb-4"></div>
 	        	<div class="d-flex col-3"></div>
             </div>
+            -->
             <div class="row d-flex flex-wrap align-content-stretch">
                 <div class="d-flex col-3">
                 </div>
+                
                 <div class="d-flex col-6 flex-wrap flex-direction justify-content-center align-content-stretch">
                     <div class="col">
                         <form method="post" action="/board/Write.do">
-                            <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
                             <div class="card_deco col-12 p-0 m-0">
 	                            <div class="card-body p-2 m-3">
 	                                <div class="form-group">
@@ -127,17 +132,8 @@
 									</div>
 	                            </div>
 	                        </div>
-                            <!--
-                            <div class="form-group">
-                                <label><kbd class="lead text_2 btn_deco">제목</kbd></label>
-                                <input type="text" class="form-control" placeholder="제목을 입력하세요" name="title">
-                            </div>
-                            <div class="form-group">
-                                <label><kbd class="lead bg-light text_2 btn_deco">내용</kbd></label>
-                                <textarea class="form-control" rows="15" name="content"></textarea>
-                            </div>
-                            -->
-                            <div class="pl-3 pt-2 m-2">
+	                        
+                            <div class="pt-2 pr-3 m-2 btn_align_right">
                             	<button type="submit" class="btn_update btn_update_text border-0 rounded" style="font-size:23px;">등록</button>
                             </div>
                         </form>
