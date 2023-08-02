@@ -292,13 +292,6 @@
 				</ul>
 			</div>
 
-			
-			<div class="container">	
-		        <h3 class="display-4 text-center first-text" style="color: #2E8B57;"><strong><span style="color:#EF605D; font-weight:900;">
-		        <img src="<c:url value="/images/magazine_images/medi/healthcare.png"/>" class="img-fluid medi-imgs" style="width:110px">
-		        건강정보</span> 페이지</strong></h3>
-			</div>
-
 			<div class="main">
 				<div class="sec_body">
 					<div class="commons" id="mag_content">
