@@ -67,15 +67,21 @@
 	.star-rating{
 		margin-bottom: 15px;
 	}
+	.star-rating i,.star-rating2 i{
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	}
     .progress {
-      width: 15px;
-      height: 150px;
-      background-color: rgb(233, 133, 52);
+      display: flex;
+      align-self: center;
+      width:300px;
+      height: 20px;
+      background-color: #c0c0c0;
     }
     .progress-bar {
-      width: 15px;
-      height: 20%;
-      background-color: #c0c0c0;
+      
+      width:300px;
+      height: 20px;
+      background-color: rgb(233, 133, 52);
     }
     
     
@@ -87,8 +93,6 @@
     
     .review-panel {
       width:100%;
-      
-      border-bottom: 3px solid #ccc;
       border-top: 3px solid #ccc;
     }
     .v-line {
@@ -263,11 +267,19 @@ a,a:hover{
 	border-radius: 15px;
 	padding: 6px;
 }
-.nutrient:hover{
+#item .nutrient:hover{
 	background-color: #425fa0fd;
 	color: white;
 }
 
+/* 별점 자세히 보기 모달 사이즈 수정 */
+.modal-fullsize{
+	height: 360px;
+	padding: 10px;
+}
+.star-detail a:hover{
+	color: #425fa0fd;
+}
      </style>
 
 	<!-- 상단배너 div -->
@@ -304,7 +316,7 @@ a,a:hover{
 			        <i class="bi bi-star rating"></i>
 			        <i class="bi bi-star rating"></i>
 			    </div>
-			    <a href="#reviewStart"><div class="ml-3">${totalReview }개의 리뷰</div></a>
+			    <a href="#reviewStart"><div class="ml-3 font-weight-bold">${totalReview }개의 리뷰</div></a>
 			</div>
 			<div class="mt-5">
 				<c:if test="${heartcount eq '1' }">
@@ -446,7 +458,7 @@ a,a:hover{
 	                <tr >
 	                    <th scope="row">성분</th>
 	                    <c:set var="nutrientList" value="${fn:split(listOne.nutrient, '$')}" />
-	                    <td>
+	                    <td id="item">
 	                    	<div class="d-flex h-100">
 		                        <c:forEach items="${nutrientList}" var="item">
 		                    	<c:set var="item" value="${fn:replace(item, ' ', '')}" />
@@ -473,16 +485,36 @@ a,a:hover{
             </table>
        	</div><!-- 탭 1 끝 -->
 	 	<div id="reviewStart" class="empty-space" style="height:50px;"></div>
-	  	<div class="effect-custom-font mt-5" style="font-size:25px;">구매 전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
+	 	
+		<div class="effect-custom-font mt-5" style="font-size:25px;">구매 전 사용자들의 솔직 리뷰를 꼭 확인해 보세요! </div>
 
-	  	<div class="bubble p-4 effect-custom-font" style="font-size:17px;">
-		  	아래는 구매자들의 리뷰를 분석한 키워드 입니다.^^
-		  	<br>가운데 <span style="background-color:#ffdcdc;color:#ff4b4b">제품명</span>을 바탕으로
-		  	<span style="background-color:#f0ffd1;color:#86B817">부정 키워드</span>, <span style="background-color:#cfebff;color:blue">긍정 키워드</span>를 확인해보세요!
-	  	</div>
-
+		<div class="d-flex justify-content-around">
+		  	<div class="bubble p-4 effect-custom-font" style="font-size:17px;">
+			  	아래는 구매자들의 리뷰를 분석한 키워드 입니다.^^
+			  	<br>가운데 <span style="background-color:#f0ffd1;color:green">제품명</span>을 바탕으로
+			  	<span style="background-color:#cfebff;color:blue">긍정 키워드</span>, <span style="background-color:#ffdcdc;color:#ff4b4b">부정 키워드</span>를 확인해보세요!
+		  	</div>
+		  	<div class="d-flex">
+				<div class="star-board mt-4 ml-5">
+					<div class="star-rating2 d-flex justify-content-center">
+					    <i class="bi bi-star rating"></i>
+					    <i class="bi bi-star rating"></i>
+					    <i class="bi bi-star rating"></i>
+					    <i class="bi bi-star rating"></i>
+					    <i class="bi bi-star rating"></i>
+				    </div>
+				    <div class="print-score d-flex justify-content-center">
+				    	<span style="font-family: 'Noto Sans KR', sans-serif;font-size:25px;">${totalReviewDto.starScoreTotal}점</span>
+				    </div>
+				</div>
+				<div class="ml-5 star-detail" style="margin-top: 25px;">
+					<div class="mb-2 font-weight-bold" style="font-size: 18px;">${totalReview }개의 리뷰</div>
+					<a href=""  data-target="#modalView" data-toggle="modal" style="font-size: 18px;">자세히 보기</a>
+				</div>
+			</div>
+		</div>
 	    <div class="review-scroll" id="review"><!-- 탭 2 시작 -->
-   			<div class="jumbotron mt-1 row pt-3" style="background-color:#f5f5f5">
+   			<div class="jumbotron mt-1 row pt-3 pb-3" style="background-color:#f5f5f5">
    				<div class="col-7" style="background-color:white;border-radius:15px;">
    					<div id="3d-graph" style="width:300px;height:300px;"></div>
    				</div>
@@ -535,116 +567,53 @@ a,a:hover{
 				      Graph.d3Force('charge').strength(-80);
 				    </script>
 	   			<div class="review-board col-5">
-	   				<div class="ml-5 effect-custom-font" style="font-size:35px;">별점을 확인해보세요!</div>
-		      		<div class="star-board ml-5">
-		        		<div class="star-rating2 mt-2 ml-5">
-		          			<i class="bi bi-star rating"></i>
-		          			<i class="bi bi-star rating"></i>
-		          			<i class="bi bi-star rating"></i>
-		          			<i class="bi bi-star rating"></i>
-		          			<i class="bi bi-star rating"></i>
-		        		</div>
-		        		<div class="print-score mt-3 ml-5 pl-5">
-		          			<span style="font-family: 'Noto Sans KR', sans-serif;font-size:40px;">${totalReviewDto.starScoreTotal}점</span>
-		        		</div>
-		      		</div>
-		      		<div class="progress-board ml-5">
-		        		<div class="bar-rating mt-5 d-flex ml-4">
-	            			<div class="mr-4">
-	              				<div class="progress rounded-pill">
-	              				<fmt:formatNumber var="totalStarCount" value="${totalStarCount}" />
-	              				<fmt:formatNumber var="COUNT_5" value="${totalReviewDto.starScore.COUNT_5}" />
-	              				<fmt:formatNumber value="${1-(COUNT_5 div totalStarCount)}" type="percent" var="count_5"/>
-	                				<div class="progress-bar" style="height: ${count_5};"></div>
-	              				</div>
-	              				<span style="font-family: 'Noto Sans KR', sans-serif;">5점</span>
-	            			</div>
-	            			<div class="mr-4">
-	              				<div class="progress rounded-pill">
-	              				<fmt:formatNumber var="COUNT_4" value="${totalReviewDto.starScore.COUNT_4}" />
-	              				<fmt:formatNumber value="${1-(COUNT_4 div totalStarCount)}" type="percent" var="count_4"/>
-	                				<div class="progress-bar" style="height:${count_4};">
-	                				</div>
-	              				</div>
-	              				<span style="font-family: 'Noto Sans KR', sans-serif;">4점</span>
-	            			</div>
-	            			<div class="mr-4">
-	              				<div class="progress rounded-pill">
-	              				<fmt:formatNumber var="COUNT_3" value="${totalReviewDto.starScore.COUNT_3}" />
-	              				<fmt:formatNumber value="${1-(COUNT_3 div totalStarCount)}" type="percent" var="count_3"/>
-	                				<div class="progress-bar" style="height:${count_3};"></div>
-	             					</div>
-	              				<span style="font-family: 'Noto Sans KR', sans-serif;">3점</span>
-	            			</div>
-	            			<div class="mr-4">
-	              				<div class="progress rounded-pill">
-	              				<fmt:formatNumber var="COUNT_2" value="${totalReviewDto.starScore.COUNT_2}" />
-	              				<fmt:formatNumber value="${1-(COUNT_2 div totalStarCount)}" type="percent" var="count_2"/>
-	                				<div class="progress-bar" style="height: ${count_2};"></div>
-	              				</div>
-	              				<span style="font-family: 'Noto Sans KR', sans-serif;">2점</span>
-	            			</div>
-	            			<div class="mr-4">
-	              				<div class="progress rounded-pill">
-	              				<fmt:formatNumber var="COUNT_1" value="${totalReviewDto.starScore.COUNT_1}" />
-	              				<fmt:formatNumber value="${1-(COUNT_1 div totalStarCount)}" type="percent" var="count_1"/>
-	                				<div class="progress-bar" style="height: ${count_1};"></div>
-	              				</div>
-	              				<span class="effect-custom-font">1점</span>
-	            			</div>
-		          			
-		        		</div><!-- <div class="bar-rating mt-5"> -->
-	      			</div><!-- <div class="progress-board"> -->
+	   				
+	   				<div class="effect-board effect-custom-font ml-3 row w-100">
+		   				<div class="row d-block w-100">
+				   			<div class="effect-board-title" style="font-size: 20px;">효과</div>
+				   			<ul class="list-unstyled p-2">
+				   			<c:forEach items="${totalReviewDto.effectList}" var="effectOne">
+			   					<li class="m-2" style="line-height: 25px;">
+			   						<div class="d-flex justify-content-between" style="width:100%;">
+				   						<div class="px-2 py-1" style="color:white;background-color:#25a6fe;border-radius: 15px;font-size:15px;">${effectOne.VALUE}</div>
+				   						<div style="margin-bottom:15px; border-bottom:dashed 3px #ccc;width:50%;font-size:1px;"></div>
+				   						<fmt:formatNumber var="totalEffectCount" value="${totalEffectCount}" />
+				   						<fmt:formatNumber var="effectCOUNT" value="${effectOne.COUNT}" />
+		              					<fmt:formatNumber value="${effectCOUNT div totalEffectCount}" type="percent" var="effectpercent"/>
+				   						<div class="p-1" style="color:#25a6fe;border-radius: 15px;font-size=25px;">${effectpercent}</div>
+			   						</div>
+			 					</li>
+			 				</c:forEach>
+			   				</ul>
+						</div><!-- 효과 부분 끝-->
+						<div class="row d-block w-100"><!-- 부작용 부분 시작 -->
+				   			<div class="noeffect-board-title" style="font-size: 20px;">부작용</div>
+				   			<ul class="list-unstyled p-2">
+				   			<c:forEach items="${totalReviewDto.noEffectList}" var="noEffectOne">
+			   					<li class="m-2" style="line-height: 25px;">
+			   						<div class="d-flex justify-content-between" style="width:100%;">
+				   						<div class="px-2 py-1" style="color:white;background-color:#ff4b4b;border-radius: 15px;font-size:15px;">${noEffectOne.VALUE}</div>
+				   						<div style="margin-bottom:15px; border-bottom:dashed 3px #ccc;width:50%;font-size:1px;"></div>
+				   						<fmt:formatNumber var="totalNoEffectCount" value="${totalNoEffectCount}" />
+				   						<fmt:formatNumber var="noEffectCount" value="${noEffectOne.COUNT}" />
+		              					<fmt:formatNumber value="${noEffectCount div totalNoEffectCount}" type="percent" var="noEffectpercent"/>
+				   						<div class="p-1" style="color:#ff4b4b;border-radius: 15px;font-size=25px;">${noEffectpercent}</div>
+			   						</div>
+			 					</li>
+			 				</c:forEach>
+			   				</ul>
+						</div><!-- 부작용 부분 끝-->
+		   			</div><!-- effected Board 끝 -->
       			</div>
    			</div><!-- <div class="row"> -->
-   			<div class="effect-board effect-custom-font mt-3 row ">
-   				<div class="col-6">
-		   			<div class="effect-board-title">
-		   				<span style="font-size:30px;">&#x1F601;효과</span>
-		   			</div>
-		   			<br>
-		   			<ul class="list-unstyled p-2">
-		   			<c:forEach items="${totalReviewDto.effectList}" var="effectOne">
-	   					<li class="m-2" style="line-height: 25px;width:80%;">
-	   						<div class="d-flex justify-content-between" style="width:100%;">
-		   						<div class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:15px;">${effectOne.VALUE}</div>
-		   						<div style="border-bottom:dashed 3px #ccc;width:50%;font-size:1px;"></div>
-		   						<fmt:formatNumber var="totalEffectCount" value="${totalEffectCount}" />
-		   						<fmt:formatNumber var="effectCOUNT" value="${effectOne.COUNT}" />
-              					<fmt:formatNumber value="${effectCOUNT div totalEffectCount}" type="percent" var="effectpercent"/>
-		   						<div class="p-1" style="color:#25a6fe;border-radius: 15px;font-size=25px;">${effectpercent}</div>
-	   						</div>
-	 					</li>
-	 				</c:forEach>
-	   				</ul>
-				</div><!-- 효과 부분 끝-->
-				<div class="col-6"><!-- 부작용 부분 시작 -->
-		   			<div class="noeffect-board-title">
-		   				<span style="font-size:30px;">&#128552;부작용</span>
-		   			</div>
-		   			<br>
-		   			<ul class="list-unstyled p-2">
-		   			<c:forEach items="${totalReviewDto.noEffectList}" var="noEffectOne">
-	   					<li class="m-2" style="line-height: 25px;width:80%;">
-	   						<div class="d-flex justify-content-between" style="width:100%;">
-		   						<div class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:15px;">${noEffectOne.VALUE}</div>
-		   						<div style="border-bottom:dashed 3px #ccc;width:50%;font-size:1px;"></div>
-		   						<fmt:formatNumber var="totalNoEffectCount" value="${totalNoEffectCount}" />
-		   						<fmt:formatNumber var="noEffectCount" value="${noEffectOne.COUNT}" />
-              					<fmt:formatNumber value="${noEffectCount div totalNoEffectCount}" type="percent" var="noEffectpercent"/>
-		   						<div class="p-1" style="color:#ff4b4b;border-radius: 15px;font-size=25px;">${noEffectpercent}</div>
-	   						</div>
-	 					</li>
-	 				</c:forEach>
-	   				</ul>
-				</div><!-- 부작용 부분 끝-->
-   			</div><!-- effected Board 끝 -->
+   			
+   			
    			<div class="write-review"><a class="link review-custom" href="<c:url value="/Review.do?no=${listOne.no}"/>" style="text-decoration : none;">리뷰 글쓰기</a></div>
    			<!-- 리뷰 페이지 삽입 위치 -->
    			<div class="container effect-custom-font" >
 			    <ul class="list-unstyled mt-5" id="review-ul">
 			      	<li class="review-li" style="display: none;">
-			        	<div class="review-panel p-3">
+			        	<div class="review-panel p-3 w-100">
 			          		<div class="review-title d-flex">
 			              		<div class="review-name">김**</div>
 					              	<div class="review-title-sub d-flex ml-2" style="font-size: 12px;color: #7c7b7b;">
@@ -654,14 +623,14 @@ a,a:hover{
 				            		</div>
 			              		<div class="post-date ml-auto" style="font-size: 15px;color: #a0a0a0;">2023-03-02</div>
 			            	</div>
-			            	<div class="star-count d-flex m-2">
+			            	<div class="star-count d-flex my-2">
 			              		<i class="bi bi-star rating" style="font-size:20px;"></i>
 			              		<i class="bi bi-star rating" style="font-size:20px;"></i>
 			              		<i class="bi bi-star rating" style="font-size:20px;"></i>
 			              		<i class="bi bi-star rating" style="font-size:20px;"></i>
 			              		<i class="bi bi-star rating" style="font-size:20px;"></i>
 			            	</div>
-			            	<div class="mt-4">
+			            	<div class="mt-1">
 			            		<div class="review-effect">
 				              		<span>효과</span>
 				              		<div class="review-content-effect m-2" ></div>
@@ -671,8 +640,8 @@ a,a:hover{
 				              		<div class="review-content-noEffect m-2"></div>
 				              	</div>
 			            	</div>
-			            	<div class="review-content m-2 row">
-				              	<p class="mt-3" style="font-size:15px;"></p>
+			            	<div class="review-content d-flex my-2">
+				              	<p class="mt-2" style="font-size:15px;"></p>
 			          		</div>
 			        	</div>
 			      	</li>
@@ -695,6 +664,83 @@ a,a:hover{
    	</div><!-- 탭 끝 -->
 </div>
 
+<!-- 별점 자세히 보기 클릭 시 모달 창 -->
+<div class="modal fade" id="modalView">	
+	<div class="modal-dialog modal-dialog-centered modal-fullsize">
+		<div class="modal-content modal-fullsize">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h5 class="modal-title">별점 정보</h5>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+				
+			<!-- Modal body	-->
+			<div class="modal-body px-4">
+				<div class="progress-board">
+					<div class="star-board d-flex justify-content-center my-2">
+						<div class="star-rating3 d-flex justify-content-center">
+						    <i class="bi bi-star rating" style="font-size: 35px;"></i>
+						    <i class="bi bi-star rating" style="font-size: 35px;"></i>
+						    <i class="bi bi-star rating" style="font-size: 35px;"></i>
+						    <i class="bi bi-star rating" style="font-size: 35px;"></i>
+						    <i class="bi bi-star rating" style="font-size: 35px;"></i>
+					    </div>
+					    <div class="ml-3 mt-2 font-weight-bold" style="font-size: 22px;">${totalReview }개의 리뷰</div>
+					</div>
+		        	<div class="bar-rating mt-4">
+		        		<div class="d-flex my-2">
+		        			<div style="margin-right: 30px; font-family: 'Noto Sans KR', sans-serif;">5점</div>
+			        		<div class="progress" style="height:20px;">
+			        			<fmt:formatNumber var="totalStarCount" value="${totalStarCount}" />
+	              				<fmt:formatNumber var="COUNT_5" value="${totalReviewDto.starScore.COUNT_5}" />
+	              				<fmt:formatNumber value="${COUNT_5 div totalStarCount}" type="percent" var="count_5"/>
+							  	<div class="progress-bar" style="width:${count_5};height:20px"></div>
+							</div>
+							<div class="ml-auto" style="font-family: 'Noto Sans KR', sans-serif;">${count_5}</div>
+						</div>
+						<div class="d-flex my-2">
+							<span style="margin-right: 30px;font-family: 'Noto Sans KR', sans-serif;">4점</span>
+			        		<div class="progress" style="height:20px;">
+	              				<fmt:formatNumber var="COUNT_4" value="${totalReviewDto.starScore.COUNT_4}" />
+	              				<fmt:formatNumber value="${COUNT_4 div totalStarCount}" type="percent" var="count_4"/>
+							  	<div class="progress-bar" style="width:${count_4};height:20px"></div>
+							</div>
+							<div class="ml-auto" style="font-family: 'Noto Sans KR', sans-serif;">${count_4}</div>
+						</div>
+						<div class="d-flex my-2">
+							<span style="margin-right: 30px;font-family: 'Noto Sans KR', sans-serif;">3점</span>
+			        		<div class="progress" style="height:20px;">
+	              				<fmt:formatNumber var="COUNT_3" value="${totalReviewDto.starScore.COUNT_3}" />
+	              				<fmt:formatNumber value="${COUNT_3 div totalStarCount}" type="percent" var="count_3"/>
+							  	<div class="progress-bar" style="width:${count_3};height:20px"></div>
+							</div>
+							<div class="ml-auto" style="font-family: 'Noto Sans KR', sans-serif;">${count_3}</div>
+						</div>
+						<div class="d-flex my-2">
+							<span style="margin-right: 30px;font-family: 'Noto Sans KR', sans-serif;">2점</span>
+			        		<div class="progress" style="height:20px;">
+	              				<fmt:formatNumber var="COUNT_2" value="${totalReviewDto.starScore.COUNT_2}" />
+	              				<fmt:formatNumber value="${COUNT_2 div totalStarCount}" type="percent" var="count_2"/>
+							  	<div class="progress-bar" style="width:${count_2};height:20px"></div>
+							</div>
+							<div class="ml-auto" style="font-family: 'Noto Sans KR', sans-serif;">${count_2}</div>
+						</div>
+						<div class="d-flex my-2">
+							<span style="margin-right: 30px;font-family: 'Noto Sans KR', sans-serif;">1점</span>
+			        		<div class="progress" style="height:20px;">
+	              				<fmt:formatNumber var="COUNT_1" value="${totalReviewDto.starScore.COUNT_1}" />
+	              				<fmt:formatNumber value="${COUNT_1 div totalStarCount}" type="percent" var="count_1"/>
+							  	<div class="progress-bar" style="width:${count_1};height:20px"></div>
+							</div>
+							<div class="ml-auto" style="font-family: 'Noto Sans KR', sans-serif;">${count_1}</div>
+						</div>
+		        	</div><!-- <div class="bar-rating mt-5"> -->
+	      		</div><!-- <div class="progress-board"> -->
+			</div>
+		    
+		</div>
+	</div>
+</div>
 <input type="hidden" value="${listOne.no}" id="productNo">
 <script>
 
@@ -709,6 +755,11 @@ a,a:hover{
   var totalStarScore2 = document.querySelectorAll(".star-rating2 > i");
   for(var i=0; i<${totalReviewDto.starScoreTotal}; i++) {
 	  totalStarScore2[i].className = totalStarScore2[i].className.replace("bi-star","bi-star-fill");
+  }
+  
+  var totalStarScore3 = document.querySelectorAll(".star-rating3 > i");
+  for(var i=0; i<${totalReviewDto.starScoreTotal}; i++) {
+	  totalStarScore3[i].className = totalStarScore3[i].className.replace("bi-star","bi-star-fill");
   }
   
   //공유하기 클릭
@@ -840,8 +891,6 @@ a,a:hover{
 
 	//좋아요 버튼 초기 텍스트 설정
 	var heartButton = document.getElementById('heartButton');
-	var initialText = heartButton.getAttribute('data-initialtext');
-	heartButton.innerText = initialText;
 	
 	// 버튼 클릭 이벤트 핸들러 등록
 	heartButton.addEventListener('click', function() {
