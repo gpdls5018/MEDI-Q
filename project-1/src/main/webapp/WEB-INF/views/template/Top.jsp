@@ -942,7 +942,10 @@ ul {
                             <div class="col-2 d-flex justify-content-center p-0">
                                 <img src="/images/chatbot/bot_a.png" class="gtp_ans_img"/>
                             </div>
-                            <div class="gptAnswer col-10 d-flex justify-content-start align-items-center p-0 m-0"></div>
+                            <div class="gptAnswer col-10 d-flex justify-content-start align-items-center p-0 m-0">
+                            	<!-- 여기가 테스트 마이크 -->
+                            	
+                            </div>
                         </div>
                     </div>
                 </div>
