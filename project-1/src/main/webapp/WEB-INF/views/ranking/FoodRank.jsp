@@ -92,6 +92,32 @@ body{
 .item:nth-child(6){
     animation-delay: 1s;
 }
+#startBtn, #startTtsBtn, #stopTtsBtn{
+     background-color: transparent; 
+     border: none; 
+     cursor: pointer; 
+     transition-property: outline-offset, outline-color, background-color; /* 트랜지션 설정 */
+     transition-duration: .3s; /* 애니메이션 .3s 만큼 진행 */
+ }
+
+ #startBtn:hover, #startTtsBtn:hover, #stopTtsBtn:hover{
+     outline-offset: 4px; /* 마우스 오버시 테두리 외곽 4px 이동 */
+ }
+ #startBtn:hover img, #startTtsBtn:hover img, #stopTtsBtn:hover img{
+     animation: shake .3s; /* 마우스 오버시 아이콘 .3s 동안 흔듦 */
+     margin-left: 10px;
+ }
+ #startBtn:hover, #startTtsBtn:hover,  #stopTtsBtn:hover  { /* 블로그 아이콘 마우스 오버시 배경색, 테두리 색상 변경 */
+     background-color: #FFECE5;
+     outline-color: red;
+     padding: 10px;
+ }
+ @keyframes shake { /* @keyframes를 이용해 shake의 각도를 좌우 15deg로 조정 */
+     10%{transform: rotate(10deg);}
+     20%{transform: rotate(-10deg);}
+     30%{transform: rotate(10deg);}
+     40%{transform: rotate(-10deg);}
+ }
      </style>
 
 	<!-- 상단배너 div -->
@@ -269,17 +295,17 @@ body{
 <!-- 테스트 끝 -->
 <!-- stt시작 -->
 				<div class="container">
-			        <h3 class="text-dark">음성 챗봇 <small class="text-secondary">CCH 1.0</small></h3>          
+			        <h3 class="text-dark">Q-Bot</h3>          
 			            
 			            
 		                <div class="form-group "> 
 		                    <label for="result"><i class='fas fa-microphone' style='font-size:24px;color:red'></i> <span id="stt-msg"></span></label>  
 		                    <input type="text" class="form-control my-2" id="result" placeholder="아래 버튼 클릭후 말씀해 주세요">
 		                </div>
-		                <button id="startBtn" class="btn-lg btn-dark">SpeechToText Start <i class='fas fa-microphone' id='icon' style="color:red"></i></button>     
+		                <button id="startBtn"> <img src="<c:url value='/images/chatbot/mike.png'/>" style="width: 45px;height: 42px; border-radius: 35%;"></button>   
 		                
 		                <div class="form-group mt-1">
-		                    
+		                    <br/>
 		                    <label for="chat-gpt"><i class='fas fa-microphone-alt' style='font-size:24px;color:red'></i> <span id="tts-msg"></span></label>  
 		                    <textarea placeholder="여기에 응답이 표시됩니다" class="form-control mb-1" rows="4" id="chat-gpt"></textarea>
 		                </div>
@@ -288,8 +314,9 @@ body{
 		                    <select class="form-control" id="voice">                   
 		                    </select>
 		                </div>
-		                <button id="startTtsBtn" class="btn-lg btn-dark mb-1" style="width:250px">TextToSpeech Start <i class='fas fa-microphone-alt' style="color:red"></i></button>
-		                <button id="stopTtsBtn" class="btn-lg btn-dark mb-1" style="width:250px">TextToSpeech Stop <i class='fas fa-microphone-alt-slash' style="color:red"></i></button>    
+		                 	<button id="startTtsBtn"><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 45px;height: 42px; border-radius: 35%;"></button>
+                			<button id="stopTtsBtn" ><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 45px;height: 42px; border-radius: 35%;"></button>    
+               
 			    </div>
 				<!-- 로딩 모달 -->
 			    <div id="loadingModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
