@@ -555,28 +555,21 @@ ul {
 		     background-color: transparent; 
 		     border: none; 
 		     cursor: pointer; 
-		     transition-property: outline-offset, outline-color, background-color; /* 트랜지션 설정 */
-		     transition-duration: .3s; /* 애니메이션 .3s 만큼 진행 */
-		 }
-		
-		 #startBtn:hover, #startTtsBtn:hover, #stopTtsBtn:hover{
-		     outline-offset: 4px; /* 마우스 오버시 테두리 외곽 4px 이동 */
-		 }
-		 #startBtn:hover img, #startTtsBtn:hover img, #stopTtsBtn:hover img{
-		     animation: shake .3s; /* 마우스 오버시 아이콘 .3s 동안 흔듦 */
-		     margin-left: 10px;
-		 }
-		 #startBtn:hover, #startTtsBtn:hover,  #stopTtsBtn:hover  { /* 블로그 아이콘 마우스 오버시 배경색, 테두리 색상 변경 */
-		     background-color: #FFECE5;
-		     outline-color: red;
-		     padding: 10px;
-		 }
-		 @keyframes shake { /* @keyframes를 이용해 shake의 각도를 좌우 15deg로 조정 */
+		     transition-property: outline-offset, outline-color, background-color;
+		     transition-duration: .3s; 
+		}
+	  	#startBtn:hover, #startTtsBtn:hover, #stopTtsBtn:hover{
+             outline-offset: 4px;
+        }
+		#startBtn:hover img, #startTtsBtn:hover img, #stopTtsBtn:hover img{
+		     animation: shake .3s; 
+		}
+		@keyframes shake { 
 		     10%{transform: rotate(10deg);}
 		     20%{transform: rotate(-10deg);}
 		     30%{transform: rotate(10deg);}
 		     40%{transform: rotate(-10deg);}
-		 }
+		}
     </style>
     <script>
 	    window.addEventListener('DOMContentLoaded', ()=>{
@@ -958,11 +951,27 @@ ul {
                 </div>
             </div>
             <div class="inputDIV input-group p-1 mt-1">
+			    <div class="position-relative">
+			        <div class="position-absolute" style="left: 257px; top: 50%; transform: translateY(-50%);">
+			            <button id="startBtn">
+			                <img src="<c:url value='/images/chatbot/mike.png'/>" style="width: 37px;height: 35px; border-radius: 35%;">
+			            </button> 
+			        </div>
+			        <input type="text" class="form-control rounded-start bg-light" id="userInput" placeholder="무엇이든 물어보세요" style="width: 299px;">
+			    </div>
+			    <div class="input-group-append">
+			        <button class="btn btn-warning search_btn font-weight-bold text-light" type="button">검색</button>
+			    </div>
+			</div>
+            
+            <!-- 
+            <div class="inputDIV input-group p-1 mt-1">
                 <input type="text" class="form-control rounded-start bg-light" id="userInput" placeholder="무엇이든 물어보세요">
                 <div class="input-group-append">
                     <button class="btn btn-warning search_btn font-weight-bold text-light" type="button">검색</button>
                 </div>
             </div>
+            -->
         </div>
         <!-- 내부 로딩바 -->
         <div class="loading_dot">
@@ -980,8 +989,8 @@ ul {
     </div>
     <!-- 챗봇 끝 -->
     
-<%--
-<!-- stt시작 -->
+
+<!-- stt시작 
 				<div class="container">
 			        <h3 class="text-dark">Q-Bot</h3>          
 			            
@@ -1006,7 +1015,7 @@ ul {
                 			<button id="stopTtsBtn" ><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 45px;height: 42px; border-radius: 35%;"></button>    
                
 			    </div>
-				<!-- 로딩 모달 -->
+				<!-- 로딩 모달 
 			    <div id="loadingModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
 			        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
 			        <div class="modal-content">
@@ -1026,7 +1035,7 @@ ul {
 			        </div>
 			        </div>
 			    </div>
-<!-- stt끝 --> --%>
+     stt끝 -->  
 </div>
 <script>
 	const firebaseConfig = {
