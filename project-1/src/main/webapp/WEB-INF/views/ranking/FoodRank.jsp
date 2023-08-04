@@ -294,33 +294,39 @@ body{
 			    </div>
 <!-- 테스트 끝 -->
 <!-- stt시작 -->
-				<div class="container">
-			        <h3 class="text-dark">Q-Bot</h3>          
-			            
-			            
-		                <div class="form-group "> 
-		                    <label for="result"><i class='fas fa-microphone' style='font-size:24px;color:red'></i> <span id="stt-msg"></span></label>  
-		                    <input type="text" class="form-control my-2" id="result" placeholder="아래 버튼 클릭후 말씀해 주세요">
-		                </div>
-		                <button id="startBtn"> <img src="<c:url value='/images/chatbot/mike.png'/>" style="width: 45px;height: 42px; border-radius: 35%;"></button>   
-		                
-		                <div class="form-group mt-1">
-		                    <br/>
-		                    <label for="chat-gpt"><i class='fas fa-microphone-alt' style='font-size:24px;color:red'></i> <span id="tts-msg"></span></label>  
-		                    <textarea placeholder="여기에 응답이 표시됩니다" class="form-control mb-1" rows="4" id="chat-gpt"></textarea>
-		                </div>
-		                <div class="form-group">
-		                    <label for="voice">음성을 선택하세요</label>
-		                    <select class="form-control" id="voice">                   
-		                    </select>
-		                </div>
-		                 	<button id="startTtsBtn"><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 45px;height: 42px; border-radius: 35%;"></button>
-                			<button id="stopTtsBtn" ><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 45px;height: 42px; border-radius: 35%;"></button>    
-               
-			    </div>
-				<!-- 로딩 모달 -->
-			    <div id="loadingModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
-			        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+			<div class="container">
+		        <h3 class="text-dark">Q-Bot</h3>          
+		            <!-- stt를 지원하는지 안하는지 input태그 -->
+	                <div class="form-group "> 
+	                    <label for="result"><i class='fas fa-microphone' style='font-size:24px;color:red'></i> <span id="stt-msg"></span></label>  
+	                    <input type="text" class="form-control my-2" id="result" placeholder="아래 버튼 클릭후 말씀해 주세요">
+	                </div>
+	                
+	                <!-- 음성으로 텍스트 출력 -->
+	                <button id="startBtn"> <img src="<c:url value='/images/chatbot/mike.png'/>" style="width: 45px;height: 42px; border-radius: 35%;"></button>   
+	                
+	                <!-- 답변 출력부분  -->
+	                <div class="form-group mt-1">
+	                    <br/>
+	                    <label for="chat-gpt"><i class='fas fa-microphone-alt' style='font-size:24px;color:red'></i> <span id="tts-msg"></span></label>  
+	                    <textarea placeholder="여기에 응답이 표시됩니다" class="form-control mb-1" rows="4" id="chat-gpt"></textarea>
+	                </div>
+	                
+	                <!-- 음성 선택버튼 부분 -->
+	                <div class="form-group">
+	                    <label for="voice">음성을 선택하세요</label>
+	                    <select class="form-control" id="voice">                   
+	                    </select>
+	                </div>
+	                
+	                <!-- 텍스트를 음성으로 시작,중단 버튼 -->
+                 	<button id="startTtsBtn"><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 45px;height: 42px; border-radius: 35%;"></button>
+           			<button id="stopTtsBtn" ><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 45px;height: 42px; border-radius: 35%;"></button>    
+             
+		    </div>
+			<!-- 로딩 모달 -->
+		    <div id="loadingModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
+		        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
 			        <div class="modal-content">
 			            <div class="modal-body text-center">
 			                <div class="loading">
@@ -336,8 +342,8 @@ body{
 			                </div>
 			            </div>
 			        </div>
-			        </div>
-			    </div>
+		        </div>
+		    </div>
 <!-- stt끝 -->		
 				<!-- 화면을 처음들어 갔을 경우 건기식 또는 회사이름을 안적었을 경우 -->
 				<c:if test="${empty foodname}">
@@ -352,8 +358,8 @@ body{
 	  					<div class="form-group mt-1">
 		                   <label for="chat-gpt"><i class='fas fa-microphone-alt' style='font-size:24px;color:red'></i> <span id="tts-msg"></span></label>  
 		                   <textarea placeholder="여기에 응답이 표시됩니다" class="form-control mb-1" rows="4" id="chat-gpt"></textarea>
-<!-- 여기까지              </div> -->
-
+             		    </div>
+<!-- 여기까지-->
 						<div class="ipt-main-wrap-in">
 							<input id="searchProduct1" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
 							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct1()"></button>
@@ -570,14 +576,14 @@ body{
         /*stt,tts시작  */
         $(document).ready(function () {
         	
-		    var startBtn = document.querySelector('#startBtn');
-		    var startTtsBtn = document.querySelector('#startTtsBtn');
-		    var stopTtsBtn = document.querySelector('#stopTtsBtn');
+		    var startBtn = document.querySelector('#startBtn');//마이크 버튼 태그
+		    var startTtsBtn = document.querySelector('#startTtsBtn');//tts 마이크버튼 태그
+		    var stopTtsBtn = document.querySelector('#stopTtsBtn');//tts 멈추는 버튼 태그
 		
-		    var sttMsg = document.querySelector('#stt-msg');
-		    var ttsMsg = document.querySelector('#tts-msg');
+		    var sttMsg = document.querySelector('#stt-msg');//당신의 브라우저는 stt를 지원합니다 한줄나오는 태그
+		    var ttsMsg = document.querySelector('#tts-msg');//당신의 브라우저는 tts를 지원합니다 한줄나오는 태그
 		    var result = document.querySelector('#result');
-		    var chatGpt = document.querySelector('#chat-gpt');
+		    var chatGpt = document.querySelector('#chat-gpt');//출력되는 곳
 		    var voiceSelect = document.querySelector('#voice');
 		
 		    var isRecognizing = false;
@@ -593,8 +599,8 @@ body{
 		            result.placeholder = '음성인식이 안되는 브라우저입니다.아래 버튼이 비활성화 되었습니다'
 		        } else {
 		            sttMsg.innerHTML = '당신의 브라우저는 <strong>STT</strong>를 지원합니다.';
-		            startBtn.addEventListener('click', startRecognition);
-		            initRecognition();
+		            startBtn.addEventListener('click', startRecognition);//음성인식 시작 음성초기화
+		            initRecognition();//음성인식 설정 및 인식결과를 넣어줌
 		        }//////else
 		
 		        if ('speechSynthesis' in window) {
@@ -631,17 +637,21 @@ body{
 		                .catch(error => console.error(error));
 		        }///////////sendToChatGPT(content)
 		        
-		        function initRecognition() {
+		        function initRecognition() {//음성 인식을 초기화 및 인식결과를 넣어줌
+		        	//recognition: 여러 브라우저에서 작동하도록 설정
 		            recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
 		            recognition.lang = 'ko-KR';
-		            recognition.maxAlternatives = 30000;
-		            recognition.interimResults = true;
-		            recognition.onspeechstart = () => console.log('Recognition Start!');
-		            recognition.onspeechend = stopRecognition;
-		            recognition.onresult = function (event) {
+		            recognition.maxAlternatives = 30000;//음성에 대한 결과의 최대 수 설정
+		            recognition.interimResults = true;//출력되는 중간결과를 반환
+		            recognition.onspeechstart = () => console.log('Recognition Start!');//인식 start
+		            recognition.onspeechend = stopRecognition;//stopRecognition을 이벤트 핸들러로 등록
+		            recognition.onresult = function (event) {//음성인식 결과 도착시 onresult이벤트 핸들러 설정
+		            	//인식 결과(event.results)를 배열로 변환,각 결과의 첫번째 대안(results[0].transcript)을 추출한 후,합침(.join("")이게 배열의 모든 요소를 연결하여 문자열을 만듬,즉 하나의 문자열로 변환됨)
 		                var transcript = Array.from(event.results).map(results => results[0].transcript).join("");
-		                result.value = transcript;
+		                result.value = transcript;//합쳐진 텍스트(transcript)를 result.value에 저장
+		                //새롭게 추가된 결과들만을 처리하는 for문
 		                for (let i = event.resultIndex; i < event.results.length; ++i) {
+		                	//event.results[i].isFinal는 최종적으로 인식된 텍스트를 뜻함.따라서 합쳐진 텍스트(transcript)를 GPT로 보냄
 		                    if (event.results[i].isFinal) sendToChatGPT(transcript);//sendToChatGPT땜에 들어가야됨 자스는 동기
 		                }
 		            };
@@ -668,28 +678,30 @@ body{
 		        isRecognizing = false;
 		    }//////stopRecognition()
 		
-		    function startSynthesis() {
+		    
+		    function startSynthesis() {//text를 음성으로(음성으로 합성하고 출력하는 함수)
 		    	
+		    	//chatGPT가 보여주는 텍스트를 utterance에 저장
 		        var utterance = new SpeechSynthesisUtterance(chatGpt.value);
 		        
-		        if (voiceSelect.value) {
-		            var selectedVoice = speechSynthesis.getVoices().filter(function (voice) {
-		                return voice.voiceURI == voiceSelect.value;
+		        if (voiceSelect.value) {//국어언어가 선택된다면
+		            var selectedVoice = speechSynthesis.getVoices().filter(function (voice) {//텍스트를 선택한 음성으로 변환
+		                return voice.voiceURI == voiceSelect.value;//선택한 국가언어가 voiceURI로 저장됨
 		            })[0];
-		            utterance.voiceURI = selectedVoice.voiceURI;
-		            utterance.lang = selectedVoice.lang;
+		            utterance.voiceURI = selectedVoice.voiceURI;//선택된 국가언어는
+		            utterance.lang = selectedVoice.lang;//음성으로 합성하고 출력함
 		        }
 		        window.speechSynthesis.speak(utterance);////////
 		    }/////startSynthesis()
-		
-		    function stopSynthesis() {
+			
+		    function stopSynthesis() {//text를 음성으로(출력하고 있는 걸 멈춤)
 		        if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
 		    }////stopSynthesis()
 		
-		    function loadVoices() {
-		        var voices = window.speechSynthesis.getVoices();
+		    function loadVoices() {//다양한 언어를 선택하는 함수
+		        var voices = window.speechSynthesis.getVoices();//현재 브라우저에서 사용 가능한 음성 목록을 반환
 		        voices.forEach(function (voice, i) {
-		            var option = document.createElement('option');
+		            var option = document.createElement('option');//각 나라 언어 선택 태그
 		            option.value = voice.voiceURI;
 		            option.dataset.lang = voice.lang;
 		            option.innerHTML = voice.name;
