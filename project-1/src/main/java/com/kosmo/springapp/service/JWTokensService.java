@@ -9,7 +9,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -20,22 +22,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
 public class JWTokensService {
-	
-	/**
-	 	비밀키를 .properties파일에서 읽어와서 반환하는 메소드
-	 	@param keyPath 비밀키가 기록된 .properties파일의 경로(단, 확장자 생략)
-	 	@param key     비밀키 설정시 주어진 키값. 예: 키 = 비밀키 일 때의 key값v
-	 	@return		   비밀키 반환
-	*/
-	/*
-	private static String getSecretKey(String keyPath, String key){
-		ResourceBundle resource = ResourceBundle.getBundle(keyPath);//확장자를 뺀 이름
-		String secretKey = resource.getString(key);
 
-		return secretKey;
-	}//////////getSecretKey
-	*/
-	
 	/**
 	 * JWT토큰을 생성해서 반환하는 메소드
 	 * @param username 사용자 아이디

@@ -16,6 +16,10 @@
     .check-take-time-tag {
       color:#9e9e9e;
       background-color: white;
+      cursor: pointer;
+      border:solid 2px #dbdbdb;
+      border-radius: 15px;
+      font-size:15px;
     }
     .check-take-time-tags span:hover {
       color:#ff4b4b;
@@ -29,6 +33,10 @@
     .check-effect-tag {
       color:#9e9e9e;
       background-color: white;
+      cursor: pointer;
+      border:solid 2px #dbdbdb;
+      border-radius: 15px;
+      font-size:15px;
     }
     .check-effect-tags span:hover {
       color:#ff4b4b;
@@ -42,6 +50,10 @@
     .check-noEffect-tag {
       color:#9e9e9e;
       background-color: white;
+      cursor: pointer;
+      border:solid 2px #dbdbdb;
+      border-radius: 15px;
+      font-size:15px;
     }
     .check-noEffect-tags span:hover {
       color:#ff4b4b;
@@ -58,17 +70,17 @@
     .bi-star-fill{
         font-size: 40px;
         line-height: 40px;
-        color: #fff236;
-        
+        color: #dfc230;
     }
     .bi-star {
       font-size: 40px;
       line-height: 40px;
+      cursor: pointer;
     }
     .bi-star:hover {
       font-size: 40px;
         line-height: 40px;
-        color: #fff236;
+        color: #dfc230;
     }
 
 body{
@@ -104,14 +116,7 @@ body{
     top:70px;
 	border:none;
 }
-.tsanalyze {
-   	display: flex;
-   	flex-direction:column;
-   	justify-content:center;
-   	border-radius: 40px 40px 0px 0px;
-	box-shadow: rgba(108, 108, 108, 0.15) 0px -1px 10px;
-	margin-top: 50px;
-}
+
 .tsarea {
 	position: absolute;
 	width: 1000px;
@@ -123,6 +128,13 @@ body{
 	text-align: center;
 	box-shadow: 0px 0px 0px white;
 	align-items: center;
+}
+
+.img-custom{
+	margin-top: 150px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
 }
      </style>
 
@@ -141,8 +153,23 @@ body{
     </aside>
     
 
-  <div class="container" style="min-height: 800px; max-width: 920px; background-color:white; margin-top:80px; border-radius: 20px; border-radius: 20px;">
-   <div class="tsanalyze mx-2">
+  <div class="container" style="min-height: 800px; max-width: 920px; background-color:white; margin-top:120px; border-radius: 20px;">
+    
+    <div class="img-custom">    
+	    <c:if test="${empty listOne.imgURL}" var="emptyIMG">
+	    	<img class="mt-5" src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" style="border-radius:20px;width: 250px;"/>
+	    </c:if>
+	    <c:if test="${not emptyIMG}">
+	    	<img class="my-5" src="${listOne.imgURL}" style="border-radius:20px;width: 250px;"/>
+	   	</c:if>
+	   	
+	   	<div class="ml-5">
+	   		<div class="food-company" style="font-size: 20px; color: gray; font-weight: bold;">${listOne.company}</div>
+			<div class="food-title" style="font-size: 30px; color: black; font-weight: bold;">${listOne.productName}</div>
+		</div>
+	</div>    
+    
+    <!-- 
     <div class="food jumbotron d-flex" style=" width:840px; margin-left:17px; background-color:#FDCDBC; border-radius: 20px;height:300px; margin-top: 50px;">
       <img src="${listOne.imgURL}" style="border-radius: 20px;width:200px;height: auto;"/>
       <div class="food-text m-5 effect-custom-font" style="font-size: 25px;">
@@ -150,18 +177,19 @@ body{
         <div class="food-title" style="font-size: 40px; color: white; font-weight: bold;">${listOne.productName}</div>
       </div>
     </div>
+     -->
     <div class="check-take-time effect-custom-font mx-3">
-      <div style="font-size: 30px; ">영양제를 얼마나 드셨나요?</div>
+      <div style="font-size: 25px; ">영양제를 얼마나 드셨나요?</div>
       <div class="check-take-time-tags d-flex m-3">
-        <span class="check-take-time-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">1개월 미만</span>
-        <span class="check-take-time-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">1~3개월</span>
-        <span class="check-take-time-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">3~6개월</span>
-        <span class="check-take-time-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">6개월~1년</span>
-        <span class="check-take-time-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">1년 이상</span>
+        <span class="check-take-time-tag p-2 m-1">1개월 미만</span>
+        <span class="check-take-time-tag p-2 m-1">1~3개월</span>
+        <span class="check-take-time-tag p-2 m-1">3~6개월</span>
+        <span class="check-take-time-tag p-2 m-1">6개월~1년</span>
+        <span class="check-take-time-tag p-2 m-1">1년 이상</span>
       </div>
     </div>
     <div class="check-rating effect-custom-font mt-5 mx-3">
-      <div style="font-size: 30px;">영양제에 만족하셨나요?</div>
+      <div style="font-size: 25px;">영양제에 만족하셨나요?</div>
       <div class="check-rating-stars m-3">
         <i class="bi bi-star check-rating-star"></i>
         <i class="bi bi-star check-rating-star"></i>
@@ -171,37 +199,39 @@ body{
       </div>
     </div>
     <div class="check-rating effect-custom-font mt-5 mx-3">
-      <div style="font-size: 30px;">이 영양제를 먹고 일반적으로 느끼는 효과예요.<br/> 어떤 효과를 느꼈나요?</div>
+      <div style="font-size: 25px;">이 영양제를 먹고 일반적으로 느끼는 효과예요.<br/> 어떤 효과를 느꼈나요?</div>
       <div class="mt-3" style="font-size: 20px;color: #9e9e9e;">가장 많이 느낀 효과를 선택해 주세요. (최대 5개)<br>
         원하는 효과가 없을 경우 텍스트 후기에 남겨주세요!
       </div>
       <div class="check-effect-tags d-flex m-3">
-        <span class="check-effect-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">효과가 없었어요</span>
-        <span class="check-effect-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">감기 덜 걸림</span>
-        <span class="check-effect-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">구내염 개선</span>
-        <span class="check-effect-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">피로 개선</span>
-        <span class="check-effect-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">피부상태 개선</span>
+        <span class="check-effect-tag p-2 m-1">효과가 없었어요</span>
+        <span class="check-effect-tag p-2 m-1">감기 덜 걸림</span>
+        <span class="check-effect-tag p-2 m-1">구내염 개선</span>
+        <span class="check-effect-tag p-2 m-1">피로 개선</span>
+        <span class="check-effect-tag p-2 m-1">피부상태 개선</span>
       </div>
     </div>
     <div class="check-rating effect-custom-font mt-5 mx-3">
-      <div style="font-size: 30px;">어떤 부작용이 있었나요?</div>
+      <div style="font-size: 25px;">어떤 부작용이 있었나요?</div>
       <div class="mt-3" style="font-size: 20px;color: #9e9e9e;">가장 많이 느낀 부작용을 선택해 주세요. (최대 5개)<br></div>
       <div class="check-noEffect-tags d-flex m-3">
-        <span class="check-noEffect-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">부작용이 없었어요</span>
-        <span class="check-noEffect-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">변비</span>
-        <span class="check-noEffect-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">설사</span>
-        <span class="check-noEffect-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">어지러움</span>
-        <span class="check-noEffect-tag p-2 m-1" style="border:solid 3px #dbdbdb;border-radius: 15px;font-size:20px;">두통</span>
+        <span class="check-noEffect-tag p-2 m-1">부작용이 없었어요</span>
+        <span class="check-noEffect-tag p-2 m-1">변비</span>
+        <span class="check-noEffect-tag p-2 m-1">설사</span>
+        <span class="check-noEffect-tag p-2 m-1">어지러움</span>
+        <span class="check-noEffect-tag p-2 m-1">두통</span>
       </div>
     </div>
     <div class="check-rating effect-custom-font mt-5 mx-3">
-      <div style="font-size: 30px;">영양제에 대한 상세한 후기를 들려주세요!</div>
+      <div style="font-size: 25px;">영양제에 대한 상세한 후기를 들려주세요!</div>
       <textarea class="mt-3 jumbotron" style="width: 100%;border:solid 3px #dbdbdb;border-radius: 20px;" placeholder="영양제에 대한 솔직한 리뷰를 남겨주세요."></textarea>
     </div>
     <input type="hidden" value="${id}" id="userId">
     <input type="hidden" value="${listOne.no}" id="productNo">
-    <button class="btn btn-warning effect-custom-font mb-5" id="sendDataButton" style="width:80%;height:50px; margin-left: 85px; border-radius: 20px;"><i class="bi bi-clipboard-check p-1" style="font-size:25px;"></i>작성 완료!</button>
-  </div>
+	<button class="btn btn-warning effect-custom-font mb-5 d-flex align-items-center justify-content-center" id="sendDataButton" style="width:80%; margin-left: 85px; border-radius: 20px;">
+	    <i class="bi bi-clipboard-check p-1" style="font-size:25px;"></i>
+	    <span class="">작성 완료!</span>
+    </button>
  </div>
   
 
