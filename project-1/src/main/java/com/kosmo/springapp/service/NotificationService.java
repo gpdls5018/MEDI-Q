@@ -66,6 +66,7 @@ public class NotificationService {
     	}
     	//System.out.println("아이디당 저장된 알람정보(register): "+tokenList);
     	tokenMap.put(userId, fcmtoken);
+    	System.out.println("fcm토큰정보: "+tokenMap.get(userId));
     	tokenMap.put("loginToken", loginToken);
     	tokenMap.put("isLogin", isLogin);
     }
@@ -106,21 +107,17 @@ public class NotificationService {
         	NotificationRequest notificationRequest = NotificationRequest.builder()
                     .title("MEDI-Q")
                     .token(tokenMap.get(id).toString())
-                    .message(String.format("%s님\r\n%s\r\n%s 정 복용시간입니다",id,foodname,foodcount))
+                    .message(String.format("%s님\r\n%s\r\n%s정 복용시간입니다",id,foodname,foodcount))
                     .icon("../images/mainicon-bg.png")
-                    .image("../images/basic/bgWhite.jpg")
                     .build();
             sendNotification(notificationRequest);
         }
     }
     
-    /*
-    @PostMapping("/logout")
-    public ResponseEntity logout(MemberDTO member, HttpSession httpSession) {
-        loginService.logout(member.getId());
-        NotificationService.deleteToken(member.getId());
-        httpSession.removeAttribute(to);
-        return ResponseEntity.ok().build();
+    public ResponseEntity deleteToken() {
+    	tokenMap.clear();
+    	tokenList.clear();
+    	
+    	return ResponseEntity.ok().build();
     }
-    */
 }

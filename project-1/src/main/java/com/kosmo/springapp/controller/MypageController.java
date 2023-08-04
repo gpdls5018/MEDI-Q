@@ -407,13 +407,6 @@ public class MypageController {
 				return result;
 			}
 			else {//값 저장
-				map.put("id", id);
-				System.out.println("sum: "+map.get("sum"));
-				map.put("test1", "");
-				map.put("test2", "");
-				map.put("test3", "");
-				map.put("test4", "");
-				map.put(name, map.get("sum"));
 				int result = mentalTestServiceImpl.insertResult(map);
 				System.out.println("저장: "+result);
 				return Integer.toString(result);

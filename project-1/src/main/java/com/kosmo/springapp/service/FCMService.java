@@ -53,14 +53,7 @@ public class FCMService {
                         		.setTitle(notificationRequest.getTitle())
                         		.setBody(notificationRequest.getMessage())
                         		.setIcon(notificationRequest.getIcon())
-                        		.setImage(notificationRequest.getImage())
                         		.build())
-                        		/*
-                        		new WebpushNotification(
-                        		notificationRequest.getTitle(),
-                                notificationRequest.getMessage(),
-                                notificationRequest.getIcon()))
-                                */
                         .build())
                 .build();
 
@@ -73,23 +66,4 @@ public class FCMService {
         //logger.info("Send message: " + response);
     }
 
-    /*
-    @Scheduled(cron = "0 * * * * *")
-    private void createReceiveNotification(HttpServletRequest req, HttpServletResponse resp) {
-    	String loginToken = jwTokensService.getToken(req, tokenName);
-    	boolean isLogin = jwTokensService.verifyToken(loginToken, tokenName, secretKey, req, resp);
-    	
-        if (isLogin) {
-        	String id = jwTokensService.getTokenPayloads(loginToken,secretKey).toString();
-        	System.out.println("tokenMap: "+tokenMap.get(id));
-        	NotificationRequest notificationRequest = NotificationRequest.builder()
-                    .title("MEDI-Q")
-                    .token(tokenMap.get(id))
-                    .message("고려비타민 정 복용시간입니다")
-                    .icon("../images/mainicon.png")
-                    //.timestamp(timestamp)
-                    .build();
-            notificationService.sendNotification(notificationRequest);
-        }
-    }*/
 }
