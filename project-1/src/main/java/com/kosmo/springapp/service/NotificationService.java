@@ -66,7 +66,7 @@ public class NotificationService {
     	}
     	//System.out.println("아이디당 저장된 알람정보(register): "+tokenList);
     	tokenMap.put(userId, fcmtoken);
-    	System.out.println("fcm토큰정보: "+tokenMap.get(userId));
+    	//System.out.println("fcm토큰정보: "+tokenMap.get(userId));
     	tokenMap.put("loginToken", loginToken);
     	tokenMap.put("isLogin", isLogin);
     }
