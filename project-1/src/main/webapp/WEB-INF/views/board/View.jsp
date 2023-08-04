@@ -142,7 +142,7 @@
 	            <!-- 게시판 가운데 부분 -->
 	            <div class="d-flex col-6 flex-wrap flex-direction justify-content-center align-content-stretch">
 	                <div class="col pb-5">
-	                    <img src="<c:url value="/images/qna/qna_ans.png"/>" class="qna_ans ml-1">
+	                    <%-- <img src="<c:url value="/images/qna/qna_ans.png"/>" class="qna_ans ml-1"> --%>
 	                    <div class="row justify-content-center pt-3">
 	                    	<!--여기부터 답변출력  -->
 	                    	<%-- <c:if test="${! empty FAILURE}">
@@ -152,9 +152,10 @@
 								</div>
 							</c:if> --%>
 							<!-- 질문 출력 부분 -->
-							<div class="card_deco col-12 p-1 m-2">
-	                            <div class="card-body p-2 m-3">
+							<div class="card_deco col-12 pt-3 pr-4 pl-4 m-1">
+	                            <div class="card-body p-2 mt-3 mb--2">
 	                                <span class="card-title font-weight-bold card_font1"><span class="card_font2">Q.&nbsp;</span>${record.TITLE }</span>
+	                                <br>
 	                                <br>
 	                                <p class="card-text"><h5>${record.CONTENT }</h5></p>
 	                                <hr style="border: 1px solid #E6E9ED;"/>
