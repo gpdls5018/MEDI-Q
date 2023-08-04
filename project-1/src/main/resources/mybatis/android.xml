@@ -27,4 +27,7 @@
  		FROM (SELECT * FROM FOODTABLE WHERE PRODUCTNAME LIKE '%' || #{keyword} || '%' ORDER BY F_VIEW DESC)
 		WHERE ROWNUM &lt;=10
  	</select>
+ 	<select id="getFoodNameByNo" parameterType="String" resultType="String">
+ 		SELECT PRODUCTNAME FROM FOODTABLE WHERE no= #{no}
+ 	</select>
 </mapper>

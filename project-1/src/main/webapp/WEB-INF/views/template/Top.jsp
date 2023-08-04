@@ -1096,7 +1096,7 @@ ul {
                 
                 <div class="gptDialog p-0 pt-1"style="display:none;">
                     <div class="col-10 p-0 m-1">
-                        <div class="skeleton-gpt row d-flex align-content-center p-1 m-0"><!-- 답변 ######################## id="chat-gpt"-->
+                        <div class="skeleton-gpt row d-flex align-content-center p-1 m-0" id="chat-gpt"><!-- 답변 ######################## -->
                             <div class="col-2 d-flex justify-content-center p-0">
                                 <img src="/images/chatbot/bot_a.png" class="gtp_ans_img"/>
                             </div>
@@ -1110,8 +1110,8 @@ ul {
             </div>
             <div class="inputDIV input-group p-1 mt-1">
 			    <div class="position-relative">
-			        <div class="position-absolute" style="left: 257px; top: 50%; transform: translateY(-50%);">
-			            <button id="startBtn" onclick="toggleRecognition()">
+			        <div class="position-absolute" style="left: 252px; top: 50%; transform: translateY(-50%);">
+			            <button id="startBtn">
 			                <img src="<c:url value='/images/chatbot/mike.png'/>" style="width: 37px;height: 35px; border-radius: 35%;">
 			            </button> 
 			        </div>
@@ -1259,6 +1259,138 @@ ul {
 	    });
 	});
 	
-	 
+	 /*stt,tts시작  */
+    $(document).ready(function () {
+    	
+	    var startBtn = document.querySelector('#startBtn');
+	    var startTtsBtn = document.querySelector('#startTtsBtn');
+	    var stopTtsBtn = document.querySelector('#stopTtsBtn');
+	
+	    var sttMsg = document.querySelector('#stt-msg');
+	    var ttsMsg = document.querySelector('#tts-msg');
+	    var result = document.querySelector('#result');
+	    var chatGpt = document.querySelector('#chat-gpt');
+	    var voiceSelect = document.querySelector('#voice');
+	
+	    var isRecognizing = false;
+	    var recognition;
+	
+	    $.get("/config/apiKey", function (data) {
+	    	
+	        var apiKey = data;
+	        /*  
+	        if (!('webkitSpeechRecognition' in window)) {
+	            sttMsg.innerHTML = '당신의 브라우저는 <strong>STT</strong>를 지원하지 않습니다.';
+	            startBtn.disabled = true;
+	            result.placeholder = '음성인식이 안되는 브라우저입니다.아래 버튼이 비활성화 되었습니다'
+	        } else {
+	            sttMsg.innerHTML = '당신의 브라우저는 <strong>STT</strong>를 지원합니다.';
+	            startBtn.addEventListener('click', startRecognition);
+	            initRecognition();
+	        }//////else
+	
+	        if ('speechSynthesis' in window) {
+	            ttsMsg.innerHTML = '당신의 브라우저는 <strong>TTS</strong>를 지원합니다.';
+	            loadVoices();
+	            window.speechSynthesis.onvoiceschanged = function (e) {
+	                loadVoices();
+	            };
+	            startTtsBtn.addEventListener('click', startSynthesis);
+	            stopTtsBtn.addEventListener('click', stopSynthesis);
+	        } else {
+	            ttsMsg.innerHTML = '당신의 브라우저는 <strong>TTS</strong>를 지원하지 않습니다.<br/><a href="http://www.google.co.uk/intl/en/chrome/browser/canary.html">다운로드</a>.';
+	        }///////else*/
+	        	
+	        
+	        function sendToChatGPT(content) {
+	            fetch('https://api.openai.com/v1/chat/completions', {
+	                method: 'POST',
+	                headers: {
+	                    'Content-Type': 'application/json',
+	                    'Authorization': 'Bearer ' + apiKey
+	                },
+	                body: JSON.stringify({
+	                    model: 'gpt-3.5-turbo',
+	                    messages: [{ role: 'user', content: content }],
+	                    temperature: 0
+	                })
+	            })
+	                .then(response => {
+	                    if (!response.ok) return response.text().then(text => Promise.reject(text));
+	                    return response.json();
+	                })
+	                .then(data => chatGpt.value = data["choices"][0]["message"]["content"])
+	                .catch(error => console.error(error));
+	        }///////////sendToChatGPT(content)
+	        
+	        function initRecognition() {
+	            recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+	            recognition.lang = 'ko-KR';
+	            recognition.maxAlternatives = 30000;
+	            recognition.interimResults = true;
+	            recognition.onspeechstart = () => console.log('Recognition Start!');
+	            recognition.onspeechend = stopRecognition;
+	            recognition.onresult = function (event) {
+	                var transcript = Array.from(event.results).map(results => results[0].transcript).join("");
+	                result.value = transcript;
+	                for (let i = event.resultIndex; i < event.results.length; ++i) {
+	                    if (event.results[i].isFinal) sendToChatGPT(transcript);//sendToChatGPT땜에 들어가야됨 자스는 동기
+	                }
+	            };
+	            recognition.onerror = function (event) {
+	                console.error('음성 인식 오류가 발생했습니다: ' + event.error);
+	            };
+	        }////////initRecognition()
+	        
+	        
+	    });/////$.get("/config/apiKey", function (data)
+	
+	    function startRecognition() {
+	    	console.log('음성인식 중1')
+	        startBtn.innerHTML = "음성인식 중입니다. <i class='fas fa-microphone' style='color:red'></i>";
+	        result.value = '';
+	        recognition.start();
+	        isRecognizing = true;
+	    }//////startRecognition()
+	
+	    function stopRecognition() {
+	    	console.log("음성인식 멈춤")
+	        startBtn.innerHTML = "SpeechToText Start <i class='fas fa-microphone' style='color:red'></i>"
+	        recognition.stop();
+	        isRecognizing = false;
+	    }//////stopRecognition()
+	
+	    function startSynthesis() {
+	    	
+	        var utterance = new SpeechSynthesisUtterance(chatGpt.value);
+	        
+	        if (voiceSelect.value) {
+	            var selectedVoice = speechSynthesis.getVoices().filter(function (voice) {
+	                return voice.voiceURI == voiceSelect.value;
+	            })[0];
+	            utterance.voiceURI = selectedVoice.voiceURI;
+	            utterance.lang = selectedVoice.lang;
+	        }
+	        window.speechSynthesis.speak(utterance);////////
+	    }/////startSynthesis()
+	
+	    function stopSynthesis() {
+	        if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+	    }////stopSynthesis()
+	
+	    function loadVoices() {
+	        var voices = window.speechSynthesis.getVoices();
+	        voices.forEach(function (voice, i) {
+	            var option = document.createElement('option');
+	            option.value = voice.voiceURI;
+	            option.dataset.lang = voice.lang;
+	            option.innerHTML = voice.name;
+	            voiceSelect.appendChild(option);
+	        });
+	    }//////loadVoices()
+	    
+	    
+	
+	});/////////$(document).ready(function ()
 </script>
  

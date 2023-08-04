@@ -209,7 +209,7 @@ body {
         border-radius: 10px;
         box-shadow: .1rem .1rem .3rem gray;
         width: 560px;
-        height: 610px;
+        height: 580px;
     }
     .miniroom_box {
         flex: 0.8;
@@ -371,7 +371,7 @@ body {
   	background-color: #fff8b6;
   	box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.1);
   	border: rgba(48, 69, 92, 0.8) solid 0;
-  	height: 1500px;
+  	height: 1200px;
 }
 
 .diaryStart::-webkit-scrollbar {
@@ -830,7 +830,7 @@ body {
                                     </div>  
                                     
                                     <div class="board num" style="flex:1; max-height: 310px;">
-                                        <div class="line1" style="max-height: 310px;">
+                                        <div class="line1" style="max-height: 300px;">
                                             <div class="datepicker"></div>
                                         </div>
                                     </div>
