@@ -34,4 +34,9 @@ public class AndroidServiceImpl {
 		return androidMapper.selectFoodListByKeyWord(keyword);
 	}
 
+	public String getFoodNameByNo(String no) {
+		return androidMapper.getFoodNameByNo(no);
+		
+	}
+
 }
