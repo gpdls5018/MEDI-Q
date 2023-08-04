@@ -557,6 +557,7 @@ ul {
 		     cursor: pointer; 
 		     transition-property: outline-offset, outline-color, background-color;
 		     transition-duration: .3s; 
+		     padding: 0;
 		}
 	  	#startBtn:hover, #startTtsBtn:hover, #stopTtsBtn:hover{
              outline-offset: 4px;
@@ -663,6 +664,150 @@ ul {
 	        document.getElementById('chatbot').style.display = 'block';
 	        document.querySelector("#userInput").focus();
 	    }
+	    
+	    
+	    /*stt,tts시작  */
+	    $(document).ready(function () {
+	    	
+		    var startBtn = document.querySelector('#startBtn');
+		    var startTtsBtn = document.querySelector('#startTtsBtn');
+		    var stopTtsBtn = document.querySelector('#stopTtsBtn');
+		
+		    var sttMsg = document.querySelector('#stt-msg');
+		    var ttsMsg = document.querySelector('#tts-msg');
+		    var result = document.querySelector('#userInput');//질문
+		    var chatGpt = document.querySelector('#skeleton-gpt');//응답
+		    var voiceSelect = document.querySelector('#voice');
+		
+		    var isRecognizing = false;
+		    var recognition;
+		
+		    $.get("/config/apiKey", function (data) {
+		    	
+		        var apiKey = data;
+		        
+		        if (!('webkitSpeechRecognition' in window)) {
+		            sttMsg.innerHTML = '현재의 브라우저는 <strong>STT</strong>를 지원하지 않습니다.';
+		            startBtn.disabled = true;
+		            result.placeholder = '음성인식이 안되는 브라우저입니다.아래 버튼이 비활성화 되었습니다'
+		        } else {
+		            sttMsg.innerHTML = '현재의 브라우저는 <strong>STT</strong>를 지원합니다.';
+		            startBtn.addEventListener('click', startRecognition);
+		            initRecognition();
+		        }//////else
+		
+		        if ('speechSynthesis' in window) {
+		            ttsMsg.innerHTML = '현재의 브라우저는 <strong>TTS</strong>를 지원합니다.';
+		            loadVoices();
+		            window.speechSynthesis.onvoiceschanged = function (e) {
+		                loadVoices();
+		            };
+		            startTtsBtn.addEventListener('click', startSynthesis);
+		            stopTtsBtn.addEventListener('click', stopSynthesis);
+		        } else {
+		            ttsMsg.innerHTML = '현재의 브라우저는 <strong>TTS</strong>를 지원하지 않습니다.<br/><a href="http://www.google.co.uk/intl/en/chrome/browser/canary.html">다운로드</a>.';
+		        }///////else
+		        	
+		        
+		        function sendToChatGPT(content) {
+		            fetch('https://api.openai.com/v1/chat/completions', {
+		                method: 'POST',
+		                headers: {
+		                    'Content-Type': 'application/json',
+		                    'Authorization': 'Bearer ' + apiKey
+		                },
+		                body: JSON.stringify({
+		                    model: 'gpt-3.5-turbo',
+		                    messages: [{ role: 'user', content: content }],
+		                    temperature: 0
+		                })
+		            })
+		                .then(response => {
+		                    if (!response.ok) return response.text().then(text => Promise.reject(text));
+		                    return response.json();
+		                })
+		                .then(data => chatGpt.value = data["choices"][0]["message"]["content"])
+		                .catch(error => console.error(error));
+		        }///////////sendToChatGPT(content)
+		        
+		        function initRecognition() {
+		            recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+		            recognition.lang = 'ko-KR';
+		            recognition.maxAlternatives = 30000;
+		            recognition.interimResults = true;
+		            recognition.onspeechstart = () => console.log('Recognition Start!');
+		            recognition.onspeechend = stopRecognition;///////////////////
+		            recognition.onresult = function (event) {
+		                var transcript = Array.from(event.results).map(results => results[0].transcript).join("");
+		                result.value = transcript;
+		                for (let i = event.resultIndex; i < event.results.length; ++i) {
+		                	$('#loadingModal').modal({'show':true,backdrop:'static'});
+		                    if (event.results[i].isFinal) sendToChatGPT(transcript);//sendToChatGPT땜에 들어가야됨 자스는 동기
+		                }
+		            };
+		            recognition.onerror = function (event) {
+		                console.error('음성 인식 오류가 발생했습니다: ' + event.error);
+		            };
+		        }////////initRecognition()
+		        
+		        
+		    });/////$.get("/config/apiKey", function (data)
+		
+		    function startRecognition() {
+		    	console.log('음성인식 중1')
+		        startBtn.innerHTML = "<i class='fas fa-microphone' style='color:red; font-size:24px; padding-left:13px;'></i>";
+		        result.value = '';
+		        recognition.start();
+		        isRecognizing = true;
+		    }//////startRecognition()
+		
+		    function stopRecognition() {
+		    	console.log("음성인식 멈춤")
+		        startBtn.innerHTML = "<img src='<c:url value='/images/chatbot/mike.png'/>' style='width: 37px;height: 35px; border-radius: 35%;'>"
+		        recognition.stop();
+		        isRecognizing = false;
+		    }//////stopRecognition()
+		    function toggleRecognition() {
+			    if (isRecognizing) {
+			        stopRecognition();
+			    } else {
+			        startRecognition();
+			    }
+			}
+		    
+		
+		    function startSynthesis() {
+		    	
+		        var utterance = new SpeechSynthesisUtterance(chatGpt.value);
+		        
+		        if (voiceSelect.value) {
+		            var selectedVoice = speechSynthesis.getVoices().filter(function (voice) {
+		                return voice.voiceURI == voiceSelect.value;
+		            })[0];
+		            utterance.voiceURI = selectedVoice.voiceURI;
+		            utterance.lang = selectedVoice.lang;
+		        }
+		        window.speechSynthesis.speak(utterance);
+		    }/////startSynthesis()
+		
+		    function stopSynthesis() {
+		        if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+		    }////stopSynthesis()
+		
+		    function loadVoices() {
+		        var voices = window.speechSynthesis.getVoices();
+		        voices.forEach(function (voice, i) {
+		            var option = document.createElement('option');
+		            option.value = voice.voiceURI;
+		            option.dataset.lang = voice.lang;
+		            option.innerHTML = voice.name;
+		            voiceSelect.appendChild(option);
+		        });
+		    }//////loadVoices()
+		    
+		    
+		
+		});/////////$(document).ready(function ()
     </script>
 </head>
 <body>
@@ -914,9 +1059,18 @@ ul {
             </div>
             
             <div class="textdialog">
+            	<!-- STT와 TTS 지원여부 확인 -->
+	            <div class="alert alert-danger alert-dismissible fade show py-2">
+				    <button type="button" class="close" data-dismiss="alert">&times;</button>
+				    <strong id="stt-msg" style="font-size: 12px;"> </strong><br/>
+				    <strong id="tts-msg" style="font-size: 12px;"> </strong>
+				    <label for="voice" style="font-size: 12px;">음성을 선택하세요</label>
+		                 <select class="form-control p-1" id="voice" style="width: 150px; height: 25px; font-size: 10px;">                   
+		            </select>
+				</div>
             	<div class="m-2" style="text-align: right;">
-		            <button id="startTtsBtn" ><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 35px;height: 35px; border-radius: 35%;"></button>
-		            <button id="stopTtsBtn" class="p-0 mr-2"><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 35px;height: 35px; border-radius: 35%;"></button>
+		            <button id="startTtsBtn" class="mr-1"><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 35px;height: 35px; border-radius: 35%;"></button>
+		            <button id="stopTtsBtn" class="mr-2"><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 35px;height: 35px; border-radius: 35%;"></button>
                 </div>
                 <div class="col-10 p-0 m-1">
                     <div class="mt-2">
@@ -942,12 +1096,12 @@ ul {
                 
                 <div class="gptDialog p-0 pt-1"style="display:none;">
                     <div class="col-10 p-0 m-1">
-                        <div class="skeleton-gpt row d-flex align-content-center p-1 m-0" id="chat-gpt"><!-- 답변 ######################## -->
+                        <div class="skeleton-gpt row d-flex align-content-center p-1 m-0"><!-- 답변 ######################## id="chat-gpt"-->
                             <div class="col-2 d-flex justify-content-center p-0">
                                 <img src="/images/chatbot/bot_a.png" class="gtp_ans_img"/>
                             </div>
                             <div class="gptAnswer col-10 d-flex justify-content-start align-items-center p-0 m-0">
-                            	<!-- 여기가 테스트 마이크 -->
+                            	
                             	
                             </div>
                         </div>
@@ -956,12 +1110,12 @@ ul {
             </div>
             <div class="inputDIV input-group p-1 mt-1">
 			    <div class="position-relative">
-			        <div class="position-absolute" style="left: 252px; top: 50%; transform: translateY(-50%);">
-			            <button id="startBtn">
+			        <div class="position-absolute" style="left: 257px; top: 50%; transform: translateY(-50%);">
+			            <button id="startBtn" onclick="toggleRecognition()">
 			                <img src="<c:url value='/images/chatbot/mike.png'/>" style="width: 37px;height: 35px; border-radius: 35%;">
 			            </button> 
 			        </div>
-			        <input type="text" class="form-control rounded-start bg-light" id="userInput" placeholder="무엇이든 물어보세요" style="width: 299px;">
+			        <input type="text" class="form-control rounded-start bg-light" id="userInput" placeholder="무엇이든 물어보세요" style="width: 299px;"><!-- #######질문 -->
 			    </div>
 			    <div class="input-group-append">
 			        <button class="btn btn-warning search_btn font-weight-bold text-light" type="button">검색</button>
@@ -1105,138 +1259,6 @@ ul {
 	    });
 	});
 	
-	 /*stt,tts시작  */
-    $(document).ready(function () {
-    	
-	    var startBtn = document.querySelector('#startBtn');
-	    var startTtsBtn = document.querySelector('#startTtsBtn');
-	    var stopTtsBtn = document.querySelector('#stopTtsBtn');
-	
-	    var sttMsg = document.querySelector('#stt-msg');
-	    var ttsMsg = document.querySelector('#tts-msg');
-	    var result = document.querySelector('#result');
-	    var chatGpt = document.querySelector('#chat-gpt');
-	    var voiceSelect = document.querySelector('#voice');
-	
-	    var isRecognizing = false;
-	    var recognition;
-	
-	    $.get("/config/apiKey", function (data) {
-	    	
-	        var apiKey = data;
-	        /*  
-	        if (!('webkitSpeechRecognition' in window)) {
-	            sttMsg.innerHTML = '당신의 브라우저는 <strong>STT</strong>를 지원하지 않습니다.';
-	            startBtn.disabled = true;
-	            result.placeholder = '음성인식이 안되는 브라우저입니다.아래 버튼이 비활성화 되었습니다'
-	        } else {
-	            sttMsg.innerHTML = '당신의 브라우저는 <strong>STT</strong>를 지원합니다.';
-	            startBtn.addEventListener('click', startRecognition);
-	            initRecognition();
-	        }//////else
-	
-	        if ('speechSynthesis' in window) {
-	            ttsMsg.innerHTML = '당신의 브라우저는 <strong>TTS</strong>를 지원합니다.';
-	            loadVoices();
-	            window.speechSynthesis.onvoiceschanged = function (e) {
-	                loadVoices();
-	            };
-	            startTtsBtn.addEventListener('click', startSynthesis);
-	            stopTtsBtn.addEventListener('click', stopSynthesis);
-	        } else {
-	            ttsMsg.innerHTML = '당신의 브라우저는 <strong>TTS</strong>를 지원하지 않습니다.<br/><a href="http://www.google.co.uk/intl/en/chrome/browser/canary.html">다운로드</a>.';
-	        }///////else*/
-	        	
-	        
-	        function sendToChatGPT(content) {
-	            fetch('https://api.openai.com/v1/chat/completions', {
-	                method: 'POST',
-	                headers: {
-	                    'Content-Type': 'application/json',
-	                    'Authorization': 'Bearer ' + apiKey
-	                },
-	                body: JSON.stringify({
-	                    model: 'gpt-3.5-turbo',
-	                    messages: [{ role: 'user', content: content }],
-	                    temperature: 0
-	                })
-	            })
-	                .then(response => {
-	                    if (!response.ok) return response.text().then(text => Promise.reject(text));
-	                    return response.json();
-	                })
-	                .then(data => chatGpt.value = data["choices"][0]["message"]["content"])
-	                .catch(error => console.error(error));
-	        }///////////sendToChatGPT(content)
-	        
-	        function initRecognition() {
-	            recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
-	            recognition.lang = 'ko-KR';
-	            recognition.maxAlternatives = 30000;
-	            recognition.interimResults = true;
-	            recognition.onspeechstart = () => console.log('Recognition Start!');
-	            recognition.onspeechend = stopRecognition;
-	            recognition.onresult = function (event) {
-	                var transcript = Array.from(event.results).map(results => results[0].transcript).join("");
-	                result.value = transcript;
-	                for (let i = event.resultIndex; i < event.results.length; ++i) {
-	                    if (event.results[i].isFinal) sendToChatGPT(transcript);//sendToChatGPT땜에 들어가야됨 자스는 동기
-	                }
-	            };
-	            recognition.onerror = function (event) {
-	                console.error('음성 인식 오류가 발생했습니다: ' + event.error);
-	            };
-	        }////////initRecognition()
-	        
-	        
-	    });/////$.get("/config/apiKey", function (data)
-	
-	    function startRecognition() {
-	    	console.log('음성인식 중1')
-	        startBtn.innerHTML = "음성인식 중입니다. <i class='fas fa-microphone' style='color:red'></i>";
-	        result.value = '';
-	        recognition.start();
-	        isRecognizing = true;
-	    }//////startRecognition()
-	
-	    function stopRecognition() {
-	    	console.log("음성인식 멈춤")
-	        startBtn.innerHTML = "SpeechToText Start <i class='fas fa-microphone' style='color:red'></i>"
-	        recognition.stop();
-	        isRecognizing = false;
-	    }//////stopRecognition()
-	
-	    function startSynthesis() {
-	    	
-	        var utterance = new SpeechSynthesisUtterance(chatGpt.value);
-	        
-	        if (voiceSelect.value) {
-	            var selectedVoice = speechSynthesis.getVoices().filter(function (voice) {
-	                return voice.voiceURI == voiceSelect.value;
-	            })[0];
-	            utterance.voiceURI = selectedVoice.voiceURI;
-	            utterance.lang = selectedVoice.lang;
-	        }
-	        window.speechSynthesis.speak(utterance);////////
-	    }/////startSynthesis()
-	
-	    function stopSynthesis() {
-	        if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
-	    }////stopSynthesis()
-	
-	    function loadVoices() {
-	        var voices = window.speechSynthesis.getVoices();
-	        voices.forEach(function (voice, i) {
-	            var option = document.createElement('option');
-	            option.value = voice.voiceURI;
-	            option.dataset.lang = voice.lang;
-	            option.innerHTML = voice.name;
-	            voiceSelect.appendChild(option);
-	        });
-	    }//////loadVoices()
-	    
-	    
-	
-	});/////////$(document).ready(function ()
+	 
 </script>
  

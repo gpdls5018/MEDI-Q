@@ -1,1 +1,1 @@
-var serial = {apiKey:'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'}
+var serial = {apiKey:'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'}
