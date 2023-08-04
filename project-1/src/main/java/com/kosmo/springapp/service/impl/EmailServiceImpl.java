@@ -42,7 +42,7 @@ public class EmailServiceImpl implements EmailService{
 		String msgg = "";
 		msgg += "<div style='margin:100px;'>";
 		msgg += "<h1> 안녕하세요</h1>";
-		msgg += "<h1> 셀프 메디케이션 MEDI-Q 입니다</h1>";////////////내용 수정
+		msgg += "<h1> 셀프 메디케이션 MEDI-Q 입니다</h1>";
 		msgg += "<br>";
 		msgg += "<p>아래 코드를 회원가입 창으로 돌아가 입력해주세요<p>";
 		msgg += "<br>";

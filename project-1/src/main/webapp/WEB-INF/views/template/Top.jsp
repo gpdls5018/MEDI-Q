@@ -1065,11 +1065,8 @@ ul {
                             return messaging.getToken();  
                         })
                         .then(async function(token) {
-                        	//Firebase콘솔에 앱과 웹 두개를 추가하고 그래야 메시지 전송버튼이 보임
-                            //아래 토큰을 복사해서 파이어베이스 콘솔에서 메시지를 보낸다
-                            //혹은 스프링 REST API에서 메시지를 보낸다
                         	await fetch('/webpush', { method: 'post', body: token})
-                        	
+                        	/*
                         	//포그라운드일 때
                             messaging.onMessage(payload => {
                             	var dts = new Date(2023, 6, 22, 19, 51, 0, 0);
@@ -1079,7 +1076,6 @@ ul {
                                     icon: payload.notification.icon,
                                     timestamp: dts
                                 }
-                                //const notification = new Notification(title,options);
 								
                                 navigator.serviceWorker.ready.then(registration => {
                                     registration.showNotification(title, options);
@@ -1087,6 +1083,7 @@ ul {
                                 })
                                 
                             })
+                            */
                         })
                         .catch(function(err) {
                             console.log("Error Occured");

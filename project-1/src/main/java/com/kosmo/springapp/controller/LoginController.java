@@ -13,6 +13,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -28,6 +29,7 @@ import com.kosmo.springapp.admin.service.AdminMapper;
 import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.LoginMapper;
+import com.kosmo.springapp.service.NotificationService;
 import com.kosmo.springapp.service.impl.EmailServiceImpl;
 import com.kosmo.springapp.service.impl.KakaoLoginServiceImpl;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
@@ -43,6 +45,8 @@ public class LoginController {
 	private JWTokensService jwTokensService;
 	@Autowired
 	private AdminMapper adminMapper;
+	@Autowired
+	private NotificationService notificationService;
 	
 	@Value("${secret-key}")
 	private String secretKey;
@@ -139,6 +143,10 @@ public class LoginController {
 	public String logout(HttpServletRequest req, HttpServletResponse resp) {
 		// 로그아웃 처리- 세션영역에 저장된 속성 삭제
 		jwTokensService.removeToken(req, resp, tokenName);
+		
+		//로그아웃 시 fcm토큰 삭제
+		ResponseEntity re = notificationService.deleteToken();
+		System.out.println("fcm 토큰삭제: "+re);
 		
 		// 로그아웃 처리 후 로그인 페이지로 이동;
 		return "redirect:/";
