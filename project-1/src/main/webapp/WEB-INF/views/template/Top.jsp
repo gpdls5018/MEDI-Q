@@ -914,6 +914,10 @@ ul {
             </div>
             
             <div class="textdialog">
+            	<div class="m-2" style="text-align: right;">
+		            <button id="startTtsBtn" ><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 35px;height: 35px; border-radius: 35%;"></button>
+		            <button id="stopTtsBtn" class="p-0 mr-2"><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 35px;height: 35px; border-radius: 35%;"></button>
+                </div>
                 <div class="col-10 p-0 m-1">
                     <div class="mt-2">
                         <div class="skeleton-gpt row d-flex align-content-center p-1 m-0">
@@ -938,7 +942,7 @@ ul {
                 
                 <div class="gptDialog p-0 pt-1"style="display:none;">
                     <div class="col-10 p-0 m-1">
-                        <div class="skeleton-gpt row d-flex align-content-center p-1 m-0">
+                        <div class="skeleton-gpt row d-flex align-content-center p-1 m-0" id="chat-gpt"><!-- 답변 ######################## -->
                             <div class="col-2 d-flex justify-content-center p-0">
                                 <img src="/images/chatbot/bot_a.png" class="gtp_ans_img"/>
                             </div>
@@ -952,7 +956,7 @@ ul {
             </div>
             <div class="inputDIV input-group p-1 mt-1">
 			    <div class="position-relative">
-			        <div class="position-absolute" style="left: 257px; top: 50%; transform: translateY(-50%);">
+			        <div class="position-absolute" style="left: 252px; top: 50%; transform: translateY(-50%);">
 			            <button id="startBtn">
 			                <img src="<c:url value='/images/chatbot/mike.png'/>" style="width: 37px;height: 35px; border-radius: 35%;">
 			            </button> 
@@ -974,9 +978,9 @@ ul {
             -->
         </div>
         <!-- 내부 로딩바 -->
-        <div class="loading_dot">
+        <div class="loading_dot" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
             <h2 class="pt-2 pl-3 loadbar">답변을 준비중입니다</h2>
-            <div class="pl-2">
+            <div class="pl-2" role="document">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -1120,7 +1124,7 @@ ul {
 	    $.get("/config/apiKey", function (data) {
 	    	
 	        var apiKey = data;
-	        
+	        /*  
 	        if (!('webkitSpeechRecognition' in window)) {
 	            sttMsg.innerHTML = '당신의 브라우저는 <strong>STT</strong>를 지원하지 않습니다.';
 	            startBtn.disabled = true;
@@ -1141,7 +1145,7 @@ ul {
 	            stopTtsBtn.addEventListener('click', stopSynthesis);
 	        } else {
 	            ttsMsg.innerHTML = '당신의 브라우저는 <strong>TTS</strong>를 지원하지 않습니다.<br/><a href="http://www.google.co.uk/intl/en/chrome/browser/canary.html">다운로드</a>.';
-	        }///////else
+	        }///////else*/
 	        	
 	        
 	        function sendToChatGPT(content) {
