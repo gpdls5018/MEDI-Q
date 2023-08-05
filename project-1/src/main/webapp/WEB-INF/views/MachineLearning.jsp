@@ -81,8 +81,13 @@ body {
 					</div>
 					<div class="tsai text-center" style="position: absolute; top:110px; left:430px;">
 						<a href="/ParkinsonPredict.do?" style="color:black; font-weight: bold; text-decoration: none;">						
-						<img alt="치매" style="border-radius:15px; width: 200px; height: 200px;" src="https://img.freepik.com/premium-photo/handsome-depressed-man-in-casual-clothes_85574-5904.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=sph">
+						<img alt="치매" style="border-radius:15px; width: 200px; height: 200px;" src="https://img.freepik.com/free-photo/old-patient-suffering-from-parkinson_23-2149370426.jpg?w=740&t=st=1691212317~exp=1691212917~hmac=3d8f58ce6f9c2097610d04da6d31dddc489ba25cfd9012dbc19d7ad57d000c43">
 						<br/>파킨슨(치매) 예측</a>
+					</div>
+					<div class="tsai text-center" style="position: absolute; top:380px; left:-70px;">
+						<a href="/StrokePredict.do?" style="color:black; font-weight: bold; text-decoration: none;">						
+						<img alt="뇌졸중" style="border-radius:15px; width: 200px; height: 200px;" src="https://img.freepik.com/premium-photo/handsome-depressed-man-in-casual-clothes_85574-5904.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=sph">
+						<br/>뇌졸중 예측</a>
 					</div>
 				</div>
 				<div class="tsaibg">

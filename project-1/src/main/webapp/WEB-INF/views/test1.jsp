@@ -109,7 +109,26 @@ body{
 			</div>
 			<div class="new-wide-main new-wide-main-070 product-result">
 				<div id="itemList" class="item-cards">
-					
+					<div class="new-wide-main new-wide-main-070 product-result">
+				<div id="itemList" class="item-cards">
+					<c:forEach items="${listData}" var="item">
+						<a id="${item.no}" href="/detail.do?no=${item.no}" tabindex="0" class="item-card" title="${item.productName} 자세히 보기" data-href="/products/1/비타민C-1000" data-product-id="1">
+						<c:if test="${not empty item.imgURL}">
+							<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
+						</c:if>
+          				<c:if test="${empty item.imgURL}">	
+							<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+						</c:if>
+							<span class="txt1">${item.company}</span>
+							<span class="txt2">${item.productName}</span>
+							<div class="card-tags">
+							<c:set var="materialList" value="${fn:split(item.material, '$')}" />
+								<c:forEach items="${materialList}" var="mater">
+									<div class="card-tag">${mater }</div>
+								</c:forEach>
+							</div>
+						</a>
+					</c:forEach>
 				</div><!-- item-cards의 끝 -->
 				
 				

@@ -700,7 +700,7 @@
 					<span class="s-txt1">인기 검색어</span>
 					<div class="search-keywords">
 						<c:forEach var="name" items="${top5v}">
-							<a style="font-size: 15px;" tabindex="0" class="search-keyword" href="/NutrientDetail.do?name=${name}">${name}</a>
+							<a style="font-size: 13px;" tabindex="0" class="search-keyword" href="/NutrientDetail.do?name=${name}">${name}</a>
 						</c:forEach>
 					</div>
 				</div>
