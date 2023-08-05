@@ -571,8 +571,13 @@ ul {
 		     30%{transform: rotate(10deg);}
 		     40%{transform: rotate(-10deg);}
 		}
+		.skeleton-gpt.active-color {
+		    color: #FF7E00;
+		}
+
     </style>
     <script>
+    
 	    window.addEventListener('DOMContentLoaded', ()=>{
 	        //var chatgpt = document.querySelector('.gptAnswer');
 	        //var modal = document.querySelector('#lodingModal');
@@ -669,7 +674,34 @@ ul {
 	    }
 	    
 	    
+	    
+	    
+	    
 	    /*stt,tts시작  */
+
+		function startSynthesis() {
+		    var selectedAnswers = document.querySelectorAll('.skeleton-gpt.active-color');
+		    var voiceSelect = document.querySelector('#voice');
+		    
+		    selectedAnswers.forEach(function (selectedAnswer) {
+		        //var utterance = new SpeechSynthesisUtterance(selectedAnswer.value);
+		        var gptAnswerElement = selectedAnswer.parentElement;
+		        var utterance = new SpeechSynthesisUtterance(gptAnswerElement.textContent);
+		        console.log("문제해결중");
+		        if (voiceSelect.value) {
+		            console.log("문제해결중2");
+		            var selectedVoice = speechSynthesis.getVoices().filter(function (voice) {
+		                return voice.voiceURI == voiceSelect.value;
+		            })[0];
+		            console.log("selectedAnswer.value:", selectedAnswer.value);
+		            utterance.voiceURI = selectedVoice.voiceURI;
+		            utterance.lang = selectedVoice.lang;
+		        }
+		        window.speechSynthesis.speak(utterance);
+		    });
+		}/////////////////////////////////startSynthesis
+		
+
 	    $(document).ready(function () {
 	    	
 		    var startBtn = document.querySelector('#startBtn');
@@ -686,6 +718,17 @@ ul {
 		    var isRecognizing = false;
 		    var recognition;
 		
+		    
+		    
+		    //대화상자(답변) 선택시 색상 변경
+		    $(".skeleton-gpt").click(function() {
+		        $(this).toggleClass("active-color");
+		    });
+		    $(document).on("click", ".gptDialog .skeleton-gpt", function() {
+		        $(this).toggleClass("active-color");
+		    });
+		    
+	    
 		    $.get("/config/apiKey", function (data) {
 		    	
 		        var apiKey = data;
@@ -695,13 +738,13 @@ ul {
 		            startBtn.disabled = true;
 		            result.placeholder = '음성인식이 안되는 브라우저입니다.아래 버튼이 비활성화 되었습니다'
 		        } else {
-		            sttMsg.innerHTML = '현재의 브라우저는 <strong>STT</strong>를 지원합니다.';
+		            sttMsg.innerHTML = 'Q-Bot을 통해 받은 답변은 음성 지원이 가능합니다.';
 		            startBtn.addEventListener('click', startRecognition);
 		            initRecognition();
 		        }//////else
 		
 		        if ('speechSynthesis' in window) {
-		            ttsMsg.innerHTML = '현재의 브라우저는 <strong>TTS</strong>를 지원합니다.';
+		            ttsMsg.innerHTML = '하단의 언어를 선택해주세요.';
 		            loadVoices();
 		            window.speechSynthesis.onvoiceschanged = function (e) {
 		                loadVoices();
@@ -712,42 +755,15 @@ ul {
 		            ttsMsg.innerHTML = '현재의 브라우저는 <strong>TTS</strong>를 지원하지 않습니다.<br/><a href="http://www.google.co.uk/intl/en/chrome/browser/canary.html">다운로드</a>.';
 		        }///////else
 		        	
-		        /*
-		        function sendToChatGPT(content) {
-		            fetch('https://api.openai.com/v1/chat/completions', {
-		                method: 'POST',
-		                headers: {
-		                    'Content-Type': 'application/json',
-		                    'Authorization': 'Bearer ' + apiKey
-		                },
-		                body: JSON.stringify({
-		                    model: 'gpt-3.5-turbo',
-		                    messages: [{ role: 'user', content: content }],
-		                    temperature: 0
-		                })
-		            })
-		                .then(response => {
-		                    if (!response.ok) return response.text().then(text => Promise.reject(text));
-		                    return response.json();
-		                })
-		                .then(data => chatGpt.value = data["choices"][0]["message"]["content"])
-		                .catch(error => console.error(error));
-		        }///////////sendToChatGPT(content)
-		        */
+		     
 		        
-		        function sendToChatGPT(content) {//GPT로 text내용을 보냄
+		        function sendToChatGPT(content) {
 		        	
-		        	//원래 챗봇 
-		        	//cloneNode()메소드true여서 자식까지 다 복제 (for문처럼 사용할 예정)
 		        	var cloneUserDialog = document.querySelector(".userDialog").cloneNode(true);
 		        	
-		        	//사용자가 입력한 값 받기(질문text태그임)
 			    	cloneUserDialog.querySelector(".usersQuestion").innerHTML = content;
-			    	//복제된 div답변을 보이게 함(출력)
-			    	cloneUserDialog.style.display='';
-			    	//textdialog요소의 마지막 자식으로 추가. 즉,새로운 대화 내용이 채팅창의 맨 아래에 추가
-			    	document.querySelector(".textdialog").appendChild(cloneUserDialog);
-			    	//여기까지
+			    	cloneUserDialog.style.display='';		    	
+			    	document.querySelector(".textdialog").appendChild(cloneUserDialog);		    	
 		        	
 		            fetch('https://api.openai.com/v1/chat/completions', {
 		                method: 'POST',
@@ -765,18 +781,14 @@ ul {
 	                    if (!response.ok) return response.text().then(text => Promise.reject(text));
 	                    return response.json();
 	                })
-	                //var chatGpt = document.querySelector('.gptAnswer');//첫 질문과, 답변이 나오는 태그 잠시만 테스트용 주석
 	                .then(data => {
-	                	var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);//이건 클론만드는 코드
-	    	            //아래 코드가 답변 div를 만들면서 거기에 text를 넣는 코드이다
-	    	            cloneGptDialog.querySelector(".gptAnswer").innerHTML  = data["choices"][0]["message"]["content"];//이게 내용으로 들어감
-	    	            //var chatGpt=cloneGptDialog.querySelector(".gptAnswer").innerHTML;
-	    	            //console.log("chatGpt:",chatGpt);//결과값 출력
-	    	            cloneGptDialog.style.display='';//화면을 보이도록 하는 코드이다.
-	    	            document.querySelector(".textdialog").appendChild(cloneGptDialog);//입력값 출력
-	    	            document.querySelector(".textdialog").scrollTop = document.querySelector(".textdialog").scrollHeight;//스크롤 올라가는 부분
-	    	            $('.loading_dot').css("display","none");//로딩창...안보이게함
-	    	            document.querySelector("#userInput").value = "";//입력 input창 비움
+	                	var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
+	    	            cloneGptDialog.querySelector(".gptAnswer").innerHTML  = data["choices"][0]["message"]["content"];
+	    	            cloneGptDialog.style.display='';
+	    	            document.querySelector(".textdialog").appendChild(cloneGptDialog);
+	    	            document.querySelector(".textdialog").scrollTop = document.querySelector(".textdialog").scrollHeight;
+	    	            $('.loading_dot').css("display","none");
+	    	            document.querySelector("#userInput").value = "";
 	    	        })
 	    	        .catch(error => {
 	    	            console.error(error);
@@ -788,7 +800,7 @@ ul {
 		            recognition.maxAlternatives = 30000;
 		            recognition.interimResults = true;
 		            recognition.onspeechstart = () => console.log('Recognition Start!');
-		            recognition.onspeechend = stopRecognition;///////////////////
+		            recognition.onspeechend = stopRecognition;
 		            recognition.onresult = function (event) {
 		                var transcript = Array.from(event.results).map(results => results[0].transcript).join("");
 		                result.value = transcript;
@@ -796,7 +808,7 @@ ul {
 		                	
 		                    if (event.results[i].isFinal) {
 		                    	$('.loading_dot').css("display","block");
-		                    	sendToChatGPT(transcript);//sendToChatGPT땜에 들어가야됨 자스는 동기
+		                    	sendToChatGPT(transcript);
 		                    	
 		                    }
 		                }
@@ -819,27 +831,11 @@ ul {
 		
 		    function stopRecognition() {
 		    	console.log("음성인식 멈춤")
-		        startBtn.innerHTML = "<img src='<c:url value='/images/chatbot/mike.png'/>' style='width: 37px;height: 35px; border-radius: 35%;'>"
+		        startBtn.innerHTML = "<img src='<c:url value="/images/chatbot/mike.png"/>' style='width: 37px;height: 35px; border-radius: 35%;'>"
 		        recognition.stop();
 		        isRecognizing = false;
 		    }//////stopRecognition()
 		    
-		
-		    function startSynthesis() {
-		    	
-		        var utterance = new SpeechSynthesisUtterance(chatGpt.value);//여기가 문제
-		        console.log("문제해결중");
-		        if (voiceSelect.value) {
-		        	console.log("문제해결중2");
-		        	var selectedVoice = speechSynthesis.getVoices().filter(function (voice) {
-		                return voice.voiceURI == voiceSelect.value;
-		            })[0];
-		        	console.log("chatGpt.value:",chatGpt.value);
-		            utterance.voiceURI = selectedVoice.voiceURI;
-		            utterance.lang = selectedVoice.lang;
-		        }
-		        window.speechSynthesis.speak(utterance);
-		    }/////startSynthesis()
 		
 		    function stopSynthesis() {
 		        if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
@@ -1113,11 +1109,10 @@ ul {
             	<!-- STT와 TTS 지원여부 확인 -->
 	            <div class="alert alert-danger alert-dismissible fade show py-2">
 				    <button type="button" class="close" data-dismiss="alert">&times;</button>
-				    <strong id="stt-msg" style="font-size: 12px;"> </strong><br/>
-				    <strong id="tts-msg" style="font-size: 12px;"> </strong>
-				    <label for="voice" style="font-size: 12px;">음성을 선택하세요</label>
-		                 <select class="form-control p-1" id="voice" style="width: 150px; height: 25px; font-size: 10px;">                   
-		            </select>
+				    <strong id="stt-msg" style="font-size: 12px;"> </strong>
+				    <strong id="tts-msg" style="font-size: 12px;"> </strong><br/>
+				    <label for="voice" style="font-size: 12px; margin-top: 8px;" class="d-flex ml-3"><img src="<c:url value='/images/chatbot/voice.png'/>" style="width: 35px;height: 25px;">
+				    <select class="form-control p-1 ml-1" id="voice" style="width: 150px; height: 25px; font-size: 10px;"></select></label>                   
 				</div>
             	<div class="m-2" style="text-align: right;">
 		            <button id="startTtsBtn" class="mr-1"><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 35px;height: 35px; border-radius: 35%;"></button>
@@ -1147,13 +1142,12 @@ ul {
                 
                 <div class="gptDialog p-0 pt-1"style="display:none;">
                     <div class="col-10 p-0 m-1">
-                        <div class="skeleton-gpt row d-flex align-content-center p-1 m-0"><!-- 답변 ######################## id="chat-gpt"-->
+                        <div class="skeleton-gpt row d-flex align-content-center p-1 m-0">
                             <div class="col-2 d-flex justify-content-center p-0">
                                 <img src="/images/chatbot/bot_a.png" class="gtp_ans_img"/>
                             </div>
                             <div class="gptAnswer col-10 d-flex justify-content-start align-items-center p-0 m-0">
-                            	
-                            	
+                                            	
                             </div>
                         </div>
                     </div>
@@ -1196,55 +1190,7 @@ ul {
             </div>
         </div>
     </div>
-    <!-- 챗봇 끝 -->
-    
-
-<!-- stt시작 
-				<div class="container">
-			        <h3 class="text-dark">Q-Bot</h3>          
-			            
-			            
-		                <div class="form-group "> 
-		                    <label for="result"><i class='fas fa-microphone' style='font-size:24px;color:red'></i> <span id="stt-msg"></span></label>  
-		                    <input type="text" class="form-control my-2" id="result" placeholder="아래 버튼 클릭후 말씀해 주세요">
-		                </div>
-		                <button id="startBtn"> <img src="<c:url value='/images/chatbot/mike.png'/>" style="width: 45px;height: 42px; border-radius: 35%;"></button>   
-		                
-		                <div class="form-group mt-1">
-		                    <br/>
-		                    <label for="chat-gpt"><i class='fas fa-microphone-alt' style='font-size:24px;color:red'></i> <span id="tts-msg"></span></label>  
-		                    <textarea placeholder="여기에 응답이 표시됩니다" class="form-control mb-1" rows="4" id="chat-gpt"></textarea>
-		                </div>
-		                <div class="form-group">
-		                    <label for="voice">음성을 선택하세요</label>
-		                    <select class="form-control" id="voice">                   
-		                    </select>
-		                </div>
-		                 	<button id="startTtsBtn"><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 45px;height: 42px; border-radius: 35%;"></button>
-                			<button id="stopTtsBtn" ><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 45px;height: 42px; border-radius: 35%;"></button>    
-               
-			    </div>
-				<!-- 로딩 모달 
-			    <div id="loadingModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
-			        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-			        <div class="modal-content">
-			            <div class="modal-body text-center">
-			                <div class="loading">
-			                    <div class="font-weight-bolder text-black-50 mx-2">
-			                    LOADING
-			                    </div>
-			                    <div class="item"></div>
-			                    <div class="item"></div>
-			                    <div class="item"></div>
-			                    <div class="item"></div>
-			                    <div class="item"></div>
-			                    <div class="item"></div>
-			                </div>
-			            </div>
-			        </div>
-			        </div>
-			    </div>
-     stt끝 -->  
+   
 </div>
 <script>
 	const firebaseConfig = {

@@ -5,8 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <jsp:include page="/WEB-INF/views/template/SelectFoodListStyleScript.jsp"/>
-
-<script src="https://kit.fontawesome.com/0b4621b427.js" crossorigin="anonymous"></script>
      <style>
 body{
 	background-color: white;
@@ -52,45 +50,6 @@ body{
 	text-align: center;
 	box-shadow: 0px 0px 0px white;
 	align-items: center;
-}
-/*
-.loading{      
-  display: inline-flex;    
-  width:150px;
-  justify-content:center;
-  align-items: center;
-}
-.item{
-  width:20px;
-  height:20px;
-  background-color: rgb(247, 40, 4);
-  border-radius: 50%;
-  animation: loading 2s infinite;
-}
-@keyframes loading {
-    50%{
-        transform: scale(0.5);
-        background-color: rgb(203, 138, 127);
-    }
-    100%{
-        transform: scale(1);
-        background-color: rgb(247, 40, 4);
-    }
-}
-.item:nth-child(2){
-    animation-delay: 0.2s;
-}
-.item:nth-child(3){
-    animation-delay: 0.4s;
-}
-.item:nth-child(4){
-    animation-delay: 0.6s;
-}
-.item:nth-child(5){
-    animation-delay: 0.8s;
-}
-.item:nth-child(6){
-    animation-delay: 1s;
 }
      </style>
 
@@ -231,86 +190,6 @@ body{
 				</c:forEach>
 				</div><!-- item-cards의 끝 -->
 			</c:if>
-<!-- 여기서 ttt테스트 시작 -->
-<!-- 				
-				<div class="container">
-			        <h3 class="text-dark">텍스트 챗봇<small class="text-secondary">ChatGPT API</small></h3>          
-			        <div class="form-group mt-1">                    
-			            <label for="chat-gpt">여기에 응답이 표시됩니다</label>  
-			            <textarea placeholder="여기에 응답이 표시됩니다" class="form-control mb-1" rows="4" id="chat-gpt"></textarea>
-			        </div>    
-			            
-			        <div class="form-group "> 
-			            <label for="result">질의어를 입력하세요</label>  
-			            <input type="text" class="form-control" id="result" placeholder="질의어를 입력하세요">
-			        </div>
-			    </div> -->
-				<!-- 로딩 모달 -->
-<!-- 			    <div id="loadingModal" class="modal fade" tabindex="-1" role="dialog" >
-			        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-			                <div class="modal-content">
-			                    <div class="modal-body text-center">
-			                        <div class="loading">
-			                            <div class="font-weight-bolder text-black-50 mx-2">
-			                            LOADING
-			                            </div>
-			                            <div class="item"></div>
-			                            <div class="item"></div>
-			                            <div class="item"></div>
-			                            <div class="item"></div>
-			                            <div class="item"></div>
-			                            <div class="item"></div>
-			                        </div>
-			                    </div>
-			                </div>
-			            </div>
-			        </div>
-			    </div>
-<!-- 테스트 끝 -->
-<!-- stt시작 -->
-				<div class="container">
-			        <h3 class="text-dark">음성 챗봇 <small class="text-secondary">CCH 1.0</small></h3>          
-			            
-		                <div class="form-group "> 
-		                    <label for="result"><i class='fas fa-microphone' style='font-size:24px;color:red'></i> <span id="stt-msg"></span></label>  
-		                    <input type="text" class="form-control my-2" id="result" placeholder="아래 버튼 클릭후 말씀해 주세요">
-		                </div>
-		                <button id="startBtn" class="btn-lg btn-dark">SpeechToText Start <i class='fas fa-microphone' id='icon' style="color:red"></i></button>     
-		                
-		                <div class="form-group mt-1">
-		                    
-		                    <label for="chat-gpt"><i class='fas fa-microphone-alt' style='font-size:24px;color:red'></i> <span id="tts-msg"></span></label>  
-		                    <textarea placeholder="여기에 응답이 표시됩니다" class="form-control mb-1" rows="4" id="chat-gpt"></textarea>
-		                </div>
-		                <div class="form-group">
-		                    <label for="voice">음성을 선택하세요</label>
-		                    <select class="form-control" id="voice">                   
-		                    </select>
-		                </div>
-		                <button id="startTtsBtn" class="btn-lg btn-dark mb-1" style="width:250px">TextToSpeech Start <i class='fas fa-microphone-alt' style="color:red"></i></button>
-		                <button id="stopTtsBtn" class="btn-lg btn-dark mb-1" style="width:250px">TextToSpeech Stop <i class='fas fa-microphone-alt-slash' style="color:red"></i></button>    
-			    </div>
-				<!-- 로딩 모달 -->
-			    <div id="loadingModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
-			        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-			        <div class="modal-content">
-			            <div class="modal-body text-center">
-			                <div class="loading">
-			                    <div class="font-weight-bolder text-black-50 mx-2">
-			                    LOADING
-			                    </div>
-			                    <div class="item"></div>
-			                    <div class="item"></div>
-			                    <div class="item"></div>
-			                    <div class="item"></div>
-			                    <div class="item"></div>
-			                    <div class="item"></div>
-			                </div>
-			            </div>
-			        </div>
-			        </div>
-			    </div>
-<!-- stt끝 -->		
 				<!-- 화면을 처음들어 갔을 경우 건기식 또는 회사이름을 안적었을 경우 -->
 				<c:if test="${empty foodname}">
 				<c:if test="${casesel == 1 }">
@@ -319,10 +198,6 @@ body{
 					</div>
 					<div class="ipt-main-wrap">
 					<form action="/functionfood/select.do">
-
-
-
-
 						<div class="ipt-main-wrap-in">
 							<input id="searchProduct1" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
 							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct1()"></button>
@@ -476,7 +351,6 @@ body{
             }, 400);
             return false;
         });
-
 </script>
 </body>
 </html>
