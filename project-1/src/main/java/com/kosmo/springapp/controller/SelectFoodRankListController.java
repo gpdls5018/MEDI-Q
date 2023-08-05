@@ -1,24 +1,55 @@
 package com.kosmo.springapp.controller;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.mahout.cf.taste.common.TasteException;
+import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;
+import org.apache.mahout.cf.taste.impl.neighborhood.ThresholdUserNeighborhood;
+import org.apache.mahout.cf.taste.impl.recommender.GenericUserBasedRecommender;
+import org.apache.mahout.cf.taste.impl.similarity.EuclideanDistanceSimilarity;
+import org.apache.mahout.cf.taste.impl.similarity.TanimotoCoefficientSimilarity;
+import org.apache.mahout.cf.taste.model.DataModel;
+import org.apache.mahout.cf.taste.neighborhood.UserNeighborhood;
+import org.apache.mahout.cf.taste.recommender.RecommendedItem;
+import org.apache.mahout.cf.taste.recommender.UserBasedRecommender;
+import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kosmo.springapp.model.AvgStarScoreCountDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
+import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.service.MainPageService;
+import com.kosmo.springapp.service.impl.LoginServiceImpl;
 import com.kosmo.springapp.service.impl.SelectFoodServiceImpl;
-
 @Controller
 public class SelectFoodRankListController {
 	@Autowired
@@ -33,11 +64,40 @@ public class SelectFoodRankListController {
 		model.addAttribute("casesel",3);
 		return "ranking/FoodRank";
 	}
-	
+	@Autowired
+	 private LoginServiceImpl loginService;
+
 	@GetMapping("/functionfood/selectissue.do")
-	public String hselectissue2() {
-		return "test1";
-	}
+    public String hselectissue2(Model models,HttpServletRequest req,HttpServletResponse resp) throws IOException, TasteException {
+        List<FunctionalFoodListDTO> list1 = new ArrayList<>();
+		MemberDTO memberDto = loginService.selectOne(req);
+		Calendar calendar = Calendar.getInstance();
+        int currentYear = calendar.get(Calendar.YEAR);
+        System.out.println((int)currentYear - Integer.parseInt(memberDto.getBirth().substring(0, 4)));
+        int age = (int)currentYear - Integer.parseInt(memberDto.getBirth().substring(0, 4));
+        int ages = age - (age %10);
+        System.out.println(ages);
+        if(ages >60) {
+        	ages = 60;
+        }
+        // 모델 로드 또는 생성
+        DataModel model = new FileDataModel(new File("src/main/resources/static/Data/random_rating.csv"));
+
+        UserSimilarity similarity = new EuclideanDistanceSimilarity(model);
+        UserNeighborhood neighborhood = new ThresholdUserNeighborhood(0.1, similarity, model);
+        UserBasedRecommender recommender = new GenericUserBasedRecommender(model, neighborhood, similarity);
+        List<RecommendedItem> recommendations = recommender.recommend(ages, 5); // 사용자 20에게 5개의 추천 아이템 가져오기
+        System.out.println("Recommendations for user "+ages+"대 추천");
+        for (RecommendedItem recommendation : recommendations) {
+            System.out.println(recommendation);
+            list1.addAll(selectfoodservice.RecommendationFood(Long.toString(recommendation.getItemID())));
+        }
+        models.addAttribute("listData", list1);
+        models.addAttribute("ages", ages);
+        return "test1";
+    }
+
+	
 	@GetMapping("/ranking/HealthSelect.do")
 	public String hselectissue() {
 		return "ranking/HealthSelect";

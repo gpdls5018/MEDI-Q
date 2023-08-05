@@ -691,6 +691,7 @@ ul {
 										<c:if test="${payload.activeFl eq 'A' }">
 											<a href="<c:url value="/AdminMain.do"/>">관리자</a>
 										</c:if>
+										<a href="<c:url value="/functionfood/selectissue.do"/>">테스트</a>
 									</li>
 								</ul>
 								<div class="right__wr">
