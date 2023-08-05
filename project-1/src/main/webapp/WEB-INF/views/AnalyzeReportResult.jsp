@@ -16,9 +16,9 @@
 body{
 	background-color: #fdfbf6;
 }
-   	.effect-custom-font {
-      font-family : Noto Sans KR, sans-serif;
-    }
+  	.effect-custom-font {
+     font-family : Noto Sans KR, sans-serif;
+   }
 
 progress {
     background-color: #FFFFFF;

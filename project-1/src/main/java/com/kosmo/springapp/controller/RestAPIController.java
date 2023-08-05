@@ -1,6 +1,8 @@
 package com.kosmo.springapp.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +27,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
+import com.kosmo.springapp.analyze.model.AnalyzeResultDTO;
+import com.kosmo.springapp.analyze.model.AnalyzeResultListDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
+import com.kosmo.springapp.model.NutIntakeDTO;
+import com.kosmo.springapp.service.impl.AnalyzeMyReportServiceImpl;
 import com.kosmo.springapp.service.impl.AndroidServiceImpl;
 import com.kosmo.springapp.service.impl.MainPageServiceImpl;
 
@@ -109,6 +115,40 @@ public class RestAPIController {
 	@GetMapping("/androidSelectFoodByKeyWord.do/{keyword}")
 	public List<FunctionalFoodListDTO> androidSelectFoodByKeyWord(@PathVariable(name = "keyword") String keyword) {
 		return androidServiceImpl.selectFoodListByKeyWord(keyword);
+	}
+	
+	
+	@Autowired
+	AnalyzeMyReportServiceImpl analyzeMyReportServiceImpl; 
+	
+	@PostMapping("/AndroidGetAnalyzeResultReport.do")
+	public AnalyzeResultListDTO androidGetAnalyzeResultReport(@RequestParam Map<String,String> map) {
+		Map<String,Object> resultMap = new HashMap<>();
+		List<String> takeList = Arrays.asList(map.get("takePurpose").replace("[", "").replace("]", "").split(","));
+        for (int i = 0; i < takeList.size(); i++) {
+            takeList.set(i, takeList.get(i).trim());
+        }
+        String modifiedString = map.get("takeFood").replace("[", "").replace("]", "");
+        List<String> foodListNo = Arrays.asList(modifiedString.split(","));
+        List<String> foodList = new ArrayList<>();
+        for(String no : foodListNo) {
+        	foodList.add(androidServiceImpl.getFoodNameByNo(no));
+        }
+		
+        for (int i = 0; i < foodList.size(); i++) {
+       	 	foodList.set(i, foodList.get(i).trim());
+        }
+        Map<String,List<String>> userMap = new HashMap<>();
+		userMap.put("takePurpose", takeList);
+		System.out.println("userMap: takePurpose : "+userMap.get("takePurpose"));
+		userMap.put("takeFood", foodList);
+		System.out.println("userMap: takeFood : "+userMap.get("takeFood"));
+		
+		AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReportM(userMap);
+		System.out.println("resultListDto.getNutIntakeDTOs().get(0).getDRI()"+resultListDto.getNutIntakeDTOs().get(0).getDRI());
+		System.out.println("resultListDto.getNutIntakeDTOs().get(0).getDRI()"+resultListDto.getNutIntakeDTOs().get(1).getDRI());
+		System.out.println("resultListDto.getNutIntakeDTOs().get(0).getDRI()"+resultListDto.getNutIntakeDTOs().get(2).getDRI());
+		return resultListDto;
 	}
 	
 }
