@@ -574,12 +574,15 @@ ul {
     </style>
     <script>
 	    window.addEventListener('DOMContentLoaded', ()=>{
-	        var chatgpt = document.querySelector('.gptAnswer');
-	        var modal = document.querySelector('#lodingModal');
+	        //var chatgpt = document.querySelector('.gptAnswer');
+	        //var modal = document.querySelector('#lodingModal');
 	        var apiKey;
+	        var cloneUserDialog = document.querySelector(".userDialog").cloneNode(true);
+            var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
 	        //chatGTP 값 전달
 	        function sendToChatGPT(content){
-	            var cloneUserDialog = document.querySelector(".userDialog").cloneNode(true);
+	            //var cloneUserDialog = document.querySelector(".userDialog").cloneNode(true);
+	            //var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
 	            cloneUserDialog.querySelector(".usersQuestion").innerHTML = content;//사용자가 입력한 값 받기
 	            cloneUserDialog.style.display='';
 	            document.querySelector(".textdialog").appendChild(cloneUserDialog);//사용자가 입력한 값 출력
@@ -598,7 +601,7 @@ ul {
 	            })
 	            .then(response => response.json())
 	            .then(data => {
-	                var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
+	                
 	                cloneGptDialog.querySelector(".gptAnswer").innerHTML = data["choices"][0]["message"]["content"];
 	                cloneGptDialog.style.display='';
 	                document.querySelector(".textdialog").appendChild(cloneGptDialog);//입력값 출력
@@ -612,7 +615,7 @@ ul {
 	        //엔터 누르면 이동
 	        document.querySelector('#userInput').onkeypress = function(e){
 	            if(e.target.value !== '' && e.keyCode === 13){
-	                $('.loading_dot').css("display","block");
+	                $('.loading_dot').css("display","block");//로딩창 생성
 	                sendToChatGPT(e.target.value);
 	                document.querySelector("#userInput").value = "";
 	            }
@@ -676,9 +679,10 @@ ul {
 		    var sttMsg = document.querySelector('#stt-msg');
 		    var ttsMsg = document.querySelector('#tts-msg');
 		    var result = document.querySelector('#userInput');//질문
-		    var chatGpt = document.querySelector('#skeleton-gpt');//응답
+		    var chatGpt = document.querySelector('.gptAnswer');//응답
 		    var voiceSelect = document.querySelector('#voice');
-		
+		    
+		    
 		    var isRecognizing = false;
 		    var recognition;
 		
@@ -708,7 +712,7 @@ ul {
 		            ttsMsg.innerHTML = '현재의 브라우저는 <strong>TTS</strong>를 지원하지 않습니다.<br/><a href="http://www.google.co.uk/intl/en/chrome/browser/canary.html">다운로드</a>.';
 		        }///////else
 		        	
-		        
+		        /*
 		        function sendToChatGPT(content) {
 		            fetch('https://api.openai.com/v1/chat/completions', {
 		                method: 'POST',
@@ -729,7 +733,55 @@ ul {
 		                .then(data => chatGpt.value = data["choices"][0]["message"]["content"])
 		                .catch(error => console.error(error));
 		        }///////////sendToChatGPT(content)
+		        */
 		        
+		        function sendToChatGPT(content) {//GPT로 text내용을 보냄
+		        	
+		        	//원래 챗봇 
+		        	//cloneNode()메소드true여서 자식까지 다 복제 (for문처럼 사용할 예정)
+		        	var cloneUserDialog = document.querySelector(".userDialog").cloneNode(true);
+		        	
+		        	//사용자가 입력한 값 받기(질문text태그임)
+			    	cloneUserDialog.querySelector(".usersQuestion").innerHTML = content;
+			    	//복제된 div답변을 보이게 함(출력)
+			    	cloneUserDialog.style.display='';
+			    	//textdialog요소의 마지막 자식으로 추가. 즉,새로운 대화 내용이 채팅창의 맨 아래에 추가
+			    	document.querySelector(".textdialog").appendChild(cloneUserDialog);
+			    	//여기까지
+		        	
+		            fetch('https://api.openai.com/v1/chat/completions', {
+		                method: 'POST',
+		                headers: {
+		                    'Content-Type': 'application/json',
+		                    'Authorization': 'Bearer ' + apiKey
+		                },
+		                body: JSON.stringify({
+		                    model: 'gpt-3.5-turbo',
+		                    messages: [{ role: 'user', content: content }],
+		                    temperature: 0
+		                })
+		            })
+	                .then(response => {
+	                    if (!response.ok) return response.text().then(text => Promise.reject(text));
+	                    return response.json();
+	                })
+	                //var chatGpt = document.querySelector('.gptAnswer');//첫 질문과, 답변이 나오는 태그 잠시만 테스트용 주석
+	                .then(data => {
+	                	var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);//이건 클론만드는 코드
+	    	            //아래 코드가 답변 div를 만들면서 거기에 text를 넣는 코드이다
+	    	            cloneGptDialog.querySelector(".gptAnswer").innerHTML  = data["choices"][0]["message"]["content"];//이게 내용으로 들어감
+	    	            //var chatGpt=cloneGptDialog.querySelector(".gptAnswer").innerHTML;
+	    	            //console.log("chatGpt:",chatGpt);//결과값 출력
+	    	            cloneGptDialog.style.display='';//화면을 보이도록 하는 코드이다.
+	    	            document.querySelector(".textdialog").appendChild(cloneGptDialog);//입력값 출력
+	    	            document.querySelector(".textdialog").scrollTop = document.querySelector(".textdialog").scrollHeight;//스크롤 올라가는 부분
+	    	            $('.loading_dot').css("display","none");//로딩창...안보이게함
+	    	            document.querySelector("#userInput").value = "";//입력 input창 비움
+	    	        })
+	    	        .catch(error => {
+	    	            console.error(error);
+	    	        });
+		        }///////////sendToChatGPT(content)
 		        function initRecognition() {
 		            recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
 		            recognition.lang = 'ko-KR';
@@ -741,8 +793,12 @@ ul {
 		                var transcript = Array.from(event.results).map(results => results[0].transcript).join("");
 		                result.value = transcript;
 		                for (let i = event.resultIndex; i < event.results.length; ++i) {
-		                	$('#loadingModal').modal({'show':true,backdrop:'static'});
-		                    if (event.results[i].isFinal) sendToChatGPT(transcript);//sendToChatGPT땜에 들어가야됨 자스는 동기
+		                	
+		                    if (event.results[i].isFinal) {
+		                    	$('.loading_dot').css("display","block");
+		                    	sendToChatGPT(transcript);//sendToChatGPT땜에 들어가야됨 자스는 동기
+		                    	
+		                    }
 		                }
 		            };
 		            recognition.onerror = function (event) {
@@ -767,23 +823,18 @@ ul {
 		        recognition.stop();
 		        isRecognizing = false;
 		    }//////stopRecognition()
-		    function toggleRecognition() {
-			    if (isRecognizing) {
-			        stopRecognition();
-			    } else {
-			        startRecognition();
-			    }
-			}
 		    
 		
 		    function startSynthesis() {
 		    	
-		        var utterance = new SpeechSynthesisUtterance(chatGpt.value);
-		        
+		        var utterance = new SpeechSynthesisUtterance(chatGpt.value);//여기가 문제
+		        console.log("문제해결중");
 		        if (voiceSelect.value) {
-		            var selectedVoice = speechSynthesis.getVoices().filter(function (voice) {
+		        	console.log("문제해결중2");
+		        	var selectedVoice = speechSynthesis.getVoices().filter(function (voice) {
 		                return voice.voiceURI == voiceSelect.value;
 		            })[0];
+		        	console.log("chatGpt.value:",chatGpt.value);
 		            utterance.voiceURI = selectedVoice.voiceURI;
 		            utterance.lang = selectedVoice.lang;
 		        }
@@ -1111,7 +1162,7 @@ ul {
             <div class="inputDIV input-group p-1 mt-1">
 			    <div class="position-relative">
 			        <div class="position-absolute" style="left: 257px; top: 50%; transform: translateY(-50%);">
-			            <button id="startBtn" onclick="toggleRecognition()">
+			            <button id="startBtn">
 			                <img src="<c:url value='/images/chatbot/mike.png'/>" style="width: 37px;height: 35px; border-radius: 35%;">
 			            </button> 
 			        </div>
@@ -1132,7 +1183,7 @@ ul {
             -->
         </div>
         <!-- 내부 로딩바 -->
-        <div class="loading_dot" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
+        <div class="loading_dot" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
             <h2 class="pt-2 pl-3 loadbar">답변을 준비중입니다</h2>
             <div class="pl-2" role="document">
                 <span></span>
