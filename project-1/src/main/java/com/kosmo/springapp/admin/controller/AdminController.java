@@ -46,8 +46,6 @@ public class AdminController {
 	@GetMapping("/AdminMain.do")
 	public String adminMain() {
 		
-		
-		
 	    return "admin/AdminMain";
 	}
 	
