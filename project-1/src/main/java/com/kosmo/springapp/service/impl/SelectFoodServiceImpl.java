@@ -16,7 +16,7 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 
 	@Autowired
 	SelectFoodMapper mapper;
-	
+
 	@Override
 	public List<AvgStarScoreCountDTO> selectFoodListFromNameScore(String foodname,int casesel) {
 		return mapper.selectFoodListFromNameScore(foodname,casesel);
@@ -76,5 +76,10 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	@Override
 	public List<FunctionalFoodListDTO> selectFoodListFromNut(String nut) {
 		return mapper.selectFoodListFromNut(nut);
+	}
+
+	@Override
+	public List<FunctionalFoodListDTO> RecommendationFood(String value) {
+		return mapper.RecommendationFood(value);
 	}
 }
