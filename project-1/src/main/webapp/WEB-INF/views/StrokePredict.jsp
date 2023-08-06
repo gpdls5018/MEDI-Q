@@ -35,6 +35,16 @@ body {
 	margin-top: 70px;
 }
 
+/* Custom CSS for horizontal radio buttons */
+    .horizontal-radio {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .horizontal-radio .form-check {
+        margin-right: 10px; /* Adjust the spacing between radio buttons */
+    }
+
 
 
 </style>
@@ -44,7 +54,7 @@ body {
 			<div class="" style="font-size:32px; margin-left: 180px;">인공지능을 통한<br/> <span style="color:#EF605D;">질병 예측 예방 시스템 구축</span></div>
 		</div>
 		<div class="container effect-custom-font" >
-		    <div class="mx-5 my-5 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">당뇨병 수치 예측하기</div>
+		    <div class="mx-5 my-5 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">뇌졸중 수치 예측하기</div>
 			<div class="model-score  mx-2 mt-4" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd>70%</kbd> 입니다</div>
 		    <div class="row">
 		        <div class="col-6">
@@ -57,6 +67,33 @@ body {
 		                    </div>
 		                </div>
 		                <div class="col mb-3">
+		                    <strong>성별</strong>
+		                    <div class="horizontal-radio">
+			                    <div class="form-check">
+								    <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="0">
+								    <label class="form-check-label" for="gender_Man">
+								    남성
+								    </label>
+								</div>
+								<div class="form-check">
+								    <input class="form-check-input" type="radio" name="gender" id="gender_Woman" value="1">
+								    <label class="form-check-label" for="gender_Woman">
+								    여성
+								    </label>
+								</div>
+							</div>
+		                    <div class="invalid-feedback">
+		                        성별을 체크해 주세요
+		                    </div>
+		                </div>
+		                <div class="col mb-3">
+		                    <strong>혈당</strong>
+		                    <input type="text" class="form-control" id="glucose" name="glucose" placeholder="혈당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required>
+		                    <div class="invalid-feedback">
+		                        혈당 수치를 입력해주세요
+		                    </div>
+		                </div>
+		                <div class="col mb-3">
 		                    <strong>BMI</strong>
 		                    <input type="text" class="form-control" id="bmi" name="bmi" placeholder="체질량 지수를 입력해주세요" value="${healthInfoDto.bmi}" required>
 		                    <div class="invalid-feedback">
@@ -64,19 +101,109 @@ body {
 		                    </div>
 		                </div>
 		                <div class="col mb-3">
-		                    <strong>포도당</strong>
-		                    <input type="text" class="form-control" id="glucose" name="glucose" placeholder="포도당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required>
-		                    <div class="invalid-feedback">
-		                        포도당 수치를 입력해주세요
-		                    </div>
-		                </div>
-		                <div class="col mb-3">
-		                    <strong>혈압(평균)</strong>
-		                    <input type="text" class="form-control" id="bloodpress" name="bloodpress"  placeholder="혈압수치를 입력해주세요" value="${(healthInfoDto.bloodPressure_high + healthInfoDto.bloodPressure_low) / 2}" required>
-		                    <div class="invalid-feedback">
-		                        혈압수치를 입력해주세요
-		                    </div>
-		                </div>
+						    <strong>고혈압 여부</strong>
+						    <div class="horizontal-radio">
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="hypertension" id="hypertensionNo" value="0">
+							        <label class="form-check-label" for="hypertensionNo">없음</label>
+							    </div>
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="hypertension" id="hypertensionYes" value="1">
+							        <label class="form-check-label" for="hypertensionYes">있음</label>
+							    </div>
+							</div>
+						</div>
+						
+						<div class="col mb-3">
+						    <strong>심장 질환 여부</strong>
+						    <div class="horizontal-radio">
+						    	<div class="form-check">
+							        <input class="form-check-input" type="radio" name="heartDisease" id="heartDiseaseNo" value="0">
+							        <label class="form-check-label" for="heartDiseaseNo">없음</label>
+							    </div>
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="heartDisease" id="heartDiseaseYes" value="1">
+							        <label class="form-check-label" for="heartDiseaseYes">있음</label>
+							    </div>
+						    </div>
+						</div>
+						
+						<div class="col mb-3">
+						    <strong>결혼 여부</strong>
+						    <div class="horizontal-radio">
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="everMarried" id="everMarriedYes" value="1">
+							        <label class="form-check-label" for="everMarriedYes">예</label>
+							    </div>
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="everMarried" id="everMarriedNo" value="0">
+							        <label class="form-check-label" for="everMarriedNo">아니오</label>
+							    </div>
+							</div>
+						</div>
+						
+						<div class="col mb-3">
+						    <strong>직업 유형</strong>
+						    <div class="horizontal-radio">
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="workType" id="workTypeChildren" value="0">
+							        <label class="form-check-label" for="workTypeChildren">아동</label>
+							    </div>
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="workType" id="workTypeNeverWorked" value="1">
+							        <label class="form-check-label" for="workTypeNeverWorked">무직</label>
+							    </div>
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="workType" id="workTypeGovt" value="2">
+							        <label class="form-check-label" for="workTypeGovt">공기업</label>
+							    </div>
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="workType" id="workTypePrivate" value="3">
+							        <label class="form-check-label" for="workTypePrivate">사기업</label>
+							    </div>
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="workType" id="workTypeSelfEmployed" value="4">
+							        <label class="form-check-label" for="workTypeSelfEmployed">자영업</label>
+							    </div>
+						    </div>
+						</div>
+						
+						<div class="col mb-3">
+						    <strong>거주 유형</strong>
+						    <div class="horizontal-radio">
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="residenceType" id="residenceTypeRural" value="0">
+							        <label class="form-check-label" for="residenceTypeRural">시골</label>
+							    </div>
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="residenceType" id="residenceTypeUrban" value="1">
+							        <label class="form-check-label" for="residenceTypeUrban">도시</label>
+							    </div>
+						    </div>
+						</div>
+						
+						<div class="col mb-3">
+						    <strong>흡연 상태</strong>
+						    <div class="horizontal-radio">
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="smokingStatus" id="smokingStatusFormerly" value="0">
+							        <label class="form-check-label" for="smokingStatusFormerly">과거에 흡연</label>
+							    </div>
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="smokingStatus" id="smokingStatusNever" value="1">
+							        <label class="form-check-label" for="smokingStatusNever">흡연하지 않음</label>
+							    </div>
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="smokingStatus" id="smokingStatusSmokes" value="2">
+							        <label class="form-check-label" for="smokingStatusSmokes">현재 흡연 중</label>
+							    </div>
+							    <div class="form-check">
+							        <input class="form-check-input" type="radio" name="smokingStatus" id="smokingStatusUnknown" value="3">
+							        <label class="form-check-label" for="smokingStatusUnknown">알 수 없음</label>
+							    </div>
+							</div>
+						</div>
+		                
 		                <hr class="mb-4">
 		                <div class="mb-4"></div>
 		                <button class="btn btn-primary btn-lg btn-block" type="submit">예측해보기</button>
@@ -85,11 +212,11 @@ body {
 		
 		        <div class="col-6">
 		            <canvas id="drawing_canvas"></canvas>
-		            <img src="https://img.freepik.com/premium-photo/older-adult-uses-an-app-on-his-smartphone-to-check-his-blood-pressure-in-the-living-room_624840-131.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=ais" id="machineImage" style="width:100%;height:100%;border-radius:20px;"/>
+		            <img src="https://pds.medicaltimes.com/NewsPhoto/20230201/1675220420.jpg" id="machineImage" style="width:90%;height:100%;border-radius:20px;"/>
 		        </div>
 		    </div>
 		    <div class="effect-custom-font m-5 py-5">
-		    	<div class="title mb-5" style="font-size:30px;">
+		    	<div class="title mb-5" style="font-size:30px; margin-top: 100px;">
 		    		<img src="<c:url value="/images/mainicon.png"/>" style="width:30px;height:30px;">
 		    		<img src="<c:url value="/images/maintitle.png"/>" style="height:30px;">
 												와 다른 질병을 예측해 보아요!</div>
@@ -105,7 +232,7 @@ body {
 	    window.location.href = url;
 	}
 	    $(document).ready(function() {
-	        $('#personInfoForm').submit(function (event) {
+	    	$('#personInfoForm').submit(function (event) {
 	            event.preventDefault();
 	            event.stopImmediatePropagation();
 	            
@@ -120,8 +247,15 @@ body {
 	                } else {
 	                    var age = $('#age').val();
 	                    var bmi = $('#bmi').val();
+	                    var gender = $('#gender').val();
 	                    var glucose = $('#glucose').val();
 	                    var bloodpress = $('#bloodpress').val();
+	                    var hypertension = $("input[name='hypertension']:checked").val();
+	                    var heartDisease = $("input[name='heartDisease']:checked").val();
+	                    var everMarried = $("input[name='everMarried']:checked").val();
+	                    var workType = $("input[name='workType']:checked").val();
+	                    var residenceType = $("input[name='residenceType']:checked").val();
+	                    var smokingStatus = $("input[name='smokingStatus']:checked").val();
 	                    $('.model-score').hide();
 	                    const Toast = Swal.mixin({
 	                        toast: true,
@@ -139,27 +273,33 @@ body {
 	                        title: '모델이 예측 중입니다'
 	                    });
 	                    setTimeout(function () {
-	                    	var data = {
-		                            "age": age,
-		                            "bmi": bmi,
-		                            "glucose": glucose,
-		                            "bloodpress": bloodpress
-		                        }
-                        $.ajax({
-                            type: 'POST',
-                            url: 'http://192.168.0.16/diabetes',
-                            contentType : "application/json",
-                            dataType: 'json',
-                            data: JSON.stringify(data),
-                            success: function (response) {
-                                console.log('%o',response);
-                                console.log(response[0])
-                                initDrawingCanvas((response[0][1]*100).toFixed(1));
-                                requestAnimationFrame(loop);
-                                $('#machineImage').hide();
-                            }
-                        });
-                    }, 1500);
+	                        var data = {
+	                            "age": age,
+	                            "bmi": bmi,
+	                            "gender" : gender,
+	                            "avg_glucose_level": glucose,
+	                            "hypertension": hypertension,
+	                            "heart_disease": heartDisease,
+	                            "ever_married": everMarried,
+	                            "work_type": workType,
+	                            "Residence_type": residenceType,
+	                            "smoking_status": smokingStatus
+	                        }
+	                        $.ajax({
+	                            type: 'POST',
+	                            url: "http://localhost:5000/StrokeModel",
+	                            contentType : "application/json",
+	                            dataType: 'json',
+	                            data: JSON.stringify(data),
+	                            success: function (response) {
+	                                console.log('%o',response);
+	                                console.log(response[0])
+	                                initDrawingCanvas((response[0][1]*100).toFixed(1));
+	                                requestAnimationFrame(loop);
+	                                $('#machineImage').hide();
+	                            }
+	                        });
+	                    }, 1500);
                 }
                 form.classList.add('was-validated');
             });

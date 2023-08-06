@@ -9,7 +9,6 @@ public class MLController {
 	@GetMapping("/StrokePredict.do")
 	public String StrokePredict() {
 		
-		
 	    return "StrokePredict";
 	}
 }
