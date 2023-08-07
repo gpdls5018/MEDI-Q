@@ -1,6 +1,7 @@
 package com.kosmo.springapp.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,22 +19,30 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kosmo.springapp.analyze.model.AnalyzeResultDTO;
 import com.kosmo.springapp.analyze.model.AnalyzeResultListDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
 import com.kosmo.springapp.model.NutIntakeDTO;
+import com.kosmo.springapp.model.ReviewDTO;
+import com.kosmo.springapp.model.TotalReviewDTO;
 import com.kosmo.springapp.service.impl.AnalyzeMyReportServiceImpl;
 import com.kosmo.springapp.service.impl.AndroidServiceImpl;
 import com.kosmo.springapp.service.impl.MainPageServiceImpl;
+import com.kosmo.springapp.service.impl.ReviewServiceImpl;
 
 @RestController
 @RestControllerAdvice
@@ -134,21 +143,36 @@ public class RestAPIController {
         for(String no : foodListNo) {
         	foodList.add(androidServiceImpl.getFoodNameByNo(no));
         }
-		
         for (int i = 0; i < foodList.size(); i++) {
        	 	foodList.set(i, foodList.get(i).trim());
         }
         Map<String,List<String>> userMap = new HashMap<>();
 		userMap.put("takePurpose", takeList);
-		System.out.println("userMap: takePurpose : "+userMap.get("takePurpose"));
 		userMap.put("takeFood", foodList);
-		System.out.println("userMap: takeFood : "+userMap.get("takeFood"));
-		
 		AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReportM(userMap);
-		System.out.println("resultListDto.getNutIntakeDTOs().get(0).getDRI()"+resultListDto.getNutIntakeDTOs().get(0).getDRI());
-		System.out.println("resultListDto.getNutIntakeDTOs().get(0).getDRI()"+resultListDto.getNutIntakeDTOs().get(1).getDRI());
-		System.out.println("resultListDto.getNutIntakeDTOs().get(0).getDRI()"+resultListDto.getNutIntakeDTOs().get(2).getDRI());
 		return resultListDto;
+	}
+	
+	@Autowired
+	private ReviewServiceImpl reviewServiceImpl;
+	@GetMapping("/androidGetTotalReview/{foodNo}")
+	public TotalReviewDTO androidGetTotalReview(@PathVariable(name = "foodNo") String foodNo) {
+		TotalReviewDTO totalReviewDTO = reviewServiceImpl.selectTotalReviewInfo(Integer.parseInt(foodNo));
+		return totalReviewDTO;
+	}
+	
+	@CrossOrigin
+	@ResponseBody
+	@GetMapping("/androidGetReviewList")
+	public List<ReviewDTO> selectReview(@RequestParam Map map) {
+		System.out.println("요청 들어옴");
+		List<ReviewDTO> listDto = reviewServiceImpl.androidSelectReviewByFoodNo(map);
+		int current = Integer.parseInt(LocalDate.now().toString().split("-")[0]); //현재날짜 구하기
+		for(ReviewDTO list : listDto) {
+			int birtYear = list.getBirth()==null ? current : Integer.parseInt(list.getBirth().split("-")[0]);
+			list.setBirth(Integer.toString((int)Math.floor((current-birtYear)/10)*10));
+		}
+		return listDto;
 	}
 	
 }

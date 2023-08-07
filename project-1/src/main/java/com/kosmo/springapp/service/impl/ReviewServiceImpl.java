@@ -49,17 +49,22 @@ public class ReviewServiceImpl implements ReviewService {
 	public TotalReviewDTO selectTotalReviewInfo(int no) {
 		TotalReviewDTO totalReviewDto = new TotalReviewDTO();
 		float starScoreAVG = reviewMapper.selectTotalReviewInfoStarScoreAverage(no);
+		
 		System.out.println("starScoreAVG : "+starScoreAVG);
 		totalReviewDto.setStarScoreTotal(starScoreAVG);
 		Map starScore = reviewMapper.selectTotalReviewInfoStarScore(no);
+		
 		totalReviewDto.setStarScore(starScore);
 		System.out.println("starScore : "+starScore);
-		List<Map<String,Integer>> effectList = reviewMapper.selectTotalReviewInfoEffectList(no);
+		
+		List<Map<String,Object>> effectList = reviewMapper.selectTotalReviewInfoEffectList(no);
 		totalReviewDto.setEffectList(effectList);
 		System.out.println("effectList : "+ effectList);
-		List<Map<String,Integer>> noEffectList = reviewMapper.selectTotalReviewInfoNoEffectList(no);
+		
+		List<Map<String,Object>> noEffectList = reviewMapper.selectTotalReviewInfoNoEffectList(no);
 		totalReviewDto.setNoEffectList(noEffectList);
 		System.out.println("noEffectList : "+noEffectList);
+		
 		return totalReviewDto;
 	}
 	
@@ -75,6 +80,10 @@ public class ReviewServiceImpl implements ReviewService {
 	public int selectReviewByNo(int no) {
 		
 		return reviewMapper.selectReviewByNo(no);
+	}
+
+	public List<ReviewDTO> androidSelectReviewByFoodNo(Map map) {
+		return reviewMapper.androidSelectReviewByFoodNo(map);
 	}
 
 }

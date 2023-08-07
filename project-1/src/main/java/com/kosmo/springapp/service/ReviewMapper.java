@@ -22,13 +22,15 @@ public interface ReviewMapper {
 
 	Map selectTotalReviewInfoStarScore(int no);
 
-	List<Map<String, Integer>> selectTotalReviewInfoEffectList(int no);
+	List<Map<String, Object>> selectTotalReviewInfoEffectList(int no);
 
-	List<Map<String, Integer>> selectTotalReviewInfoNoEffectList(int no);
+	List<Map<String, Object>> selectTotalReviewInfoNoEffectList(int no);
 
 	List<Map> selectReviewByUserId(String userId);
 
 	int deleteReview(Map map);
 	
 	int selectReviewByNo(int no);
+
+	List<ReviewDTO> androidSelectReviewByFoodNo(Map map);
 }

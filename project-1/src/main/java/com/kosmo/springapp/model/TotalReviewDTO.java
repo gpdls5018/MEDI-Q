@@ -22,6 +22,6 @@ import lombok.Setter;
 public class TotalReviewDTO {
 	float starScoreTotal;
 	Map starScore;
-	List<Map<String,Integer>> effectList;
-	List<Map<String,Integer>> noEffectList;
+	List<Map<String,Object>> effectList;
+	List<Map<String,Object>> noEffectList;
 }

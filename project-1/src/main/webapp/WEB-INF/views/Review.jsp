@@ -230,7 +230,7 @@ body{
     <input type="hidden" value="${listOne.no}" id="productNo">
 	<button class="btn btn-warning effect-custom-font mb-5 d-flex align-items-center justify-content-center" id="sendDataButton" style="width:80%; margin-left: 85px; border-radius: 20px;">
 	    <i class="bi bi-clipboard-check p-1" style="font-size:25px;"></i>
-	    <span class="">작성 완료!</span>
+	    <span>작성 완료!</span>
     </button>
  </div>
   
