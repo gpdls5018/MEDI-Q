@@ -12,6 +12,7 @@ public class AnswerServiceImpl implements AnswerService {
 
 	@Autowired
 	private AnswerMapper mapper;
+	
 	//답변글 상세보기(View페이지에서 게시물과 같이 출력됨)
 	@Override
 	public Map answerselectOne(Map map) {
@@ -44,11 +45,13 @@ public class AnswerServiceImpl implements AnswerService {
 		}
 		return affected;
 	}
+	
 	//답변테이블의 게시물 NO로 삭제
 	@Override
 	public int boarddelete(Map map) {
 		return mapper.boarddelete(map);
 	}
+	
 	//답변글의 고유 NO로 삭제(sequence)
 	@Override
 	public int answerdelete(Map map) {

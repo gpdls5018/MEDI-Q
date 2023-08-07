@@ -54,12 +54,8 @@ public class BoardController {
 		Map payload = jwTokensService.getTokenPayloads(token, secretKey);//payload로 만듬
 		if(payload.get("sub") != null) {//payload는 map형태의 많은 데이터(이건 TRUE)하지만 .get("sub")를 통해 아이디가 있는지 판별(있으면 null이 아님)
 			String id=payload.get("sub").toString();//가져온 id를 String id에 저장(현재 로그인한 아이디)
-			model.addAttribute("id", id);//모델에 id란 이름으로 id 저장
+			model.addAttribute("id", id);
 		}
-		//Map map =new HashMap<>();
-		//Map likemap =new HashMap<>();
-		
-		//목록에 대한 데이타 저장,likemap에 추천수 데이타 저장
 		ListPagingData listPagingData= board.selectList(map, req, nowPage, likemap);
 		//데이타 저장
 		model.addAttribute("listPagingData", listPagingData);	
@@ -79,14 +75,12 @@ public class BoardController {
 		
 		//id란 이름으로 token의 id를 저장
 		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
-		//map타입으로 id란 이름으로 id저장
 		map.put("id", id);
 		
 		//affect에 글작성이 성공하였다면 (int) 1,실패면 0으로 저장
 		int affected = board.insert(map);
 		//map에 1명의 글 저장 
 		map = board.selectOne(map);
-		//System.out.println("writemap에 있는거 찾기:"+map);
 		//글 입력 실패시
 		if(affected==0) {
 			System.out.println("글작성 실패하셨습니다.");
@@ -128,7 +122,6 @@ public class BoardController {
         }
 		//질문글 하나 record란 이름으로 저장
 		model.addAttribute("record", map);
-		//System.out.println("map의 값 체크"+map);//map의 값 체크{NO=87, POSTDATE=2023.07.25, AGE_GROUP=20대, ACTIVE=Y, GENDER=남자, TITLE=1ㅁ2, CONTENT=111ㅁ2, NAME=최*훈}
 		if (map.get("NO") != null) {
 			//System.out.println("map의 NO:"+map.get("NO"));//map의 NO:87
 			//질문글의 no로 답변글을 불러와서 paramMap에 저장
@@ -154,8 +147,6 @@ public class BoardController {
 	//수정page 이동
 	@GetMapping("/Edit.do")
 	public String edit(HttpServletRequest req,@RequestParam Map map,Model model) {
-		//String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
-		//map.put("id", id);
 		map= board.selectOne(map);
 		System.out.println(map);
 		model.addAttribute("record", map);
@@ -163,7 +154,7 @@ public class BoardController {
 		return "board/Edit";
 	}/////////////
 	
-	//수정 process처리
+	//수정처리process
 	@PostMapping("/EditProcess.do")
 	public String editProcess(HttpServletRequest req,@RequestParam Map map,Model model) {
 		//String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
@@ -192,6 +183,4 @@ public class BoardController {
 	    // 뷰정보 반환 - 목록을 처리하는 컨트롤러로 이동
 	    return "forward:/board/List.do"; 
 	}
-	
-	
 }
