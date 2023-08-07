@@ -272,6 +272,20 @@ ul {
     color: #fff;
     margin-top: 26px;
 }
+.down__btn{
+	display: inline-block;
+    width: 125px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    border-radius: 50px;
+    background-color: #FDCDBC;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    margin-top: 26px;
+    margin-left: 5px;
+}
 	/* 챗봇 관련 CSS */
 	/* 버튼 관련 디자인*/
        #btnBot{
@@ -684,6 +698,7 @@ ul {
 					                </div>
 					                -->
 									<a href="<c:url value='/' />" class="home__btn">Home<img src="https://www.bundangcheil.com/images/pcham_menu_arrow.svg" alt="이동"></a>
+									<a href="<c:url value='/' />" class="down__btn">Download<img src="https://www.bundangcheil.com/images/pcham_menu_arrow.svg" alt="이동"></a>
 								</div>
 							</div>
 						</div>
