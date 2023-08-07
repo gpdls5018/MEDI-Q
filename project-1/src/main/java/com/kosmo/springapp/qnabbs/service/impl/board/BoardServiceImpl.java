@@ -65,9 +65,6 @@ public class BoardServiceImpl implements DaoService {
 													.map(map)//페이징 관련 데이타 설정
 													.pagingString(pagingString)//페이징 문자열 설정
 													.build();
-		//System.out.println("listPagingData체크:"+listPagingData.getMap());
-		//System.out.println("listPagingData체크:"+listPagingData.getRecords());
-		//System.out.println("listPagingData체크:"+listPagingData.getLikes());
 		return listPagingData;
 	}////////////////////
 	
