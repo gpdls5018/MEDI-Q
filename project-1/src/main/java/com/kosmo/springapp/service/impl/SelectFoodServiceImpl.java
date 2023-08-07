@@ -1,10 +1,12 @@
 package com.kosmo.springapp.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kosmo.springapp.model.AllFoodDTO;
 import com.kosmo.springapp.model.AvgStarScoreCountDTO;
 import com.kosmo.springapp.model.CheckWordDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
@@ -81,5 +83,15 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	@Override
 	public List<FunctionalFoodListDTO> RecommendationFood(String value) {
 		return mapper.RecommendationFood(value);
+	}
+
+	@Override
+	public List<AllFoodDTO> FoodSearch(String food) {
+		return mapper.FoodSearch(food);
+	}
+
+	@Override
+	public int IntakeFood(String no, String ID) {
+		return mapper.IntakeFood(no, ID);
 	}
 }
