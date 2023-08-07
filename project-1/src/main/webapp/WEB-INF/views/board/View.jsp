@@ -142,15 +142,7 @@
 	            <!-- 게시판 가운데 부분 -->
 	            <div class="d-flex col-6 flex-wrap flex-direction justify-content-center align-content-stretch">
 	                <div class="col pb-5">
-	                    <%-- <img src="<c:url value="/images/qna/qna_ans.png"/>" class="qna_ans ml-1"> --%>
 	                    <div class="row justify-content-center pt-3">
-	                    	<!--여기부터 답변출력  -->
-	                    	<%-- <c:if test="${! empty FAILURE}">
-								<div class="alert alert-success alert-dismissible fade show">
-									<button type="button" class="close" data-dismiss="alert">×</button>
-									<strong>Failure!</strong> ${FAILURE }
-								</div>
-							</c:if> --%>
 							<!-- 질문 출력 부분 -->
 							<div class="card_deco col-12 pt-3 pr-4 pl-4 m-1">
 	                            <div class="card-body p-2 mt-3 mb--2">
@@ -175,39 +167,7 @@
 								</c:if> 
 				        	</div>
 	                        <br/>
-	                        <!-- 임시위치 버튼 -->
-	                        <!--  -->
 	                        <div class="d-flex flex-wrap flex-direction justify-content-center" id="content_footer">
-								<%-- <c:if test="${id eq record.ID}">
-									<a href='<c:url value="/board/Edit.do?no=${record.NO}"/>'class="text-decoration-none p-1">
-										<button class="btn btn-light text-light btn_deco">수정</button>
-									</a> 
-									<a href="javascript:isDelete();" class="text-decoration-none p-1">
-										<button class="btn btn-light text-light btn_deco">삭제</button>
-									</a>
-								</c:if>  --%>
-								<%-- <a href='<c:url value="/board/List.do"/>' class="text-decoration-none p-1">
-									<button class="btn btn-light text-light btn_deco">목록</button>
-								</a> --%>
-								<!-- id가 관리자일때만 버튼이 보임 -->
-								<!-- 참이면(not false) -->
-								<%-- <c:if test="${active eq 'A' }"><!-- member속성 ACTIVE 관리자('A')일때만,만약 약사 속성('G')로 수정할거면 A대신 G로 교체 -->
-									<c:choose>
-										<c:when test="${empty paramMap.CONTENT}">
-											<a href='<c:url value="/board/AnswerWrite.do?no=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
-												<button class="btn btn-light text-light btn_deco">답변작성</button>
-											</a>
-										</c:when>
-										<c:when test="${not empty paramMap.CONTENT }">
-											<a href='<c:url value="/board/AnswerEdit.do?NO=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">
-												<button class="btn btn-light text-light btn_deco">답변수정</button>
-											</a>
-											<div class="text-decoration-none p-1">
-												<button class="btn btn-light text-light btn_deco my-delete" data-answer-no="${paramMap.ANSWER_NO}">답변삭제</button><!-- my-delete속성으로 삭제기능 -->
-											</div> 
-										</c:when>
-									</c:choose>
-								</c:if> --%>
 							</div>
 	                    </div>
 					</div><!-- 답변게시판 질문부분 끝 -->
@@ -249,7 +209,7 @@
 										<div>${paramMap.TITLE }</div>
 								 		<span class="card-text"><h5>${paramMap.CONTENT}</h5></span><!-- 답변내용 -->
 										<hr style="border: 1px solid #E6E9ED;"/>
-	<!--2023.07.30 여기 답변글 날짜 추가 -->	<p class="card-text"><h6 class="font-weight-bold text-muted">${paramMap.POSTDATE }</h6></p>
+										<p class="card-text"><h6 class="font-weight-bold text-muted">${paramMap.POSTDATE }</h6></p>
 										<div class="card-text d-flex align-items-center">
 											<button id="likeToggleBtn" class="btn_deco btn_help mr-3" data-answer-no="${paramMap.ANSWER_NO}">도움이 돼요</button>
 											<span id="likeCountText" class="font-weight-bold" data-answer-no="${paramMap.ANSWER_NO}">0 명에게 도움이 됐습니다.</span>
@@ -266,7 +226,6 @@
 	        <div class="row pt-3 align-conten-center">
                 <%-- <a class="btn_deco rounded-pill col-1 text-decoration-none text-white text-center text_3 p-2" href="<c:url value="/board/View.do?no=${record.no-1}"/>">이전 질문</a> --%>
                 <a class="d-flex justify-content-center col-1 btn_deco rounded-pill text_3 p-2 text-decoration-none list_btn" href="<c:url value="/board/List.do"/>">질문 목록</a><!-- 그냥 넘길지 page번호까지 넘길지 고민 중 -->
-                
                 <%-- <a class="btn_deco rounded-pill col-1 text-decoration-none text-white text-center text_3 p-2" href="<c:url value="/board/View.do?no=${record.no+1}"/>">다음 질문</a> --%>
                 <div class="d-flex re_del_btn">
                 	<!-- id가 관리자일때만 버튼이 보임 -->

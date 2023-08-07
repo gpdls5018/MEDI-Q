@@ -35,8 +35,6 @@ public class LikeBoardController {
 	@PostMapping("/Toggle.do")
 	public int toggleLike(@RequestParam int no,HttpServletRequest req,Model model) {
 		
-		//System.out.println("liketoggle체크");
-		
 		//여기는 회원인 경우
 		//id값 불러옴
 		String token= jwTokensService.getToken(req, tokenName);//token을 가져옴
@@ -44,7 +42,6 @@ public class LikeBoardController {
 		if(payload.get("sub") != null) {//payload는 map형태의 많은 데이터(이건 TRUE)하지만 .get("sub")를 통해 아이디가 있는지 판별(있으면 null이 아님)
 			String id=payload.get("sub").toString();//가져온 id를 String id에 저장(현재 로그인한 아이디)
 			
-			//System.out.println("toggle여기오는가!!!!!!?");
 			//회원 id,게시물 no로 토글형식으로 반환값:true,false
 			//System.out.println("answer_no:"+no);
 			boolean toggle=likeBoardservice.toggleLike(id, no);
@@ -55,12 +52,12 @@ public class LikeBoardController {
 			//System.out.println("togggle 1 or 0중 하나 "+togggle);
 			return togggle; //게시물의 총 좋아요 개수를 반환
 		}else {//회원이 아닌 경우 클릭을 누를때
-			//System.out.println("회원이 아닌 경우 클릭을 누를때?");
 			int toggle=likeBoardservice.getTotalLikes(no); //게시물의 총 좋아요 개수 조회(아무 변화가 없음)
 			toggle=-1;//비회원일때 -1로 저장
 			return toggle; //게시물의 총 좋아요 개수를 반환
 		}
     }
+	
 	// 게시물의 총 좋아요 개수 조회  //(답변글 존재x시 answer_no=(null) 400error이지만 기능엔 문제 없음)
     @GetMapping("/Count.do")
     public int getTotalLikes(@RequestParam int no) {
