@@ -1,25 +1,14 @@
 package com.kosmo.springapp.controller;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStreamWriter;
-import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,19 +30,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kosmo.springapp.model.AllFoodDTO;
 import com.kosmo.springapp.model.AvgStarScoreCountDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
 import com.kosmo.springapp.model.MemberDTO;
-import com.kosmo.springapp.service.MainPageService;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
 import com.kosmo.springapp.service.impl.SelectFoodServiceImpl;
 @Controller
 public class SelectFoodRankListController {
 	@Autowired
 	SelectFoodServiceImpl selectfoodservice;
+
+	@Autowired
+	 private LoginServiceImpl loginService;
 	
 	@GetMapping("/ranking/selectfoodcompany.do")
 	public String foodcompany(Model model) {
@@ -64,8 +53,6 @@ public class SelectFoodRankListController {
 		model.addAttribute("casesel",3);
 		return "ranking/FoodRank";
 	}
-	@Autowired
-	 private LoginServiceImpl loginService;
 
 	@GetMapping("/functionfood/selectissue.do")
     public String hselectissue2(Model models,HttpServletRequest req,HttpServletResponse resp) throws IOException, TasteException {
@@ -96,12 +83,37 @@ public class SelectFoodRankListController {
         models.addAttribute("ages", ages);
         return "test1";
     }
+	
+	@GetMapping("/food/foodsearch.do")
+	public String foodsearch(String food,Model model) {
+		List<AllFoodDTO> foodlist = selectfoodservice.FoodSearch(food);
+		model.addAttribute("foodlist", foodlist);
+		return "test2";
+	}
+	@GetMapping("/food/intakefood.do")
+	public String intakefood(String no,HttpServletRequest req,HttpServletResponse resp) {
+		System.out.println(no);
+		MemberDTO memberDto = loginService.selectOne(req);
+		String ID = memberDto.getId();
+		selectfoodservice.IntakeFood(no, ID);
+		Date currentDate = new Date();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd");
+        String formattedDate = dateFormat.format(currentDate);
+        System.out.println(formattedDate);
+		return "test2";
+	}
+	@GetMapping("/food/test2.do")
+	public String test2() {
+		return "test2";
+	}
 
 	
 	@GetMapping("/ranking/HealthSelect.do")
 	public String hselectissue() {
 		return "ranking/HealthSelect";
 	}
+	
 	@GetMapping("/functionfood/healthissue.do")
 	public String hissue(@RequestParam String healthissue,Model model) {
 		List<AvgStarScoreCountDTO> listData = new ArrayList<>();
