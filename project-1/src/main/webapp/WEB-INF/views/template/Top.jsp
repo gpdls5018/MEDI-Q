@@ -744,7 +744,7 @@ ul {
 		        }//////else
 		
 		        if ('speechSynthesis' in window) {
-		            ttsMsg.innerHTML = '하단의 언어를 선택해주세요.';
+		            ttsMsg.innerHTML = '1. 하단의 언어를 선택해주세요.';
 		            loadVoices();
 		            window.speechSynthesis.onvoiceschanged = function (e) {
 		                loadVoices();
@@ -1111,9 +1111,11 @@ ul {
 	            <div class="alert alert-danger alert-dismissible fade show py-2">
 				    <button type="button" class="close" data-dismiss="alert">&times;</button>
 				    <strong id="stt-msg" style="font-size: 12px;"> </strong>
-				    <strong id="tts-msg" style="font-size: 12px;"> </strong><br/>
+				    <strong id="tts-msg" style="font-size: 12px; margin-left: 5px;"> </strong><br/>
 				    <label for="voice" style="font-size: 12px; margin-top: 8px;" class="d-flex ml-3"><img src="<c:url value='/images/chatbot/voice.png'/>" style="width: 35px;height: 25px;">
-				    <select class="form-control p-1 ml-1" id="voice" style="width: 150px; height: 25px; font-size: 10px;"></select></label>                   
+				    <select class="form-control p-1 ml-1" id="voice" style="width: 150px; height: 25px; font-size: 10px;"></select></label> 
+				    <strong style="font-size: 12px; margin-left: 5px;">2. 음성 지원이 필요한 대화상자를 선택하고<br/></strong>    
+				    <strong style="font-size: 12px; margin-left: 18px;">오른편 상단의 버튼을 눌러주세요.</strong>               
 				</div>
             	<div class="m-2" style="text-align: right;">
 		            <button id="startTtsBtn" class="mr-1"><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 35px;height: 35px; border-radius: 35%;"></button>
