@@ -55,10 +55,10 @@ body {
 		</div>
 		<div class="container effect-custom-font" >
 		    <div class="mx-5 my-5 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">뇌졸중 수치 예측하기</div>
-			<div class="model-score  mx-2 mt-4" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd>70%</kbd> 입니다</div>
+			<div class="model-score  mx-2 mt-4" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd>85%</kbd> 입니다</div>
 		    <div class="row">
 		        <div class="col-6">
-		            <form id="personInfoForm" class="validation-form" novalidate>
+		            <form id="personInfoForm" class="validation-form" method="post" novalidate>
 		                <div class="col mb-3">
 		                    <strong>연령</strong>
 		                    <input type="text" class="form-control" id="age" name="age" pattern="[0-9]+" placeholder="나이를 입력해주세요" value="" required>
@@ -113,7 +113,6 @@ body {
 							    </div>
 							</div>
 						</div>
-						
 						<div class="col mb-3">
 						    <strong>심장 질환 여부</strong>
 						    <div class="horizontal-radio">
@@ -127,16 +126,15 @@ body {
 							    </div>
 						    </div>
 						</div>
-						
 						<div class="col mb-3">
 						    <strong>결혼 여부</strong>
 						    <div class="horizontal-radio">
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="everMarried" id="everMarriedYes" value="1">
+							        <input class="form-check-input" type="radio" name="everMarried" id="everMarriedYes" value="0">
 							        <label class="form-check-label" for="everMarriedYes">예</label>
 							    </div>
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="everMarried" id="everMarriedNo" value="0">
+							        <input class="form-check-input" type="radio" name="everMarried" id="everMarriedNo" value="1">
 							        <label class="form-check-label" for="everMarriedNo">아니오</label>
 							    </div>
 							</div>
@@ -146,42 +144,40 @@ body {
 						    <strong>직업 유형</strong>
 						    <div class="horizontal-radio">
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="workType" id="workTypeChildren" value="0">
-							        <label class="form-check-label" for="workTypeChildren">아동</label>
+							        <input class="form-check-input" type="radio" name="workType" id="workTypePrivate" value="0">
+							        <label class="form-check-label" for="workTypePrivate">사기업</label>
 							    </div>
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="workType" id="workTypeNeverWorked" value="1">
-							        <label class="form-check-label" for="workTypeNeverWorked">무직</label>
+							        <input class="form-check-input" type="radio" name="workType" id="workTypeSelfEmployed" value="1">
+							        <label class="form-check-label" for="workTypeSelfEmployed">자영업</label>
 							    </div>
 							    <div class="form-check">
 							        <input class="form-check-input" type="radio" name="workType" id="workTypeGovt" value="2">
 							        <label class="form-check-label" for="workTypeGovt">공기업</label>
 							    </div>
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="workType" id="workTypePrivate" value="3">
-							        <label class="form-check-label" for="workTypePrivate">사기업</label>
+							        <input class="form-check-input" type="radio" name="workType" id="workTypeChildren" value="3">
+							        <label class="form-check-label" for="workTypeChildren">아동</label>
 							    </div>
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="workType" id="workTypeSelfEmployed" value="4">
-							        <label class="form-check-label" for="workTypeSelfEmployed">자영업</label>
+							        <input class="form-check-input" type="radio" name="workType" id="workTypeNeverWorked" value="4">
+							        <label class="form-check-label" for="workTypeNeverWorked">무직</label>
 							    </div>
 						    </div>
 						</div>
-						
 						<div class="col mb-3">
 						    <strong>거주 유형</strong>
 						    <div class="horizontal-radio">
 							    <div class="form-check">
 							        <input class="form-check-input" type="radio" name="residenceType" id="residenceTypeRural" value="0">
-							        <label class="form-check-label" for="residenceTypeRural">시골</label>
+							        <label class="form-check-label" for="residenceTypeRural">도시</label>
 							    </div>
 							    <div class="form-check">
 							        <input class="form-check-input" type="radio" name="residenceType" id="residenceTypeUrban" value="1">
-							        <label class="form-check-label" for="residenceTypeUrban">도시</label>
+							        <label class="form-check-label" for="residenceTypeUrban">시골</label>
 							    </div>
 						    </div>
 						</div>
-						
 						<div class="col mb-3">
 						    <strong>흡연 상태</strong>
 						    <div class="horizontal-radio">
@@ -212,7 +208,7 @@ body {
 		
 		        <div class="col-6">
 		            <canvas id="drawing_canvas"></canvas>
-		            <img src="https://pds.medicaltimes.com/NewsPhoto/20230201/1675220420.jpg" id="machineImage" style="width:90%;height:100%;border-radius:20px;"/>
+		            <img src="https://blog.kakaocdn.net/dn/bsaKv7/btqENswXzXV/4SrX3MKFb0dUvOICnKg0y0/img.gif" id="machineImage" style="width:100%;height:100%;border-radius:20px;padding: 20px 50px 50px 50px;"/>
 		        </div>
 		    </div>
 		    <div class="effect-custom-font m-5 py-5">
@@ -247,7 +243,7 @@ body {
 	                } else {
 	                    var age = $('#age').val();
 	                    var bmi = $('#bmi').val();
-	                    var gender = $('#gender').val();
+	                    var gender = $("input[name='gender']:checked").val();
 	                    var glucose = $('#glucose').val();
 	                    var bloodpress = $('#bloodpress').val();
 	                    var hypertension = $("input[name='hypertension']:checked").val();
@@ -285,6 +281,7 @@ body {
 	                            "Residence_type": residenceType,
 	                            "smoking_status": smokingStatus
 	                        }
+	                        console.log(data)
 	                        $.ajax({
 	                            type: 'POST',
 	                            url: "http://localhost:5000/StrokeModel",
@@ -292,9 +289,9 @@ body {
 	                            dataType: 'json',
 	                            data: JSON.stringify(data),
 	                            success: function (response) {
-	                                console.log('%o',response);
-	                                console.log(response[0])
-	                                initDrawingCanvas((response[0][1]*100).toFixed(1));
+	                            	console.log('%o',response);
+	                                console.log(response.prediction[0])
+	                                initDrawingCanvas((response.prediction[0]*100).toFixed(1));
 	                                requestAnimationFrame(loop);
 	                                $('#machineImage').hide();
 	                            }

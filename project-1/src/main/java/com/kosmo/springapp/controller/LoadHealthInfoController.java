@@ -114,4 +114,22 @@ public class LoadHealthInfoController {
 	public String parkinsonPredict() {
 		return "ParkinsonPredict";
 	}
+	
+	@GetMapping("/StrokePredict.do")
+	public String StrokePredict(HttpServletRequest req, HttpServletResponse resp,Model model) {
+		try {
+			String token = jwTokensService.getToken(req, tokenName);
+			Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
+			String id = payloads.get("sub").toString();
+			HealthInfoDTO healthInfoDto = healthInfoServiceImpl.selectHealthInfoByUserId(id);
+			if(healthInfoDto != null) {
+				model.addAttribute("healthInfoDto",healthInfoDto);
+			}
+		}
+		catch (Exception e) {
+			
+		}
+		
+	    return "StrokePredict";
+	}
 }
