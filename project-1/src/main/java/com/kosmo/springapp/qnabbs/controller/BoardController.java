@@ -99,7 +99,7 @@ public class BoardController {
 	//상세보기
 	@RequestMapping(value="/View.do",method = {RequestMethod.GET,RequestMethod.POST})
 	public String view(HttpServletRequest req,@RequestParam Map map,Model model) { 
-		//System.out.println("map에 있는게 뭐야?"+map);//board의 no를 가지고 있음
+		//System.out.println(map);//board의 no를 가지고 있음
 		//회원인 경우
 		String token= jwTokensService.getToken(req, tokenName);//token을 가져옴
 		Map payload = jwTokensService.getTokenPayloads(token, secretKey);//payload로 만듬
@@ -116,7 +116,7 @@ public class BoardController {
 		Map paramMap =new HashMap<>();
 		
 		//질문글 하나 불러와서 map에 저장
-		//System.out.println("map에 무엇이 있나? "+map);//{no=값,87}
+		//System.out.println(map);//{no=값,87}
 		map=board.selectOne(map);
 		//줄바꿈 질문글 엔터키 br태그 적용
 		Object contentObj = map.get("CONTENT");

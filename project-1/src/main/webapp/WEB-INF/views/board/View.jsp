@@ -145,7 +145,7 @@
 	                    <div class="row justify-content-center pt-3">
 							<!-- 질문 출력 부분 -->
 							<div class="card_deco col-12 pt-3 pr-4 pl-4 m-1">
-	                            <div class="card-body p-2 mt-3 mb--2">
+	                            <div class="card-body p-2 mt-3 mb-2">
 	                                <span class="card-title font-weight-bold card_font1"><span class="card_font2">Q.&nbsp;</span>${record.TITLE }</span>
 	                                <br>
 	                                <br>
@@ -198,13 +198,13 @@
 						    <!-- 답글이 존재시 뷰 -->
 							<div class="card_deco col-12 p-1 answer-section"><!-- class 속성 answer-section으로 답변삭제시 태그들 아래 다 삭제 -->
 				               	<!-- 네비 바 -->
-					            <div class="card-body card_deco_body m-2" style="padding:.5rem;">
+					            <div class="card-body card_deco_body m-4" style="padding:.5rem;">
 					                <div class="card-text d-flex align-items-center">
 					                	<img src="<c:url value="/images/qna/pharmacist.png"/>" class="qna_mascot">
 					                	<span class="card_deco2_text font-weight-bold text_3 ml-2">메디큐 약사님의 답변입니다</span>
 					                </div>
 					            </div>
-				                <div class="card-body m-2">  
+				                <div class="card-body m-4">  
 									<c:if test="${not empty paramMap }">
 										<div>${paramMap.TITLE }</div>
 								 		<span class="card-text"><h5>${paramMap.CONTENT}</h5></span><!-- 답변내용 -->

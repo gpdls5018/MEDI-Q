@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosmo.springapp.qnabbs.service.impl.board.AnswerServiceImpl;
-import com.kosmo.springapp.qnabbs.service.impl.board.BoardServiceImpl;
 import com.kosmo.springapp.service.JWTokensService;
-import com.kosmo.springapp.service.impl.LoginServiceImpl;
 
 @Controller
 @RequestMapping("/board")

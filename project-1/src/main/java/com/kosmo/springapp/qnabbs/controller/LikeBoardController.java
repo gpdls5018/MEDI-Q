@@ -58,7 +58,7 @@ public class LikeBoardController {
 		}
     }
 	
-	// 게시물의 총 좋아요 개수 조회  //(답변글 존재x시 answer_no=(null) 400error이지만 기능엔 문제 없음)
+	// 게시물의 총 좋아요 개수 조회  //(답변글 존재x시 answer_no=(null) 400 error이지만 기능엔 문제 없음)
     @GetMapping("/Count.do")
     public int getTotalLikes(@RequestParam int no) {
     	//System.out.println("likeno:컨트롤러에서 확인:"+no);
