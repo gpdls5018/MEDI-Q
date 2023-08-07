@@ -1,9 +1,11 @@
 package com.kosmo.springapp.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.kosmo.springapp.model.AllFoodDTO;
 import com.kosmo.springapp.model.AvgStarScoreCountDTO;
 import com.kosmo.springapp.model.CheckWordDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
@@ -18,6 +20,8 @@ public interface SelectFoodMapper {
 	List<AvgStarScoreCountDTO> selectFoodListFoodScore();
 	List<AvgStarScoreCountDTO> selectFoodListFoodScoreTop10();
 	List<FunctionalFoodListDTO> RecommendationFood(String value);
+	int IntakeFood(String no,String ID);
+	List<AllFoodDTO> FoodSearch(String food);
 	List<String> RankingKeyWord();
 	List<CheckWordDTO> checkWord(String foodname);
 	String healthIssueCou(String healthissue);
