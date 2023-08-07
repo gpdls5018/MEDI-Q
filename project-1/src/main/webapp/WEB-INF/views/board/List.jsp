@@ -177,12 +177,11 @@ body{
 	
 }
 </style>
-
 	<!-- 상단배너 div -->
 	<aside id="contentInfoCon" class="area animated">
         <!-- 각각 대메뉴 마다 이미지 다르게 들어갑니다. -->
-                <!-- 브랜드 스토리 -->
-                <div class="visual-img-con animatedleft"></div>	
+        <!-- 브랜드 스토리 -->
+        <div class="visual-img-con animatedleft"></div>	
 
         <div class="tsarea">
             <h3 class="content-tit" style="text-align:left; margin-left: 120px;">
@@ -243,17 +242,7 @@ body{
 			                            <div class="card-body  p-2 mx-3 mb-3 mt-1">			                                
 			                            	<p class="card-text"><h6 class="font-weight-bold p-2" style="width:100px; border-radius:20px; background-color:#FFC0CB; color:#EF605D;">${record.POSTDATE }</h6></p>
 			                                <span class="card-title font-weight-bold card_font1"><span style="color:#EF605D;">Q.&nbsp;</span>${record.TITLE }</span>
-			                              
 			                                <p class="card-text"><h5  class="card_font2">${record.CONTENT }</h5></p>
-			                                <!-- 답변의 title을 필라이즈는 보여주지만 뽑기 힘들어서 일단 버림 삭제 예정?
-			                                <hr style="border: 1px solid #E6E9ED;"/>
-			                                <div class="card-text d-flex align-items-center">
-				                            	<img src="<c:url value="/images/qna/pharmacist.png"/>" class="qna_mascot">
-				                            	<%-- 
-				                            	<c:if test="${empty listPagingData.records }" var="isEmpty">
-				                            		<div class="text_3 ml-1">약사님의 답변을 기다리는 중입니다.</div>
-												</c:if> --%>
-				                            </div> -->
 				                            <hr style="border: 1px solid #E6E9ED;"/>
 			                                <span class="card-text"><h6 class="font-weight-bold card_font3">${record.NAME } ${record.AGE_GROUP} / ${record.GENDER}</h6></span>
 			                            </div>

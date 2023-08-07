@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kosmo.springapp.qnabbs.service.LikeBoardService;
 import com.kosmo.springapp.qnabbs.service.impl.board.AnswerServiceImpl;
 
 @RestController
@@ -16,8 +15,6 @@ public class AnswerBoardRestController {
 
 	@Autowired
 	private AnswerServiceImpl answerservice;
-	//@Autowired
-	//private LikeBoardService likeBoardService;
 	
 	@DeleteMapping("/board/AnswerDelete.do")
 	public Map answerdelete(@RequestBody Map bodymap) {

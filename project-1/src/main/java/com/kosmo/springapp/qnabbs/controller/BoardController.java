@@ -66,6 +66,7 @@ public class BoardController {
 		return "board/List";
 	
 	}/////////////////////
+	
 	//글쓰기 폼으로 이동
 	@GetMapping("/Write.do")
 	public String write() {
@@ -88,7 +89,7 @@ public class BoardController {
 		//System.out.println("writemap에 있는거 찾기:"+map);
 		//글 입력 실패시
 		if(affected==0) {
-			//model.addAttribute("InputError","다시 작성해주세요");//아직안함
+			System.out.println("글작성 실패하셨습니다.");
 			return "board/View";
 		}
 		//작성하고 상세페이지로 이동
@@ -98,7 +99,7 @@ public class BoardController {
 	//상세보기
 	@RequestMapping(value="/View.do",method = {RequestMethod.GET,RequestMethod.POST})
 	public String view(HttpServletRequest req,@RequestParam Map map,Model model) { 
-		//System.out.println("map에 있는게 뭐야?"+map);//board의 no를 가지고 있음
+		//System.out.println(map);//board의 no를 가지고 있음
 		//회원인 경우
 		String token= jwTokensService.getToken(req, tokenName);//token을 가져옴
 		Map payload = jwTokensService.getTokenPayloads(token, secretKey);//payload로 만듬
@@ -114,9 +115,8 @@ public class BoardController {
 		//답변글 Map생성
 		Map paramMap =new HashMap<>();
 		
-		//System.out.println("체크용1");//삭제 예정
 		//질문글 하나 불러와서 map에 저장
-		//System.out.println("map에 무엇이 있나? "+map);//{no=값,87}
+		//System.out.println(map);//{no=값,87}
 		map=board.selectOne(map);
 		//줄바꿈 질문글 엔터키 br태그 적용
 		Object contentObj = map.get("CONTENT");
@@ -126,16 +126,11 @@ public class BoardController {
             content = content.replaceAll("\r\n", "<br>");
             map.put("CONTENT", content);
         }
-		//System.out.println("체크용2");//삭제 예정
 		//질문글 하나 record란 이름으로 저장
 		model.addAttribute("record", map);
-		//System.out.println("체크용3");//삭제 예정
 		//System.out.println("map의 값 체크"+map);//map의 값 체크{NO=87, POSTDATE=2023.07.25, AGE_GROUP=20대, ACTIVE=Y, GENDER=남자, TITLE=1ㅁ2, CONTENT=111ㅁ2, NAME=최*훈}
-		//System.out.println("여기서 아래 에러 발생함!");
 		if (map.get("NO") != null) {
 			//System.out.println("map의 NO:"+map.get("NO"));//map의 NO:87
-			//System.out.println("여기로 들어오는가?");
-			//System.out.println("성공");
 			//질문글의 no로 답변글을 불러와서 paramMap에 저장
 			paramMap=answerservice.answerselectOne(map);
 			//줄바꿈 답변글 엔터키 br태그 적용
@@ -149,13 +144,13 @@ public class BoardController {
 		        }
 			}
 		}
-		//System.out.println("체크용4");
         System.out.println("paramMap(답변이 없으면 null):"+paramMap);
 		//paramMap이란 이름으로 map을 저장
 		model.addAttribute("paramMap", paramMap);
 		//paramMap을 출력
 		return "board/View";
 	}///////////////
+	
 	//수정page 이동
 	@GetMapping("/Edit.do")
 	public String edit(HttpServletRequest req,@RequestParam Map map,Model model) {
@@ -167,13 +162,12 @@ public class BoardController {
 		System.out.println("record값확인"+model);
 		return "board/Edit";
 	}/////////////
+	
 	//수정 process처리
 	@PostMapping("/EditProcess.do")
 	public String editProcess(HttpServletRequest req,@RequestParam Map map,Model model) {
-		//map.put("id", "petrus11");
 		//String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
 		//map.put("id", id);
-		//System.out.println("여기부터...");
 		int affected = board.update(map);
 	    if (affected == 0) {
 	        model.addAttribute("inputError", "입력 오류입니다. 다시 입력해주세요");
@@ -187,13 +181,10 @@ public class BoardController {
 	@GetMapping("/Delete.do")
 	public String delete(HttpServletRequest req,@RequestParam Map map,Model model) {
 		
-		//String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
-		//map.put("id", id);
 		//서비스 호출
 		int deleteCount = board.delete(map);
 	    System.out.println("여기 delete후 "+deleteCount);
 		if (deleteCount == -1) {
-	        model.addAttribute("FAILURE", "삭제할 수 없어요");//안씀
 	        System.out.println("delete에 에러 발생");
 	        return "forward:/board/View.do";
 	    }
