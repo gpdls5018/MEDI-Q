@@ -644,7 +644,8 @@ ul {
 									</li>
 								</ul>
 								<div class="right__wr">
-									<img src="<c:url value="/images/tsimages/mascot.png"/>" style="height: 230px; width: 400px;" >
+									<img id="mascotImage" src="<c:url value="/images/tsimages/mascot.png"/>" style="height: 230px; width: 400px;" >
+									<img id="qrImage" src="<c:url value="/images/tsimages/QR.png"/>" style="height: 200px; width: 250px; margin-left:75px; margin-top:30px; display:none;" >
 									<!--  
 									<div class="d-flex">
 						                <c:if test="${not empty token}" var="isLogin">       
@@ -658,7 +659,7 @@ ul {
 					                </div>
 					                -->
 									<a href="<c:url value='/' />" class="home__btn">Home<img src="https://www.bundangcheil.com/images/pcham_menu_arrow.svg" alt="이동"></a>
-									<a href="<c:url value='/' />" class="down__btn">Download<img src="https://www.bundangcheil.com/images/pcham_menu_arrow.svg" alt="이동"></a>
+									<a href="<c:url value='#' />" class="down__btn" id="downloadButton">Download<img src="https://www.bundangcheil.com/images/pcham_menu_arrow.svg" alt="이동"></a>
 								</div>
 							</div>
 						</div>
@@ -1230,5 +1231,43 @@ ul {
 	    
 	
 	});/////////$(document).ready(function ()
+			
+	
+	//QR
+	document.addEventListener("DOMContentLoaded", function() {
+	    var mascotImage = document.getElementById("mascotImage");
+	    var qrImage = document.getElementById("qrImage");
+	    var downloadButton = document.getElementById("downloadButton");
+	    var dropdownToggle = document.querySelector(".dropdown-toggle");
+	    var dropdownMenu = document.querySelector(".dropdown-menu");
+	
+	    downloadButton.addEventListener("click", function(event) {
+	        event.preventDefault(); 
+	
+	        if (mascotImage.style.display === "none") {
+	            mascotImage.style.display = "block";
+	            qrImage.style.display = "none";
+	        } else {
+	            mascotImage.style.display = "none";
+	            qrImage.style.display = "block";
+	        }
+	
+	        
+	        if (dropdownToggle.getAttribute("aria-expanded") === "true") {
+	            dropdownMenu.style.display = "block";
+	        }
+		    });
+	    
+	    dropdownToggle.addEventListener("click", function(event) {
+	    	if (dropdownMenu.style.display === "block") {
+	            dropdownMenu.style.display = "none";
+	            mascotImage.style.display = "block";
+	            qrImage.style.display = "none";
+	        } else {
+	            dropdownMenu.style.display = "block";
+	        }
+	    });
+	});
+	
 </script>
  
