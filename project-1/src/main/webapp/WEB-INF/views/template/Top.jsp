@@ -1105,7 +1105,8 @@ ul {
 	        return getComputedStyle(skeletonGpt).color === "rgb(255, 126, 0)";
 	    }
 	    startTtsBtn.addEventListener("click", function () {
-	        if (isColorChanged()) {
+	        const activeAnswer = document.querySelector(".gptDialog .skeleton-gpt.active-color");
+	        if (activeAnswer || isColorChanged(activeAnswer)) {
 	            startTtsBtn.style.display = "none";
 	            stopTtsBtn.style.display = "inline";
 	        }
