@@ -393,12 +393,14 @@ ul {
             overflow:auto;
         }
         .skeleton-user{
+        	max-width:300px;
             background-color:white;
             border-radius: 10px;
         }
 
         .skeleton-gpt{
-            background-color:#d6d6d6;
+        	max-width:300px;
+            background-color:#e2e2e2;
             border-radius: 10px;
         }
         .user_ques_img{
@@ -418,18 +420,14 @@ ul {
             left:70px;
         }
         .usersQuestion, .gptAnswer{
-            font-size: 15px;
+            font-size: 16px;
+            
         }
-        /*
-        .user_dialog{
-            position: relative;
-            right: -50px;
-        }*/
         .chatbot{
             width: 400px;
             height: 480px;
             position:fixed;
-            background-color: rgb(255, 94, 85);
+            background-color: rgb(255, 146, 140);
             border: 3px solid rgb(255, 131, 125);
             border-radius: 5%;
             top:380px;
@@ -471,7 +469,7 @@ ul {
             margin: .19em;
             background: #007DB6;
             border-radius: .6em;
-            animation: loading 1s infinite alternate;
+            animation: loading_b 1s infinite alternate;
         }
         .loadbar{
             color: #383838;
@@ -503,7 +501,7 @@ ul {
             background: #A0B61E;
             animation-delay: 1.2s;
         }
-        @keyframes loading {
+        @keyframes loading_b {
             0% {
                 opacity: 0;
             }
@@ -512,7 +510,8 @@ ul {
             }
         }
         
-		/*STT & TTS*/    
+		/*STT & TTS*/
+		/*
 		.loading{      
 		  display: inline-flex;    
 		  width:150px;
@@ -551,6 +550,7 @@ ul {
 		.item:nth-child(6){
 		    animation-delay: 1s;
 		}
+		
 		#startBtn, #startTtsBtn, #stopTtsBtn{
 		     background-color: transparent; 
 		     border: none; 
@@ -574,7 +574,7 @@ ul {
 		.skeleton-gpt.active-color {
 		    color: #FF7E00;
 		}
-
+		*/
     </style>
     <script>
     
@@ -983,10 +983,6 @@ ul {
 		                </c:if>
 	                </div>
     
-    
-    
-    
-    
     <div class="bs-canvas bs-canvas-left position-fixed h-100 justify-content-start" style="z-index:99999; background: linear-gradient(to bottom, #ffffff, #FFFAFA);">
         <header class="bs-canvas-header p-4 bg-gra1 justify-content-center align-items-center">
         	<h4 class="d-inline-block mb-0 text1">
@@ -1119,36 +1115,35 @@ ul {
 		            <button id="startTtsBtn" class="mr-1"><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 35px;height: 35px; border-radius: 35%;"></button>
 		            <button id="stopTtsBtn" class="mr-2"><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 35px;height: 35px; border-radius: 35%;"></button>
                 </div>
-                <div class="col-10 p-0 m-1">
+                <div class="p-0 m-1">
                     <div class="mt-2">
-                        <div class="skeleton-gpt row d-flex align-content-center p-1 m-0">
-                            <div class="col-2 d-flex justify-content-center align-items-center p-0">
+                        <div class="skeleton-gpt row d-inline-flex align-content-center p-1 m-0">
+                            <div class="d-inline-flex justify-content-center align-items-center p-0 m-1">
                                 <img src="/images/chatbot/bot_a.png" class="gtp_ans_img"/>
                             </div>
-                            <h6 class="gptAnswer col-10 d-flex justify-content-start align-items-center p-0 m-0">안녕하세요. 무엇을 도와드릴까요?</h6>
+                            <h6 class="gptAnswer d-flex justify-content-start align-items-center p-0 m-1">안녕하세요. 무엇을 도와드릴까요?</h6>
                         </div>
                     </div>
                 </div>
                 
                 <div class="userDialog p-0 pt-1" style="display:none;">
-                    <div class="user_dialog d-flex justify-content-end m-1">
-                        <div class="skeleton-user d-flex col-10 flex-row-reverse p-1 m-0">
-                            <div class="col-2 d-flex justify-content-center p-0">
+                    <div class="user_dialog d-flex flex-row-reverse p-1 m-0">
+                        <div class="skeleton-user d-inline-flex p-1 m-0">
+                        	<div class="usersQuestion d-flex justify-content-center align-items-center text-break p-0 m-2"></div>
+                            <div class="d-flex justify-content-center align-items-start p-0 m-1">
                                 <img src="/images/chatbot/bot_q.png" class="user_ques_img"/>
                             </div>
-                            <div class="usersQuestion d-flex justify-content-center text-break p-0 ml-1 mr-1"></div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="gptDialog p-0 pt-1"style="display:none;">
-                    <div class="col-10 p-0 m-1">
-                        <div class="skeleton-gpt row d-flex align-content-center p-1 m-0">
-                            <div class="col-2 d-flex justify-content-center p-0">
+                    <div class="p-0 m-1">
+                        <div class="skeleton-gpt d-inline-flex align-content-center p-1 m-0">
+                            <div class="d-flex justify-content-center p-0 m-1">
                                 <img src="/images/chatbot/bot_a.png" class="gtp_ans_img"/>
                             </div>
-                            <div class="gptAnswer col-10 d-flex justify-content-start align-items-center p-0 m-0">
-                                            	
+                            <div class="gptAnswer d-flex justify-content-center align-items-center text-break p-0 m-2">
                             </div>
                         </div>
                     </div>
@@ -1159,7 +1154,7 @@ ul {
 			        <div class="position-absolute" style="left: 257px; top: 50%; transform: translateY(-50%);">
 			            <button id="startBtn">
 			                <img src="<c:url value='/images/chatbot/mike.png'/>" style="width: 37px;height: 35px; border-radius: 35%;">
-			            </button> 
+			            </button>
 			        </div>
 			        <input type="text" class="form-control rounded-start bg-light" id="userInput" placeholder="무엇이든 물어보세요" style="width: 299px;"><!-- #######질문 -->
 			    </div>
