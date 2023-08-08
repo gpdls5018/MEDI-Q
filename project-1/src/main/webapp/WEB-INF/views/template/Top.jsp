@@ -525,46 +525,6 @@ ul {
         }
         
 		/*STT & TTS*/
-		/*
-		.loading{      
-		  display: inline-flex;    
-		  width:150px;
-		  justify-content:center;
-		  align-items: center;
-		}
-		.item{
-		  width:20px;
-		  height:20px;
-		  background-color: rgb(247, 40, 4);
-		  border-radius: 50%;
-		  animation: loading 2s infinite;
-		}
-		@keyframes loading {
-		    50%{
-		        transform: scale(0.5);
-		        background-color: rgb(203, 138, 127);
-		    }
-		    100%{
-		        transform: scale(1);
-		        background-color: rgb(247, 40, 4);
-		    }
-		}
-		.item:nth-child(2){
-		    animation-delay: 0.2s;
-		}
-		.item:nth-child(3){
-		    animation-delay: 0.4s;
-		}
-		.item:nth-child(4){
-		    animation-delay: 0.6s;
-		}
-		.item:nth-child(5){
-		    animation-delay: 0.8s;
-		}
-		.item:nth-child(6){
-		    animation-delay: 1s;
-		}
-		
 		#startBtn, #startTtsBtn, #stopTtsBtn{
 		     background-color: transparent; 
 		     border: none; 
@@ -591,7 +551,7 @@ ul {
 		.skeleton-gpt.active-color {
 		    color: #FF7E00;
 		}
-		*/
+		
     </style>
 </head>
 <body>
