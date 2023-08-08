@@ -540,10 +540,10 @@ ul {
 		     animation: shake .3s; 
 		}
 		@keyframes shake { 
-		     10%{transform: rotate(10deg);}
-		     20%{transform: rotate(-10deg);}
-		     30%{transform: rotate(10deg);}
-		     40%{transform: rotate(-10deg);}
+		     10%{transform: rotate(7deg);}
+		     20%{transform: rotate(-7deg);}
+		     30%{transform: rotate(7deg);}
+		     40%{transform: rotate(-7deg);}
 		}
 		.skeleton-gpt:hover{
 			cursor: pointer; 
@@ -811,10 +811,7 @@ ul {
 				    <label for="voice" style="font-size: 12px; margin-top: 8px;" class="d-flex ml-3"><img src="<c:url value='/images/chatbot/voice.png'/>" style="width: 35px;height: 25px;">
 				    <select class="form-control p-1 ml-1" id="voice" style="width: 150px; height: 25px; font-size: 10px;"></select></label>             
 				</div>
-            	<div class="m-2" style="text-align: right;">
-		            <button id="startTtsBtn" class="mr-1"><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 35px;height: 35px; border-radius: 35%;"></button>
-		            <button id="stopTtsBtn" class="mr-2"><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 35px;height: 35px; border-radius: 35%;"></button>
-                </div>
+          
                 <div class="p-0 m-1">
                     <div class="mt-2">
                         <div class="skeleton-gpt row d-inline-flex align-content-center p-1 m-0">
@@ -851,14 +848,12 @@ ul {
             </div>
             <div class="inputDIV input-group p-1 mt-1">
 			    <div class="position-relative">
-			        <div class="position-absolute" style="left: 257px; top: 50%; transform: translateY(-50%);">
-			            <button id="startBtn">
-			                <img src="<c:url value='/images/chatbot/mike.png'/>" style="width: 37px;height: 35px; border-radius: 35%;">
-			            </button>
-			        </div>
-			        <input type="text" class="form-control rounded-start bg-light" id="userInput" placeholder="무엇이든 물어보세요" style="width: 299px;"><!-- #######질문 -->
+			        <input type="text" class="form-control rounded-start bg-light" id="userInput" placeholder="무엇이든 물어보세요" style="width: 225px; height: 40px;"><!-- #######질문 -->
 			    </div>
 			    <div class="input-group-append">
+			    	<button id="startBtn"><img src="<c:url value='/images/chatbot/mike.png'/>" style="width: 37px;height: 40px;"></button>
+			        <button id="startTtsBtn" ><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 37px;height: 40px;"></button>
+		            <button id="stopTtsBtn" ><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 37px;height: 40px;"></button>
 			        <button class="btn btn-warning search_btn font-weight-bold text-light" type="button">검색</button>
 			    </div>
 			</div>
@@ -1089,6 +1084,7 @@ ul {
 	    var result = document.querySelector('#userInput');//질문
 	    var chatGpt = document.querySelector('.gptAnswer');//응답
 	    var voiceSelect = document.querySelector('#voice');
+	    var skeletonGpt = document.querySelector('.skeleton-gpt');
 	    
 	    
 	    var isRecognizing = false;
@@ -1097,14 +1093,30 @@ ul {
 	    
 	    
 	    //대화상자(답변) 선택시 색상 변경
-	    $(".skeleton-gpt").click(function() {
+	    $(skeletonGpt).click(function() {
 	        $(this).toggleClass("active-color");
 	    });
 	    $(document).on("click", ".gptDialog .skeleton-gpt", function() {
 	        $(this).toggleClass("active-color");
 	    });
 	    
+	    //startTtsBtn, stopTtsBtn 동작
+	    function isColorChanged() {
+	        return getComputedStyle(skeletonGpt).color === "rgb(255, 126, 0)";
+	    }
+	    startTtsBtn.addEventListener("click", function () {
+	        if (isColorChanged()) {
+	            startTtsBtn.style.display = "none";
+	            stopTtsBtn.style.display = "inline";
+	        }
+	    });
+	    stopTtsBtn.addEventListener("click", function () {
+	        stopTtsBtn.style.display = "none";
+	        startTtsBtn.style.display = "inline";
+	    });
+	    stopTtsBtn.style.display = "none";
     
+	    
 	    $.get("/config/apiKey", function (data) {
 	    	
 	        var apiKey = data;
@@ -1199,7 +1211,7 @@ ul {
 	
 	    function startRecognition() {
 	    	console.log('음성인식 중1')
-	        startBtn.innerHTML = "<i class='fas fa-microphone' style='color:red; font-size:24px; padding-left:13px;'></i>";
+	        startBtn.innerHTML = "<img src='<c:url value="/images/chatbot/mike2.png"/>' style='width: 37px;height: 40px;'>"
 	        result.value = '';
 	        recognition.start();
 	        isRecognizing = true;
@@ -1207,7 +1219,7 @@ ul {
 	
 	    function stopRecognition() {
 	    	console.log("음성인식 멈춤")
-	        startBtn.innerHTML = "<img src='<c:url value="/images/chatbot/mike.png"/>' style='width: 37px;height: 35px; border-radius: 35%;'>"
+	        startBtn.innerHTML = "<img src='<c:url value="/images/chatbot/mike.png"/>' style='width: 37px;height: 40px;'>"
 	        recognition.stop();
 	        isRecognizing = false;
 	    }//////stopRecognition()
