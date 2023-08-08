@@ -32,7 +32,6 @@ public class LikeBoardServiceImpl implements LikeBoardService {
 	// 게시물의 총 좋아요 개수 조회
 	@Override
 	public int getTotalLikes(int no) {
-		System.out.println("like체크용");
 		return mapper.getTotalLikes(no);
 	}
 	

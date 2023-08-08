@@ -105,17 +105,9 @@
         </div>
         
         <div class="container-fluid pt-3 mt-3">
-        	<!-- 
-        	<div class="row">
-	        	<div class="d-flex col-3"></div>
-	        	<div class="d-flex col"><img src="<c:url value="/images/qna/qna_bbs.png"/>" class="qna_bbs mb-4"></div>
-	        	<div class="d-flex col-3"></div>
-            </div>
-            -->
             <div class="row d-flex flex-wrap align-content-stretch">
                 <div class="d-flex col-3">
                 </div>
-                
                 <div class="d-flex col-6 flex-wrap flex-direction justify-content-center align-content-stretch">
                     <div class="col">
                         <form method="post" action="/board/Write.do">
@@ -132,7 +124,6 @@
 									</div>
 	                            </div>
 	                        </div>
-	                        
                             <div class="pt-2 pr-3 m-2 btn_align_right">
                             	<button type="submit" class="btn_update btn_update_text border-0 rounded" style="font-size:23px;">등록</button>
                             </div>

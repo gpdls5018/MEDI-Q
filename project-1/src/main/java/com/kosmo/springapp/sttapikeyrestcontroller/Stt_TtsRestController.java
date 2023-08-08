@@ -1,4 +1,4 @@
-package com.kosmo.springapp.sttttsestcontroller;
+package com.kosmo.springapp.sttapikeyrestcontroller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
