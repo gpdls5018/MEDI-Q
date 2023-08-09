@@ -86,7 +86,22 @@ progress::-webkit-progress-bar {
 	.tsthsc::-webkit-scrollbar-thumb:hover {
 	  background-color: black;
 	}
-
+	.taehyun {
+		width: 120px;
+		border: 1px solid #e6e6e6;
+		border-radius: 10px;
+		text-align:center; 
+		overflow: hidden;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	    word-break: break-all;
+	}
+	.taehyun1{
+		overflow: hidden;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	    word-break: break-all;
+	}
 </style>
 <body>
 	<div class="container my-3" style="min-height: 880px; max-width: 920px; background-color: white; border-radius: 15px;">
@@ -173,16 +188,7 @@ progress::-webkit-progress-bar {
 								<div style="margin: 20px 0px 5px 20px ;"> ${dto.takePurpose}</div>
 							</div>
 						</div>
-						<!-- ------------------------------------------------------------ -->
-						<c:forEach items="${takelistfood}" var="dtos"> 
-							<c:if test="${dtos.key eq dto.takePurpose}" >
-								<c:forEach items="${dtos.value }" var="value">
-									${value.productName }
-									<img style="width:100px;height: 100px" src="${value.imgURL }">
-								</c:forEach>
-							</c:if>
-						</c:forEach>
-						<!-- ------------------------------------------------------------ -->
+
 						<div class="col-9">
 							<div class="effect-custom-font mb-3" style="font-size:15px;color:#6e6e6e;">
 									'${dto.takePurpose}' 에 도움이 되는 기능성 원료 <span style="font-size:20px;color:#000000">${fn:length(dto.foodList)} 가지 중 ${fn:length(dto.foodList) - fn:length(dto.ingredient_list_no_report)} 개</span> 를 섭취하고 있습니다
@@ -210,6 +216,20 @@ progress::-webkit-progress-bar {
 								<span class="effect-custom-font p-2 my-4 mx-2" style="line-height:50px; border-radius:15px;font-size:15px; color:#22b27f; background-color: #d7f2e9;"><a class="5dame" style="font-weight: bold;color:#22b27f; text-decoration: none;" href="/NutrientDetail.do?name=${ingredient}">${ingredient}</a></span>
 								<c:if test="${index.count % 4 == 0}">
 									<br>
+								</c:if>
+							</c:forEach>
+						</div>
+						<span style=" margin:30px 0px 10px 50px; font-size:24px; font-weight: bold;">💊 섭취 중인 영양제 중 <strong style="color:#EF605D;">'${dto.takePurpose}'</strong>에 도움이 되는 영양제입니다</span>
+						<div class="d-flex" style="margin-left:50px; flex-direction: row;">
+							
+							<c:forEach items="${takelistfood}" var="dtos">
+								<c:if test="${dtos.key eq dto.takePurpose}" >
+									<c:forEach items="${dtos.value }" var="value">
+										<div class="taehyun d-flex mx-2" style="flex-direction: column; font-size:14px; font-weight: 400;">
+											<img style="margin:10px 10px; width:100px;height: 100px;" src="${value.imgURL }">
+											<span class="taehyun1">${value.productName }</span>
+										</div>
+									</c:forEach>
 								</c:if>
 							</c:forEach>
 						</div>
