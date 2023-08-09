@@ -173,6 +173,16 @@ progress::-webkit-progress-bar {
 								<div style="margin: 20px 0px 5px 20px ;"> ${dto.takePurpose}</div>
 							</div>
 						</div>
+						<!-- ------------------------------------------------------------ -->
+						<c:forEach items="${takelistfood}" var="dtos"> 
+							<c:if test="${dtos.key eq dto.takePurpose}" >
+								<c:forEach items="${dtos.value }" var="value">
+									${value.productName }
+									<img style="width:100px;height: 100px" src="${value.imgURL }">
+								</c:forEach>
+							</c:if>
+						</c:forEach>
+						<!-- ------------------------------------------------------------ -->
 						<div class="col-9">
 							<div class="effect-custom-font mb-3" style="font-size:15px;color:#6e6e6e;">
 									'${dto.takePurpose}' 에 도움이 되는 기능성 원료 <span style="font-size:20px;color:#000000">${fn:length(dto.foodList)} 가지 중 ${fn:length(dto.foodList) - fn:length(dto.ingredient_list_no_report)} 개</span> 를 섭취하고 있습니다

@@ -94,4 +94,9 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	public int IntakeFood(String no, String ID) {
 		return mapper.IntakeFood(no, ID);
 	}
+
+	@Override
+	public List<FunctionalFoodListDTO> healthissuetakefood(String healthissue) {
+		return mapper.healthissuetakefood(healthissue);
+	}
 }
