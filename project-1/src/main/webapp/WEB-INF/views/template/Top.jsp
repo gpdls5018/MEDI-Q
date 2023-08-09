@@ -1067,6 +1067,11 @@ ul {
 	            console.log("selectedAnswer.value:", selectedAnswer.value);
 	            utterance.voiceURI = selectedVoice.voiceURI;
 	            utterance.lang = selectedVoice.lang;
+	         // 음성 합성이 완료된 후에 호출될 이벤트 핸들러
+	            utterance.onend = function() {
+	                startTtsBtn.style.display = "inline";
+	                stopTtsBtn.style.display = "none";
+	            };
 	        }
 	        window.speechSynthesis.speak(utterance);
 	    });
