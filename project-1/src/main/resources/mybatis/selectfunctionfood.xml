@@ -81,6 +81,9 @@
 	<select id="FoodListFromHealthissue" parameterType="String" resultType="AvgStarScoreCountDTO">
 		select * from foodtable where material like '%${healthissue}%' AND ROWNUM &lt;= 500 ORDER by imgurl ASC
 	</select>
+	<select id="healthissuetakefood" parameterType="String" resultType="FunctionalFoodListDTO">
+		select * from (select * from foodtable where material like '%${healthissue}%' ORDER by imgurl ASC) where ROWNUM &lt;= 5
+	</select>
 	<select id="healthIssueCou" parameterType="String" resultType="String">
 		select H_COUPLING from healthissue where H_NAME like '%${healthissue}%'
 	</select>

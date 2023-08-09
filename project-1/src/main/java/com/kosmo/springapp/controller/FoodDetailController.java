@@ -42,6 +42,8 @@ import com.kosmo.springapp.service.impl.HeartCountServiceImpl;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
 import com.kosmo.springapp.service.impl.MainPageServiceImpl;
 import com.kosmo.springapp.service.impl.ReviewServiceImpl;
+import com.kosmo.springapp.service.impl.SelectFoodServiceImpl;
+
 import org.springframework.http.HttpStatus;
 
 
@@ -59,6 +61,9 @@ public class FoodDetailController {
 	 
 	 @Autowired
 	 HeartCountServiceImpl HeartCountService;
+	 
+	 @Autowired
+	 SelectFoodServiceImpl selectfoodservice;
 	 
 	 @Autowired
 	 private JWTokensService jwTokensService;
@@ -323,12 +328,20 @@ public class FoodDetailController {
 		 
 		 List<String> takeList = Arrays.asList(map.get("takePurpose").split(","));
 		 List<String> foodList = Arrays.asList(map.get("takeFood").replaceAll("amp;","").split(","));
+    	 Map<String,List<FunctionalFoodListDTO>> takelistfood = new HashMap<>();
          for (int i = 0; i < takeList.size(); i++) {
              takeList.set(i, takeList.get(i).trim());
          }
          for (int i = 0; i < foodList.size(); i++) {
         	 foodList.set(i, foodList.get(i).trim());
          }
+         
+         for(String helthissue:takeList) {
+    		String Hissuecous = selectfoodservice.healthIssueCou(helthissue);
+ 			String[] Hissuecou = Hissuecous.split("\\$");
+        	takelistfood.put(helthissue, selectfoodservice.healthissuetakefood(Hissuecou[1]));
+         }
+         model.addAttribute("takelistfood", takelistfood);
 		 Map<String,List<String>> userMap = new HashMap<>();
 		 userMap.put("takePurpose", takeList);
 		 System.out.println("userMap: takePurpose : "+userMap.get("takePurpose"));
@@ -351,7 +364,7 @@ public class FoodDetailController {
 	 }
 	 @PostMapping("/analyzeMyReportReLoad.do")
 	 public String analyzeMyReportReLoad(@RequestParam Map<String,String> map,Model model,HttpServletRequest req,HttpServletResponse resp) {
-		 
+		 Map<String,List<FunctionalFoodListDTO>> takelistfood = new HashMap<>();
 		 List<String> takeList = Arrays.asList(map.get("takePurpose").split(","));
          for (int i = 0; i < takeList.size(); i++) {
              takeList.set(i, takeList.get(i).trim());
@@ -360,6 +373,13 @@ public class FoodDetailController {
          for (int i = 0; i < foodList.size(); i++) {
         	 foodList.set(i, foodList.get(i).trim());
          }
+         for(String helthissue:takeList) {
+     		String Hissuecous = selectfoodservice.healthIssueCou(helthissue);
+  			String[] Hissuecou = Hissuecous.split("\\$");
+         	takelistfood.put(helthissue, selectfoodservice.healthissuetakefood(Hissuecou[1]));
+            System.out.println(Hissuecous);
+          }
+         model.addAttribute("takelistfood", takelistfood);
 		 Map<String,List<String>> userMap = new HashMap<>();
 		 userMap.put("takePurpose", takeList);
 		 System.out.println("userMap: takePurpose : "+userMap.get("takePurpose"));

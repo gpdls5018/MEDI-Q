@@ -15,6 +15,7 @@ public interface SelectFoodMapper {
 	List<AvgStarScoreCountDTO> selectFoodListFromNameScore(String foodname,int casesel);
 	List<FunctionalFoodListDTO> selectFoodListFromName(String foodname,int casesel);
 	List<FunctionalFoodListDTO> selectFoodListFromNut(String nut);
+	List<FunctionalFoodListDTO> healthissuetakefood(String healthissue);
 	List<AvgStarScoreCountDTO> selectFoodListFromHealthissue(String healthissue);
 	List<AvgStarScoreCountDTO> FoodListFromHealthissue(String healthissue);
 	List<AvgStarScoreCountDTO> selectFoodListFoodScore();
