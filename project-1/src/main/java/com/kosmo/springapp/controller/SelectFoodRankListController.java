@@ -91,7 +91,7 @@ public class SelectFoodRankListController {
 		return "test2";
 	}
 	@GetMapping("/food/intakefood.do")
-	public String intakefood(String no,HttpServletRequest req,HttpServletResponse resp) {
+	public String intakefood(String no,Model model,HttpServletRequest req,HttpServletResponse resp) {
 		Date currentDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd");
         String formatDate = dateFormat.format(currentDate);
@@ -124,17 +124,32 @@ public class SelectFoodRankListController {
 			transfat += Float.parseFloat(AFD.getTransfat());
 			
 		}
-		System.out.println("calorie:"+calorie);
-		System.out.println("protein:"+protein);
-		System.out.println("fat:"+fat);
-		System.out.println("carbohydrate:"+carbohydrate);
-		System.out.println("sugar:"+sugar);
-		System.out.println("dietaryfiber:"+dietaryfiber);
-		System.out.println("saturatedfat:"+saturatedfat);
-		System.out.println("unsaturatedfat:"+unsaturatedfat);
-		System.out.println("cholesterol:"+cholesterol);
-		System.out.println("sodium:"+sodium);
-		System.out.println("transfat:"+transfat);
+		
+		model.addAttribute("calorie", calorie);
+		model.addAttribute("protein", protein);
+		model.addAttribute("fat", fat);
+		model.addAttribute("carbohydrate", carbohydrate);
+		model.addAttribute("sugar", sugar);
+		model.addAttribute("dietaryfiber", dietaryfiber);
+		model.addAttribute("saturatedfat", saturatedfat);
+		model.addAttribute("unsaturatedfat", unsaturatedfat);
+		model.addAttribute("cholesterol", cholesterol);
+		model.addAttribute("sodium", sodium);
+		model.addAttribute("transfat", transfat);
+		model.addAttribute("calorie", calorie);
+		
+		
+		System.out.println("칼로린:"+calorie);
+		System.out.println("단백질:"+protein);
+		System.out.println("지방:"+fat);
+		System.out.println("탄수화물:"+carbohydrate);
+		System.out.println("당:"+sugar);
+		System.out.println("식이섬유:"+dietaryfiber);
+		System.out.println("포화지방:"+saturatedfat);
+		System.out.println("뷸포화지방:"+unsaturatedfat);
+		System.out.println("트랜스지방:"+transfat);
+		System.out.println("콜레스테롤:"+cholesterol);
+		System.out.println("나트륨:"+sodium);
 		
 		return "test2";
 	}
