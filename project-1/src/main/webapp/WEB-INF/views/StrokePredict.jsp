@@ -70,13 +70,13 @@ body {
 		                    <strong>성별</strong>
 		                    <div class="horizontal-radio">
 			                    <div class="form-check">
-								    <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="0">
+								    <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="Male">
 								    <label class="form-check-label" for="gender_Man">
 								    남성
 								    </label>
 								</div>
 								<div class="form-check">
-								    <input class="form-check-input" type="radio" name="gender" id="gender_Woman" value="1">
+								    <input class="form-check-input" type="radio" name="gender" id="gender_Woman" value="Female">
 								    <label class="form-check-label" for="gender_Woman">
 								    여성
 								    </label>
@@ -93,48 +93,15 @@ body {
 		                        혈당 수치를 입력해주세요
 		                    </div>
 		                </div>
-		                <div class="col mb-3">
-		                    <strong>BMI</strong>
-		                    <input type="text" class="form-control" id="bmi" name="bmi" placeholder="체질량 지수를 입력해주세요" value="${healthInfoDto.bmi}" required>
-		                    <div class="invalid-feedback">
-		                        체질량 지수를 입력해주세요
-		                    </div>
-		                </div>
-		                <div class="col mb-3">
-						    <strong>고혈압 여부</strong>
-						    <div class="horizontal-radio">
-							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="hypertension" id="hypertensionNo" value="0">
-							        <label class="form-check-label" for="hypertensionNo">없음</label>
-							    </div>
-							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="hypertension" id="hypertensionYes" value="1">
-							        <label class="form-check-label" for="hypertensionYes">있음</label>
-							    </div>
-							</div>
-						</div>
-						<div class="col mb-3">
-						    <strong>심장 질환 여부</strong>
-						    <div class="horizontal-radio">
-						    	<div class="form-check">
-							        <input class="form-check-input" type="radio" name="heartDisease" id="heartDiseaseNo" value="0">
-							        <label class="form-check-label" for="heartDiseaseNo">없음</label>
-							    </div>
-							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="heartDisease" id="heartDiseaseYes" value="1">
-							        <label class="form-check-label" for="heartDiseaseYes">있음</label>
-							    </div>
-						    </div>
-						</div>
 						<div class="col mb-3">
 						    <strong>결혼 여부</strong>
 						    <div class="horizontal-radio">
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="everMarried" id="everMarriedYes" value="0">
+							        <input class="form-check-input" type="radio" name="everMarried" id="everMarriedYes" value="Yes">
 							        <label class="form-check-label" for="everMarriedYes">예</label>
 							    </div>
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="everMarried" id="everMarriedNo" value="1">
+							        <input class="form-check-input" type="radio" name="everMarried" id="everMarriedNo" value="No">
 							        <label class="form-check-label" for="everMarriedNo">아니오</label>
 							    </div>
 							</div>
@@ -144,23 +111,23 @@ body {
 						    <strong>직업 유형</strong>
 						    <div class="horizontal-radio">
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="workType" id="workTypePrivate" value="0">
+							        <input class="form-check-input" type="radio" name="workType" id="workTypePrivate" value="Private">
 							        <label class="form-check-label" for="workTypePrivate">사기업</label>
 							    </div>
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="workType" id="workTypeSelfEmployed" value="1">
+							        <input class="form-check-input" type="radio" name="workType" id="workTypeSelfEmployed" value="Self-employed">
 							        <label class="form-check-label" for="workTypeSelfEmployed">자영업</label>
 							    </div>
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="workType" id="workTypeGovt" value="2">
+							        <input class="form-check-input" type="radio" name="workType" id="workTypeGovt" value="Govt_job">
 							        <label class="form-check-label" for="workTypeGovt">공기업</label>
 							    </div>
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="workType" id="workTypeChildren" value="3">
+							        <input class="form-check-input" type="radio" name="workType" id="workTypeChildren" value="children">
 							        <label class="form-check-label" for="workTypeChildren">아동</label>
 							    </div>
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="workType" id="workTypeNeverWorked" value="4">
+							        <input class="form-check-input" type="radio" name="workType" id="workTypeNeverWorked" value="Never_worked">
 							        <label class="form-check-label" for="workTypeNeverWorked">무직</label>
 							    </div>
 						    </div>
@@ -169,35 +136,14 @@ body {
 						    <strong>거주 유형</strong>
 						    <div class="horizontal-radio">
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="residenceType" id="residenceTypeRural" value="0">
+							        <input class="form-check-input" type="radio" name="residenceType" id="residenceTypeRural" value="Urban">
 							        <label class="form-check-label" for="residenceTypeRural">도시</label>
 							    </div>
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="residenceType" id="residenceTypeUrban" value="1">
+							        <input class="form-check-input" type="radio" name="residenceType" id="residenceTypeUrban" value="Rural">
 							        <label class="form-check-label" for="residenceTypeUrban">시골</label>
 							    </div>
 						    </div>
-						</div>
-						<div class="col mb-3">
-						    <strong>흡연 상태</strong>
-						    <div class="horizontal-radio">
-							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="smokingStatus" id="smokingStatusFormerly" value="0">
-							        <label class="form-check-label" for="smokingStatusFormerly">과거에 흡연</label>
-							    </div>
-							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="smokingStatus" id="smokingStatusNever" value="1">
-							        <label class="form-check-label" for="smokingStatusNever">흡연하지 않음</label>
-							    </div>
-							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="smokingStatus" id="smokingStatusSmokes" value="2">
-							        <label class="form-check-label" for="smokingStatusSmokes">현재 흡연 중</label>
-							    </div>
-							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="smokingStatus" id="smokingStatusUnknown" value="3">
-							        <label class="form-check-label" for="smokingStatusUnknown">알 수 없음</label>
-							    </div>
-							</div>
 						</div>
 		                
 		                <hr class="mb-4">
@@ -208,11 +154,11 @@ body {
 		
 		        <div class="col-6">
 		            <canvas id="drawing_canvas"></canvas>
-		            <img src="https://blog.kakaocdn.net/dn/bsaKv7/btqENswXzXV/4SrX3MKFb0dUvOICnKg0y0/img.gif" id="machineImage" style="width:100%;height:100%;border-radius:20px;padding: 20px 50px 50px 50px;"/>
+		            <img src="https://blog.kakaocdn.net/dn/bsaKv7/btqENswXzXV/4SrX3MKFb0dUvOICnKg0y0/img.gif" id="machineImage" style="width:100%;height:100%;border-radius:20px;padding: 0px 50px 0px 50px;"/>
 		        </div>
 		    </div>
 		    <div class="effect-custom-font m-5 py-5">
-		    	<div class="title mb-5" style="font-size:30px; margin-top: 100px;">
+		    	<div class="title mb-5" style="font-size:30px;">
 		    		<img src="<c:url value="/images/mainicon.png"/>" style="width:30px;height:30px;">
 		    		<img src="<c:url value="/images/maintitle.png"/>" style="height:30px;">
 												와 다른 질병을 예측해 보아요!</div>
@@ -242,16 +188,11 @@ body {
 	                    });
 	                } else {
 	                    var age = $('#age').val();
-	                    var bmi = $('#bmi').val();
 	                    var gender = $("input[name='gender']:checked").val();
 	                    var glucose = $('#glucose').val();
-	                    var bloodpress = $('#bloodpress').val();
-	                    var hypertension = $("input[name='hypertension']:checked").val();
-	                    var heartDisease = $("input[name='heartDisease']:checked").val();
 	                    var everMarried = $("input[name='everMarried']:checked").val();
 	                    var workType = $("input[name='workType']:checked").val();
 	                    var residenceType = $("input[name='residenceType']:checked").val();
-	                    var smokingStatus = $("input[name='smokingStatus']:checked").val();
 	                    $('.model-score').hide();
 	                    const Toast = Swal.mixin({
 	                        toast: true,
@@ -271,20 +212,16 @@ body {
 	                    setTimeout(function () {
 	                        var data = {
 	                            "age": age,
-	                            "bmi": bmi,
-	                            "gender" : gender,
 	                            "avg_glucose_level": glucose,
-	                            "hypertension": hypertension,
-	                            "heart_disease": heartDisease,
+	                            "gender" : gender,
 	                            "ever_married": everMarried,
 	                            "work_type": workType,
-	                            "Residence_type": residenceType,
-	                            "smoking_status": smokingStatus
+	                            "Residence_type": residenceType
 	                        }
 	                        console.log(data)
 	                        $.ajax({
 	                            type: 'POST',
-	                            url: "http://localhost:5000/StrokeModel",
+	                            url: "http://192.168.0.16/stroke",
 	                            contentType : "application/json",
 	                            dataType: 'json',
 	                            data: JSON.stringify(data),

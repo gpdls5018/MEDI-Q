@@ -21,6 +21,8 @@ public interface SelectFoodMapper {
 	List<AvgStarScoreCountDTO> selectFoodListFoodScore();
 	List<AvgStarScoreCountDTO> selectFoodListFoodScoreTop10();
 	List<FunctionalFoodListDTO> RecommendationFood(String value);
+	List<String> intakeFoodNo(String formatDate,String ID);
+	AllFoodDTO intakeFoodData(String no);
 	int IntakeFood(String no,String ID);
 	List<AllFoodDTO> FoodSearch(String food);
 	List<String> RankingKeyWord();

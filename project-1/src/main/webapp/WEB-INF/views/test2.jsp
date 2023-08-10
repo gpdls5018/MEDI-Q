@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <jsp:include page="/WEB-INF/views/template/SelectFoodListStyleScript.jsp"/>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
      <style>
 body{
 	background-color: white;
@@ -84,7 +84,14 @@ body{
     flex: 2;
   }
   
-  
+  h1 {
+	  text-align: center;
+	}
+  .chart_dnt_1,
+  .chart_dnt_2 {
+    width: 300px;
+    display: inline-block;
+  }
      </style>
 
 	<!-- 상단배너 div -->
@@ -110,6 +117,12 @@ body{
 				<div class="top-wrap-070">
 					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>건강 고민</span></h1>
 				</div>
+				<c:if test="${not empty fat}">
+					<div class="chart_dnt_1">
+					  <h1>탄단지 비율</h1>
+					  <canvas id="chart_doughnut_1"></canvas>
+					</div>
+				</c:if>
 				<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
 					<div class="search-etc">
 					<div class="ipt-main-wrap">
@@ -334,6 +347,83 @@ body{
             }, 400);
             return false;
         });
+        
+        var myChart = {
+        		  init : function(){
+        		    myChart.chart_line();
+        		    myChart.chart_doughnut.init_doughnut();
+        		  },
+        		  
+        		  // 차트 - 라인
+        		  chart_line : function(){
+        		    
+        		  }, 
+        		  
+        		  // 차트 - 도넛   
+        		  chart_doughnut : {
+        		    init_doughnut : function(){
+        		      myChart.chart_doughnut.chart_1();
+        		      myChart.chart_doughnut.chart_2();
+        		    },
+        		    chart_1 : function(){    
+        		      var chart = document.getElementById("chart_doughnut_1");
+        		      var data = {
+        		          labels: ["탄수화물","지방","단백질"],
+        		          datasets: [
+        		              {
+        		                  data: [${carbohydrate}, ${fat}, ${protein}],
+        		                  backgroundColor: [
+        		                      "#f23456",
+        		                      "#afff2a",
+        		                      "#f5dc5a"
+        		                  ],
+        		                  hoverBackgroundColor: [
+        		                      "#123456",
+        		                      "#654321",
+        		                      "#456123"
+        		                  ]
+        		              }]
+        		      };
+        		      var myDoughnutChart = new Chart(chart, {
+        		          type: 'doughnut',
+        		          data: data,
+        		          options: {
+        		              responsive: true,
+        		              legend: false,
+        		              title: {
+        		                  display: false,
+        		                  text: 'Chart.js Doughnut Chart'
+        		              },
+        		              animation: {
+        		                  animateScale: true,
+        		                  animateRotate: true
+        		              },
+        		              tooltips: {
+        		                  callbacks: {
+        		                      label: function(tooltipItem, data) {
+        		                          var dataset = data.datasets[tooltipItem.datasetIndex];
+        		                          var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+        		                              return previousValue + currentValue;
+        		                          });
+        		                          var currentValue = dataset.data[tooltipItem.index];
+        		                          var precentage = Math.floor(((currentValue/total) * 100)+0.5);
+        		                          return data.labels[tooltipItem.index] + " : " + precentage + " %";
+        		                      },
+        		                       mode: 'label'
+        		                  }
+        		              },
+        		              cutoutPercentage:40,
+        		          },
+        		      });
+        		    },
+        		    // 차트1
+        		  }
+        		  
+        		  
+        		  
+        		}
+        		    
+        		myChart.init();
 </script>
 </body>
 </html>

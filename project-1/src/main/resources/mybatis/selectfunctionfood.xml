@@ -107,4 +107,10 @@
 	<insert id="IntakeFood" parameterType="String">
 		insert into intakefood (id,foodno) values('${ID}','${no}')
 	</insert>
+	<select id="intakeFoodNo" parameterType="String" resultType="String">
+		select foodno from intakefood where ID = '${ID}' AND intakedate like '${formatDate}'
+	</select>
+	<select id="intakeFoodData" parameterType="String" resultType="AllFoodDTO">
+		select * from allfoodtable where no='${no}'
+	</select>
 </mapper>
