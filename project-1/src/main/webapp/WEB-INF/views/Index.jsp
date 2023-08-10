@@ -135,6 +135,7 @@ html, body {
 #tssection7 { 
 	background: linear-gradient(to bottom, white 50%, #fdfbf6 50%);
 	flex-direction: column;
+	position: relative;
 }
 #tssection8 {
 	background-color: #fdfbf6;
@@ -294,6 +295,21 @@ html, body {
 	font-weight: bold;
 }
 .p3firsta:hover {
+	box-shadow: 2px 2px 5px gray;
+}
+.p7firsta {
+	position: absolute;
+	z-index:2;
+	top:240px; 
+	right:550px;
+	color:gray;
+	padding: 10px; 
+	text-align: center;
+	font-size: 15px;
+	border-radius: 15px;
+	font-weight: bold;
+}
+.p7firsta:hover {
 	box-shadow: 2px 2px 5px gray;
 }
 .p3secimg{
@@ -662,6 +678,7 @@ html, body {
       <!--  페이지7 -->
 	  <div class="tssection" id="tssection7">
 		<span class="tststs">영양성분과 건강에 대한 모든 것<br/> 📖<strong style="color:#EF605D"> MEDI-Q </strong> 에서 확인하세요!</span>
+		<a type="button" class="p7firsta btn" href='<c:url value="/magazineindex.do"/>' >더 보기 →</a>
 	    <div class="tscacontainer  animated">
 	          <div id="carousel">
 	              <figure><a href="<c:url value="/magazine.do?no=01"/>"><img src="<c:url value="/images/thumbnail_img/RedM_Arg.jpg"/>" style="width:100%; height:240px" ></a></figure>

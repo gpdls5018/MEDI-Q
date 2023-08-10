@@ -225,10 +225,12 @@ progress::-webkit-progress-bar {
 							<c:forEach items="${takelistfood}" var="dtos">
 								<c:if test="${dtos.key eq dto.takePurpose}" >
 									<c:forEach items="${dtos.value }" var="value">
+									<a style="text-decoration: none;" id="${value.no}" href="/detail.do?no=${value.no}" title="${value.productName} 자세히 보기">
 										<div class="taehyun d-flex mx-2" style="flex-direction: column; font-size:14px; font-weight: 400;">
 											<img style="margin:10px 10px; width:100px;height: 100px;" src="${value.imgURL }">
-											<span class="taehyun1">${value.productName }</span>
+											<span class="taehyun1" style=" color:black;">${value.productName }</span>
 										</div>
+									</a>
 									</c:forEach>
 								</c:if>
 							</c:forEach>

@@ -33,6 +33,4 @@ public class AllFoodDTO {
 	private String cholesterol;
 	private String sodium;
 	private String transfat;
-	
-
 }

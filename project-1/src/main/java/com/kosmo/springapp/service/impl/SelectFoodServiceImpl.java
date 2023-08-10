@@ -99,4 +99,14 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	public List<FunctionalFoodListDTO> healthissuetakefood(String healthissue) {
 		return mapper.healthissuetakefood(healthissue);
 	}
+
+	@Override
+	public List<String> intakeFoodNo(String formatDate, String ID) {
+		return mapper.intakeFoodNo(formatDate, ID);
+	}
+
+	@Override
+	public AllFoodDTO intakeFoodData(String no) {
+		return mapper.intakeFoodData(no);
+	}
 }
