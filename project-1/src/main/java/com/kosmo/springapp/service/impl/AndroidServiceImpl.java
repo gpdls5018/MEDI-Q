@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
+import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.service.AndroidMapper;
 
 @Service
@@ -37,6 +38,12 @@ public class AndroidServiceImpl {
 	public String getFoodNameByNo(String no) {
 		return androidMapper.getFoodNameByNo(no);
 		
+	}
+
+	@Autowired
+	private LoginServiceImpl loginService;
+	public MemberDTO getUserInfoByUserId(String id) {
+		return loginService.selectOne(id);
 	}
 
 }

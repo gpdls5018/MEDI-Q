@@ -35,7 +35,9 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kosmo.springapp.analyze.model.AnalyzeResultDTO;
 import com.kosmo.springapp.analyze.model.AnalyzeResultListDTO;
+import com.kosmo.springapp.model.AnalyzeReportDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
+import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.model.NutIntakeDTO;
 import com.kosmo.springapp.model.ReviewDTO;
 import com.kosmo.springapp.model.TotalReviewDTO;
@@ -164,7 +166,7 @@ public class RestAPIController {
 	@CrossOrigin
 	@ResponseBody
 	@GetMapping("/androidGetReviewList")
-	public List<ReviewDTO> selectReview(@RequestParam Map map) {
+	public List<ReviewDTO> selectReview(@RequestParam Map<String,String> map) {
 		System.out.println("요청 들어옴");
 		List<ReviewDTO> listDto = reviewServiceImpl.androidSelectReviewByFoodNo(map);
 		int current = Integer.parseInt(LocalDate.now().toString().split("-")[0]); //현재날짜 구하기
@@ -173,6 +175,19 @@ public class RestAPIController {
 			list.setBirth(Integer.toString((int)Math.floor((current-birtYear)/10)*10));
 		}
 		return listDto;
+	}
+	
+	
+	@GetMapping("/androidGetUserInfoByUserId/{userId}")
+	public MemberDTO androidGetUserInfoByUserId(@PathVariable(name = "userId") String userId) {
+		return androidServiceImpl.getUserInfoByUserId(userId);
+	}
+	
+	
+
+	@GetMapping("/androidSelectAnalyzeReportOne/{userId}")
+	public AnalyzeReportDTO androidSelectAnalyzeReportOne(@PathVariable(name = "userId") String userId) {
+		return analyzeMyReportServiceImpl.selectAnalyzeReport(userId);
 	}
 	
 }
