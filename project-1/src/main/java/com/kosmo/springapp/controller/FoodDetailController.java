@@ -337,10 +337,11 @@ public class FoodDetailController {
          }
          
          for(String helthissue:takeList) {
-    		String Hissuecous = selectfoodservice.healthIssueCou(helthissue);
- 			String[] Hissuecou = Hissuecous.split("\\$");
-        	takelistfood.put(helthissue, selectfoodservice.healthissuetakefood(Hissuecou[1]));
-         }
+     		String Hissuecous = selectfoodservice.healthIssueCou(helthissue);
+  			String[] Hissuecou = Hissuecous.split("\\$");
+         	takelistfood.put(helthissue, selectfoodservice.healthissuetakefood(Hissuecou[0]));
+            System.out.println(Hissuecous);
+          }
          model.addAttribute("takelistfood", takelistfood);
 		 Map<String,List<String>> userMap = new HashMap<>();
 		 userMap.put("takePurpose", takeList);
@@ -376,7 +377,7 @@ public class FoodDetailController {
          for(String helthissue:takeList) {
      		String Hissuecous = selectfoodservice.healthIssueCou(helthissue);
   			String[] Hissuecou = Hissuecous.split("\\$");
-         	takelistfood.put(helthissue, selectfoodservice.healthissuetakefood(Hissuecou[1]));
+         	takelistfood.put(helthissue, selectfoodservice.healthissuetakefood(Hissuecou[0]));
             System.out.println(Hissuecous);
           }
          model.addAttribute("takelistfood", takelistfood);
