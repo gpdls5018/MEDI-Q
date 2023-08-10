@@ -221,7 +221,7 @@ body {
 	                        console.log(data)
 	                        $.ajax({
 	                            type: 'POST',
-	                            url: "http://localhost:5000/StrokeModel",
+	                            url: "http://192.168.0.16/stroke",
 	                            contentType : "application/json",
 	                            dataType: 'json',
 	                            data: JSON.stringify(data),
