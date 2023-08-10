@@ -83,6 +83,8 @@ body{
     font-size: 14px;
     flex: 2;
   }
+  
+  
      </style>
 
 	<!-- 상단배너 div -->
@@ -116,10 +118,79 @@ body{
 							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct3()"></button>
 					</form>
 					</div>
-					
 				</div>
 			</div>
 		</div>
+<!-- ----------------------여기부터 시작----------------------------------- -->
+	<style>
+/*여기부터는 승훈이 css꺼임. 지우는거 안되*/
+ #chatMessage{
+ 	height:550px;
+ 	border:1px gray solid;
+ 	overflow:auto;
+ }
+ .bottom.black {
+   color: #333;
+   border-top: 1px solid #dbdbdb;
+}
+	</style>
+		<div class="container">
+			<fieldset>
+				<legend>실시간 채팅(웹소켓)</legend>
+				
+				<form>
+					<div>
+						<label><kbd>닉네임 설정</kbd></label>
+						<input  type="text" class="form-control" id="chatnickname" placeholder="닉네임을 입력하세요">
+						<input class="btn btn-primary" type="button" id="enterBtn" value="입장">
+						<input class="btn btn-danger" type="button" id="exitBtn" value="퇴장">
+						<!-- 여기가 채팅방시작 -->
+						<div>
+							<h4>오픈 채팅창 내용입니다</h4>
+							<div>
+								<div id="chatMessage"></div>
+							</div>
+						</div>
+						<!-- 메세지 등록버튼 -->
+						<div>
+							<label><kbd>메시지input 버튼임</kbd></label>
+							<div>
+								<input type="text" class="form-control" id="openessage" placeholder="메세지를 입력해주세요">
+							</div>
+							
+						</div>
+						
+					</div>
+				</form>
+				
+			</fieldset>
+		</div>
+<script>
+	//오픈채팅웹소켓 저장용
+	var ocwsocket;
+	//닉네임 저장용
+	var nickname;
+	//내가 닉네임을 적어서 오픈채팅창 방에 들어오는 걸로 확정!
+	$('')
+</script>
+		<!-- 
+		<div class="bottom black" style="background-color: rgb(255, 255, 255);"><div class="bottom_plus"><div class="my_info"><span>Guest_ccb84</span></div><button class="call_admin"><img src="//coktv24.1.inde.biz/plugin/indeSet/img/alarm.png">관리자호출</button></div>
+					<table>
+						<tbody><tr>
+							<td class="inputWrap group">
+								<div class="plus hoverOpacity"></div>
+								<div class="whisperWrap"></div>
+								<div class="emoticon hoverOpacity"></div>
+								<div class="inputContent">
+									<div class="chatInput" contenteditable="true" onclick="this.contentEditable='true'; this.focus(); return false;" placeholder="채팅 입력." tabindex="0"></div>
+								</div>
+							</td>
+						</tr>
+					</tbody></table>
+					<div class="menuBar" style="display: none;"><div title="스크롤 고정" class="menu-style menubar-scroll" style="background-image: url(&quot;//coktv24.1.inde.biz/skin/basic/img/scroll.png&quot;); background-position: 0px -4px; float: right; margin: 0px;"></div><div title="이모티콘" class="menu-style menubar-emoticon hoverOpacity" style="background-image: url(&quot;//coktv24.1.inde.biz/skin/basic/img/black/emoticon.png&quot;);"></div><div title="관리자 호출" class="menu-style menubar-call_admin" style="background-image: url(&quot;//coktv24.1.inde.biz/skin/basic/img/alarm.png&quot;);"></div></div>
+				</div>
+		 -->
+<!-- -----------------------------여기가 웹소캣 실시간 채팅 끝------------------------------------- -->
 		<div class="new-wide-wrap new-wide-wrap-070">
 			<div class="left-wing  ">
 			    <ul class="sm-menu-wrap">
