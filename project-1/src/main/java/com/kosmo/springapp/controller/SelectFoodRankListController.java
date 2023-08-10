@@ -92,15 +92,50 @@ public class SelectFoodRankListController {
 	}
 	@GetMapping("/food/intakefood.do")
 	public String intakefood(String no,HttpServletRequest req,HttpServletResponse resp) {
-		System.out.println(no);
+		Date currentDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd");
+        String formatDate = dateFormat.format(currentDate);
 		MemberDTO memberDto = loginService.selectOne(req);
+		float calorie = 0;
+		float protein= 0;
+		float fat= 0;
+		float carbohydrate= 0;
+		float sugar= 0;
+		float dietaryfiber= 0;
+		float saturatedfat= 0;
+		float unsaturatedfat= 0;
+		float cholesterol= 0;
+		float sodium= 0;
+		float transfat= 0;
 		String ID = memberDto.getId();
 		selectfoodservice.IntakeFood(no, ID);
-		Date currentDate = new Date();
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd");
-        String formattedDate = dateFormat.format(currentDate);
-        System.out.println(formattedDate);
+		for(String foodno:selectfoodservice.intakeFoodNo(formatDate, ID)) {
+			AllFoodDTO AFD = selectfoodservice.intakeFoodData(foodno);
+			calorie += Float.parseFloat(AFD.getCalorie());
+			protein += Float.parseFloat(AFD.getProtein());
+			fat += Float.parseFloat(AFD.getFat());
+			carbohydrate += Float.parseFloat(AFD.getCarbohydrate());
+			sugar += Float.parseFloat(AFD.getSugar());
+			dietaryfiber += Float.parseFloat(AFD.getDietaryfiber());
+			saturatedfat += Float.parseFloat(AFD.getSaturatedfat());
+			unsaturatedfat += Float.parseFloat(AFD.getUnsaturatedfat());
+			cholesterol += Float.parseFloat(AFD.getCholesterol());
+			sodium += Float.parseFloat(AFD.getSodium());
+			transfat += Float.parseFloat(AFD.getTransfat());
+			
+		}
+		System.out.println("calorie:"+calorie);
+		System.out.println("protein:"+protein);
+		System.out.println("fat:"+fat);
+		System.out.println("carbohydrate:"+carbohydrate);
+		System.out.println("sugar:"+sugar);
+		System.out.println("dietaryfiber:"+dietaryfiber);
+		System.out.println("saturatedfat:"+saturatedfat);
+		System.out.println("unsaturatedfat:"+unsaturatedfat);
+		System.out.println("cholesterol:"+cholesterol);
+		System.out.println("sodium:"+sodium);
+		System.out.println("transfat:"+transfat);
+		
 		return "test2";
 	}
 	@GetMapping("/food/test2.do")
