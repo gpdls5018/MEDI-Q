@@ -3,13 +3,11 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="/WEB-INF/views/template/Top.jsp" />
 
-<head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<c:url value="/tsfolder/css/drawStyle.css"/>" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</head>
+
 
 <style>
 body {
@@ -86,7 +84,7 @@ body {
     max-width: 80%;
 }
 
-.close {
+.close1 {
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -184,7 +182,7 @@ ul {
 	
 	<div id="modal" class="modal">
 	    <div class="modal-content" style="width:900px; height:500px; display: flex; flex-direction: column;">
-	        <div style="display: flex; justify-content: flex-end; margin-right: 30px;"><span class="close">&times;</span></div>
+	        <div style="display: flex; justify-content: flex-end; margin-right: 30px;"><span class="close1">&times;</span></div>
 	        <div class="row" style="flex-grow: 1; display: flex;">
 	            <div class="col-6" id="modal-content" style="width: 400px; height: 400px; flex-grow: 1; display: flex; align-items: center; justify-content: center;">
 	                <div id="image-container"></div>
@@ -215,7 +213,7 @@ document.getElementById("jsSave").addEventListener("click", function() {
     handleSaveClick();
 });
 
-document.querySelector(".close").addEventListener("click", function() {
+document.querySelector(".close1").addEventListener("click", function() {
     // 모달 창을 닫기
     document.getElementById("modal").style.display = "none";
 });
