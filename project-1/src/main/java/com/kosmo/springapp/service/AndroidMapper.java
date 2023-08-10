@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
+import com.kosmo.springapp.model.MemberDTO;
 
 @Mapper
 public interface AndroidMapper {
@@ -20,5 +21,6 @@ public interface AndroidMapper {
 	List<FunctionalFoodListDTO> selectFoodListByKeyWord(String keyword);
 
 	String getFoodNameByNo(String no);
+
 
 }
