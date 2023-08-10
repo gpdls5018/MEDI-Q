@@ -117,6 +117,22 @@ body{
 				<div class="top-wrap-070">
 					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>건강 고민</span></h1>
 				</div>
+				<input name="height" id="height" placeholder="키를 입력해주세요">
+			    <input name="Weight" id="weight" placeholder="몸무게를 입력해주세요">
+			    <input name="age" id="age" value="${age }" hidden="true">
+			    <select id="healthIssueSelect" onchange="submitForm()" class="ipt-main">
+					<option value="1">앉아서 일하는 경우</option>
+					<option value="2">가벼운 활동(운동없이 약간의 활동)</option>
+					<option value="3">보통 활동(주3~4회 운동)</option>
+					<option value="4">활발한 활동(주 5~7회 운동)</option>
+					<option value="5">매우 활발한 활동(일일 운동 및 육체적 노동)</option>
+				</select>
+			    <button name="cabtn" style="border: 1px solid black;background-color: black;color:white;font:bold;border-radius: 5px 5px 5px 5px;" onclick="calculateCalories()">칼로리 계산</button>
+				<div class="chart_dnt_2">
+					  <h1>탄단지 비율</h1>
+					  <canvas id="chart_doughnut_2"></canvas>
+				</div>
+    			<p id="result"></p>
 				<c:if test="${not empty fat}">
 					<div class="chart_dnt_1">
 					  <h1>탄단지 비율</h1>
@@ -126,12 +142,11 @@ body{
 				<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
 					<div class="search-etc">
 					<div class="ipt-main-wrap">
-					<form action="/food/foodsearch.do">
+						<form action="/food/foodsearch.do">
 							<input id="searchProduct3" type="text" name="food" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${takefood}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
 							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct3()"></button>
-					</form>
+						</form>
 					</div>
-					
 				</div>
 			</div>
 		</div>
@@ -294,7 +309,6 @@ body{
         		  chart_doughnut : {
         		    init_doughnut : function(){
         		      myChart.chart_doughnut.chart_1();
-        		      myChart.chart_doughnut.chart_2();
         		    },
         		    chart_1 : function(){    
         		      var chart = document.getElementById("chart_doughnut_1");
@@ -349,12 +363,114 @@ body{
         		    },
         		    // 차트1
         		  }
-        		  
-        		  
-        		  
         		}
-        		    
         		myChart.init();
+        
+        
+</script>
+<script>
+		function calculateCalories() {
+		    var height = parseFloat(document.getElementById('height').value);
+		    var weight = parseFloat(document.getElementById('weight').value);
+		    var age = parseFloat(document.getElementById('age').value);
+		    var active = parseInt(document.getElementById('healthIssueSelect').value);
+		    var bmr;
+		
+		    // 남성일 경우의 BMR 계산식을 사용
+		    bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+		
+		    // 활동 대사율 곱하기 (여기서는 예시로 '보통 활동' 계수 사용)
+		    if(active===1){
+			    var activityMultiplier = 1.2;
+		    }
+		    else if(active===2){
+			    var activityMultiplier = 1.375;
+		    }
+		    else if(active===3){
+			    var activityMultiplier = 1.55;
+		    }
+		    else if(active===4){
+			    var activityMultiplier = 1.725;
+		    }
+		    else if(active===5){
+			    var activityMultiplier = 1.9;
+		    }
+		    var dailyCalories = bmr * activityMultiplier;
+		    // 계산된 칼로리 출력
+		    var resultElement = document.getElementById('result');
+		    resultElement.innerHTML = "하루에 필요한 칼로리: " + dailyCalories.toFixed(2) + "kcal";
+		    var myChart = {
+	        		  init : function(){
+	        		    myChart.chart_line();
+	        		    myChart.chart_doughnut.init_doughnut();
+	        		  },
+	        		  
+	        		  // 차트 - 라인
+	        		  chart_line : function(){
+	        		    
+	        		  }, 
+	        		  
+	        		  // 차트 - 도넛   
+	        		  chart_doughnut : {
+	        		    init_doughnut : function(){
+	        		      myChart.chart_doughnut.chart_2();
+	        		    },
+	        		    chart_2 : function(){    
+	        		      var chart = document.getElementById("chart_doughnut_2");
+	        		      var data = {
+	        		          labels: ["탄수화물","단백질","지방"],
+	        		          datasets: [
+	        		              {
+	        		                  data: [(dailyCalories*0.5)/4, (dailyCalories*0.2)/4, (dailyCalories*0.3)/9],
+	        		                  backgroundColor: [
+	        		                      "#f23456",
+	        		                      "#afff2a",
+	        		                      "#f5dc5a"
+	        		                  ],
+	        		                  hoverBackgroundColor: [
+	        		                      "#123456",
+	        		                      "#654321",
+	        		                      "#456123"
+	        		                  ]
+	        		              }]
+	        		      };
+	        		      var myDoughnutChart = new Chart(chart, {
+	        		          type: 'doughnut',
+	        		          data: data,
+	        		          options: {
+	        		              responsive: true,
+	        		              legend: false,
+	        		              title: {
+	        		                  display: false,
+	        		                  text: 'Chart.js Doughnut Chart'
+	        		              },
+	        		              animation: {
+	        		                  animateScale: true,
+	        		                  animateRotate: true
+	        		              },
+	        		              tooltips: {
+	        		                  callbacks: {
+	        		                      label: function(tooltipItem, data) {
+	        		                          var dataset = data.datasets[tooltipItem.datasetIndex];
+	        		                          var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+	        		                              return previousValue + currentValue;
+	        		                          });
+	        		                          var currentValue = dataset.data[tooltipItem.index];
+	        		                          var precentage = Math.floor(((currentValue/total) * 100)+0.5);
+	        		                          return data.labels[tooltipItem.index] + " : " + precentage + " %";
+	        		                      },
+	        		                       mode: 'label'
+	        		                  }
+	        		              },
+	        		              cutoutPercentage:40,
+	        		          },
+	        		      });
+	        		    },
+	        		    // 차트1
+	        		  }
+	        		}
+	        		myChart.init();
+		}
 </script>
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.kosmo.springapp.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -96,6 +97,7 @@ public class SelectFoodRankListController {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd");
         String formatDate = dateFormat.format(currentDate);
 		MemberDTO memberDto = loginService.selectOne(req);
+		int nowYear = LocalDate.now().getYear();
 		float calorie = 0;
 		float protein= 0;
 		float fat= 0;
@@ -150,11 +152,16 @@ public class SelectFoodRankListController {
 		System.out.println("트랜스지방:"+transfat);
 		System.out.println("콜레스테롤:"+cholesterol);
 		System.out.println("나트륨:"+sodium);
-		
+		model.addAttribute("age", nowYear-Integer.parseInt(memberDto.getBirth().substring(0, 4)));
+		System.out.println(nowYear-Integer.parseInt(memberDto.getBirth().substring(0, 4)));
 		return "test2";
 	}
 	@GetMapping("/food/test2.do")
-	public String test2() {
+	public String test2(HttpServletRequest req,HttpServletResponse resp,Model model) {
+		MemberDTO memberDto = loginService.selectOne(req);
+		int nowYear = LocalDate.now().getYear();
+		model.addAttribute("age", nowYear-Integer.parseInt(memberDto.getBirth().substring(0, 4)));
+		System.out.println(nowYear-Integer.parseInt(memberDto.getBirth().substring(0, 4)));
 		return "test2";
 	}
 
