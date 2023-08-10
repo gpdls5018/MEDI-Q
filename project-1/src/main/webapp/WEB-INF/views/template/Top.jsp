@@ -668,124 +668,7 @@ ul {
 	        </li>
 	    </ul>
     </nav>
-    <!-- navbar left side
-    				<div class="d-flex">
-		                <c:if test="${not empty token}" var="isLogin">       
-		                    <a class="dropdown-item" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>
-		                    <a class="dropdown-item" href="<c:url value="/project/Logout.do"/>">로그아웃</a>
-		                    <a class="dropdown-item" href="<c:url value="/AdminMain.do"/>">관리자</a>
-		                    <a class="dropdown-item" href="<c:url value="/test1.do"/>">태현(테스트)</a>
-		                    <a class="dropdown-item" href="#">테스트용</a>
-		                </c:if>
-		                <c:if test="${not isLogin}">
-		                    <a class="dropdown-item" href="<c:url value="/project/Login.do"/>">로그인</a>        
-		                    <a class="dropdown-item" href="<c:url value="/project/Join.do"/>">회원가입</a>       
-		                </c:if>
-	                </div>
     
-    <div class="bs-canvas bs-canvas-left position-fixed h-100 justify-content-start" style="z-index:99999; background: linear-gradient(to bottom, #ffffff, #FFFAFA);">
-        <header class="bs-canvas-header p-4 bg-gra1 justify-content-center align-items-center">
-        	<h4 class="d-inline-block mb-0 text1">
-        		<img src="<c:url value='/images/mainicon.png' />" width="30" height="35">
-        		<img src="<c:url value='/images/maintitle.png' />" width="140" height="35">
-        	</h4>
-            <button type="button" class="bs-canvas-close close mt-2" aria-label="Close">
-                <span aria-hidden="true" class="text-dark text1">&times;</span>
-            </button>
-        </header>
-
-        <div class="bs-canvas-content px-3 pb-5 ">
-            <div class="accordion">
-             <div class="section" >
-		          <h3>
-		            <a class="text-decoration-none font-weight-bold" href="<c:url value="/"/>">
-		            <img src="<c:url value="/images/tsimages/free-icon-home-3771140.png"/>" style="opacity: 0.7;" width="25" height="25">
-		         
-		             &nbsp; 홈으로 가기
-		            
-		            </a>
-		          </h3>
-	        </div>
-	        
-	        <div id="one" class="section" active:false>
-	          <h3 class="d-flex">
-	            <a href="#one" style="align-items: center;">
-	                <img src="<c:url value="/images/tsimages/free-icon-vitamins-525955.png"/>" width="25" height="25">
-	                &nbsp; 영양성분 검색
-	                <span class="arrow-down" style="margin-left: 70px;" ></span>
-	            </a>
-	          </h3>
-	          <div class="ditem">
-	            <a href="<c:url value="/NutrientSelect.do"/>">인기 영양소</a>
-	 
-	            <a href="<c:url value="/NutrientSelectVitamin.do"/>">비타민</a>
-	   
-	            <a href="<c:url value="/NutrientSelectMineral.do"/>">미네랄 및 기타영양소</a>
-	         
-	            <a href="<c:url value="/NutrientSelectFunctional.do"/>">기능성 원료</a>
-	          </div>
-	        </div>
-	        <div  id="two" class="section" active:false>
-	          <h3 class="d-flex">
-	            <a href="#two" class="text-decoration-none" style="align-items: center;">
-	                <img src="<c:url value="/images/shape/캡슐.png"/>" style="opacity: 0.8;" width="25" height="25">
-	                &nbsp; 영양제 검색
-	                <span class="arrow-down" style="margin-left: 90px;" ></span>
-	            </a>
-	          </h3>
-	          <div class="ditem tstm3">
-	          	<a href="<c:url value="/ranking/selectfood.do"/>">전체 검색</a>
-	          	
-	            <a href="<c:url value="/ranking/selectfoodnutrient.do"/>">성분 검색</a>
-	 			
-	            <a href="<c:url value="/ranking/selectfoodcompany.do"/>">제품명/브랜드 검색</a>
-	          </div>
-	        </div>
-	        <div id="three" class="section">
-	          <h3>
-	            <a class="text-decoration-none" href="<c:url value="/magazineindex.do"/>">
-	                <img src="<c:url value="/images/tsimages/free-icon-whats-new-5511348.png"/>" width="25" height="25">
-	                &nbsp; 메디큐 칼럼
-	            </a>
-	        </div>
-	        <div id="four" class="section large">
-	          <h3>
-	            <a class="text-decoration-none" href="#">
-	                <img src="<c:url value="/images/tsimages/free-icon-data-analysis-3449317.png"/>" width="25" height="25">
-	                &nbsp; 분석 및 결과
-	            </a>
-	          </h3>
-	        </div>
-	        <div id="five" class="section">
-	          <h3>
-	            <a class="text-decoration-none" href="<c:url value="/board/List.do" />">
-	                <img src="<c:url value="/images/tsimages/free-icon-chat-724715.png"/>" width="25" height="25">
-	                &nbsp; 커뮤니티
-	            </a>
-	          </h3>
-	        </div>
-	        <div id="six" class="section" active:false>
-	          <h3 class="d-flex">
-	            <a href="#six" style="align-items: center;">
-	                <img src="<c:url value="/images/tsimages/free-icon-lifestyle-4807765.png"/>" width="25" height="25">
-	                &nbsp; 정신건강 테스트
-	                <span class="arrow-down" style="margin-left: 120px;"></span>
-	            </a>
-	          </h3>
-	          <div class="ditem" style="border: none;">
-	              <a href="<c:url value="/project/MentalTest1.do"/>">심리적 스트레스</a>
-	      
-				  <a href="<c:url value="/project/MentalTest2.do"/>">흡연 유형 평가</a>
-			
-				  <a href="<c:url value="/project/MentalTest3.do"/>">알코올 의존(AUDIT-K)</a>
-				
-				  <a href="<c:url value="/project/MentalTest4.do"/>">우울증(CES-D)</a>
-	          </div>
-	        </div>
-	      </div>
-        </div>
-    </div>
-	navbar left side end-->
 	<!-- 챗봇 파트 -->
 	<!-- 챗봇 버튼 -->
 	<div id="btnBot">
@@ -857,15 +740,7 @@ ul {
 			        <button class="btn btn-warning search_btn font-weight-bold text-light" type="button">검색</button>
 			    </div>
 			</div>
-            
-            <!-- 
-            <div class="inputDIV input-group p-1 mt-1">
-                <input type="text" class="form-control rounded-start bg-light" id="userInput" placeholder="무엇이든 물어보세요">
-                <div class="input-group-append">
-                    <button class="btn btn-warning search_btn font-weight-bold text-light" type="button">검색</button>
-                </div>
-            </div>
-            -->
+           
         </div>
         <!-- 내부 로딩바 -->
         <div class="loading_dot" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
