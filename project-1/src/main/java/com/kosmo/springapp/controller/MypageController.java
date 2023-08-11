@@ -346,25 +346,27 @@ public class MypageController {
 	@ResponseBody
 	public Map progressProfile(@RequestParam String id) {
 		Map map = new HashMap<>();
-
-		int arc = analyzeMyReportServiceImpl.selectAnalyzeReportCount(id)==1 ? 25 : 0;
+		int sum = 0;
+		
+		int arc = analyzeMyReportServiceImpl.selectAnalyzeReportCount(id)>=1 ? 25 : 0;
 		int hi = healthInfoServiceImpl.selectHealthInfoCount(id)==1 ? 25 : 0;
 		int mh = myHealthServiceImpl.selectMyHealth(id)==1 ? 25 : 0;
 		Map mt = mentalTestServiceImpl.selectResult(id);
-		
+		System.out.println("삼항연산자 전: "+mt);
+		System.out.println(mt.get("TEST2"));
 		if(mt != null) {
-			int test1 = "".equals(mt.get("TEST1")) ? 0 : 6;
-			int test2 = "".equals(mt.get("TEST2")) ? 0 : 6;
-			int test3 = "".equals(mt.get("TEST3")) ? 0 : 6;
-			int test4 = "".equals(mt.get("TEST4")) ? 0 : 7;
-			System.out.println(test1+"/"+test2+"/"+test3+"/"+test4+"/");
-			map.put("mt", test1+test2+test3+test4);//등록한 정신건강테스트 4종 여부-25(6/6/6/7)
+			int test1 = mt.get("TEST1")==null ? 0 : 6;
+			int test2 = mt.get("TEST2")==null ? 0 : 6;
+			int test3 = mt.get("TEST3")==null ? 0 : 6;
+			int test4 = mt.get("TEST4")==null ? 0 : 7;
+			sum = test1+test2+test3+test4;
+			map.put("mt", sum);//등록한 정신건강테스트 4종 여부-25(6/6/6/7)
 		}
 		map.put("arc", arc);//등록한 분석 여부-25
 		map.put("hi", hi);//등록한 건강검진결과 확인 여부-25
 		map.put("mh", mh);//등록한 나의 건강정보 등록 여부-25
-		map.put("mt", 0);//등록한 정신건강테스트 4종 여부-25(6/6/6/7)
-		
+		map.put("mt", sum);//등록한 정신건강테스트 4종 여부-25(6/6/6/7)
+		System.out.println("프로그레스 바: "+map);
 		return map;
 	}
 	
@@ -395,22 +397,29 @@ public class MypageController {
 	@PostMapping("/MentalResult.do")
 	@ResponseBody
 	public String mentalResult(@RequestParam Map map, HttpServletRequest req) {
-		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
+		
 		String name = map.get("name").toString();
 		System.out.println("name: "+name);
 		try {
+			String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
 			if("result".equals(name)) {//최근 결과값 필요
 				String test = map.get("test").toString();
+				System.out.println("test: "+test);
 				map = mentalTestServiceImpl.selectResult(id);
+				System.out.println("정신건강테스트: "+map);
 				String result = map.get(test.toUpperCase()).toString();
 				System.out.println("result: "+result);
 				return result;
 			}
 			else {//값 저장
+				map.put("id", id);
 				int result = mentalTestServiceImpl.insertResult(map);
 				System.out.println("저장: "+result);
 				return Integer.toString(result);
 			}
+		}
+		catch (NullPointerException e) {
+			return map.get("sum").toString();
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());

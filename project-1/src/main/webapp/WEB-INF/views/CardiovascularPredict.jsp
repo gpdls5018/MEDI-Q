@@ -32,8 +32,22 @@ body {
 	background-size: cover;
 	margin-top: 70px;
 }
-
-
+/* Custom CSS for horizontal radio buttons */
+    .tss {
+        display: flex;
+        flex-direction: row;
+        font-size: 16px;
+        align-items: center;
+       
+    }
+    .form-check {
+    	 margin-right: 30px;
+    }
+    strong {
+    	font-size: 24px;
+    	font-weight: 500;
+		vertical-align: middle;
+    }
 
 </style>
 
@@ -48,8 +62,8 @@ body {
 		    <div class="row">
 		        <div class="col-6">
 		            <form id="personInfoForm" class="validation-form" novalidate>
-		            	<div class="col mb-3">
-		                    <strong>성별</strong>
+	                    <strong style="margin:20px;">성별</strong>
+	                    <div class="tss col ">
 		                    <div class="form-check">
 							  <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="2">
 							  <label class="form-check-label" for="gender_Man">
@@ -65,97 +79,112 @@ body {
 		                    <div class="invalid-feedback">
 		                        성별을 체크해 주세요
 		                    </div>
-		                </div>
-		                <div class="col mb-3">
+	                	</div>
+		                <div class="col ">
 		                    <strong>신장</strong>
-		                    <input type="text" class="form-control" id="height" name="height" placeholder="신장을 입력해주세요" value="${healthInfoDto.height}" required>cm
+		                    <div class="row" style="font-size: 24px;">
+		                    	<input type="text" class="form-control m-2 w-50" style="text-align: right;" id="height" name="height" placeholder="신장을 입력해주세요" value="${healthInfoDto.height}" required>cm
+		                    </div>
 		                    <div class="invalid-feedback">
 		                        신장을 입력해주세요
 		                    </div>
 		                </div>
-		                <div class="col mb-3">
+		                <div class="col ">
 		                    <strong>몸무게</strong>
-		                    <input type="text" class="form-control" id="weight" name="weight" placeholder="몸무게를 입력해주세요" value="${healthInfoDto.weight}" required>kg
+		                    <div class="row" style="font-size: 24px;">
+		                    	<input type="text" class="form-control  m-2 w-50" style="text-align: right;" id="weight" name="weight" placeholder="몸무게를 입력해주세요" value="${healthInfoDto.weight}" required>kg
+		                    </div>
 		                    <div class="invalid-feedback">
 		                        몸무게를 입력해주세요
 		                    </div>
 		                </div>
-		                <div class="col mb-3">
-		                    <strong>혈압(최고/최저)</strong>
-		                    <div class="d-flex">
-			                    <input type="text" class="form-control m-1" id="bloodpress_high" name="bloodpress_high"  placeholder="최고혈압" value="${healthInfoDto.bloodPressure_high}" required> / 
-			                    <input type="text" class="form-control m-1" id="bloodpress_low" name="bloodpress_low"  placeholder="최저혈압" value="${healthInfoDto.bloodPressure_low}" required>
+		                <div class="col ">
+		                    <strong>혈압(최저/최고)</strong>
+		                    <div class="d-flex" style="font-size: 24px; margin-top:10px; align-items: center;">
+		                    	<input type="text" class="form-control m-2 w-25" style="text-align: right;" id="bloodpress_low" name="bloodpress_low"  placeholder="최저혈압" value="${healthInfoDto.bloodPressure_low}" required> / 
+			                    <input type="text" class="form-control m-2 w-25" style="text-align: right;" id="bloodpress_high" name="bloodpress_high"  placeholder="최고혈압" value="${healthInfoDto.bloodPressure_high}" required> 
 		                    </div>
 		                    <div class="invalid-feedback">
 		                        혈압수치를 입력해주세요
 		                    </div>
 		                </div>
-		                <div class="col mb-3">
+		                <div class="col ">
 		                    <strong>콜레스테롤</strong>
-		                    <input type="text" class="form-control" id="total_cholesterol" name="total_cholesterol" placeholder="총 콜레스테롤 수치를 입력해주세요" value="${healthInfoDto.total_cholesterol}" required>mg/dL
+		                    <div class="d-flex" style="font-size: 24px; margin-top:10px; align-items: center;">
+		                    	<input type="text" class="form-control m-2 w-50" style="text-align: right;" id="total_cholesterol" name="total_cholesterol" placeholder="총 콜레스테롤 수치 입력" value="${healthInfoDto.total_cholesterol}" required>mg/dL
+		                    </div>
 		                    <div class="invalid-feedback">
 		                        콜레스테롤 수치를 입력해주세요
 		                    </div>
 		                </div>
-		                <div class="col mb-3">
+		                <div class="col ">
 		                    <strong>포도당</strong>
-		                    <input type="text" class="form-control" id="glucose" name="glucose" placeholder="포도당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required>mg/dL
+		                    <div class="d-flex" style="font-size: 24px; margin-top:10px; align-items: center;">
+		                    	<input type="text" class="form-control  m-2 w-50" style="text-align: right;" id="glucose" name="glucose" placeholder="포도당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required>mg/dL
+		                    </div>
 		                    <div class="invalid-feedback">
 		                        포도당 수치를 입력해주세요
 		                    </div>
 		                </div>
-		                <div class="col mb-3">
+		                <div class="tss col my-3">
 		                	<strong>흡연</strong>
-			                <div class="form-check">
-						  		<input class="form-check-input" type="radio" name="smoke_check" value="0">
-							  	<label class="form-check-label" for="smoke_check">
-								    흡연자입니다
-							  	</label>
-							</div>
-							<div class="form-check">
-						    	<input class="form-check-input" type="radio" name="smoke_check" value="1" >
-							  	<label class="form-check-label" for="smoke_check">
-								    비흡연자입니다
-							  	</label>
+		                	 <div class="tss col ">
+				                <div class="form-check">
+							  		<input class="form-check-input" type="radio" name="smoke_check" value="0">
+								  	<label class="form-check-label" for="smoke_check">
+									    흡연자입니다
+								  	</label>
+								</div>
+								<div class="form-check">
+							    	<input class="form-check-input" type="radio" name="smoke_check" value="1" >
+								  	<label class="form-check-label" for="smoke_check">
+									    비흡연자입니다
+								  	</label>
+								</div>
 							</div>
 			                <div class="invalid-feedback">
 			                       흡연 유무를 체크해주세요
 			                </div>
 		                </div>
-		                <div class="col mb-3">
+		                <div class="tss col my-3">
 		                	<strong>음주</strong>
-			                <div class="form-check">
-						  		<input class="form-check-input" type="radio" name="alco_check" value="0">
-							  	<label class="form-check-label" for="alco_check">
-								    음주를 합니다
-							  	</label>
-							</div>
-							<div class="form-check">
-						    	<input class="form-check-input" type="radio" name="alco_check" value="1" >
-							  	<label class="form-check-label" for="alco_check">
-								    음주를 하지 않습니다
-							  	</label>
+		                	 <div class="tss col ">
+				                <div class="form-check">
+							  		<input class="form-check-input" type="radio" name="alco_check" value="0">
+								  	<label class="form-check-label" for="alco_check">
+									    음주를 합니다
+								  	</label>
+								</div>
+								<div class="form-check">
+							    	<input class="form-check-input" type="radio" name="alco_check" value="1" >
+								  	<label class="form-check-label" for="alco_check">
+									    음주를 하지 않습니다
+								  	</label>
+								</div>
 							</div>
 			                <div class="invalid-feedback">
 			                       음주 유무를 체크해주세요
 			                </div>
 		                </div>
-		                <div class="col mb-3">
+		                <div class="col ">
 		                    <strong>연령</strong>
-		                    <input type="text" class="form-control" id="age" name="age" placeholder="연령을 입력해주세요" value="" required>
+		                    <div class="d-flex" style="font-size: 24px; margin-top:10px; align-items: center;">
+		                    	<input type="text" class="form-control m-2 w-50" style="text-align: right;" id="age" name="age" placeholder="연령을 입력해주세요" value="" required> 세
+		                    </div>
 		                    <div class="invalid-feedback">
 		                        연령을 입력해주세요
 		                    </div>
 		                </div>
 		                <hr class="mb-4">
 		                <div class="mb-4"></div>
-		                <button class="btn btn-primary btn-lg btn-block" type="submit">예측해보기</button>
+		                <button class="btn btn-primary btn-lg btn-block" type="submit"  data-bs-toggle="modal" data-bs-target="#predictionModal">예측해보기</button>
 		            </form>
 		        </div>
 		
-		        <div class="col-6">
-		            <canvas id="drawing_canvas"></canvas>
-		            <img src="https://img.freepik.com/free-vector/diagram-showing-blood-flow-human-heart_1308-90070.jpg?size=626&ext=jpg&ga=GA1.2.1515223053.1688355068&semt=ais" id="machineImage" style="width:100%;height:100%;border-radius:12px;"/>
+		        <div class="col-6" style="position:relative; overflow: hidden; height: 100%; ">
+		            <!--<canvas id="drawing_canvas"></canvas>-->
+		            <div style="position:absolute;  background-color: white;  width:130px; z-index:2;  height: 100px; right: 40px; top:600px;"></div>
+		            <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA2MTZfNSAg%2FMDAxNjIzODE0NTc5OTAw.RztFNGolk64BQoDJpv4M3t0-lT1cKVQtU-Urf1bcORUg.fWYlmH_wG1OmHkQJsW9ywq8ooe8V2nYpvkEZHOsheuIg.PNG.leeheartwell%2F%25C8%25A4%25BD%25C3_%25B3%25AA%25B5%25B5_%25BD%25C9%25C7%25F7%25B0%25FC%25C1%25FA%25C8%25AF_%25C0%25DA%25B0%25A1%25C1%25F8%25B4%25DC%25B9%25FD_1.png&type=sc960_832" id="machineImage" style="display: block; margin: auto; position: relative; bottom:-20%; width:100%;height:700px; border-radius:12px;"/>
 		        </div>
 		    </div>
 		    <hr class="mt-5">
@@ -167,6 +196,34 @@ body {
 		    		<div class="p-2" style="cursor:pointer;border-radius:40px;font-size:20px;background-color:#ff9558; font-weight: bold; text-align: center;" onclick="redirectToPrediction()">다른 질병 예측하러 가기</div>
 		    </div>
 		</div>
+	</div>
+	
+	<div class="modal fade" id="predictionModal" tabindex="-1" aria-labelledby="predictionModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" style="max-width:800px;">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="predictionModalLabel" style="">심혈관질환 예측 결과</h5>
+	      </div>
+	      <div class="modal-body">
+		      <div class="row" style="flex-grow: 1; display: flex;">
+		        <div  class="col-6" style="width: 400px; height: 400px; flex-grow: 1; display: flex; text-align:center; align-items: center; justify-content: center; font-size: 40px; font-weight: bold;" id="predictionResultText">
+		        	<canvas id="drawing_canvas"></canvas>
+		        </div>
+		        <div class="col-6" style="width: 400px; height: 400px; flex-grow: 1; display: flex; align-items: center; justify-content: center; padding-left: 0px;">
+					<ul class="pakinul">
+                		<li class="text-center" style="font-weight:bold; font-size: 25px; margin-bottom: 40px; margin-top: 0px;"><b>심장질환 진단과정</b></li>
+                    	<li><span></span>MEDI-Q는 파킨슨병 진행시 발생하는 <b style="color: #EF605D">중추신경계 손상에 의한 떨림 증상을 기반으로</b> 머신러닝 알고리즘이 수집된 데이터를 분석하여 건강상태를 확인합니다.</li>
+                    	<li><span></span>사용자의 손떨림을 모니터링하고, 그림판에 <b style="color: #EF605D">그린 나선을 분석하여 현재 파킨슨병 진행상황을 예측합니다.</b></li>
+                    	<li><span></span>나선 그리기 진단시스템을 이용해 환자와 의료 전문가는 증상 변화를 빠르게 파악하고 치료 계획을 조정할 수 있습니다.</li>
+                	</ul>		            
+                </div>
+		     </div>
+		 </div>
+		  <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 <script>
 function redirectToPrediction() {
@@ -238,11 +295,12 @@ function redirectToPrediction() {
                             dataType: 'json',
                             data: JSON.stringify(data),
                             success: function (response) {
-                                console.log('%o',response);
-                                console.log(response[0])
-                                initDrawingCanvas((response[0][1]*100).toFixed(1));
-                                requestAnimationFrame(loop);
-                                $('#machineImage').hide();
+                            	var predictionResult =  (response[0][1]*100).toFixed(1);
+                            	var predictionResultText = document.getElementById('predictionResultText');
+                                predictionResultText.textContent ='발병확률 '+ predictionResult+' %';
+                     
+                            	var predictionModal = new bootstrap.Modal(document.getElementById('predictionModal'));
+                            	predictionModal.show();
                             }
                         
                         });
@@ -252,6 +310,14 @@ function redirectToPrediction() {
             });
         });
     });
+    
+    /* 
+    console.log('%o',response);
+    console.log(response[0])
+    initDrawingCanvas((response[0][1]*100).toFixed(1));
+    requestAnimationFrame(loop);
+    $('#machineImage').hide();
+                                
     const TWO_PI = Math.PI * 2;
     const HALF_PI = Math.PI * 0.5;
 
@@ -486,14 +552,6 @@ function redirectToPrediction() {
     }
 
     // math and stuff
-
-    /**
-     * easing equations from http://gizma.com/easing/
-     * t = current time
-     * b = start value
-     * c = delta value
-     * d = duration
-     */
     var Ease = {
         inCubic:function (t, b, c, d) {
             t /= d;
@@ -524,6 +582,6 @@ function redirectToPrediction() {
         p.y = nt * nt * nt * p0.y + 3 * nt * nt * t * c0.y + 3 * nt * t * t * c1.y + t * t * t * p1.y;
 
         return p;
-    }
+    } */
 </script>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>

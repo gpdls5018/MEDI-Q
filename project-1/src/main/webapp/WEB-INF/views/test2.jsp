@@ -92,6 +92,37 @@ body{
     width: 300px;
     display: inline-block;
   }
+  .overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+/* 모달 스타일 */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 1001;
+}
+.modal-content {
+  background-color: white;
+  margin: 20% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 5px;
+}
      </style>
 
 	<!-- 상단배너 div -->
@@ -117,6 +148,37 @@ body{
 				<div class="top-wrap-070">
 					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>건강 고민</span></h1>
 				</div>
+				<div class="overlay" id="overlay"></div>
+				<button id="openModalBtn">모달 열기</button>
+				<!-- 모달 -->
+				<div id="modal" class="modal">
+			 		<div class="modal-content">
+			 			<form action="/food/userinfo.do" method="post">
+			    		<input name="height" id="height" placeholder="키를 입력해주세요">
+				    	<input name="Weight" id="weight" placeholder="몸무게를 입력해주세요">
+				   	 	<input name="age" id="age" value="${age }" hidden="true">
+				   	 	<input name="Fatrate" id="fatrate" placeholder="지방의 비율을 입력해주세요">
+				   	 	<input name="Prorate" id="prorate" placeholder="단백질의 비율을 입력해주세요">
+				   	 	<input name="Cbhrate" id="cbhrate" placeholder="탄수화물의 비율을 입력해주세요">
+				    	<select id="healthIssueSelect" name="healthIssueSelect" onchange="submitForm()" class="ipt-main">
+							<option value="1">앉아서 일하는 경우</option>
+							<option value="2">가벼운 활동(운동없이 약간의 활동)</option>
+							<option value="3">보통 활동(주3~4회 운동)</option>
+							<option value="4">활발한 활동(주 5~7회 운동)</option>
+							<option value="5">매우 활발한 활동(일일 운동 및 육체적 노동)</option>
+						</select>
+				    	<button id="caloriesBtn" name="cabtn" style="border: 1px solid black;background-color: black;color:white;font:bold;border-radius: 5px 5px 5px 5px;">칼로리 계산</button>
+				    	</form>
+					</div>
+				</div>
+			
+			
+				<div class="chart_dnt_2">
+					  <h1>칼로리기준 탄단지 비율</h1>
+					  <canvas id="chart_doughnut_2"></canvas>
+				</div>
+    			<p id="result"></p>
+    			
 				<c:if test="${not empty fat}">
 					<div class="chart_dnt_1">
 					  <h1>탄단지 비율</h1>
@@ -126,10 +188,10 @@ body{
 				<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
 					<div class="search-etc">
 					<div class="ipt-main-wrap">
-					<form action="/food/foodsearch.do">
+						<form action="/food/foodsearch.do">
 							<input id="searchProduct3" type="text" name="food" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${takefood}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
 							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct3()"></button>
-					</form>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -430,7 +492,6 @@ body{
             }, 400);
             return false;
         });
-        
         var myChart = {
         		  init : function(){
         		    myChart.chart_line();
@@ -446,7 +507,6 @@ body{
         		  chart_doughnut : {
         		    init_doughnut : function(){
         		      myChart.chart_doughnut.chart_1();
-        		      myChart.chart_doughnut.chart_2();
         		    },
         		    chart_1 : function(){    
         		      var chart = document.getElementById("chart_doughnut_1");
@@ -501,12 +561,111 @@ body{
         		    },
         		    // 차트1
         		  }
-        		  
-        		  
-        		  
         		}
-        		    
         		myChart.init();
+        
+        
+</script>
+<script>
+		    var dailyCalories = ${dailyCalories};
+		    console.log('dailyCalories : ' + ${dailyCalories})
+		    // 계산된 칼로리 출력
+		    var resultElement = document.getElementById('result');
+		    resultElement.innerHTML = "하루에 필요한 칼로리: " + dailyCalories.toFixed(2) + "kcal";
+		    var myChart = {
+	        		  init : function(){
+	        		    myChart.chart_line();
+	        		    myChart.chart_doughnut.init_doughnut();
+	        		  },
+	        		  
+	        		  // 차트 - 라인
+	        		  chart_line : function(){
+	        		    
+	        		  }, 
+	        		  
+	        		  // 차트 - 도넛   
+	        		  chart_doughnut : {
+	        		    init_doughnut : function(){
+	        		      myChart.chart_doughnut.chart_2();
+	        		    },
+	        		    chart_2 : function(){    
+	        		      var chart = document.getElementById("chart_doughnut_2");
+	        		      var data = {
+	        		          labels: ["탄수화물","단백질","지방"],
+	        		          datasets: [
+	        		              {
+	        		                  data: [(${dailyCalories}*${Cbhrate})/4, (${dailyCalories}*${Prorate})/4, (${dailyCalories}*${Fatrate})/9],
+	        		                  backgroundColor: [
+	        		                      "#f23456",
+	        		                      "#afff2a",
+	        		                      "#f5dc5a"
+	        		                  ],
+	        		                  hoverBackgroundColor: [
+	        		                      "#123456",
+	        		                      "#654321",
+	        		                      "#456123"
+	        		                  ]
+	        		              }]
+	        		      };
+	        		      var myDoughnutChart = new Chart(chart, {
+	        		          type: 'doughnut',
+	        		          data: data,
+	        		          options: {
+	        		              responsive: true,
+	        		              legend: false,
+	        		              title: {
+	        		                  display: false,
+	        		                  text: 'Chart.js Doughnut Chart'
+	        		              },
+	        		              animation: {
+	        		                  animateScale: true,
+	        		                  animateRotate: true
+	        		              },
+	        		              tooltips: {
+	        		                  callbacks: {
+	        		                      label: function(tooltipItem, data) {
+	        		                          var dataset = data.datasets[tooltipItem.datasetIndex];
+	        		                          var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+	        		                              return previousValue + currentValue;
+	        		                          });
+	        		                          var currentValue = dataset.data[tooltipItem.index];
+	        		                          var precentage = Math.floor(((currentValue/total) * 100)+0.5);
+	        		                          return data.labels[tooltipItem.index] + " : " + precentage + " %";
+	        		                      },
+	        		                       mode: 'label'
+	        		                  }
+	        		              },
+	        		              cutoutPercentage:40,
+	        		          },
+	        		      });
+	        		    },
+	        		    // 차트2
+	        		  }
+	        		}
+	        		myChart.init();
+</script>
+<script>
+document.getElementById("openModalBtn").addEventListener("click", function() {
+	  document.getElementById("overlay").style.display = "block";
+	  document.getElementById("modal").style.display = "block";
+	});
+
+	// 배경 오버레이 또는 모달을 클릭하여 닫을 때 동작
+	document.getElementById("overlay").addEventListener("click", closeModal);
+	document.getElementById("modal").addEventListener("click", closeModal);
+	
+	document.getElementById("caloriesBtn").addEventListener("click", function() {
+		  calculateCalories();
+		  closeModal();
+		});
+
+	function closeModal(event) {
+	  if (event.target === document.getElementById("overlay") || event.target === document.getElementById("modal")) {
+	    document.getElementById("overlay").style.display = "none";
+	    document.getElementById("modal").style.display = "none";
+	  }
+	}
+	
 </script>
 </body>
 </html>

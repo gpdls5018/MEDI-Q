@@ -1,9 +1,9 @@
 package com.kosmo.springapp.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosmo.springapp.model.AllFoodDTO;
 import com.kosmo.springapp.model.AvgStarScoreCountDTO;
@@ -28,6 +28,10 @@ public interface SelectFoodService {
 	List<String> RankingKeyWord();
 	List<CheckWordDTO> checkWord(String foodname);
 	String healthIssueCou(String healthissue);
+	String foodNo(String takefood);
+	String checkUserinfo(String ID);
+	void newUserinfo(float Fatrate,float Prorate,float Cbhrate,int healthIssueSelect,float dailyCalories,String ID);
+	void updateUserinfo(float Fatrate,float Prorate,float Cbhrate,int healthIssueSelect,float dailyCalories,String ID);
 	void newWord(String foodname);
 	void selectKeyWord(String foodname);
 }

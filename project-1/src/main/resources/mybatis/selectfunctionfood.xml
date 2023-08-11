@@ -113,4 +113,23 @@
 	<select id="intakeFoodData" parameterType="String" resultType="AllFoodDTO">
 		select * from allfoodtable where no='${no}'
 	</select>
+	<select id="foodNo" parameterType="String" resultType="String">
+		SELECT * FROM foodtable WHERE productname= '${takefood}'
+	</select>
+	<select id="checkUserinfo" parameterType="String" resultType="String">
+		select 1 from userKCAL where id = '${ID}'
+	</select>
+	<insert id="newUserinfo" parameterType="String">
+		INSERT INTO USERKCAL (ID, KCAL, FATRATE, PRORATE, CBHRATE, ACTSTAGE)
+		VALUES ('${ID}', '${dailyCalories}', '${Fatrate}', '${Prorate}', '${Cbhrate}', '${healthIssueSelect}')
+	</insert>
+	<update id="updateUserinfo" parameterType="String">
+		UPDATE USERKCAL
+		SET KCAL = '${dailyCalories}',
+		    FATRATE = '${Fatrate}',
+		    PRORATE = '${Prorate}',
+		    CBHRATE = '${Cbhrate}',
+		    ACTSTAGE = '${healthIssueSelect}'
+		WHERE ID = '${ID}'
+	</update>
 </mapper>

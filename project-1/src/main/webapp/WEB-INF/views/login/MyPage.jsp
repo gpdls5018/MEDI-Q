@@ -758,13 +758,6 @@ body {
     	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 	}
 	
-	#alamModal modal-fullsize{
-		width: 800px;
-	  	height: 500px;
-	  	margin: 0;
-	  	padding: 0;
-	  	border-radius: 10px;
-	}
 	
 </style>
 
@@ -1184,46 +1177,6 @@ body {
 	</div>
     <!-- 건강정보 등록 모달 끝 -->
     
-    <!-- 복약 알림 모달 시작 -->
-    <div class="modal fade" id="alamModal">	
-		<div class="modal-dialog modal-dialog-centered modal-fullsize">
-			<div class="modal-content modal-fullsize" style="width: 800px">
-				
-				<!-- Modal body -->
-				<div class="modal-body d-flex justify-content-center">
-					<form id="foodAlam" class="form-inline justify-content-center" action='<c:url value="/project/foodAlam.do"/>' method="POST">
-						<div class="mb-4 d-flex align-items-center font-weight-bold">
-							<img alt="alam" src="/images/basic/alarm.png" style="width: 25px"/>
-							<span>영양제 알리미</span>
-						</div>
-						<div class="d-flex justify-content-between align-items-center">
-				        	<div>
-						         <span>알람 여부</span>
-						         <label class="btn-onoff">
-									<input type="checkbox" name="name" data-onoff="toggle"><span></span>
-								</label>
-							</div>
-							<div class="d-inline-flex align-items-center">
-								<span>복용 시간</span>
-								<input type="time" class="form-control ml-3" name="pillTime" style="width: 150px"/>
-							</div>
-						</div>
-						<div class="d-inline-flex align-items-center">
-							<span>복용 정 수</span>
-							<input type="number" class="form-control ml-3" name="pillCount" style="width: 100px"/>
-						</div>
-						<div>
-							<input type="submit" class="btn btn-outline-info mx-2" value="확인"/>
-							<button type="button" class="btn btn-outline-danger" data-dismiss="modal">닫기</button>
-						</div>
-				    </form>
-				</div>
-			</div>
-		</div>
-	</div>
-    <!-- 복약 알림 모달 끝 -->
-    
-    
 	<!-- 수정/삭제시 사용할 모달 시작 -->
 	<div class="modal fade" id="modalView">	
 		<div class="modal-dialog modal-dialog-centered">
@@ -1528,7 +1481,16 @@ body {
 	    
 	  	//내가 선택한 영양제 클릭 시 삭제
 		$('#select-div .food-li').click(function(){
-			$(this).remove();
+			var click = $(this);
+			//console.log('click',click)
+			var foodList = food=='[]' ? "" :food.split('},');
+			for(var i=0;i<foodList.length;i++){
+				var alarm_fl = foodList[i].split(',')[3].split('=')[1];
+				var food_name = foodList[i].split(',')[1].split('=')[1];
+				if(!(food_name===click.find('div').html() && alarm_fl==='Y')){
+					click.remove();
+				}
+			}
 		});
 	});
 	
@@ -1825,7 +1787,7 @@ body {
 	//회원 탈퇴 하기
 	$('#inactive').click(function(){
 		$(this).attr('data-toggle','modal');
-		$('.modal-dialog').children(':eq(0)').css('height','330px');
+		$('#modalView .modal-dialog').children(':eq(0)').css('height','330px');
 		$('form:eq(1)').removeClass('form-inline');
 		$('form').attr('action','<c:url value="/project/Password.do"/>');
 		$('.modal-title').html('회원정보 확인을 위해 비밀번호를 입력해주세요');
