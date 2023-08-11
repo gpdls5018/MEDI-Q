@@ -153,10 +153,14 @@ body{
 				<!-- 모달 -->
 				<div id="modal" class="modal">
 			 		<div class="modal-content">
+			 			<form action="/food/userinfo.do" method="post">
 			    		<input name="height" id="height" placeholder="키를 입력해주세요">
 				    	<input name="Weight" id="weight" placeholder="몸무게를 입력해주세요">
 				   	 	<input name="age" id="age" value="${age }" hidden="true">
-				    	<select id="healthIssueSelect" onchange="submitForm()" class="ipt-main">
+				   	 	<input name="Fatrate" id="fatrate" placeholder="지방의 비율을 입력해주세요">
+				   	 	<input name="Prorate" id="prorate" placeholder="단백질의 비율을 입력해주세요">
+				   	 	<input name="Cbhrate" id="cbhrate" placeholder="탄수화물의 비율을 입력해주세요">
+				    	<select id="healthIssueSelect" name="healthIssueSelect" onchange="submitForm()" class="ipt-main">
 							<option value="1">앉아서 일하는 경우</option>
 							<option value="2">가벼운 활동(운동없이 약간의 활동)</option>
 							<option value="3">보통 활동(주3~4회 운동)</option>
@@ -164,6 +168,7 @@ body{
 							<option value="5">매우 활발한 활동(일일 운동 및 육체적 노동)</option>
 						</select>
 				    	<button id="caloriesBtn" name="cabtn" style="border: 1px solid black;background-color: black;color:white;font:bold;border-radius: 5px 5px 5px 5px;">칼로리 계산</button>
+				    	</form>
 					</div>
 				</div>
 			
@@ -173,6 +178,7 @@ body{
 					  <canvas id="chart_doughnut_2"></canvas>
 				</div>
     			<p id="result"></p>
+    			
 				<c:if test="${not empty fat}">
 					<div class="chart_dnt_1">
 					  <h1>탄단지 비율</h1>
@@ -333,7 +339,6 @@ body{
             }, 400);
             return false;
         });
-        closeModal();
         var myChart = {
         		  init : function(){
         		    myChart.chart_line();
@@ -409,33 +414,8 @@ body{
         
 </script>
 <script>
-		function calculateCalories() {
-		    var height = parseFloat(document.getElementById('height').value);
-		    var weight = parseFloat(document.getElementById('weight').value);
-		    var age = parseFloat(document.getElementById('age').value);
-		    var active = parseInt(document.getElementById('healthIssueSelect').value);
-		    var bmr;
-		
-		    // 남성일 경우의 BMR 계산식을 사용
-		    bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
-		
-		    // 활동 대사율 곱하기 (여기서는 예시로 '보통 활동' 계수 사용)
-		    if(active===1){
-			    var activityMultiplier = 1.2;
-		    }
-		    else if(active===2){
-			    var activityMultiplier = 1.375;
-		    }
-		    else if(active===3){
-			    var activityMultiplier = 1.55;
-		    }
-		    else if(active===4){
-			    var activityMultiplier = 1.725;
-		    }
-		    else if(active===5){
-			    var activityMultiplier = 1.9;
-		    }
-		    var dailyCalories = bmr * activityMultiplier;
+		    var dailyCalories = ${dailyCalories};
+		    console.log('dailyCalories : ' + ${dailyCalories})
 		    // 계산된 칼로리 출력
 		    var resultElement = document.getElementById('result');
 		    resultElement.innerHTML = "하루에 필요한 칼로리: " + dailyCalories.toFixed(2) + "kcal";
@@ -461,7 +441,7 @@ body{
 	        		          labels: ["탄수화물","단백질","지방"],
 	        		          datasets: [
 	        		              {
-	        		                  data: [(dailyCalories*0.5)/4, (dailyCalories*0.2)/4, (dailyCalories*0.3)/9],
+	        		                  data: [(${dailyCalories}*${Cbhrate})/4, (${dailyCalories}*${Prorate})/4, (${dailyCalories}*${Fatrate})/9],
 	        		                  backgroundColor: [
 	        		                      "#f23456",
 	        		                      "#afff2a",
@@ -506,11 +486,10 @@ body{
 	        		          },
 	        		      });
 	        		    },
-	        		    // 차트1
+	        		    // 차트2
 	        		  }
 	        		}
 	        		myChart.init();
-		}
 </script>
 <script>
 document.getElementById("openModalBtn").addEventListener("click", function() {
