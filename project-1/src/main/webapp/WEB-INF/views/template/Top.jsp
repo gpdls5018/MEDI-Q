@@ -451,7 +451,7 @@ ul {
         }
         .chatbot{
             width: 450px;
-            height: 610px;
+            height: 615px;
             position:fixed;
             background-color: #ffedd4;
             border: 4px solid #FFB499;
@@ -831,8 +831,9 @@ ul {
                 </div>
             </div>
             <div class="inputDIV input-group mt-5">
+            	<div class="chatbot-line mb-2"></div>
             	<input type="checkbox" id="ham-menu">
-				<label for="ham-menu" class="ml-2" style="margin-top: 7px;">
+				<label for="ham-menu" class="ml-2" style="margin-top: 16px;">
 				  <div class="hide-des">
 				    <span class="menu-line"></span>
 				    <span class="menu-line"></span>
