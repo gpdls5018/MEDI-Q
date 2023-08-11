@@ -143,7 +143,14 @@ public class RestAPIController {
         List<String> foodListNo = Arrays.asList(modifiedString.split(","));
         List<String> foodList = new ArrayList<>();
         for(String no : foodListNo) {
-        	foodList.add(androidServiceImpl.getFoodNameByNo(no));
+        	try {
+        		int intNo = Integer.parseInt(no);
+        		foodList.add(androidServiceImpl.getFoodNameByNo(no));
+        		System.out.println("no : "+no);
+        	} catch (Exception e) {
+        		System.out.println("no : "+no);
+        		foodList.add(no);
+			}
         }
         for (int i = 0; i < foodList.size(); i++) {
        	 	foodList.set(i, foodList.get(i).trim());
@@ -151,7 +158,9 @@ public class RestAPIController {
         Map<String,List<String>> userMap = new HashMap<>();
 		userMap.put("takePurpose", takeList);
 		userMap.put("takeFood", foodList);
+		
 		AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReportM(userMap);
+		System.out.println("resultListDto.getResultScore() : "+resultListDto.getResultScore());
 		return resultListDto;
 	}
 	
@@ -188,6 +197,11 @@ public class RestAPIController {
 	@GetMapping("/androidSelectAnalyzeReportOne/{userId}")
 	public AnalyzeReportDTO androidSelectAnalyzeReportOne(@PathVariable(name = "userId") String userId) {
 		return analyzeMyReportServiceImpl.selectAnalyzeReport(userId);
+	}
+	
+	@GetMapping("/androidSelectAllAnalyzeReport/{userId}")
+	public List<AnalyzeReportDTO> androidSelectAllAnalyzeReport(@PathVariable(name = "userId") String userId) {
+		return analyzeMyReportServiceImpl.selectAnalyzeReportAll(userId);
 	}
 	
 }

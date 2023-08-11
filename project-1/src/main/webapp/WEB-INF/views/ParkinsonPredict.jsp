@@ -91,8 +91,8 @@ body {
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close1:hover,
+.close1:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
