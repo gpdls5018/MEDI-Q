@@ -107,7 +107,7 @@ body{
 		        <h1 class="mb-3 text-center" > 최근 분석 리포트</h1>
 		     	<c:if test="${not empty analyzeReport}">
 			        <div class="ibNwmg d-flex" style="justify-content:flex-start;  margin:30px 0px 40px 15px; width: 95%;">
-			            <a data-gtm-id="report-home-recent-blank" class="ktaGqG" style="text-decoration: none; cursor:none; background-color: 
+			            <form data-gtm-id="report-home-recent-blank" class="ktaGqG" style="text-decoration: none; cursor:none; background-color: 
 					      ${analyzeReport.score >= 0 && analyzeReport.score < 25 ? 'rgba(255, 0, 0, 0.7)' :
 					        analyzeReport.score >= 25 && analyzeReport.score < 50 ? 'rgba(255, 165, 0, 0.7)' :
 					        analyzeReport.score >= 50 && analyzeReport.score < 75 ? 'rgba(0, 128, 0, 0.7)' :
@@ -130,34 +130,45 @@ body{
 			                        <div class="d-block mt-3" style="margin-left: 20px;">
 									  <div class="ZyIFk1">
 									    <span style="color: #272727;">섭취 목적</span> :<br/>
-									    <c:forEach items="${fn:split(analyzeReport.takePurposes, ',')}" var="char3" varStatus="loop">
-									      <c:out value="${char3}" />
-									      <c:if test="${!loop.last}">
-									        <!-- 마지막 항목이 아니면 쉼표 출력 -->
-									        ,
-									      </c:if>
-									      <c:if test="${(loop.index + 1) % 6 == 0}">
-									        <br/>
-									      </c:if>
-									    </c:forEach>
+									    <c:set var="char31Mi" value="${fn:replace(analyzeReport.takePurposes, ']', '')}" />
+										<c:set var="char32Mi" value="${fn:replace(char31Mi, '[', '')}" />
+										<c:forEach items="${fn:split(char32Mi, ',')}" var="char3" varStatus="loop">
+										    <c:set var="trimchar3" value="${fn:trim(char3)}" />
+											<a style="color: black;text-decoration: none;" href="/functionfood/healthissue.do?healthissue=${trimchar3}">
+											<c:out value="${char3}" />
+										    <c:if test="${!loop.last}">
+										        <!-- 마지막 항목이 아니면 쉼표 출력 -->
+										      ,
+										    </c:if>
+										    <c:if test="${(loop.index + 1) % 6 == 0}">
+										      <br/>
+										    </c:if>
+										    </a>
+										</c:forEach>
 									  </div>
 									  <div class="ZyIFk2">
 									    <span style="color: #272727;">섭취중인 영양제</span> :<br/>
-									    <c:forEach items="${fn:split(analyzeReport.takeFoods, ',')}" var="char4" varStatus="loop">
-									      <c:out value="${char4}" />
-									      <c:if test="${!loop.last}">
-									        <!-- 마지막 항목이 아니면 쉼표 출력 -->
-									        ,
-									      </c:if>
-									      <c:if test="${(loop.index + 1) % 2 == 0}">
-									        <br/>
-									      </c:if>
+									    <c:set var="char41Mi" value="${fn:replace(analyzeReport.takeFoods, ']', '')}" />
+										<c:set var="char42Mi" value="${fn:replace(char41Mi, '[', '')}" />
+										<c:forEach items="${fn:split(char42Mi, ',')}" var="char4" varStatus="loop">
+											<c:set var="trimchar4" value="${fn:trim(char4)}" />
+											<c:set var="replcechar4" value="${fn:replace(trimchar4,'&','%26')}"/>
+											<a style="color: black;text-decoration: none;" href="/functionfood/food.do?takefood=${replcechar4}">
+										    <c:out value="${char4}" />
+										    <c:if test="${!loop.last}">
+										      <!-- 마지막 항목이 아니면 쉼표 출력 -->
+										      ,
+										    </c:if>
+										    <c:if test="${(loop.index + 1) % 2 == 0}">
+										      <br/>
+										    </c:if>
+										    </a>
 									    </c:forEach>
 									  </div>
 			                     	</div>
 			                     </div>
 		                	</article>
-		             	</a>
+		             	</form>
 		             </div>                 
 		         </c:if>
 		         <c:if test="${empty analyzeReport}">
@@ -207,28 +218,39 @@ body{
 			                        <div class="d-block mt-3" style="margin-left: 20px;">
 										  <div class="ZyIFk1">
 										    <span style="color: #272727;">섭취 목적</span> :<br/>
-										    <c:forEach items="${fn:split(analyzeReportOne.takePurposes, ',')}" var="char1" varStatus="loop">
-										      <c:out value="${char1}" />
-										      <c:if test="${!loop.last}">
-										        <!-- 마지막 항목이 아니면 쉼표 출력 -->
-										        ,
-										      </c:if>
-										      <c:if test="${(loop.index + 1) % 6 == 0}">
-										        <br/>
-										      </c:if>
+											<c:set var="char11Mi" value="${fn:replace(analyzeReportOne.takePurposes, ']', '')}" />
+											<c:set var="char21Mi" value="${fn:replace(char11Mi, '[', '')}" />
+										    <c:forEach items="${fn:split(char21Mi, ',')}" var="char1" varStatus="loop">
+										    <c:set var="trimchar1" value="${fn:trim(char1)}" />
+										      <a style="color: black;text-decoration: none;" href="/functionfood/healthissue.do?healthissue=${trimchar1}">
+											      <c:out value="${char1}" />
+											      <c:if test="${!loop.last}">
+											        <!-- 마지막 항목이 아니면 쉼표 출력 -->
+											        ,
+											      </c:if>
+											      <c:if test="${(loop.index + 1) % 6 == 0}">
+											        <br/>
+											      </c:if>
+										      </a>
 										    </c:forEach>
 										  </div>
 										  <div class="ZyIFk2">
 										    <span style="color: #272727;">섭취중인 영양제</span> :<br/>
-										    <c:forEach items="${fn:split(analyzeReportOne.takeFoods, ',')}" var="char2" varStatus="loop">
-										      <c:out value="${char2}" />
-										      <c:if test="${!loop.last}">
-										        <!-- 마지막 항목이 아니면 쉼표 출력 -->
-										        ,
-										      </c:if>
-										      <c:if test="${(loop.index + 1) % 2 == 0}">
-										        <br/>
-										      </c:if>
+										    <c:set var="char12Mi" value="${fn:replace(analyzeReportOne.takeFoods, ']', '')}" />
+											<c:set var="char22Mi" value="${fn:replace(char12Mi, '[', '')}" />
+										    <c:forEach items="${fn:split(char22Mi, ',')}" var="char2" varStatus="loop">
+												<c:set var="trimchar2" value="${fn:trim(char2)}" />
+												<c:set var="replcechar2" value="${fn:replace(trimchar2,'&','%26')}"/>
+												<a style="color: black;text-decoration: none;" href="/functionfood/food.do?takefood=${replcechar2}">
+											    <c:out value="${char2}" />
+											    <c:if test="${!loop.last}">
+											      <!-- 마지막 항목이 아니면 쉼표 출력 -->
+											      ,
+											    </c:if>
+											    <c:if test="${(loop.index + 1) % 2 == 0}">
+											      <br/>
+											    </c:if>
+											    </a>
 										    </c:forEach>
 										  </div>		         
 			                        </div>
