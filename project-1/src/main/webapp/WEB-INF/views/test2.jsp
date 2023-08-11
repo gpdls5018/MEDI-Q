@@ -154,12 +154,12 @@ body{
 				<div id="modal" class="modal">
 			 		<div class="modal-content">
 			 			<form action="/food/userinfo.do" method="post">
-			    		<input name="height" id="height" placeholder="키를 입력해주세요">
-				    	<input name="Weight" id="weight" placeholder="몸무게를 입력해주세요">
+			    		<input name="height" id="height" required placeholder="키를 입력해주세요">
+				    	<input name="Weight" id="weight" required placeholder="몸무게를 입력해주세요">
 				   	 	<input name="age" id="age" value="${age }" hidden="true">
-				   	 	<input name="Fatrate" id="fatrate" placeholder="지방의 비율을 입력해주세요">
-				   	 	<input name="Prorate" id="prorate" placeholder="단백질의 비율을 입력해주세요">
-				   	 	<input name="Cbhrate" id="cbhrate" placeholder="탄수화물의 비율을 입력해주세요">
+				   	 	<input name="Fatrate" id="fatrate" required placeholder="지방의 비율을 입력해주세요">
+				   	 	<input name="Prorate" id="prorate" required placeholder="단백질의 비율을 입력해주세요">
+				   	 	<input name="Cbhrate" id="cbhrate" required placeholder="탄수화물의 비율을 입력해주세요">
 				    	<select id="healthIssueSelect" name="healthIssueSelect" onchange="submitForm()" class="ipt-main">
 							<option value="1">앉아서 일하는 경우</option>
 							<option value="2">가벼운 활동(운동없이 약간의 활동)</option>
@@ -189,7 +189,7 @@ body{
 					<div class="search-etc">
 					<div class="ipt-main-wrap">
 						<form action="/food/foodsearch.do">
-							<input id="searchProduct3" type="text" name="food" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${takefood}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
+							<input id="searchProduct3" type="text" name="food" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${takefood}" required placeholder="찾으시는 제품을 검색해보세요!">
 							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct3()"></button>
 						</form>
 					</div>
