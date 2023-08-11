@@ -67,18 +67,172 @@ body{
             </h3>
         </div>
     </aside>
-    
+    <!-- ----------------------여기부터 시작----------------------------------- -->
+	<style>
+	/*오픈chat용 css*/	
+	#chatMessage{
+	 	height:550px;
+	 	background:#FBFFDC;
+	 	border:1px solid #EDEAED;
+	 	overflow:auto;
+	}
+	/* //이거 참고용으로 가져온것임 완성하면 지워야됨
+	.bottom .black {
+		color: #3333;
+		border-top: 1px solid #dbdbdb;
+	} 
+	*/
+	.ext {
+		text-align: left;
+	}
+	
+	.ext span {
+		/*background: #98EECC;*/
+		background: #D0F5BE;
+		border-radius: 12px 12px 12px 2px;
+		margin:10px 20px;
+	}
+	
+	.int {
+		text-align: right;
+	}
+	
+	.int span {
+		/*background: #D0F5BE;*/
+		background: #98EECC;
+		border-radius: 12px 12px 2px 12px;
+		margin:10px 20px;
+	}
+	.ocspan{
+		display: inline-block;
+		max-width: 180px;
+		padding: 5px 10px;
+		position: relative;
+		word-wrap: break;
+	}
+	/*오픈chat용 css 끝*/	
+	</style>	
+		<div class="container">
+			<fieldset class="form-group">
+				<legend>실시간 채팅(웹소켓)</legend>
+				
+				<form>
+					<div class="form-group">
+						<label><kbd>닉네임 설정</kbd></label>
+						<input type="text" class="form-control" id="chatnickname" placeholder="닉네임 입력">
+					</div>
+					<input class="btn btn-primary" type="button" id="ocEnterBtn" value="입실">
+					<input class="btn btn-danger" type="button" id="ocExitBtn" value="퇴실">
+					<!-- 여기가 채팅방시작 -->
+					<div class="form-group">
+						<h4>오픈 채팅창 내용입니다</h4>
+						<div id="chatMessage"></div>
+					</div>
+					<!-- 메세지 등록버튼 -->
+					<div class="form-group">
+						<label><kbd>메시지input 버튼임</kbd></label><!-- message를 ociMessage로 변경 -->
+						<input type="text" class="form-control" id="ociMessage" placeholder="채팅 입력">
+					</div>
+				</form>
+				
+			</fieldset>
+		</div><!-- container -->
+<script>
+	//오픈채팅용 자바스크립트 시작
+	//오픈채팅웹소켓 저장용
+	var ocwsocket;
+	//오픈채팅닉네임 저장용
+	var chatnickname;
+	//내가 닉네임을 적어서 오픈채팅창 방에 들어오는 걸로 확정!
+	$('#ocEnterBtn').one('click',function(){
+		ocwsocket = new WebSocket("ws://localhost:9090<c:url value="/chat-ws"/>");
+
+		console.log('ocwsocket:',ocwsocket);
+		//서버와 연결된 웹 소켓에 이벤트 등록
+		ocwsocket.onopen = open;
+		ocwsocket.onclose = function(){
+			appendMessage(" 연결이 끊어졌습니다.");
+		};
+		ocwsocket.onmessage=receive;//ocwsocket이 메세지를 받으면 recevive함수 실행
+		ocwsocket.onerror=function(e){
+			console.log('에러 발생:',e);
+		};
+	});
+	//서버에 연결되었을때 호출되는 콜백함수
+	function open(){
+		//서버로 연결한 사람의 정보(닉네임) 전송
+		//사용자가 입력한 닉네임 저장
+		chatnickname = $('#chatnickname').val();
+		ocwsocket.send('msg:'+chatnickname+' 가(이) 입장했습니다.');
+		appendMessage(" 참가하였습니다.");
+	}
+	//서버에서 메세지를 받을때마다 호출되는 함수
+	function receive(e){
+		//서버로부터 받은 데이타는 이벤트객체(e).data속성에 저장되어 있다.
+		console.log('서버로부터 받은 메세지:',e.data);
+		if(e.data.substring(0,4).toUpperCase() ==='MSG:'){
+			//서버로부터 받은 메세지를 msg:부분을 자르고 div로 출력
+			appendMessage('<p class="ext"><span class="ocspan">'+e.data.substring(4)+'</span></p>');
+		}
+	}
+	//사용자가 입력한 메세지(확인용) 또는 서버로부터 받은 메세지를 채팅창에 출력하는 함수
+	function appendMessage(msg){
+		$('#chatMessage').append(msg);
+		//스크롤바를 자동으로 위로 올리기
+		$('#chatMessage').get(0).scrollTop=$('#chatMessage').get(0).scrollHeight;
+	}
+	
+	//퇴장 버튼
+	$('#ocExitBtn').one('click',function(){
+		ocwsocket.send('msg:'+chatnickname+' 가(이) 퇴장했습니다.');
+		ocwsocket.close();
+	});
+	//
+	$('#ociMessage').on('keypress',function(e){
+		
+		if(e.keyCode===13){//엔터 입력
+			//입력한 메시지 서버로 전송
+			ocwsocket.send('msg: '+chatnickname+': '+$(this).val());
+			appendMessage('<p class="int"><span class="ocspan">'+$(this).val()+"</span></p>");
+			$(this).val("");
+			//포커스 주기
+			$(this).focus();
+		}
+	});
+	//오픈채팅용 자바스크립트 끝
+</script>
+<!-- 이 아래 코드는 그 참고용으로 가져온것임 끝나면 지워야됨 -->
+		<!-- 
+		<div class="bottom black" style="background-color: rgb(255, 255, 255);"><div class="bottom_plus"><div class="my_info"><span>Guest_ccb84</span></div><button class="call_admin"><img src="//coktv24.1.inde.biz/plugin/indeSet/img/alarm.png">관리자호출</button></div>
+					<table>
+						<tbody><tr>
+							<td class="inputWrap group">
+								<div class="plus hoverOpacity"></div>
+								<div class="whisperWrap"></div>
+								<div class="emoticon hoverOpacity"></div>
+								<div class="inputContent">
+									<div class="chatInput" contenteditable="true" onclick="this.contentEditable='true'; this.focus(); return false;" placeholder="채팅 입력." tabindex="0"></div>
+								</div>
+							</td>
+						</tr>
+					</tbody></table>
+					<div class="menuBar" style="display: none;"><div title="스크롤 고정" class="menu-style menubar-scroll" style="background-image: url(&quot;//coktv24.1.inde.biz/skin/basic/img/scroll.png&quot;); background-position: 0px -4px; float: right; margin: 0px;"></div><div title="이모티콘" class="menu-style menubar-emoticon hoverOpacity" style="background-image: url(&quot;//coktv24.1.inde.biz/skin/basic/img/black/emoticon.png&quot;);"></div><div title="관리자 호출" class="menu-style menubar-call_admin" style="background-image: url(&quot;//coktv24.1.inde.biz/skin/basic/img/alarm.png&quot;);"></div></div>
+				</div>
+		 -->
+<!-- -----------------------------여기가 웹소캣 실시간 채팅 끝------------------------------------- -->
 <!-- ------------------------------------------------------------------------------- -->    
+<!-- 
 <div class="all-wrap">
 	<div class="all-wrap-in all-wrap-in-070">
 		<div class="ingredient-search-top">
 			<div class="content" style="background-color:#fdfbf6; padding-bottom: 20px;">
 			<!-- 건기식 또는 회사이름을 적었을 경우 -->
+<!-- 
 				<div class="top-wrap-070">
 					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>건강 고민</span></h1>
 				</div>
 				<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
-					<div class="search-etc">
+<!-- 					<div class="search-etc">
 					<div class="ipt-main-wrap">
 					<form action="/diet.do">
 							<input id="searchProduct3" type="text" name="takefood" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${takefood}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
@@ -134,11 +288,11 @@ body{
 				
 				
 				<!--<button id="moreBtn" tabindex="0" class="item-more" onclick="searchMore()">30개 더 보기</button>  -->
-			</div>
+<!-- 			</div>
 		</div>
 	</div>
 	<a id="goto_top" href="#" title="맨 위로"></a><!-- 위로가기 -->
-</div><!-- all-wrap의 끝 -->
+<!-- </div><!-- all-wrap의 끝 -->
 <script>
         if ($(this).scrollTop() > 20) {
             $('#goto_top').fadeIn();
