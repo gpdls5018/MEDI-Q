@@ -6,7 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration //컨테이너에 빈을 등록하기 위해
-@PropertySource({"classpath:config/database.properties","classpath:config/tokens.properties","classpath:config/paging.properties","classpath:config/tts_stt.properties"})
+@PropertySource({"classpath:config/database.properties","classpath:config/tokens.properties","classpath:config/paging.properties"})
 public class PlaceHolderConfig {
 	
 	@Bean

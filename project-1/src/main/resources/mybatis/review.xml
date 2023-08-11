@@ -11,19 +11,18 @@
  		SELECT * FROM foodtable WHERE no=#{no}
 	</select>
 	<select id="selectReviewByFoodNo" parameterType="Map" resultType="reviewDto">
-		SELECT * 
-		FROM (
-		   SELECT t.*, ROWNUM AS row_NUM, m.GENDER, m.BIRTH
-            FROM (
-                SELECT * FROM REVIEWTABLE
-                WHERE R_PRODUCTNO = #{no}
-            ) t
-            LEFT JOIN MEMBER m ON t.R_ID = m.ID
-            order by row_NUM DESC
-		)
-		WHERE row_num &gt;= #{current} AND row_num &lt; #{current} + 1
-		order by row_NUM DESC
-		
+	SELECT *
+	FROM (
+	    SELECT t.*, m.GENDER, m.BIRTH, ROWNUM AS row_NUM
+	    FROM (
+	        SELECT * FROM REVIEWTABLE
+	        WHERE R_PRODUCTNO = #{no}
+	        ORDER BY R_REGIDATE DESC
+	    ) t
+	    LEFT JOIN MEMBER m ON t.R_ID = m.ID
+	)
+	WHERE row_num &gt;= #{current} AND row_num &lt; #{current} + 3
+	ORDER BY row_NUM
 	</select>
 	<select id="selectTotalReviewInfoStarScoreAverage" parameterType="int" resultType="float">
 		SELECT COALESCE(ROUND(AVG(starscore),1), 0) AS average_value

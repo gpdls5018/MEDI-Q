@@ -41,8 +41,6 @@
 	
 	<!-- Template Javascript -->
 	<script src="<c:url value="/tsfolder/js/main.js"/>" ></script>
-	<!-- chatbot -->
-	<script src="<c:url value="/images/chatbot/serial.js"/>"></script>
      
     <!-- googlefont -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin> 
@@ -668,124 +666,7 @@ ul {
 	        </li>
 	    </ul>
     </nav>
-    <!-- navbar left side
-    				<div class="d-flex">
-		                <c:if test="${not empty token}" var="isLogin">       
-		                    <a class="dropdown-item" href="<c:url value="/project/MyPage.do"/>">마이 페이지</a>
-		                    <a class="dropdown-item" href="<c:url value="/project/Logout.do"/>">로그아웃</a>
-		                    <a class="dropdown-item" href="<c:url value="/AdminMain.do"/>">관리자</a>
-		                    <a class="dropdown-item" href="<c:url value="/test1.do"/>">태현(테스트)</a>
-		                    <a class="dropdown-item" href="#">테스트용</a>
-		                </c:if>
-		                <c:if test="${not isLogin}">
-		                    <a class="dropdown-item" href="<c:url value="/project/Login.do"/>">로그인</a>        
-		                    <a class="dropdown-item" href="<c:url value="/project/Join.do"/>">회원가입</a>       
-		                </c:if>
-	                </div>
     
-    <div class="bs-canvas bs-canvas-left position-fixed h-100 justify-content-start" style="z-index:99999; background: linear-gradient(to bottom, #ffffff, #FFFAFA);">
-        <header class="bs-canvas-header p-4 bg-gra1 justify-content-center align-items-center">
-        	<h4 class="d-inline-block mb-0 text1">
-        		<img src="<c:url value='/images/mainicon.png' />" width="30" height="35">
-        		<img src="<c:url value='/images/maintitle.png' />" width="140" height="35">
-        	</h4>
-            <button type="button" class="bs-canvas-close close mt-2" aria-label="Close">
-                <span aria-hidden="true" class="text-dark text1">&times;</span>
-            </button>
-        </header>
-
-        <div class="bs-canvas-content px-3 pb-5 ">
-            <div class="accordion">
-             <div class="section" >
-		          <h3>
-		            <a class="text-decoration-none font-weight-bold" href="<c:url value="/"/>">
-		            <img src="<c:url value="/images/tsimages/free-icon-home-3771140.png"/>" style="opacity: 0.7;" width="25" height="25">
-		         
-		             &nbsp; 홈으로 가기
-		            
-		            </a>
-		          </h3>
-	        </div>
-	        
-	        <div id="one" class="section" active:false>
-	          <h3 class="d-flex">
-	            <a href="#one" style="align-items: center;">
-	                <img src="<c:url value="/images/tsimages/free-icon-vitamins-525955.png"/>" width="25" height="25">
-	                &nbsp; 영양성분 검색
-	                <span class="arrow-down" style="margin-left: 70px;" ></span>
-	            </a>
-	          </h3>
-	          <div class="ditem">
-	            <a href="<c:url value="/NutrientSelect.do"/>">인기 영양소</a>
-	 
-	            <a href="<c:url value="/NutrientSelectVitamin.do"/>">비타민</a>
-	   
-	            <a href="<c:url value="/NutrientSelectMineral.do"/>">미네랄 및 기타영양소</a>
-	         
-	            <a href="<c:url value="/NutrientSelectFunctional.do"/>">기능성 원료</a>
-	          </div>
-	        </div>
-	        <div  id="two" class="section" active:false>
-	          <h3 class="d-flex">
-	            <a href="#two" class="text-decoration-none" style="align-items: center;">
-	                <img src="<c:url value="/images/shape/캡슐.png"/>" style="opacity: 0.8;" width="25" height="25">
-	                &nbsp; 영양제 검색
-	                <span class="arrow-down" style="margin-left: 90px;" ></span>
-	            </a>
-	          </h3>
-	          <div class="ditem tstm3">
-	          	<a href="<c:url value="/ranking/selectfood.do"/>">전체 검색</a>
-	          	
-	            <a href="<c:url value="/ranking/selectfoodnutrient.do"/>">성분 검색</a>
-	 			
-	            <a href="<c:url value="/ranking/selectfoodcompany.do"/>">제품명/브랜드 검색</a>
-	          </div>
-	        </div>
-	        <div id="three" class="section">
-	          <h3>
-	            <a class="text-decoration-none" href="<c:url value="/magazineindex.do"/>">
-	                <img src="<c:url value="/images/tsimages/free-icon-whats-new-5511348.png"/>" width="25" height="25">
-	                &nbsp; 메디큐 칼럼
-	            </a>
-	        </div>
-	        <div id="four" class="section large">
-	          <h3>
-	            <a class="text-decoration-none" href="#">
-	                <img src="<c:url value="/images/tsimages/free-icon-data-analysis-3449317.png"/>" width="25" height="25">
-	                &nbsp; 분석 및 결과
-	            </a>
-	          </h3>
-	        </div>
-	        <div id="five" class="section">
-	          <h3>
-	            <a class="text-decoration-none" href="<c:url value="/board/List.do" />">
-	                <img src="<c:url value="/images/tsimages/free-icon-chat-724715.png"/>" width="25" height="25">
-	                &nbsp; 커뮤니티
-	            </a>
-	          </h3>
-	        </div>
-	        <div id="six" class="section" active:false>
-	          <h3 class="d-flex">
-	            <a href="#six" style="align-items: center;">
-	                <img src="<c:url value="/images/tsimages/free-icon-lifestyle-4807765.png"/>" width="25" height="25">
-	                &nbsp; 정신건강 테스트
-	                <span class="arrow-down" style="margin-left: 120px;"></span>
-	            </a>
-	          </h3>
-	          <div class="ditem" style="border: none;">
-	              <a href="<c:url value="/project/MentalTest1.do"/>">심리적 스트레스</a>
-	      
-				  <a href="<c:url value="/project/MentalTest2.do"/>">흡연 유형 평가</a>
-			
-				  <a href="<c:url value="/project/MentalTest3.do"/>">알코올 의존(AUDIT-K)</a>
-				
-				  <a href="<c:url value="/project/MentalTest4.do"/>">우울증(CES-D)</a>
-	          </div>
-	        </div>
-	      </div>
-        </div>
-    </div>
-	navbar left side end-->
 	<!-- 챗봇 파트 -->
 	<!-- 챗봇 버튼 -->
 	<div id="btnBot">
@@ -818,7 +699,7 @@ ul {
                             <div class="d-inline-flex justify-content-center align-items-center p-0 m-1">
                                 <img src="/images/chatbot/bot_a.png" class="gtp_ans_img"/>
                             </div>
-                            <h6 class="gptAnswer d-flex justify-content-start align-items-center p-0 m-1">안녕하세요. 무엇을 도와드릴까요?</h6>
+                            <h6 class="gptAnswer d-flex justify-content-start align-items-center p-0 m-1">안녕하세요 큐봇입니다! 무엇을 도와드릴까요?</h6>
                         </div>
                     </div>
                 </div>
@@ -857,15 +738,7 @@ ul {
 			        <button class="btn btn-warning search_btn font-weight-bold text-light" type="button">검색</button>
 			    </div>
 			</div>
-            
-            <!-- 
-            <div class="inputDIV input-group p-1 mt-1">
-                <input type="text" class="form-control rounded-start bg-light" id="userInput" placeholder="무엇이든 물어보세요">
-                <div class="input-group-append">
-                    <button class="btn btn-warning search_btn font-weight-bold text-light" type="button">검색</button>
-                </div>
-            </div>
-            -->
+           
         </div>
         <!-- 내부 로딩바 -->
         <div class="loading_dot" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
@@ -947,106 +820,87 @@ ul {
 	    });
 	});
 	
-	 
-	
-	window.addEventListener('DOMContentLoaded', ()=>{
-        //var chatgpt = document.querySelector('.gptAnswer');
-        //var modal = document.querySelector('#lodingModal');
-        var apiKey;
+
+    //chatGTP 값 전달
+    function sendToChatGPT(content){
         var cloneUserDialog = document.querySelector(".userDialog").cloneNode(true);
         var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
-        //chatGTP 값 전달
-        function sendToChatGPT(content){
-            //var cloneUserDialog = document.querySelector(".userDialog").cloneNode(true);
-            //var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
-            cloneUserDialog.querySelector(".usersQuestion").innerHTML = content;//사용자가 입력한 값 받기
-            cloneUserDialog.style.display='';
-            document.querySelector(".textdialog").appendChild(cloneUserDialog);//사용자가 입력한 값 출력
-            apiKey = serial.apiKey;
-            fetch('https://api.openai.com/v1/chat/completions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer `+ apiKey
-                },
-                body: JSON.stringify({
-                    model: 'gpt-3.5-turbo',
-                    messages: [{ role: 'user', content: content }],
-                    temperature: 0
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                
-                cloneGptDialog.querySelector(".gptAnswer").innerHTML = data["choices"][0]["message"]["content"];
-                cloneGptDialog.style.display='';
-                document.querySelector(".textdialog").appendChild(cloneGptDialog);//입력값 출력
-                document.querySelector(".textdialog").scrollTop = document.querySelector(".textdialog").scrollHeight;//스크롤 올라가는 부분
-                $('.loading_dot').css("display","none");
-            })
-            .catch(error => {
-                console.error(error);
-            });
-        }
-        //엔터 누르면 이동
-        document.querySelector('#userInput').onkeypress = function(e){
-            if(e.target.value !== '' && e.keyCode === 13){
-                $('.loading_dot').css("display","block");//로딩창 생성
-                sendToChatGPT(e.target.value);
-                document.querySelector("#userInput").value = "";
-            }
-            else if(e.target.value === '' && e.keyCode === 13){
-                var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
-                cloneGptDialog.querySelector(".gptAnswer").innerHTML = "질문을 입력해주세요";
-                cloneGptDialog.style.display='';
-                document.querySelector(".textdialog").appendChild(cloneGptDialog);//입력값 출력
-                document.querySelector(".textdialog").scrollTop = document.querySelector(".textdialog").scrollHeight;//스크롤 올라가는 부분
-                document.querySelector("#userInput").value = "";
-            }
-        };
-        //검색버튼 누르면 이동
-        $(".search_btn").click(function(){
-            var button = document.querySelector("#userInput").value;
-            //console.log(button);
-            if(button !== ''){
-                $('.loading_dot').css("display","block");
-                sendToChatGPT(button);
-                document.querySelector("#userInput").value = "";
-            }
-            else{
-                var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
-                cloneGptDialog.querySelector(".gptAnswer").innerHTML = "질문을 입력해주세요";
-                cloneGptDialog.style.display='';
-                document.querySelector(".textdialog").appendChild(cloneGptDialog);//입력값 출력
-                document.querySelector(".textdialog").scrollTop = document.querySelector(".textdialog").scrollHeight;//스크롤 올라가는 부분
-                document.querySelector("#userInput").value = "";
-            }
-        });
-        
-        $(".btn_x").click(function(){
-            var userDialogElements = document.querySelectorAll(".userDialog");
-            var gptDialogElements = document.querySelectorAll(".gptDialog");
-
-            for (var i = 1; i < userDialogElements.length; i++) {
-                userDialogElements[i].remove();
-            }
-            for (var j = 1; j < gptDialogElements.length; j++) {
-                gptDialogElements[j].remove();
-            }
-            $("#chatbot").css("display","none");
-            $("#btnBot").css("display","block");
+            
+        cloneUserDialog.querySelector(".usersQuestion").innerHTML = content;//사용자가 입력한 값 받기
+        cloneUserDialog.style.display='';
+        document.querySelector(".textdialog").appendChild(cloneUserDialog);//사용자가 입력한 값 출력
+            
+        $.ajax({
+            data:{content:content},
+            url:'http://127.0.0.1:8080/chatGPT?content:'+content
+        }).done(function(answer){
+            console.log('success',answer)
+            cloneGptDialog.querySelector(".gptAnswer").innerText = answer;
+            cloneGptDialog.style.display='';
+            document.querySelector(".textdialog").appendChild(cloneGptDialog);//입력값 출력
+            document.querySelector(".textdialog").scrollTop = document.querySelector(".textdialog").scrollHeight;//스크롤 올라가는 부분
             $('.loading_dot').css("display","none");
+        }).fail(function(e){
+            console.log('error',e)
         });
+    }
+            
+    //엔터 누르면 이동
+    document.querySelector('#userInput').onkeypress = function(e){
+        if(e.target.value !== '' && e.keyCode === 13){
+            $('.loading_dot').css("display","block");//로딩창 생성
+            sendToChatGPT(e.target.value);
+            document.querySelector("#userInput").value = "";
+        }
+        else if(e.target.value === '' && e.keyCode === 13){
+            var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
+            cloneGptDialog.querySelector(".gptAnswer").innerHTML = "질문을 입력해주세요";
+            cloneGptDialog.style.display='';
+            document.querySelector(".textdialog").appendChild(cloneGptDialog);//입력값 출력
+            document.querySelector(".textdialog").scrollTop = document.querySelector(".textdialog").scrollHeight;//스크롤 올라가는 부분
+            document.querySelector("#userInput").value = "";
+         }
+     };
+        
+     //검색버튼 누르면 이동
+     $(".search_btn").click(function(){
+        var button = document.querySelector("#userInput").value;
+        //console.log(button);
+        if(button !== ''){
+            $('.loading_dot').css("display","block");
+            sendToChatGPT(button);
+            document.querySelector("#userInput").value = "";
+        }
+        else{
+            var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
+            cloneGptDialog.querySelector(".gptAnswer").innerHTML = "질문을 입력해주세요";
+            cloneGptDialog.style.display='';
+            document.querySelector(".textdialog").appendChild(cloneGptDialog);//입력값 출력
+            document.querySelector(".textdialog").scrollTop = document.querySelector(".textdialog").scrollHeight;//스크롤 올라가는 부분
+            document.querySelector("#userInput").value = "";
+        }
     });
+        
+    $(".btn_x").click(function(){
+        var userDialogElements = document.querySelectorAll(".userDialog");
+        var gptDialogElements = document.querySelectorAll(".gptDialog");
+
+        for (var i = 1; i < userDialogElements.length; i++) {
+            userDialogElements[i].remove();
+        }
+        for (var j = 1; j < gptDialogElements.length; j++) {
+            gptDialogElements[j].remove();
+        }
+        $("#chatbot").css("display","none");
+        $("#btnBot").css("display","block");
+        $('.loading_dot').css("display","none");
+    });
+            
     function showChatbot() {
         document.getElementById('btnBot').style.display = 'none';
         document.getElementById('chatbot').style.display = 'block';
         document.querySelector("#userInput").focus();
     }
-    
-    
-    
-    
     
     /*stt,tts시작  */
 
@@ -1121,99 +975,53 @@ ul {
 	        startTtsBtn.style.display = "inline";
 	    });
 	    stopTtsBtn.style.display = "none";
-    
-	    
-	    $.get("/config/apiKey", function (data) {
-	    	
-	        var apiKey = data;
 	        
-	        if (!('webkitSpeechRecognition' in window)) {
-	            sttMsg.innerHTML = '현재의 브라우저는 <strong>STT</strong>를 지원하지 않습니다.';
-	            startBtn.disabled = true;
-	            result.placeholder = '음성인식이 안되는 브라우저입니다.아래 버튼이 비활성화 되었습니다'
-	        } else {
-	            sttMsg.innerHTML = 'Q-Bot을 통해 받은 답변은 음성 지원이 가능합니다.';
-	            startBtn.addEventListener('click', startRecognition);
-	            initRecognition();
-	        }//////else
+	    if (!('webkitSpeechRecognition' in window)) {
+	        sttMsg.innerHTML = '현재의 브라우저는 <strong>STT</strong>를 지원하지 않습니다.';
+	        startBtn.disabled = true;
+	        result.placeholder = '음성인식이 안되는 브라우저입니다.아래 버튼이 비활성화 되었습니다'
+	    } else {
+	        sttMsg.innerHTML = 'Q-Bot을 통해 받은 답변은 음성 지원이 가능합니다.';
+	        startBtn.addEventListener('click', startRecognition);
+	        initRecognition();
+	    }//////else
 	
-	        if ('speechSynthesis' in window) {
-	            ttsMsg.innerHTML = '하단의 언어를 선택해주세요.';
+	    if ('speechSynthesis' in window) {
+	        ttsMsg.innerHTML = '하단의 언어를 선택해주세요.';
+	        loadVoices();
+	        window.speechSynthesis.onvoiceschanged = function (e) {
 	            loadVoices();
-	            window.speechSynthesis.onvoiceschanged = function (e) {
-	                loadVoices();
-	            };
-	            startTtsBtn.addEventListener('click', startSynthesis);
-	            stopTtsBtn.addEventListener('click', stopSynthesis);
-	        } else {
-	            ttsMsg.innerHTML = '현재의 브라우저는 <strong>TTS</strong>를 지원하지 않습니다.<br/><a href="http://www.google.co.uk/intl/en/chrome/browser/canary.html">다운로드</a>.';
-	        }///////else
-	        	
-	     
+	        };
+	        startTtsBtn.addEventListener('click', startSynthesis);
+	        stopTtsBtn.addEventListener('click', stopSynthesis);
+	    } else {
+	        ttsMsg.innerHTML = '현재의 브라우저는 <strong>TTS</strong>를 지원하지 않습니다.<br/><a href="http://www.google.co.uk/intl/en/chrome/browser/canary.html">다운로드</a>.';
+	    }///////else
 	        
-	        function sendToChatGPT(content) {
-	        	
-	        	var cloneUserDialog = document.querySelector(".userDialog").cloneNode(true);
-	        	
-		    	cloneUserDialog.querySelector(".usersQuestion").innerHTML = content;
-		    	cloneUserDialog.style.display='';		    	
-		    	document.querySelector(".textdialog").appendChild(cloneUserDialog);		    	
-	        	
-	            fetch('https://api.openai.com/v1/chat/completions', {
-	                method: 'POST',
-	                headers: {
-	                    'Content-Type': 'application/json',
-	                    'Authorization': 'Bearer ' + apiKey
-	                },
-	                body: JSON.stringify({
-	                    model: 'gpt-3.5-turbo',
-	                    messages: [{ role: 'user', content: content }],
-	                    temperature: 0
-	                })
-	            })
-                .then(response => {
-                    if (!response.ok) return response.text().then(text => Promise.reject(text));
-                    return response.json();
-                })
-                .then(data => {
-                	var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
-    	            cloneGptDialog.querySelector(".gptAnswer").innerHTML  = data["choices"][0]["message"]["content"];
-    	            cloneGptDialog.style.display='';
-    	            document.querySelector(".textdialog").appendChild(cloneGptDialog);
-    	            document.querySelector(".textdialog").scrollTop = document.querySelector(".textdialog").scrollHeight;
-    	            $('.loading_dot').css("display","none");
-    	            document.querySelector("#userInput").value = "";
-    	        })
-    	        .catch(error => {
-    	            console.error(error);
-    	        });
-	        }///////////sendToChatGPT(content)
-	        function initRecognition() {
-	            recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
-	            recognition.lang = 'ko-KR';
-	            recognition.maxAlternatives = 30000;
-	            recognition.interimResults = true;
-	            recognition.onspeechstart = () => console.log('Recognition Start!');
-	            recognition.onspeechend = stopRecognition;
-	            recognition.onresult = function (event) {
-	                var transcript = Array.from(event.results).map(results => results[0].transcript).join("");
-	                result.value = transcript;
-	                for (let i = event.resultIndex; i < event.results.length; ++i) {
+	    function initRecognition() {
+	        recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+	        recognition.lang = 'ko-KR';
+	        recognition.maxAlternatives = 30000;
+	        recognition.interimResults = true;
+	        recognition.onspeechstart = () => console.log('Recognition Start!');
+	        recognition.onspeechend = stopRecognition;
+	        recognition.onresult = function (event) {
+	            var transcript = Array.from(event.results).map(results => results[0].transcript).join("");
+	            result.value = transcript;
+	            for (let i = event.resultIndex; i < event.results.length; ++i) {
 	                	
-	                    if (event.results[i].isFinal) {
-	                    	$('.loading_dot').css("display","block");
-	                    	sendToChatGPT(transcript);
+	                if (event.results[i].isFinal) {
+	                    $('.loading_dot').css("display","block");
+	                    sendToChatGPT(transcript);
 	                    	
-	                    }
 	                }
-	            };
-	            recognition.onerror = function (event) {
-	                console.error('음성 인식 오류가 발생했습니다: ' + event.error);
-	            };
-	        }////////initRecognition()
-	        
-	        
-	    });/////$.get("/config/apiKey", function (data)
+	            }
+	        };
+	        recognition.onerror = function (event) {
+	            console.error('음성 인식 오류가 발생했습니다: ' + event.error);
+	        };
+	    }////////initRecognition()
+
 	
 	    function startRecognition() {
 	    	console.log('음성인식 중1')

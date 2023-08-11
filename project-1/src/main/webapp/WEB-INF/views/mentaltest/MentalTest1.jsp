@@ -429,8 +429,8 @@
 					sum:sum
 				},
 				url:'<c:url value="/project/MentalResult.do"/>',
-	    		method:'post',
-	    		dataType:'json'
+	    		method:'post'
+	    		//dataType:'json'
 			}).done((result)=>{
 				console.log('success:',result)
 				

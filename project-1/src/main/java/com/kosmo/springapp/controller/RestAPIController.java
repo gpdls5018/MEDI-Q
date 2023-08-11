@@ -35,7 +35,9 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kosmo.springapp.analyze.model.AnalyzeResultDTO;
 import com.kosmo.springapp.analyze.model.AnalyzeResultListDTO;
+import com.kosmo.springapp.model.AnalyzeReportDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
+import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.model.NutIntakeDTO;
 import com.kosmo.springapp.model.ReviewDTO;
 import com.kosmo.springapp.model.TotalReviewDTO;
@@ -141,7 +143,14 @@ public class RestAPIController {
         List<String> foodListNo = Arrays.asList(modifiedString.split(","));
         List<String> foodList = new ArrayList<>();
         for(String no : foodListNo) {
-        	foodList.add(androidServiceImpl.getFoodNameByNo(no));
+        	try {
+        		int intNo = Integer.parseInt(no);
+        		foodList.add(androidServiceImpl.getFoodNameByNo(no));
+        		System.out.println("no : "+no);
+        	} catch (Exception e) {
+        		System.out.println("no : "+no);
+        		foodList.add(no);
+			}
         }
         for (int i = 0; i < foodList.size(); i++) {
        	 	foodList.set(i, foodList.get(i).trim());
@@ -149,7 +158,9 @@ public class RestAPIController {
         Map<String,List<String>> userMap = new HashMap<>();
 		userMap.put("takePurpose", takeList);
 		userMap.put("takeFood", foodList);
+		
 		AnalyzeResultListDTO resultListDto = analyzeMyReportServiceImpl.analyzeMyReportM(userMap);
+		System.out.println("resultListDto.getResultScore() : "+resultListDto.getResultScore());
 		return resultListDto;
 	}
 	
@@ -164,7 +175,7 @@ public class RestAPIController {
 	@CrossOrigin
 	@ResponseBody
 	@GetMapping("/androidGetReviewList")
-	public List<ReviewDTO> selectReview(@RequestParam Map map) {
+	public List<ReviewDTO> selectReview(@RequestParam Map<String,String> map) {
 		System.out.println("요청 들어옴");
 		List<ReviewDTO> listDto = reviewServiceImpl.androidSelectReviewByFoodNo(map);
 		int current = Integer.parseInt(LocalDate.now().toString().split("-")[0]); //현재날짜 구하기
@@ -173,6 +184,24 @@ public class RestAPIController {
 			list.setBirth(Integer.toString((int)Math.floor((current-birtYear)/10)*10));
 		}
 		return listDto;
+	}
+	
+	
+	@GetMapping("/androidGetUserInfoByUserId/{userId}")
+	public MemberDTO androidGetUserInfoByUserId(@PathVariable(name = "userId") String userId) {
+		return androidServiceImpl.getUserInfoByUserId(userId);
+	}
+	
+	
+
+	@GetMapping("/androidSelectAnalyzeReportOne/{userId}")
+	public AnalyzeReportDTO androidSelectAnalyzeReportOne(@PathVariable(name = "userId") String userId) {
+		return analyzeMyReportServiceImpl.selectAnalyzeReport(userId);
+	}
+	
+	@GetMapping("/androidSelectAllAnalyzeReport/{userId}")
+	public List<AnalyzeReportDTO> androidSelectAllAnalyzeReport(@PathVariable(name = "userId") String userId) {
+		return analyzeMyReportServiceImpl.selectAnalyzeReportAll(userId);
 	}
 	
 }

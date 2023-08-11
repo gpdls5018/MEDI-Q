@@ -113,4 +113,7 @@
 	<select id="intakeFoodData" parameterType="String" resultType="AllFoodDTO">
 		select * from allfoodtable where no='${no}'
 	</select>
+	<select id="foodNo" parameterType="String" resultType="String">
+		SELECT * FROM foodtable WHERE productname= '${takefood}'
+	</select>
 </mapper>
