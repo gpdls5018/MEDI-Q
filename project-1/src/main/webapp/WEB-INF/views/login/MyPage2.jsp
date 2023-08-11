@@ -1118,7 +1118,16 @@ body {
 	    
 	  	//내가 선택한 영양제 클릭 시 삭제
 		$('#select-div .food-li').click(function(){
-			$(this).remove();
+			var click = $(this);
+			//console.log('click',click)
+			var foodList = food=='[]' ? "" :food.split('},');
+			for(var i=0;i<foodList.length;i++){
+				var alarm_fl = foodList[i].split(',')[3].split('=')[1];
+				var food_name = foodList[i].split(',')[1].split('=')[1];
+				if(!(food_name===click.find('div').html() && alarm_fl==='Y')){
+					click.remove();
+				}
+			}
 		});
 	});
 	

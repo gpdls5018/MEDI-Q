@@ -183,9 +183,9 @@ progress::-webkit-progress-bar {
 				<div class="jumbotron" style="padding:30px 20px; margin-bottom:15px; border-radius:25px; background-color:#f5f5f5;">
 					<div class="row">
 						<div class="col-3">
-							<div class="effect-custom-font" style="font-size:30px;">
-								<div><img src="<c:url value="/images/health_img/${dto.takePurpose}"/>.png" style="margin-left:30px; width:100px;height:100px;"/></div>
-								<div style="margin: 20px 0px 5px 20px ;"> ${dto.takePurpose}</div>
+							<div class="effect-custom-font" style="margin-top:100px; font-size:30px;">
+								<div><img src="<c:url value="/images/health_img/${dto.takePurpose}"/>.png" style="margin-left:40px; width:100px;height:100px;"/></div>
+								<div style="margin: 20px 0px; text-align: center;"> ${dto.takePurpose}</div>
 							</div>
 						</div>
 
@@ -219,8 +219,8 @@ progress::-webkit-progress-bar {
 								</c:if>
 							</c:forEach>
 						</div>
-						<span style=" margin:30px 0px 10px 50px; font-size:24px; font-weight: bold;">💊 섭취 중인 영양제 중 <strong style="color:#EF605D;">'${dto.takePurpose}'</strong>에 도움이 되는 영양제입니다</span>
-						<div class="d-flex" style="margin-left:50px; flex-direction: row;">
+						<span style="margin:30px 0px 10px 0px; width:100%; text-align:center; font-size:24px; font-weight: bold;">💊 섭취 중인 영양제 중 <strong style="color:#EF605D;">'${dto.takePurpose}'</strong>에 도움이 되는 영양제입니다</span>
+						<div class="d-flex" style="margin-left:80px; flex-direction: row;">
 							
 							<c:forEach items="${takelistfood}" var="dtos">
 								<c:if test="${dtos.key eq dto.takePurpose}" >

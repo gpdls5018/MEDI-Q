@@ -1138,10 +1138,10 @@ body {
 		$('.food').each(function(){
 			//console.log('icon',$(this).find('#alarmIcon'))
 			if($(this).find('.kWbUNE').html()===click.find('div').html() && $(this).find('#alarmIcon').length){
-				alert('해당 영양제에 알람이 등록되어있습니다\r\n알람을 먼저 해제해주세요')
+				alert('해당 영양제에 알람이 등록되어있습니다\r\n알람을 먼저 해제해주세요');
 				return false;
 			}
-			else if($(this).find('.kWbUNE').html()===click.find('div').html() && !$(this).find('#alarmIcon').length){
+			else {
 				click.remove();
 			}
 		});
@@ -1269,7 +1269,14 @@ body {
 	    
 	  	//내가 선택한 영양제 클릭 시 삭제
 		$('#select-div .food-li').click(function(){
-			$(this).remove();
+			var click = $(this);
+			$('.food').each(function(){
+				console.log('icon',$(this).find('#alarmIcon'))
+				if(!($(this).find('.kWbUNE').html()===click.find('div').html() && $(this).find('#alarmIcon').length)){
+					console.log('삭제')
+					click.remove();
+				}
+			});
 		});
 	});
 	
@@ -1472,42 +1479,33 @@ body {
 			
 			if($(this).val()==='저장'){
 				Swal.fire({//저장 시 알람 아이콘 추가/////////////////////////////
-					  title: 'Do you want to save the changes?',
-					  showDenyButton: true,
-					  showCancelButton: true,
-					  confirmButtonText: 'Save',
-					  denyButtonText: `Don't save`,
-					}).then((result) => {
-					  /* Read more about isConfirmed, isDenied below */
-					  if (result.isConfirmed) {
-						$.ajax({
-							data:{
-								type:$(this).val(),
-								id:'${info.id}',
-								foodname:foodname,
-								weekly:weekly,
-								alarm_time:$('[name=alarmTime]').val(),
-								take_pill:$('#count').html()
-							},
-							url:'<c:url value="/project/TakeAlarm.do"/>',
-							method:'post'
-						}).done(function(data){
-							console.log('success',data)
-						}).fail(function(){
-							console.log('error')
-						});
-						  
-					  	Swal.fire('Saved!', '', 'success')
-					  	location.href = window.location.href;
-					  } else if (result.isDenied) {
-					    Swal.fire('Changes are not saved', '', 'info')
-					  }
+					  //position: 'top-end',
+					  icon: 'success',
+					  title: '저장 완료',
+					  showConfirmButton: false,
+					  timer: 1500
 				})
+				$.ajax({
+					data:{
+						type:$(this).val(),
+						id:'${info.id}',
+						foodname:foodname,
+						weekly:weekly,
+						alarm_time:$('[name=alarmTime]').val(),
+						take_pill:$('#count').html()
+					},
+					url:'<c:url value="/project/TakeAlarm.do"/>',
+					method:'post'
+				}).done(function(data){
+					console.log('success',data)
+				}).fail(function(){
+					console.log('error')
+				});
 			}
 			else{//삭제 시 알람 아이콘 빼기///////////////////////////////////////
 				Swal.fire({
-					  title: 'Are you sure?',
-					  text: "You won't be able to revert this!",
+					  title: '삭제하시겠습니까?',
+					  //text: '삭제하시겠습니까?',
 					  icon: 'warning',
 					  showCancelButton: true,
 					  confirmButtonColor: '#3085d6',
@@ -1533,8 +1531,7 @@ body {
 						});
 						  
 					    Swal.fire(
-					      'Deleted!',
-					      'Your file has been deleted.',
+					      '삭제 완료',
 					      'success'
 					    )
 					    location.href = window.location.href;
