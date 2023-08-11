@@ -1,6 +1,7 @@
 package com.kosmo.springapp.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +31,7 @@ public interface SelectFoodService {
 	String healthIssueCou(String healthissue);
 	String foodNo(String takefood);
 	String checkUserinfo(String ID);
+	Map<String, String> userinfo(String ID);
 	void newUserinfo(float Fatrate,float Prorate,float Cbhrate,int healthIssueSelect,float dailyCalories,String ID);
 	void updateUserinfo(float Fatrate,float Prorate,float Cbhrate,int healthIssueSelect,float dailyCalories,String ID);
 	void newWord(String foodname);
