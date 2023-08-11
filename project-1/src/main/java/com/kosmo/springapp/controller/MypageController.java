@@ -397,10 +397,11 @@ public class MypageController {
 	@PostMapping("/MentalResult.do")
 	@ResponseBody
 	public String mentalResult(@RequestParam Map map, HttpServletRequest req) {
-		String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
+		
 		String name = map.get("name").toString();
 		System.out.println("name: "+name);
 		try {
+			String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
 			if("result".equals(name)) {//최근 결과값 필요
 				String test = map.get("test").toString();
 				System.out.println("test: "+test);
@@ -416,6 +417,9 @@ public class MypageController {
 				System.out.println("저장: "+result);
 				return Integer.toString(result);
 			}
+		}
+		catch (NullPointerException e) {
+			return map.get("sum").toString();
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
