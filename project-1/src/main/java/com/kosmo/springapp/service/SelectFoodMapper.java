@@ -28,6 +28,7 @@ public interface SelectFoodMapper {
 	List<String> RankingKeyWord();
 	List<CheckWordDTO> checkWord(String foodname);
 	String healthIssueCou(String healthissue);
+	String foodNo(String takefood);
 	void newWord(String foodname);
 	void selectKeyWord(String foodname);
 }

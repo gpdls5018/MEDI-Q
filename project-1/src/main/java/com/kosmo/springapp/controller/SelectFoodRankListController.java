@@ -300,4 +300,12 @@ public class SelectFoodRankListController {
 		model.addAttribute("casesel", 3);
 		return "ranking/FoodRank";
 	}
+	
+	 @GetMapping("/functionfood/food.do")
+	 public String foodsearch(@RequestParam String takefood) {
+		 System.out.println(takefood);
+		 String foodno = selectfoodservice.foodNo(takefood);
+		 System.out.println(foodno);
+		 return "forward:/detail.do?no="+foodno+"";
+	 }
 }
