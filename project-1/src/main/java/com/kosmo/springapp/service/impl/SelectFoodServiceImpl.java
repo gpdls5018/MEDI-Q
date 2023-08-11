@@ -114,4 +114,22 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	public String foodNo(String takefood) {
 		return mapper.foodNo(takefood);
 	}
+
+	@Override
+	public String checkUserinfo(String ID) {
+		return mapper.checkUserinfo(ID);
+	}
+
+	@Override
+	public void newUserinfo(float Fatrate, float Prorate, float Cbhrate, int healthIssueSelect, float dailyCalories,
+			String ID) {
+		mapper.newUserinfo(Fatrate, Prorate, Cbhrate, healthIssueSelect, dailyCalories, ID);
+		
+	}
+
+	@Override
+	public void updateUserinfo(float Fatrate, float Prorate, float Cbhrate, int healthIssueSelect,
+			float dailyCalories, String ID) {
+		mapper.updateUserinfo(Fatrate, Prorate, Cbhrate, healthIssueSelect, dailyCalories, ID);
+	}
 }

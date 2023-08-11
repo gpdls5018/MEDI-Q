@@ -1,7 +1,6 @@
 package com.kosmo.springapp.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -29,6 +28,9 @@ public interface SelectFoodMapper {
 	List<CheckWordDTO> checkWord(String foodname);
 	String healthIssueCou(String healthissue);
 	String foodNo(String takefood);
+	String checkUserinfo(String ID);
+	void newUserinfo(float Fatrate,float Prorate,float Cbhrate,int healthIssueSelect,float dailyCalories,String ID);
+	void updateUserinfo(float Fatrate,float Prorate,float Cbhrate,int healthIssueSelect,float dailyCalories,String ID);
 	void newWord(String foodname);
 	void selectKeyWord(String foodname);
 }

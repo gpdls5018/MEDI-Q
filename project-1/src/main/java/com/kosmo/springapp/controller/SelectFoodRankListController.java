@@ -29,6 +29,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosmo.springapp.model.AllFoodDTO;
@@ -91,6 +92,57 @@ public class SelectFoodRankListController {
 		model.addAttribute("foodlist", foodlist);
 		return "test2";
 	}
+	
+	@PostMapping("/food/userinfo.do")
+	public String userinfo( HttpServletRequest req,
+							HttpServletResponse resp,
+							@RequestParam float height,
+							@RequestParam float age,
+							@RequestParam float Weight,
+							@RequestParam float Fatrate,
+							@RequestParam float Prorate,
+							@RequestParam float Cbhrate,
+							@RequestParam int healthIssueSelect,
+							Model model
+							) {
+		float activityMultiplier= 0;
+		System.out.println(req);
+		MemberDTO memberDto = loginService.selectOne(req);
+		System.out.println(memberDto.getId());
+	    // 남성일 경우의 BMR 계산식을 사용
+	    float bmr = (float) (88.362 + (13.397 * Weight) + (4.799 * height) - (5.677 * age));
+	    // 활동 대사율 곱하기 (여기서는 예시로 '보통 활동' 계수 사용)
+	    if(healthIssueSelect==1){
+	    	activityMultiplier = (float) 1.2;
+	    }
+	    else if(healthIssueSelect==2){
+	    	activityMultiplier = (float) 1.375;
+	    }
+	    else if(healthIssueSelect==3){
+	    	activityMultiplier = (float) 1.55;
+	    }
+	    else if(healthIssueSelect==4){
+	    	activityMultiplier = (float) 1.725;
+	    }
+	    else if(healthIssueSelect==5){
+	    	activityMultiplier = (float) 1.9;
+	    }
+	    float dailyCalories = bmr * activityMultiplier;
+	    model.addAttribute("dailyCalories", dailyCalories);
+	    model.addAttribute("Prorate", Prorate);
+	    model.addAttribute("Cbhrate", Cbhrate);
+	    model.addAttribute("Fatrate", Fatrate);
+	    String CHUSIN = selectfoodservice.checkUserinfo(memberDto.getId());
+	    if(CHUSIN == null) {
+	    	selectfoodservice.newUserinfo(Fatrate, Prorate, Cbhrate, healthIssueSelect, dailyCalories,memberDto.getId());
+	    }
+	    else{
+	    	selectfoodservice.updateUserinfo(Fatrate, Prorate, Cbhrate, healthIssueSelect, dailyCalories, memberDto.getId());
+	    }
+	    // 계산된 칼로리 출력
+		return "test2";
+	}
+	
 	@GetMapping("/food/intakefood.do")
 	public String intakefood(String no,Model model,HttpServletRequest req,HttpServletResponse resp) {
 		Date currentDate = new Date();
