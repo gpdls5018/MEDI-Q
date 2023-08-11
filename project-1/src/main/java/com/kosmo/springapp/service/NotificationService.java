@@ -95,7 +95,6 @@ public class NotificationService {
     		//System.out.println("weekly: "+map.get("weekly"));
     		//System.out.println("foodtime: "+map.get("foodtime"));
     		if(map.get("weekly").toString().contains(weekly) && map.get("foodtime").equals(current)) {
-    			System.out.println("알람떠야함");
         		createReceiveNotification(map.get("foodname").toString(),map.get("foodcount").toString());//보낼 때 정보 보내야함(복용 약,정 수)
         	}
     	}
