@@ -832,7 +832,7 @@ ul {
             
         $.ajax({
             data:{content:content},
-            url:'http://127.0.0.1:8080/chatGPT?content:'+content
+            url:'http://192.168.0.37:8080/chatGPT?content:'+content
         }).done(function(answer){
             console.log('success',answer)
             cloneGptDialog.querySelector(".gptAnswer").innerText = answer;
