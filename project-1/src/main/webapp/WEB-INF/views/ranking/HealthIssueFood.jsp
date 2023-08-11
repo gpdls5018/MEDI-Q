@@ -101,7 +101,7 @@ body{
 					<div class="ipt-main-wrap">
 					<form id="healthIssueForm" action="/functionfood/healthissue.do" method="GET" >
 						<div class="ipt-main-wrap-in">
-							<select id="healthIssueSelect" onchange="submitForm()" class="ipt-main">
+							<  id="healthIssueSelect" onchange="submitForm()" class="ipt-main">
 								<option value="피로감">피로감</option>
 								<option value="스트레스 & 수면">스트레스 & 수면</option>
 								<option value="노화 & 항산화">노화 & 항산화</option>

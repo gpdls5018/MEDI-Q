@@ -123,6 +123,11 @@ body{
   max-width: 600px;
   border-radius: 5px;
 }
+.modal-content form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
      </style>
 
 	<!-- 상단배너 div -->
@@ -146,44 +151,46 @@ body{
 			<div class="content" style="background-color:#fdfbf6; padding-bottom: 20px;">
 			<!-- 건기식 또는 회사이름을 적었을 경우 -->
 				<div class="top-wrap-070">
-					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>건강 고민</span></h1>
+					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>일일 섭취량</span></h1>
 				</div>
 				<div class="overlay" id="overlay"></div>
-				<button id="openModalBtn">모달 열기</button>
+				<div style="text-align: right; margin-right: 100px">
+				<button style="border: 1px solid black;" id="openModalBtn">자신의 일일 칼로리 계산</button>
+				</div>
 				<!-- 모달 -->
 				<div id="modal" class="modal">
-			 		<div class="modal-content">
-			 			<form action="/food/userinfo.do" method="post">
-			    		<input name="height" id="height" required placeholder="키를 입력해주세요">
-				    	<input name="Weight" id="weight" required placeholder="몸무게를 입력해주세요">
-				   	 	<input name="age" id="age" value="${age }" hidden="true">
-				   	 	<input name="Fatrate" id="fatrate" required placeholder="지방의 비율을 입력해주세요">
-				   	 	<input name="Prorate" id="prorate" required placeholder="단백질의 비율을 입력해주세요">
-				   	 	<input name="Cbhrate" id="cbhrate" required placeholder="탄수화물의 비율을 입력해주세요">
-				    	<select id="healthIssueSelect" name="healthIssueSelect" onchange="submitForm()" class="ipt-main">
+			 		<div class="modal-content" style="height: 350px;">
+			 			<form action="/food/userinfo.do" style="height: 100px;" method="post">
+			    		<input name="height" id="height" style="border: 1px solid black;" required placeholder="키를 입력해주세요"><br/>
+				    	<input name="Weight" id="weight" style="border: 1px solid black;" required placeholder="몸무게를 입력해주세요"><br/>
+				   	 	<input name="Fatrate" id="fatrate" style="border: 1px solid black;" required placeholder="지방의 비율을 입력해주세요"><br/>
+				   	 	<input name="Prorate" id="prorate" style="border: 1px solid black;" required placeholder="단백질의 비율을 입력해주세요"><br/>
+				   	 	<input name="Cbhrate" id="cbhrate" style="border: 1px solid black;" required placeholder="탄수화물의 비율을 입력해주세요"><br/>
+				    	<select id="healthIssueSelect" style="border: 1px solid black;" name="healthIssueSelect" onchange="submitForm()" class="ipt-main">
 							<option value="1">앉아서 일하는 경우</option>
 							<option value="2">가벼운 활동(운동없이 약간의 활동)</option>
 							<option value="3">보통 활동(주3~4회 운동)</option>
 							<option value="4">활발한 활동(주 5~7회 운동)</option>
 							<option value="5">매우 활발한 활동(일일 운동 및 육체적 노동)</option>
 						</select>
+				   	 	<input name="age" id="age" style="border: 1px solid black;" required value="${age }" hidden="true"><br/>
 				    	<button id="caloriesBtn" name="cabtn" style="border: 1px solid black;background-color: black;color:white;font:bold;border-radius: 5px 5px 5px 5px;">칼로리 계산</button>
 				    	</form>
 					</div>
-				</div>
-			
-			
-				<div class="chart_dnt_2">
-					  <h1>칼로리기준 탄단지 비율</h1>
-					  <canvas id="chart_doughnut_2"></canvas>
-				</div>
-    			<p id="result"></p>
-    			
+				</div><br/>
+				<c:if test="${not empty Fatrate }">
+					<div class="chart_dnt_2">
+						  <h1>칼로리기준 탄단지 비율</h1>
+						  <canvas id="chart_doughnut_2"></canvas>
+					</div>
+	    			<p id="result"></p>
+    			</c:if>
 				<c:if test="${not empty fat}">
 					<div class="chart_dnt_1">
-					  <h1>탄단지 비율</h1>
+					  <h1>현재 섭취한 탄단지 비율</h1>
 					  <canvas id="chart_doughnut_1"></canvas>
 					</div>
+					<p>총 섭취한 칼로리: ${calorie }kcal</p>
 				</c:if>
 				<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
 					<div class="search-etc">
@@ -211,7 +218,7 @@ body{
 				  
 				  <div class="label-value-container">
 				    <div class="label">음식 번호:</div>
-				    <div class="input value">${foodlist.no}</div>
+				    <div class="value">${foodlist.no}</div>
 				  </div>
 				  
 				  <div class="label-value-container">
@@ -340,10 +347,10 @@ body{
             }, 400);
             return false;
         });
-        var myChart = {
+        var myChart1 = {
         		  init : function(){
-        		    myChart.chart_line();
-        		    myChart.chart_doughnut.init_doughnut();
+        		    myChart1.chart_line();
+        		    myChart1.chart_doughnut.init_doughnut();
         		  },
         		  
         		  // 차트 - 라인
@@ -354,7 +361,7 @@ body{
         		  // 차트 - 도넛   
         		  chart_doughnut : {
         		    init_doughnut : function(){
-        		      myChart.chart_doughnut.chart_1();
+        		      myChart1.chart_doughnut.chart_1();
         		    },
         		    chart_1 : function(){    
         		      var chart = document.getElementById("chart_doughnut_1");
@@ -410,7 +417,7 @@ body{
         		    // 차트1
         		  }
         		}
-        		myChart.init();
+        		myChart1.init();
         
         
 </script>
@@ -513,7 +520,6 @@ document.getElementById("openModalBtn").addEventListener("click", function() {
 	    document.getElementById("modal").style.display = "none";
 	  }
 	}
-	
 </script>
 </body>
 </html>
