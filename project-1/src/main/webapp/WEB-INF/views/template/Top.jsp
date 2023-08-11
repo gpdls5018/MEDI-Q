@@ -423,13 +423,11 @@ ul {
 		    padding: 10px;
 		    margin: 0;
         }
-        .user_ques_img{
-            width: 25px;
-            height: 25px;
-        }
         .gtp_ans_img{
-            width: 25px;
-            height: 25px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #BFDAFF;
         }
         .bot_title{
             width: 40%;
@@ -451,11 +449,11 @@ ul {
         }
         .chatbot{
             width: 450px;
-            height: 610px;
+            height: 618px;
             position:fixed;
             background-color: #ffedd4;
             border: 4px solid #FFB499;
-            border-radius: 3%;
+            border-radius: 4%;
             top:250px;
             right:70px;
             display: none;
@@ -790,15 +788,13 @@ ul {
 				    <select class="form-control p-1 ml-1" id="voice" style="width: 150px; height: 25px; font-size: 10px;"></select></label>             
 				</div>
           
-                <div class="py-2 pl-4">
+                <div class="py-2 pl-2">
                     <div class="mt-2">
+                    	<div class="d-inline-flex justify-content-center align-items-center p-0 m-1">
+                                <img src="<c:url value="/images/chatbot/mascot_Bot.png"/>" class="gtp_ans_img"/>
+                        </div>
                         <div class="skeleton-gpt row d-inline-flex align-content-center p-2 m-0">
-                        <!-- 
-                            <div class="d-inline-flex justify-content-center align-items-center p-0 m-1">
-                                <img src="/images/chatbot/bot_a.png" class="gtp_ans_img"/>
-                            </div>
-                         -->
-                            <h6 class="gptAnswer d-flex justify-content-start align-items-center p-1 m-1">안녕하세요. 무엇을 도와드릴까요?</h6>
+                            <h6 class="gptAnswer d-flex justify-content-start align-items-center p-1 m-1">안녕하세요 큐봇입니다!<br/>무엇을 도와드릴까요?</h6>
                         </div>
                     </div>
                 </div>
@@ -807,23 +803,16 @@ ul {
                     <div class="user_dialog d-flex flex-row-reverse p-1 m-0">
                         <div class="skeleton-user d-inline-flex p-1 m-0">
                         	<div class="usersQuestion d-flex justify-content-center align-items-center text-break p-0 m-2"></div>
-                        	<!-- 
-                            <div class="d-flex justify-content-center align-items-start p-0 m-1">
-                                <img src="/images/chatbot/bot_q.png" class="user_ques_img"/>
-                            </div>
-                             -->
                         </div>
                     </div>
                 </div>
                 
-                <div class="gptDialog py-2 pl-4"style="display:none;">
-                    <div class="p-0 m-1">
-                        <div class="skeleton-gpt d-inline-flex align-content-center p-1 m-0">
-                        <!-- 
-                            <div class="d-flex justify-content-center p-0 m-1">
-                                <img src="/images/chatbot/bot_a.png" class="gtp_ans_img"/>
-                            </div>
-                         -->
+                <div class="gptDialog py-2 pl-2"style="display:none;">
+               		<div class="d-flex">
+	                	<div class="p-0 mx-1">
+		                    <img src="<c:url value="/images/chatbot/mascot_Bot.png"/>" class="gtp_ans_img"/>
+		                </div>
+                        <div class="skeleton-gpt d-inline-flex align-content-center p-1 mx-1 mt-2">
                             <div class="gptAnswer d-flex justify-content-center align-items-center text-break pl-2 m-2">
                             </div>
                         </div>
@@ -831,8 +820,9 @@ ul {
                 </div>
             </div>
             <div class="inputDIV input-group mt-5">
+            	<div class="chatbot-line" style="margin-bottom: 11px;"></div>
             	<input type="checkbox" id="ham-menu">
-				<label for="ham-menu" class="ml-2" style="margin-top: 7px;">
+				<label for="ham-menu" class="ml-2" style="margin-top: 18px;">
 				  <div class="hide-des">
 				    <span class="menu-line"></span>
 				    <span class="menu-line"></span>
