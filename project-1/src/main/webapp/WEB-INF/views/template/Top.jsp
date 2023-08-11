@@ -403,7 +403,6 @@ ul {
             width: 100%;
             height: 423px;
             background-color: #FFEDD4;
-            /*border: 2px solid #ffdaa7;*/
             overflow:auto;
         }
         .skeleton-user{
@@ -413,6 +412,7 @@ ul {
 		    position: relative;
 		    padding: 10px;
 		    margin: 0;
+		    color: black !important;
         }
 
         .skeleton-gpt{
@@ -422,6 +422,7 @@ ul {
 		    position: relative;
 		    padding: 10px;
 		    margin: 0;
+		    color: black !important;
         }
         .gtp_ans_img{
             width: 40px;
@@ -473,18 +474,18 @@ ul {
             }
         }
         .form-control:focus {
-		    box-shadow: none;
+		    box-shadow: none !important;
 		    outline: none; 
-		    border: 1px solid gray;
+		    border: 1px solid gray !important;
 		}
 		.search_btn{
-			padding: 0; 
+			padding: 0 !important; 
 		    width: 0px; 
 		    height: 0px;
-		    margin-left: 5px;
+		    margin-left: 5px !important;
 		}
 		.search_btn:focus{
-			box-shadow: none;
+			box-shadow: none !important;
 		}
         /* 검색시 대기시간동안 띄우는 로딩 애니메이션 */
         .loading_dot{
@@ -573,7 +574,7 @@ ul {
 			cursor: pointer; 
 		}
 		.skeleton-gpt.active-color {
-		    color: #C24A1F;
+		    color: #C24A1F !important;
 		}
 		
 		/*Q-bot 내부 메뉴바*/	
@@ -780,7 +781,7 @@ ul {
             
             <div class="textdialog">
             	<!-- STT와 TTS 지원여부 확인 -->
-	            <div class="alert alert-danger alert-dismissible fade show pl-3 py-1 ml-4" style="width: 355px;">
+	            <div class="alert alert-danger alert-dismissible fade show pl-3 py-1 ml-4 mb-0" style="width: 358px;">
 				    <button type="button" class="close py-1" data-dismiss="alert">&times;</button>
 				    <strong id="stt-msg" style="font-size: 12px;"> </strong><br/>
 				    <strong id="tts-msg" style="font-size: 12px; margin-left: 15px;"> </strong>
