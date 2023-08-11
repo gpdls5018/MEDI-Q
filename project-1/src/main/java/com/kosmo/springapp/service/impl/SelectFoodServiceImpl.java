@@ -109,4 +109,9 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	public AllFoodDTO intakeFoodData(String no) {
 		return mapper.intakeFoodData(no);
 	}
+
+	@Override
+	public String foodNo(String takefood) {
+		return mapper.foodNo(takefood);
+	}
 }
