@@ -112,7 +112,7 @@ body{
 					        analyzeReport.score >= 25 && analyzeReport.score < 50 ? 'rgba(255, 165, 0, 0.7)' :
 					        analyzeReport.score >= 50 && analyzeReport.score < 75 ? 'rgba(0, 128, 0, 0.7)' :
 					        analyzeReport.score >= 75 && analyzeReport.score <= 100 ? 'rgba(0, 0, 255, 0.7)' : ''};" >
-			                <article class="hBxOSS" style="display: block;">
+			                <article class="hBxOSS" style="display: block; cursor:auto;">
 			                    <div class="iJGurJ">
 			                        <div style="margin: 10px 0px 0px 20px;">
 			                            <div class="enbDhJ1 mx-1">

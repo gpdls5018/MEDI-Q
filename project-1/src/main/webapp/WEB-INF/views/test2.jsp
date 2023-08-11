@@ -92,6 +92,37 @@ body{
     width: 300px;
     display: inline-block;
   }
+  .overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+/* 모달 스타일 */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 1001;
+}
+.modal-content {
+  background-color: white;
+  margin: 20% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 5px;
+}
      </style>
 
 	<!-- 상단배너 div -->
@@ -117,19 +148,28 @@ body{
 				<div class="top-wrap-070">
 					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>건강 고민</span></h1>
 				</div>
-				<input name="height" id="height" placeholder="키를 입력해주세요">
-			    <input name="Weight" id="weight" placeholder="몸무게를 입력해주세요">
-			    <input name="age" id="age" value="${age }" hidden="true">
-			    <select id="healthIssueSelect" onchange="submitForm()" class="ipt-main">
-					<option value="1">앉아서 일하는 경우</option>
-					<option value="2">가벼운 활동(운동없이 약간의 활동)</option>
-					<option value="3">보통 활동(주3~4회 운동)</option>
-					<option value="4">활발한 활동(주 5~7회 운동)</option>
-					<option value="5">매우 활발한 활동(일일 운동 및 육체적 노동)</option>
-				</select>
-			    <button name="cabtn" style="border: 1px solid black;background-color: black;color:white;font:bold;border-radius: 5px 5px 5px 5px;" onclick="calculateCalories()">칼로리 계산</button>
+				<div class="overlay" id="overlay"></div>
+				<button id="openModalBtn">모달 열기</button>
+				<!-- 모달 -->
+				<div id="modal" class="modal">
+			 		<div class="modal-content">
+			    		<input name="height" id="height" placeholder="키를 입력해주세요">
+				    	<input name="Weight" id="weight" placeholder="몸무게를 입력해주세요">
+				   	 	<input name="age" id="age" value="${age }" hidden="true">
+				    	<select id="healthIssueSelect" onchange="submitForm()" class="ipt-main">
+							<option value="1">앉아서 일하는 경우</option>
+							<option value="2">가벼운 활동(운동없이 약간의 활동)</option>
+							<option value="3">보통 활동(주3~4회 운동)</option>
+							<option value="4">활발한 활동(주 5~7회 운동)</option>
+							<option value="5">매우 활발한 활동(일일 운동 및 육체적 노동)</option>
+						</select>
+				    	<button id="caloriesBtn" name="cabtn" style="border: 1px solid black;background-color: black;color:white;font:bold;border-radius: 5px 5px 5px 5px;">칼로리 계산</button>
+					</div>
+				</div>
+			
+			
 				<div class="chart_dnt_2">
-					  <h1>탄단지 비율</h1>
+					  <h1>칼로리기준 탄단지 비율</h1>
 					  <canvas id="chart_doughnut_2"></canvas>
 				</div>
     			<p id="result"></p>
@@ -293,7 +333,7 @@ body{
             }, 400);
             return false;
         });
-        
+        closeModal();
         var myChart = {
         		  init : function(){
         		    myChart.chart_line();
@@ -471,6 +511,29 @@ body{
 	        		}
 	        		myChart.init();
 		}
+</script>
+<script>
+document.getElementById("openModalBtn").addEventListener("click", function() {
+	  document.getElementById("overlay").style.display = "block";
+	  document.getElementById("modal").style.display = "block";
+	});
+
+	// 배경 오버레이 또는 모달을 클릭하여 닫을 때 동작
+	document.getElementById("overlay").addEventListener("click", closeModal);
+	document.getElementById("modal").addEventListener("click", closeModal);
+	
+	document.getElementById("caloriesBtn").addEventListener("click", function() {
+		  calculateCalories();
+		  closeModal();
+		});
+
+	function closeModal(event) {
+	  if (event.target === document.getElementById("overlay") || event.target === document.getElementById("modal")) {
+	    document.getElementById("overlay").style.display = "none";
+	    document.getElementById("modal").style.display = "none";
+	  }
+	}
+	
 </script>
 </body>
 </html>
