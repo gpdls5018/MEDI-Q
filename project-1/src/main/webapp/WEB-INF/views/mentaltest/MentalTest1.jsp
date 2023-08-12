@@ -508,6 +508,7 @@
     			$('#result').modal('show');
     		}
     	}).fail((e)=>{
+    		console.log('error',e)
     		if(e.responseText=="error"){
     			alert('최근 결과가 없습니다');
     		}

@@ -189,7 +189,7 @@ body{
 					        analyzeReportOne.score >= 25 && analyzeReportOne.score < 50 ? 'rgba(255, 165, 0, 0.7)' :
 					        analyzeReportOne.score >= 50 && analyzeReportOne.score < 75 ? 'rgba(0, 128, 0, 0.7)' :
 					        analyzeReportOne.score >= 75 && analyzeReportOne.score <= 100 ? 'rgba(0, 0, 255, 0.7)' : ''};" >
-			                <article class="hBxOSS" style="display: block;">
+			                <article class="hBxOSS" style="display: block; cursor: auto;">
 			                    <div class="iJGurJ">
 			                        <div style="margin: 10px 0px 0px 20px;">
 			                        	
@@ -210,14 +210,14 @@ body{
 							                <c:set var="takeFood" value="${fn:replace(takeFood, ']', '')}" />
 							                <input type="hidden" value="${takeFood}" name="takeFood"/>
 							                <button type="submit" class="sanse">상세보기</button>
-						    			    <span style="margin-left: 300px;"class="delete_report" data-value="${analyzeReportOne.analyzeno}">🗑</span>  
+						    			    <span style="margin-left: 300px; cursor: pointer;"class="delete_report" data-value="${analyzeReportOne.analyzeno}">🗑</span>  
 			               					<input type="hidden" value="${analyzeReportOne.analyzeno}"/>
 					    			    </div>
 			                            <p class="jeiOCr1">${analyzeReportOne.score}<span class="ml-3" style="color:black; font-size: 20px;">점</span></p>
 			                        </div>
 			                        <div class="d-block mt-3" style="margin-left: 20px;">
-										  <div class="ZyIFk1">
-										    <span style="color: #272727;">섭취 목적</span> :<br/>
+										  <div class="ZyIFk1 mt-1">
+										    <span style="color: #272727; font-size: 18px;">섭취 목적</span> :<br/>
 											<c:set var="char11Mi" value="${fn:replace(analyzeReportOne.takePurposes, ']', '')}" />
 											<c:set var="char21Mi" value="${fn:replace(char11Mi, '[', '')}" />
 										    <c:forEach items="${fn:split(char21Mi, ',')}" var="char1" varStatus="loop">
@@ -234,8 +234,8 @@ body{
 										      </a>
 										    </c:forEach>
 										  </div>
-										  <div class="ZyIFk2">
-										    <span style="color: #272727;">섭취중인 영양제</span> :<br/>
+										  <div class="ZyIFk2 mt-4">
+										    <span style="color: #272727; font-size: 18px;">섭취중인 영양제</span> :<br/>
 										    <c:set var="char12Mi" value="${fn:replace(analyzeReportOne.takeFoods, ']', '')}" />
 											<c:set var="char22Mi" value="${fn:replace(char12Mi, '[', '')}" />
 										    <c:forEach items="${fn:split(char22Mi, ',')}" var="char2" varStatus="loop">

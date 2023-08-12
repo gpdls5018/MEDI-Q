@@ -1162,13 +1162,13 @@ body {
 		console.log('id:','${info.id}')
 		console.log('no:',$(this).parent().parent().find('[name=no]').val())
 		Swal.fire({
-			  title: 'Are you sure?',
-			  text: "You won't be able to revert this!",
+			  title: '삭제하시겠습니까?',
+			  text: "삭제한 정보는 되돌릴 수 없어요!",
 			  icon: 'warning',
 			  showCancelButton: true,
 			  confirmButtonColor: '#3085d6',
 			  cancelButtonColor: '#d33',
-			  confirmButtonText: 'Yes, delete it!'
+			  confirmButtonText: 'Delete'
 			}).then((result) => {
 			  if (result.isConfirmed) {
 				$.ajax({
@@ -1183,12 +1183,14 @@ body {
 					console.log(data)
 					if(data>=1){
 					    Swal.fire(
-					      'Deleted!',
-					      'Your file has been deleted.',
-					      'success'
+					      '삭제완료!',
+					      'success',
+					      3000
 					    )
-					}
-					location.href = window.location.href;
+					    setTimeout(function() {
+					    	location.href = window.location.href;
+						}, 3000);
+					}	
 				}).fail(function(){console.log('error')});
 			  }
 			})
