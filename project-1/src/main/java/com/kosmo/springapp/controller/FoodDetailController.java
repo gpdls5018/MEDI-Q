@@ -413,8 +413,11 @@ public class FoodDetailController {
 		 return analyzeMyReportServiceImpl.deleteAnalyzeReport(Integer.parseInt(analyzeno));
 	 }
 	 
+	 @CrossOrigin
 	 @GetMapping("/Android3DGraph")
-	 public String anroid3DGraph(@RequestParam String no) {
+	 public String anroid3DGraph(Model model,@RequestParam String no) {
+		 model.addAttribute("no",no);
+		 System.out.println("요청 들어옴");
 		 return "Anroid3dGraph";
 	 }
 	 
