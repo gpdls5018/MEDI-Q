@@ -67,7 +67,72 @@ body{
             </h3>
         </div>
     </aside>
-    <!-- ----------------------여기부터 시작----------------------------------- -->
+
+<!-- ------------------------------------------------------------------------------- -->    
+
+<div class="all-wrap">
+	<div class="all-wrap-in all-wrap-in-070">
+		<div class="ingredient-search-top">
+			<div class="content" style="background-color:#fdfbf6; padding-bottom: 20px;">
+			<!-- 건기식 또는 회사이름을 적었을 경우 -->
+
+				<div class="top-wrap-070">
+					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>건강 고민</span></h1>
+				</div>
+				<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
+					<div class="search-etc">
+					<div class="ipt-main-wrap">
+					<form action="/diet.do">
+							<input id="searchProduct3" type="text" name="takefood" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${takefood}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
+							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct3()"></button>
+					</form>
+					</div>
+					<c:forEach items="${foodlist}" var="onefooddiet">
+					    <p>Food Name: ${onefooddiet.foodname}</p>
+					    <p>One Time Serving Weight: ${onefooddiet.onetime}</p>
+					    <p>Calories: ${onefooddiet.calory}</p>
+					    <p>Carbohydrate: ${onefooddiet.Carbohydrate}</p>
+					    <p>Protein: ${onefooddiet.Protein}</p>
+					    <p>Fat: ${onefooddiet.fat}</p>
+					    <p>Sugar: ${onefooddiet.sugar}</p>
+					    <p>Sodium: ${onefooddiet.Sodium}</p>
+					    <p>Cholesterol: ${onefooddiet.Cholesterol}</p>
+					    <p>Saturated: ${onefooddiet.saturated}</p>
+					    <p>Trans Fat: ${onefooddiet["Trans "]}</p>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+		<div class="new-wide-wrap new-wide-wrap-070">
+			<div class="left-wing  ">
+			    <ul class="sm-menu-wrap">
+			        
+			    </ul>
+			</div>
+			<div class="new-wide-main new-wide-main-070 product-result">
+				<div id="itemList" class="item-cards">
+					<div class="new-wide-main new-wide-main-070 product-result">
+				<div id="itemList" class="item-cards">
+					<c:forEach items="${listData}" var="item">
+						<a id="${item.no}" href="/detail.do?no=${item.no}" tabindex="0" class="item-card" title="${item.productName} 자세히 보기" data-href="/products/1/비타민C-1000" data-product-id="1">
+						<c:if test="${not empty item.imgURL}">
+							<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
+						</c:if>
+          				<c:if test="${empty item.imgURL}">	
+							<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
+						</c:if>
+							<span class="txt1">${item.company}</span>
+							<span class="txt2">${item.productName}</span>
+							<div class="card-tags">
+							<c:set var="materialList" value="${fn:split(item.material, '$')}" />
+								<c:forEach items="${materialList}" var="mater">
+									<div class="card-tag">${mater }</div>
+								</c:forEach>
+							</div>
+						</a>
+					</c:forEach>
+				</div><!-- item-cards의 끝 -->
+				    <!-- ----------------------여기부터 시작----------------------------------- -->
 	<style>
 	/*오픈chat용 css*/	
 	#chatMessage{
@@ -220,79 +285,15 @@ body{
 				</div>
 		 -->
 <!-- -----------------------------여기가 웹소캣 실시간 채팅 끝------------------------------------- -->
-<!-- ------------------------------------------------------------------------------- -->    
-<!-- 
-<div class="all-wrap">
-	<div class="all-wrap-in all-wrap-in-070">
-		<div class="ingredient-search-top">
-			<div class="content" style="background-color:#fdfbf6; padding-bottom: 20px;">
-			<!-- 건기식 또는 회사이름을 적었을 경우 -->
-<!-- 
-				<div class="top-wrap-070">
-					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>건강 고민</span></h1>
-				</div>
-				<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
-<!-- 					<div class="search-etc">
-					<div class="ipt-main-wrap">
-					<form action="/diet.do">
-							<input id="searchProduct3" type="text" name="takefood" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${takefood}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
-							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct3()"></button>
-					</form>
-					</div>
-					<c:forEach items="${foodlist}" var="onefooddiet">
-					    <p>Food Name: ${onefooddiet.foodname}</p>
-					    <p>One Time Serving Weight: ${onefooddiet.onetime}</p>
-					    <p>Calories: ${onefooddiet.calory}</p>
-					    <p>Carbohydrate: ${onefooddiet.Carbohydrate}</p>
-					    <p>Protein: ${onefooddiet.Protein}</p>
-					    <p>Fat: ${onefooddiet.fat}</p>
-					    <p>Sugar: ${onefooddiet.sugar}</p>
-					    <p>Sodium: ${onefooddiet.Sodium}</p>
-					    <p>Cholesterol: ${onefooddiet.Cholesterol}</p>
-					    <p>Saturated: ${onefooddiet.saturated}</p>
-					    <p>Trans Fat: ${onefooddiet["Trans "]}</p>
-					</c:forEach>
-				</div>
-			</div>
-		</div>
-		<div class="new-wide-wrap new-wide-wrap-070">
-			<div class="left-wing  ">
-			    <ul class="sm-menu-wrap">
-			        
-			    </ul>
-			</div>
-			<div class="new-wide-main new-wide-main-070 product-result">
-				<div id="itemList" class="item-cards">
-					<div class="new-wide-main new-wide-main-070 product-result">
-				<div id="itemList" class="item-cards">
-					<c:forEach items="${listData}" var="item">
-						<a id="${item.no}" href="/detail.do?no=${item.no}" tabindex="0" class="item-card" title="${item.productName} 자세히 보기" data-href="/products/1/비타민C-1000" data-product-id="1">
-						<c:if test="${not empty item.imgURL}">
-							<img src="${item.imgURL }" class="item-img" alt="${item.productName}">
-						</c:if>
-          				<c:if test="${empty item.imgURL}">	
-							<img src="<c:url value="/images/thumbnail_img/No_IMG.jpeg"/>" class="item-img" alt="${item.productName}">
-						</c:if>
-							<span class="txt1">${item.company}</span>
-							<span class="txt2">${item.productName}</span>
-							<div class="card-tags">
-							<c:set var="materialList" value="${fn:split(item.material, '$')}" />
-								<c:forEach items="${materialList}" var="mater">
-									<div class="card-tag">${mater }</div>
-								</c:forEach>
-							</div>
-						</a>
-					</c:forEach>
-				</div><!-- item-cards의 끝 -->
-				
 				
 				
 				<!--<button id="moreBtn" tabindex="0" class="item-more" onclick="searchMore()">30개 더 보기</button>  -->
-<!-- 			</div>
+			</div>
 		</div>
 	</div>
 	<a id="goto_top" href="#" title="맨 위로"></a><!-- 위로가기 -->
-<!-- </div><!-- all-wrap의 끝 -->
+    </div><!-- all-wrap의 끝 -->
+    
 <script>
         if ($(this).scrollTop() > 20) {
             $('#goto_top').fadeIn();

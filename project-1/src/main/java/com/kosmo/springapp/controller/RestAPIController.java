@@ -204,4 +204,10 @@ public class RestAPIController {
 		return analyzeMyReportServiceImpl.selectAnalyzeReportAll(userId);
 	}
 	
+	@GetMapping("/androidSelectFoodByName.do/{foodName}")
+	public FunctionalFoodListDTO androidSelectFoodByName(@PathVariable(name = "foodName") String foodName) {
+		System.out.println("요청 들어옴 : "+foodName);
+		return androidServiceImpl.selectFoodByName(foodName.trim());
+	}
+	
 }

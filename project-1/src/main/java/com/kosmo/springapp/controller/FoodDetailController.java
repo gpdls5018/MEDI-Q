@@ -413,4 +413,9 @@ public class FoodDetailController {
 		 return analyzeMyReportServiceImpl.deleteAnalyzeReport(Integer.parseInt(analyzeno));
 	 }
 	 
+	 @GetMapping("/Android3DGraph")
+	 public String anroid3DGraph(@RequestParam String no) {
+		 return "Anroid3dGraph";
+	 }
+	 
 }

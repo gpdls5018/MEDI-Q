@@ -570,8 +570,17 @@ ul {
 		     30%{transform: rotate(15deg);}
 		     40%{transform: rotate(-15deg);}
 		}
+		
+		#voice{
+			display : block;
+			font-weight: 600;
+			min-width : 160px;
+			border-radius: 8px;
+			overflow : scroll !important;
+		}
 		.skeleton-gpt:hover,
-		#voice:hover{
+		#voice:hover,
+		.hide-des:hover{
 			cursor: pointer; 
 		}
 		.skeleton-gpt.active-color {
@@ -696,7 +705,7 @@ ul {
         	<c:if test="${empty mainpagenum}">
         	<li class="tsnavli">
 	            <a class="tsnava1" href="<c:url value="/NutrientSelect.do"/>">
-	             영양성분 검색
+	             영양소 검색
 	            </a>
 	       </li>
 	       <li class="tsnavli">
@@ -893,12 +902,12 @@ ul {
 			    	<div class="d-flex">
 					    <button id="startTtsBtn" class="mx-1"><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 35px;height: 36px; border-radius:15px;"></button>
 			        	<button id="stopTtsBtn" class="mx-2"><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 35px;height: 36px; border-radius:15px;"></button>
-						<label for="voice" style=" margin-top: 8px;" class="d-flex mx-2">
+						<label for="voice" style=" margin-top: 8px;" class="mx-2">
 						<select class="form-control p-1 ml-2" id="voice" style="width: 150px; height: 26px; font-size: 11px;"></select></label> 
 					</div>
 					<b class="ham-menu-text" style="margin-left: 12px;">ON</b>
 					<b class="ham-menu-text" style="margin-left: 20px;">STOP</b>
-					<b class="ham-menu-text" style="margin-left: 27px;"><img src="<c:url value='/images/chatbot/microphone.png'/>" style="width: 23px;height: 27px; padding-bottom: 6px;">
+					<b class="ham-menu-text" style="margin-left: 30px;"><img src="<c:url value='/images/chatbot/microphone.png'/>" style="width: 23px;height: 27px; padding-bottom: 6px;">
 					음성을 선택해주세요</b>
 				</div>
 			</div>
