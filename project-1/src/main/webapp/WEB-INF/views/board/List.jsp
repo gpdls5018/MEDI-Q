@@ -182,7 +182,8 @@
 		position: fixed;
 	    top: 360px; 
 	    left: 50px; 
-	    padding: 10px; 
+	    padding: 10px;
+	    background-color:#EEF5FF; 
 	    border: 1px solid #ccc; /*체크용으로 설정함*/
 	    z-index: 1000; 
 	}
@@ -244,9 +245,11 @@
 							<fieldset class="form-group" id="chatmargin">
 								<legend>오픈 채팅방</legend>
 								<!-- <img src="/images/chatbot/bot_x.png" class="btn_oc"/> --><!-- x이모티콘임 -->
-									<input type="text" class="form-control" id="chatnickname" placeholder="닉네임을 입력해주세요">
-									<input class="btn btn-primary" type="button" id="ocEnterBtn" value="입장">
-									<input class="btn btn-danger" type="button" id="ocExitBtn" value="퇴장">
+									<input type="text" class="form-control mb-3" id="chatnickname" placeholder="닉네임을 입력해주세요">
+									<div style="display: flex; justify-content: center;" class="mr-3">
+										<input class="btn btn-primary mr-2" type="button" id="ocEnterBtn" value="입장">
+										<input class="btn btn-danger ml-2" type="button" id="ocExitBtn" value="퇴장">
+									</div>
 									<!-- 여기가 채팅방시작 -->
 									<div id="chatArea" style="display: none;">
 										<!-- <h4>오픈 채팅방 내용입니다</h4>이거 삭제 할 수도 있음 -->
@@ -337,7 +340,7 @@
 		    alert('새로고침(F5)해주세요.');
 		    return;
 		}
-		ocwsocket = new WebSocket("ws://localhost:9090<c:url value="/chat-ws"/>");
+		ocwsocket = new WebSocket("ws://192.168.0.16:9090<c:url value="/chat-ws"/>");
 		$('#chatArea').show();
 		console.log('ocwsocket:',ocwsocket);
 		//서버와 연결된 웹 소켓에 이벤트 등록
