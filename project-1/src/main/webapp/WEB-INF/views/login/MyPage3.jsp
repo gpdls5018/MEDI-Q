@@ -1123,17 +1123,19 @@ body {
 		li.querySelector('div').innerHTML = foodname;
 		foodli.appendChild(li);
 	}
+	
 	//내가 선택한 영양제 클릭 시 삭제
 	$('#select-div .food-li').click(function(){
+		console.log('영양제 추가하기 전')
 		//console.log('///',$(this).find('div').html())
 		var click = $(this);
 		$('.food').each(function(){
-			//console.log('icon',$(this).find('#alarmIcon'))
+			console.log('this',$(this).find('.kWbUNE').html())
 			if($(this).find('.kWbUNE').html()===click.find('div').html() && $(this).find('#alarmIcon').length){
 				alert('해당 영양제에 알람이 등록되어있습니다\r\n알람을 먼저 해제해주세요');
 				return false;
 			}
-			else {
+			else if($(this).find('.kWbUNE').html()===click.find('div').html() && !$(this).find('#alarmIcon').length) {
 				click.remove();
 			}
 		});
@@ -1261,14 +1263,30 @@ body {
 	    
 	  	//내가 선택한 영양제 클릭 시 삭제
 		$('#select-div .food-li').click(function(){
+			console.log('영양제 추가한 후')
 			var click = $(this);
+			var flag = false;
+			var index = $('.food').length;
 			$('.food').each(function(){
-				console.log('icon',$(this).find('#alarmIcon'))
-				if(!($(this).find('.kWbUNE').html()===click.find('div').html() && $(this).find('#alarmIcon').length)){
-					console.log('삭제')
+				//console.log('index',index)
+				var last_child = click.parent().children().slice(index).find('div').html();
+				//console.log('last',last_child)
+				if($(this).find('.kWbUNE').html()===click.find('div').html() && !$(this).find('#alarmIcon').length){
+					//console.log('삭제')
 					click.remove();
 				}
+				else if(last_child===click.find('div').html()){
+					//console.log('마지막 자식 클릭')
+					if($(this).find('.kWbUNE').html() !== last_child){
+						//console.log('삭제...')
+						flag = true;
+					}
+				}
 			});
+			if(flag){
+				console.log('flag true')
+				click.remove();
+			}
 		});
 	});
 

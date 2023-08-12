@@ -132,4 +132,9 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 			float dailyCalories, String ID) {
 		mapper.updateUserinfo(Fatrate, Prorate, Cbhrate, healthIssueSelect, dailyCalories, ID);
 	}
+
+	@Override
+	public Map<String, String> userinfo(String ID) {
+		return mapper.userinfo(ID);
+	}
 }

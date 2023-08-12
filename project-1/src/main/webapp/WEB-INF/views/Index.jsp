@@ -403,11 +403,22 @@ html, body {
 					</div>
 			    </div>
 			</div>
-
-<!-- 메인 바디 부분 -->
-<div id="tsmain">
+			
+<!-- 
+<p style="position: absolute; top:100px; z-index: 999999;">
+  <button class="tset" id="tssection1" type="button">1</button>
+  <button class="tset" id="tssection2" type="button">2</button>
+  <button class="tset" id="tssection3" type="button">3</button>
+  <button class="tset" id="tssection4" type="button">4</button>
+  <button class="tset" id="tssection5" type="button">5</button>
+  <button class="tset" id="tssection6" type="button">6</button>
+  <button class="tset" id="tssection7" type="button">7</button>
+  <button class="tset" id="tssection8" type="button">8</button>
+</p>
+ -->
+ 
 	<!-- 페이지 1 -->
-	 <div class="tssection" id="tssection1">
+	 <div class="tssection tssection1" id="tssection1">
 		  <section id="section-119" style="margin-bottom: 30px;">
 		        <div class="content-slider">
 		          <input type="radio" id="banner1" class="sec-1-input" name="banner" checked>
@@ -462,7 +473,7 @@ html, body {
               
 		<!-- 검색창 밑 검색 태그용 버튼  -->
 		<!-- 페이지 2 -->
-		<div class="tssection" id="tssection2">
+		<div class="tssection tssection2" id="tssection2">
 			<img class="p2firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
 			<img class="p2secondimg" src="https://img.freepik.com/premium-photo/vitamins-herbal-supplements-jars-with-green-plant-white-background-with-space-text-biologically-active-additives_76158-538.jpg" >
 			<a type="button" class="p2firsta btn" href='<c:url value="/ranking/selectfood.do"/>' >더 보기 →</a>
@@ -512,9 +523,8 @@ html, body {
 		    </div>
 		</div>
 	    
-
      <!-- 페이지 3 -->
-	  <div class="tssection" id="tssection3">
+	  <div class="tssection tssection3" id="tssection3">
 		<img class="p3firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
 		<img class="p3secondimg" src="https://img.freepik.com/free-photo/healthy-lifestyle-of-veggies-and-fruit-slices_23-2148502235.jpg?t=st=1690263535~exp=1690264135~hmac=69f1fdeef82a37792807b85518bb146bceca7503b5c246ce5dc3a2b84c8f0535" >
 		<a type="button" class="p3firsta btn" href='<c:url value="/NutrientSelect.do"/>' >더 보기 →</a>	
@@ -550,7 +560,7 @@ html, body {
 	 </div>    
 	 
 		<!--  페이지4 -->
-	  <div class="tssection" id="tssection4">
+	  <div class="tssection tssection4" id="tssection4">
 			<img class="p4firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
 			<img class="p4secondimg" src="https://img.freepik.com/free-photo/clipboard-with-pills-frame_23-2148533094.jpg?size=626&ext=jpg&ga=GA1.2.1515223053.1688355068&semt=ais" >
 		  <div class="gCSEJp animatedright" style="margin-bottom: 100px;">
@@ -597,7 +607,7 @@ html, body {
 	  </div>
 	  
 	  <!-- 페이지5 -->
-	  <div class="tssection" id="tssection5">
+	  <div class="tssection tssection5" id="tssection5">
 		<img class="p5firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
 		<img class="p5secondimg" src="https://img.freepik.com/premium-photo/analyses-large-amounts-data-idea-business-intelligence-charts-company-finances-are-displayed-screen-that-is-simulated_27634-1108.jpg?size=626&ext=jpg&ga=GA1.1.1515223053.1688355068&semt=ais" >
 	  	<div class="section section1-2c animatedleft">
@@ -617,7 +627,7 @@ html, body {
 	  </div>
 	    
 	  	<!--  페이지6 -->
-	   <div class="tssection" id="tssection6">
+	   <div class="tssection tssection6" id="tssection6">
 	   		<img class="p6firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
 	   		<img class="p6secondimg" src="<c:url value="/images/tsimages/question.png"/>" >
 	   		<img class="p6threeimg" src="<c:url value="/images/tsimages/faqs.png"/>" >
@@ -676,7 +686,7 @@ html, body {
        
       
       <!--  페이지7 -->
-	  <div class="tssection" id="tssection7">
+	  <div class="tssection tssection7" id="tssection7">
 		<span class="tststs">영양성분과 건강에 대한 모든 것<br/> 📖<strong style="color:#EF605D"> MEDI-Q </strong> 에서 확인하세요!</span>
 		<a type="button" class="p7firsta btn" href='<c:url value="/magazineindex.do"/>' >더 보기 →</a>
 	    <div class="tscacontainer  animated">
@@ -697,7 +707,7 @@ html, body {
 	  
 	    
 	   <!--  페이지8 -->
-	  <div class="tssection" id="tssection8" style="padding-bottom: 60px;">
+	  <div class="tssection tssection8" id="tssection8" style="padding-bottom: 60px;">
 	      <div class="mainInner" style="margin: 50px 0px;">
 	            <h3 class="my-4 animated" >우리 동네에 있는<span style="color: #EF605D"> 🩺병원 & 💊약국</span>찾기</h3>
 	            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:35px 0px;">우리동네에 어떤 병원과 약국이 있을까?</p>
@@ -788,6 +798,15 @@ html, body {
  <!-- 메인 js-->
 <script src="<c:url value="/tsfolder/js/mainjs.js"/>" ></script>
 <script>
+var btnArr = document.querySelectorAll('.tset');
+
+for(let i = 0; i < btnArr.length; i++){
+
+  btnArr[i].addEventListener('click',function(e){
+    e.preventDefault();
+    document.querySelector('.tssection' + (i + 1)).scrollIntoView(true);
+  });
+}
 //파이어폭스와 크롬에서 지원하는 기능을 이용한다. 휠의 전체적인 기능을 막을 것이다. 
 window.addEventListener("wheel", function(e){
     e.preventDefault();

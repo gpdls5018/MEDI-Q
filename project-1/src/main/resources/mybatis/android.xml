@@ -30,4 +30,9 @@
  	<select id="getFoodNameByNo" parameterType="String" resultType="String">
  		SELECT PRODUCTNAME FROM FOODTABLE WHERE no= #{no}
  	</select>
+ 	<select id="selectFoodByName" parameterType="String" resultType="functionalFoodListDto">
+ 		SELECT * FROM (
+		    SELECT * FROM FOODTABLE WHERE PRODUCTNAME LIKE '%' || #{foodName} || '%'
+		) WHERE ROWNUM = 1
+ 	</select>
 </mapper>
