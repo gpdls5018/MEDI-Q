@@ -415,7 +415,7 @@ public class FoodDetailController {
 	 
 	 @GetMapping("/Android3DGraph")
 	 public String anroid3DGraph(@RequestParam String no) {
-		 return "anroid3dGraph";
+		 return "Anroid3dGraph";
 	 }
 	 
 }
