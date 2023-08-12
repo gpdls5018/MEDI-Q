@@ -684,7 +684,7 @@ ul {
         <ul class="tsnavul d-flex" style="margin-bottom: 2px;">
         	<li class="tsnavli">
 	            <a class="tsnava1" href="<c:url value="/NutrientSelect.do"/>">
-	             영양성분 검색
+	             영양소 검색
 	            </a>
 	       </li>
 	       <li class="tsnavli">
