@@ -71,6 +71,7 @@
         font-size: 40px;
         line-height: 40px;
         color: #dfc230;
+        cursor: pointer;
     }
     .bi-star {
       font-size: 40px;
@@ -146,7 +147,7 @@ body{
 
         <div class="tsarea">
             <h3 class="content-tit" style="text-align:left; margin-left: 150px;">
-                <span><span style="color:#EF605D;">MEDI-Q</span> 영양제</span>
+                <span><span style="color:#EF605D;">MEDI-Q</span> 리뷰작성</span>
                 <p style="font-weight: 500; font-size: 23px; margin-top: 20px; color:gray">실제 섭취하는 유저들의 리뷰와 피드백으로 만든<br/> 가장 믿을만한 영양제</p>
             </h3>
         </div>
@@ -308,21 +309,20 @@ body{
       .done(function(response) {
         Swal.fire({
           icon: 'success',
-          title: 'Your work has been saved',
+          title: '리뷰 저장 완료',
           showConfirmButton: false,
           timer: 1500
         })
         setTimeout(function() {
         	location.href = "/detail.do?no="+$('#productNo').val();
-        }, 1500);
+        }, 3000);
         
       })
       .fail(
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
-          footer: '<a href="">Why do I have this issue?</a>',
+          text: '리뷰가 작성되지 않았어요!',
           timer: 3000
         })
       );

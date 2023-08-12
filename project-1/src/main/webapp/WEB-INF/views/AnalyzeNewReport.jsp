@@ -45,6 +45,7 @@ body{
       background-color: white;
       color: black;
       border-radius: 15px;
+      cursor: pointer;
     }
     .card:hover {
       background-color:#ff4b4b;
@@ -61,6 +62,7 @@ body{
       color: black;
       border-radius: 15px;
       flex: 0 0 25%;
+      cursor: pointer;
     }
     .food-li:hover {
       box-shadow: 0 0 0 3px gray;
@@ -76,6 +78,7 @@ body{
     .check-effect-tag {
       color:#9e9e9e;
       background-color: white;
+      cursor: pointer;
     }
     .check-effect-tags span:hover {
       color:#ff5924;
@@ -677,7 +680,7 @@ $(document).on("click", ".food-li", function() {
     let timerInterval;
     Swal.fire({
       title: '분석중입니다!',
-      html: 'I will close in <b></b> milliseconds.',
+      html: '<b></b> 초만 기다려주세요!',
       timer: 2000,
       timerProgressBar: true,
       didOpen: () => {

@@ -439,10 +439,10 @@ ul {
             left:190px;
         }
         .chatbot-line{
-        	background-color: rgba(255, 124, 76, 0.2); 
-        	width: 390px;
+        	background-color: rgba(255, 124, 76, 0.3); 
+        	width: 400px;
         	height: 2px;
-        	margin-left: 10px;
+        	margin-left: 5px;
         }
         .usersQuestion, .gptAnswer{
             font-size: 16px;
@@ -450,12 +450,12 @@ ul {
         }
         .chatbot{
             width: 450px;
-            height: 618px;
+            height: 580px;
             position:fixed;
             background-color: #ffedd4;
             border: 4px solid #FFB499;
             border-radius: 4%;
-            top:250px;
+            top:215px;
             right:70px;
             display: none;
             z-index: 5000;
@@ -565,16 +565,46 @@ ul {
 		     animation: shake .3s; 
 		}
 		@keyframes shake { 
-		     10%{transform: rotate(7deg);}
-		     20%{transform: rotate(-7deg);}
-		     30%{transform: rotate(7deg);}
-		     40%{transform: rotate(-7deg);}
+		     10%{transform: rotate(15deg);}
+		     20%{transform: rotate(-15deg);}
+		     30%{transform: rotate(15deg);}
+		     40%{transform: rotate(-15deg);}
 		}
-		.skeleton-gpt:hover{
+		
+		#voice{
+			display : block;
+			font-weight: 600;
+			min-width : 160px;
+			border-radius: 8px;
+			overflow : scroll !important;
+		}
+		.skeleton-gpt:hover,
+		#voice:hover,
+		.hide-des:hover{
 			cursor: pointer; 
 		}
 		.skeleton-gpt.active-color {
 		    color: #C24A1F !important;
+		}
+		.scrollbar { 
+		  width: 100%;
+          height: 423px;
+		  overflow-y: scroll;
+		}
+		
+		.scrollbar::-webkit-scrollbar {
+		    width: 10px;  
+		}
+		
+		.scrollbar::-webkit-scrollbar-thumb {
+		    background: rgba(255, 128, 128, 1);
+		    border-radius: 10px;
+		}
+		
+		.scrollbar::-webkit-scrollbar-track {
+		    background: rgba(255, 128, 128, .1);
+		    border-radius: 10px;
+		    margin-top: 10px;
 		}
 		
 		/*Q-bot 내부 메뉴바*/	
@@ -596,7 +626,7 @@ ul {
 		  transform: translate(30%);
 		  z-index: 800;
 		  transition: 1s;
-		  bottom: 178px;
+		  bottom: 110px;
 		}
 		#ham-menu:checked ~ div.ham-menu {
 		  transform: translate(0px);
@@ -619,6 +649,10 @@ ul {
 		  background-color: #FF7E00;
 		  transition: 400ms;
 		  transform-origin: right center;
+		}
+		.ham-menu-text{
+			font-size: 12px;
+			color: black !important;
 		}
 		[for="ham-menu"] > div > span:nth-child(4),
 		[for="ham-menu"] > div > span:nth-child(5),
@@ -644,7 +678,18 @@ ul {
 		#ham-menu:checked + label span:nth-child(6) {
 		  transform: translateY(-7px) rotate(45deg);
 		}
-		
+		.tset {
+			border: 0px;
+			border-radius:20px;
+			background-color: rgba(0, 0, 0, 0.0);
+			color: #FD9F28;
+			font-weight: 600;
+			align-items: center;
+			font-size: 21px;
+			text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+		}
+
+			
     </style>
 </head>
 <body>
@@ -657,9 +702,10 @@ ul {
         </a>
         
         <ul class="tsnavul d-flex" style="margin-bottom: 2px;">
+        	<c:if test="${empty mainpagenum}">
         	<li class="tsnavli">
 	            <a class="tsnava1" href="<c:url value="/NutrientSelect.do"/>">
-	             영양성분 검색
+	             영양소 검색
 	            </a>
 	       </li>
 	       <li class="tsnavli">
@@ -677,6 +723,17 @@ ul {
 	             맞춤 상담 Q&A
 	            </a>
 	       </li>
+	       </c:if>
+	       <c:if test="${mainpagenum == 1}">
+	       	  <li class="tsnavli"><button class="tset" id="tssection1" type="button">홈</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection2" type="button">영양제</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection3" type="button">영양소</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection4" type="button">분석</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection5" type="button">건강검진</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection6" type="button">Q&A</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection7" type="button">메거진</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection8" type="button">지도</button></li>
+	       </c:if>
         </ul>
         
         <fmt:bundle basename="config.tokens">
@@ -779,14 +836,12 @@ ul {
             </div>
 			<div class="chatbot-line"></div>
             
-            <div class="textdialog">
+            <div class="textdialog scrollbar">
             	<!-- STT와 TTS 지원여부 확인 -->
-	            <div class="alert alert-danger alert-dismissible fade show pl-3 py-1 ml-4 mb-0" style="width: 358px;">
+	            <div class="alert alert-danger alert-dismissible fade show mb-0 mt-1">
 				    <button type="button" class="close py-1" data-dismiss="alert">&times;</button>
-				    <strong id="stt-msg" style="font-size: 12px;"> </strong><br/>
-				    <strong id="tts-msg" style="font-size: 12px; margin-left: 15px;"> </strong>
-				    <label for="voice" style="font-size: 12px; margin-top: 8px;" class="d-flex ml-3"><img src="<c:url value='/images/chatbot/voice.png'/>" style="width: 35px;height: 25px;">
-				    <select class="form-control p-1 ml-1" id="voice" style="width: 150px; height: 25px; font-size: 10px;"></select></label>             
+				    <strong id="stt-msg" style="font-size: 12px; margin-left: 10px;"> </strong><br/>
+				    <strong id="tts-msg" style="font-size: 12px; margin-left: 10px;"> </strong>
 				</div>
           
                 <div class="py-2 pl-2">
@@ -820,10 +875,10 @@ ul {
                     </div>
                 </div>
             </div>
-            <div class="inputDIV input-group mt-5">
-            	<div class="chatbot-line" style="margin-bottom: 11px;"></div>
+            <div class="chatbot-line" style="margin-top: 10px;"></div>
+            <div class="inputDIV input-group" style="margin-top: 10px;">
             	<input type="checkbox" id="ham-menu">
-				<label for="ham-menu" class="ml-2" style="margin-top: 18px;">
+				<label for="ham-menu" class="ml-2" style="margin-top: 6px;">
 				  <div class="hide-des">
 				    <span class="menu-line"></span>
 				    <span class="menu-line"></span>
@@ -834,10 +889,6 @@ ul {
 				  </div>
 				
 				</label>
-				<div class="ham-menu ml-1">
-				    <button id="startTtsBtn" class="mx-1"><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 35px;height: 36px; border-radius:15px;"></button>
-		        	<button id="stopTtsBtn"><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 35px;height: 36px; border-radius:15px;"></button>
-				</div>
     
 			    <div class="position-relative" style="margin-left: 53px;">                   
 			        <input type="text" class="form-control rounded-start bg-light" id="userInput" placeholder="무엇이든 물어보세요" style="width: 310px; height: 40px; padding-right: 45px; border-radius:45px;">
@@ -846,6 +897,19 @@ ul {
 			    <div class="input-group-append">
 			    	<button id="startBtn" class="ml-2"><img src="<c:url value='/images/chatbot/mike.png'/>" style="width: 37px;height: 37px; border-radius: 50%;"></button>
 			    </div>
+			    
+			    <div class="ham-menu ml-1" id="hamMenuContent">
+			    	<div class="d-flex">
+					    <button id="startTtsBtn" class="mx-1"><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 35px;height: 36px; border-radius:15px;"></button>
+			        	<button id="stopTtsBtn" class="mx-2"><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 35px;height: 36px; border-radius:15px;"></button>
+						<label for="voice" style=" margin-top: 8px;" class="mx-2">
+						<select class="form-control p-1 ml-2" id="voice" style="width: 150px; height: 26px; font-size: 11px;"></select></label> 
+					</div>
+					<b class="ham-menu-text" style="margin-left: 12px;">ON</b>
+					<b class="ham-menu-text" style="margin-left: 20px;">STOP</b>
+					<b class="ham-menu-text" style="margin-left: 30px;"><img src="<c:url value='/images/chatbot/microphone.png'/>" style="width: 23px;height: 27px; padding-bottom: 6px;">
+					음성을 선택해주세요</b>
+				</div>
 			</div>
             
             <!-- 
@@ -898,7 +962,7 @@ ul {
                         })
                         .then(async function(token) {
                         	await fetch('/webpush', { method: 'post', body: token})
-                        	/*
+                        	
                         	//포그라운드일 때
                             messaging.onMessage(payload => {
                             	var dts = new Date(2023, 6, 22, 19, 51, 0, 0);
@@ -913,9 +977,7 @@ ul {
                                     registration.showNotification(title, options);
                                     console.log('time:',options.timestamp)
                                 })
-                                
-                            })
-                            */
+                            }) 
                         })
                         .catch(function(err) {
                             console.log("Error Occured");
@@ -1038,11 +1100,13 @@ ul {
 	            console.log("selectedAnswer.value:", selectedAnswer.value);
 	            utterance.voiceURI = selectedVoice.voiceURI;
 	            utterance.lang = selectedVoice.lang;
-	         // 음성 합성이 완료된 후에 호출될 이벤트 핸들러
-	            utterance.onend = function() {
-	                startTtsBtn.style.display = "inline";
-	                stopTtsBtn.style.display = "none";
-	            };
+	            /*
+		         // 음성 합성이 완료된 후에 호출될 이벤트 핸들러
+		            utterance.onend = function() {
+		                startTtsBtn.style.display = "inline";
+		                stopTtsBtn.style.display = "none";
+		            };
+	            */
 	        }
 	        window.speechSynthesis.speak(utterance);
 	    });
@@ -1098,13 +1162,13 @@ ul {
 	        startBtn.disabled = true;
 	        result.placeholder = '음성인식이 안되는 브라우저입니다.아래 버튼이 비활성화 되었습니다'
 	    } else {
-	        sttMsg.innerHTML = 'Q-Bot을 통해 받은 답변은 음성 지원이 가능합니다.';
+	        sttMsg.innerHTML = '<img src="<c:url value="/images/magazine_images/basic/check.png"/>" style="width: 17px;height: 30px; padding-bottom:7px;"/>오늘의 건강 고민, 실시간으로 Q-Bot이 해결해드려요.';
 	        startBtn.addEventListener('click', startRecognition);
 	        initRecognition();
 	    }//////else
 	
 	    if ('speechSynthesis' in window) {
-	        ttsMsg.innerHTML = '하단의 언어를 선택해주세요.';
+	        ttsMsg.innerHTML = '<img src="<c:url value="/images/magazine_images/basic/check.png"/>" style="width: 17px;height: 30px; padding-bottom:7px;"/>Q-Bot을 통해 받은 답변은 음성 지원이 가능합니다.';
 	        loadVoices();
 	        window.speechSynthesis.onvoiceschanged = function (e) {
 	            loadVoices();
@@ -1175,7 +1239,26 @@ ul {
 	
 	});/////////$(document).ready(function ()
 			
-	
+	document.addEventListener("DOMContentLoaded", function () {
+	    const hamMenu = document.getElementById("ham-menu");
+	    const chatbot = document.getElementById("chatbot");
+	    const hamMenuContent = document.getElementById("hamMenuContent");
+	    let isOpen = false;
+	    
+	    hamMenu.addEventListener("click", function () {
+	        if (isOpen) {
+	            chatbot.style.height = "580px";
+	            hamMenuContent.style.display = "none";
+	        } else {
+	            chatbot.style.height = "650px";
+	            hamMenuContent.style.display = "block";
+	        }
+	        
+	        isOpen = !isOpen;
+	    });
+	});
+			
+			
 	//QR
 	document.addEventListener("DOMContentLoaded", function() {
 	    var mascotImage = document.getElementById("mascotImage");

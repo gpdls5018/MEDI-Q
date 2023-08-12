@@ -78,8 +78,10 @@ public class HelloSpringController {
 		List likes=mapper.likeList(map);
 		//System.out.println("likes:체크"+likes);
 		model.addAttribute("likes", likes);
-		
 		model.addAttribute("listData", listData);
+		
+		int mainpagenum = 1;
+		model.addAttribute("mainpagenum",mainpagenum);
 		
 		// 조회수에 따른 인기영양소 Top10 가져오기
 		List<String> top10 = nutrietnSelectMapper.getTop10();

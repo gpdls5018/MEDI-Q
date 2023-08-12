@@ -5,7 +5,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <jsp:include page="/WEB-INF/views/template/SelectFoodListStyleScript.jsp"/>
-     <style>
+
+<style>
 body{
 	background-color: white;
 }
@@ -302,7 +303,137 @@ body{
 	</div>
 	<a id="goto_top" href="#" title="맨 위로"></a><!-- 위로가기 -->
 </div><!-- all-wrap의 끝 -->
+<style>
+	#searchBtn{
+		width:40px;
+		height:40px;
+		border-radius:20px;
+		background-color:#FF6666;
+		position:relative;
+		left:50px;
+		bottom:50px;
+	}
+	#camera_icon{
+		width:25px;
+		height:25px;
+	}
+</style>
+<!-- ocr 추가 부분 -->
+<button type="button" class="d-flex justify-content-center align-items-center" id="searchBtn" data-toggle="modal" data-target="#searchModal">
+	<img id="camera_icon" src="<c:url value='/images/chatbot/camera_icon.png'/>">
+</button>
+<div class="modal fade" id="searchModal">
+	<div class="modal-dialog modal-dialog-centered" style="width:480px;">
+		<div class="modal-content">
+			<!-- 타이틀 부분 -->
+			<div class="modal-header d-flex flex-wrap justify-content-center align-items-center p-0 m-0">
+				<h2 class="font-weight-bold p-0 ml-5">사진으로 영양제 검색</h2>
+				<button type="button" class="close_btn p-0 m-0 text-info" style="font-size:35px; position:relative; left:40px;" data-dismiss="modal">&times;</button>
+			</div>
+			<!-- 사진 출력 부분 -->
+			<div class="modal-body m-2" style="width:400px; height:380px; position:relative; left:50px;">
+				<div class="d-inline-flex justify-content-center pb-2">
+					<input type="file" id="file_photo" accept="image/*" hidden>
+					<input type="text" id="file_text" class="ml-3" style="height:38px;">
+					<button type="button" id="btn_search" class="btn btn-primary ml-2">사진 찾기</button>
+				</div>
+				<div id="preview" class="d-flex justify-content-center align-items-center m-3" style="width:280px;height:280px;"></div>
+			</div>
+			<!-- 버튼 부분 -->
+			<div class="modal-footer d-flex justify-content-center">
+				<form action="/searchphotono.do" class="d-flex align-content-center" method="GET">
+					<input type="text" class="border border-info" id="searchPhoto" name="searchPhotoName" style="width:300px; height:38px;">
+					<button type="submit" class="btn btn-danger ml-3" id="search_btn">검색</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ocr 추가 부분 끝 -->
 <script>
+/* 파일 선택 관련 시작 */
+window.addEventListener('DOMContentLoaded',function(){
+    var file = document.querySelector('#file_photo');
+    var button = document.querySelector('#btn_search');
+    var text = document.querySelector('#file_text');
+    var preview = document.querySelector('#preview');
+    var currentImage = null;
+    
+    $(document).ready(function(){
+    	$('#searchBtn').click(function(){
+    		$("#searchModal").modal({backdrop: "static" });
+    	});
+    });
+
+    button.onclick = function(){
+        var evt = new MouseEvent("click", {
+            bubbles: true,
+            cancelable: true,
+            view: window,
+        });
+        file.dispatchEvent(evt);
+    };
+
+    file.onchange = function(e){
+        console.log('파일 선택 완료:', e.target.value);
+        var path = e.target.value.split('\\');
+        text.value = path[path.length - 1];
+        
+        if (currentImage) {
+            preview.removeChild(currentImage);
+            currentImage = null;
+        }
+        
+        const selectedFile = e.target.files[0];
+
+        if (selectedFile) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                //img.style.maxWidth = '95%';
+                img.style.height = '100%';
+
+                currentImage = img;
+                preview.appendChild(img);
+                
+				//Base64인코딩
+    			var base64=e.target.result.split(",")[1];
+    			//console.log(base64);
+    			//여기서 Base64인코딩된 문자열을 Flask REST API서버로 전송한다
+    			$.ajax({
+    				url:"http://192.168.0.60:5000/ocr",
+    				method:'post',
+    				data:JSON.stringify({'base64':base64}),
+    				contentType:"application/json",
+    				dataType:'text'
+    			}).done(function(data){
+    				console.log('플라스크 서버로부터 받은 데이타:',data);
+    				document.querySelector('#searchPhoto').value = data;
+    			});
+            };
+            reader.readAsDataURL(selectedFile);
+        }
+    };
+    
+    $('.close_btn').click(function(e){
+    	if(currentImage != null){
+			preview.removeChild(currentImage);
+			currentImage = null;
+    	}
+		document.querySelector('#file_text').value = '';
+		document.querySelector('#searchPhoto').value = '';
+	});
+    
+    $('#search_btn').click(function(e){
+    	setTimeout(function() {
+            document.querySelector('#file_text').value = '';
+            document.querySelector('#searchPhoto').value = '';
+        }, 1000);
+    });
+});
+/* 파일 선택 관련 끝 */
         if ($(this).scrollTop() > 20) {
             $('#goto_top').fadeIn();
             $('.f-footer-row1').addClass('active');

@@ -978,19 +978,18 @@ body {
 
 	//내가 선택한 영양제 클릭 시 삭제
 	$('#select-div .food-li').click(function(){
+		console.log('영양제 추가하기 전')
 		var click = $(this);
-		//console.log('click',click)
 		var foodList = food=='[]' ? "" :food.split('},');
+
 		for(var i=0;i<foodList.length;i++){
 			var alarm_fl = foodList[i].split(',')[3].split('=')[1];
 			var food_name = foodList[i].split(',')[1].split('=')[1];
-			//console.log('alarm_fl:',alarm_fl)
-			//console.log('food_name:',food_name)
-			if(food_name===click.find('div').html() && alarm_fl==='Y'){
-				alert('해당 영양제에 알람이 등록되어있습니다\r\n알람을 먼저 해제해주세요')
-				return false;
+			if(food_name==click.find('div').html() && alarm_fl=='Y'){
+				alert('해당 영양제에 알람이 등록되어있습니다\r\n알람을 먼저 해제해주세요');
+				break;
 			}
-			else if(food_name===click.find('div').html() && !alarm_fl==='Y'){
+			else if(food_name===click.find('div').html() && alarm_fl !== 'Y'){
 				click.remove();
 			}
 		}
@@ -1118,15 +1117,42 @@ body {
 	    
 	  	//내가 선택한 영양제 클릭 시 삭제
 		$('#select-div .food-li').click(function(){
+			//console.log('영양제 추가한 후')
 			var click = $(this);
 			//console.log('click',click)
 			var foodList = food=='[]' ? "" :food.split('},');
+			var flag = false;
+			console.log('list',foodList)
 			for(var i=0;i<foodList.length;i++){
 				var alarm_fl = foodList[i].split(',')[3].split('=')[1];
 				var food_name = foodList[i].split(',')[1].split('=')[1];
-				if(!(food_name===click.find('div').html() && alarm_fl==='Y')){
-					click.remove();
+				var last_child = $(this).parent().children().slice(foodList.length).find('div').html();
+				console.log('click',click.find('div').html())
+				console.log('last',last_child)
+				console.log('this',$(this).find('div').html())
+				console.log('food_name:',food_name)
+				if(food_name===click.find('div').html()){
+					if(alarm_fl==='Y'){
+						//console.log('alert 창 뜨기')
+						//alert('해당 영양제에 알람이 등록되어있습니다\r\n알람을 먼저 해제해주세요')
+						flag = false;
+						return false;
+					}
+					else if(alarm_fl !== 'Y'){
+						//console.log('삭제')
+						flag = true;
+					}
 				}
+				else if(last_child===click.find('div').html()){
+					//console.log('마지막 자식 클릭')
+					if(food_name !== last_child){
+						//console.log('삭제...')
+						flag = true;
+					}
+				}
+			}
+			if(flag){
+				click.remove();
 			}
 		});
 	});
@@ -1136,13 +1162,13 @@ body {
 		console.log('id:','${info.id}')
 		console.log('no:',$(this).parent().parent().find('[name=no]').val())
 		Swal.fire({
-			  title: 'Are you sure?',
-			  text: "You won't be able to revert this!",
+			  title: '삭제하시겠습니까?',
+			  text: "삭제한 정보는 되돌릴 수 없어요!",
 			  icon: 'warning',
 			  showCancelButton: true,
 			  confirmButtonColor: '#3085d6',
 			  cancelButtonColor: '#d33',
-			  confirmButtonText: 'Yes, delete it!'
+			  confirmButtonText: 'Delete'
 			}).then((result) => {
 			  if (result.isConfirmed) {
 				$.ajax({
@@ -1157,12 +1183,14 @@ body {
 					console.log(data)
 					if(data>=1){
 					    Swal.fire(
-					      'Deleted!',
-					      'Your file has been deleted.',
-					      'success'
+					      '삭제완료!',
+					      'success',
+					      3000
 					    )
-					}
-					location.href = window.location.href;
+					    setTimeout(function() {
+					    	location.href = window.location.href;
+						}, 3000);
+					}	
 				}).fail(function(){console.log('error')});
 			  }
 			})

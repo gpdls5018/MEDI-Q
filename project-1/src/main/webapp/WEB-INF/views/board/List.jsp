@@ -152,10 +152,10 @@
 }
 .tsarea {
 	position: absolute;
-	width: 700px;
+	width: 1000px;
 	height: 250px;
-	top:120px;
-	left:150px;
+	top:170px;
+	left:50px;
 	border:none;
 	z-index: 2;
 	text-align: center;
@@ -169,12 +169,22 @@ body{
 	color:gray;
 	margin:0px 10px 10px 0px;
 	list-style: none;
-	border: 1px solid #E6E9ED;
+	border: 2px solid #E6E9ED;
 	transition: all 0.3s ease 0s;
+	border-radius: 10px;
+	font-weight: bold;
 }
 .page-link:hover{
 	color:gray;
 	
+}
+.page-item:last-child .page-link {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.page-item:first-child .page-link {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 </style>
 	<!-- 상단배너 div -->
@@ -184,9 +194,9 @@ body{
         <div class="visual-img-con animatedleft"></div>	
 
         <div class="tsarea">
-            <h3 class="content-tit" style="text-align:left; margin-left: 120px;">
-                <span style="color:#EF605D; font-size: 32px;">Q &amp; A</span>
-                <p style="font-weight: 600; font-size: 40px; margin-top: 10px; color:gray">답답했던 영양제의 모든 것!<br/> 전문가에게 물어보세요</p>
+            <h3 class="content-tit" style="text-align:left; margin-left: 150px;">
+                <span><span style="color:#EF605D;">MEDI-Q</span> Q&amp;A</span>
+                <p style="font-weight: 500; font-size: 23px; margin-top: 20px; color:gray">답답했던 영양제의 모든 것!<br/> 이제는 전문가에게 1 : 1로 물어보세요</p>
             </h3>
         </div>
     </aside>

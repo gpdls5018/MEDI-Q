@@ -291,7 +291,8 @@
 
         <div class="tsarea">
             <h3 class="content-tit" style="text-align:left; margin-left: 150px;">
-                <span>영양제와 건강에 대한 모든 것,<br/><span style="color:#EF605D;">MEDI-Q</span>에서 확인하세요!</span>
+                <span><span style="color:#EF605D;">MEDI-Q</span> 매거진</span>
+                <p style="font-weight: 500; font-size: 23px; margin-top: 20px; color:gray">전문가가 알려주는 영양제와 건강에 대한 모든 것,<br/>메디큐 칼럼에서 확인하세요!</p>
             </h3>
         </div>
     </aside>
@@ -317,7 +318,7 @@
 			        </h2>
 		        </div>
 		         -->
-		       <div id="banner" class="carousel slide mt-2 mb-4" data-ride="carousel">
+		       <div id="banner" class="carousel slide mt-2 mb-4" data-ride="carousel" data-interval="3000">
 				  <ul class="carousel-indicators">
 				    <li data-target="#banner" data-slide-to="0" class="active"></li>
 				    <li data-target="#banner" data-slide-to="1"></li>

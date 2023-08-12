@@ -46,4 +46,8 @@ public class AndroidServiceImpl {
 		return loginService.selectOne(id);
 	}
 
+	public FunctionalFoodListDTO selectFoodByName(String foodName) {
+		return androidMapper.selectFoodByName(foodName);
+	}
+
 }

@@ -132,4 +132,7 @@
 		    ACTSTAGE = '${healthIssueSelect}'
 		WHERE ID = '${ID}'
 	</update>
+	<select id="userinfo" parameterType="String" resultType="map">
+		select * from userkcal where id = '${ID}'
+	</select>
 </mapper>

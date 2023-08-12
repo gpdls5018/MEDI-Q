@@ -418,9 +418,9 @@ public class MypageController {
 				return Integer.toString(result);
 			}
 		}
-		catch (NullPointerException e) {
-			return map.get("sum").toString();
-		}
+		//catch (NullPointerException e) {
+			//return map.get("sum").toString();
+		//}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
 			return "error";
