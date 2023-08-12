@@ -15,13 +15,16 @@ import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
-
+/*
+import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.service.JWTokensService;
+import com.kosmo.springapp.service.impl.LoginServiceImpl;
+*/
 
 //웹소켓 서버
 @Component
 public class WebSocketServer extends TextWebSocketHandler {
-	
+	/*
 	//토큰용 아래 3개 주입
 	@Autowired
 	private JWTokensService jwTokensService;
@@ -29,7 +32,9 @@ public class WebSocketServer extends TextWebSocketHandler {
 	private String secretKey;
 	@Value("${token-name}")
 	private String tokenName;
-	
+	@Autowired
+	private LoginServiceImpl loginService;
+	*/
 	
 	//접속한 클라이언트를 저장하기 위한 속성(멤버변수)]
 	//키는 웹소켓 세션 아이디
@@ -40,65 +45,26 @@ public class WebSocketServer extends TextWebSocketHandler {
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		//-컬렉션에 연결된 클라이언트 추가
 		clients.put(session.getId(), session);
-		System.out.println(session.getId()+"연결되었습니다.");
+		System.out.println("clients에 담김"+clients);
+		System.out.println(session.getId()+"연결되었습니다11111111.");
 		
-		//관리자 id 테스트 중
-		//1.방법
-		//String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
-		//2.방법
+		//MemberDTO memberDto = loginService.selectOne(req);
+		//System.out.println(memberDto.getId());
+		//회원인 경우
 		/*
-		URI uri = session.getUri();
-	    String query = uri.getQuery();
-	    Map<String, String> queryParameters = parseQueryParameters(query); // 쿼리 파라미터를 파싱하는 메서드 필요
-	    String token = queryParameters.get("token");
-
-	    // 토큰을 검증하고 아이디를 추출
-	    String id = jwTokensService.getTokenPayloads(token, secretKey).get("sub").toString();
-	    */
-		//3.방법
-		/*
-		Map<String, Object> handshakeAttributes = session.getAttributes();
-	    ServletServerHttpRequest request = (ServletServerHttpRequest) handshakeAttributes.get("HTTP_REQUEST");
-	    HttpHeaders headers = request.getHeaders();
-	    String cookie = headers.getFirst(HttpHeaders.COOKIE);
-
-	    String token = parseTokenFromCookie(cookie, "User-Token");
-	    
-	    // 토큰에서 사용자 ID 확인하기
-	    String userId = jwTokensService.getTokenPayloads(token, secretKey).get("sub").toString();
-
-	    if ("KIM".equals(userId)) {
-	        // KIM이 관리자이므로 관리자로 처리합니다.
-	        // 여기에 필요한 로직을 추가합니다.
-	    	System.out.println("아이디가 KIM이면 출력websocket테스트");
-	    }*/
-		
+		String token= jwTokensService.getToken(req, tokenName);//token을 가져옴
+		Map payload = jwTokensService.getTokenPayloads(token, secretKey);//payload로 만듬
+		if(payload.get("sub") != null) {//payload는 map형태의 많은 데이터(이건 TRUE)하지만 .get("sub")를 통해 아이디가 있는지 판별(있으면 null이 아님)
+			String id=payload.get("sub").toString();//가져온 id를 String id에 저장(현재 로그인한 아이디)
+			model.addAttribute("id", id);//모델에 id란 이름으로 id 저장
+			
+			//작성자가 관리자인지 아닌지 체크, id로 회원정보 가져와서 active 정보 가져옴
+			String active=loginService.selectOne(id).getActive();
+			//System.out.println("active:"+active);//"Y, A, N 중 하나"
+			model.addAttribute("active", active);//model에 active로 저장
+		}*/
 	}
-	/*
-	//2번 실험
-	//관리자를 받기 위한 추가 테스트
-	private Map<String, String> parseQueryParameters(String query) {
-	    Map<String, String> parameters = new HashMap<>();
-	    for (String param : query.split("&")) {
-	        String[] keyValuePair = param.split("=");
-	        if (keyValuePair.length > 1) {
-	            parameters.put(keyValuePair[0], keyValuePair[1]);
-	        }
-	    }
-	    return parameters;
-	}*/
-	/*
-	// User-Token 쿠키 값을 파싱하는 메소드
-	private String parseTokenFromCookie(String cookie, String tokenName) {
-	    for (String keyValue : cookie.split(";\\s*")) {
-	        String[] pairs = keyValue.split("=");
-	        if (pairs.length == 2 && tokenName.equals(pairs[0])) {
-	            return pairs[1];
-	        }
-	    }
-	    return null;
-	}
-	*/
+	
 	//클라이언트로부터 메시지를 받았을때 자동 호출되는 콜백 메소드]
 	//여기서 클라이언트로 메시지도 보냄(푸쉬)
 	@Override

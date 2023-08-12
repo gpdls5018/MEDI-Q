@@ -4,6 +4,7 @@
 <jsp:include page="/WEB-INF/views/template/Top.jsp"/>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 <title>MEDI Q</title>
 <style>
@@ -12,170 +13,213 @@
        	height:280px;
        	background-color:#FDCDBC;
            border-radius: 30px;
-       }
-       .qna_title{
+    }
+    .qna_title{
        	position:relative;
        	top:calc(100vh - 96vh);
        	left:10%;
        	color:white;
        	margin:0px;
-       }
-       .qna_img{
-           position:absolute;
-           width: 200px;
-           top:calc(100vh - 85vh);
-           right:20%;
-       }
-       .text_1{
+    }
+    .qna_img{
+        position:absolute;
+        width: 200px;
+        top:calc(100vh - 85vh);
+        right:20%;
+    }
+    .text_1{
        	font-size:70px;
        	font-weight:bold;
-       }
-       .text_2{
+    }
+    .text_2{
        	font-size:30px;
        	font-weight:bold;
-       }
-       .text_3{
+    }
+    .text_3{
        	font-size:20px;
        	font-weight:bold;
-       }
-		.qna_now{
-			height:80px;
-		}
-		.qna_ans{
-			height:80px;
-		}
-		.card_deco{
-			width: 92%;
-		    display: block;
-		    background: #FFFFFF;
-		    border: 1px solid #E6E9ED;
-		    box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
-		    border-radius: 20px;
-		    text-align: left;
-		}
-		.card_deco_body{
-			padding:0.5rem;
-			background-color:#fc6124;
-			border-radius: 20px;
-		}
-		.btn_deco{
-			width:110px;
-	       	height:40px;
-			background-color: #ff956c;
-			border-radius:10px;
-			box-shadow: 1px 1px 2px gray;
-			border: none;
-			color:white;
-		}
-		.btn_deco:hover {
-			color:rgba(255,255,255,0.8);
-		} 
-		.qna_mascot{
-			width:40px;
-			position:relative;
-			border-radius: 50%;
-			background-size:contain;
-		}
-		.card_font1{
-			font-weight: 700;
-		    display: block;
-		    font-size: 20px;
-		    line-height: 26px;
-		    text-align: left;
-		    color: #101219;
-		    overflow: hidden;
-		    text-overflow: ellipsis;
-		    display: -webkit-box;
-		    -webkit-line-clamp: 2;
-		    -webkit-box-orient: vertical;
-		}
-		.card_font2{
-			font-weight: 600;
-		    display: block;
-		    text-align: left;
-		    font-size: 16px;
-		    line-height: 24px;
-		    color: #787E8B;
-		    margin: 8px 0px 0px;
-		    overflow: hidden;
-		    text-overflow: ellipsis;
-		    display: -webkit-box;
-		    -webkit-line-clamp: 2;
-		    -webkit-box-orient: vertical;
-		}
-		.card_font3 {
-			color: #9BA1AA;
-		    font-weight: 500;
-		    font-size: 14px;
-		    line-height: 22px;
-		}
-		.a_deco{
-			color:black;
-			cursor: pointer;
-		}
-		.a_deco:hover{
-			color:gray;
-		}
-.tsnava2:after {
-	display: none;
-}
-
-#contentInfoCon {
-    position: relative;
-    height: 383px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-#contentInfoCon .content-sub-tit {
-    font-size: 16px;
-    color: #222;
-    overflow: hidden;
-}
-#contentInfoCon .content-tit {
-    color: #222;
-    font-size: 45px;
-    font-weight: 700;
-    line-height: 1.36;
-    letter-spacing: -0.02em;
-    margin-top: 37px;
-}
-.visual-img-con {
-	position:absolute;
-	width:100%;
-	height:100%;
-    background: url("https://www.hectohealthcare.com/resources/images/layout/sub_visual_brand.jpg") no-repeat;
-    background-color: #fff;
-    z-index: 1;
-    top:70px;
-	border:none;
-}
-.tsarea {
-	position: absolute;
-	width: 700px;
-	height: 250px;
-	top:120px;
-	left:150px;
-	border:none;
-	z-index: 2;
-	text-align: center;
-	box-shadow: 0px 0px 0px white;
-	align-items: center;
-}
-body{
-	background-color: #fdfbf6;
-}
-.page-link{
-	color:gray;
-	margin:0px 10px 10px 0px;
-	list-style: none;
-	border: 1px solid #E6E9ED;
-	transition: all 0.3s ease 0s;
-}
-.page-link:hover{
-	color:gray;
+    }
+	.qna_now{
+		height:80px;
+	}
+	.qna_ans{
+		height:80px;
+	}
+	.card_deco{
+		width: 92%;
+		display: block;
+		background: #FFFFFF;
+		border: 1px solid #E6E9ED;
+		box-shadow: 0px 2px 10px rgba(70, 56, 147, 0.1);
+		border-radius: 20px;
+		text-align: left;
+	}
+	.card_deco_body{
+		padding:0.5rem;
+		background-color:#fc6124;
+		border-radius: 20px;
+	}
+	.btn_deco{
+		width:110px;
+	    height:40px;
+		background-color: #ff956c;
+		border-radius:10px;
+		box-shadow: 1px 1px 2px gray;
+		border: none;
+		color:white;
+	}
+	.btn_deco:hover {
+		color:rgba(255,255,255,0.8);
+	} 
+	.qna_mascot{
+		width:40px;
+		position:relative;
+		border-radius: 50%;
+		background-size:contain;
+	}
+	.card_font1{
+		font-weight: 700;
+	    display: block;
+	    font-size: 20px;
+	    line-height: 26px;
+	    text-align: left;
+	    color: #101219;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    -webkit-line-clamp: 2;
+	    -webkit-box-orient: vertical;
+	}
+	.card_font2{
+		font-weight: 600;
+	    display: block;
+	    text-align: left;
+	    font-size: 16px;
+	    line-height: 24px;
+	    color: #787E8B;
+	    margin: 8px 0px 0px;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    -webkit-line-clamp: 2;
+	    -webkit-box-orient: vertical;
+	}
+	.card_font3 {
+		color: #9BA1AA;
+	    font-weight: 500;
+	    font-size: 14px;
+	    line-height: 22px;
+	}
+	.a_deco{
+		color:black;
+		cursor: pointer;
+	}
+	.a_deco:hover{
+		color:gray;
+	}
+	.tsnava2:after {
+		display: none;
+	}
 	
-}
+	#contentInfoCon {
+	    position: relative;
+	    height: 383px;
+	    display: flex;
+	    align-items: center;
+	    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+	#contentInfoCon .content-sub-tit {
+	    font-size: 16px;
+	    color: #222;
+	    overflow: hidden;
+	}
+	#contentInfoCon .content-tit {
+	    color: #222;
+	    font-size: 45px;
+	    font-weight: 700;
+	    line-height: 1.36;
+	    letter-spacing: -0.02em;
+	    margin-top: 37px;
+	}
+	.visual-img-con {
+		position:absolute;
+		width:100%;
+		height:100%;
+	    background: url("https://www.hectohealthcare.com/resources/images/layout/sub_visual_brand.jpg") no-repeat;
+	    background-color: #fff;
+	    z-index: 1;
+	    top:70px;
+		border:none;
+	}
+	.tsarea {
+		position: absolute;
+		width: 700px;
+		height: 250px;
+		top:120px;
+		left:150px;
+		border:none;
+		z-index: 2;
+		text-align: center;
+		box-shadow: 0px 0px 0px white;
+		align-items: center;
+	}
+	body{
+		background-color: #fdfbf6;
+	}
+	.page-link{
+		color:gray;
+		margin:0px 10px 10px 0px;
+		list-style: none;
+		border: 1px solid #E6E9ED;
+		transition: all 0.3s ease 0s;
+	}
+	.page-link:hover{
+		color:gray;
+		
+	}
+	/*openchat용 css시작*/
+	.ocfixed{
+		position: fixed;
+	    top: 360px; 
+	    left: 50px; 
+	    padding: 10px; 
+	    border: 1px solid #ccc; /*체크용으로 설정함*/
+	    z-index: 1000; 
+	}
+	#chatMessage{
+	 	height:300px;
+	 	background:#FBFFDC;
+	 	border:1px solid #EDEAED;
+	 	overflow:auto;
+	}
+	.ext {
+		text-align: left;
+	}
+	.ext span {
+		background: #D0F5BE;
+		border-radius: 18px 15px 18px 2px;
+		margin:10px 20px;
+	}
+	.int {
+		text-align: right;
+	}
+	.int span {
+		background: #98EECC;
+		border-radius: 15px 18px 2px 18px;
+		margin:10px 20px;
+	}
+	.ocspan{
+		display: inline-block;
+		max-width: 180px;
+		padding: 5px 10px;
+		position: relative;
+		word-wrap: break;
+	}
+	.btn_oc{
+		width: 20px;
+  		height: 20px;
+	}
+	/*오픈chat용 css 끝*/	
 </style>
 	<!-- 상단배너 div -->
 	<aside id="contentInfoCon" class="area animated">
@@ -193,7 +237,28 @@ body{
 
         <div class="container-fluid" style="padding-top:150px">
             <div class="row d-flex flex-wrap align-content-stretch">
-                <div class="d-flex col-3"></div>
+            	<!-- 오픈채팅방 시작 -->
+                <div class="d-flex col-3">
+                	<div class="ocfixed">
+	                	<div class="container">
+							<fieldset class="form-group" id="chatmargin">
+								<legend>오픈 채팅방</legend>
+								<!-- <img src="/images/chatbot/bot_x.png" class="btn_oc"/> --><!-- x이모티콘임 -->
+									<input type="text" class="form-control" id="chatnickname" placeholder="닉네임을 입력해주세요">
+									<input class="btn btn-primary" type="button" id="ocEnterBtn" value="입장">
+									<input class="btn btn-danger" type="button" id="ocExitBtn" value="퇴장">
+									<!-- 여기가 채팅방시작 -->
+									<div id="chatArea" style="display: none;">
+										<!-- <h4>오픈 채팅방 내용입니다</h4>이거 삭제 할 수도 있음 -->
+										<div id="chatMessage"></div>
+										<!-- 메세지 등록버튼 -->
+										<!-- message를 ociMessage로 변경 -->
+										<input type="text" class="form-control" id="ociMessage" placeholder="채팅을 입력해주세요">
+									</div>
+							</fieldset>
+						</div><!-- container -->
+					</div>
+                </div><!-- col-3 -->
                 <div class="d-flex col-6 flex-wrap flex-direction justify-content-center align-content-stretch">
                     <div class="row pb-3"><!-- 세로로 자주찾는 질문&답변 게시물-->
                     	<!-- 인기 있는 질문시작 -->
@@ -259,4 +324,80 @@ body{
     </main>
 	<!-- 페이징 출력 -->
 	<div class="p-3">${listPagingData.pagingString}</div>
+<script>
+	//오픈채팅용 자바스크립트 시작
+	//오픈채팅웹소켓 저장용
+	var ocwsocket;
+	//오픈채팅닉네임 저장용
+	var chatnickname;
+	//내가 닉네임을 적어서 오픈채팅창 방에 들어오는 걸로 확정!
+	$('#ocEnterBtn').one('click',function(){
+		chatnickname = $('#chatnickname').val();
+		if (chatnickname.trim() === '') {
+		    alert('새로고침(F5)해주세요.');
+		    return;
+		}
+		ocwsocket = new WebSocket("ws://localhost:9090<c:url value="/chat-ws"/>");
+		$('#chatArea').show();
+		console.log('ocwsocket:',ocwsocket);
+		//서버와 연결된 웹 소켓에 이벤트 등록
+		ocwsocket.onopen = open;
+		$(this).prop('disabled', true);
+	    $('#chatnickname').prop('readonly', true);
+
+		ocwsocket.onclose = function(){
+			appendMessage(" 연결이 끊어졌습니다.");
+			appendMessage("<br>재접속은 새로고침(F5).");
+			appendMessage("<br>이후의 메세지는" + "<br>" + "전달되지 않습니다.");
+		};
+		ocwsocket.onmessage=receive;//ocwsocket이 메세지를 받으면 recevive함수 실행
+		ocwsocket.onerror=function(e){
+			console.log('에러 발생:',e);
+		};
+	});
+	//서버에 연결되었을때 호출되는 콜백함수
+	function open(){
+		//서버로 연결한 사람의 정보(닉네임) 전송
+		//사용자가 입력한 닉네임 저장
+		chatnickname = $('#chatnickname').val();
+		ocwsocket.send('msg:'+chatnickname+' 가(이) 입장했습니다.');
+		appendMessage(" 참가하였습니다.");
+		$('#ociMessage').focus();
+	}
+	//서버에서 메세지를 받을때마다 호출되는 함수
+	function receive(e){
+		//서버로부터 받은 데이타는 이벤트객체(e).data속성에 저장되어 있다.
+		console.log('서버로부터 받은 메세지:',e.data);
+		if(e.data.substring(0,4).toUpperCase() ==='MSG:'){
+			//서버로부터 받은 메세지를 msg:부분을 자르고 div로 출력
+			appendMessage('<p class="ext"><span class="ocspan">'+e.data.substring(4)+'</span></p>');
+		}
+	}
+	//사용자가 입력한 메세지(확인용) 또는 서버로부터 받은 메세지를 채팅창에 출력하는 함수
+	function appendMessage(msg){
+		$('#chatMessage').append(msg);
+		//스크롤바를 자동으로 위로 올리기
+		$('#chatMessage').get(0).scrollTop=$('#chatMessage').get(0).scrollHeight;
+	}
+	
+	//퇴장 버튼
+	$('#ocExitBtn').one('click',function(){
+		ocwsocket.send('msg:'+chatnickname+' 가(이) 퇴장했습니다.');
+		ocwsocket.close();
+		//$('#chatArea').hide();//퇴장 버튼 누를시 채팅 내용이 없어짐(애매함)
+	});
+	//
+	$('#ociMessage').on('keypress',function(e){
+		
+		if(e.keyCode===13){//엔터 입력
+			//입력한 메시지 서버로 전송
+			ocwsocket.send('msg: '+chatnickname+': '+$(this).val());
+			appendMessage('<p class="int"><span class="ocspan">'+$(this).val()+"</span></p>");
+			$(this).val("");
+			//포커스 주기
+			$(this).focus();
+		}
+	});
+	//오픈채팅용 자바스크립트 끝
+</script>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>

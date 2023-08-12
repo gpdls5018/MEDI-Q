@@ -570,8 +570,17 @@ ul {
 		     30%{transform: rotate(15deg);}
 		     40%{transform: rotate(-15deg);}
 		}
+		
+		#voice{
+			display : block;
+			font-weight: 600;
+			min-width : 160px;
+			border-radius: 8px;
+			overflow : scroll !important;
+		}
 		.skeleton-gpt:hover,
-		#voice:hover{
+		#voice:hover,
+		.hide-des:hover{
 			cursor: pointer; 
 		}
 		.skeleton-gpt.active-color {
@@ -669,6 +678,17 @@ ul {
 		#ham-menu:checked + label span:nth-child(6) {
 		  transform: translateY(-7px) rotate(45deg);
 		}
+		.tset {
+			border: 0px;
+			border-radius:20px;
+			background-color: rgba(0, 0, 0, 0.0);
+			color: #FD9F28;
+			font-weight: 600;
+			align-items: center;
+			font-size: 21px;
+			text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+		}
+
 			
     </style>
 </head>
@@ -682,6 +702,7 @@ ul {
         </a>
         
         <ul class="tsnavul d-flex" style="margin-bottom: 2px;">
+        	<c:if test="${empty mainpagenum}">
         	<li class="tsnavli">
 	            <a class="tsnava1" href="<c:url value="/NutrientSelect.do"/>">
 	             영양소 검색
@@ -702,6 +723,17 @@ ul {
 	             맞춤 상담 Q&A
 	            </a>
 	       </li>
+	       </c:if>
+	       <c:if test="${mainpagenum == 1}">
+	       	  <li class="tsnavli"><button class="tset" id="tssection1" type="button">홈</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection2" type="button">영양제</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection3" type="button">영양소</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection4" type="button">분석</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection5" type="button">건강검진</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection6" type="button">Q&A</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection7" type="button">메거진</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection8" type="button">지도</button></li>
+	       </c:if>
         </ul>
         
         <fmt:bundle basename="config.tokens">
@@ -870,12 +902,12 @@ ul {
 			    	<div class="d-flex">
 					    <button id="startTtsBtn" class="mx-1"><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 35px;height: 36px; border-radius:15px;"></button>
 			        	<button id="stopTtsBtn" class="mx-2"><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 35px;height: 36px; border-radius:15px;"></button>
-						<label for="voice" style=" margin-top: 8px;" class="d-flex mx-2">
+						<label for="voice" style=" margin-top: 8px;" class="mx-2">
 						<select class="form-control p-1 ml-2" id="voice" style="width: 150px; height: 26px; font-size: 11px;"></select></label> 
 					</div>
 					<b class="ham-menu-text" style="margin-left: 12px;">ON</b>
 					<b class="ham-menu-text" style="margin-left: 20px;">STOP</b>
-					<b class="ham-menu-text" style="margin-left: 27px;"><img src="<c:url value='/images/chatbot/microphone.png'/>" style="width: 23px;height: 27px; padding-bottom: 6px;">
+					<b class="ham-menu-text" style="margin-left: 30px;"><img src="<c:url value='/images/chatbot/microphone.png'/>" style="width: 23px;height: 27px; padding-bottom: 6px;">
 					음성을 선택해주세요</b>
 				</div>
 			</div>
