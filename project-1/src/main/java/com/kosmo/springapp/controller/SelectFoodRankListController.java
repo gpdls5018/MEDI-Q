@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -87,9 +88,18 @@ public class SelectFoodRankListController {
     }
 	
 	@GetMapping("/food/foodsearch.do")
-	public String foodsearch(String food,Model model) {
+	public String foodsearch(String food,Model model,HttpServletRequest req,HttpServletResponse resp) {
 		List<AllFoodDTO> foodlist = selectfoodservice.FoodSearch(food);
+		MemberDTO memberDto = loginService.selectOne(req);
+		String ID = memberDto.getId();
+		Map<String, String> userinfo = selectfoodservice.userinfo(ID);
 		model.addAttribute("foodlist", foodlist);
+		if(userinfo != null) {
+			model.addAttribute("dailyCalories", userinfo.get("KCAL"));
+		    model.addAttribute("Prorate", userinfo.get("PRORATE"));
+		    model.addAttribute("Cbhrate", userinfo.get("CBHRATE"));
+		    model.addAttribute("Fatrate", userinfo.get("FATRATE"));
+		}
 		return "test2";
 	}
 	
@@ -165,18 +175,39 @@ public class SelectFoodRankListController {
 		selectfoodservice.IntakeFood(no, ID);
 		for(String foodno:selectfoodservice.intakeFoodNo(formatDate, ID)) {
 			AllFoodDTO AFD = selectfoodservice.intakeFoodData(foodno);
+			if(AFD.getCalorie() != null) {
 			calorie += Float.parseFloat(AFD.getCalorie());
+			}
+			if(AFD.getProtein() != null) {
 			protein += Float.parseFloat(AFD.getProtein());
+			}
+			if(AFD.getFat() != null) {
 			fat += Float.parseFloat(AFD.getFat());
+			}
+			if(AFD.getCarbohydrate() != null) {
 			carbohydrate += Float.parseFloat(AFD.getCarbohydrate());
+			}
+			if(AFD.getSugar() != null) {
 			sugar += Float.parseFloat(AFD.getSugar());
+			}
+			if(AFD.getDietaryfiber() != null) {
 			dietaryfiber += Float.parseFloat(AFD.getDietaryfiber());
+			}
+			if(AFD.getSaturatedfat() != null) {
 			saturatedfat += Float.parseFloat(AFD.getSaturatedfat());
+			}
+			if(AFD.getUnsaturatedfat() != null) {
 			unsaturatedfat += Float.parseFloat(AFD.getUnsaturatedfat());
+			}
+			if(AFD.getCholesterol() != null) {
 			cholesterol += Float.parseFloat(AFD.getCholesterol());
+			}
+			if(AFD.getSodium() != null) {
 			sodium += Float.parseFloat(AFD.getSodium());
-			transfat += Float.parseFloat(AFD.getTransfat());
-			
+			}
+			if(AFD.getTransfat() != null) {
+				transfat += Float.parseFloat(AFD.getTransfat());
+			}
 		}
 		
 		model.addAttribute("calorie", calorie);
@@ -192,7 +223,14 @@ public class SelectFoodRankListController {
 		model.addAttribute("transfat", transfat);
 		model.addAttribute("calorie", calorie);
 		
+		Map<String, String> userinfo = selectfoodservice.userinfo(ID);
 		
+		if(userinfo != null) {
+			model.addAttribute("dailyCalories", userinfo.get("KCAL"));
+		    model.addAttribute("Prorate", userinfo.get("PRORATE"));
+		    model.addAttribute("Cbhrate", userinfo.get("CBHRATE"));
+		    model.addAttribute("Fatrate", userinfo.get("FATRATE"));
+		}
 		System.out.println("칼로린:"+calorie);
 		System.out.println("단백질:"+protein);
 		System.out.println("지방:"+fat);
@@ -205,7 +243,6 @@ public class SelectFoodRankListController {
 		System.out.println("콜레스테롤:"+cholesterol);
 		System.out.println("나트륨:"+sodium);
 		model.addAttribute("age", nowYear-Integer.parseInt(memberDto.getBirth().substring(0, 4)));
-		System.out.println(nowYear-Integer.parseInt(memberDto.getBirth().substring(0, 4)));
 		return "test2";
 	}
 	@GetMapping("/food/test2.do")
@@ -213,7 +250,14 @@ public class SelectFoodRankListController {
 		MemberDTO memberDto = loginService.selectOne(req);
 		int nowYear = LocalDate.now().getYear();
 		model.addAttribute("age", nowYear-Integer.parseInt(memberDto.getBirth().substring(0, 4)));
-		System.out.println(nowYear-Integer.parseInt(memberDto.getBirth().substring(0, 4)));
+		String ID = memberDto.getId();
+		Map<String, String> userinfo = selectfoodservice.userinfo(ID);
+		if(userinfo != null) {
+		model.addAttribute("dailyCalories", userinfo.get("KCAL"));
+	    model.addAttribute("Prorate", userinfo.get("PRORATE"));
+	    model.addAttribute("Cbhrate", userinfo.get("CBHRATE"));
+	    model.addAttribute("Fatrate", userinfo.get("FATRATE"));
+		}
 		return "test2";
 	}
 
