@@ -227,12 +227,7 @@ ul {
                             success: function (response) {
                             	var predictionResult =  (response[0][1]*100).toFixed(1);
                             	var predictionResultText = document.getElementById('predictionResultText');
-<<<<<<< HEAD
-                                predictionResultText.textContent ='발병확률: '+ predictionResult+' %';
-=======
-                                predictionResultText.textContent ='발병확률 '+ predictionResult+' %';
->>>>>>> 3b9a82cbdf43260e12ef07001a25100ef4609dae
-                     
+                                predictionResultText.textContent ='발병확률: '+ predictionResult+' %';                     
                             	var predictionModal = new bootstrap.Modal(document.getElementById('predictionModal'));
                             	predictionModal.show();
                             }
