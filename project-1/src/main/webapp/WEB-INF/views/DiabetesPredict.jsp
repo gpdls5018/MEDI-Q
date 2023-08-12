@@ -35,7 +35,44 @@ body {
 	margin-top: 70px;
 }
 
-
+ul {
+    list-style: none;
+}
+.pakinul {
+    margin-left: 20px;
+    padding: 0px;
+    font-size: 16px;
+    line-height: 28px;
+    color: #595959;
+    word-break: break-all;
+    vertical-align: top;
+    border: 0px;
+    text-decoration: none;
+}
+.pakinul span {
+	display: inline-block;
+    margin-top: 13px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 2px;
+    background-color: #111111;
+    opacity: 0.3;
+    margin-right: 6px;
+}
+.pakinul li {
+	width: 100%;
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 30px;
+    margin-top: 17px;
+    margin-bottom: 17px;
+    text-align: justify;
+    font-size: 15px;
+}
 
 </style>
 
@@ -112,9 +149,12 @@ body {
 			        <div class="col-6" style="width: 400px; height: 400px; flex-grow: 1; display: flex; align-items: center; justify-content: center; padding-left: 0px;">
 						<ul class="pakinul">
 	                		<li class="text-center" style="font-weight:bold; font-size: 25px; margin-bottom: 40px; margin-top: 0px;"><b>당뇨병 진단과정</b></li>
-	                    	<li><span></span>MEDI-Q는 파킨슨병 진행시 발생하는 <b style="color: #EF605D">중추신경계 손상에 의한 떨림 증상을 기반으로</b> 머신러닝 알고리즘이 수집된 데이터를 분석하여 건강상태를 확인합니다.</li>
-	                    	<li><span></span>사용자의 손떨림을 모니터링하고, 그림판에 <b style="color: #EF605D">그린 나선을 분석하여 현재 파킨슨병 진행상황을 예측합니다.</b></li>
-	                    	<li><span></span>나선 그리기 진단시스템을 이용해 환자와 의료 전문가는 증상 변화를 빠르게 파악하고 치료 계획을 조정할 수 있습니다.</li>
+
+	                    	<li><span></span>연령·체형 40세 이상으로 비만한 사람</li>
+	                    	<li><span></span>가족력 가까운 친척 중에서 당뇨병이 있는 사람</li>
+	                    	<li><span></span>자각증상 갈증, 다음, 다뇨, 다식, 피로감, 체중감소 등의 증상이 있는 사람</li>
+	                    	<li><span></span>당뇨병이 합병되기 쉬운 질환이 있는 사람 고혈압, 췌장염, 내분비 질환, 담석증</li>
+	                    	<li><span></span>당뇨병 발병을 촉진하는 약물을 사용하고 있는 사람, 스테로이드 제품을 장기간 복용하는 사람</li>
 	                	</ul>		            
 	                </div>
 			     </div>
@@ -187,7 +227,11 @@ body {
                             success: function (response) {
                             	var predictionResult =  (response[0][1]*100).toFixed(1);
                             	var predictionResultText = document.getElementById('predictionResultText');
+<<<<<<< HEAD
                                 predictionResultText.textContent ='발병확률: '+ predictionResult+' %';
+=======
+                                predictionResultText.textContent ='발병확률 '+ predictionResult+' %';
+>>>>>>> 3b9a82cbdf43260e12ef07001a25100ef4609dae
                      
                             	var predictionModal = new bootstrap.Modal(document.getElementById('predictionModal'));
                             	predictionModal.show();
