@@ -945,9 +945,7 @@ ul {
                                     registration.showNotification(title, options);
                                     console.log('time:',options.timestamp)
                                 })
-                                
-                            })
-                            
+                            }) 
                         })
                         .catch(function(err) {
                             console.log("Error Occured");
