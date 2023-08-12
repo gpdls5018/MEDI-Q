@@ -557,14 +557,6 @@ body {
 	    display: none; /* 크롬, 사파리, 오페라, 엣지 */
 	}
 	
-	/* close 버튼 */
-	.fa-xmark:hover,.fa-magnifying-glass:hover{
-		cursor: pointer;
-	}
-	.fa-magnifying-glass{
-		margin-left: auto;
-	}
-	
 /* 알림버튼 on/off */
 .btn-onoff{
   position: relative;
@@ -1279,49 +1271,6 @@ body {
 			});
 		});
 	});
-	
-	//close버튼 클릭 시 리뷰 삭제하기
-	$('.fa-xmark').click(function(){
-		console.log('id:','${info.id}')
-		console.log('no:',$(this).parent().parent().find('[name=no]').val())
-		Swal.fire({
-			  title: 'Are you sure?',
-			  text: "You won't be able to revert this!",
-			  icon: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: 'Yes, delete it!'
-			}).then((result) => {
-			  if (result.isConfirmed) {
-				$.ajax({
-					data:{
-						id:'${info.id}',
-						no:$(this).parent().parent().find('[name=no]').val()
-					},
-					url:'<c:url value="/DeleteReview.do"/>',
-					method:'post',
-					dataType:'json'
-				}).done(data=>{
-					console.log(data)
-					if(data>=1){
-					    Swal.fire(
-					      'Deleted!',
-					      'Your file has been deleted.',
-					      'success'
-					    )
-					}
-					location.href = window.location.href;
-				}).fail(function(){console.log('error')});
-			  }
-			})
-	});
-	
-	//리뷰 돋보기 클릭 시 상세보기 페이지 이동
-	$('.fa-magnifying-glass').click(function(){
-		var no = $(this).parent().parent().find("[name=no]").val();
-		location.href = '<c:url value="/detail.do?no="/>'+no;
-	});
 
 	//이미지 수정하기
 	$('#imgEdit').click(function(){
@@ -1483,7 +1432,7 @@ body {
 					  icon: 'success',
 					  title: '저장 완료',
 					  showConfirmButton: false,
-					  timer: 1500
+					  timer: 3000
 				})
 				$.ajax({
 					data:{
@@ -1510,7 +1459,7 @@ body {
 					  showCancelButton: true,
 					  confirmButtonColor: '#3085d6',
 					  cancelButtonColor: '#d33',
-					  confirmButtonText: 'Yes, delete it!'
+					  confirmButtonText: 'Delete'
 					}).then((result) => {
 					  if (result.isConfirmed) {
 						  $.ajax({
@@ -1534,7 +1483,9 @@ body {
 					      '삭제 완료',
 					      'success'
 					    )
-					    location.href = window.location.href;
+					    setTimeout(function() {
+					    	location.href = window.location.href;
+					    }, 3000);
 					  }
 				})
 			}
