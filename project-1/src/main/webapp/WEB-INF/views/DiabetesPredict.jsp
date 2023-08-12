@@ -187,7 +187,7 @@ body {
                             success: function (response) {
                             	var predictionResult =  (response[0][1]*100).toFixed(1);
                             	var predictionResultText = document.getElementById('predictionResultText');
-                                predictionResultText.textContent ='발병확률'+ predictionResult+' %';
+                                predictionResultText.textContent ='발병확률: '+ predictionResult+' %';
                      
                             	var predictionModal = new bootstrap.Modal(document.getElementById('predictionModal'));
                             	predictionModal.show();
