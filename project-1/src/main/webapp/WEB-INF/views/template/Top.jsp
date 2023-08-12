@@ -909,7 +909,7 @@ ul {
                         })
                         .then(async function(token) {
                         	await fetch('/webpush', { method: 'post', body: token})
-                        	/*
+                        	
                         	//포그라운드일 때
                             messaging.onMessage(payload => {
                             	var dts = new Date(2023, 6, 22, 19, 51, 0, 0);
@@ -926,7 +926,7 @@ ul {
                                 })
                                 
                             })
-                            */
+                            
                         })
                         .catch(function(err) {
                             console.log("Error Occured");
