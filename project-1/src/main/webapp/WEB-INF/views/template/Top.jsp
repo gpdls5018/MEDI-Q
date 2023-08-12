@@ -577,6 +577,26 @@ ul {
 		.skeleton-gpt.active-color {
 		    color: #C24A1F !important;
 		}
+		.scrollbar { 
+		  width: 100%;
+          height: 423px;
+		  overflow-y: scroll;
+		}
+		
+		.scrollbar::-webkit-scrollbar {
+		    width: 10px;  
+		}
+		
+		.scrollbar::-webkit-scrollbar-thumb {
+		    background: rgba(255, 128, 128, 1);
+		    border-radius: 10px;
+		}
+		
+		.scrollbar::-webkit-scrollbar-track {
+		    background: rgba(255, 128, 128, .1);
+		    border-radius: 10px;
+		    margin-top: 10px;
+		}
 		
 		/*Q-bot 내부 메뉴바*/	
 		#ham-menu {
@@ -623,6 +643,7 @@ ul {
 		}
 		.ham-menu-text{
 			font-size: 12px;
+			color: black !important;
 		}
 		[for="ham-menu"] > div > span:nth-child(4),
 		[for="ham-menu"] > div > span:nth-child(5),
@@ -783,7 +804,7 @@ ul {
             </div>
 			<div class="chatbot-line"></div>
             
-            <div class="textdialog">
+            <div class="textdialog scrollbar">
             	<!-- STT와 TTS 지원여부 확인 -->
 	            <div class="alert alert-danger alert-dismissible fade show mb-0 mt-1">
 				    <button type="button" class="close py-1" data-dismiss="alert">&times;</button>
@@ -1111,13 +1132,13 @@ ul {
 	        startBtn.disabled = true;
 	        result.placeholder = '음성인식이 안되는 브라우저입니다.아래 버튼이 비활성화 되었습니다'
 	    } else {
-	        sttMsg.innerHTML = '<img src="<c:url value="/images/magazine_images/basic/check.png"/>" style="width: 17px;height: 30px; padding-bottom:7px;"/> Q-Bot이 건강 고민을 해결해드릴게요.';
+	        sttMsg.innerHTML = '<img src="<c:url value="/images/magazine_images/basic/check.png"/>" style="width: 17px;height: 30px; padding-bottom:7px;"/>오늘의 건강 고민, 실시간으로 Q-Bot이 해결해드려요.';
 	        startBtn.addEventListener('click', startRecognition);
 	        initRecognition();
 	    }//////else
 	
 	    if ('speechSynthesis' in window) {
-	        ttsMsg.innerHTML = '<img src="<c:url value="/images/magazine_images/basic/check.png"/>" style="width: 17px;height: 30px; padding-bottom:7px;"/> Q-Bot을 통해 받은 답변은 음성 지원이 가능합니다.';
+	        ttsMsg.innerHTML = '<img src="<c:url value="/images/magazine_images/basic/check.png"/>" style="width: 17px;height: 30px; padding-bottom:7px;"/>Q-Bot을 통해 받은 답변은 음성 지원이 가능합니다.';
 	        loadVoices();
 	        window.speechSynthesis.onvoiceschanged = function (e) {
 	            loadVoices();
