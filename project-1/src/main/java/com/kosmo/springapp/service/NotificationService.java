@@ -79,7 +79,7 @@ public class NotificationService {
         }
     }
     
-    @Scheduled(cron = "0 */5 * * * *")
+    @Scheduled(cron = "0 * * * * *")
     public void scheduled() {
     	LocalDateTime date = LocalDateTime.now();
     	DayOfWeek dayOfWeek = date.getDayOfWeek();
@@ -88,13 +88,14 @@ public class NotificationService {
     	String hour = Integer.toString(date.getHour()).length()==1 ? "0"+date.getHour() : Integer.toString(date.getHour());
     	String minute = Integer.toString(date.getMinute()).length()==1 ? "0"+date.getMinute() : Integer.toString(date.getMinute());
     	String current = hour+":"+minute; //현재 시간
-    	//System.out.println("아이디당 저장된 알람정보(scheduled): "+tokenList);
-    	//System.out.println("현재시간: "+current);
+    	System.out.println("아이디당 저장된 알람정보(scheduled): "+tokenList);
+    	System.out.println("현재시간: "+current);
     	
     	for(Map map : tokenList) {
-    		//System.out.println("weekly: "+map.get("weekly"));
-    		//System.out.println("foodtime: "+map.get("foodtime"));
+    		System.out.println("weekly: "+map.get("weekly"));
+    		System.out.println("foodtime: "+map.get("foodtime"));
     		if(map.get("weekly").toString().contains(weekly) && map.get("foodtime").equals(current)) {
+    			System.out.println("알림 떠야함!!!!!!");
         		createReceiveNotification(map.get("foodname").toString(),map.get("foodcount").toString());//보낼 때 정보 보내야함(복용 약,정 수)
         	}
     	}

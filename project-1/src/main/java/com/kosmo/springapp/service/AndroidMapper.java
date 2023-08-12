@@ -22,5 +22,7 @@ public interface AndroidMapper {
 
 	String getFoodNameByNo(String no);
 
+	FunctionalFoodListDTO selectFoodByName(String foodName);
+
 
 }

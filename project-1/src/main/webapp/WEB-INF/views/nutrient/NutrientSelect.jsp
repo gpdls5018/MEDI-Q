@@ -6,7 +6,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
-        .container {
+        .topContainer {
             margin-top: 80px;
         }
         
@@ -249,7 +249,7 @@
         </div>
     </aside>
 
-    <div class="container pb-5" style="margin-top: 100px;">
+    <div class="container topContainer pb-5" style="margin-top: 100px;">
         <div>
             <ul class="nav">
                 <li class="nav-item col-3">
