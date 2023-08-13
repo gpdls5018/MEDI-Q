@@ -75,13 +75,11 @@ body{
   .label {
     color: #888;
     font-size: 12px;
-    flex: 1;
   }
   
   .value {
     color: #333;
     font-size: 14px;
-    flex: 2;
   }
   
   h1 {
@@ -103,32 +101,6 @@ body{
   z-index: 1000;
 }
 
-/* 모달 스타일 
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  z-index: 1001;
-}
-.modal-content {
-  background-color: white;
-  margin: 20% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 600px;
-  border-radius: 5px;
-}*/
-.modal-content form {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
     .btn-primary {
             background-color: black;
             color: white;
@@ -137,49 +109,6 @@ body{
             border-radius: 5px;
             cursor: pointer;
         }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 400px;
-            width: 90%;
-        }
-
-        /* Input Styles */
-        .input-field {
-            border: 1px solid black;
-            margin-bottom: 10px;
-            padding: 5px;
-            border-radius: 5px;
-            width: 100%;
-        }
-
-        .select-field {
-            border: 1px solid black;
-            margin-bottom: 10px;
-            padding: 5px;
-            border-radius: 5px;
-            width: 100%;
-            appearance: none;
-            background-image: url('dropdown-icon.png');
-            background-position: right center;
-            background-repeat: no-repeat;
-        }
-    
      </style>
 
 	<!-- 상단배너 div -->
@@ -200,21 +129,13 @@ body{
 <div class="all-wrap">
 	<div class="all-wrap-in all-wrap-in-070">
 		<div class="ingredient-search-top">
-			<div class="content" style="background-color:#fdfbf6; padding-bottom: 20px;">
+			<div class="content" style="flex-direction:column; background-color:#fdfbf6; padding-bottom: 20px;">
 			<!-- 건기식 또는 회사이름을 적었을 경우 -->
 				<div class="top-wrap-070">
 					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>일일 섭취량</span></h1>
 				</div>
-				<!-- 모달 -->
-				<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
-					<div class="search-etc">
-					<div class="ipt-main-wrap">
-					</div>
-				</div>
-			</div>
-		</div>
-		    <c:if test="${not empty dailyCalories}">
-		        <div class="chart_dnt_2">
+			<c:if test="${not empty dailyCalories}">
+		        <div class="chart_dnt_2" style="">
 		            <h1>칼로리기준 탄단지 비율</h1>
 		            <canvas id="chart_doughnut_2"></canvas>
 		        </div>
@@ -222,9 +143,13 @@ body{
 		        <p id="resultCbh"></p>
 		        <p id="resultPro"></p>
 		        <p id="resultFat"></p>
+		        <p id="hiddenJump"><br/></p>
+		    </c:if>
+		    <c:if test="${empty dailyCalories}">
+		    	<h1>일일 목표를 등록해보아요</h1>
 		    </c:if>
 		    <c:if test="${not empty calorie}">
-		        <div class="chart_dnt_1">
+		        <div class="chart_dnt_1" style="">
 		            <h1>현재 섭취한 탄단지 비율</h1>
 		            <canvas id="chart_doughnut_1"></canvas>
 		        </div>
@@ -234,14 +159,17 @@ body{
 		        <p id="fat">총 섭취한 지방: ${fat}g</p>
 		        <p id="TOSCORE">총 점수는 : ${TOSCORE}점</p>
 		    </c:if>
-			<button onclick="toggleCharts()">버튼</button>
-
-		<div class="new-wide-wrap new-wide-wrap-070">
-			<div class="left-wing  ">
-			    <ul class="sm-menu-wrap">
-			        
-			    </ul>
+		    <c:if test="${empty calorie}">
+		    	<h1>섭취한 음식을 등록해보아요</h1>
+		    </c:if>
+			<button onclick="toggleCharts()" 
+			style="background-color: #ffcc00; color: #ffffff; border: none; padding: 10px 20px; 
+			border-radius: 5px; font-size: 16px; cursor: pointer;">섭취 비교해보기</button>
+				<!-- 모달 -->
 			</div>
+		</div>
+		    
+
 			<c:forEach items="${foodlist }" var="foodlist">
 				<div class="food-box">
 					<div class="food-info">음식 정보</div>
@@ -252,77 +180,76 @@ body{
 				  </div>
 				    -->
 				  <div class="label-value-container">
-				    <div class="label">음식 이름:</div>
+				    <div class="label">음식 이름:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.foodname}</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">제조사:</div>
+				    <div class="label">제조사:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.company}</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">1회 섭취량:</div>
+				    <div class="label">1회 섭취량:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.oneprovide} ${foodlist.capacity}</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">칼로리:</div>
+				    <div class="label">칼로리:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.calorie} kcal</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">탄수화물:</div>
+				    <div class="label">탄수화물:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.carbohydrate} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">총 당류:</div>
+				    <div class="label">총 당류:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.sugar} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">식이섬유:</div>
+				    <div class="label">식이섬유:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.dietaryfiber} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">단백질:</div>
+				    <div class="label">단백질:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.protein} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">지방:</div>
+				    <div class="label">지방:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.fat} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">포화 지방:</div>
+				    <div class="label">포화 지방:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.saturatedfat} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">불포화 지방:</div>
+				    <div class="label">불포화 지방:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.unsaturatedfat} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">트랜스 지방:</div>
+				    <div class="label">트랜스 지방:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.transfat} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">콜레스테롤:</div>
+				    <div class="label">콜레스테롤:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.cholesterol} mg</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">나트륨:</div>
+				    <div class="label">나트륨:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.sodium} mg</div>
 				  </div>
 				</div>
 			</c:forEach>
-		</div>
 	</div>
 	<a id="goto_top" href="#" title="맨 위로"></a><!-- 위로가기 -->
 </div><!-- all-wrap의 끝 -->
@@ -552,12 +479,13 @@ body{
             const infoDiv23 = document.getElementById("protein");
             const infoDiv24 = document.getElementById("fat");
             const infoDiv25 = document.getElementById("TOSCORE");
-	        
+            const hiddenjump = document.getElementById("hiddenJump");
             chart1Visible = !chart1Visible; // 차트 가시성 전환
             
             if (chart1Visible) {
-                chartDiv1.style.display = "block";
+                chartDiv1.style.display = "";
                 chartDiv2.style.display = "none";
+                hiddenjump.style.display = "none";
                 infoDiv11.style.display = "none";
                 infoDiv12.style.display = "none";
                 infoDiv13.style.display = "none";
@@ -570,7 +498,8 @@ body{
                 infoDiv25.style.display = "block";
             } else {
                 chartDiv1.style.display = "none";
-                chartDiv2.style.display = "block";
+                chartDiv2.style.display = "";
+                hiddenjump.style.display = "block";
                 infoDiv11.style.display = "block";
                 infoDiv12.style.display = "block";
                 infoDiv13.style.display = "block";
@@ -586,6 +515,8 @@ body{
         window.onload = function() {
             toggleCharts();
         };
+        
+        
     </script>
 </body>
 </html>
