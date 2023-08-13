@@ -114,7 +114,7 @@ ul {
 			            <div class="tss col mb-3">
 		                    <strong>연령</strong>
 		                    <div class="tss1 d-flex" style="  align-items: center;">
-		                    	<input type="text" class="form-control  w-75" style="margin:0px; border:none; text-align: right;" id="age" name="age" pattern="[0-9]+" placeholder="나이을 입력해주세요" value="" required> 세
+		                    	<input type="text" class="form-control  w-75" style="margin:0px; border:none; text-align: right;" id="age" name="age" pattern="[0-9]+" placeholder="나이을 입력해주세요" value="${age}" required> 세
 		                    </div>
 		                    <div class="invalid-feedback">
 		                        연령을 입력해주세요

@@ -115,7 +115,7 @@ body {
 		            	<div class="tss col mb-3">
 		                    <strong>연령</strong>
 		                    <div class="tss1 d-flex" style="  margin-top:10px; align-items: center;">
-		                    	<input type="text" class="form-control m-2 w-75" style="border:none; text-align: right;" id="age" name="age" placeholder="연령을 입력해주세요" value="" required> 세
+		                    	<input type="text" class="form-control m-2 w-75" style="border:none; text-align: right;" id="age" name="age" placeholder="연령을 입력해주세요" value="${age }" required> 세
 		                    </div>
 		                    <div class="invalid-feedback">
 		                        연령을 입력해주세요
@@ -125,13 +125,13 @@ body {
 		                    <strong>성별</strong>
 		                    <div class="tss1 col ">
 			                    <div class="form-check">
-								  <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="2">
+								  <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="2" <c:if test="${gender eq 'M' }"> checked="checked"</c:if>>
 								  <label class="form-check-label" for="gender_Man">
 								    남성
 								  </label>
 								</div>
 								<div class="form-check">
-								  <input class="form-check-input" type="radio" name="gender" id="gender_Woman" value="1">
+								  <input class="form-check-input" type="radio" name="gender" id="gender_Woman" value="1" <c:if test="${gender eq 'F' }"> checked="checked"</c:if>>
 								  <label class="form-check-label" for="gender_Woman">
 								    여성
 								  </label>

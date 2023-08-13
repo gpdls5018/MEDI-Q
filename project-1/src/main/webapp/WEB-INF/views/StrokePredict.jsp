@@ -123,24 +123,23 @@ body {
 		                <div class="tss col mb-3">
 		                    <strong>연령</strong>
 		                    <div class="tss1 d-flex" style="  align-items: center;">
-		                    	<input type="text" class="form-control ml-3 w-75" style="margin:0px; border:none; text-align: right;" id="age" name="age" pattern="[0-9]+" placeholder="나이을 입력해주세요" value="" required> 세
+		                    	<input type="text" class="form-control ml-3 w-75" style="margin:0px; border:none; text-align: right;" id="age" name="age" pattern="[0-9]+" placeholder="나이을 입력해주세요" value="${age }" required> 세
 		                    </div>
 		                    <div class="invalid-feedback">
 		                        연령을 입력해주세요
 		                    </div>
 		                </div>
-		                
 		                <div class="tss col mb-3">
 		                    <strong>성별</strong>
 		                    <div class="horizontal-radio">
 			                    <div class="form-check">
-								    <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="Male">
+								    <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="Male" <c:if test="${gender eq 'M' }"> checked="checked"</c:if>>
 								    <label class="form-check-label" for="gender_Man">
 								    남성
 								    </label>
 								</div>
 								<div class="form-check">
-								    <input class="form-check-input" type="radio" name="gender" id="gender_Woman" value="Female">
+								    <input class="form-check-input" type="radio" name="gender" id="gender_Woman" value="Female" <c:if test="${gender eq 'F' }"> checked="checked"</c:if>>
 								    <label class="form-check-label" for="gender_Woman">
 								    여성
 								    </label>
