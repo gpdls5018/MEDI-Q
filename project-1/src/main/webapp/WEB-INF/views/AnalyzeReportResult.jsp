@@ -220,7 +220,7 @@ progress::-webkit-progress-bar {
 							</c:forEach>
 						</div>
 						
-						<hr class="mb-2" style="width: 90%; border: 0;  border-bottom: 2px solid gray; ">
+						<hr class="mt-5 mb-3" style="width: 90%; border: 0;  border-bottom: 2px solid gray; ">
 						
 						<span style="margin:30px 0px 10px 0px; width:100%; text-align:center; font-size:24px; font-weight: bold;">💊 섭취 중인 영양제 중 <strong style="color:#EF605D;">'${dto.takePurpose}'</strong>에 도움이 되는 영양제입니다</span>
 						<div class="d-flex mt-3" style="margin-left:80px; flex-direction: row;">
