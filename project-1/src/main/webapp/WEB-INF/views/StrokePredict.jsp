@@ -39,13 +39,73 @@ body {
     .horizontal-radio {
         display: flex;
         flex-direction: row;
+        margin-right: 10px;
     }
 
     .horizontal-radio .form-check {
         margin-right: 10px; /* Adjust the spacing between radio buttons */
     }
+	.tss {
+        display: flex;
+        flex-direction: row;
+        font-size: 16px;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height:70px;
+        padding-bottom:15px;
+        border-bottom: 3px solid #F0F0F0;
+    }
+    .tss1 {
+        display: flex;
+        flex-direction: row;
+        font-size: 14px;
+        align-items: center;
+        width: 90%;
+        vertical-align: middle;
+    }
+   strong {
+    	font-size: 16px;
+    	font-weight: 500;
+		vertical-align: middle;
+		width: 100px;
+    }
 
-
+.pakinul {
+    margin-left: 20px;
+    padding: 0px;
+    font-size: 16px;
+    line-height: 28px;
+    color: #595959;
+    word-break: break-all;
+    vertical-align: top;
+    border: 0px;
+    text-decoration: none;
+}
+.pakinul span {
+	display: inline-block;
+    margin-top: 13px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 2px;
+    background-color: #111111;
+    opacity: 0.3;
+    margin-right: 6px;
+}
+.pakinul li {
+	width: 100%;
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 30px;
+    margin-top: 17px;
+    margin-bottom: 17px;
+    text-align: justify;
+    font-size: 15px;
+}
 
 </style>
 
@@ -59,14 +119,18 @@ body {
 		    <div class="row">
 		        <div class="col-6">
 		            <form id="personInfoForm" class="validation-form" method="post" novalidate>
-		                <div class="col mb-3">
+		            
+		                <div class="tss col mb-3">
 		                    <strong>연령</strong>
-		                    <input type="text" class="form-control" id="age" name="age" pattern="[0-9]+" placeholder="나이를 입력해주세요" value="" required>
+		                    <div class="tss1 d-flex" style="  align-items: center;">
+		                    	<input type="text" class="form-control ml-3 w-75" style="margin:0px; border:none; text-align: right;" id="age" name="age" pattern="[0-9]+" placeholder="나이을 입력해주세요" value="" required> 세
+		                    </div>
 		                    <div class="invalid-feedback">
-		                        나이을 입력해주세요.
+		                        연령을 입력해주세요
 		                    </div>
 		                </div>
-		                <div class="col mb-3">
+		                
+		                <div class="tss col mb-3">
 		                    <strong>성별</strong>
 		                    <div class="horizontal-radio">
 			                    <div class="form-check">
@@ -86,14 +150,18 @@ body {
 		                        성별을 체크해 주세요
 		                    </div>
 		                </div>
-		                <div class="col mb-3">
+		                
+		                <div class="tss col mb-3">
 		                    <strong>혈당</strong>
-		                    <input type="text" class="form-control" id="glucose" name="glucose" placeholder="혈당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required>
+		                    <div class="tss1 d-flex" style="  align-items: center;">
+		                    	<input type="text" class="form-control ml-3 w-75" style="margin:0px; border:none; text-align: right;" id="glucose" name="glucose" placeholder="혈당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required> mg/dL
+		                    </div>
 		                    <div class="invalid-feedback">
 		                        혈당 수치를 입력해주세요
 		                    </div>
 		                </div>
-						<div class="col mb-3">
+		                
+						<div class="tss col mb-3">
 						    <strong>결혼 여부</strong>
 						    <div class="horizontal-radio">
 							    <div class="form-check">
@@ -107,7 +175,7 @@ body {
 							</div>
 						</div>
 						
-						<div class="col mb-3">
+						<div class="tss col mb-3">
 						    <strong>직업 유형</strong>
 						    <div class="horizontal-radio">
 							    <div class="form-check">
@@ -132,7 +200,8 @@ body {
 							    </div>
 						    </div>
 						</div>
-						<div class="col mb-3">
+						
+						<div class="tss col mb-3">
 						    <strong>거주 유형</strong>
 						    <div class="horizontal-radio">
 							    <div class="form-check">
@@ -145,8 +214,7 @@ body {
 							    </div>
 						    </div>
 						</div>
-		                
-		                <hr class="mb-4">
+
 		                <div class="mb-4"></div>
 		                <button class="btn btn-primary btn-lg btn-block" type="submit" data-bs-toggle="modal" data-bs-target="#predictionModal">예측해보기</button>
 		            </form>
@@ -181,16 +249,16 @@ body {
 		        </div>
 		        <div class="col-6" style="width: 400px; height: 400px; flex-grow: 1; display: flex; align-items: center; justify-content: center; padding-left: 0px;">
 					<ul class="pakinul">
-                		<li class="text-center" style="font-weight:bold; font-size: 25px; margin-bottom: 40px; margin-top: 0px;"><b>뇌졸증 진단과정</b></li>
-                    	<li><span></span>MEDI-Q는 파킨슨병 진행시 발생하는 <b style="color: #EF605D">중추신경계 손상에 의한 떨림 증상을 기반으로</b> 머신러닝 알고리즘이 수집된 데이터를 분석하여 건강상태를 확인합니다.</li>
-                    	<li><span></span>사용자의 손떨림을 모니터링하고, 그림판에 <b style="color: #EF605D">그린 나선을 분석하여 현재 파킨슨병 진행상황을 예측합니다.</b></li>
-                    	<li><span></span>나선 그리기 진단시스템을 이용해 환자와 의료 전문가는 증상 변화를 빠르게 파악하고 치료 계획을 조정할 수 있습니다.</li>
+                		<li class="text-center" style="font-weight:bold; font-size: 20px; margin-bottom: 20px; margin-top: 0px;"><b>뇌졸증 진단과정</b></li>
+                    	<li><span></span>뇌졸증의 위험은 나이가 들면서 증가합니다. 특히 <b style="color: #EF605D">65세 이상의 노인에게 뇌졸증 위험은 높지만 현재 젊은 사람들에게서도 발생하며 실제로 뇌졸증 발생률이 증가하는 추세</b>입니다.</li>
+                    	<li><span></span>남성은 여성보다 발생률이 약간 높지만 오래 살기 때문에 생애동안 뇌졸증에 걸릴 확률이 더 높으며 <b style="color: #EF605D">폐경 후 여성의 뇌졸증은 증가하며 호르몬 변화</b>와 관련이 있습니다.</li>
+                    	<li><span></span>당뇨병은 뇌졸증의 주요 위험 요인이며 높은 혈당은 혈관 손상 및 혈전이 형성되거나 혈관이 막히게 되며 <b style="color: #EF605D">당뇨병 환자는 뇌졸증 위험이 2~4배 높아집니다</b>.</li>
                 	</ul>		            
                 </div>
 		     </div>
 		 </div>
 		  <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 	      </div>
 	    </div>
 	  </div>

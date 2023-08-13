@@ -50,7 +50,6 @@ body {
         font-size: 14px;
         align-items: center;
         width: 90%;
-		
     }
     .form-check {
     	 margin-right: 50px;
@@ -265,25 +264,24 @@ body {
 		        	<canvas id="drawing_canvas"></canvas>
 		        </div>
 		        <div class="col-6" style="width: 400px; height: 400px; flex-grow: 1; display: flex; align-items: center; justify-content: center; padding-left: 0px;">
-					<ul class="pakinul">
-                		<li class="text-center" style="font-weight:bold; font-size: 25px; margin-bottom: 40px; margin-top: 0px;"><b>심혈관 질환 진단과정</b></li>
-
-                    	<li><span></span>운동 또는 휴식 시 가슴통증이 있거나 답답하신 분</li>
-                    	<li><span></span>심혈관 질환의 가족력 및 과거력이 있으신 분</li>
-                    	<li><span></span>가슴이 두근거리거나 어지러운 증상이 있으신 분</li>
-                    	<li><span></span>운동 시 숨이 몹시 차거나 부종이 있으신 분</li>
-                    	<li><span></span>실신을 경험하신 분</li>
-                    	<li><span></span>합병증이 의심되는 당뇨병 및 고혈압</li>
-                	</ul>		            
-                </div>
-		     </div>
-		 </div>
-		  <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+						<ul class="pakinul">
+	                		<li class="text-center" style="font-weight:bold; font-size: 20px; margin-bottom: 20px; margin-top: 0px;"><b>심혈관질환 진단과정</b></li>
+	                    	<li><span></span>지속적인 고혈압 상태는 심장과 혈관에 지속적인 부담을 주며, 심혈관 질환의 주요 위험 요인 중 하나입니다.</li>
+	                    	<li><span></span>신체 건강은 고혈압,콜레스테롤,당뇨병 등 다른 위험 요인을 증가시키며<b style="color: #EF605D">과체중일수록 심혈관 질환 위험을 높입니다</b></li>
+	                    	<li><span></span>과도한 음주는 고혈압과 다른 심혈관 질환의 위험을 증가시킬 수 있습니다 다만 <b style="color: #EF605D">적당한 양의 알코올(특히 레드 와인)은 심혈관 건강에 어느정도 도움이 될 수</b>있다 알려졌습니다</li>
+	                	</ul>		            
+	                </div>
+			     </div>
+			 </div>
+			  <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		
+		
 <script>
 function redirectToPrediction() {
     // 여기에 이동할 URL을 설정합니다.
