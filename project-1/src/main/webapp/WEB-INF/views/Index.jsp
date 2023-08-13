@@ -615,7 +615,7 @@ html, body {
 	           <div class="content">
 	               <span class="txt1" style=" text-align: center; width: 100%;">👨‍⚕️ 주요 질환의 <span style="color: #EF605D;">발병 위험도</span>를 예측해드려요 </span>
 	               <br/>
-	               <span class="text-center txt2" style="margin:20px 0px 35px 0px; font-weight: bold;">MEDI-Q의 인공지능 기술로 분석하는 건강검진!</span>
+	               <span class="text-center txt2" style="margin:20px 0px 35px 0px; font-weight: bold;">MEDI-Q의 인공지능 기술로 분석하는 질병예측!</span>
 	               <div class="banner-wrap">
 	                   <div class="banner-txt1 mb-1">내 건강검진 결과를 입력하고</div>
 	                   <div class="banner-txt2"><span>맞춤형 영양제를 추천</span> 받으세요</div>
