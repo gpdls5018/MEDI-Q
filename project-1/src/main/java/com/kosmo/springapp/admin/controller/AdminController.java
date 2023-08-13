@@ -44,7 +44,152 @@ public class AdminController {
 	
 	// 관리자 메인 화면
 	@GetMapping("/AdminMain.do")
-	public String adminMain() {
+	public String adminMain(Model model) throws JsonProcessingException {
+		
+    	/////////////////// 영양제 
+    	List<Map<String, Object>> foodInfos = adminMapper.getInfoFromFoodTable();
+
+    	// Map 내의 null 값을 빈 문자열로 대체하는 처리
+        for (Map<String, Object> foodInfo : foodInfos) {
+        	foodInfo.put("no", getStringValue(foodInfo.get("NO"), 25));
+            foodInfo.put("productName", getStringValue(foodInfo.get("PRODUCTNAME"), 25));
+            foodInfo.put("material", getStringValue(foodInfo.get("MATERIAL"), 25));
+            foodInfo.put("nutrient", getStringValue(foodInfo.get("NUTRIENT"), 25));
+            foodInfo.put("reviewCount", getStringValue(foodInfo.get("REVIEW_COUNT"), 25));
+            foodInfo.put("avgStarScore", getStringValue(foodInfo.get("AVG_STARSCORE"), 25));
+        }
+        model.addAttribute("foodInfos", foodInfos);
+        
+        // 영양제 Top10 이름
+        List<String> foodTop10 = new ArrayList<>();
+        for (int i = 0; i < Math.min(foodInfos.size(), 10); i++) {
+            Map<String, Object> foodInfo = foodInfos.get(i);
+            String productName = getStringValue(foodInfo.get("PRODUCTNAME"), 4);
+            foodTop10.add(productName);
+        }
+        model.addAttribute("foodTop10", foodTop10);
+
+        // 영양제 Top10 리뷰개수 
+        List<String> foodTop10RC = new ArrayList<>();
+        for (int i = 0; i < Math.min(foodInfos.size(), 10); i++) {
+            Map<String, Object> foodInfo = foodInfos.get(i);
+            String REVIEW_COUNT = getStringValue(foodInfo.get("REVIEW_COUNT"), 3);
+            foodTop10RC.add(REVIEW_COUNT);
+        }
+        model.addAttribute("foodTop10RC", foodTop10RC);
+        
+        // 영양제 Top10 평균별점
+        List<String> foodTop10AS = new ArrayList<>();
+        for (int i = 0; i < Math.min(foodInfos.size(), 10); i++) {
+            Map<String, Object> foodInfo = foodInfos.get(i);
+            String AVG_STARSCORE = getStringValue(foodInfo.get("AVG_STARSCORE"), 3);
+            // 새로운 코드 추가: 소수점 아래 둘째 자리를 소수점 아래 첫째 자리로 변환
+            int dotIndex = AVG_STARSCORE.indexOf(".");
+            if (dotIndex != -1 && AVG_STARSCORE.length() > dotIndex + 1) {
+                AVG_STARSCORE = AVG_STARSCORE.substring(0, dotIndex + 2);
+            }
+            foodTop10AS.add(AVG_STARSCORE);
+        }
+        model.addAttribute("foodTop10AS", foodTop10AS);
+        
+		// 버블 차트
+        // 분석 정보 가져오기
+    	List<Map<String, Object>> analyzeInfo = adminMapper.getInfoFromAnalyzeTable();
+    	
+    	// 현재 날짜를 가져와서 연령 계산에 사용합니다.
+        LocalDate currentDate = LocalDate.now();
+        
+        // SimpleDateFormat을 이용해 날짜 포맷 지정
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        for (Map<String, Object> row : analyzeInfo) {
+        	
+        	// 행에서 선택 건강고민 정보를 추출합니다.
+            String takePurposes = (String) row.get("TAKEPURPOSES");
+            if (takePurposes != null) {
+                // 선택 건강고민 값을 [, ]로 둘러싸지 않도록 수정합니다.
+                takePurposes = takePurposes.replaceAll("\\[|\\]", "");
+
+                // 선택 건강고민 정보를 해당 행의 맵에 추가합니다.
+                row.put("TAKEPURPOSES", takePurposes);
+            }
+        	
+        	// 행에서 분석일 정보를 추출합니다.
+            Timestamp analyzedTimestamp = (Timestamp) row.get("ANALYZEDATE");
+            if (analyzedTimestamp != null) {
+                // Timestamp를 Date로 변환하고, 시분초를 제외한 날짜 문자열로 변환합니다.
+                String analyzedDate = dateFormat.format(analyzedTimestamp);
+
+                // 분석일 정보를 해당 행의 맵에 추가합니다.
+                row.put("ANALYZEDATE", analyzedDate);
+            }
+            
+            // 행에서 생년월일 정보를 추출합니다.
+            Timestamp birthTimestamp = (Timestamp) row.get("BIRTH");
+            if (birthTimestamp != null) {
+            	
+                // Timestamp를 Date로 변환합니다.
+                Date birthDate = new Date(birthTimestamp.getTime());
+
+                // 생년월일을 LocalDate로 변환합니다.
+                LocalDate birthLocalDate = birthDate.toLocalDate();
+
+                // 나이 계산
+                int age = Period.between(birthLocalDate, currentDate).getYears();
+
+                // 연령대 그룹화
+                String ageRange;
+                if (age < 20) {
+                    ageRange = "20대 미만";
+                } else if (age >= 20 && age < 30) {
+                    ageRange = "20대";
+                } else if (age >= 30 && age < 40) {
+                    ageRange = "30대";
+                } else if (age >= 40 && age < 50) {
+                    ageRange = "40대";
+                } else if (age >= 50 && age < 60) {
+                    ageRange = "50대";
+                } else {
+                    ageRange = "60대 이상";
+                }
+
+                // 연령대 정보를 해당 행의 맵에 추가합니다.
+                row.put("AGE_RANGE", ageRange);
+            }
+        }
+
+        model.addAttribute("analyzeInfo", analyzeInfo);
+    	
+        
+        // 연령대별로 선택한 건강고민의 개수를 계산합니다.
+        Map<String, Map<String, Integer>> selectionCountData = new HashMap<>();
+        for (Map<String, Object> row : analyzeInfo) {
+            String ageRange = (String) row.get("AGE_RANGE");
+
+            String takePurposesString = (String) row.get("TAKEPURPOSES");
+            if (takePurposesString != null) {
+                // 쉼표를 구분자로 사용하여 문자열을 분리합니다.
+                String[] takePurposes = takePurposesString.split(","); 
+
+                if (!selectionCountData.containsKey(ageRange)) {
+                    selectionCountData.put(ageRange, new HashMap<>());
+                }
+
+                Map<String, Integer> countMap = selectionCountData.get(ageRange);
+                for (String takePurpose : takePurposes) {
+                    // 문자열 앞 뒤의 공백을 제거합니다.
+                    String trimmedTakePurpose = takePurpose.trim(); 
+                    countMap.put(trimmedTakePurpose, countMap.getOrDefault(trimmedTakePurpose, 0) + 1);
+                }
+            }
+        }
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String selectionCountDataJson = objectMapper.writeValueAsString(selectionCountData);
+
+        model.addAttribute("selectionCountDataJson", selectionCountDataJson);
+		
+		
 		
 	    return "admin/AdminMain";
 	}
