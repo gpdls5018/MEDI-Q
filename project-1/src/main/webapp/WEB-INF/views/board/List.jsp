@@ -240,6 +240,7 @@
 	.btn_oc{
 		width: 20px;
   		height: 20px;
+  		float: right;
 	}
 	#ocEnterBtn{
 		/*border:2px solid #A6CAEA; 완성시 삭제 예정*/
@@ -274,19 +275,20 @@
                 	<div class="ocfixed">
 	                	<div class="container">
 							<fieldset>
-								<legend class="chatlegend">커뮤니티 채팅방</legend>
+								<legend class="chatlegend">커뮤니티 채팅방
+										<img src="/images/chatbot/bot_x.png" class="btn_oc mt-1"/><!-- x이모티콘임 -->
+								</legend>
 									<!-- <input type="text" class="form-control mb-3 btn" id="chatnickname" placeholder='"여기"를 눌러 닉네임을 입력해주세요.'> -->
 									<div style="display: flex; justify-content: center;" class=" mb-3">
-										<input class="btn mr-3 " type="button" id="ocEnterBtn" value="입장하기" data-id="${id}">
+										<input class="btn mr-3 " type="button" id="ocEnterBtn" value="입장하기" data-id="${id}" data-active="${active }">
 										<input class="btn ml-3" type="button" id="ocExitBtn" value="퇴장하기">
 									</div>
 									<!-- 여기가 채팅방시작 -->
 									<div id="chatArea" class="mb-3" style="display: none;">
-										<!-- <h4>오픈 채팅방 내용입니다</h4>이거 삭제 할 수도 있음 -->
 										<div id="chatMessage" class="mb-3"></div>
 										<!-- 메시지 등록버튼 -->
 										<!-- message를 ociMessage로 변경 -->
-										<input type="text" class="form-control btn" id="ociMessage" placeholder="채팅을 입력해주세요.">
+										<input type="text" class="form-control" id="ociMessage" placeholder="채팅을 입력해주세요.">
 									</div>
 							</fieldset>
 						</div><!-- container -->
@@ -359,27 +361,31 @@
 	<div class="p-3">${listPagingData.pagingString}</div>
 <jsp:include page="/WEB-INF/views/template/Footer.jsp"/>
 <script>
-	//오픈채팅용 자바스크립트 시작
 	//오픈채팅웹소켓 저장용
 	var ocwsocket;
-	//오픈채팅닉네임 저장용
+	//id 저장용
     var chatnickname;
-	//nickname을 안쓰고할 때 추가
+	var active;
     chatnickname= $('#ocEnterBtn').data('id');
     console.log('data-id:', chatnickname);//체크용
-	//내가 닉네임을 적어서 오픈채팅창 방에 들어오는 걸로 확정!
+    
+    active=$('#ocEnterBtn').data('active');
+    console.log('data-active',active);//체크용
+    
 	$('#ocEnterBtn').on('click',function(){
 		//chatnickname = $('#chatnickname').val();//닉네임을 사용할시 
 		if (chatnickname === '') {
-		    alert('로그인할 시 입장 가능합니다.');
+		    alert('로그인시 입장 가능합니다.');
 		    return;
 		}
-		if(chatnickname==='KIM'){
-			alert('관리자(KIM) 안녕하세요.');
+		
+		//${active}==='D'
+		if(active==='A'){
+			alert('약사님 안녕하세요.');
 		}
 		ocwsocket = new WebSocket("ws://192.168.0.16:9090<c:url value="/chat-ws"/>");
 		$('#chatArea').show();
-		console.log('ocwsocket:',ocwsocket);
+		console.log('ocwsocket:',ocwsocket);//체크용
 		//서버와 연결된 웹 소켓에 이벤트 등록
 		ocwsocket.onopen = open;
 		$(this).prop('disabled', true);
@@ -389,7 +395,6 @@
 			appendMessage(" 연결이 끊어졌습니다.");
 			appendMessage("<br>재접속은 새로고침(F5).");
 			appendMessage("<br>이후의 메시지는 전달되지 않습니다.");
-			//appendMessage("<br>이후의 메시지는" + "<br>" + "전달되지 않습니다.");// 완성시 삭제 예정
 		};
 		ocwsocket.onmessage=receive;//ocwsocket이 메시지를 받으면 recevive함수 실행
 		ocwsocket.onerror=function(e){
@@ -398,11 +403,11 @@
 	});
 	//서버에 연결되었을때 호출되는 콜백함수
 	function open(){
-		//서버로 연결한 사람의 정보(닉네임) 전송
+		//서버로 연결한 사람의 정보(id) 전송
 		//사용자가 입력한 닉네임 저장
 		//chatnickname = $('#chatnickname').val();//id로 변경시
 		ocwsocket.send('msg:'+chatnickname+' 가(이) 입장했습니다.');
-		appendMessage("오픈 채팅방에 참가하였습니다.");
+		appendMessage("커뮤니티 채팅방에 참가하였습니다.");
 		$('#ociMessage').focus();
 	}
 	//서버에서 메시지를 받을때마다 호출되는 함수
@@ -426,6 +431,11 @@
 		ocwsocket.send('msg:'+chatnickname+' 가(이) 퇴장했습니다.');
 		ocwsocket.close();
 		//$('#chatArea').hide();//퇴장 버튼 누를시 채팅 내용이 없어짐(애매함)
+	});
+	//채팅창 토글
+	$('.btn_oc').on('click',function(){
+		
+		$('#chatArea').toggle();//퇴장 버튼 누를시 채팅 내용이 없어짐(애매함)
 	});
 	//
 	$('#ociMessage').on('keypress',function(e){
