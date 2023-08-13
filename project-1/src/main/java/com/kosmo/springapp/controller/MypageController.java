@@ -353,8 +353,8 @@ public class MypageController {
 		int mh = myHealthServiceImpl.selectMyHealth(id)==1 ? 25 : 0;
 		Map mt = mentalTestServiceImpl.selectResult(id);
 		System.out.println("삼항연산자 전: "+mt);
-		System.out.println(mt.get("TEST2"));
 		if(mt != null) {
+			System.out.println(mt.get("TEST2"));
 			int test1 = mt.get("TEST1")==null ? 0 : 6;
 			int test2 = mt.get("TEST2")==null ? 0 : 6;
 			int test3 = mt.get("TEST3")==null ? 0 : 6;
