@@ -132,7 +132,21 @@
 		    ACTSTAGE = '${healthIssueSelect}'
 		WHERE ID = '${ID}'
 	</update>
-	<select id="userinfo" parameterType="String" resultType="map">
+	<select id="userinfo" parameterType="String" resultType="UserInfoDTO">
 		select * from userkcal where id = '${ID}'
+	</select>
+	<update id="updateUserscore" parameterType="String">
+		update userfoodscore
+		set SCORE = '${Score}'
+		where ID = '${ID}' AND scoredate like '${formatDate}'
+	</update>
+	<insert id="newUserscore" parameterType="String">
+		Insert into userfoodscore (id,score) values ('${ID}','${Score}')
+	</insert>
+	<select id="checkUserscore" parameterType="String" resultType="String">
+		select 1 from userfoodscore where ID = '${ID}' AND scoredate like '${formatDate}'
+	</select>
+	<select id="foodscore" parameterType="String" resultType="AllFoodScoreDTO">
+		select * from userfoodscore where ID = '${ID}' AND scoredate like '${formatDate}'
 	</select>
 </mapper>

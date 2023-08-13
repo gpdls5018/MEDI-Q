@@ -48,21 +48,6 @@ public class WebSocketServer extends TextWebSocketHandler {
 		System.out.println("clients에 담김"+clients);
 		System.out.println(session.getId()+"연결되었습니다11111111.");
 		
-		//MemberDTO memberDto = loginService.selectOne(req);
-		//System.out.println(memberDto.getId());
-		//회원인 경우
-		/*
-		String token= jwTokensService.getToken(req, tokenName);//token을 가져옴
-		Map payload = jwTokensService.getTokenPayloads(token, secretKey);//payload로 만듬
-		if(payload.get("sub") != null) {//payload는 map형태의 많은 데이터(이건 TRUE)하지만 .get("sub")를 통해 아이디가 있는지 판별(있으면 null이 아님)
-			String id=payload.get("sub").toString();//가져온 id를 String id에 저장(현재 로그인한 아이디)
-			model.addAttribute("id", id);//모델에 id란 이름으로 id 저장
-			
-			//작성자가 관리자인지 아닌지 체크, id로 회원정보 가져와서 active 정보 가져옴
-			String active=loginService.selectOne(id).getActive();
-			//System.out.println("active:"+active);//"Y, A, N 중 하나"
-			model.addAttribute("active", active);//model에 active로 저장
-		}*/
 	}
 	
 	//클라이언트로부터 메시지를 받았을때 자동 호출되는 콜백 메소드]

@@ -626,7 +626,7 @@ ul {
 		  transform: translate(30%);
 		  z-index: 800;
 		  transition: 1s;
-		  bottom: 110px;
+		  bottom: 165px;
 		}
 		#ham-menu:checked ~ div.ham-menu {
 		  transform: translate(0px);
@@ -878,7 +878,7 @@ ul {
             <div class="chatbot-line" style="margin-top: 10px;"></div>
             <div class="inputDIV input-group" style="margin-top: 10px;">
             	<input type="checkbox" id="ham-menu">
-				<label for="ham-menu" class="ml-2" style="margin-top: 6px;">
+				<label for="ham-menu" class="ml-2 hamMenu" style="margin-top: 6px;">
 				  <div class="hide-des">
 				    <span class="menu-line"></span>
 				    <span class="menu-line"></span>
@@ -889,26 +889,26 @@ ul {
 				  </div>
 				
 				</label>
-    
-			    <div class="position-relative" style="margin-left: 53px;">                   
-			        <input type="text" class="form-control rounded-start bg-light" id="userInput" placeholder="무엇이든 물어보세요" style="width: 310px; height: 40px; padding-right: 45px; border-radius:45px;">
-			        <button class="btn search_btn" type="button" style="position: absolute; right: 39px; bottom:88%; transform: translateY(-50%);"><img src="<c:url value='/images/chatbot/upload.png'/>" style="width: 35px; height: 35px;"></button>
+    			<div class="chatbotBottom d-flex">
+				    <div class="position-relative" style="margin-left: 53px;">                   
+				        <input type="text" class="form-control rounded-start bg-light" id="userInput" placeholder="무엇이든 물어보세요" style="width: 310px; height: 40px; padding-right: 45px; border-radius:45px;">
+				        <button class="btn search_btn" type="button" style="position: absolute; right: 39px; bottom:88%; transform: translateY(-50%);"><img src="<c:url value='/images/chatbot/upload.png'/>" style="width: 35px; height: 35px;"></button>
+				    </div>
+				    <div class="input-group-append">
+				    	<button id="startBtn" class="ml-2 mb-1"><img src="<c:url value='/images/chatbot/mike.png'/>" style="width: 37px;height: 37px; border-radius: 50%;"></button>
+				    </div>
 			    </div>
-			    <div class="input-group-append">
-			    	<button id="startBtn" class="ml-2"><img src="<c:url value='/images/chatbot/mike.png'/>" style="width: 37px;height: 37px; border-radius: 50%;"></button>
-			    </div>
-			    
 			    <div class="ham-menu ml-1" id="hamMenuContent">
+			    	<b class="ham-menu-text" style="margin-left: 15px;">ON</b>
+					<b class="ham-menu-text" style="margin-left: 23px;">STOP</b>
+					<b class="ham-menu-text" style="margin-left: 23px;"><img src="<c:url value='/images/chatbot/microphone.png'/>" style="width: 23px;height: 27px; padding-bottom: 4px;">
+					음성을 선택해주세요</b>
 			    	<div class="d-flex">
-					    <button id="startTtsBtn" class="mx-1"><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 35px;height: 36px; border-radius:15px;"></button>
+					    <button id="startTtsBtn" class="mx-2"><img src="<c:url value='/images/chatbot/mikeON.png'/>" style="width: 35px;height: 36px; border-radius:15px;"></button>
 			        	<button id="stopTtsBtn" class="mx-2"><img src="<c:url value='/images/chatbot/mikeStop.png'/>" style="width: 35px;height: 36px; border-radius:15px;"></button>
 						<label for="voice" style=" margin-top: 8px;" class="mx-2">
-						<select class="form-control p-1 ml-2" id="voice" style="width: 150px; height: 26px; font-size: 11px;"></select></label> 
+						<select class="form-control p-1 ml-1" id="voice" style="width: 150px; height: 26px; font-size: 11px;"></select></label> 
 					</div>
-					<b class="ham-menu-text" style="margin-left: 12px;">ON</b>
-					<b class="ham-menu-text" style="margin-left: 20px;">STOP</b>
-					<b class="ham-menu-text" style="margin-left: 30px;"><img src="<c:url value='/images/chatbot/microphone.png'/>" style="width: 23px;height: 27px; padding-bottom: 6px;">
-					음성을 선택해주세요</b>
 				</div>
 			</div>
             
@@ -1238,20 +1238,27 @@ ul {
 	    
 	
 	});/////////$(document).ready(function ()
-			
+	//Q-bot 내부 메뉴바
 	document.addEventListener("DOMContentLoaded", function () {
 	    const hamMenu = document.getElementById("ham-menu");
 	    const chatbot = document.getElementById("chatbot");
 	    const hamMenuContent = document.getElementById("hamMenuContent");
+	    const chatbotBottom = document.querySelector('.chatbotBottom');
+	    const hamMenu_ = document.querySelector('.hamMenu');
 	    let isOpen = false;
 	    
 	    hamMenu.addEventListener("click", function () {
 	        if (isOpen) {
 	            chatbot.style.height = "580px";
 	            hamMenuContent.style.display = "none";
+	            chatbotBottom.style.marginTop = "1px";
+	            hamMenu_.style.marginTop = "6px";
+	            
 	        } else {
 	            chatbot.style.height = "650px";
 	            hamMenuContent.style.display = "block";
+	            chatbotBottom.style.marginTop = "75px";
+	            hamMenu_.style.marginTop = "80px";
 	        }
 	        
 	        isOpen = !isOpen;

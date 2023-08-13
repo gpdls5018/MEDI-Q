@@ -6,9 +6,11 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.kosmo.springapp.model.AllFoodDTO;
+import com.kosmo.springapp.model.AllFoodScoreDTO;
 import com.kosmo.springapp.model.AvgStarScoreCountDTO;
 import com.kosmo.springapp.model.CheckWordDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
+import com.kosmo.springapp.model.UserInfoDTO;
 
 @Mapper
 public interface SelectFoodMapper {
@@ -30,7 +32,12 @@ public interface SelectFoodMapper {
 	String healthIssueCou(String healthissue);
 	String foodNo(String takefood);
 	String checkUserinfo(String ID);
-	Map<String, String> userinfo(String ID);
+	UserInfoDTO userinfo(String ID);
+	String checkUserscore(String ID,String formatDate);
+	List<AllFoodDTO> myintakefoodlist(String ID,String formatDate);
+	void newUserscore(String ID,int Score);
+	void updateUserscore(String ID,int Score,String formatDate);
+	AllFoodScoreDTO foodscore(String ID,String formatDate);
 	void newUserinfo(float Fatrate,float Prorate,float Cbhrate,int healthIssueSelect,float dailyCalories,String ID);
 	void updateUserinfo(float Fatrate,float Prorate,float Cbhrate,int healthIssueSelect,float dailyCalories,String ID);
 	void newWord(String foodname);

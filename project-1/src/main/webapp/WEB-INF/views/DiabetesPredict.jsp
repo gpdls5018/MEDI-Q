@@ -35,6 +35,7 @@ body {
 	margin-top: 70px;
 }
 
+
 ul {
     list-style: none;
 }
@@ -88,28 +89,28 @@ ul {
 		            <form id="personInfoForm" class="validation-form" novalidate>
 		                <div class="col mb-3">
 		                    <strong>연령</strong>
-		                    <input type="text" class="form-control" id="age" name="age" pattern="[0-9]+" placeholder="나이를 입력해주세요" value="" required>
+		                    <input type="text" class="form-control mt-2" id="age" name="age" pattern="[0-9]+" placeholder="나이를 입력해주세요" value="" required>
 		                    <div class="invalid-feedback">
 		                        나이을 입력해주세요.
 		                    </div>
 		                </div>
 		                <div class="col mb-3">
 		                    <strong>BMI</strong>
-		                    <input type="text" class="form-control" id="bmi" name="bmi" placeholder="체질량 지수를 입력해주세요" value="${healthInfoDto.bmi}" required>
+		                    <input type="text" class="form-control mt-2" id="bmi" name="bmi" placeholder="체질량 지수를 입력해주세요" value="${healthInfoDto.bmi}" required>
 		                    <div class="invalid-feedback">
 		                        체질량 지수를 입력해주세요
 		                    </div>
 		                </div>
 		                <div class="col mb-3">
 		                    <strong>포도당</strong>
-		                    <input type="text" class="form-control" id="glucose" name="glucose" placeholder="포도당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required>
+		                    <input type="text" class="form-control mt-2" id="glucose" name="glucose" placeholder="포도당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required>
 		                    <div class="invalid-feedback">
 		                        포도당 수치를 입력해주세요
 		                    </div>
 		                </div>
 		                <div class="col mb-3">
 		                    <strong>혈압(평균)</strong>
-		                    <input type="text" class="form-control" id="bloodpress" name="bloodpress"  placeholder="혈압수치를 입력해주세요" value="${(healthInfoDto.bloodPressure_high + healthInfoDto.bloodPressure_low) / 2}" required>
+		                    <input type="text" class="form-control mt-2" id="bloodpress" name="bloodpress"  placeholder="혈압수치를 입력해주세요" value="${(healthInfoDto.bloodPressure_high + healthInfoDto.bloodPressure_low) / 2}" required>
 		                    <div class="invalid-feedback">
 		                        혈압수치를 입력해주세요
 		                    </div>

@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosmo.springapp.model.AllFoodDTO;
+import com.kosmo.springapp.model.AllFoodScoreDTO;
 import com.kosmo.springapp.model.AvgStarScoreCountDTO;
 import com.kosmo.springapp.model.CheckWordDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
+import com.kosmo.springapp.model.UserInfoDTO;
 import com.kosmo.springapp.service.SelectFoodMapper;
 import com.kosmo.springapp.service.SelectFoodService;
 
@@ -134,7 +136,32 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	}
 
 	@Override
-	public Map<String, String> userinfo(String ID) {
+	public UserInfoDTO userinfo(String ID) {
 		return mapper.userinfo(ID);
+	}
+
+	@Override
+	public void newUserscore(String ID, int Score) {
+		mapper.newUserscore(ID, Score);
+	}
+
+	@Override
+	public void updateUserscore(String ID, int Score,String formatDate) {
+		mapper.updateUserscore(ID, Score,formatDate);		
+	}
+
+	@Override
+	public String checkUserscore(String ID, String formatDate) {
+		return mapper.checkUserscore(ID, formatDate);
+	}
+
+	@Override
+	public List<AllFoodDTO> myintakefoodlist(String ID, String formatDate) {
+		return mapper.myintakefoodlist(ID, formatDate);
+	}
+
+	@Override
+	public AllFoodScoreDTO foodscore(String ID, String formatDate) {
+		return mapper.foodscore(ID, formatDate);
 	}
 }

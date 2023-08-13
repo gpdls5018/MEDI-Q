@@ -1526,15 +1526,16 @@ body {
 	//컨드롤러에서 가져온 정보 꾸리기(기본값=오늘날짜)
 	var current_ = '<c:out value="${current}"/>';
 	var current = current_.length==0 ? '<c:out value="${clickDate}"/>' : current_;
-	//console.log('click:',$('.clickDate').html())
-	//console.log('dates:',dates.length)
-	if(dates.length && $('.clickDate').html()==current){//기본값=오늘날짜
+	console.log('click:',$('.clickDate').html())
+	console.log('current',current)
+	//console.log('dates:',dates)
+	if(dates.length){//기본값=오늘날짜
 		var info_con = '<c:out value="${condition}"/>';
 		if(info_con.length && $('.acco').find('[alt='+info_con+']')){
 			$('.acco').find('[alt='+info_con+']').addClass('condition');
 		}
 		var info_head = '<c:out value="${head}"/>';
-		//console.log('head:',info_head)
+		console.log('head:',info_head)
 		$('#head').children().each(function(){
 			if(info_head.includes($(this).html())){
 				$(this).removeClass('btn-outline-secondary')
@@ -1587,6 +1588,12 @@ body {
 				$(this).toggleClass('bodySelcted');
 			}
 		});
+		var info_h = '<c:out value="${height}"/>';
+		$('[name=h]').val(info_h);
+		var info_w = '<c:out value="${weight}"/>';
+		$('[name=w]').val(info_w);
+		var info_content = `<c:out value="${content}"/>`;
+		$('#content').html(info_content);
 	}
 		
 	//확인,수정,삭제 어떻게 보일 지

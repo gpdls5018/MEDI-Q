@@ -75,13 +75,11 @@ body{
   .label {
     color: #888;
     font-size: 12px;
-    flex: 1;
   }
   
   .value {
     color: #333;
     font-size: 14px;
-    flex: 2;
   }
   
   h1 {
@@ -103,12 +101,6 @@ body{
   z-index: 1000;
 }
 
-.modal-content form {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
     .btn-primary {
             background-color: black;
             color: white;
@@ -117,49 +109,6 @@ body{
             border-radius: 5px;
             cursor: pointer;
         }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 400px;
-            width: 90%;
-        }
-
-        /* Input Styles */
-        .input-field {
-            border: 1px solid black;
-            margin-bottom: 10px;
-            padding: 5px;
-            border-radius: 5px;
-            width: 100%;
-        }
-
-        .select-field {
-            border: 1px solid black;
-            margin-bottom: 10px;
-            padding: 5px;
-            border-radius: 5px;
-            width: 100%;
-            appearance: none;
-            background-image: url('dropdown-icon.png');
-            background-position: right center;
-            background-repeat: no-repeat;
-        }
-    
      </style>
 
 	<!-- 상단배너 div -->
@@ -180,174 +129,127 @@ body{
 <div class="all-wrap">
 	<div class="all-wrap-in all-wrap-in-070">
 		<div class="ingredient-search-top">
-			<div class="content" style="background-color:#fdfbf6; padding-bottom: 20px;">
+			<div class="content" style="flex-direction:column; background-color:#fdfbf6; padding-bottom: 20px;">
+			<!-- 건기식 또는 회사이름을 적었을 경우 -->
 				<div class="top-wrap-070">
-					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>일일 섭취량</span>
-					<a href="/food/test3.do">일일 섭취량 보러가기</a>
-					</h1>
+					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>일일 섭취량</span></h1>
 				</div>
-				<div style="text-align: right; margin-right: 100px">
-				<button class="btn-primary" style="border: 1px solid black;" id="openModal">자신의 일일 칼로리 계산</button>
-				</div>
+			<c:if test="${not empty dailyCalories}">
+		        <div class="chart_dnt_2" style="">
+		            <h1>칼로리기준 탄단지 비율</h1>
+		            <canvas id="chart_doughnut_2"></canvas>
+		        </div>
+		        <p id="result"></p>
+		        <p id="resultCbh"></p>
+		        <p id="resultPro"></p>
+		        <p id="resultFat"></p>
+		        <p id="hiddenJump"><br/></p>
+		    </c:if>
+		    <c:if test="${empty dailyCalories}">
+		    	<h1>일일 목표를 등록해보아요</h1>
+		    </c:if>
+		    <c:if test="${not empty calorie}">
+		        <div class="chart_dnt_1" style="">
+		            <h1>현재 섭취한 탄단지 비율</h1>
+		            <canvas id="chart_doughnut_1"></canvas>
+		        </div>
+		        <p id="calorie">총 섭취한 칼로리: ${calorie}kcal</p>
+		        <p id="carbohydrate">총 섭취한 탄수화물: ${carbohydrate}g</p>
+		        <p id="protein">총 섭취한 단백질: ${protein}g</p>
+		        <p id="fat">총 섭취한 지방: ${fat}g</p>
+		        <p id="TOSCORE">총 점수는 : ${TOSCORE}점</p>
+		    </c:if>
+		    <c:if test="${empty calorie}">
+		    	<h1>섭취한 음식을 등록해보아요</h1>
+		    </c:if>
+			<button onclick="toggleCharts()" 
+			style="background-color: #ffcc00; color: #ffffff; border: none; padding: 10px 20px; 
+			border-radius: 5px; font-size: 16px; cursor: pointer;">섭취 비교해보기</button>
 				<!-- 모달 -->
-			    <div class="modal" id="modal">
-			        <div class="modal-content">
-			            <form action="/food/userinfo.do" method="post">
-			            	<p>키를 입력해주세요</p>
-			                <input class="input-field" name="Height" placeholder="(cm)" required>
-			                <p>몸무게를 입력해주세요</p>
-			                <input class="input-field" name="Weight" placeholder="(kg)" required>
-			                <p>탄수화물의 입력해주세요</p>
-			                <input class="input-field" name="Cbhrate" placeholder="적정 비율 40~65(%)" required>
-			                <p>단백질의 입력해주세요</p>
-			                <input class="input-field" name="Prorate" placeholder="적정 비율 7~35(%)" required>
-			                <p>지방의 비율을 입력해주세요</p>
-			                <input class="input-field" name="Fatrate" placeholder="적정 비율 15~30(%)" required>
-			                <div style="font-size: x-small;text-align: right;width: 350px;">평균적인 최적의 탄단지 비율은 5:3:2 라고 합니다</div>
-			                <p>활동량을 입력해주세요</p>
-			                <select class="select-field" name="healthIssueSelect" onchange="submitForm()">
-			                    <option value="1">앉아서 일하는 경우</option>
-			                    <option value="2">가벼운 활동(운동없이 약간의 활동)</option>
-			                    <option value="3">보통 활동(주3~4회 운동)</option>
-			                    <option value="4">활발한 활동(주 5~7회 운동)</option>
-			                    <option value="5">매우 활발한 활동(일일 운동 및 육체적 노동)</option>
-			                </select>
-			                <input type="number" name="age" value="${age}" hidden>
-			                <button class="btn-primary" id="caloriesBtn" name="cabtn">칼로리 계산</button>
-			            </form>
-			        </div>
-			    </div>
-				<br/>
-				<c:if test="${not empty Fatrate }">
-					<div class="chart_dnt_2">
-						  <h1>칼로리기준 탄단지 비율</h1>
-						  <canvas id="chart_doughnut_2"></canvas>
-					</div>
-	    			<p id="result"></p>
-	    			<p id="resultCbh"></p>
-	    			<p id="resultPro"></p>
-	    			<p id="resultFat"></p>
-    			</c:if>
-				<c:if test="${not empty fat}">
-					<div class="chart_dnt_1">
-					  <h1>현재 섭취한 탄단지 비율</h1>
-					  <canvas id="chart_doughnut_1"></canvas>
-					</div>
-					<p>총 섭취한 칼로리: ${calorie }kcal</p>
-					<p>총 섭취한 탄수화물: ${carbohydrate }g</p>
-					<p>총 섭취한 단백질: ${protein }g</p>
-					<p>총 섭취한 지방: ${fat }g</p>
-					<p>총 점수는 : ${TOSCORE}점</p>
-				</c:if>
-				<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
-					<div class="search-etc">
-					<div class="ipt-main-wrap">
-						<form action="/food/foodsearch.do">
-							<input id="searchProduct3" type="text" name="food" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${takefood}" required placeholder="찾으시는 제품을 검색해보세요!">
-							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct3()"></button>
-						</form>
-					</div>
-				</div>
 			</div>
 		</div>
+		    
 
-		<div class="new-wide-wrap new-wide-wrap-070">
-			<div class="left-wing  ">
-			    <ul class="sm-menu-wrap">
-			        
-			    </ul>
-			</div>
 			<c:forEach items="${foodlist }" var="foodlist">
 				<div class="food-box">
-				<form action="/food/intakefood.do">
-				<input name="no" value="${foodlist.no }" type="hidden">
 					<div class="food-info">음식 정보</div>
 				  <!--
 				  <div class="label-value-container">
 				    <div class="label">음식 번호:</div>
 				    <div class="value">${foodlist.no}</div>
 				  </div>
-				   --> 
+				    -->
 				  <div class="label-value-container">
-				    <div class="label">음식 이름:</div>
+				    <div class="label">음식 이름:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.foodname}</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">제조사:</div>
+				    <div class="label">제조사:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.company}</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">1회 섭취량:</div>
-				    <div class="value">${foodlist.oneprovide}${foodlist.capacity}</div>
+				    <div class="label">1회 섭취량:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.oneprovide} ${foodlist.capacity}</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">칼로리:</div>
-				    <div class="value">${foodlist.calorie}</div>
+				    <div class="label">칼로리:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.calorie} kcal</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">단백질:</div>
-				    <div class="value">${foodlist.protein}</div>
+				    <div class="label">탄수화물:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.carbohydrate} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">지방:</div>
-				    <div class="value">${foodlist.fat}</div>
+				    <div class="label">총 당류:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.sugar} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">포화 지방:</div>
-				    <div class="value">${foodlist.saturatedfat}</div>
+				    <div class="label">식이섬유:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.dietaryfiber} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">불포화 지방:</div>
-				    <div class="value">${foodlist.unsaturatedfat}</div>
+				    <div class="label">단백질:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.protein} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">트랜스 지방:</div>
-				    <div class="value">${foodlist.transfat}</div>
+				    <div class="label">지방:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.fat} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">탄수화물:</div>
-				    <div class="value">${foodlist.carbohydrate}</div>
+				    <div class="label">포화 지방:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.saturatedfat} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">총 당류:</div>
-				    <div class="value">${foodlist.sugar}</div>
+				    <div class="label">불포화 지방:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.unsaturatedfat} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">식이섬유:</div>
-				    <div class="value">${foodlist.dietaryfiber}</div>
+				    <div class="label">트랜스 지방:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.transfat} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">콜레스테롤:</div>
-				    <div class="value">${foodlist.cholesterol}</div>
+				    <div class="label">콜레스테롤:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.cholesterol} mg</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">나트륨:</div>
-				    <div class="value">${foodlist.sodium}</div>
+				    <div class="label">나트륨:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.sodium} mg</div>
 				  </div>
-				<div class="label-value-container" style="display: flex; justify-content: right; align-items: center;">
-					<p>일일 섭취 횟수</p>&nbsp;&nbsp;&nbsp;&nbsp;
-					<input name="re" type="number" style="width: 40px; border-radius:  10px 10px 10px 10px;text-align: center;" value="1">
-				</div>
-				<div class="label-value-container" style="display: flex; justify-content: right; align-items: center;">
-				  	<button id="ingestionbtn" style="border: 1px solid black">섭취</button>
-				</div>
-				</form>
 				</div>
 			</c:forEach>
-		</div>
 	</div>
 	<a id="goto_top" href="#" title="맨 위로"></a><!-- 위로가기 -->
 </div><!-- all-wrap의 끝 -->
@@ -419,10 +321,10 @@ body{
         		    chart_1 : function(){    
         		      var chart = document.getElementById("chart_doughnut_1");
         		      var data = {
-        		          labels: ["탄수화물","지방","단백질"],
+        		          labels: ["탄수화물","단백질","지방"],
         		          datasets: [
         		              {
-        		                  data: [${carbohydrate}, ${fat}, ${protein}],
+        		                  data: [${carbohydrate}, ${protein}, ${fat}],
         		                  backgroundColor: [
         		                      "#f23456",
         		                      "#afff2a",
@@ -562,23 +464,59 @@ body{
 	        		myChart.init();
 </script>
 <script>
-const openModalBtn = document.getElementById('openModal');
-const modal = document.getElementById('modal');
-const modalContent = document.querySelector('.modal-content');
+        let chart1Visible = true; // 초기 설정: 첫 번째 그래프를 보이게 함
 
-openModalBtn.addEventListener('click', () => {
-    modal.style.display = 'flex';
-});
-
-modalContent.addEventListener('click', (event) => {
-    event.stopPropagation();
-});
-
-window.addEventListener('click', (event) => {
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-});
-</script>
+        function toggleCharts() {
+            const chartDiv1 = document.querySelector(".chart_dnt_1");
+            const chartDiv2 = document.querySelector(".chart_dnt_2");
+            const infoDiv11 = document.getElementById("result");
+            const infoDiv12 = document.getElementById("resultCbh");
+            const infoDiv13 = document.getElementById("resultPro");
+            const infoDiv14 = document.getElementById("resultFat");
+            
+	        const infoDiv21 = document.getElementById("calorie");
+            const infoDiv22 = document.getElementById("carbohydrate");
+            const infoDiv23 = document.getElementById("protein");
+            const infoDiv24 = document.getElementById("fat");
+            const infoDiv25 = document.getElementById("TOSCORE");
+            const hiddenjump = document.getElementById("hiddenJump");
+            chart1Visible = !chart1Visible; // 차트 가시성 전환
+            
+            if (chart1Visible) {
+                chartDiv1.style.display = "";
+                chartDiv2.style.display = "none";
+                hiddenjump.style.display = "none";
+                infoDiv11.style.display = "none";
+                infoDiv12.style.display = "none";
+                infoDiv13.style.display = "none";
+                infoDiv14.style.display = "none";
+                
+                infoDiv21.style.display = "block";
+                infoDiv22.style.display = "block";
+                infoDiv23.style.display = "block";
+                infoDiv24.style.display = "block";
+                infoDiv25.style.display = "block";
+            } else {
+                chartDiv1.style.display = "none";
+                chartDiv2.style.display = "";
+                hiddenjump.style.display = "block";
+                infoDiv11.style.display = "block";
+                infoDiv12.style.display = "block";
+                infoDiv13.style.display = "block";
+                infoDiv14.style.display = "block";
+                infoDiv21.style.display = "none";
+                infoDiv22.style.display = "none";
+                infoDiv23.style.display = "none";
+                infoDiv24.style.display = "none";
+                infoDiv25.style.display = "none";
+            }
+        }
+        // 페이지 로드 시 초기 설정 적용
+        window.onload = function() {
+            toggleCharts();
+        };
+        
+        
+    </script>
 </body>
 </html>

@@ -49,9 +49,11 @@
         padding: 5px 10px;
         text-decoration: none;
         color: #333;
-        margin-top: 28px;
-        margin-bottom: 28px;
-        font-size: 14px;
+        margin-top: 44px;
+        margin-bottom: 44px;
+        font-size: 15px;
+        font-weight: bold;
+        padding-left: 23px;
     }
 
     #admin_sidebar a:hover {
@@ -61,8 +63,8 @@
     /* 사이드바 이모티콘 */
     i {
 	  display: inline-block;
-	  width: 27px; /* 원형의 지름 설정 */
-	  height: 27px; /* 원형의 지름 설정 */
+	  width: 30px; /* 원형의 지름 설정 */
+	  height: 30px; /* 원형의 지름 설정 */
 	  border-radius: 50%; /* 원형으로 만들기 위해 50%로 설정 */
 	  background-color: #EF605D; /* 원하는 색상을 지정합니다. */
 	  color: white;
@@ -177,79 +179,16 @@
 	  background-color: #999; /* 스크롤바 호버시 색상 */
 	}
 
-	/* 모달 스타일 */
-	.modal {
-	    display: none; /* 초기에는 모달을 보이지 않도록 설정합니다. */
-	    position: fixed; /* 고정된 위치에 배치하기 위해 position 속성을 fixed로 설정합니다. */
-	    top: 0;
-	    left: 0;
-	    width: 100%;
-	    height: 100%;
-	    background-color: rgba(0, 0, 0, 0.4); /* 반투명한 배경을 위해 rgba 색상 사용 */
+	/* 마스코트 */
+    .image-container {
+	    position: relative; /* 이미지의 위치를 조정할 수 있게 함 */
 	}
 	
-	/* 모달 컨텐츠 스타일 */
-	.modal-content {
-	    position: absolute;
-	    top: 48%;
-	    left: 50%;
-	    transform: translate(-50%, -50%); /* 가로, 세로 기준 중앙에 배치하기 위해 transform 사용 */
-	    background-color: #fefefe;
-	    padding: 20px;
-	    border-radius: 15px;
-	    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-	    width: 40%;
+	#adminmascot {
+	    position: relative; 
+	    left: -85px; /* 이미지를 50px 왼쪽으로 이동 */
+	    top: -10px;
 	}
-	
-	/* 모달 창 닫기 버튼 스타일 */
-	.close {
-	    position: absolute;
-	    top: 20px;
-	    right: 40px;
-	    font-size: 30px;
-	    cursor: pointer;
-	}
-	
-	/* input 태그 스타일 */
-	.modal input {
-	    padding: 8px;
-	    border: 1px solid #ccc;
-	    border-radius: 5px;
-	    width: 40%;
-	    box-sizing: border-box;
-	    margin-top: 20px;
-	    text-align: center;
-	}
-	
-	/* label 태그 스타일 */
-	.modal label {
-	    display: inline-block;
-	    width: 140px; /* 원하는 너비로 설정해주세요 */
-	    font-weight: bold;
-	    margin-right: 25px;
-	    margin-left: 135px;
-	    margin-top: 20px;
-	    
-	}
-	
-	/* button 태그 스타일 */
-	.modal button {
-	    padding: 10px 15px;
-	    border: none;
-	    background-color: #007bff;
-	    color: white;
-	    border-radius: 5px;
-	    cursor: pointer;
-	}
-	
-	/* 두 번째 버튼(Modal 취소 버튼) 스타일 */
-	.modal button:last-child {
-	    background-color: #dc3545; /* 취소 버튼 색상을 빨간색으로 설정합니다. */
-	}
-	 
-	
-	
-	
 	
 </style>
 </head>
@@ -259,75 +198,42 @@
 		
 		<!-- 관리자 사이드바 -->
 		<div id="admin_sidebar">
-	        <h4 class="text-center" style="padding-bottom: 12px;"><b>관리자 메뉴</b></h4>
+	        <h4 class="text-center" style="padding-top: 10px; width:95%; padding-bottom: 30px; border-bottom: 1px solid #ccc;"><b>관리자 메뉴</b></h4>
 	        <ul>
 	        	<li>
 	        		<a href="<c:url value="/AdminMain.do"/>" style="display: flex; align-items: center;">
-	        			<i class="fas fa-home" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
+	        			<i class="fas fa-home" style="font-size:17px; color:white; display: flex; align-items: center; justify-content: center;"></i>
 	        			&nbsp;&nbsp;관리자 메인
 	        		</a>
 	        	</li>
 	        	<li>
 	        		<a href="<c:url value="/AdminMember.do"/>" style="display: flex; align-items: center;">
-	        			<i class="fas fa-users" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
+	        			<i class="fas fa-users" style="font-size:17px; color:white; display: flex; align-items: center; justify-content: center;"></i>
 	        			&nbsp;&nbsp;회원 관리
 	        		</a>
 	        	</li>
 	        	<li>
 	        		<a href="<c:url value="/AdminDB.do"/>" style="display: flex; align-items: center;">
-	        			<i class="fas fa-table" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
+	        			<i class="fas fa-table" style="font-size:17px; color:white; display: flex; align-items: center; justify-content: center;"></i>
 	        			&nbsp;&nbsp;데이터베이스 통계
 	        		</a>
 	        	</li>
 	        	<li>
 	        		<a href="<c:url value="/AdminIssue.do"/>" style="display: flex; align-items: center;">
-						<i class="fas fa-medkit" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
+						<i class="fas fa-medkit" style="font-size:17px; color:white; display: flex; align-items: center; justify-content: center;"></i>
 	        			&nbsp;&nbsp;영양제 분석 통계
 	        		</a>
 	        	</li>
 	        	<li>
 	        		<a href="<c:url value="/AdminMain.do"/>" style="display: flex; align-items: center;">
-	        			<i class="fas fa-server" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
-	        			&nbsp;&nbsp;머신러닝 모델 관리
-	        		</a>
-	        	</li>
-	        	<li>
-	        		<a href="<c:url value="/AdminMain.do"/>" style="display: flex; align-items: center;">
-	        			<i class="fas fa-heartbeat" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
+	        			<i class="fas fa-heartbeat" style="font-size:17px; color:white; display: flex; align-items: center; justify-content: center;"></i>
 	        			&nbsp;&nbsp;질병예측 결과 관리
 	        		</a>
 	        	</li>
-	        	<li>
-	        		<a href="<c:url value="/AdminMain.do"/>" style="display: flex; align-items: center;">
-	        			<i class="fas fa-comment" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
-	        			&nbsp;&nbsp;피드백 관리
-	        		</a>
-	        	</li>
-	        	<li>
-	        		<a href="<c:url value="/AdminMain.do"/>" style="display: flex; align-items: center;">
-	        			<i class="fas fa-chart-bar" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
-	        			&nbsp;&nbsp;서비스 통계 및 분석
-	        		</a>
-	        	</li>
-	        	<li>
-	        		<a href="<c:url value="/AdminMain.do"/>" style="display: flex; align-items: center;">
-	        			<i class="fas fa-file-alt" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
-	        			&nbsp;&nbsp;시스템 로그 관리
-	        		</a>
-	        	</li>
-	        	<li>
-	        		<a href="<c:url value="/AdminMain.do"/>" style="display: flex; align-items: center;">
-	        			<i class="fas fa-shield-alt" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
-	        			&nbsp;&nbsp;보안 관리
-	        		</a>
-	        	</li>
-	        	<li>
-	        		<a href="<c:url value="/AdminMain.do"/>" style="display: flex; align-items: center;">
-	        			<i class="fas fa-cog" style="font-size:16px; color:white; display: flex; align-items: center; justify-content: center;"></i>
-	        			&nbsp;&nbsp;서비스 설정 관리
-	        		</a>
-	        	</li>
 	        </ul>
+	        <div class="image-container">
+        		<img id="adminmascot" src="/images/tsimages/mascot.png" style="height: 230px; width: 400px;">
+        	</div>
 	    </div><!-- 관리자 사이드바 -->
 	    
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->	

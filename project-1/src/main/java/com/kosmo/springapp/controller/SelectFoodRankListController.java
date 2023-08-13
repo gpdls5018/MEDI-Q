@@ -37,6 +37,7 @@ import com.kosmo.springapp.model.AllFoodDTO;
 import com.kosmo.springapp.model.AvgStarScoreCountDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
 import com.kosmo.springapp.model.MemberDTO;
+import com.kosmo.springapp.model.UserInfoDTO;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
 import com.kosmo.springapp.service.impl.SelectFoodServiceImpl;
 @Controller
@@ -92,13 +93,13 @@ public class SelectFoodRankListController {
 		List<AllFoodDTO> foodlist = selectfoodservice.FoodSearch(food);
 		MemberDTO memberDto = loginService.selectOne(req);
 		String ID = memberDto.getId();
-		Map<String, String> userinfo = selectfoodservice.userinfo(ID);
+		UserInfoDTO userinfo = selectfoodservice.userinfo(ID);
 		model.addAttribute("foodlist", foodlist);
 		if(userinfo != null) {
-			model.addAttribute("dailyCalories", userinfo.get("KCAL"));
-		    model.addAttribute("Prorate", userinfo.get("PRORATE"));
-		    model.addAttribute("Cbhrate", userinfo.get("CBHRATE"));
-		    model.addAttribute("Fatrate", userinfo.get("FATRATE"));
+			model.addAttribute("dailyCalories", userinfo.getKcal());
+		    model.addAttribute("Prorate", userinfo.getProrate());
+		    model.addAttribute("Cbhrate", userinfo.getCbhrate());
+		    model.addAttribute("Fatrate", userinfo.getFatrate());
 		}
 		return "test2";
 	}
@@ -106,7 +107,7 @@ public class SelectFoodRankListController {
 	@PostMapping("/food/userinfo.do")
 	public String userinfo( HttpServletRequest req,
 							HttpServletResponse resp,
-							@RequestParam float height,
+							@RequestParam float Height,
 							@RequestParam float age,
 							@RequestParam float Weight,
 							@RequestParam float Fatrate,
@@ -120,7 +121,7 @@ public class SelectFoodRankListController {
 		MemberDTO memberDto = loginService.selectOne(req);
 		System.out.println(memberDto.getId());
 	    // 남성일 경우의 BMR 계산식을 사용
-	    float bmr = (float) (88.362 + (13.397 * Weight) + (4.799 * height) - (5.677 * age));
+	    float bmr = (float) (88.362 + (13.397 * Weight) + (4.799 * Height) - (5.677 * age));
 	    // 활동 대사율 곱하기 (여기서는 예시로 '보통 활동' 계수 사용)
 	    if(healthIssueSelect==1){
 	    	activityMultiplier = (float) 1.2;
@@ -154,7 +155,7 @@ public class SelectFoodRankListController {
 	}
 	
 	@GetMapping("/food/intakefood.do")
-	public String intakefood(String no,Model model,HttpServletRequest req,HttpServletResponse resp) {
+	public String intakefood(String no,String re,Model model,HttpServletRequest req,HttpServletResponse resp) {
 		Date currentDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd");
         String formatDate = dateFormat.format(currentDate);
@@ -172,38 +173,41 @@ public class SelectFoodRankListController {
 		float sodium= 0;
 		float transfat= 0;
 		String ID = memberDto.getId();
-		selectfoodservice.IntakeFood(no, ID);
+		int rep = Integer.parseInt(re);
+		for (int i = 0; i < rep; i++) {
+			selectfoodservice.IntakeFood(no, ID);
+		}
 		for(String foodno:selectfoodservice.intakeFoodNo(formatDate, ID)) {
 			AllFoodDTO AFD = selectfoodservice.intakeFoodData(foodno);
 			if(AFD.getCalorie() != null) {
-			calorie += Float.parseFloat(AFD.getCalorie());
+				calorie += Float.parseFloat(AFD.getCalorie());
 			}
 			if(AFD.getProtein() != null) {
-			protein += Float.parseFloat(AFD.getProtein());
+				protein += Float.parseFloat(AFD.getProtein());
 			}
 			if(AFD.getFat() != null) {
-			fat += Float.parseFloat(AFD.getFat());
+				fat += Float.parseFloat(AFD.getFat());
 			}
 			if(AFD.getCarbohydrate() != null) {
-			carbohydrate += Float.parseFloat(AFD.getCarbohydrate());
+				carbohydrate += Float.parseFloat(AFD.getCarbohydrate());
 			}
 			if(AFD.getSugar() != null) {
-			sugar += Float.parseFloat(AFD.getSugar());
+				sugar += Float.parseFloat(AFD.getSugar());
 			}
 			if(AFD.getDietaryfiber() != null) {
-			dietaryfiber += Float.parseFloat(AFD.getDietaryfiber());
+				dietaryfiber += Float.parseFloat(AFD.getDietaryfiber());
 			}
 			if(AFD.getSaturatedfat() != null) {
-			saturatedfat += Float.parseFloat(AFD.getSaturatedfat());
+				saturatedfat += Float.parseFloat(AFD.getSaturatedfat());
 			}
 			if(AFD.getUnsaturatedfat() != null) {
-			unsaturatedfat += Float.parseFloat(AFD.getUnsaturatedfat());
+				unsaturatedfat += Float.parseFloat(AFD.getUnsaturatedfat());
 			}
 			if(AFD.getCholesterol() != null) {
-			cholesterol += Float.parseFloat(AFD.getCholesterol());
+				cholesterol += Float.parseFloat(AFD.getCholesterol());
 			}
 			if(AFD.getSodium() != null) {
-			sodium += Float.parseFloat(AFD.getSodium());
+				sodium += Float.parseFloat(AFD.getSodium());
 			}
 			if(AFD.getTransfat() != null) {
 				transfat += Float.parseFloat(AFD.getTransfat());
@@ -222,15 +226,64 @@ public class SelectFoodRankListController {
 		model.addAttribute("sodium", sodium);
 		model.addAttribute("transfat", transfat);
 		model.addAttribute("calorie", calorie);
-		
-		Map<String, String> userinfo = selectfoodservice.userinfo(ID);
-		
+		UserInfoDTO userinfo = selectfoodservice.userinfo(ID);
+		float KCSCORE = 0;
+		float PRSCORE = 0;
+		float CBSCORE = 0;
+		float FASCORE = 0;
 		if(userinfo != null) {
-			model.addAttribute("dailyCalories", userinfo.get("KCAL"));
-		    model.addAttribute("Prorate", userinfo.get("PRORATE"));
-		    model.addAttribute("Cbhrate", userinfo.get("CBHRATE"));
-		    model.addAttribute("Fatrate", userinfo.get("FATRATE"));
+			model.addAttribute("dailyCalories", userinfo.getKcal());
+		    model.addAttribute("Prorate", userinfo.getProrate());
+		    model.addAttribute("Cbhrate", userinfo.getCbhrate());
+		    model.addAttribute("Fatrate", userinfo.getFatrate());
+		    
+		    if(userinfo.getKcal() != 0 && calorie !=0) {
+		    	if(userinfo.getKcal() >= calorie) {
+		    		KCSCORE = (calorie/userinfo.getKcal())*25;
+		    	}
+		    	else {
+		    		KCSCORE = (userinfo.getKcal()/calorie)*25;
+		    	}
+		    }
+		    
+		    if(userinfo.getProrate() != 0 && protein !=0) {
+		    	if(userinfo.getProrate() >= protein) {
+		    		PRSCORE = (protein/userinfo.getProrate())*25;
+		    	}
+		    	else {
+		    		PRSCORE = (userinfo.getProrate()/protein)*25;
+		    	}
+		    }
+		    
+		    if(userinfo.getCbhrate() != 0 && carbohydrate !=0) {
+		    	if(userinfo.getCbhrate() >= carbohydrate) {
+		    		CBSCORE = (carbohydrate/userinfo.getCbhrate())*25;
+		    	}
+		    	else {
+		    		CBSCORE = (userinfo.getCbhrate()/carbohydrate)*25;
+		    	}
+		    }
+		    
+		    if(userinfo.getFatrate() != 0 && fat !=0) {
+		    	if(userinfo.getFatrate() >= fat) {
+		    		FASCORE = (fat/userinfo.getFatrate())*25;
+		    	}
+		    	else {
+		    		FASCORE = (userinfo.getFatrate()/fat)*25;
+		    	}
+		    }
 		}
+		int TOSCORE =(int)(FASCORE + CBSCORE + PRSCORE +KCSCORE);
+		System.out.println(TOSCORE);
+		System.out.println(selectfoodservice.checkUserscore(ID, formatDate));
+		if(selectfoodservice.checkUserscore(ID, formatDate) != null) {
+			selectfoodservice.updateUserscore(ID, TOSCORE,formatDate);
+		}
+		else {
+			selectfoodservice.newUserscore(ID, TOSCORE);
+		}
+
+		model.addAttribute("TOSCORE",TOSCORE);
 		System.out.println("칼로린:"+calorie);
 		System.out.println("단백질:"+protein);
 		System.out.println("지방:"+fat);
@@ -249,16 +302,97 @@ public class SelectFoodRankListController {
 	public String test2(HttpServletRequest req,HttpServletResponse resp,Model model) {
 		MemberDTO memberDto = loginService.selectOne(req);
 		int nowYear = LocalDate.now().getYear();
-		model.addAttribute("age", nowYear-Integer.parseInt(memberDto.getBirth().substring(0, 4)));
 		String ID = memberDto.getId();
-		Map<String, String> userinfo = selectfoodservice.userinfo(ID);
-		if(userinfo != null) {
-		model.addAttribute("dailyCalories", userinfo.get("KCAL"));
-	    model.addAttribute("Prorate", userinfo.get("PRORATE"));
-	    model.addAttribute("Cbhrate", userinfo.get("CBHRATE"));
-	    model.addAttribute("Fatrate", userinfo.get("FATRATE"));
+		UserInfoDTO userinfo = selectfoodservice.userinfo(ID);
+	if(userinfo != null) {
+		model.addAttribute("dailyCalories", userinfo.getKcal());
+	    model.addAttribute("Prorate", userinfo.getProrate());
+	    model.addAttribute("Cbhrate", userinfo.getCbhrate());
+	    model.addAttribute("Fatrate", userinfo.getFatrate());
 		}
+
+		model.addAttribute("age", nowYear-Integer.parseInt(memberDto.getBirth().substring(0, 4)));
 		return "test2";
+	}
+	@GetMapping("/food/test3.do")
+	public String test3(HttpServletRequest req,HttpServletResponse resp,Model model) {
+		MemberDTO memberDto = loginService.selectOne(req);
+		Date currentDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd");
+        String formatDate = dateFormat.format(currentDate);
+		String ID = memberDto.getId();
+		UserInfoDTO userinfo = selectfoodservice.userinfo(ID);
+		List<AllFoodDTO> foodlist = new ArrayList<>();
+		float calorie = 0;
+		float protein= 0;
+		float fat= 0;
+		float carbohydrate= 0;
+		float sugar= 0;
+		float dietaryfiber= 0;
+		float saturatedfat= 0;
+		float unsaturatedfat= 0;
+		float cholesterol= 0;
+		float sodium= 0;
+		float transfat= 0;
+		for(String foodno:selectfoodservice.intakeFoodNo(formatDate, ID)) {
+			 foodlist.add(selectfoodservice.intakeFoodData(foodno));
+			 AllFoodDTO AFD = selectfoodservice.intakeFoodData(foodno);
+			 if(AFD.getCalorie() != null) {
+					calorie += Float.parseFloat(AFD.getCalorie());
+				}
+				if(AFD.getProtein() != null) {
+					protein += Float.parseFloat(AFD.getProtein());
+				}
+				if(AFD.getFat() != null) {
+					fat += Float.parseFloat(AFD.getFat());
+				}
+				if(AFD.getCarbohydrate() != null) {
+					carbohydrate += Float.parseFloat(AFD.getCarbohydrate());
+				}
+				if(AFD.getSugar() != null) {
+					sugar += Float.parseFloat(AFD.getSugar());
+				}
+				if(AFD.getDietaryfiber() != null) {
+					dietaryfiber += Float.parseFloat(AFD.getDietaryfiber());
+				}
+				if(AFD.getSaturatedfat() != null) {
+					saturatedfat += Float.parseFloat(AFD.getSaturatedfat());
+				}
+				if(AFD.getUnsaturatedfat() != null) {
+					unsaturatedfat += Float.parseFloat(AFD.getUnsaturatedfat());
+				}
+				if(AFD.getCholesterol() != null) {
+					cholesterol += Float.parseFloat(AFD.getCholesterol());
+				}
+				if(AFD.getSodium() != null) {
+					sodium += Float.parseFloat(AFD.getSodium());
+				}
+				if(AFD.getTransfat() != null) {
+					transfat += Float.parseFloat(AFD.getTransfat());
+				}
+		}
+		model.addAttribute("foodlist", foodlist);
+		model.addAttribute("calorie", calorie);
+		model.addAttribute("protein", protein);
+		model.addAttribute("fat", fat);
+		model.addAttribute("carbohydrate", carbohydrate);
+		model.addAttribute("sugar", sugar);
+		model.addAttribute("dietaryfiber", dietaryfiber);
+		model.addAttribute("saturatedfat", saturatedfat);
+		model.addAttribute("unsaturatedfat", unsaturatedfat);
+		model.addAttribute("cholesterol", cholesterol);
+		model.addAttribute("sodium", sodium);
+		model.addAttribute("transfat", transfat);
+		model.addAttribute("calorie", calorie);
+		
+		model.addAttribute("TOSCORE", selectfoodservice.foodscore(ID, formatDate).getSCORE());
+	if(userinfo != null) {
+		model.addAttribute("dailyCalories", userinfo.getKcal());
+	    model.addAttribute("Prorate", userinfo.getProrate());
+	    model.addAttribute("Cbhrate", userinfo.getCbhrate());
+	    model.addAttribute("Fatrate", userinfo.getFatrate());
+		}
+		return "test3";
 	}
 
 	
