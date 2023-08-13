@@ -59,6 +59,7 @@ body{
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
+    cursor: pointer;
   }
   
   .food-info {
@@ -101,14 +102,14 @@ body{
   z-index: 1000;
 }
 
-    .btn-primary {
-            background-color: black;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+        .label-value-container {
+		    display: none;
+		    margin-top: 5px;
+		}
+		
+		.food-box.expanded .label-value-container {
+		    display: flex;
+		}
      </style>
 
 	<!-- 상단배너 div -->
@@ -132,7 +133,8 @@ body{
 			<div class="content" style="flex-direction:column; background-color:#fdfbf6; padding-bottom: 20px;">
 			<!-- 건기식 또는 회사이름을 적었을 경우 -->
 				<div class="top-wrap-070">
-					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>일일 섭취량</span></h1>
+					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;"><span>일일 섭취량</span>	</h1>
+					<a class="btn" href="/food/test2.do">섭취음식 등록하러가기</a>
 				</div>
 			<c:if test="${not empty dailyCalories}">
 		        <div class="chart_dnt_2" style="">
@@ -172,14 +174,14 @@ body{
 
 			<c:forEach items="${foodlist }" var="foodlist">
 				<div class="food-box">
-					<div class="food-info">음식 정보</div>
+					<div class="food-info">${foodlist.foodname}에 대한 정보</div>
 				  <!--
 				  <div class="label-value-container">
 				    <div class="label">음식 번호:</div>
 				    <div class="value">${foodlist.no}</div>
 				  </div>
 				    -->
-				  <div class="label-value-container">
+				  <div class="label-value-container toggle">
 				    <div class="label">음식 이름:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.foodname}</div>
 				  </div>
@@ -199,7 +201,7 @@ body{
 				    <div class="value">${foodlist.calorie} kcal</div>
 				  </div>
 				  
-				  <div class="label-value-container">
+				  <div class="label-value-container toggle">
 				    <div class="label">탄수화물:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.carbohydrate} g</div>
 				  </div>
@@ -214,12 +216,12 @@ body{
 				    <div class="value">${foodlist.dietaryfiber} g</div>
 				  </div>
 				  
-				  <div class="label-value-container">
+				  <div class="label-value-container toggle">
 				    <div class="label">단백질:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.protein} g</div>
 				  </div>
 				  
-				  <div class="label-value-container">
+				  <div class="label-value-container toggle">
 				    <div class="label">지방:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.fat} g</div>
 				  </div>
@@ -516,7 +518,15 @@ body{
             toggleCharts();
         };
         
-        
+        document.addEventListener("DOMContentLoaded", function () {
+            const foodBoxes = document.querySelectorAll(".food-box");
+
+            foodBoxes.forEach(function (foodBox) {
+                foodBox.addEventListener("click", function () {
+                    this.classList.toggle("expanded");
+                });
+            });
+        });
     </script>
 </body>
 </html>
