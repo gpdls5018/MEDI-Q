@@ -274,10 +274,10 @@
                 	<div class="ocfixed">
 	                	<div class="container">
 							<fieldset>
-								<legend class="chatlegend">오픈 채팅방</legend>
-									<input type="text" class="form-control mb-3 btn" id="chatnickname" placeholder='"여기"를 눌러 닉네임을 입력해주세요.'>
+								<legend class="chatlegend">커뮤니티 채팅방</legend>
+									<!-- <input type="text" class="form-control mb-3 btn" id="chatnickname" placeholder='"여기"를 눌러 닉네임을 입력해주세요.'> -->
 									<div style="display: flex; justify-content: center;" class=" mb-3">
-										<input class="btn mr-3" type="button" id="ocEnterBtn" value="입장하기">
+										<input class="btn mr-3 " type="button" id="ocEnterBtn" value="입장하기" data-id="${id}">
 										<input class="btn ml-3" type="button" id="ocExitBtn" value="퇴장하기">
 									</div>
 									<!-- 여기가 채팅방시작 -->
@@ -363,13 +363,19 @@
 	//오픈채팅웹소켓 저장용
 	var ocwsocket;
 	//오픈채팅닉네임 저장용
-	var chatnickname;
+    var chatnickname;
+	//nickname을 안쓰고할 때 추가
+    chatnickname= $('#ocEnterBtn').data('id');
+    console.log('data-id:', chatnickname);//체크용
 	//내가 닉네임을 적어서 오픈채팅창 방에 들어오는 걸로 확정!
 	$('#ocEnterBtn').on('click',function(){
-		chatnickname = $('#chatnickname').val();
-		if (chatnickname.trim() === '') {
-		    alert('닉네임 입력 시 입장 가능합니다.');
+		//chatnickname = $('#chatnickname').val();//닉네임을 사용할시 
+		if (chatnickname === '') {
+		    alert('로그인할 시 입장 가능합니다.');
 		    return;
+		}
+		if(chatnickname==='KIM'){
+			alert('관리자(KIM) 안녕하세요.');
 		}
 		ocwsocket = new WebSocket("ws://192.168.0.16:9090<c:url value="/chat-ws"/>");
 		$('#chatArea').show();
@@ -394,7 +400,7 @@
 	function open(){
 		//서버로 연결한 사람의 정보(닉네임) 전송
 		//사용자가 입력한 닉네임 저장
-		chatnickname = $('#chatnickname').val();
+		//chatnickname = $('#chatnickname').val();//id로 변경시
 		ocwsocket.send('msg:'+chatnickname+' 가(이) 입장했습니다.');
 		appendMessage("오픈 채팅방에 참가하였습니다.");
 		$('#ociMessage').focus();
@@ -426,7 +432,7 @@
 		
 		if(e.keyCode===13){//엔터 입력
 			//입력한 메시지 서버로 전송
-			ocwsocket.send('msg: '+chatnickname+'님: '+$(this).val());
+			ocwsocket.send('msg: '+chatnickname+'님 : '+$(this).val());
 			appendMessage('<p class="int"><span class="ocspan">'+$(this).val()+"</span></p>");
 			$(this).val("");
 			//포커스 주기
