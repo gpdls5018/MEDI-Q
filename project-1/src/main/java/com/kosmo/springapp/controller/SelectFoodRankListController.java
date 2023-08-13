@@ -37,6 +37,7 @@ import com.kosmo.springapp.model.AllFoodDTO;
 import com.kosmo.springapp.model.AvgStarScoreCountDTO;
 import com.kosmo.springapp.model.FunctionalFoodListDTO;
 import com.kosmo.springapp.model.MemberDTO;
+import com.kosmo.springapp.model.UserInfoDTO;
 import com.kosmo.springapp.service.impl.LoginServiceImpl;
 import com.kosmo.springapp.service.impl.SelectFoodServiceImpl;
 @Controller
@@ -92,13 +93,13 @@ public class SelectFoodRankListController {
 		List<AllFoodDTO> foodlist = selectfoodservice.FoodSearch(food);
 		MemberDTO memberDto = loginService.selectOne(req);
 		String ID = memberDto.getId();
-		Map<String, String> userinfo = selectfoodservice.userinfo(ID);
+		UserInfoDTO userinfo = selectfoodservice.userinfo(ID);
 		model.addAttribute("foodlist", foodlist);
 		if(userinfo != null) {
-			model.addAttribute("dailyCalories", userinfo.get("KCAL"));
-		    model.addAttribute("Prorate", userinfo.get("PRORATE"));
-		    model.addAttribute("Cbhrate", userinfo.get("CBHRATE"));
-		    model.addAttribute("Fatrate", userinfo.get("FATRATE"));
+			model.addAttribute("dailyCalories", userinfo.getKcal());
+		    model.addAttribute("Prorate", userinfo.getProrate());
+		    model.addAttribute("Cbhrate", userinfo.getCbhrate());
+		    model.addAttribute("Fatrate", userinfo.getFatrate());
 		}
 		return "test2";
 	}
@@ -106,7 +107,7 @@ public class SelectFoodRankListController {
 	@PostMapping("/food/userinfo.do")
 	public String userinfo( HttpServletRequest req,
 							HttpServletResponse resp,
-							@RequestParam float height,
+							@RequestParam float Height,
 							@RequestParam float age,
 							@RequestParam float Weight,
 							@RequestParam float Fatrate,
@@ -120,7 +121,7 @@ public class SelectFoodRankListController {
 		MemberDTO memberDto = loginService.selectOne(req);
 		System.out.println(memberDto.getId());
 	    // 남성일 경우의 BMR 계산식을 사용
-	    float bmr = (float) (88.362 + (13.397 * Weight) + (4.799 * height) - (5.677 * age));
+	    float bmr = (float) (88.362 + (13.397 * Weight) + (4.799 * Height) - (5.677 * age));
 	    // 활동 대사율 곱하기 (여기서는 예시로 '보통 활동' 계수 사용)
 	    if(healthIssueSelect==1){
 	    	activityMultiplier = (float) 1.2;
@@ -222,15 +223,65 @@ public class SelectFoodRankListController {
 		model.addAttribute("sodium", sodium);
 		model.addAttribute("transfat", transfat);
 		model.addAttribute("calorie", calorie);
-		
-		Map<String, String> userinfo = selectfoodservice.userinfo(ID);
-		
+		UserInfoDTO userinfo = selectfoodservice.userinfo(ID);
+		float KCSCORE = 0;
+		float PRSCORE = 0;
+		float CBSCORE = 0;
+		float FASCORE = 0;
 		if(userinfo != null) {
-			model.addAttribute("dailyCalories", userinfo.get("KCAL"));
-		    model.addAttribute("Prorate", userinfo.get("PRORATE"));
-		    model.addAttribute("Cbhrate", userinfo.get("CBHRATE"));
-		    model.addAttribute("Fatrate", userinfo.get("FATRATE"));
+
+			model.addAttribute("dailyCalories", userinfo.getKcal());
+		    model.addAttribute("Prorate", userinfo.getProrate());
+		    model.addAttribute("Cbhrate", userinfo.getCbhrate());
+		    model.addAttribute("Fatrate", userinfo.getFatrate());
+		    
+		    if(userinfo.getKcal() != 0 && calorie !=0) {
+		    	if(userinfo.getKcal() >= calorie) {
+		    		KCSCORE = (calorie/userinfo.getKcal())*25;
+		    	}
+		    	else {
+		    		KCSCORE = (userinfo.getKcal()/calorie)*25;
+		    	}
+		    }
+		    
+		    if(userinfo.getProrate() != 0 && protein !=0) {
+		    	if(userinfo.getProrate() >= protein) {
+		    		PRSCORE = (protein/userinfo.getProrate())*25;
+		    	}
+		    	else {
+		    		PRSCORE = (userinfo.getProrate()/protein)*25;
+		    	}
+		    }
+		    
+		    if(userinfo.getCbhrate() != 0 && carbohydrate !=0) {
+		    	if(userinfo.getCbhrate() >= carbohydrate) {
+		    		CBSCORE = (carbohydrate/userinfo.getCbhrate())*25;
+		    	}
+		    	else {
+		    		CBSCORE = (userinfo.getCbhrate()/carbohydrate)*25;
+		    	}
+		    }
+		    
+		    if(userinfo.getFatrate() != 0 && fat !=0) {
+		    	if(userinfo.getFatrate() >= fat) {
+		    		FASCORE = (fat/userinfo.getFatrate())*25;
+		    	}
+		    	else {
+		    		FASCORE = (userinfo.getFatrate()/fat)*25;
+		    	}
+		    }
 		}
+		int TOSCORE =(int)(FASCORE + CBSCORE + PRSCORE +KCSCORE);
+		System.out.println(TOSCORE);
+		System.out.println(selectfoodservice.checkUserscore(ID, formatDate));
+		if(selectfoodservice.checkUserscore(ID, formatDate) != null) {
+			selectfoodservice.updateUserscore(ID, TOSCORE);
+		}
+		else {
+			selectfoodservice.newUserscore(ID, TOSCORE);
+		}
+
+		model.addAttribute("TOSCORE",TOSCORE);
 		System.out.println("칼로린:"+calorie);
 		System.out.println("단백질:"+protein);
 		System.out.println("지방:"+fat);
@@ -251,12 +302,12 @@ public class SelectFoodRankListController {
 		int nowYear = LocalDate.now().getYear();
 		model.addAttribute("age", nowYear-Integer.parseInt(memberDto.getBirth().substring(0, 4)));
 		String ID = memberDto.getId();
-		Map<String, String> userinfo = selectfoodservice.userinfo(ID);
-		if(userinfo != null) {
-		model.addAttribute("dailyCalories", userinfo.get("KCAL"));
-	    model.addAttribute("Prorate", userinfo.get("PRORATE"));
-	    model.addAttribute("Cbhrate", userinfo.get("CBHRATE"));
-	    model.addAttribute("Fatrate", userinfo.get("FATRATE"));
+		UserInfoDTO userinfo = selectfoodservice.userinfo(ID);
+	if(userinfo != null) {
+		model.addAttribute("dailyCalories", userinfo.getKcal());
+	    model.addAttribute("Prorate", userinfo.getProrate());
+	    model.addAttribute("Cbhrate", userinfo.getCbhrate());
+	    model.addAttribute("Fatrate", userinfo.getFatrate());
 		}
 		return "test2";
 	}

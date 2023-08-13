@@ -103,7 +103,7 @@ body{
   z-index: 1000;
 }
 
-/* 모달 스타일 */
+/* 모달 스타일 
 .modal {
   position: fixed;
   top: 50%;
@@ -122,12 +122,64 @@ body{
   width: 80%;
   max-width: 600px;
   border-radius: 5px;
-}
+}*/
 .modal-content form {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
     }
+    
+    .btn-primary {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        /* Input Styles */
+        .input-field {
+            border: 1px solid black;
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .select-field {
+            border: 1px solid black;
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            width: 100%;
+            appearance: none;
+            background-image: url('dropdown-icon.png');
+            background-position: right center;
+            background-repeat: no-repeat;
+        }
+    
      </style>
 
 	<!-- 상단배너 div -->
@@ -153,37 +205,47 @@ body{
 				<div class="top-wrap-070">
 					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>일일 섭취량</span></h1>
 				</div>
-				<div class="overlay" id="overlay"></div>
 				<div style="text-align: right; margin-right: 100px">
-				<button style="border: 1px solid black;" id="openModalBtn">자신의 일일 칼로리 계산</button>
+				<button class="btn-primary" style="border: 1px solid black;" id="openModal">자신의 일일 칼로리 계산</button>
 				</div>
 				<!-- 모달 -->
-				<div id="modal" class="modal">
-			 		<div class="modal-content" style="height: 350px;">
-			 			<form action="/food/userinfo.do" style="height: 100px;" method="post">
-			    		<input name="height" id="height" style="border: 1px solid black;" required placeholder="키를 입력해주세요"><br/>
-				    	<input name="Weight" id="weight" style="border: 1px solid black;" required placeholder="몸무게를 입력해주세요"><br/>
-				   	 	<input name="Fatrate" id="fatrate" style="border: 1px solid black;" required placeholder="지방의 비율을 입력해주세요"><br/>
-				   	 	<input name="Prorate" id="prorate" style="border: 1px solid black;" required placeholder="단백질의 비율을 입력해주세요"><br/>
-				   	 	<input name="Cbhrate" id="cbhrate" style="border: 1px solid black;" required placeholder="탄수화물의 비율을 입력해주세요"><br/>
-				    	<select id="healthIssueSelect" style="border: 1px solid black;" name="healthIssueSelect" onchange="submitForm()" class="ipt-main">
-							<option value="1">앉아서 일하는 경우</option>
-							<option value="2">가벼운 활동(운동없이 약간의 활동)</option>
-							<option value="3">보통 활동(주3~4회 운동)</option>
-							<option value="4">활발한 활동(주 5~7회 운동)</option>
-							<option value="5">매우 활발한 활동(일일 운동 및 육체적 노동)</option>
-						</select>
-				   	 	<input name="age" id="age" style="border: 1px solid black;" required value="${age }" hidden="true"><br/>
-				    	<button id="caloriesBtn" name="cabtn" style="border: 1px solid black;background-color: black;color:white;font:bold;border-radius: 5px 5px 5px 5px;">칼로리 계산</button>
-				    	</form>
-					</div>
-				</div><br/>
+			    <div class="modal" id="modal">
+			        <div class="modal-content">
+			            <form action="/food/userinfo.do" method="post">
+			            	<p>키를 입력해주세요</p>
+			                <input class="input-field" name="Height" placeholder="(cm)" required>
+			                <p>몸무게를 입력해주세요</p>
+			                <input class="input-field" name="Weight" placeholder="(kg)" required>
+			                <p>탄수화물의 입력해주세요</p>
+			                <input class="input-field" name="Cbhrate" placeholder="적정 비율 40~65(%)" required>
+			                <p>단백질의 입력해주세요</p>
+			                <input class="input-field" name="Prorate" placeholder="적정 비율 7~35(%)" required>
+			                <p>지방의 비율을 입력해주세요</p>
+			                <input class="input-field" name="Fatrate" placeholder="적정 비율 15~30(%)" required>
+			                <div style="font-size: x-small;text-align: right;width: 350px;">평균적인 최적의 탄단지 비율은 5:3:2 라고 합니다</div>
+			                <p>활동량을 입력해주세요</p>
+			                <select class="select-field" name="healthIssueSelect" onchange="submitForm()">
+			                    <option value="1">앉아서 일하는 경우</option>
+			                    <option value="2">가벼운 활동(운동없이 약간의 활동)</option>
+			                    <option value="3">보통 활동(주3~4회 운동)</option>
+			                    <option value="4">활발한 활동(주 5~7회 운동)</option>
+			                    <option value="5">매우 활발한 활동(일일 운동 및 육체적 노동)</option>
+			                </select>
+			                <input type="number" name="age" value="${age}" hidden>
+			                <button class="btn-primary" id="caloriesBtn" name="cabtn">칼로리 계산</button>
+			            </form>
+			        </div>
+			    </div>
+				<br/>
 				<c:if test="${not empty Fatrate }">
 					<div class="chart_dnt_2">
 						  <h1>칼로리기준 탄단지 비율</h1>
 						  <canvas id="chart_doughnut_2"></canvas>
 					</div>
 	    			<p id="result"></p>
+	    			<p id="resultCbh"></p>
+	    			<p id="resultPro"></p>
+	    			<p id="resultFat"></p>
     			</c:if>
 				<c:if test="${not empty fat}">
 					<div class="chart_dnt_1">
@@ -191,6 +253,10 @@ body{
 					  <canvas id="chart_doughnut_1"></canvas>
 					</div>
 					<p>총 섭취한 칼로리: ${calorie }kcal</p>
+					<p>총 섭취한 탄수화물: ${calorie }g</p>
+					<p>총 섭취한 단백질: ${protein }g</p>
+					<p>총 섭취한 지방: ${fat }g</p>
+					<p>총 점수는 : ${TOSCORE}점</p>
 				</c:if>
 				<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
 					<div class="search-etc">
@@ -427,6 +493,15 @@ body{
 		    // 계산된 칼로리 출력
 		    var resultElement = document.getElementById('result');
 		    resultElement.innerHTML = "하루에 필요한 칼로리: " + dailyCalories.toFixed(2) + "kcal";
+		    var Cbhrate = (${dailyCalories}*(${Cbhrate}/100))/4;
+		    var Prorate = (${dailyCalories}*(${Prorate}/100))/4;
+		    var Fatrate = (${dailyCalories}*(${Fatrate}/100))/9;
+		    var resultCbhElement = document.getElementById('resultCbh');
+		    var resultPRoElement = document.getElementById('resultPro');
+		    var resultFatElement = document.getElementById('resultFat');
+		    resultCbhElement.innerHTML = "먹어야 하는 탄수화물: " + Cbhrate.toFixed(2) + "g";
+		    resultPRoElement.innerHTML = "먹어야 하는 단백질: " + Prorate.toFixed(2) + "g";
+		    resultFatElement.innerHTML = "먹어야 하는 지방: " + Fatrate.toFixed(2) + "g";
 		    var myChart = {
 	        		  init : function(){
 	        		    myChart.chart_line();
@@ -449,7 +524,7 @@ body{
 	        		          labels: ["탄수화물","단백질","지방"],
 	        		          datasets: [
 	        		              {
-	        		                  data: [(${dailyCalories}*${Cbhrate})/4, (${dailyCalories}*${Prorate})/4, (${dailyCalories}*${Fatrate})/9],
+	        		                  data: [Cbhrate,Prorate , Fatrate],
 	        		                  backgroundColor: [
 	        		                      "#f23456",
 	        		                      "#afff2a",
@@ -500,26 +575,23 @@ body{
 	        		myChart.init();
 </script>
 <script>
-document.getElementById("openModalBtn").addEventListener("click", function() {
-	  document.getElementById("overlay").style.display = "block";
-	  document.getElementById("modal").style.display = "block";
-	});
+const openModalBtn = document.getElementById('openModal');
+const modal = document.getElementById('modal');
+const modalContent = document.querySelector('.modal-content');
 
-	// 배경 오버레이 또는 모달을 클릭하여 닫을 때 동작
-	document.getElementById("overlay").addEventListener("click", closeModal);
-	document.getElementById("modal").addEventListener("click", closeModal);
-	
-	document.getElementById("caloriesBtn").addEventListener("click", function() {
-		  calculateCalories();
-		  closeModal();
-		});
+openModalBtn.addEventListener('click', () => {
+    modal.style.display = 'flex';
+});
 
-	function closeModal(event) {
-	  if (event.target === document.getElementById("overlay") || event.target === document.getElementById("modal")) {
-	    document.getElementById("overlay").style.display = "none";
-	    document.getElementById("modal").style.display = "none";
-	  }
-	}
+modalContent.addEventListener('click', (event) => {
+    event.stopPropagation();
+});
+
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
 </script>
 </body>
 </html>

@@ -635,7 +635,7 @@ html, body {
 		        <div class="content">
 		            <!-- <div class="qna-mark-home" style="display: block; text-align: center; width: 100%;">Q&amp;A</div> -->
 		            <span class="ge-title get-20-2" style="margin-bottom: 40px;">💡 지금 인기있는 질문 <p class="qna-mark-home" >Q&amp;A</p></span>
-		            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:0px 0px 40px; ">현재 추천수가 가장 높은 영양제 Top3를 알려드릴게요</p>
+		            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:0px 0px 40px; ">현재 추천수가 가장 높은 질문 Top3를 알려드릴게요</p>
 		            <a type="button" class="p2firsta btn hori3" href="<c:url value="/board/List.do" />">더 보기 →</a>
 		            <div class="clearfix mb-2" style="position: absolute; right:10px; top:-400px">
 		            </div>
@@ -799,24 +799,20 @@ html, body {
 <script src="<c:url value="/tsfolder/js/mainjs.js"/>" ></script>
 <script>
 var btnArr = document.querySelectorAll('.tset');
-
+var page = 1; // 현재 페이지 초기값
 for(let i = 0; i < btnArr.length; i++){
-
   btnArr[i].addEventListener('click',function(e){
     e.preventDefault();
+    page = i + 1; // 태그를 클릭할 때마다 페이지 값을 업데이트
     document.querySelector('.tssection' + (i + 1)).scrollIntoView(true);
   });
 }
-//파이어폭스와 크롬에서 지원하는 기능을 이용한다. 휠의 전체적인 기능을 막을 것이다. 
+// 마우스 휠의 기본 동작을 방지
 window.addEventListener("wheel", function(e){
     e.preventDefault();
-},{passive : false});
-//js에서는 html을 변수로 두고 scrollTop을 통해 js 로드 시 혹시라도 만약에 뷰의 Yposition이 0이 아닐 경우를 대비해 다음과 같은 값을 추가한다
-
+}, {passive : false});
 var mHtml = $("html");
-var page = 1;
-mHtml.animate({scrollTop : 0},10);
-
+mHtml.animate({scrollTop : 0}, 10);
 $(window).on("wheel", function(e) {
     if(mHtml.is(":animated")) return;
     if(e.originalEvent.deltaY > 0) {
@@ -826,9 +822,8 @@ $(window).on("wheel", function(e) {
         if(page == 1) return;
         page--;
     }
-    var posTop =(page-1) * $(window).height();
+    var posTop = (page-1) * $(window).height();
     mHtml.animate({scrollTop : posTop});
 });
-
 </script>
 </div><!-- id=main  -->
