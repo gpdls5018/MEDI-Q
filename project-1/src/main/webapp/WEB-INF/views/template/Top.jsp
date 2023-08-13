@@ -729,9 +729,9 @@ ul {
 			  <li class="tsnavli"><button class="tset" id="tssection2" type="button">영양제</button></li>
 			  <li class="tsnavli"><button class="tset" id="tssection3" type="button">영양소</button></li>
 			  <li class="tsnavli"><button class="tset" id="tssection4" type="button">분석</button></li>
-			  <li class="tsnavli"><button class="tset" id="tssection5" type="button">건강검진</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection5" type="button">질병예측</button></li>
 			  <li class="tsnavli"><button class="tset" id="tssection6" type="button">Q&A</button></li>
-			  <li class="tsnavli"><button class="tset" id="tssection7" type="button">메거진</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection7" type="button">매거진</button></li>
 			  <li class="tsnavli"><button class="tset" id="tssection8" type="button">지도</button></li>
 	       </c:if>
         </ul>

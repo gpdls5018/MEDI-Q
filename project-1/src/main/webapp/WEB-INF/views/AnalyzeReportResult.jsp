@@ -177,10 +177,10 @@ progress::-webkit-progress-bar {
 					</div>
 				</div>
 				<div class="mt-4 mb-2 effect-custom-font">
-					<div class="effect-custom-font ml-3 my-2" style="font-size:30px; color:#272727; text-align:left; ">섭취 목적별 기능성 원료 분석</div>
+					<div class="effect-custom-font ml-3 my-5" style="font-size:30px; color:#272727; text-align:center; ">섭취 목적별 기능성 원료 분석</div>
 				</div>
 				<c:forEach items="${resultListDto.listdto}" var="dto" varStatus="loop">
-				<div class="jumbotron" style="padding:30px 20px; margin-bottom:15px; border-radius:25px; background-color:#f5f5f5;">
+				<div class="jumbotron" style="padding:30px 20px; margin:15px 0px; border-radius:25px; background-color:#f5f5f5;">
 					<div class="row">
 						<div class="col-3">
 							<div class="effect-custom-font" style="margin-top:100px; font-size:30px;">
@@ -219,6 +219,9 @@ progress::-webkit-progress-bar {
 								</c:if>
 							</c:forEach>
 						</div>
+						
+						<hr class="mb-2" style="width: 90%; border: 0;  border-bottom: 2px solid gray; ">
+						
 						<span style="margin:30px 0px 10px 0px; width:100%; text-align:center; font-size:24px; font-weight: bold;">💊 섭취 중인 영양제 중 <strong style="color:#EF605D;">'${dto.takePurpose}'</strong>에 도움이 되는 영양제입니다</span>
 						<div class="d-flex mt-3" style="margin-left:80px; flex-direction: row;">
 							
@@ -238,7 +241,7 @@ progress::-webkit-progress-bar {
 					</div>
 				</div>
 				</c:forEach>
-				<div class="effect-custom-font ml-3 my-2" style="font-size:30px;color:#272727;text-align:left;">5대 영양소</div>
+				<div class="effect-custom-font ml-3 my-5" style="font-size:30px;color:#272727;text-align:center;">5대 영양소</div>
 				<div class="effect-custom-font">
 					<div class="row jumbotron m-1"  style="border-radius:25px; background-color:#f5f5f5;">
 						<div class="col-6" style="border-radius:15px;">
