@@ -182,9 +182,8 @@ body{
 		<div class="ingredient-search-top">
 			<div class="content" style="background-color:#fdfbf6; padding-bottom: 20px;">
 				<div class="top-wrap-070">
-					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>일일 섭취량</span>
-					<a href="/food/test3.do">일일 섭취량 보러가기</a>
-					</h1>
+					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;"><span>일일 섭취량</span>	</h1>
+					<a class="btn"  href="/food/test3.do">일일 섭취량 보러가기</a>
 				</div>
 				<div style="text-align: right; margin-right: 100px">
 				<button class="btn-primary" style="border: 1px solid black;" id="openModal">자신의 일일 칼로리 계산</button>
