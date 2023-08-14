@@ -271,10 +271,13 @@
 								<legend class="chatlegend d-flex">
 										<img src="/images/chatbot/chatList.jpg" style="width: 115px; height: 110px; margin-left: 5px;"/>
 										<div style="margin-top: 45px; font-size: 22px; margin-right: 45px;">실시간 질의응답</div>
-										<img src="/images/chatbot/bot_x.png" class="btn_oc mt-2" style="width: 15px; height: 15px;"/>
+										<!-- <img src="/images/chatbot/bot_x.png" class="btn_oc mt-2" style="width: 15px; height: 15px;"/> -->
+										<c:if test="${not empty id}">
+											<img src="/images/chatbot/bot_x.png" class="btn_oc mt-2" style="width: 15px; height: 15px;"/>
+										</c:if>
 								</legend>
 									<div style="display: flex; justify-content: center;" class=" mb-3">
-										<input class="btn mr-3 " type="button" id="ocEnterBtn" value="입장하기" data-id="${id}" data-active="${active}">${active }
+										<input class="btn mr-3 " type="button" id="ocEnterBtn" value="입장하기" data-id="${id}" data-active="${active}">
 										<input class="btn ml-3" type="button" id="ocExitBtn" value="퇴장하기">
 									</div>
 									<!-- 여기가 채팅방시작 -->
