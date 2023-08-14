@@ -334,42 +334,44 @@ public class SelectFoodRankListController {
 		float cholesterol= 0;
 		float sodium= 0;
 		float transfat= 0;
-		for(String foodno:selectfoodservice.intakeFoodNo(formatDate, ID)) {
-			 foodlist.add(selectfoodservice.intakeFoodData(foodno));
-			 AllFoodDTO AFD = selectfoodservice.intakeFoodData(foodno);
-			 if(AFD.getCalorie() != null) {
-					calorie += Float.parseFloat(AFD.getCalorie());
-				}
-				if(AFD.getProtein() != null) {
-					protein += Float.parseFloat(AFD.getProtein());
-				}
-				if(AFD.getFat() != null) {
-					fat += Float.parseFloat(AFD.getFat());
-				}
-				if(AFD.getCarbohydrate() != null) {
-					carbohydrate += Float.parseFloat(AFD.getCarbohydrate());
-				}
-				if(AFD.getSugar() != null) {
-					sugar += Float.parseFloat(AFD.getSugar());
-				}
-				if(AFD.getDietaryfiber() != null) {
-					dietaryfiber += Float.parseFloat(AFD.getDietaryfiber());
-				}
-				if(AFD.getSaturatedfat() != null) {
-					saturatedfat += Float.parseFloat(AFD.getSaturatedfat());
-				}
-				if(AFD.getUnsaturatedfat() != null) {
-					unsaturatedfat += Float.parseFloat(AFD.getUnsaturatedfat());
-				}
-				if(AFD.getCholesterol() != null) {
-					cholesterol += Float.parseFloat(AFD.getCholesterol());
-				}
-				if(AFD.getSodium() != null) {
-					sodium += Float.parseFloat(AFD.getSodium());
-				}
-				if(AFD.getTransfat() != null) {
-					transfat += Float.parseFloat(AFD.getTransfat());
-				}
+		if(selectfoodservice.intakeFoodNo(formatDate, ID) != null) {
+			for(String foodno:selectfoodservice.intakeFoodNo(formatDate, ID)) {
+				 foodlist.add(selectfoodservice.intakeFoodData(foodno));
+				 AllFoodDTO AFD = selectfoodservice.intakeFoodData(foodno);
+				 if(AFD.getCalorie() != null) {
+						calorie += Float.parseFloat(AFD.getCalorie());
+					}
+					if(AFD.getProtein() != null) {
+						protein += Float.parseFloat(AFD.getProtein());
+					}
+					if(AFD.getFat() != null) {
+						fat += Float.parseFloat(AFD.getFat());
+					}
+					if(AFD.getCarbohydrate() != null) {
+						carbohydrate += Float.parseFloat(AFD.getCarbohydrate());
+					}
+					if(AFD.getSugar() != null) {
+						sugar += Float.parseFloat(AFD.getSugar());
+					}
+					if(AFD.getDietaryfiber() != null) {
+						dietaryfiber += Float.parseFloat(AFD.getDietaryfiber());
+					}
+					if(AFD.getSaturatedfat() != null) {
+						saturatedfat += Float.parseFloat(AFD.getSaturatedfat());
+					}
+					if(AFD.getUnsaturatedfat() != null) {
+						unsaturatedfat += Float.parseFloat(AFD.getUnsaturatedfat());
+					}
+					if(AFD.getCholesterol() != null) {
+						cholesterol += Float.parseFloat(AFD.getCholesterol());
+					}
+					if(AFD.getSodium() != null) {
+						sodium += Float.parseFloat(AFD.getSodium());
+					}
+					if(AFD.getTransfat() != null) {
+						transfat += Float.parseFloat(AFD.getTransfat());
+					}
+			}
 		}
 		model.addAttribute("foodlist", foodlist);
 		model.addAttribute("calorie", calorie);
@@ -384,8 +386,9 @@ public class SelectFoodRankListController {
 		model.addAttribute("sodium", sodium);
 		model.addAttribute("transfat", transfat);
 		model.addAttribute("calorie", calorie);
-		
-		model.addAttribute("TOSCORE", selectfoodservice.foodscore(ID, formatDate).getSCORE());
+		if(selectfoodservice.foodscore(ID, formatDate) != null) {
+			model.addAttribute("TOSCORE", selectfoodservice.foodscore(ID, formatDate).getSCORE());
+		}
 	if(userinfo != null) {
 		model.addAttribute("dailyCalories", userinfo.getKcal());
 	    model.addAttribute("Prorate", userinfo.getProrate());

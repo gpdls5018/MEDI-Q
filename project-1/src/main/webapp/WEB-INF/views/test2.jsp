@@ -59,6 +59,7 @@ body{
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
+    cursor: pointer;
   }
   
   .food-info {
@@ -77,7 +78,6 @@ body{
     font-size: 12px;
     flex: 1;
   }
-  
   .value {
     color: #333;
     font-size: 14px;
@@ -92,16 +92,15 @@ body{
     width: 300px;
     display: inline-block;
   }
-  .overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 1000;
-}
+  
+  .label-value-container {
+		    display: none;
+		    margin-top: 5px;
+		}
+		
+		.food-box.expanded .label-value-container {
+		    display: flex;
+		}
 
 .modal-content form {
         display: flex;
@@ -159,7 +158,44 @@ body{
             background-position: right center;
             background-repeat: no-repeat;
         }
-    
+    .txt2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .txt2 .btn {
+    position: absolute; /* a 태그에 position 설정 추가 */
+    right: 100px; /* a 태그를 오른쪽으로 이동 */
+  }
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0099cc; /* 파란색 계열 */
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn:hover {
+    background-color: #0077b3; /* 마우스 호버 시 조금 더 진한 파란색 */
+  }
+  
+  #ingestionbtn {
+    background-color: #ffffff;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  #ingestionbtn:hover {
+    background-color: #0077b3;
+  }
      </style>
 
 	<!-- 상단배너 div -->
@@ -182,8 +218,8 @@ body{
 		<div class="ingredient-search-top">
 			<div class="content" style="background-color:#fdfbf6; padding-bottom: 20px;">
 				<div class="top-wrap-070">
-					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;"><span>일일 섭취량</span>	</h1>
-					<a class="btn"  href="/food/test3.do">일일 섭취량 보러가기</a>
+					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;"><span>일일 섭취량</span>
+					<a class="btn"  href="/food/test3.do">일일 섭취량 보러가기</a>	</h1>
 				</div>
 				<div style="text-align: right; margin-right: 100px">
 				<button class="btn-primary" style="border: 1px solid black;" id="openModal">자신의 일일 칼로리 계산</button>
@@ -193,16 +229,16 @@ body{
 			        <div class="modal-content">
 			            <form action="/food/userinfo.do" method="post">
 			            	<p>키를 입력해주세요</p>
-			                <input class="input-field" name="Height" placeholder="(cm)" required>
+			                <input class="input-field" name="Height" placeholder="(cm)" type="number" required>
 			                <p>몸무게를 입력해주세요</p>
-			                <input class="input-field" name="Weight" placeholder="(kg)" required>
+			                <input class="input-field" name="Weight" placeholder="(kg)" type="number" required>
 			                <p>탄수화물의 입력해주세요</p>
-			                <input class="input-field" name="Cbhrate" placeholder="적정 비율 40~65(%)" required>
+			                <input class="input-field" name="Cbhrate" placeholder="적정 비율 40~65(%)" type="number" required>
 			                <p>단백질의 입력해주세요</p>
-			                <input class="input-field" name="Prorate" placeholder="적정 비율 7~35(%)" required>
+			                <input class="input-field" name="Prorate" placeholder="적정 비율 7~35(%)" type="number" required>
 			                <p>지방의 비율을 입력해주세요</p>
-			                <input class="input-field" name="Fatrate" placeholder="적정 비율 15~30(%)" required>
-			                <div style="font-size: x-small;text-align: right;width: 350px;">평균적인 최적의 탄단지 비율은 5:3:2 라고 합니다</div>
+			                <input class="input-field" name="Fatrate" placeholder="적정 비율 15~30(%)" type="number" required>
+			                <div style="font-size: x-small;text-align: right;width: 350px;">평균적인 최적의 탄단지 비율은 5:2:3 라고 합니다</div>
 			                <p>활동량을 입력해주세요</p>
 			                <select class="select-field" name="healthIssueSelect" onchange="submitForm()">
 			                    <option value="1">앉아서 일하는 경우</option>
@@ -216,7 +252,6 @@ body{
 			            </form>
 			        </div>
 			    </div>
-				<br/>
 				<c:if test="${not empty Fatrate }">
 					<div class="chart_dnt_2">
 						  <h1>칼로리기준 탄단지 비율</h1>
@@ -238,7 +273,6 @@ body{
 					<p>총 섭취한 지방: ${fat }g</p>
 					<p>총 점수는 : ${TOSCORE}점</p>
 				</c:if>
-				<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
 					<div class="search-etc">
 					<div class="ipt-main-wrap">
 						<form action="/food/foodsearch.do">
@@ -259,85 +293,85 @@ body{
 			<c:forEach items="${foodlist }" var="foodlist">
 				<div class="food-box">
 				<form action="/food/intakefood.do">
-				<input name="no" value="${foodlist.no }" type="hidden">
-					<div class="food-info">음식 정보</div>
+				<div class="food-info">${foodlist.foodname}에 대한 정보</div>
+				<input name="no" value="${foodlist.no }" type="hidden"/>
 				  <!--
 				  <div class="label-value-container">
 				    <div class="label">음식 번호:</div>
 				    <div class="value">${foodlist.no}</div>
 				  </div>
 				   --> 
-				  <div class="label-value-container">
-				    <div class="label">음식 이름:</div>
+				  <div class="label-value-container toggle">
+				    <div class="label">음식 이름:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.foodname}</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">제조사:</div>
+				    <div class="label">제조사:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.company}</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">1회 섭취량:</div>
-				    <div class="value">${foodlist.oneprovide}${foodlist.capacity}</div>
+				    <div class="label">1회 섭취량:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.oneprovide} ${foodlist.capacity}</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">칼로리:</div>
-				    <div class="value">${foodlist.calorie}</div>
+				    <div class="label">칼로리:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.calorie} kcal</div>
+				  </div>
+				  
+				  <div class="label-value-container toggle">
+				    <div class="label">탄수화물:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.carbohydrate} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">단백질:</div>
-				    <div class="value">${foodlist.protein}</div>
+				    <div class="label">총 당류:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.sugar} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">지방:</div>
-				    <div class="value">${foodlist.fat}</div>
+				    <div class="label">식이섬유:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.dietaryfiber} g</div>
+				  </div>
+				  
+				  <div class="label-value-container toggle">
+				    <div class="label">단백질:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.protein} g</div>
+				  </div>
+				  
+				  <div class="label-value-container toggle">
+				    <div class="label">지방:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.fat} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">포화 지방:</div>
-				    <div class="value">${foodlist.saturatedfat}</div>
+				    <div class="label">포화 지방:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.saturatedfat} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">불포화 지방:</div>
-				    <div class="value">${foodlist.unsaturatedfat}</div>
+				    <div class="label">불포화 지방:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.unsaturatedfat} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">트랜스 지방:</div>
-				    <div class="value">${foodlist.transfat}</div>
+				    <div class="label">트랜스 지방:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.transfat} g</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">탄수화물:</div>
-				    <div class="value">${foodlist.carbohydrate}</div>
+				    <div class="label">콜레스테롤:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.cholesterol} mg</div>
 				  </div>
 				  
 				  <div class="label-value-container">
-				    <div class="label">총 당류:</div>
-				    <div class="value">${foodlist.sugar}</div>
-				  </div>
-				  
-				  <div class="label-value-container">
-				    <div class="label">식이섬유:</div>
-				    <div class="value">${foodlist.dietaryfiber}</div>
-				  </div>
-				  
-				  <div class="label-value-container">
-				    <div class="label">콜레스테롤:</div>
-				    <div class="value">${foodlist.cholesterol}</div>
-				  </div>
-				  
-				  <div class="label-value-container">
-				    <div class="label">나트륨:</div>
-				    <div class="value">${foodlist.sodium}</div>
+				    <div class="label">나트륨:</div>&nbsp;&nbsp;&nbsp;
+				    <div class="value">${foodlist.sodium} mg</div>
 				  </div>
 				<div class="label-value-container" style="display: flex; justify-content: right; align-items: center;">
-					<p>일일 섭취 횟수</p>&nbsp;&nbsp;&nbsp;&nbsp;
+					<p>일일 섭취 횟수 :</p>&nbsp;&nbsp;
 					<input name="re" type="number" style="width: 40px; border-radius:  10px 10px 10px 10px;text-align: center;" value="1">
 				</div>
 				<div class="label-value-container" style="display: flex; justify-content: right; align-items: center;">
@@ -577,6 +611,17 @@ window.addEventListener('click', (event) => {
     if (event.target === modal) {
         modal.style.display = 'none';
     }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const foodBoxes = document.querySelectorAll(".food-box");
+
+    foodBoxes.forEach(function (foodBox) {
+        foodBox.addEventListener("click", function () {
+            this.classList.toggle("expanded");
+        });
+    });
 });
 </script>
 </body>
