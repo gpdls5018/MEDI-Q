@@ -204,8 +204,8 @@
 	}
 	#chatMessage{
 	 	height:300px;
-	 	background:#FFFBE5;
-	 	border-radius: 2px;
+	 	background:#FFE4BF;
+	 	border-radius: 12px;
 	 	color:#7A7C7D;
 	 	font-weight:500;
 	 	overflow:auto;
@@ -214,7 +214,7 @@
 		text-align: left;
 	}
 	.ext span {
-		background: #D0F5BE;
+		background: #FFA180;
 		border-radius: 18px 15px 18px 2px;
 		color:#2b2323;
 		margin:10px 20px;
@@ -223,7 +223,7 @@
 		text-align: right;
 	}
 	.int span {
-		background: #98EECC;
+		background: #FFC7B2;
 		border-radius: 15px 18px 2px 18px;
 		color:#2b2323;
 		margin:10px 20px;
@@ -242,11 +242,11 @@
 	}
 	#ocEnterBtn{
 		background:#C4CAEA;
-		color:#464141;
+		color:#0039E5;
 	}
 	#ocExitBtn{
-		background:#FADCE0;
-		color:#464141;
+		background:#FFCCCC;
+		color:#C21F4A;
 	}
 </style>
 	<!-- 상단배너 div -->
@@ -402,7 +402,7 @@
 		//사용자가 입력한 닉네임 저장
 		//chatnickname = $('#chatnickname').val();//id로 변경시
 		ocwsocket.send('msg:'+chatnickname+' 가(이) 입장했습니다.');
-		appendMessage("커뮤니티 채팅방에 참가하였습니다.");
+		appendMessage("<div class='mt-2 ml-3'>커뮤니티 채팅방에 참가하였습니다.</div>");
 		$('#ociMessage').focus();
 	}
 	//서버에서 메시지를 받을때마다 호출되는 함수
