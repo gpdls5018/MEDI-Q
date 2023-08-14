@@ -186,7 +186,6 @@
 	    border-top-left-radius: 10px;
 	    border-bottom-left-radius: 10px;
 	}
-	/*openchat용 css시작*/
 	.ocfixed{
 		position: fixed;
 	    top: 360px; 
@@ -206,7 +205,6 @@
 	#chatMessage{
 	 	height:300px;
 	 	background:#FBFFDC;
-	 	/*border:2px solid #EEFFD3; 완성시 삭제 예정*/
 	 	border-radius: 2px;
 	 	color:#7A7C7D;
 	 	font-weight:500;
@@ -243,16 +241,13 @@
   		float: right;
 	}
 	#ocEnterBtn{
-		/*border:2px solid #A6CAEA; 완성시 삭제 예정*/
 		background:#C4CAEA;
 		color:#464141;
 	}
 	#ocExitBtn{
-		/*border:2px solid #EAEEF8; 완성시 삭제 예정*/
 		background:#FADCE0;
 		color:#464141;
 	}
-	/*오픈chat용 css 끝*/	
 </style>
 	<!-- 상단배너 div -->
 	<aside id="contentInfoCon" class="area animated">
@@ -267,31 +262,26 @@
             </h3>
         </div>
     </aside>
-
         <div class="container-fluid" style="padding-top:150px">
             <div class="row d-flex flex-wrap align-content-stretch">
-                <!-- 오픈채팅방 시작 -->
                 <div class="d-flex col-3">
                 	<div class="ocfixed">
 	                	<div class="container">
 							<fieldset>
-								<legend class="chatlegend">커뮤니티 채팅방
-										<img src="/images/chatbot/bot_x.png" class="btn_oc mt-1"/><!-- x이모티콘임 -->
+								<legend class="chatlegend">실시간 질의응답
+										<img src="/images/chatbot/bot_x.png" class="btn_oc mt-1"/>
 								</legend>
-									<!-- <input type="text" class="form-control mb-3 btn" id="chatnickname" placeholder='"여기"를 눌러 닉네임을 입력해주세요.'> -->
 									<div style="display: flex; justify-content: center;" class=" mb-3">
-										<input class="btn mr-3 " type="button" id="ocEnterBtn" value="입장하기" data-id="${id}" data-active="${active }">
+										<input class="btn mr-3 " type="button" id="ocEnterBtn" value="입장하기" data-id="${id}" data-active="${active}">${active }
 										<input class="btn ml-3" type="button" id="ocExitBtn" value="퇴장하기">
 									</div>
 									<!-- 여기가 채팅방시작 -->
 									<div id="chatArea" class="mb-3" style="display: none;">
 										<div id="chatMessage" class="mb-3"></div>
-										<!-- 메시지 등록버튼 -->
-										<!-- message를 ociMessage로 변경 -->
 										<input type="text" class="form-control" id="ociMessage" placeholder="채팅을 입력해주세요.">
 									</div>
 							</fieldset>
-						</div><!-- container -->
+						</div>
 					</div>
                 </div><!-- col-3 -->
                 <div class="d-flex col-6 flex-wrap flex-direction justify-content-center align-content-stretch">
@@ -373,16 +363,19 @@
     console.log('data-active',active);//체크용
     
 	$('#ocEnterBtn').on('click',function(){
-		//chatnickname = $('#chatnickname').val();//닉네임을 사용할시 
 		if (chatnickname === '') {
 		    alert('로그인시 입장 가능합니다.');
 		    return;
 		}
-		
+		if(chatnickname==='DOCTOR'){
+			alert('DOCTOR님 안녕하세요.');
+		}
 		//${active}==='D'
+		/*
 		if(active==='A'){
 			alert('약사님 안녕하세요.');
 		}
+		*/
 		ocwsocket = new WebSocket("ws://192.168.0.16:9090<c:url value="/chat-ws"/>");
 		$('#chatArea').show();
 		console.log('ocwsocket:',ocwsocket);//체크용
@@ -419,28 +412,25 @@
 			appendMessage('<p class="ext"><span class="ocspan">'+e.data.substring(4)+'</span></p>');
 		}
 	}
-	//사용자가 입력한 메시지(확인용) 또는 서버로부터 받은 메시지를 채팅창에 출력하는 함수
 	function appendMessage(msg){
 		$('#chatMessage').append(msg);
-		//스크롤바를 자동으로 위로 올리기
 		$('#chatMessage').get(0).scrollTop=$('#chatMessage').get(0).scrollHeight;
 	}
 	
-	//퇴장 버튼
 	$('#ocExitBtn').one('click',function(){
 		ocwsocket.send('msg:'+chatnickname+' 가(이) 퇴장했습니다.');
 		ocwsocket.close();
-		//$('#chatArea').hide();//퇴장 버튼 누를시 채팅 내용이 없어짐(애매함)
 	});
-	//채팅창 토글
 	$('.btn_oc').on('click',function(){
-		
-		$('#chatArea').toggle();//퇴장 버튼 누를시 채팅 내용이 없어짐(애매함)
+		$('#chatArea').toggle();
 	});
 	//
 	$('#ociMessage').on('keypress',function(e){
 		
-		if(e.keyCode===13){//엔터 입력
+		if(e.keyCode===13){
+	        if ($(this).val().trim() === "") {
+	            return;
+	        }
 			//입력한 메시지 서버로 전송
 			ocwsocket.send('msg: '+chatnickname+'님 : '+$(this).val());
 			appendMessage('<p class="int"><span class="ocspan">'+$(this).val()+"</span></p>");
