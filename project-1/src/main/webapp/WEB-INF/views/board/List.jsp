@@ -192,8 +192,8 @@
 	    left: 30px;
 	    width:400px; 
 	    padding: 10px;
-	    background:#FFF3D1; 
-	    border: 4px solid #FFF0BB;
+	    background:#FFF4E5; 
+	    border: 4px solid #FFCC99;
 	    border-radius: 30px;
 	    color:black;
 	    z-index: 1000; 
@@ -204,7 +204,7 @@
 	}
 	#chatMessage{
 	 	height:300px;
-	 	background:#FBFFDC;
+	 	background:#FFFBE5;
 	 	border-radius: 2px;
 	 	color:#7A7C7D;
 	 	font-weight:500;
@@ -268,8 +268,10 @@
                 	<div class="ocfixed">
 	                	<div class="container">
 							<fieldset>
-								<legend class="chatlegend">실시간 질의응답
-										<img src="/images/chatbot/bot_x.png" class="btn_oc mt-1"/>
+								<legend class="chatlegend d-flex">
+										<img src="/images/chatbot/chatList.jpg" style="width: 115px; height: 110px; margin-left: 5px;"/>
+										<div style="margin-top: 45px; font-size: 22px; margin-right: 45px;">실시간 질의응답</div>
+										<img src="/images/chatbot/bot_x.png" class="btn_oc mt-2" style="width: 15px; height: 15px;"/>
 								</legend>
 									<div style="display: flex; justify-content: center;" class=" mb-3">
 										<input class="btn mr-3 " type="button" id="ocEnterBtn" value="입장하기" data-id="${id}" data-active="${active}">${active }
@@ -278,7 +280,7 @@
 									<!-- 여기가 채팅방시작 -->
 									<div id="chatArea" class="mb-3" style="display: none;">
 										<div id="chatMessage" class="mb-3"></div>
-										<input type="text" class="form-control" id="ociMessage" placeholder="채팅을 입력해주세요.">
+										<input type="text" class="form-control" id="ociMessage" placeholder="채팅을 입력해주세요." style="border-radius:15px;">
 									</div>
 							</fieldset>
 						</div>
