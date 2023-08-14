@@ -2,6 +2,7 @@ package com.kosmo.springapp.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +18,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosmo.springapp.model.HealthInfoDTO;
+import com.kosmo.springapp.model.MemberDTO;
 import com.kosmo.springapp.service.JWTokensService;
 import com.kosmo.springapp.service.impl.HealthInfoServiceImpl;
+import com.kosmo.springapp.service.impl.LoginServiceImpl;
 
 @Controller
 public class LoadHealthInfoController {
@@ -26,6 +29,9 @@ public class LoadHealthInfoController {
 	@Autowired
 	HealthInfoServiceImpl healthInfoServiceImpl;
 	
+
+	@Autowired
+	 private LoginServiceImpl loginService;
 	
 	@GetMapping("/loadHealthInfo.do")
 	public String loadHealthInfoByOCR(HttpServletRequest req, HttpServletResponse resp, @RequestParam String userId,Model model) throws IOException {
@@ -83,6 +89,9 @@ public class LoadHealthInfoController {
 			Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
 			String id = payloads.get("sub").toString();
 			HealthInfoDTO healthInfoDto = healthInfoServiceImpl.selectHealthInfoByUserId(id);
+			MemberDTO memberDto = loginService.selectOne(req);
+			int nowYear = LocalDate.now().getYear();
+			model.addAttribute("age", nowYear-Integer.parseInt(memberDto.getBirth().substring(0, 4)));
 			if(healthInfoDto != null) {
 				model.addAttribute("healthInfoDto",healthInfoDto);
 			}
@@ -100,6 +109,10 @@ public class LoadHealthInfoController {
 			Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
 			String id = payloads.get("sub").toString();
 			HealthInfoDTO healthInfoDto = healthInfoServiceImpl.selectHealthInfoByUserId(id);
+			MemberDTO memberDto = loginService.selectOne(req);
+			int nowYear = LocalDate.now().getYear();
+			model.addAttribute("age", nowYear-Integer.parseInt(memberDto.getBirth().substring(0, 4)));
+			model.addAttribute("gender", memberDto.getGender());
 			if(healthInfoDto != null) {
 				model.addAttribute("healthInfoDto",healthInfoDto);
 			}
@@ -122,6 +135,10 @@ public class LoadHealthInfoController {
 			Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
 			String id = payloads.get("sub").toString();
 			HealthInfoDTO healthInfoDto = healthInfoServiceImpl.selectHealthInfoByUserId(id);
+			MemberDTO memberDto = loginService.selectOne(req);
+			int nowYear = LocalDate.now().getYear();
+			model.addAttribute("age", nowYear-Integer.parseInt(memberDto.getBirth().substring(0, 4)));
+			model.addAttribute("gender", memberDto.getGender());
 			if(healthInfoDto != null) {
 				model.addAttribute("healthInfoDto",healthInfoDto);
 			}

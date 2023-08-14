@@ -50,7 +50,6 @@ body {
         font-size: 14px;
         align-items: center;
         width: 90%;
-		
     }
     .form-check {
     	 margin-right: 50px;
@@ -116,7 +115,7 @@ body {
 		            	<div class="tss col mb-3">
 		                    <strong>연령</strong>
 		                    <div class="tss1 d-flex" style="  margin-top:10px; align-items: center;">
-		                    	<input type="text" class="form-control m-2 w-75" style="border:none; text-align: right;" id="age" name="age" placeholder="연령을 입력해주세요" value="" required> 세
+		                    	<input type="text" class="form-control m-2 w-75" style="border:none; text-align: right;" id="age" name="age" placeholder="연령을 입력해주세요" value="${age }" required> 세
 		                    </div>
 		                    <div class="invalid-feedback">
 		                        연령을 입력해주세요
@@ -126,13 +125,13 @@ body {
 		                    <strong>성별</strong>
 		                    <div class="tss1 col ">
 			                    <div class="form-check">
-								  <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="2">
+								  <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="2" <c:if test="${gender eq 'M' }"> checked="checked"</c:if>>
 								  <label class="form-check-label" for="gender_Man">
 								    남성
 								  </label>
 								</div>
 								<div class="form-check">
-								  <input class="form-check-input" type="radio" name="gender" id="gender_Woman" value="1">
+								  <input class="form-check-input" type="radio" name="gender" id="gender_Woman" value="1" <c:if test="${gender eq 'F' }"> checked="checked"</c:if>>
 								  <label class="form-check-label" for="gender_Woman">
 								    여성
 								  </label>
@@ -192,14 +191,14 @@ body {
 		                	<strong>흡연</strong>
 		                	 <div class=" col">
 				                <div class="form-check">
-							  		<input class="form-check-input" type="radio" name="smoke_check" value="0">
-								  	<label class="form-check-label" for="smoke_check">
+							  		<input class="form-check-input" type="radio" id="smoke_check1" name="smoke_check" value="0">
+								  	<label class="form-check-label" for="smoke_check1">
 									    흡연자입니다
 								  	</label>
 								</div>
 								<div class="form-check">
-							    	<input class="form-check-input" type="radio" name="smoke_check" value="1" >
-								  	<label class="form-check-label" for="smoke_check">
+							    	<input class="form-check-input" type="radio" id="smoke_check2" name="smoke_check" value="1" >
+								  	<label class="form-check-label" for="smoke_check2">
 									    비흡연자입니다
 								  	</label>
 								</div>
@@ -212,14 +211,14 @@ body {
 		                	<strong>음주</strong>
 		                	 <div class=" col ">
 				                <div class="form-check">
-							  		<input class="form-check-input" type="radio" name="alco_check" value="0">
-								  	<label class="form-check-label" for="alco_check">
+							  		<input class="form-check-input" type="radio" id="alco_check2" name="alco_check" value="0">
+								  	<label class="form-check-label" for="alco_check2">
 									    음주를 합니다
 								  	</label>
 								</div>
 								<div class="form-check">
-							    	<input class="form-check-input" type="radio" name="alco_check" value="1" >
-								  	<label class="form-check-label" for="alco_check">
+							    	<input class="form-check-input" type="radio" name="alco_check" id="alco_check1" value="1" >
+								  	<label class="form-check-label" for="alco_check1">
 									    음주를 하지 않습니다
 								  	</label>
 								</div>
@@ -265,25 +264,24 @@ body {
 		        	<canvas id="drawing_canvas"></canvas>
 		        </div>
 		        <div class="col-6" style="width: 400px; height: 400px; flex-grow: 1; display: flex; align-items: center; justify-content: center; padding-left: 0px;">
-					<ul class="pakinul">
-                		<li class="text-center" style="font-weight:bold; font-size: 25px; margin-bottom: 40px; margin-top: 0px;"><b>심혈관 질환 진단과정</b></li>
-
-                    	<li><span></span>운동 또는 휴식 시 가슴통증이 있거나 답답하신 분</li>
-                    	<li><span></span>심혈관 질환의 가족력 및 과거력이 있으신 분</li>
-                    	<li><span></span>가슴이 두근거리거나 어지러운 증상이 있으신 분</li>
-                    	<li><span></span>운동 시 숨이 몹시 차거나 부종이 있으신 분</li>
-                    	<li><span></span>실신을 경험하신 분</li>
-                    	<li><span></span>합병증이 의심되는 당뇨병 및 고혈압</li>
-                	</ul>		            
-                </div>
-		     </div>
-		 </div>
-		  <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+						<ul class="pakinul">
+	                		<li class="text-center" style="font-weight:bold; font-size: 20px; margin-bottom: 20px; margin-top: 0px;"><b>심혈관질환 진단과정</b></li>
+	                    	<li><span></span>지속적인 고혈압 상태는 심장과 혈관에 지속적인 부담을 주며, 심혈관 질환의 주요 위험 요인 중 하나입니다.</li>
+	                    	<li><span></span>신체 건강은 고혈압,콜레스테롤,당뇨병 등 다른 위험 요인을 증가시키며<b style="color: #EF605D">과체중일수록 심혈관 질환 위험을 높입니다</b></li>
+	                    	<li><span></span>과도한 음주는 고혈압과 다른 심혈관 질환의 위험을 증가시킬 수 있습니다 다만 <b style="color: #EF605D">적당한 양의 알코올(특히 레드 와인)은 심혈관 건강에 어느정도 도움이 될 수</b>있다 알려졌습니다</li>
+	                	</ul>		            
+	                </div>
+			     </div>
+			 </div>
+			  <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		
+		
 <script>
 function redirectToPrediction() {
     // 여기에 이동할 URL을 설정합니다.

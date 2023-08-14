@@ -233,7 +233,7 @@ body{
 	      		    <tr>
 			    		<th>고혈압</th>
 			            <td>혈압(최저/최고)</td>
-			            <td><input class="inputValue1" type="text" value="${loadHealthInfo.bloodPressure_low}" name="bloodPressure_low"> / <input class="inputValue2" style="margin-top: 5px;" type="text" value="${loadHealthInfo.bloodPressure_high}" name="bloodPressure_high"> mmHg</td>
+			            <td><input class="inputValue" type="text" value="${loadHealthInfo.bloodPressure_low}" name="bloodPressure_low"> / <input class="inputValue" style="margin-top: 5px;" type="text" value="${loadHealthInfo.bloodPressure_high}" name="bloodPressure_high"> mmHg</td>
 			        </tr>
 	           		<tr>
 			    		<th>신장질환</th>

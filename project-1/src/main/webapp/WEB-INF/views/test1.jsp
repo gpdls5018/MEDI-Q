@@ -82,9 +82,43 @@ body{
 				<div class="ipt-main-wrap"></div><!-- ipt-main-wrap : 끝 -->
 					<div class="search-etc">
 					<div class="ipt-main-wrap">
-					<form action="/diet.do">
+					<!--<form action="/diet.do">
 							<input id="searchProduct3" type="text" name="takefood" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${takefood}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
 							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct3()"></button>
+					</form>  -->
+					<form id="healthIssueForm" action="/functionfood/healthissue.do" method="GET" >
+						<div class="ipt-main-wrap-in">
+							<select  id="healthIssueSelect" onchange="submitForm()" class="ipt-main">
+								<option value="피로감">피로감</option>
+								<option value="스트레스 & 수면">스트레스 & 수면</option>
+								<option value="노화 & 항산화">노화 & 항산화</option>
+								<option value="면역 기능">면역 기능</option>
+								<option value="빈혈">빈혈</option>
+								<option value="눈 건강">눈 건강</option>
+								<option value="갑상선 건강">갑상선 건강</option>
+								<option value="호흡기 건강">호흡기 건강</option>
+								<option value="소화 & 위식도 건강">소화 & 위식도 건강</option>
+								<option value="간 건강">간 건강</option>
+								<option value="장 건강">장 건강</option>
+								<option value="뼈 건강">뼈 건강</option>
+								<option value="관절 건강">관절 건강</option>
+								<option value="탈모 & 손톱 건강">탈모 & 손톱 건강</option>
+								<option value="피부 건강">피부 건강</option>
+								<option value="두뇌활동">두뇌활동</option>
+								<option value="운동 능력 & 근육량">운동 능력 & 근육량</option>
+								<option value="혈압">혈압</option>
+								<option value="혈당">혈당</option>
+								<option value="혈관 & 혈액순환">혈관 & 혈액순환</option>
+								<option value="혈중 중성지방">혈중 중성지방</option>
+								<option value="혈중 콜레스테롤">혈중 콜레스테롤</option>
+								<option value="체지방">체지방</option>
+								<option value="치아 & 잇몸">치아 & 잇몸</option>
+								<option value="남성 건강">남성 건강</option>
+								<option value="여성 건강">여성 건강</option>
+								<option value="임산부 & 태아 건강">임산부 & 태아 건강</option>
+								<option value="여성 갱년기">여성 갱년기</option>
+							</select>
+						</div>
 					</form>
 					</div>
 					<c:forEach items="${foodlist}" var="onefooddiet">
@@ -132,7 +166,7 @@ body{
 						</a>
 					</c:forEach>
 				</div><!-- item-cards의 끝 -->
-				    <!-- ----------------------여기부터 시작----------------------------------- -->
+				    <!-- ----------------------여기부터 시작----------------------------------- 
 	<style>
 	/*오픈chat용 css*/	
 	#chatMessage{
@@ -188,20 +222,20 @@ body{
 					</div>
 					<input class="btn btn-primary" type="button" id="ocEnterBtn" value="입실">
 					<input class="btn btn-danger" type="button" id="ocExitBtn" value="퇴실">
-					<!-- 여기가 채팅방시작 -->
+					 여기가 채팅방시작 
 					<div class="form-group">
 						<h4>오픈 채팅창 내용입니다</h4>
 						<div id="chatMessage"></div>
 					</div>
-					<!-- 메세지 등록버튼 -->
+					<!-- 메세지 등록버튼 
 					<div class="form-group">
-						<label><kbd>메시지input 버튼임</kbd></label><!-- message를 ociMessage로 변경 -->
+						<label><kbd>메시지input 버튼임</kbd></label> message를 ociMessage로 변경 
 						<input type="text" class="form-control" id="ociMessage" placeholder="채팅 입력">
 					</div>
 				</form>
 				
 			</fieldset>
-		</div><!-- container -->
+		</div><!-- container 
 <script>
 	//오픈채팅용 자바스크립트 시작
 	//오픈채팅웹소켓 저장용
@@ -265,9 +299,7 @@ body{
 		}
 	});
 	//오픈채팅용 자바스크립트 끝
-</script>
-<!-- 이 아래 코드는 그 참고용으로 가져온것임 끝나면 지워야됨 -->
-		<!-- 
+</script> 이 아래 코드는 그 참고용으로 가져온것임 끝나면 지워야됨 
 		<div class="bottom black" style="background-color: rgb(255, 255, 255);"><div class="bottom_plus"><div class="my_info"><span>Guest_ccb84</span></div><button class="call_admin"><img src="//coktv24.1.inde.biz/plugin/indeSet/img/alarm.png">관리자호출</button></div>
 					<table>
 						<tbody><tr>

@@ -59,6 +59,7 @@ body{
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
+    cursor: pointer;
   }
   
   .food-info {
@@ -90,25 +91,40 @@ body{
     width: 300px;
     display: inline-block;
   }
-  .overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 1000;
-}
 
-    .btn-primary {
-            background-color: black;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+        .label-value-container {
+		    display: none;
+		    margin-top: 5px;
+		}
+		
+		.food-box.expanded .label-value-container {
+		    display: flex;
+		}
+		
+		.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0099cc; /* 파란색 계열 */
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn:hover {
+    background-color: #0077b3; /* 마우스 호버 시 조금 더 진한 파란색 */
+  }
+  .txt2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .txt2 .btn {
+    position: absolute; /* a 태그에 position 설정 추가 */
+    right: 100px; /* a 태그를 오른쪽으로 이동 */
+  }
      </style>
 
 	<!-- 상단배너 div -->
@@ -132,7 +148,8 @@ body{
 			<div class="content" style="flex-direction:column; background-color:#fdfbf6; padding-bottom: 20px;">
 			<!-- 건기식 또는 회사이름을 적었을 경우 -->
 				<div class="top-wrap-070">
-					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<span>일일 섭취량</span></h1>
+					<h1 class="txt2 text-center" style="margin-bottom: 30px; font-size: 30px;"><span>일일 섭취량</span>	
+					<a class="btn" href="/food/test2.do" sylte="margin-left: auto;">섭취음식 등록하러가기</a></h1>
 				</div>
 			<c:if test="${not empty dailyCalories}">
 		        <div class="chart_dnt_2" style="">
@@ -146,9 +163,9 @@ body{
 		        <p id="hiddenJump"><br/></p>
 		    </c:if>
 		    <c:if test="${empty dailyCalories}">
-		    	<h1>일일 목표를 등록해보아요</h1>
+		    	<h3>일일 목표를 등록해보아요</h3>
 		    </c:if>
-		    <c:if test="${not empty calorie}">
+		    <c:if test="${calorie != 0}">
 		        <div class="chart_dnt_1" style="">
 		            <h1>현재 섭취한 탄단지 비율</h1>
 		            <canvas id="chart_doughnut_1"></canvas>
@@ -159,12 +176,14 @@ body{
 		        <p id="fat">총 섭취한 지방: ${fat}g</p>
 		        <p id="TOSCORE">총 점수는 : ${TOSCORE}점</p>
 		    </c:if>
-		    <c:if test="${empty calorie}">
-		    	<h1>섭취한 음식을 등록해보아요</h1>
+		    <c:if test="${calorie == 0}">
+		    	<h3>섭취 음식을 등록해보아요</h3>
 		    </c:if>
+		    <c:if test="${calorie != 0}">
 			<button onclick="toggleCharts()" 
 			style="background-color: #ffcc00; color: #ffffff; border: none; padding: 10px 20px; 
 			border-radius: 5px; font-size: 16px; cursor: pointer;">섭취 비교해보기</button>
+			</c:if>
 				<!-- 모달 -->
 			</div>
 		</div>
@@ -172,14 +191,14 @@ body{
 
 			<c:forEach items="${foodlist }" var="foodlist">
 				<div class="food-box">
-					<div class="food-info">음식 정보</div>
+					<div class="food-info">${foodlist.foodname}에 대한 정보</div>
 				  <!--
 				  <div class="label-value-container">
 				    <div class="label">음식 번호:</div>
 				    <div class="value">${foodlist.no}</div>
 				  </div>
 				    -->
-				  <div class="label-value-container">
+				  <div class="label-value-container toggle">
 				    <div class="label">음식 이름:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.foodname}</div>
 				  </div>
@@ -199,7 +218,7 @@ body{
 				    <div class="value">${foodlist.calorie} kcal</div>
 				  </div>
 				  
-				  <div class="label-value-container">
+				  <div class="label-value-container toggle">
 				    <div class="label">탄수화물:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.carbohydrate} g</div>
 				  </div>
@@ -214,12 +233,12 @@ body{
 				    <div class="value">${foodlist.dietaryfiber} g</div>
 				  </div>
 				  
-				  <div class="label-value-container">
+				  <div class="label-value-container toggle">
 				    <div class="label">단백질:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.protein} g</div>
 				  </div>
 				  
-				  <div class="label-value-container">
+				  <div class="label-value-container toggle">
 				    <div class="label">지방:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.fat} g</div>
 				  </div>
@@ -516,7 +535,15 @@ body{
             toggleCharts();
         };
         
-        
+        document.addEventListener("DOMContentLoaded", function () {
+            const foodBoxes = document.querySelectorAll(".food-box");
+
+            foodBoxes.forEach(function (foodBox) {
+                foodBox.addEventListener("click", function () {
+                    this.classList.toggle("expanded");
+                });
+            });
+        });
     </script>
 </body>
 </html>

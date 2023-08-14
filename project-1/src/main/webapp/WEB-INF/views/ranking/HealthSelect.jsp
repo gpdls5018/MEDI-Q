@@ -377,6 +377,18 @@ body{
 					    <label>호흡기 건강</label>
 					</button>
 				</a>
+				<a href="/functionfood/healthissue.do?healthissue=수면">
+					<button class="btn btn-6 btn-6c" >
+					    <img src='/images/tsimages/sleep.png' loading="lazy" width="60" height="60" style="color: transparent;">
+					    <label>수면</label>
+					</button>
+				</a>
+				<a href="/functionfood/selectissue.do">
+					<button class="btn btn-6 btn-6c" >
+					    <img src='/images/tsimages/age_group.png' loading="lazy" width="60" height="60" style="color: transparent;">
+					    <label>나이대별 추천</label>
+					</button>
+				</a>
             </p>
           </section>
         </div>

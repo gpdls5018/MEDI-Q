@@ -74,7 +74,31 @@ ul {
     text-align: justify;
     font-size: 15px;
 }
-
+    .tss {
+        display: flex;
+        flex-direction: row;
+        font-size: 16px;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height:70px;
+        padding-bottom:15px;
+        border-bottom: 3px solid #F0F0F0;
+    }
+    .tss1 {
+        display: flex;
+        flex-direction: row;
+        font-size: 14px;
+        align-items: center;
+        width: 90%;
+        vertical-align: middle;
+    }
+   strong {
+    	font-size: 16px;
+    	font-weight: 500;
+		vertical-align: middle;
+		width: 100px;
+    }
 </style>
 
 	<div class="container my-3" style="min-height: 880px; max-width: 1100px; background-color: white; border-radius: 15px;">
@@ -85,37 +109,49 @@ ul {
 		    <div class="mx-5 my-5 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">당뇨병 수치 예측하기</div>
 			<div class="model-score  mx-2 mt-4" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd>70%</kbd> 입니다</div>
 		    <div class="row">
-		        <div class="col-6">
+		        <div class="col-6"  style="max-width: 40%;">
 		            <form id="personInfoForm" class="validation-form" novalidate>
-		                <div class="col mb-3">
+			            <div class="tss col mb-3">
 		                    <strong>연령</strong>
-		                    <input type="text" class="form-control mt-2" id="age" name="age" pattern="[0-9]+" placeholder="나이를 입력해주세요" value="" required>
+		                    <div class="tss1 d-flex" style="  align-items: center;">
+		                    	<input type="text" class="form-control  w-75" style="margin:0px; border:none; text-align: right;" id="age" name="age" pattern="[0-9]+" placeholder="나이을 입력해주세요" value="${age}" required> 세
+		                    </div>
 		                    <div class="invalid-feedback">
-		                        나이을 입력해주세요.
+		                        연령을 입력해주세요
 		                    </div>
 		                </div>
-		                <div class="col mb-3">
+
+		                <div class="tss col mb-3">
 		                    <strong>BMI</strong>
-		                    <input type="text" class="form-control mt-2" id="bmi" name="bmi" placeholder="체질량 지수를 입력해주세요" value="${healthInfoDto.bmi}" required>
+		                     <div class="tss1 d-flex" style="  align-items: center;">
+		                    	<input type="text" class="form-control  w-75"  style="margin:0px; border:none; text-align: right;" id="bmi" name="bmi" placeholder="체질량 지수를 입력해주세요" value="${healthInfoDto.bmi}" required> (kg/m2)
+		                    </div>
 		                    <div class="invalid-feedback">
 		                        체질량 지수를 입력해주세요
 		                    </div>
 		                </div>
-		                <div class="col mb-3">
-		                    <strong>포도당</strong>
-		                    <input type="text" class="form-control mt-2" id="glucose" name="glucose" placeholder="포도당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required>
+		                
+		                <div class="tss col mb-3">
+		                    <strong>혈당</strong>
+		                    <div class="tss1 d-flex" style="  align-items: center;">
+		                    	<input type="text" class="form-control  w-75"  style="margin:0px; border:none; text-align: right;" id="glucose" name="glucose" placeholder="포도당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required>&nbsp;mg/dL
+		                    </div>
 		                    <div class="invalid-feedback">
 		                        포도당 수치를 입력해주세요
 		                    </div>
 		                </div>
-		                <div class="col mb-3">
+		                
+		                <div class="tss col mb-3">
 		                    <strong>혈압(평균)</strong>
-		                    <input type="text" class="form-control mt-2" id="bloodpress" name="bloodpress"  placeholder="혈압수치를 입력해주세요" value="${(healthInfoDto.bloodPressure_high + healthInfoDto.bloodPressure_low) / 2}" required>
+		                    <div class="tss1 d-flex" style="  align-items: center;">
+		                   		<input type="text" class="form-control  w-75"  style="margin:0px; border:none; text-align: right;" id="bloodpress" name="bloodpress"  placeholder="혈압수치를 입력해주세요" value="${(healthInfoDto.bloodPressure_high + healthInfoDto.bloodPressure_low) / 2}" required>&nbsp;mmHg
+		                   	</div>
 		                    <div class="invalid-feedback">
 		                        혈압수치를 입력해주세요
 		                    </div>
 		                </div>
-		                <hr class="mb-4">
+
+
 		                <div class="mb-4"></div>
 		                <button class="btn btn-primary btn-lg btn-block" type="submit" data-bs-toggle="modal" data-bs-target="#predictionModal">예측해보기</button>
 		            </form>
@@ -149,19 +185,16 @@ ul {
 			        </div>
 			        <div class="col-6" style="width: 400px; height: 400px; flex-grow: 1; display: flex; align-items: center; justify-content: center; padding-left: 0px;">
 						<ul class="pakinul">
-	                		<li class="text-center" style="font-weight:bold; font-size: 25px; margin-bottom: 40px; margin-top: 0px;"><b>당뇨병 진단과정</b></li>
-
-	                    	<li><span></span>연령·체형 40세 이상으로 비만한 사람</li>
-	                    	<li><span></span>가족력 가까운 친척 중에서 당뇨병이 있는 사람</li>
-	                    	<li><span></span>자각증상 갈증, 다음, 다뇨, 다식, 피로감, 체중감소 등의 증상이 있는 사람</li>
-	                    	<li><span></span>당뇨병이 합병되기 쉬운 질환이 있는 사람 고혈압, 췌장염, 내분비 질환, 담석증</li>
-	                    	<li><span></span>당뇨병 발병을 촉진하는 약물을 사용하고 있는 사람, 스테로이드 제품을 장기간 복용하는 사람</li>
+	                		<li class="text-center" style="font-weight:bold; font-size: 20px; margin-bottom: 20px; margin-top: 0px;"><b>당뇨병 진단과정</b></li>
+	                    	<li><span></span>나이가 들며 인슐린 저항성이 증가하며 이는 2형 당뇨병의 주요원인이며  또한 <b style="color: #EF605D">나이가 들면 신체활동도 감소하게 되어 이는 당뇨병에 위험을 증가</b>시킬 수 있습니다.</li>
+	                    	<li><span></span>BMI가 높으면 2형 당뇨병에 위험이 높아지며 특히 <b style="color: #EF605D">복부비반은 인슐린 정항성 증가와 관련이 있으며 저항성 지방세포 호르몬의 발생을 증가</b>시킵니다.</li>
+	                    	<li><span></span>높은 혈당과 혈압은 당뇨병과 관련이 있으며 이 두질환은 곧 <b style="color: #EF605D">심혈관 질환의 주요 위험 요인으로</b> 이어집니다.</li>
 	                	</ul>		            
 	                </div>
 			     </div>
 			 </div>
 			  <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 		      </div>
 		    </div>
 		  </div>
