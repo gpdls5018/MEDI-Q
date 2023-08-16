@@ -63,9 +63,7 @@ public class BoardController {
 		ListPagingData listPagingData= board.selectList(map, req, nowPage, likemap);
 		//데이타 저장
 		model.addAttribute("listPagingData", listPagingData);	
-		
 		return "board/List";
-	
 	}/////////////////////
 	
 	//글쓰기 폼으로 이동
@@ -153,20 +151,18 @@ public class BoardController {
 	@GetMapping("/Edit.do")
 	public String edit(HttpServletRequest req,@RequestParam Map map,Model model) {
 		map= board.selectOne(map);
-		System.out.println(map);
+		//System.out.println(map);
 		model.addAttribute("record", map);
-		System.out.println("record값확인"+model);
+		//System.out.println("record값확인"+model);
 		return "board/Edit";
 	}/////////////
 	
 	//수정처리process
 	@PostMapping("/EditProcess.do")
 	public String editProcess(HttpServletRequest req,@RequestParam Map map,Model model) {
-		//String id = jwTokensService.getTokenPayloads(jwTokensService.getToken(req, tokenName), secretKey).get("sub").toString();
-		//map.put("id", id);
 		int affected = board.update(map);
 	    if (affected == 0) {
-	        model.addAttribute("inputError", "입력 오류입니다. 다시 입력해주세요");
+	        //model.addAttribute("inputError", "입력 오류입니다. 다시 입력해주세요");
 	        model.addAttribute("record", map);
 	        return "board/Edit";
 	    } 
@@ -181,7 +177,7 @@ public class BoardController {
 		int deleteCount = board.delete(map);
 	    System.out.println("여기 delete후 "+deleteCount);
 		if (deleteCount == -1) {
-	        System.out.println("delete에 에러 발생");
+	        //System.out.println("delete에 에러 발생");
 	        return "forward:/board/View.do";
 	    }
 	    System.out.println("삭제된 답글 수: " + deleteCount);
