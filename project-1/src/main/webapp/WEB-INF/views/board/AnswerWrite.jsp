@@ -57,22 +57,22 @@
 			background-color:#FDCDBC;
 			border-radius: 20px;
 		}
-		.btn_deco{/*버튼 색*/
+		.btn_deco{
 			background-color:#FAEBD0;
 		}
-		.btn_deco_text{/*버튼 글자색*/
+		.btn_deco_text{
 			color:#BCA77A;
 		}
-		.btn_update{/*등록버튼색*/
+		.btn_update{
 			background-color:#ff956c;
 		}
-		.btn_update_text{/*등록버튼글자색*/
+		.btn_update_text{
 			color:#FFFFFF;
 		}
-		.btn_align_right{/*등록,수정버튼 위치*/
+		.btn_align_right{
 			text-align: right;
 		}
-		.btn_align_right{/*등록,수정버튼 위치*/
+		.btn_align_right{
 			text-align: right;
 		}
 		.qna_mascot{

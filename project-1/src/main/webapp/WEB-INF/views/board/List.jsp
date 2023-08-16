@@ -276,7 +276,6 @@
 										<c:if test="${not empty id}">
 											<img src="/images/chatbot/bot_x.png" class="btn_oc mt-2" style="width: 15px; height: 15px;"/>
 										</c:if>
-
 								</legend>
 									<div style="display: flex; justify-content: center;" class=" mb-3">
 										<input class="btn mr-3 " type="button" id="ocEnterBtn" value="입장하기" data-id="${id}" data-active="${active}">
@@ -326,7 +325,6 @@
   								<!-- 1:1 답변 게시 시작 -->
 	                        	<img src="<c:url value="/images/qna/qna_ans.png"/>" class="qna_ans">
 	                        </div>
-	                   
                         </div>
                         <!-- 질문에 대한 컨테이너 -->
                         <div class="row justify-content-center pt-2">
@@ -405,7 +403,7 @@
 	function open(){
 		//서버로 연결한 사람의 정보(id) 전송
 		//사용자가 입력한 닉네임 저장
-		//chatnickname = $('#chatnickname').val();//id로 변경시
+		//chatnickname = $('#chatnickname').val();//id로 변경시 
 		ocwsocket.send('msg:'+chatnickname+' 가(이) 입장했습니다.');
 		appendMessage("<div class='mt-3 ml-3'><img src='/images/chatbot/chat.png' style='width: 26px; height: 23px; margin-bottom: 5px;'/>&nbsp;&nbsp;커뮤니티 채팅방에 참가하였습니다.</div>");
 		$('#ociMessage').focus();
@@ -442,9 +440,7 @@
 			ocwsocket.send('msg: '+chatnickname+'님 : '+$(this).val());
 			appendMessage('<p class="int"><span class="ocspan">'+$(this).val()+"</span></p>");
 			$(this).val("");
-			//포커스 주기
 			$(this).focus();
 		}
 	});
-	//오픈채팅용 자바스크립트 끝
 </script>

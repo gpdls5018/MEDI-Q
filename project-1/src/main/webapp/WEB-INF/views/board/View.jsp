@@ -170,22 +170,18 @@
 	                        <div class="d-flex flex-wrap flex-direction justify-content-center" id="content_footer">
 							</div>
 	                    </div>
-					</div><!-- 답변게시판 질문부분 끝 -->
-					
-	                <!-- 답변 게시판(관리자) -->
-	                <!-- 출력 부분 -->
+					</div>
 	                <c:choose>
 	                	<c:when test="${empty paramMap.CONTENT }">
 			                <div class="card_deco col-12 p-1">
-		                        <div class="card-body card_deco_body m-2" style="padding:.5rem;"><!-- 네비 바 -->
+		                        <div class="card-body card_deco_body m-2" style="padding:.5rem;">
 		                            <div class="card-text d-flex align-items-center">
 		                            	<img src="<c:url value="/images/qna/pharmacist.png"/>" class="qna_mascot">
 		                            	<span class="card_deco2_text font-weight-bold text_3 ml-2">메디큐 약사님의 답변입니다</span>
 		                            </div>
-		                        </div><!-- 네비 바 -->
+		                        </div>
 		                        <div class="card-body m-2">
 		                        	<br>
-		                        	<!-- 답글이 존재하지 않을시 뷰 -->
 		                        	<c:if test="${empty paramMap.CONTENT}" var="isEmpty">
 										<div id="empty-comment">
 											<div class="font-weight-bold">약사님의 답변을 기다리는 중입니다.</div>
@@ -195,9 +191,7 @@
 		                    </div>
                     	</c:when>
 	                    <c:when test="${not empty paramMap.CONTENT }">                      
-						    <!-- 답글이 존재시 뷰 -->
 							<div class="card_deco col-12 p-1 answer-section"><!-- class 속성 answer-section으로 답변삭제시 태그들 아래 다 삭제 -->
-				               	<!-- 네비 바 -->
 					            <div class="card-body card_deco_body m-4" style="padding:.5rem;">
 					                <div class="card-text d-flex align-items-center">
 					                	<img src="<c:url value="/images/qna/pharmacist.png"/>" class="qna_mascot">
@@ -224,12 +218,10 @@
             <div class="d-flex col-3 flex-wrap align-content-stretch">
             </div>
 	        <div class="row pt-3 align-conten-center">
-                <%-- <a class="btn_deco rounded-pill col-1 text-decoration-none text-white text-center text_3 p-2" href="<c:url value="/board/View.do?no=${record.no-1}"/>">이전 질문</a> --%>
-                <a class="d-flex justify-content-center col-1 btn_deco rounded-pill text_3 p-2 text-decoration-none list_btn" href="<c:url value="/board/List.do"/>">질문 목록</a><!-- 그냥 넘길지 page번호까지 넘길지 고민 중 -->
-                <%-- <a class="btn_deco rounded-pill col-1 text-decoration-none text-white text-center text_3 p-2" href="<c:url value="/board/View.do?no=${record.no+1}"/>">다음 질문</a> --%>
+                <a class="d-flex justify-content-center col-1 btn_deco rounded-pill text_3 p-2 text-decoration-none list_btn" href="<c:url value="/board/List.do"/>">질문 목록</a>
                 <div class="d-flex re_del_btn">
                 	<!-- id가 관리자일때만 버튼이 보임 -->
-                	<c:if test="${active eq 'A' }"><!-- member속성 ACTIVE 관리자('A')일때만,만약 약사 속성('G')로 수정할거면 A대신 G로 교체 -->
+                	<c:if test="${active eq 'A' }"><!-- member속성 ACTIVE 관리자('A')일때만 -->
 						<c:choose>
 							<c:when test="${empty paramMap.CONTENT}">
 								<a href='<c:url value="/board/AnswerWrite.do?no=${record.NO}&title=${record.TITLE }"/>' class="text-decoration-none p-1">

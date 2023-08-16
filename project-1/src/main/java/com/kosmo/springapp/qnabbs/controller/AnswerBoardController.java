@@ -65,7 +65,7 @@ public class AnswerBoardController {
 		}
 	    // /board/View.do핸들러 메서드로 감
 		return "forward:/board/View.do"; // 뷰정보 반환 - 상세보기로 처리하는 컨트롤러로 이동
-	}//////////////////////////////////////////////
+	}///////////////
 	//View페이지에서 답변글 수정폼으로 이동
 	@GetMapping("/AnswerEdit.do")
 	public String answeredit(@RequestParam Map map,@RequestParam String title ,Model model) {
@@ -74,7 +74,7 @@ public class AnswerBoardController {
 		model.addAttribute("title", title);
 		model.addAttribute("record", map); 
 		return "board/AnswerEdit"; //답변글 수정폼으로 이동
-	}//////////////////////////////////////////////
+	}//////////////
 	//답변글 수정처리
 	@PostMapping("/AnswerEdit.do")
 	public String answereditProcess(@RequestParam Map map,Model model) {
@@ -84,6 +84,6 @@ public class AnswerBoardController {
 	        return "board/AnswerEdit"; //다시 답변 수정 폼으로 이동
 		}
 		return "forward:/board/View.do"; // 뷰정보 반환 - 상세보기로 처리하는 컨트롤러로 이동
-	}////////////////////////////////////////////////
+	}//////////////
 }
 
