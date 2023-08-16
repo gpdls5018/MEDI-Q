@@ -192,8 +192,8 @@
 	    left: 30px;
 	    width:400px; 
 	    padding: 10px;
-	    background:#FFF4E5; 
-	    border: 4px solid #FFCC99;
+	    background:white; 
+	    border: 3px solid #99C36E;
 	    border-radius: 30px;
 	    color:black;
 	    z-index: 1000; 
@@ -203,8 +203,10 @@
 		font-weight:700;
 	}
 	#chatMessage{
+		width :360px;
 	 	height:300px;
-	 	background:#FFE4BF;
+	 	margin-left :7px;
+	 	background:#FFF4E5;
 	 	border-radius: 12px;
 	 	color:#7A7C7D;
 	 	font-weight:500;
@@ -241,12 +243,12 @@
   		float: right;
 	}
 	#ocEnterBtn{
-		background:#C4CAEA;
-		color:#0039E5;
+		background:#80DAFF;
+		color:#0055CC;
 	}
 	#ocExitBtn{
-		background:#FFCCCC;
-		color:#C21F4A;
+		background:#FFDACC;
+		color:#FF4400;
 	}
 </style>
 	<!-- 상단배너 div -->
@@ -266,11 +268,11 @@
             <div class="row d-flex flex-wrap align-content-stretch">
                 <div class="d-flex col-3">
                 	<div class="ocfixed">
-	                	<div class="container">
+	                	<div class="container p-0">
 							<fieldset>
 								<legend class="chatlegend d-flex">
-										<img src="/images/chatbot/chatList.jpg" style="width: 115px; height: 110px; margin-left: 5px;"/>
-										<div style="margin-top: 45px; font-size: 22px; margin-right: 45px;">실시간 질의응답</div>
+										<img src="/images/chatbot/chatList.jpg" style="width: 150px; height: 115px;"/>
+										<div style="margin-top: 48px; font-size: 22px; margin-right: 40px; color: #075D00">실시간 질의응답</div>
 										<img src="/images/chatbot/bot_x.png" class="btn_oc mt-2" style="width: 15px; height: 15px;"/>
 								</legend>
 									<div style="display: flex; justify-content: center;" class=" mb-3">
@@ -280,7 +282,7 @@
 									<!-- 여기가 채팅방시작 -->
 									<div id="chatArea" class="mb-3" style="display: none;">
 										<div id="chatMessage" class="mb-3"></div>
-										<input type="text" class="form-control" id="ociMessage" placeholder="채팅을 입력해주세요." style="border-radius:15px;">
+										<input type="text" class="form-control" id="ociMessage" placeholder="채팅을 입력해주세요." style="border-radius:15px; width: 350px; margin-left: 13px;">
 									</div>
 							</fieldset>
 						</div>
@@ -387,9 +389,9 @@
 	    $('#chatnickname').prop('readonly', true);
 
 		ocwsocket.onclose = function(){
-			appendMessage(" 연결이 끊어졌습니다.");
-			appendMessage("<br>재접속은 새로고침(F5).");
-			appendMessage("<br>이후의 메시지는 전달되지 않습니다.");
+			appendMessage("<div class='mt-2 ml-3'><img src='/images/chatbot/noComment.png' style='width: 20px; height: 20px; margin-bottom: 5px;'/> 채팅을 종료하여 연결이 끊어졌습니다.</div>");
+			appendMessage("<div class='mt-2 ml-3'><img src='/images/chatbot/noComment.png' style='width: 20px; height: 20px; margin-bottom: 5px;'/> 재접속을 원하시면 F5를 눌러주세요.</div>");
+			appendMessage("<div class='mt-2 ml-3'><img src='/images/chatbot/noComment.png' style='width: 20px; height: 20px; margin-bottom: 5px;'/> 이후의 메시지는 전달되지 않습니다.</div>");
 		};
 		ocwsocket.onmessage=receive;//ocwsocket이 메시지를 받으면 recevive함수 실행
 		ocwsocket.onerror=function(e){
@@ -402,7 +404,7 @@
 		//사용자가 입력한 닉네임 저장
 		//chatnickname = $('#chatnickname').val();//id로 변경시
 		ocwsocket.send('msg:'+chatnickname+' 가(이) 입장했습니다.');
-		appendMessage("<div class='mt-2 ml-3'>커뮤니티 채팅방에 참가하였습니다.</div>");
+		appendMessage("<div class='mt-3 ml-3'><img src='/images/chatbot/chat.png' style='width: 26px; height: 23px; margin-bottom: 5px;'/>&nbsp;&nbsp;커뮤니티 채팅방에 참가하였습니다.</div>");
 		$('#ociMessage').focus();
 	}
 	//서버에서 메시지를 받을때마다 호출되는 함수
