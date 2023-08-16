@@ -397,6 +397,17 @@ public class SelectFoodRankListController {
 		}
 		return "test3";
 	}
+	@GetMapping("/food/delete.do")
+	public String deletefood(@RequestParam String no,HttpServletRequest req,HttpServletResponse resp) {
+		MemberDTO memberDto = loginService.selectOne(req);
+		Date currentDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd");
+        String formatDate = dateFormat.format(currentDate);
+		String ID = memberDto.getId();
+		
+		selectfoodservice.deletefood(no, formatDate, ID);
+		return "forward:/food/test3.do";
+	}
 
 	
 	@GetMapping("/ranking/HealthSelect.do")
