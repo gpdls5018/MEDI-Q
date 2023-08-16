@@ -35,6 +35,7 @@ public interface SelectFoodMapper {
 	UserInfoDTO userinfo(String ID);
 	String checkUserscore(String ID,String formatDate);
 	List<AllFoodDTO> myintakefoodlist(String ID,String formatDate);
+	void deletefood(String no,String formatDate,String ID);
 	void newUserscore(String ID,int Score);
 	void updateUserscore(String ID,int Score,String formatDate);
 	AllFoodScoreDTO foodscore(String ID,String formatDate);

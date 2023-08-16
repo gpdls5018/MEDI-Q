@@ -153,7 +153,7 @@ body{
 				</div>
 			<c:if test="${not empty dailyCalories}">
 		        <div class="chart_dnt_2" style="">
-		            <h1>칼로리기준 탄단지 비율</h1>
+		            <h1>칼로리기준 목표 탄단지 비율</h1>
 		            <canvas id="chart_doughnut_2"></canvas>
 		        </div>
 		        <p id="result"></p>
@@ -190,7 +190,7 @@ body{
 		    
 
 			<c:forEach items="${foodlist }" var="foodlist">
-				<div class="food-box">
+				<div class="food-box" style="width: 1540px; justify-content: center;margin-left: 200px">
 					<div class="food-info">${foodlist.foodname}에 대한 정보</div>
 				  <!--
 				  <div class="label-value-container">
@@ -267,6 +267,12 @@ body{
 				    <div class="label">나트륨:</div>&nbsp;&nbsp;&nbsp;
 				    <div class="value">${foodlist.sodium} mg</div>
 				  </div>
+				  <form action="/food/delete.do">
+				  	<input name="no" value="${foodlist.no }" type="hidden"/>
+					<div class="label-value-container" style="display: flex; justify-content: right; align-items: center;">
+					  <button id="ingestionbtn" style="border: 3px solid pink;color:hotpink;background-color:#3FE87F;">삭제하기</button>
+					</div>
+				  </form>
 				</div>
 			</c:forEach>
 	</div>

@@ -613,16 +613,21 @@ window.addEventListener('click', (event) => {
     }
 });
 
-
 document.addEventListener("DOMContentLoaded", function () {
-    const foodBoxes = document.querySelectorAll(".food-box");
+    const parentContainer = document.querySelector("#parent-container");
+    const inputSection = document.querySelector(".label-value-container input[name='re']");
 
-    foodBoxes.forEach(function (foodBox) {
-        foodBox.addEventListener("click", function () {
-            this.classList.toggle("expanded");
-        });
+    parentContainer.addEventListener("click", function (event) {
+        if (event.target === inputSection) {
+            return;
+        }
+
+        if (event.target.classList.contains("food-box")) {
+            event.target.classList.toggle("expanded");
+        }
     });
 });
+
 </script>
 </body>
 </html>
