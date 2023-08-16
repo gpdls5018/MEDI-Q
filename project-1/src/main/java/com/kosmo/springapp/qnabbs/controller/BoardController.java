@@ -57,7 +57,7 @@ public class BoardController {
 			model.addAttribute("id", id);
 			//작성자가 관리자인지 아닌지 체크, id로 회원정보 가져와서 active 정보 가져옴
 			String active=loginService.selectOne(id).getActive();
-			System.out.println("active:"+active);//"Y, A, N 중 하나"
+			//System.out.println("active:"+active);//"Y, A, N 중 하나"
 			model.addAttribute("active", active);//model에 active로 저장
 		}
 		ListPagingData listPagingData= board.selectList(map, req, nowPage, likemap);
