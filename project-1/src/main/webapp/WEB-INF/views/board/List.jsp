@@ -284,7 +284,7 @@
 									<!-- 여기가 채팅방시작 -->
 									<div id="chatArea" class="mb-3" style="display: none;">
 										<div id="chatMessage" class="mb-3"></div>
-										<input type="text" class="form-control" id="ociMessage" placeholder="채팅을 입력해주세요." style="border-radius:15px; width: 350px; margin-left: 13px;">
+										<input type="text" class="form-control" id="ociMessage" placeholder="문의할 내용을 입력해 주세요." style="border-radius:15px; width: 350px; margin-left: 13px;">
 									</div>
 							</fieldset>
 						</div>
