@@ -164,4 +164,9 @@ public class SelectFoodServiceImpl implements SelectFoodService{
 	public AllFoodScoreDTO foodscore(String ID, String formatDate) {
 		return mapper.foodscore(ID, formatDate);
 	}
+
+	@Override
+	public void deletefood(String no, String formatDate, String ID) {
+		mapper.deletefood(no, formatDate, ID);
+	}
 }

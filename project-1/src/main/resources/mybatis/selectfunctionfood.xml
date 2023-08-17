@@ -149,4 +149,7 @@
 	<select id="foodscore" parameterType="String" resultType="AllFoodScoreDTO">
 		select * from userfoodscore where ID = '${ID}' AND scoredate like '${formatDate}'
 	</select>
+	<delete id="deletefood" parameterType="String">
+		delete (select * from intakefood where foodno='${no}' and id='${ID}' and intakedate like '%${formatDate}%') where rownum = 1
+	</delete>
 </mapper>

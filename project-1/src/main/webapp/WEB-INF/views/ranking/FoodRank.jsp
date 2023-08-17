@@ -83,6 +83,9 @@ body{
 						<div class="ipt-main-wrap-in">
 							<input id="searchProduct1" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
 							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct1()"></button>
+							<button type="button" class="d-flex justify-content-center align-items-center" id="searchBtn" data-toggle="modal" data-target="#searchModal">
+								<img id="camera_icon" src="<c:url value='/images/chatbot/camera_icon.png'/>">
+							</button>
 						</div>
 					</form>
 					</div><!-- ipt-main-wrap : 끝 -->
@@ -201,7 +204,11 @@ body{
 					<form action="/functionfood/select.do">
 						<div class="ipt-main-wrap-in">
 							<input id="searchProduct1" type="text" name="foodname" class="ipt-main" autocomplete="off" title="제품명, 브랜드명 검색" value="${foodname}" required minlength="1" placeholder="찾으시는 제품을 검색해보세요!">
+							<button type="button" class="d-flex justify-content-center align-items-center" id="searchBtn" data-toggle="modal" data-target="#searchModal">
+								<img id="camera_icon" src="<c:url value='/images/chatbot/camera_icon.png'/>">
+							</button>
 							<button tabindex="0" title="검색" class="btn-search" onclick="searchProduct1()"></button>
+							
 						</div>
 					</form>
 					</div><!-- ipt-main-wrap : 끝 -->
@@ -305,23 +312,21 @@ body{
 </div><!-- all-wrap의 끝 -->
 <style>
 	#searchBtn{
-		width:40px;
-		height:40px;
-		border-radius:20px;
-		background-color:#FF6666;
+		width:60px;
+		height:60px;
+		border-radius:30px;
+		background-color:#EF605D;
 		position:relative;
-		left:50px;
-		bottom:50px;
+		left:965px;
+		top:2px;
+		z-index:50;
 	}
 	#camera_icon{
-		width:25px;
-		height:25px;
+		width:30px;
+		height:30px;
 	}
 </style>
 <!-- ocr 추가 부분 -->
-<button type="button" class="d-flex justify-content-center align-items-center" id="searchBtn" data-toggle="modal" data-target="#searchModal">
-	<img id="camera_icon" src="<c:url value='/images/chatbot/camera_icon.png'/>">
-</button>
 <div class="modal fade" id="searchModal">
 	<div class="modal-dialog modal-dialog-centered" style="width:480px;">
 		<div class="modal-content">

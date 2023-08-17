@@ -837,7 +837,6 @@ ul {
                 <img src="/images/chatbot/bot_x.png" class="btn btn_x"/>
             </div>
 			<div class="chatbot-line"></div>
-            
             <div class="textdialog scrollbar">
             	<!-- STT와 TTS 지원여부 확인 -->
 	            <div class="alert alert-danger alert-dismissible fade show mb-0 mt-1">
@@ -845,7 +844,6 @@ ul {
 				    <strong id="stt-msg" style="font-size: 12px; margin-left: 10px;"> </strong><br/>
 				    <strong id="tts-msg" style="font-size: 12px; margin-left: 10px;"> </strong>
 				</div>
-          
                 <div class="py-2 pl-2">
                     <div class="mt-2">
                     	<div class="d-inline-flex justify-content-center align-items-center p-0 m-1">
@@ -856,7 +854,6 @@ ul {
                         </div>
                     </div>
                 </div>
-                
                 <div class="userDialog py-2 pr-4" style="display:none;">
                     <div class="user_dialog d-flex flex-row-reverse p-1 m-0">
                         <div class="skeleton-user d-inline-flex p-1 m-0">
@@ -864,7 +861,6 @@ ul {
                         </div>
                     </div>
                 </div>
-                
                 <div class="gptDialog py-2 pl-2"style="display:none;">
                		<div class="d-flex">
 	                	<div class="p-0 mx-1">
@@ -889,7 +885,6 @@ ul {
 				    <span class="menu-line"></span>
 				    <span class="menu-line"></span>
 				  </div>
-				
 				</label>
     			<div class="chatbotBottom d-flex">
 				    <div class="position-relative" style="margin-left: 53px;">                   
@@ -1084,7 +1079,6 @@ ul {
     }
     
     /*stt,tts시작  */
-
 	function startSynthesis() {
 	    var selectedAnswers = document.querySelectorAll('.skeleton-gpt.active-color');
 	    var voiceSelect = document.querySelector('#voice');
@@ -1132,8 +1126,6 @@ ul {
 	    var isRecognizing = false;
 	    var recognition;
 	
-	    
-	    
 	    //대화상자(답변) 선택시 색상 변경
 	    $(skeletonGpt).click(function() {
 	        $(this).toggleClass("active-color");
@@ -1207,7 +1199,7 @@ ul {
 
 	
 	    function startRecognition() {
-	    	console.log('음성인식 중1')
+	    	//console.log('음성인식 메소드');
 	        startBtn.innerHTML = "<img src='<c:url value="/images/chatbot/mike2.png"/>' style='width: 40px;height: 40px; border-radius: 50%;'>"
 	        result.value = '';
 	        recognition.start();
@@ -1215,13 +1207,12 @@ ul {
 	    }//////startRecognition()
 	
 	    function stopRecognition() {
-	    	console.log("음성인식 멈춤")
+	    	//console.log("음성인식 멈춤");
 	        startBtn.innerHTML = "<img src='<c:url value="/images/chatbot/mike.png"/>' style='width: 37px;height: 37px; border-radius: 50%;'>"
 	        recognition.stop();
 	        isRecognizing = false;
 	    }//////stopRecognition()
 	    
-	
 	    function stopSynthesis() {
 	        if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
 	    }////stopSynthesis()
@@ -1267,7 +1258,6 @@ ul {
 	    });
 	});
 			
-			
 	//QR
 	document.addEventListener("DOMContentLoaded", function() {
 	    var mascotImage = document.getElementById("mascotImage");
@@ -1303,6 +1293,4 @@ ul {
 	        }
 	    });
 	});
-	
 </script>
- 

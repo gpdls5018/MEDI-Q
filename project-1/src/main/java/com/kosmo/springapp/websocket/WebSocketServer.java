@@ -1,40 +1,17 @@
 package com.kosmo.springapp.websocket;
 
-import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
-/*
-import com.kosmo.springapp.model.MemberDTO;
-import com.kosmo.springapp.service.JWTokensService;
-import com.kosmo.springapp.service.impl.LoginServiceImpl;
-*/
 
 //웹소켓 서버
 @Component
 public class WebSocketServer extends TextWebSocketHandler {
-	/*
-	//토큰용 아래 3개 주입
-	@Autowired
-	private JWTokensService jwTokensService;
-	@Value("${secret-key}")
-	private String secretKey;
-	@Value("${token-name}")
-	private String tokenName;
-	@Autowired
-	private LoginServiceImpl loginService;
-	*/
 	
 	//접속한 클라이언트를 저장하기 위한 속성(멤버변수)]
 	//키는 웹소켓 세션 아이디
@@ -46,7 +23,7 @@ public class WebSocketServer extends TextWebSocketHandler {
 		//-컬렉션에 연결된 클라이언트 추가
 		clients.put(session.getId(), session);
 		System.out.println("clients에 담김"+clients);
-		System.out.println(session.getId()+"연결되었습니다11111111.");
+		System.out.println(session.getId()+" : 서버에 연결되었습니다.");
 		
 	}
 	
