@@ -726,8 +726,8 @@ ul {
 	       </c:if>
 	       <c:if test="${mainpagenum == 1}">
 	       	  <li class="tsnavli"><button class="tset" id="tssection1" type="button">홈</button></li>
-			  <li class="tsnavli"><button class="tset" id="tssection2" type="button">영양제</button></li>
-			  <li class="tsnavli"><button class="tset" id="tssection3" type="button">영양소</button></li>
+	       	  <li class="tsnavli"><button class="tset" id="tssection2" type="button">영양소</button></li>
+			  <li class="tsnavli"><button class="tset" id="tssection3" type="button">영양제</button></li>
 			  <li class="tsnavli"><button class="tset" id="tssection4" type="button">분석</button></li>
 			  <li class="tsnavli"><button class="tset" id="tssection5" type="button">질병예측</button></li>
 			  <li class="tsnavli"><button class="tset" id="tssection6" type="button">Q&A</button></li>

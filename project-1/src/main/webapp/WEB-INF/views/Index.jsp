@@ -270,7 +270,7 @@ html, body {
 .p2firsta {
 	position: absolute;
 	z-index:2;
-	top:455px; 
+	top:475px; 
 	right:270px;
 	color:gray;
 	padding: 10px; 
@@ -285,7 +285,7 @@ html, body {
 .p3firsta {
 	position: absolute;
 	z-index:2;
-	top:491px; 
+	top:480px; 
 	left:817px;
 	color:gray;
 	padding: 10px; 
@@ -321,8 +321,13 @@ html, body {
 	height:500px; 
 	border-radius: 20px;
 }
+.p2div2 {
+	width: 1000px;
+	margin-top: 20px;
+}
 .p2div3 {
 	width: 1000px;
+	margin-top: 300px;
 }
 
 .p2h1 {
@@ -475,12 +480,12 @@ html, body {
 		<!-- 페이지 2 -->
 		<div class="tssection tssection2" id="tssection2">
 			<img class="p2firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
-			<img class="p2secondimg" src="https://img.freepik.com/premium-photo/vitamins-herbal-supplements-jars-with-green-plant-white-background-with-space-text-biologically-active-additives_76158-538.jpg" >
-			<a type="button" class="p2firsta btn" href='<c:url value="/ranking/selectfood.do"/>' >더 보기 →</a>
+			<img class="p2secondimg" src="https://img.freepik.com/free-photo/healthy-lifestyle-of-veggies-and-fruit-slices_23-2148502235.jpg?t=st=1690263535~exp=1690264135~hmac=69f1fdeef82a37792807b85518bb146bceca7503b5c246ce5dc3a2b84c8f0535" >
+			<a type="button" class="p2firsta btn" href='<c:url value="/NutrientSelect.do"/>' >더 보기 →</a>
 			 <div class="animatedright" style="margin-right: 200px; align-items: center;">
 				<div class="row justify-content-center pt-5" style="margin: 50px 0px 50px 0px; width: 800px">
-			        <div class="p2div3 text-center" >
-			            <h1 class="p2h1 px-5 mb-5"><span style="color: #EF605D;">영양제를 </span> 검색해보세요.</h1>
+			        <div class="p2div2 text-center" >
+			            <h1 class="p2h1 px-5 mb-5"><span style="color: #EF605D;">영양소를 </span> 검색해보세요.</h1>
 			            <form class="position-relative w-100 mx-auto animated slideInDown d-flex input-wrapper" required minlength="1" action="<c:url value="/functionfood/select.do"/>" style="box-shadow: 0px 0px 5px gray; border-radius: 20px;">
 			                <input class="border-0 w-100 px-5 py-3 ps-4 pe-5 flex-grow-1" type="text" name="foodname" placeholder="제품명 및 영양성분을 입력하세요" style="border-radius: 20px 0px 0px 20px;" >
 			                <button type="submit" class="btn py-2 px-4 top-0 end-0 me-2" style="background-color: white; border-radius: 0px 20px 20px 0px;" >
@@ -491,8 +496,44 @@ html, body {
 			    </div>
 			 </div>
 		  	
-		  	<div class="section section1-2s ranking-190">
+		  	<div class="section section1-2s ranking-190" style="margin-right: 55px;">
 		        <div class="content" style="margin:40px 80px 0px 0px;">
+		            <div class="txt2"><span style="color:black; font-size: 30px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">🌿 인기 영양소</span> <span style="font-size: 30px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Top 10</span></div>
+		            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:0px 0px 35px; ">현재 조회수가 가장 높은 영양소 Top10을 알려드릴게요</p>
+		            <div class="ingredient-wrap" style="margin-left: 20px;">
+                    <div class="box-container" style="margin: 0px;">
+		                <c:forEach var="name" items="${top10}">
+						    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
+						        <b style="font-size: 14px;">${name}</b>
+						    </div>
+						</c:forEach>
+                	</div>
+	              </div>
+		        </div>
+		    </div>
+		</div>
+	    
+     <!-- 페이지 3 -->
+	  <div class="tssection tssection3" id="tssection3">
+		<img class="p3firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
+		<img class="p3secondimg" src="https://img.freepik.com/premium-photo/vitamins-herbal-supplements-jars-with-green-plant-white-background-with-space-text-biologically-active-additives_76158-538.jpg" >
+		<a type="button" class="p3firsta btn" href='<c:url value="/ranking/selectfood.do"/>' >더 보기 →</a>	
+	  	<div class="animatedleft" style="margin-left: 200px;">
+			<div class="row justify-content-center pt-2" style="margin: 10px 0px 50px 0px; width: 800px">
+		        <div class="p2div3 text-center" >
+		            <h1 class="p2h1 px-5 mb-5"><span style="color: #EF605D;">영양제를 </span> 검색해보세요.</h1>
+		            <form class="position-relative w-100 mx-auto animated slideInDown d-flex input-wrapper" required minlength="1" action="<c:url value="/functionfood/select.do"/>" style="box-shadow: 0px 0px 5px gray; border-radius: 20px;">
+		                <input class="border-0 w-100 px-5 py-3 ps-4 pe-5 flex-grow-1" type="text" name="foodname" placeholder="제품명 및 영양성분을 입력하세요" style="border-radius: 20px 0px 0px 20px;" >
+		                <button type="submit" class="btn py-2 px-4 top-0 end-0 me-2" style="background-color: white; border-radius: 0px 20px 20px 0px;" >
+							<img src="<c:url value="/images/tsimages/free-icon-magnifying-glass-4475396.png"/>" style="width:30px; height:30px">
+						</button>
+		            </form>
+		        </div>
+		    </div>
+		 </div>
+	  
+	  	<div class="section section1-2s ranking-190">
+		        <div class="content" style="margin:40px 0px 0px 90px;">
 		            <div class="txt2"><span style="color:black; font-size: 30px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">💊 인기 영양제</span> <span style="font-size: 30px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Top 5</span></div>
 		            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:0px 0px 35px; ">현재 리뷰가 가장 좋은 영양제 Top5을 알려드릴게요</p>
 		            <div class="tab-contents" style="display: block; margin-right: 17px;" >
@@ -521,42 +562,6 @@ html, body {
 		            </div>
 		        </div>
 		    </div>
-		</div>
-	    
-     <!-- 페이지 3 -->
-	  <div class="tssection tssection3" id="tssection3">
-		<img class="p3firstimg" src="<c:url value="/images/tsimages/mascot.png"/>" >
-		<img class="p3secondimg" src="https://img.freepik.com/free-photo/healthy-lifestyle-of-veggies-and-fruit-slices_23-2148502235.jpg?t=st=1690263535~exp=1690264135~hmac=69f1fdeef82a37792807b85518bb146bceca7503b5c246ce5dc3a2b84c8f0535" >
-		<a type="button" class="p3firsta btn" href='<c:url value="/NutrientSelect.do"/>' >더 보기 →</a>	
-	  	<div class="animatedleft" style="margin-left: 200px;">
-			<div class="row justify-content-center pt-2" style="margin: 10px 0px 50px 0px; width: 800px">
-		        <div class="p2div3 text-center" >
-		            <h1 class="p2h1 px-5 mb-5"><span style="color: #EF605D;">영양소를 </span> 검색해보세요.</h1>
-		            <form class="position-relative w-100 mx-auto animated slideInDown d-flex input-wrapper" required minlength="1" action="<c:url value="/functionfood/select.do"/>" style="box-shadow: 0px 0px 5px gray; border-radius: 20px;">
-		                <input class="border-0 w-100 px-5 py-3 ps-4 pe-5 flex-grow-1" type="text" name="foodname" placeholder="제품명 및 영양성분을 입력하세요" style="border-radius: 20px 0px 0px 20px;" >
-		                <button type="submit" class="btn py-2 px-4 top-0 end-0 me-2" style="background-color: white; border-radius: 0px 20px 20px 0px;" >
-							<img src="<c:url value="/images/tsimages/free-icon-magnifying-glass-4475396.png"/>" style="width:30px; height:30px">
-						</button>
-		            </form>
-		        </div>
-		    </div>
-		 </div>
-	  
-	  	<div class="section section1-2b my-1" style="align-content: center;">
-	        <div class="content" style="margin-top: 20px; margin-left:25px; text-align: center;">
-	            <span class="txt1" ><span style="color:black; margin: 20px 0 20px 30px;">🌿 인기 영양소</span> Top10</span>
-	            <p style="text-align: center; color:gray; font-weight: bold; font-size:18px; margin:35px 0px;">현재 조회수가 가장 높은 영양소 Top10을 알려드릴게요</p>
-	            <div class="ingredient-wrap" style="margin-left: 20px;">
-                    <div class="box-container" style="margin: 0px;">
-		                <c:forEach var="name" items="${top10}">
-						    <div class="box col-sm-2" style="white-space: nowrap;" onclick="location.href='/NutrientDetail.do?name=${name}'">
-						        <b style="font-size: 14px;">${name}</b>
-						    </div>
-						</c:forEach>
-                	</div>
-	            </div>
-	        </div>
-	    </div>
 	 </div>    
 	 
 		<!--  페이지4 -->
