@@ -149,4 +149,9 @@ public class LoadHealthInfoController {
 		
 	    return "StrokePredict";
 	}
+	
+	@GetMapping("/SkinLesionPredict.do")
+	public String skinLesionPredict() {
+		return "SkinLesionPredict";
+	}
 }

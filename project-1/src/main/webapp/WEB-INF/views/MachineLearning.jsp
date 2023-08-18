@@ -89,6 +89,11 @@ body {
 						<img alt="뇌졸중" style="border-radius:15px; width: 200px; height: 200px;" src="https://img.freepik.com/premium-photo/handsome-depressed-man-in-casual-clothes_85574-5904.jpg?size=626&ext=jpg&ga=GA1.1.236242110.1689157823&semt=sph">
 						<br/>뇌졸중 예측</a>
 					</div>
+					<div class="tsai text-center" style="position: absolute; top:380px; left:180px;">
+						<a href="/SkinLesionPredict.do?" style="color:black; font-weight: bold; text-decoration: none;">						
+						<img alt="피부질환" style="border-radius:15px; width: 200px; height: 200px;" src="https://img.freepik.com/free-photo/high-angle-hand-measuring-mole_23-2149359544.jpg?w=1380&t=st=1692320554~exp=1692321154~hmac=cdddd8519497c21824364e98f69b2fc3fa7db9385d300c5d030806790b8a6d36">
+						<br/>피부질환 예측</a>
+					</div>
 				</div>
 				<div class="tsaibg">
 					<img alt="건강" style="width: 540px; height: 530px;" src="/images/nutrient_img/MLbg.png">
