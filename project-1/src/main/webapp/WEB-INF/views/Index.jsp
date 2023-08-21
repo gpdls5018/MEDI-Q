@@ -65,7 +65,7 @@ html, body {
 
 .tssection {
     width: 100%;
-    height: 970px;
+    height: 963px;
     display: flex;
     justify-content: center;
     align-items: center;
