@@ -145,6 +145,8 @@ ul {
 		<div class="my-title d-flex effect-custom-font justify-content-between" style="align-items:center; width:100%;height:200px;">
 			<div class="" style="font-size:32px; margin-left: 180px; font-weight: bold; line-height: 50px;">인공지능을 통한<br/> <span style="color:#EF605D;">MEDI-Q</span> 질병예측 시스템</div>
 		</div>
+		<div class="mx-5 my-4 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7); font-weight: bold;">파킨슨병 발병확률 예측하기</div>
+		<div class="model-score  mx-2 pt-5 mb-4" style="width:80%;height:80px; font-weight: bold;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd style="font-weight: normal;">85%</kbd> 입니다</div>
 		<div class="d-flex" style="flex-direction: row; position: relative;">
 			<div style="font-size: 18px;font-weight: bold; width: 100px; height: 100px; position: absolute; top:10px; left:10px;">
 				<img src="https://cdn-icons-png.flaticon.com/512/204/204574.png" style="width: 100px; height: 100px;" ><br/>

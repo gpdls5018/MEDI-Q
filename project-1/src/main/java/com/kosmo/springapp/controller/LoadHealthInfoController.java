@@ -154,4 +154,25 @@ public class LoadHealthInfoController {
 	public String skinLesionPredict() {
 		return "SkinLesionPredict";
 	}
+	
+	@GetMapping("/LungCancerPredict.do")
+	public String lungCancerPredict(HttpServletRequest req, HttpServletResponse resp,Model model) {
+		try {
+			String token = jwTokensService.getToken(req, tokenName);
+			Map<String, Object> payloads = jwTokensService.getTokenPayloads(token, secretKey);
+			String id = payloads.get("sub").toString();
+			HealthInfoDTO healthInfoDto = healthInfoServiceImpl.selectHealthInfoByUserId(id);
+			MemberDTO memberDto = loginService.selectOne(req);
+			int nowYear = LocalDate.now().getYear();
+			model.addAttribute("age", nowYear-Integer.parseInt(memberDto.getBirth().substring(0, 4)));
+			model.addAttribute("gender", memberDto.getGender());
+			if(healthInfoDto != null) {
+				model.addAttribute("healthInfoDto",healthInfoDto);
+			}
+		}
+		catch (Exception e) {
+			
+		}
+		return "LungCancerPredict";
+	}
 }

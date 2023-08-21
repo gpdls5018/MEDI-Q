@@ -114,12 +114,11 @@ body {
 			<div class="" style="font-size:32px; margin-left: 180px; font-weight: bold; line-height: 50px;">인공지능을 통한<br/> <span style="color:#EF605D;">MEDI-Q</span> 질병예측 시스템</div>
 		</div>
 		<div class="container effect-custom-font" >
-		    <div class="mx-5 my-4 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">뇌졸중 발병확률 예측하기</div>
+		    <div class="mx-5 my-4 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">폐암 발병확률 예측하기</div>
 			<div class="model-score  mx-2 pt-5" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd>85%</kbd> 입니다</div>
 		    <div class="row pt-5">
 		        <div class="col-6">
 		            <form id="personInfoForm" class="validation-form" method="post" novalidate>
-		            
 		                <div class="tss col mb-3">
 		                    <strong>연령</strong>
 		                    <div class="tss1 d-flex" style="  align-items: center;">
@@ -221,7 +220,7 @@ body {
 		
 		        <div class="col-6">
 		            <!--<canvas id="drawing_canvas"></canvas>-->
-		            <img src="https://blog.kakaocdn.net/dn/bsaKv7/btqENswXzXV/4SrX3MKFb0dUvOICnKg0y0/img.gif" id="machineImage" style="width:100%;height:100%;border-radius:20px;padding: 0px 50px 0px 50px;"/>
+		            <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAyMDAzMDlfMjQy%2FMDAxNTgzNzE4MjEzODI4.POwwB3ltkiqPNsm6zWnEOKqBfv3VxazhTO4lCoAxiKgg.v4772ZYKEx2yXF1J5I5gpOwxg5sfLZg0ouVYWn1DJbEg.JPEG%2FIWoKKDOe4F5Sr710c75lUAyiHshM.jpg&type=sc960_832" id="machineImage" style="width:100%;height:100%;border-radius:20px;padding: 0px 50px 0px 50px;"/>
 		        </div>
 		    </div>
 		    <div class="effect-custom-font m-5 py-5">
