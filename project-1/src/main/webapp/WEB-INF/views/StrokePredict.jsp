@@ -115,11 +115,10 @@ body {
 		</div>
 		<div class="container effect-custom-font" >
 		    <div class="mx-5 my-4 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">뇌졸중 발병확률 예측하기</div>
-			<div class="model-score  mx-2 pt-5" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd>85%</kbd> 입니다</div>
+			<div class="model-score  mx-2 pt-5" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측능력(F1-Score)은 약 <kbd>85%</kbd> 입니다</div>
 		    <div class="row pt-5">
 		        <div class="col-6">
 		            <form id="personInfoForm" class="validation-form" method="post" novalidate>
-		            
 		                <div class="tss col mb-3">
 		                    <strong>연령</strong>
 		                    <div class="tss1 d-flex" style="  align-items: center;">
@@ -133,7 +132,7 @@ body {
 		                    <strong>성별</strong>
 		                    <div class="horizontal-radio">
 			                    <div class="form-check">
-								    <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="Male" <c:if test="${gender eq 'M' }"> checked="checked"</c:if>>
+								    <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="Male" <c:if test="${gender eq 'M' }"> checked="checked"</c:if> required>
 								    <label class="form-check-label" for="gender_Man">
 								    남성
 								    </label>
@@ -149,9 +148,8 @@ body {
 		                        성별을 체크해 주세요
 		                    </div>
 		                </div>
-		                
 		                <div class="tss col mb-3">
-		                    <strong>혈당</strong>
+		                    <strong>혈당 수치</strong>
 		                    <div class="tss1 d-flex" style="  align-items: center;">
 		                    	<input type="text" class="form-control ml-3 w-75" style="margin:0px; border:none; text-align: right;" id="glucose" name="glucose" placeholder="혈당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required> mg/dL
 		                    </div>
@@ -159,12 +157,11 @@ body {
 		                        혈당 수치를 입력해주세요
 		                    </div>
 		                </div>
-		                
 						<div class="tss col mb-3">
 						    <strong>결혼 여부</strong>
 						    <div class="horizontal-radio">
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="everMarried" id="everMarriedYes" value="Yes">
+							        <input class="form-check-input" type="radio" name="everMarried" id="everMarriedYes" value="Yes" required>
 							        <label class="form-check-label" for="everMarriedYes">예</label>
 							    </div>
 							    <div class="form-check">
@@ -172,13 +169,15 @@ body {
 							        <label class="form-check-label" for="everMarriedNo">아니오</label>
 							    </div>
 							</div>
+							<div class="invalid-feedback">
+		                        결혼 여부를 입력해주세요
+		                    </div>
 						</div>
-						
 						<div class="tss col mb-3">
 						    <strong>직업 유형</strong>
 						    <div class="horizontal-radio">
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="workType" id="workTypePrivate" value="Private">
+							        <input class="form-check-input" type="radio" name="workType" id="workTypePrivate" value="Private" required>
 							        <label class="form-check-label" for="workTypePrivate">사기업</label>
 							    </div>
 							    <div class="form-check">
@@ -198,13 +197,15 @@ body {
 							        <label class="form-check-label" for="workTypeNeverWorked">무직</label>
 							    </div>
 						    </div>
+						    <div class="invalid-feedback">
+		                        직업 유형을 입력해주세요
+		                    </div>
 						</div>
-						
 						<div class="tss col mb-3">
 						    <strong>거주 유형</strong>
 						    <div class="horizontal-radio">
 							    <div class="form-check">
-							        <input class="form-check-input" type="radio" name="residenceType" id="residenceTypeRural" value="Urban">
+							        <input class="form-check-input" type="radio" name="residenceType" id="residenceTypeRural" value="Urban" required>
 							        <label class="form-check-label" for="residenceTypeRural">도시</label>
 							    </div>
 							    <div class="form-check">
@@ -212,8 +213,10 @@ body {
 							        <label class="form-check-label" for="residenceTypeUrban">시골</label>
 							    </div>
 						    </div>
+						    <div class="invalid-feedback">
+		                        거주 유형을 입력해주세요
+		                    </div>
 						</div>
-
 		                <div class="mb-4"></div>
 		                <button class="btn btn-primary btn-lg btn-block" type="submit" data-bs-toggle="modal" data-bs-target="#predictionModal">예측해보기</button>
 		            </form>
@@ -230,9 +233,9 @@ body {
 		    		<img src="<c:url value="/images/maintitle.png"/>" style="height:30px;">
 												와 다른 질병을 예측해 보아요!</div>
 		    		<div class="p-2" style="cursor: pointer;border-radius:40px;font-size:20px;background-color:#ff9558; font-weight: bold; text-align: center;" onclick='redirectToPrediction()'>다른 질병 예측하러 가기</div>
-		    </div>
+			    </div>
+			</div>
 		</div>
-	</div>
 	
 	
 	<div class="modal fade" id="predictionModal" tabindex="-1" aria-labelledby="predictionModalLabel" aria-hidden="true">
@@ -257,7 +260,7 @@ body {
 		     </div>
 		 </div>
 		  <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
 	      </div>
 	    </div>
 	  </div>
@@ -289,7 +292,6 @@ body {
 	                    var everMarried = $("input[name='everMarried']:checked").val();
 	                    var workType = $("input[name='workType']:checked").val();
 	                    var residenceType = $("input[name='residenceType']:checked").val();
-	                    $('.model-score').hide();
 	                    const Toast = Swal.mixin({
 	                        toast: true,
 	                        position: 'center-center',

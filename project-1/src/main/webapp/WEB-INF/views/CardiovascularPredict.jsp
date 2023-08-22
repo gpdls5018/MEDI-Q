@@ -274,7 +274,7 @@ body {
 			     </div>
 			 </div>
 			  <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
 		      </div>
 		    </div>
 		  </div>
@@ -315,7 +315,6 @@ function redirectToPrediction() {
                     var smoke = document.querySelector("input[name=smoke_check]:checked").value;
                     var alco = document.querySelector("input[name=alco_check]:checked").value;
                     var age = $('#age').val();
-                    $('.model-score').hide();
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'center-center',

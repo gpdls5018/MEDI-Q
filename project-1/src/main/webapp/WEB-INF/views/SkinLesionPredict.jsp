@@ -181,7 +181,7 @@ ul {
 			<div class="" style="font-size:32px; margin-left: 180px; font-weight: bold; line-height: 50px;">인공지능을 통한<br/> <span style="color:#EF605D;">MEDI-Q</span> 질병예측 시스템</div>
 		</div>
 		<div class="mx-5 my-4 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7); font-weight: bold;">피부질환 발병확률 예측하기</div>
-		<div class="model-score  mx-2 pt-5 mb-4" style="width:80%;height:80px; font-weight: bold;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd style="font-weight: normal;">85%</kbd> 입니다</div>
+		<div class="model-score  mx-2 pt-5 mb-4" style="width:80%;height:80px; font-weight: bold;background-color:">※현재 딥러닝의 예측능력(F1-Score)은 약 <kbd style="font-weight: normal;">90%</kbd> 입니다</div>
 		<div class="d-flex" style="flex-direction: row; position: relative;">
 			<div id="imageContainer" class="canvas" style="position: relative; border:3px solid black; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.68);">
 				<div class="controls__btns" style="margin-top: 600px; text-align: center; justify-content: center; display: flex;">

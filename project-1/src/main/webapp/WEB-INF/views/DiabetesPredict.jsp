@@ -194,7 +194,7 @@ ul {
 			     </div>
 			 </div>
 			  <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
 		      </div>
 		    </div>
 		  </div>
@@ -229,7 +229,6 @@ ul {
 	                    var bmi = $('#bmi').val();
 	                    var glucose = $('#glucose').val();
 	                    var bloodpress = $('#bloodpress').val();
-	                    $('.model-score').hide();
 	                    const Toast = Swal.mixin({
 	                        toast: true,
 	                        position: 'center-center',
