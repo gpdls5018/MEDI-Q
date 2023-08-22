@@ -404,7 +404,6 @@ public class SelectFoodRankListController {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd");
         String formatDate = dateFormat.format(currentDate);
 		String ID = memberDto.getId();
-		
 		selectfoodservice.deletefood(no, formatDate, ID);
 		return "forward:/food/test3.do";
 	}
