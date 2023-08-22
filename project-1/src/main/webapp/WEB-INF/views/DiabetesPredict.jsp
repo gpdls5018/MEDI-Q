@@ -103,12 +103,12 @@ ul {
 
 	<div class="container my-3" style="min-height: 880px; max-width: 1100px; background-color: white; border-radius: 15px;">
 		<div class="my-title d-flex effect-custom-font justify-content-between" style="align-items:center; width:100%;height:200px;">
-			<div class="" style="font-size:32px; margin-left: 180px;">인공지능을 통한<br/> <span style="color:#EF605D;">질병 예측 예방 시스템 구축</span></div>
+			<div class="" style="font-size:32px; margin-left: 180px; font-weight: bold; line-height: 50px;">인공지능을 통한<br/> <span style="color:#EF605D;">MEDI-Q</span> 질병예측 시스템</div>
 		</div>
 		<div class="container effect-custom-font" >
-		    <div class="mx-5 my-5 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">당뇨병 수치 예측하기</div>
-			<div class="model-score  mx-2 mt-4" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd>70%</kbd> 입니다</div>
-		    <div class="row">
+		    <div class="mx-5 my-4 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">당뇨병 발병확률 예측하기</div>
+			<div class="model-score  mx-2 pt-5" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측 정확도는 약 <kbd>70%</kbd> 입니다</div>
+		    <div class="row pt-5">
 		        <div class="col-6"  style="max-width: 40%;">
 		            <form id="personInfoForm" class="validation-form" novalidate>
 			            <div class="tss col mb-3">
@@ -124,7 +124,7 @@ ul {
 		                <div class="tss col mb-3">
 		                    <strong>BMI</strong>
 		                     <div class="tss1 d-flex" style="  align-items: center;">
-		                    	<input type="text" class="form-control  w-75"  style="margin:0px; border:none; text-align: right;" id="bmi" name="bmi" placeholder="체질량 지수를 입력해주세요" value="${healthInfoDto.bmi}" required> (kg/m2)
+		                    	<input type="text" class="form-control  w-75"  style="margin:0px; border:none; text-align: right;" id="bmi" name="bmi" placeholder="체질량 지수를 입력해주세요" value="${healthInfoDto.bmi}" required> (kg/m²)
 		                    </div>
 		                    <div class="invalid-feedback">
 		                        체질량 지수를 입력해주세요

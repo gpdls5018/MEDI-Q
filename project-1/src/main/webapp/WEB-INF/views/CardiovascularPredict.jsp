@@ -103,13 +103,13 @@ body {
 
 	<div class="container my-3" style="min-height: 880px; max-width: 1100px; background-color: white; border-radius: 15px;">
 		<div class="my-title d-flex effect-custom-font justify-content-between" style="align-items:center; width:100%;height:200px;">
-			<div class="" style="font-size:32px; margin-left: 180px;">인공지능을 통한<br/> <span style="color:#EF605D;">질병 예측 예방 시스템 구축</span></div>
+			<div class="" style="font-size:32px; margin-left: 180px; font-weight: bold; line-height: 50px;">인공지능을 통한<br/> <span style="color:#EF605D;">MEDI-Q</span> 질병예측 시스템</div>
 		</div>
 
 		<div class="container effect-custom-font" >
-		    <div class="mx-5 mt-1 mb-5 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">심혈관 질환 수치 예측하기</div>
-			<div class="model-score m-4" style="width:80%;height:50px;">※현재 머신러닝의 예측 정확도는 약 <kbd>80%</kbd> 입니다</div>
-		    <div class="row">
+		    <div class="mx-5 my-4 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">심혈관질환 발병확률 예측하기</div>
+			<div class="model-score m-4 pt-5" style="width:80%;height:50px;">※현재 머신러닝의 예측 정확도는 약 <kbd>80%</kbd> 입니다</div>
+		    <div class="row pt-5">
 		        <div class="col-6" style="max-width: 40%;">
 		            <form id="personInfoForm" class="validation-form" novalidate>
 		            	<div class="tss col mb-3">
@@ -162,8 +162,8 @@ body {
 		                <div class="tss col mb-3">
 		                    <strong style="width: 120px;">혈압<br/>(최저/최고)</strong>
 		                    <div class="tss1 d-flex" style="  margin-top:10px; align-items: center;">
-		                    	<input type="text" class="form-control m-2" style="border:none; width:100px; text-align: right;" id="bloodpress_low" name="bloodpress_low"  placeholder="최저혈압" value="${healthInfoDto.bloodPressure_low}" required> /
-			                    <input type="text" class="form-control m-2" style="border:none; width:100px; text-align: right;" id="bloodpress_high" name="bloodpress_high"  placeholder="최고혈압" value="${healthInfoDto.bloodPressure_high}" required> mmHg
+		                    	<input type="text" class="form-control m-2" style="border:none; width:89px; text-align: right;" id="bloodpress_low" name="bloodpress_low"  placeholder="최저혈압" value="${healthInfoDto.bloodPressure_low}" required> /
+			                    <input type="text" class="form-control m-2" style="border:none; width:88px; text-align: right;" id="bloodpress_high" name="bloodpress_high"  placeholder="최고혈압" value="${healthInfoDto.bloodPressure_high}" required> mmHg
 		                    </div>
 		                    <div class="invalid-feedback">
 		                        혈압수치를 입력해주세요
@@ -188,43 +188,43 @@ body {
 		                    </div>
 		                </div>
 		                <div class="tss col mb-3">
-		                	<strong>흡연</strong>
-		                	 <div class=" col">
+		                	<strong>흡연 여부</strong>
+		                	 <div class="tss1 col">
 				                <div class="form-check">
 							  		<input class="form-check-input" type="radio" id="smoke_check1" name="smoke_check" value="0">
 								  	<label class="form-check-label" for="smoke_check1">
-									    흡연자입니다
+									    네
 								  	</label>
 								</div>
 								<div class="form-check">
 							    	<input class="form-check-input" type="radio" id="smoke_check2" name="smoke_check" value="1" >
 								  	<label class="form-check-label" for="smoke_check2">
-									    비흡연자입니다
+									    아니오
 								  	</label>
 								</div>
 							</div>
 			                <div class="invalid-feedback">
-			                       흡연 유무를 체크해주세요
+			                       흡연 여부를 체크해주세요
 			                </div>
 		                </div>
 		                <div class="tss col mb-3" style="border:none;">
-		                	<strong>음주</strong>
-		                	 <div class=" col ">
+		                	<strong>음주 여부</strong>
+		                	 <div class="tss1 col ">
 				                <div class="form-check">
 							  		<input class="form-check-input" type="radio" id="alco_check2" name="alco_check" value="0">
 								  	<label class="form-check-label" for="alco_check2">
-									    음주를 합니다
+									    네
 								  	</label>
 								</div>
 								<div class="form-check">
 							    	<input class="form-check-input" type="radio" name="alco_check" id="alco_check1" value="1" >
 								  	<label class="form-check-label" for="alco_check1">
-									    음주를 하지 않습니다
+									    아니오
 								  	</label>
 								</div>
 							</div>
 			                <div class="invalid-feedback">
-			                       음주 유무를 체크해주세요
+			                       음주 여부를 체크해주세요
 			                </div>
 		                </div>
 		             
