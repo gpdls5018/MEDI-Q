@@ -268,11 +268,12 @@ document.querySelector(".close1").addEventListener("click", function() {
             // 받아온 이미지 base64 데이터
             console.log(response.score);
             var imageBase64 = response.image_base64;
-
+			
             // 이미지 생성 및 모달 내부에 화면에 출력
             var imageTag = '<img src="data:image/png;base64,' + imageBase64 + '" style="width:400px; height:400px; padding:0 15px; border:1px solid black;" alt="Image">';
             $('#modal-content').html(imageTag);
         });
+
     }
     
     const canvas = document.getElementById("jsCanvas");

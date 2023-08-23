@@ -230,6 +230,7 @@ ul {
 	                    var bmi = $('#bmi').val();
 	                    var glucose = $('#glucose').val();
 	                    var bloodpress = $('#bloodpress').val();
+	                    var predictionResult = 0;
 	                    const Toast = Swal.mixin({
 	                        toast: true,
 	                        position: 'center-center',
@@ -259,13 +260,27 @@ ul {
                             dataType: 'json',
                             data: JSON.stringify(data),
                             success: function (response) {
-                            	var predictionResult =  (response[0][1]*100).toFixed(1);
+                            	predictionResult =  (response[0][1]*100).toFixed(1);
                             	var predictionResultText = document.getElementById('predictionResultText');
                                 predictionResultText.textContent ='발병확률: '+ predictionResult+' %';                     
                             	var predictionModal = new bootstrap.Modal(document.getElementById('predictionModal'));
                             	predictionModal.show();
+                            	$.ajax({
+                                    type: 'post',
+                                    url: "<c:url value='/savePrediction'/>",
+                                    contentType: 'application/json',
+                                    data: JSON.stringify({
+                                        p_disease: 'Diabetes',
+                                        p_result: predictionResult
+                                    }),
+                                    success: function () {
+                                        console.log("데이터 저장 완료");
+                                    }
+                                });
                             }
                         });
+	                    	
+	                    	
                     }, 1500);
                 }
                 form.classList.add('was-validated');
