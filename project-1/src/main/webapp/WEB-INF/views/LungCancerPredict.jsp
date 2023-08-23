@@ -100,8 +100,8 @@ body {
     box-sizing: border-box;
     padding-left: 10px;
     padding-right: 30px;
-    margin-top: 17px;
-    margin-bottom: 17px;
+    margin-top: 11px;
+    margin-bottom: 11px;
     text-align: justify;
     font-size: 15px;
 }
@@ -120,7 +120,7 @@ body {
 		</div>
 		<div class="container effect-custom-font" >
 		    <div class="mx-5 my-4 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">폐암 발병확률 예측하기</div>
-			<div class="model-score mx-2 pt-5" style="width:80%;height:80px;background-color:">※현재 머신러닝의 예측능력(F1-Score)은 약 <kbd>92%</kbd> 입니다</div>
+			<div class="model-score mx-2 pt-5" style="width:80%;height:80px;background-color:">※ 현재 머신러닝의 예측능력(F1-Score)은 약 <kbd>92%</kbd> 입니다</div>
 		    <div class="row pt-5">
 		        <div class="col-6">
 		            <form id="personInfoForm" class="validation-form" method="post" novalidate>
@@ -309,22 +309,6 @@ body {
 		                        불안감 여부을 체크해 주세요
 		                    </div>
 					    </div>
-						<div class="tss col">
-					        <strong>사회적 압박</strong>
-					        <div class="horizontal-radio">
-					            <div class="form-check">
-					                <input class="form-check-input" type="radio" name="PEER_PRESSURE" id="peerPressureYes" value="1" required>
-					                <label class="form-check-label" for="peerPressureYes">예</label>
-					            </div>
-					            <div class="form-check">
-					                <input class="form-check-input" type="radio" name="PEER_PRESSURE" id="peerPressureNo" value="0">
-					                <label class="form-check-label" for="peerPressureNo">아니오</label>
-					            </div>
-					        </div>
-					        <div class="invalid-feedback">
-		                        사회적 압박 여부을 체크해 주세요
-		                    </div>
-					    </div>
 					    <div class="tss col">
 					        <strong>피로감</strong>
 					        <div class="horizontal-radio">
@@ -339,6 +323,22 @@ body {
 					        </div>
 					        <div class="invalid-feedback">
 		                        피로감 여부을 체크해 주세요
+		                    </div>
+					    </div>
+						<div class="tss col">
+					        <strong>사회적 스트레스</strong>
+					        <div class="horizontal-radio">
+					            <div class="form-check">
+					                <input class="form-check-input" type="radio" name="PEER_PRESSURE" id="peerPressureYes" value="1" required>
+					                <label class="form-check-label" for="peerPressureYes">예</label>
+					            </div>
+					            <div class="form-check">
+					                <input class="form-check-input" type="radio" name="PEER_PRESSURE" id="peerPressureNo" value="0">
+					                <label class="form-check-label" for="peerPressureNo">아니오</label>
+					            </div>
+					        </div>
+					        <div class="invalid-feedback">
+		                        사회적 스트레스 여부을 체크해 주세요
 		                    </div>
 					    </div>
 						<div class="tss col">
@@ -362,9 +362,9 @@ body {
 		            </form>
 		        </div>
 		
-		        <div class="col-6">
+		        <div class="col-6" style="padding-left: 20px;">
 		            <!--<canvas id="drawing_canvas"></canvas>-->
-		            <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAyMDAzMDlfMjQy%2FMDAxNTgzNzE4MjEzODI4.POwwB3ltkiqPNsm6zWnEOKqBfv3VxazhTO4lCoAxiKgg.v4772ZYKEx2yXF1J5I5gpOwxg5sfLZg0ouVYWn1DJbEg.JPEG%2FIWoKKDOe4F5Sr710c75lUAyiHshM.jpg&type=sc960_832" id="machineImage" style="width:100%;height:90%;margin-top: 20px;"/>
+		            <img src="/images/tsimages/lungcancer.png" id="machineImage" style="width:100%;height:100%;"/>
 		        </div>
 		    </div>
 		    <div class="effect-custom-font m-5 py-5">
@@ -381,8 +381,8 @@ body {
 	<div class="modal fade" id="predictionModal" tabindex="-1" aria-labelledby="predictionModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-dialog-centered" style="max-width:800px;">
 	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="predictionModalLabel" style="">폐암 예측 결과</h5>
+	      <div class="modal-header" style="justify-content: center;">
+	        <h5 class="modal-title" id="predictionModalLabel"><b style="font-size: 24px;">폐암 예측결과</b></h5>
 	      </div>
 	      <div class="modal-body">
 		      <div class="row" style="flex-grow: 1; display: flex;">
@@ -391,11 +391,11 @@ body {
 		        </div>
 		        <div class="col-6" style="width: 400px; height: 400px; flex-grow: 1; display: flex; align-items: center; justify-content: center; padding-left: 0px;">
 					<ul class="pakinul">
-					    <li class="text-center" style="font-weight:bold; font-size: 20px; margin-bottom: 20px; margin-top: 0px;"><b>폐암 진단과정</b></li>
-					    <li><span></span>폐암의 위험은 나이가 들면서 증가합니다. 특히 <b style="color: #EF605D">65세 이상의 노인에게 폐암 위험은 높으며, 흡연은 이 위험을 더욱 증가시킵니다</b>. 젊은 세대에서도 흡연에 따른 폐암 발생률이 증가하는 추세입니다.</li>
-					    <li><span></span>남성은 여성보다 폐암 발생률이 약간 높습니다. <b style="color: #EF605D">흡연, 노출된 화학 물질, 황색 손가락 증상</b> 등은 폐암 진단에 중요한 요인입니다.</li>
-					    <li><span></span>스트레스와 불안은 폐암 위험을 증가시킬 수 있습니다. <b style="color: #EF605D">동료의 압박, 만성 질병, 피로, 알레르기, 천명</b> 등은 폐암과 관련된 증상이나 위험 요인일 수 있습니다.</li>
-					    <li><span></span>과도한 알코올 섭취는 폐암 위험을 증가시킬 수 있습니다. <b style="color: #EF605D">기침, 호흡 곤란, 삼키기 어려움, 가슴 통증</b>은 폐암의 주요 증상 중 일부입니다.</li>
+						<li class="text-center mt-1" style="font-size:14px; font-weight:bold; font-size: 18px; margin-bottom: 10px; margin-top: 0px; padding-right: 20px;"><b>폐암 예측과정</b></li>
+						<li style="font-size: 12px; padding-right: 20px;"><span></span><b style="color: #EF605D">MEDI-Q는 다양한 폐암 발병 사례를 학습한 머신러닝 모델을 활용</b>하여 사용자의 건강상태를 분석하고 질환을 예측합니다.</li>
+						<li style="font-size: 12px; padding-right: 20px;"><span></span><b style="color: #EF605D">폐암의 주된 요인으로는 연령, 흡연 여부, 음주 여부 등</b>이 있습니다. 특히 흡연 중인 65세 이상 노인의 경우 위험성이 더욱 증가합니다.</li>
+						<li style="font-size: 12px; padding-right: 20px;"><span></span><b style="color: #EF605D">다른 요인으로는 스트레스, 불안, 만성질환, 호흡기 알러지 등</b>의 상황이나 증상이 폐암 발병률을 높입니다. 특히 사회적 스트레스로 인한 심리적 부담은 위험성을 더욱 증가시킬 수 있습니다.</li>
+						<li style="font-size: 12px; padding-right: 20px;"><span></span><b style="color: #EF605D">폐암의 증상에는 잦은 기침, 숨가쁨, 연하곤란, 가슴 통증, 천명 등</b>이 있습니다. 초기에는 미미한 증상일 수 있지만 점차 악화될 수 있습니다. 초기 대처를 위해 정기적인 건강검진이 중요하며, 증상이 계속되거나 악화되면 즉시 전문의와 상담해야 합니다.</li>
 					</ul>	            
                 </div>
 		     </div>
