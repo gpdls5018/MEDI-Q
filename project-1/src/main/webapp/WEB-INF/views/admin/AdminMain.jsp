@@ -165,14 +165,14 @@
 	        <div class="each-container">
 		        <!-- 도표1: 라인 차트 -->
 				<div class="chart-container" style="margin-bottom: 50px;">
-					<p class="text-center" style="font-size: 16px;"><b>일일 회원 통계</b></p>
+					<p class="text-center" style="font-size: 16px; margin-bottom: 8px;"><b>일일 회원 통계</b></p>
 					<div style="height: 200px; width: 550px; margin-left: 30px;">
 				    	<canvas id="lineChart"></canvas>
 				    </div>
 				</div>
 				<!-- 도표2: 라인 차트 -->
 				<div class="chart-container" style="margin-bottom: 50px;">
-					<p class="text-center" style="font-size: 16px;"><b>연령대별 질병예측 통계</b></p>
+					<p class="text-center" style="font-size: 16px; margin-bottom: 8px;"><b>연령대별 예측확률 통계</b></p>
 					<canvas id="chart" style="width:608px; height:200px;"></canvas><!-- style="height: 550px; width: 570px;" -->
 				</div>
 			</div>
@@ -249,15 +249,11 @@
 	                datasets: [{
 	                        label: '일일 로그인수',
 	                        data: loginData,
-	                        borderColor: 'rgba(255, 99, 132, 1)',
-	                        borderWidth: 1,
 	                        fill: false
 	                    },
 	                    {
 	                        label: '일일 회원가입수',
 	                        data: signUpData,
-	                        borderColor: 'rgba(54, 162, 235, 1)',
-	                        borderWidth: 1,
 	                        fill: false
 	                    }
 	                ]
@@ -408,7 +404,6 @@
 	                    data: ageRanges.map(function(ageRange) {
 	                        return datasets[disease][ageRange] || 0;
 	                    }),
-	                    borderColor: colors[idx],
 	                    fill: false
 	                };
 	            })

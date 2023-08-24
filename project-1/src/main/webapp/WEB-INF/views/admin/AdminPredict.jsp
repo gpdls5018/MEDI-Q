@@ -247,7 +247,7 @@
 	        <div class="each-container">
 		        <!-- 도표1: 라인 차트 -->
 				<div class="chart-container" style="margin-bottom: 50px; height: 650px;">
-					<p class="text-center" style="font-size: 16px;"><b>연령대별 질병예측 통계</b></p>
+					<p class="text-center" style="font-size: 16px;"><b>연령대별 예측확률 통계</b></p>
 					<canvas id="chart" style="width:608px; height:562px;"></canvas><!-- style="height: 550px; width: 570px;" -->
 				</div>
 			</div>
@@ -265,7 +265,7 @@
 				                    <th style="width:90px;">아이디</th>
 				                    <th style="width:65px;">연령대</th>
 				                    <th style="width:100px;">선택 질병예측</th>
-				                    <th style="width:65px;">확률</th>
+				                    <th style="width:65px;">예측 확률</th>
 				                    <th style="width:75px;">분석일</th>
 				                </tr>
 				            </thead>
@@ -391,7 +391,6 @@
 	                    data: ageRanges.map(function(ageRange) {
 	                        return datasets[disease][ageRange] || 0;
 	                    }),
-	                    borderColor: colors[idx],
 	                    fill: false
 	                };
 	            })

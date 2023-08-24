@@ -401,15 +401,16 @@
                     label: '리뷰 개수(left-y)',
                     backgroundColor: 'rgba(255, 99, 132, 0.6)',
                     borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1,
+                    borderWidth: 2,
                     data: parsedData1
                 },
                 {
                 	 yAxisID: 'right-y-axis', // 오른쪽 Y축을 사용
                      type: 'line',
                      label: '평균 별점(right-y)',
+                     backgroundColor: 'rgba(255, 159, 64, 0.6)',
                      borderColor: 'rgba(255, 159, 64, 1)',
-                     borderWidth: 1,
+                     borderWidth: 2,
                      fill: false,
                      data: parsedData2
                 }
@@ -476,15 +477,16 @@
 	                label: '누적 조회수(left-y)',
 	                backgroundColor: 'rgba(54, 162, 235, 0.6)',
 	                borderColor: 'rgba(54, 162, 235, 1)',
-	                borderWidth: 1,
+	                borderWidth: 2,
 	                data: parsedData1
             	},
                 {
                	 yAxisID: 'right-y-axis', // 오른쪽 Y축을 사용
                     type: 'line',
                     label: '주간 검색량(right-y)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
                     borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1,
+                    borderWidth: 2,
                     fill: false,
                     data: parsedData2,
                     

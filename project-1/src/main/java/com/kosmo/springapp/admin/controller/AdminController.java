@@ -615,7 +615,7 @@ public class AdminController {
         List<String> nutTop10 = new ArrayList<>();
         for (int i = 0; i < Math.min(mergedInfos.size(), 10); i++) {
             Map<String, Object> mergedInfo = mergedInfos.get(i);
-            String name = getStringValue(mergedInfo.get("name"), 4);
+            String name = getStringValue(mergedInfo.get("name"), 5);
             nutTop10.add(name);
         }
         model.addAttribute("nutTop10", nutTop10);
@@ -624,7 +624,7 @@ public class AdminController {
         List<String> nutTop10v = new ArrayList<>();
         for (int i = 0; i < Math.min(mergedInfos.size(), 10); i++) {
             Map<String, Object> mergedInfo = mergedInfos.get(i);
-            String view = getStringValue(mergedInfo.get("view"), 3);
+            String view = getStringValue(mergedInfo.get("view"), 5);
             nutTop10v.add(view);
         }
         model.addAttribute("nutTop10v", nutTop10v);
