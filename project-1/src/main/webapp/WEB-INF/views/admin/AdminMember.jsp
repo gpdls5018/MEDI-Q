@@ -296,9 +296,9 @@
 	        		</a>
 	        	</li>
 	        	<li>
-	        		<a href="<c:url value="/AdminMain.do"/>" style="display: flex; align-items: center;">
+	        		<a href="<c:url value="/AdminPredict.do"/>" style="display: flex; align-items: center;">
 	        			<i class="fas fa-heartbeat" style="font-size:17px; color:white; display: flex; align-items: center; justify-content: center;"></i>
-	        			&nbsp;&nbsp;질병예측 결과 관리
+	        			&nbsp;&nbsp;질병예측 결과 통계
 	        		</a>
 	        	</li>
 	        </ul>

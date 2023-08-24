@@ -319,12 +319,31 @@ ul {
 	                probability: parseFloat(response.all_probabilities[disease])
 	            });
 	        }
-
+	        
 	        // 확률 값에 따라 내림차순으로 정렬
 	        allProbabilities.sort(function(a, b) {
 	            return b.probability - a.probability;
 	        });
+	        
+	        // "akiec", "bcc", "mel"의 확률을 더함
+    		var predictionResult = Math.round(((response.all_probabilities.akiec || 0) * 100 + 
+                           					   (response.all_probabilities.bcc || 0) * 100 + 
+                           					   (response.all_probabilities.mel || 0) * 100) * 10) / 10;
 
+	        // AJAX 요청을 사용하여 predictionResult 값을 서버에 저장
+	        $.ajax({
+	            type: 'post',
+	            url: "<c:url value='/savePrediction'/>",
+	            contentType: 'application/json',
+	            data: JSON.stringify({
+	                p_disease: 'SkinLesion',
+	                p_result: predictionResult
+	            }),
+	            success: function () {
+	                console.log("데이터 저장 완료");
+	            }
+	        });
+	        
 	     	// 결과 문자열 생성
 	        var result = "<p style='font-size:20px; font-weight:bold;'>예측된 피부 질환</p><br/>";
 	        result += "<span style='color:#EF605D; font-weight:bold;'>" + diseaseNamesKorean[allProbabilities[0].disease] + " </span>";

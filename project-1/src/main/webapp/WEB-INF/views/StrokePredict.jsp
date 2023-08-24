@@ -121,8 +121,8 @@ body {
 		            <form id="personInfoForm" class="validation-form" method="post" novalidate>
 		                <div class="tss col mb-3">
 		                    <strong>연령</strong>
-		                    <div class="tss1 d-flex" style="  align-items: center;">
-		                    	<input type="text" class="form-control ml-3 w-75" style="margin:0px; border:none; text-align: right;" id="age" name="age" pattern="[0-9]+" placeholder="나이을 입력해주세요" value="${age }" required><b style="font-size: 16px;"> 세</b>
+		                    <div class="tss1 d-flex" style="align-items: center;margin-right: 170px;justify-content: flex-end;" >
+		                    	<input type="text" class="form-control ml-3 w-25" style="margin:0px; border:none; text-align: right;" id="age" name="age" pattern="[0-9]+" placeholder="나이을 입력해주세요" value="${age }" required><b style="font-size: 16px;"> 세</b>
 		                    </div>
 		                    <div class="invalid-feedback">
 		                        연령을 입력해주세요
@@ -130,8 +130,8 @@ body {
 		                </div>
 		                <div class="tss col mb-3">
 		                    <strong>성별</strong>
-		                    <div class="horizontal-radio">
-			                    <div class="form-check">
+		                    <div class="horizontal-radio" style="margin-right: 100px;">
+			                    <div class="form-check" style="margin-right: 60px;">
 								    <input class="form-check-input" type="radio" name="gender" id="gender_Man" value="Male" <c:if test="${gender eq 'M' }"> checked="checked"</c:if> required>
 								    <label class="form-check-label" for="gender_Man">
 								    남성
@@ -150,8 +150,8 @@ body {
 		                </div>
 		                <div class="tss col mb-3">
 		                    <strong>혈당 수치</strong>
-		                    <div class="tss1 d-flex" style="  align-items: center;">
-		                    	<input type="text" class="form-control ml-3 w-75" style="margin:0px; border:none; text-align: right;" id="glucose" name="glucose" placeholder="혈당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required> mg/dL
+		                    <div class="tss1 d-flex" style="  align-items: center;padding-right: 155px;justify-content: flex-end;">
+		                    	<input type="text" class="form-control ml-3 w-25" style="margin:0px; border:none; text-align: right;" id="glucose" name="glucose" placeholder="혈당 수치를 입력해주세요" value="${healthInfoDto.bloodSugar}" required> mg/dL
 		                    </div>
 		                    <div class="invalid-feedback">
 		                        혈당 수치를 입력해주세요
@@ -159,8 +159,8 @@ body {
 		                </div>
 						<div class="tss col mb-3">
 						    <strong>결혼 여부</strong>
-						    <div class="horizontal-radio">
-							    <div class="form-check">
+						    <div class="horizontal-radio" style="margin-right: 100px;">
+							    <div class="form-check" style="margin-right: 60px;">
 							        <input class="form-check-input" type="radio" name="everMarried" id="everMarriedYes" value="Yes" required>
 							        <label class="form-check-label" for="everMarriedYes">예</label>
 							    </div>
@@ -203,14 +203,14 @@ body {
 						</div>
 						<div class="tss col mb-3">
 						    <strong>거주 유형</strong>
-						    <div class="horizontal-radio">
-							    <div class="form-check">
+						    <div class="horizontal-radio" style="margin-right: 60px;">
+							    <div class="form-check" style="margin-right: 60px;">
 							        <input class="form-check-input" type="radio" name="residenceType" id="residenceTypeRural" value="Urban" required>
-							        <label class="form-check-label" for="residenceTypeRural">도시</label>
+							        <label class="form-check-label" for="residenceTypeRural">도심 지역</label>
 							    </div>
 							    <div class="form-check">
 							        <input class="form-check-input" type="radio" name="residenceType" id="residenceTypeUrban" value="Rural">
-							        <label class="form-check-label" for="residenceTypeUrban">시골</label>
+							        <label class="form-check-label" for="residenceTypeUrban">농촌 지역</label>
 							    </div>
 						    </div>
 						    <div class="invalid-feedback">
@@ -332,6 +332,18 @@ body {
 	                     
 	                            	var predictionModal = new bootstrap.Modal(document.getElementById('predictionModal'));
 	                            	predictionModal.show();
+	                            	$.ajax({
+	                                    type: 'post',
+	                                    url: "<c:url value='/savePrediction'/>",
+	                                    contentType: 'application/json',
+	                                    data: JSON.stringify({
+	                                        p_disease: 'Stroke',
+	                                        p_result: predictionResult
+	                                    }),
+	                                    success: function () {
+	                                        console.log("데이터 저장 완료");
+	                                    }
+	                                });
 	                            }
 	                        });
 	                    }, 1500);

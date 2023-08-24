@@ -476,6 +476,18 @@ body {
 
 	                                var predictionModal = new bootstrap.Modal(document.getElementById('predictionModal'));
 	                                predictionModal.show();
+	                                $.ajax({
+	                                    type: 'post',
+	                                    url: "<c:url value='/savePrediction'/>",
+	                                    contentType: 'application/json',
+	                                    data: JSON.stringify({
+	                                        p_disease: 'LungCancer',
+	                                        p_result: predictionResult
+	                                    }),
+	                                    success: function () {
+	                                        console.log("데이터 저장 완료");
+	                                    }
+	                                });
 	                            }
 	                        });
 	                    }, 1500);

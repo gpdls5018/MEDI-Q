@@ -193,7 +193,7 @@ body {
 				                <div class="form-check">
 							  		<input class="form-check-input" type="radio" id="smoke_check1" name="smoke_check" value="0" required>
 								  	<label class="form-check-label" for="smoke_check1">
-									    네
+									    예
 								  	</label>
 								</div>
 								<div class="form-check" style="margin-right: 0px;">
@@ -213,7 +213,7 @@ body {
 				                <div class="form-check">
 							  		<input class="form-check-input" type="radio" id="alco_check2" name="alco_check" value="0" required>
 								  	<label class="form-check-label" for="alco_check2">
-									    네
+									    예
 								  	</label>
 								</div>
 								<div class="form-check" style="margin-right: 0px;">
@@ -358,6 +358,18 @@ function redirectToPrediction() {
                      
                             	var predictionModal = new bootstrap.Modal(document.getElementById('predictionModal'));
                             	predictionModal.show();
+                            	$.ajax({
+                                    type: 'post',
+                                    url: "<c:url value='/savePrediction'/>",
+                                    contentType: 'application/json',
+                                    data: JSON.stringify({
+                                        p_disease: 'Cardiovascular',
+                                        p_result: predictionResult
+                                    }),
+                                    success: function () {
+                                        console.log("데이터 저장 완료");
+                                    }
+                                });
                             }
                         
                         });
