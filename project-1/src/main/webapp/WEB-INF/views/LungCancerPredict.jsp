@@ -120,7 +120,7 @@ body {
 		</div>
 		<div class="container effect-custom-font" >
 		    <div class="mx-5 my-4 display-4 effect-custom-font" style="text-align:center; color:rgba(3, 124, 194,0.7);">폐암 발병확률 예측하기</div>
-			<div class="model-score mx-2 pt-5" style="width:80%;height:80px;background-color:">※ 현재 머신러닝의 예측능력(F1-Score)은 약 <kbd>92%</kbd> 입니다</div>
+			<div class="model-score mx-2 pt-5" style="width:80%;height:80px;background-color:">※ 현재 머신러닝의 예측능력(F1-Score)은 약 <kbd>91%</kbd> 입니다</div>
 		    <div class="row pt-5">
 		        <div class="col-6">
 		            <form id="personInfoForm" class="validation-form" method="post" novalidate>
@@ -463,7 +463,7 @@ body {
 	                        console.log(data)
 	                        $.ajax({
 	                            type: 'POST',
-	                            url: "http://localhost:5000/LungCancerModel",
+	                            url: "http://192.168.0.16/LungCancerModel",
 	                            //url: "http://192.168.0.16/lungcancer",
 	                            contentType : "application/json",
 	                            dataType: 'json',
