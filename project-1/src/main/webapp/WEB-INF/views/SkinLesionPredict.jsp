@@ -305,7 +305,7 @@ ul {
     	};
 
 	    $.ajax({
-	        url: "http://localhost:5000/SkinLesionModel",
+	        url: "http://192.168.0.16/SkinLesionModel",
 	        data: formData,
 	        method: "post",
 	        processData: false,
